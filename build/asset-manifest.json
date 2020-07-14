@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/eshopping-client/static/js/main.f10399c1.chunk.js",
+    "runtime-main.js": "/eshopping-client/static/js/runtime-main.309ec03a.js",
+    "static/js/2.21e8fe8e.chunk.js": "/eshopping-client/static/js/2.21e8fe8e.chunk.js",
+    "index.html": "/eshopping-client/index.html",
+    "precache-manifest.f460420987750f5f84d7d3d238d269b1.js": "/eshopping-client/precache-manifest.f460420987750f5f84d7d3d238d269b1.js",
+    "service-worker.js": "/eshopping-client/service-worker.js",
+    "static/js/2.21e8fe8e.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.21e8fe8e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.309ec03a.js",
+    "static/js/2.21e8fe8e.chunk.js",
+    "static/js/main.f10399c1.chunk.js"
+  ]
+}
