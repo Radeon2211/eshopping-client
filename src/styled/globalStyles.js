@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    background-color: ${({ theme }) => theme.colors.light2};
   }
 
   @media only screen and (min-width: 112.5em) {
@@ -29,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    margin: 0;
+    font-family: ${({ theme }) => theme.fonts.main};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

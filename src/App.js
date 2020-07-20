@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
+import Navbar from './components/Navigation/Navbar/Navbar';
 
 const WaitingComponent = (Component) => {
   return (props) => (
@@ -17,7 +18,7 @@ const WaitingComponent = (Component) => {
 };
 
 const App = () => (
-  <h1>E-Shopping App</h1>
+  <Navbar />
 );
 
 export default App;
