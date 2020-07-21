@@ -6,7 +6,7 @@ const StyledHeading = styled.h1`
     if (variant === 'h1') {
       return `
         font-family: ${theme.fonts.logo};
-        font-size: 5.2rem;
+        font-size: 3.3rem;
         letter-spacing: 1px;
         text-shadow: ${theme.shadows.level3};
       `;

@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import Navbar from './components/Navigation/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 
 const WaitingComponent = (Component) => {
   return (props) => (

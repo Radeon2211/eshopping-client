@@ -2,7 +2,10 @@ const theme = {
   colors: {
     light1: '#fafafa',
     light2: '#dadfe1',
+    light3: '#BFBFBF',
     blue: '#1e8bc3',
+    blueLight: '#22A7F0',
+    blueDark: '#5C97BF',
     green: '#65c6bb',
   },
   shadows: {
@@ -18,10 +21,11 @@ const theme = {
     text: 'Lato, sans-serif',
   },
   spacings: {
-    level1: '1.2rem',
-    level2: '2.4rem',
-    level3: '3.6rem',
-    level4: '4.8rem',
+    level1: '0.8rem',
+    level2: '1.2rem',
+    level3: '2.4rem',
+    level4: '3.6rem',
+    level5: '4.8rem',
   },
   zIndexes: {
     level1: 10,
