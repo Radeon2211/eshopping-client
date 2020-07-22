@@ -14,11 +14,14 @@ export const Wrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndexes.level1};
 
   & > *:not(:last-child) {
-    margin-right: ${({ theme }) => theme.spacings.level4};
+    margin-right: ${({ theme }) => theme.spacings.level5};
+  }
+
+  & .heading {
+    margin-left: ${({ theme }) => theme.spacings.level1};
   }
 
   & .logo {
-    margin-right: ${({ theme }) => theme.spacings.level1};
     width: 4.6rem;
   }
 
@@ -34,11 +37,31 @@ export const Wrapper = styled.div`
     display: flex;
   }
 
-  @media only screen and (max-width: 37.5em) {
-    padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level3};
+  @media only screen and (max-width: 56.25em) {
+    padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level4};
+
+    & > *:not(:last-child) {
+      margin-right: ${({ theme }) => theme.spacings.level4};
+    }
 
     & .heading {
       display: none;
+    }
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: ${({ theme }) => theme.spacings.level2} ${({ theme }) => theme.spacings.level3};
+
+    & > *:not(:last-child) {
+      margin-right: ${({ theme }) => theme.spacings.level3};
+    }
+
+    & > *:nth-child(2) {
+      margin-right: 0;
+      margin-top: ${({ theme }) => theme.spacings.level2};
+      width: 100%;
     }
   }
 `;

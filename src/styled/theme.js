@@ -3,6 +3,7 @@ const theme = {
     light1: '#fafafa',
     light2: '#dadfe1',
     light3: '#BFBFBF',
+    light4: '#666',
     blue: '#1e8bc3',
     blueLight: '#22A7F0',
     blueDark: '#5C97BF',

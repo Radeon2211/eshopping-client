@@ -19,7 +19,7 @@ const SearchForm = () => {
         value={productName}
         onChange={(e) => setProductName(e.target.value)}
       />
-      <Button type="submit">search</Button>
+      <Button type="submit" filled>search</Button>
     </SC.SearchForm>
   );
 };

@@ -4,6 +4,8 @@ import * as SC from './Navbar.sc';
 import logo from '../../images/logo.png';
 import Heading from '../UI/Heading/Heading';
 import SearchForm from './SearchForm/SearchForm';
+import SignedOutLinks from './SignedOutLinks/SignedOutLinks';
+import SignedInLinks from './SignedInLinks/SignedInLinks';
 
 const Navbar = () => {
   return (
@@ -15,6 +17,7 @@ const Navbar = () => {
         </header>
       </Link>
       <SearchForm />
+      <SignedInLinks />
     </SC.Wrapper>
   );
 };
