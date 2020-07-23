@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import OutsideClickHandler from 'react-outside-click-handler';
 import * as SC from './Dropdown.sc';
@@ -60,6 +61,11 @@ const Dropdown = (props) => {
       </SC.Wrapper>
     </OutsideClickHandler>
   );
+};
+
+Dropdown.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  closed: PropTypes.func.isRequired,
 };
 
 export default Dropdown;

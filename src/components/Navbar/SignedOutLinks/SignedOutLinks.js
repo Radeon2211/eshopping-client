@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../UI/Button/Button';
+import Login from '../../../containers/Forms/Login';
+import Signup from '../../../containers/Forms/Signup';
+import Modal from '../../UI/Modal/Modal';
 
 const SC = {};
 SC.Wrapper = styled.nav`
@@ -12,11 +15,27 @@ SC.Wrapper = styled.nav`
 `;
 
 const SignedOutLinks = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [form, setForm] = useState(null);
+
+  const closeModalHandle = () => {
+    setIsModalVisible(false);
+    setForm(null);
+  };
+
+  const openModalHandle = (component) => {
+    setForm(component);
+    setIsModalVisible(true);
+  };
+
   return (
-    <SC.Wrapper>
-      <Button>login</Button>
-      <Button filled>signup</Button>
-    </SC.Wrapper>
+    <>
+      <Modal visible={isModalVisible} closed={closeModalHandle}>{form}</Modal>
+      <SC.Wrapper>
+        <Button onClick={() => openModalHandle(Login)}>login</Button>
+        <Button filled onClick={() => openModalHandle(Signup)}>signup</Button>
+      </SC.Wrapper>
+    </>
   );
 };
 

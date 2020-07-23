@@ -17,6 +17,7 @@ const SearchForm = () => {
         className="input-text"
         name="product"
         value={productName}
+        autoComplete="off"
         onChange={(e) => setProductName(e.target.value)}
       />
       <Button type="submit" filled>search</Button>

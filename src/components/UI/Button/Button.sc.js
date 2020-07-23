@@ -39,7 +39,7 @@ export const Button = styled.button`
         background-color: ${theme.colors.blueDark};
         border-color: ${theme.colors.blueDark};
         color: ${theme.colors.light1};
-        cursor: default;
+        cursor: not-allowed;
 
         &:hover {
           background-color: ${theme.colors.blueDark};

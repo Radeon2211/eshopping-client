@@ -6,6 +6,7 @@ export const SearchForm = styled.form`
   width: 45rem;
 
   & .input-text {
+    background-color: ${({ theme }) => theme.colors.light1};
     border: 1px solid ${({ theme }) => theme.colors.light3};
     font-size: 1.5rem;
     outline: none;

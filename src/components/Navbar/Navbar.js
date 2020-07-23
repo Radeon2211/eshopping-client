@@ -17,7 +17,7 @@ const Navbar = () => {
         </header>
       </Link>
       <SearchForm />
-      <SignedInLinks />
+      <SignedOutLinks />
     </SC.Wrapper>
   );
 };
