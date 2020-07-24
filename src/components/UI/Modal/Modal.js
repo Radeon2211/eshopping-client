@@ -1,6 +1,9 @@
 import React from 'react';
-import * as SC from './Modal.sc';
+import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
+import * as SC from './Modal.sc';
+import MyIcon from '../../UI/MyIcon/MyIcon';
+import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 
 const backdropVariants = {
   hidden: {
@@ -53,11 +56,26 @@ const Modal = (props) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-          >{children}</SC.Popup>
+          >
+            <div className="close-icon-box" onClick={closed}>
+              <MyIcon size="small" className="close-icon"><PlusIcon /></MyIcon>
+            </div>
+            {children}
+          </SC.Popup>
         </>
       )}
     </AnimatePresence>
   );
+};
+
+Modal.defaultProps = {
+  children: null,
+};
+
+Modal.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  closed: PropTypes.func.isRequired,
+  children: PropTypes.node,
 };
 
 export default Modal;

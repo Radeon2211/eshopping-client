@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Backdrop = styled(motion.div)`
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.35);
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -17,8 +17,6 @@ export const Backdrop = styled(motion.div)`
 export const Popup = styled(motion.div)`
   background-color: #fff;
   border-radius: 1px;
-  box-shadow: inset ${({ theme }) => theme.shadows.level3};
-  color: #000;
   left: 50%;
   max-width: 100%;
   padding: ${({ theme }) => theme.spacings.level3} ${({ theme }) => theme.spacings.level2};
@@ -26,4 +24,19 @@ export const Popup = styled(motion.div)`
   text-align: center;
   width: 45rem;
   z-index: ${({ theme }) => theme.zIndexes.level4};
+
+  & .close-icon-box {
+    border: 2px solid ${({ theme }) => theme.colors.light4};
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    padding: 0.5rem;
+    position: absolute;
+    top: ${({ theme }) => theme.spacings.level1};
+    right: ${({ theme }) => theme.spacings.level1};
+  }
+
+  & .close-icon {
+    transform: rotate(45deg);
+  }
 `;

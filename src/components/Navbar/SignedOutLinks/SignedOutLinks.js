@@ -32,8 +32,8 @@ const SignedOutLinks = () => {
     <>
       <Modal visible={isModalVisible} closed={closeModalHandle}>{form}</Modal>
       <SC.Wrapper>
-        <Button onClick={() => openModalHandle(Login)}>login</Button>
-        <Button filled onClick={() => openModalHandle(Signup)}>signup</Button>
+        <Button clicked={openModalHandle.bind(this, Login)}>login</Button>
+        <Button filled clicked={openModalHandle.bind(this, Signup)}>signup</Button>
       </SC.Wrapper>
     </>
   );
