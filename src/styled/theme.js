@@ -6,8 +6,10 @@ const theme = {
     light4: '#666',
     blue: '#1e8bc3',
     blueLight: '#22A7F0',
-    blueDark: '#5C97BF',
+    blueDark: '#67809F',
     green: '#65c6bb',
+    greenDark: '#16A085',
+    red: '#F22613',
   },
   shadows: {
     level1: '0 0 2px rgba(0, 0, 0, .1)',

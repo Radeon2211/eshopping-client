@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  background-color: transparent;
   border: 2px solid ${({ theme }) => theme.colors.blue};
   border-radius: 1px;
-  color: ${({ theme }) => theme.colors.blue};
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: 700;
@@ -16,7 +14,6 @@ export const Button = styled.button`
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.blueLight};
-    color: ${({ theme }) => theme.colors.blueLight};
   }
 
   ${({ filled, theme }) => {
@@ -30,11 +27,20 @@ export const Button = styled.button`
           color: #fff;
         }
       `;
+    } else {
+      return `
+        background-color: transparent;
+        color: ${theme.colors.blue};
+
+        &:hover {
+          color: ${theme.colors.blueLight};
+        }
+      `;
     }
   }}
 
-  ${({ disabled, theme }) => {
-    if (disabled) {
+  ${({ disabled, filled, theme }) => {
+    if (disabled && filled) {
       return `
         background-color: ${theme.colors.blueDark};
         border-color: ${theme.colors.blueDark};
@@ -44,6 +50,19 @@ export const Button = styled.button`
         &:hover {
           background-color: ${theme.colors.blueDark};
           border-color: ${theme.colors.blueDark};
+          color: ${theme.colors.light1};
+        }
+      `;
+    }
+    if (disabled && !filled) {
+      return `
+        border-color: ${theme.colors.blueDark};
+        color: ${theme.colors.blueDark};
+        cursor: not-allowed;
+
+        &:hover {
+          border-color: ${theme.colors.blueDark};
+          color: ${theme.colors.blueDark};
         }
       `;
     }

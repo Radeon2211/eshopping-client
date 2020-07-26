@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../UI/Button/Button';
 import Login from '../../../containers/Forms/Login';
-import Signup from '../../../containers/Forms/Signup';
+import Signup from '../../../containers/Forms/Signup/Signup';
 import Modal from '../../UI/Modal/Modal';
 
 const SC = {};
@@ -18,7 +18,7 @@ const SignedOutLinks = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form, setForm] = useState(null);
 
-  const closeModalHandle = () => {
+  const closeModalHandle = (e) => {
     setIsModalVisible(false);
     setForm(null);
   };
@@ -32,8 +32,8 @@ const SignedOutLinks = () => {
     <>
       <Modal visible={isModalVisible} closed={closeModalHandle}>{form}</Modal>
       <SC.Wrapper>
-        <Button clicked={openModalHandle.bind(this, Login)}>login</Button>
-        <Button filled clicked={openModalHandle.bind(this, Signup)}>signup</Button>
+        <Button size="big" clicked={openModalHandle.bind(this, <Login />)}>login</Button>
+        <Button size="big" filled clicked={openModalHandle.bind(this, <Signup />)}>signup</Button>
       </SC.Wrapper>
     </>
   );

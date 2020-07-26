@@ -19,16 +19,12 @@ const backdropVariants = {
 
 const modalVariants = {
   hidden: {
-    top: '-20vh',
-    x: '-50%',
     opacity: 0,
     pointerEvents: 'none',
   },
   visible: {
-    top: '50%',
-    y: '-50%',
     opacity: 1,
-    transition: { delay: .2, stiffness: 120 },
+    transition: { delay: .2 },
     pointerEvents: 'initial',
   },
 };
@@ -39,7 +35,7 @@ const Modal = (props) => {
   return (
     <AnimatePresence exitBeforeEnter>
       {visible && (
-        <>
+        <SC.Wrapper>
           <SC.Backdrop
             variants={backdropVariants}
             initial="hidden"
@@ -57,12 +53,10 @@ const Modal = (props) => {
             animate="visible"
             exit="hidden"
           >
-            <div className="close-icon-box" onClick={closed}>
-              <MyIcon size="small" className="close-icon"><PlusIcon /></MyIcon>
-            </div>
+            <MyIcon size="medium" onClick={closed} className="close-icon"><PlusIcon /></MyIcon>
             {children}
           </SC.Popup>
-        </>
+        </SC.Wrapper>
       )}
     </AnimatePresence>
   );

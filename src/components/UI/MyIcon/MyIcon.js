@@ -17,6 +17,11 @@ SC.IconWrapper = styled.div`
           width: 1.7rem;
           height: 1.7rem;
         `;
+      } else if (size === 'medium') {
+        return `
+          width: 2.5rem;
+          height: 2.5rem;
+        `;
       } else {
         return `
           width: 3.6rem;
