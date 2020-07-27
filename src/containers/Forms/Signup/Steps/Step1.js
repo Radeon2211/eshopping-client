@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
 import * as SC from '../Signup.sc';
 import Input from '../../../../components/UI/Input/Input';
@@ -47,6 +48,15 @@ const Step1 = (props) => {
           <Input
             kind="input"
             config={{
+              type: 'checkbox',
+              name: 'hideEmail',
+              id: 'hideEmail',
+            }}
+            label="Hide my email address from others"
+          />
+          <Input
+            kind="input"
+            config={{
               type: 'text',
               name: 'username',
               id: 'username',
@@ -79,6 +89,14 @@ const Step1 = (props) => {
       )}
     </AnimatePresence>
   );
+};
+
+Step1.propTypes = {
+  currentStep: PropTypes.number.isRequired,
+  goToNextStep: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  setFieldTouched: PropTypes.func.isRequired,
 };
 
 export default Step1;

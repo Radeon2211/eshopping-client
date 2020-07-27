@@ -1,24 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
 import { getCountries } from 'country-fns';
 import * as SC from '../Signup.sc';
 import Input from '../../../../components/UI/Input/Input';
 import Button from '../../../../components/UI/Button/Button';
+import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 
 const Step3 = (props) => {
-  const { currentStep, goToPrevStep, errors, touched, setFieldTouched, setFieldValue } = props;
+  const { currentStep, goToPrevStep, errors, touched, setFieldTouched, setFieldValue, formValues } = props;
 
   let btnDisabled = false;
-  if (errors.street || errors.zipCode || errors.city || errors.country || !touched.street || !touched.zipCode || !touched.city || !touched.country ) {
+  if (
+    errors.street
+    || errors.zipCode
+    || errors.city
+    || errors.country && !formValues.country
+    || !touched.street
+    || !touched.zipCode
+    || !touched.city
+    || !touched.country
+  ) {
     btnDisabled = true;
   }
 
   const listOfCountries = getCountries().map(({ name }) => {
-    const finalName = name.split('(')[0].trim();
+    const finalValue = name.split('(')[0].trim();
     return {
-      value: finalName,
-      label: finalName,
+      value: finalValue,
+      label: finalValue,
     };
   });
 
@@ -50,34 +61,36 @@ const Step3 = (props) => {
             isValid={!errors.street}
             isTouched={touched.street}
           />
-          <Input
-            kind="input"
-            config={{
-              type: 'text',
-              name: 'zipCode',
-              id: 'zipCode',
-              placeholder: 'Your zip code',
-              autoComplete: 'postal-code',
-              onInput: setFieldTouched.bind(this, 'zipCode', true, true),
-            }}
-            label="Zip code"
-            isValid={!errors.zipCode}
-            isTouched={touched.zipCode}
-          />
-          <Input
-            kind="input"
-            config={{
-              type: 'text',
-              name: 'city',
-              id: 'city',
-              placeholder: 'Your city',
-              autoComplete: 'address-level2',
-              onInput: setFieldTouched.bind(this, 'city', true, true),
-            }}
-            label="City"
-            isValid={!errors.city}
-            isTouched={touched.city}
-          />
+          <SideBySide proportion="1/3">
+            <Input
+              kind="input"
+              config={{
+                type: 'text',
+                name: 'zipCode',
+                id: 'zipCode',
+                placeholder: 'Your zip code',
+                autoComplete: 'postal-code',
+                onInput: setFieldTouched.bind(this, 'zipCode', true, true),
+              }}
+              label="Zip code"
+              isValid={!errors.zipCode}
+              isTouched={touched.zipCode}
+            />
+            <Input
+              kind="input"
+              config={{
+                type: 'text',
+                name: 'city',
+                id: 'city',
+                placeholder: 'Your city',
+                autoComplete: 'address-level2',
+                onInput: setFieldTouched.bind(this, 'city', true, true),
+              }}
+              label="City"
+              isValid={!errors.city}
+              isTouched={touched.city}
+            />
+          </SideBySide>
           <Input
             kind="select"
             config={{
@@ -87,10 +100,10 @@ const Step3 = (props) => {
               placeholder: 'Choose your country',
               options: listOfCountries,
               setFieldValue: setFieldValue,
-              onInput: setFieldTouched.bind(this, 'city', true, true),
+              setFieldTouched: setFieldTouched,
             }}
             label="Country"
-            isValid={!errors.country}
+            isValid={!errors.country || formValues.country}
             isTouched={touched.country}
           />
           <SC.Buttons buttonsNumber={2}>
@@ -101,6 +114,16 @@ const Step3 = (props) => {
       )}
     </AnimatePresence>
   );
+};
+
+Step3.propTypes = {
+  currentStep: PropTypes.number.isRequired,
+  goToPrevStep: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  setFieldTouched: PropTypes.func.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  formValues: PropTypes.object.isRequired,
 };
 
 export default Step3;

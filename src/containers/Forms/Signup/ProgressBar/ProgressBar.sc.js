@@ -27,6 +27,7 @@ export const Wrapper = styled.div`
 
   .step-number {
     font-size: 1.6rem;
+    line-height: 1;
   }
 
   .step-line {

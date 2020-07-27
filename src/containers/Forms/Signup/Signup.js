@@ -11,21 +11,24 @@ import Step3 from './Steps/Step3';
 
 const validationSchema = Yup.object({
   email: Yup.string().email().trim().required(),
-  showEmail: Yup.bool(),
+  hideEmail: Yup.bool(),
   username: Yup.string().min(3).max(20).trim().required(),
   password: Yup.string().min(7).max(64).trim().required(),
   firstName: Yup.string().max(60).required(),
   lastName: Yup.string().max(80).required(),
-  areaCode: Yup.string().max(4).trim().required(),
-  phone: Yup.string().max(15).trim().required(),
-  showPhone: Yup.bool(),
+  phonePrefix: Yup.object().shape({
+    value: Yup.string().required(),
+    label: Yup.string().required(),
+  }).nullable().required(),
+  phoneNumber: Yup.string().max(15).trim().required(),
+  hidePhone: Yup.bool(),
   street: Yup.string().max(60).required(),
   zipCode: Yup.string().trim().required(),
   city: Yup.string().max(100).required(),
   country: Yup.object().shape({
     value: Yup.string().required(),
     label: Yup.string().required(),
-  }),
+  }).nullable().required(),
 });
 
 const Signup = () => {
@@ -52,30 +55,30 @@ const Signup = () => {
       <Formik
         initialValues={{
           email: '',
-          showEmail: false,
+          hideEmail: false,
           username: '',
           password: '',
           firstName: '',
           lastName: '',
-          areaCode: '',
-          phone: '',
-          showPhone: false,
+          phonePrefix: null,
+          phoneNumber: '',
+          hidePhone: false,
           street: '',
           zipCode: '',
           city: '',
-          country: '',
+          country: null,
         }}
         validationSchema={validationSchema}
         onSubmit={(data) => {
           console.log(data);
         }}
       >
-        {({ errors, touched, setFieldTouched, setFieldValue }) => {
+        {({ errors, touched, setFieldTouched, setFieldValue, values }) => {
           return (
             <Form height={50}>
               <Step1 goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} />
-              <Step2 goToPrevStep={goToPrevStep} goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} />
-              <Step3 goToPrevStep={goToPrevStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} />
+              <Step2 goToPrevStep={goToPrevStep} goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} />
+              <Step3 goToPrevStep={goToPrevStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} formValues={values} />
             </Form>
           );
         }}

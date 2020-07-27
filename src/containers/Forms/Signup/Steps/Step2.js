@@ -1,17 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
+import { getCountries } from 'country-fns';
 import * as SC from '../Signup.sc';
 import Input from '../../../../components/UI/Input/Input';
 import Button from '../../../../components/UI/Button/Button';
 import { stepFormVariants } from '../../../../shared/framer';
 
 const Step2 = (props) => {
-  const { currentStep, goToNextStep, goToPrevStep, errors, touched, setFieldTouched } = props;
+  const { currentStep, goToNextStep, goToPrevStep, errors, touched, setFieldTouched, setFieldValue } = props;
 
   let btnDisabled = false;
-  if (errors.firstName || errors.lastName || errors.phone || !touched.firstName || !touched.lastName || !touched.phone) {
+  if (
+    errors.firstName
+    || errors.lastName
+    || errors.phoneNumber
+    || errors.phonePrefix
+    || !touched.firstName
+    || !touched.lastName
+    || !touched.phoneNumber
+    || !touched.phonePrefix
+  ) {
     btnDisabled = true;
   }
+
+  const listOfAreaCodes = getCountries().map(({ name, dial }) => {
+    const finalValue = `${name.split('(')[0].trim()} +${dial}`;
+    return {
+      value: dial,
+      label: finalValue,
+    };
+  });
 
   return (
     <AnimatePresence>
@@ -59,18 +78,42 @@ const Step2 = (props) => {
             isTouched={touched.lastName}
           />
           <Input
+            kind="select"
+            config={{
+              name: 'phonePrefix',
+              id: 'phonePrefix',
+              value: '',
+              placeholder: 'Choose your phone number prefix',
+              options: listOfAreaCodes,
+              setFieldValue: setFieldValue,
+              setFieldTouched: setFieldTouched,
+            }}
+            label="Phone number prefix"
+            isValid={!errors.phonePrefix}
+            isTouched={touched.phonePrefix}
+          />
+          <Input
             kind="input"
             config={{
               type: 'text',
-              name: 'phone',
-              id: 'phone',
+              name: 'phoneNumber',
+              id: 'phoneNumber',
               placeholder: 'Your phone number',
               autoComplete: 'tel-national',
-              onInput: setFieldTouched.bind(this, 'phone', true, true),
+              onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
             }}
             label="Phone number"
-            isValid={!errors.phone}
-            isTouched={touched.phone}
+            isValid={!errors.phoneNumber}
+            isTouched={touched.phoneNumber}
+          />
+          <Input
+            kind="input"
+            config={{
+              type: 'checkbox',
+              name: 'hidePhone',
+              id: 'hidePhone',
+            }}
+            label="Hide my phone number from others"
           />
           <SC.Buttons buttonsNumber={2}>
             <Button size="big" onClick={goToPrevStep}>Previous</Button>
@@ -80,6 +123,16 @@ const Step2 = (props) => {
       )}
     </AnimatePresence>
   );
+};
+
+Step2.propTypes = {
+  currentStep: PropTypes.number.isRequired,
+  goToPrevStep: PropTypes.func.isRequired,
+  goToNextStep: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  setFieldTouched: PropTypes.func.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
 };
 
 export default Step2;

@@ -1,7 +1,30 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-bottom: 2.4rem;
+
+  ${({ type, theme }) => {
+    if (type === 'checkbox') {
+      return `
+        align-items: center;
+        flex-direction: row;
+
+        & > label {
+          order: 1;
+          padding: 0 0 0 ${theme.spacings.level1};
+        }
+
+        & > input {
+          height: 1.6rem;
+          margin: 0;
+          padding: 0;
+          width: 1.6rem;
+        }
+      `;
+    }
+  }}
 
   & .select {
     font-size: 1.4rem;
@@ -71,9 +94,8 @@ export const Textarea = styled.textarea`
 `;
 
 export const Label = styled.label`
-  display: block;
   font-size: 1.5rem;
-  margin-bottom: ${({ theme }) => theme.spacings.level1};
+  padding-bottom: ${({ theme }) => theme.spacings.level1};
   transition: color 0.12s;
 
   ${Wrapper}.valid & {

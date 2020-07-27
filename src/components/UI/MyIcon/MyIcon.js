@@ -9,7 +9,17 @@ SC.IconWrapper = styled.div`
   justify-content: center;
 
   & > svg {
-    fill: ${({ theme }) => theme.colors.light4};
+    ${({ color, theme }) => {
+      if (color) {
+        return `
+          fill: ${color};
+        `;
+      } else {
+        return `
+          fill: ${theme.colors.light4};
+        `;
+      }
+    }}
 
     ${({ size }) => {
       if (size === 'small') {
@@ -47,10 +57,12 @@ const MyIcon = (props) => {
 
 MyIcon.defaultProps = {
   disabled: false,
+  color: '',
 };
 
 MyIcon.propTypes = {
   size: PropTypes.string.isRequired,
+  color: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };

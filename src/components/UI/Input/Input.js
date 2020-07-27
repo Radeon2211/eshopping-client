@@ -30,7 +30,15 @@ const Input = (props) => {
       input = (
         <Field name={config.name}>
           {({ field }) => (
-            <Select className="select" {...config} {...field} onChange={(option) => config.setFieldValue('country', option)} />
+            <Select
+              className="select"
+              {...config}
+              {...field}
+              onChange={(option) => {
+                config.setFieldValue(config.name, option);
+                config.setFieldTouched(config.name, true, true);
+              }}
+            />
           )}
         </Field>
       );
@@ -42,7 +50,7 @@ const Input = (props) => {
   }
 
   return (
-    <SC.Wrapper className={valid}>
+    <SC.Wrapper className={valid} type={config.type}>
       <SC.Label htmlFor={config.id}>{label}</SC.Label>
       {input}
     </SC.Wrapper>
