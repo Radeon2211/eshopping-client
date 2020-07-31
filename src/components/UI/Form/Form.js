@@ -38,7 +38,7 @@ const Form = (props) => {
     );
   }
 
-  let submitButtonContent = loading ? <Loader size="small" /> : btnText;
+  const submitButtonContent = loading ? <Loader size="small" /> : btnText;
 
   let buttonsBox = null;
   if (btnText) {

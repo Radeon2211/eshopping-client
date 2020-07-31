@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../../store/actions/indexActions';
+import * as modalTypes from '../../../store/actions/modalTypes';
 import Button from '../../UI/Button/Button';
-import Login from '../../../containers/Forms/Login';
-import Signup from '../../../containers/Forms/Signup/Signup';
-import Modal from '../../UI/Modal/Modal';
 
 const SC = {};
 SC.Wrapper = styled.nav`
@@ -15,27 +15,14 @@ SC.Wrapper = styled.nav`
 `;
 
 const SignedOutLinks = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [form, setForm] = useState(null);
-
-  const closeModalHandle = (e) => {
-    setIsModalVisible(false);
-    setForm(null);
-  };
-
-  const openModalHandle = (component) => {
-    setForm(component);
-    setIsModalVisible(true);
-  };
+  const dispatch = useDispatch();
+  const onSetModal = useCallback((isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)), [dispatch]);
 
   return (
-    <>
-      <Modal visible={isModalVisible} closed={closeModalHandle}>{form}</Modal>
-      <SC.Wrapper>
-        <Button size="big" clicked={openModalHandle.bind(this, <Login />)}>login</Button>
-        <Button size="big" filled clicked={openModalHandle.bind(this, <Signup />)}>signup</Button>
-      </SC.Wrapper>
-    </>
+    <SC.Wrapper>
+      <Button size="big" clicked={() => onSetModal(true, modalTypes.LOGIN)}>login</Button>
+      <Button size="big" filled clicked={() => onSetModal(true, modalTypes.SIGNUP)}>signup</Button>
+    </SC.Wrapper>
   );
 };
 

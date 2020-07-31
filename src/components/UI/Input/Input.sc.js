@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2.4rem;
+  margin-bottom: ${({ theme }) => theme.spacings.level3};
 
   ${({ type, theme }) => {
     if (type === 'checkbox') {

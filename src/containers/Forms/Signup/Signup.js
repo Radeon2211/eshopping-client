@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../../store/actions/indexActions';
 import * as SC from './Signup.sc';
 import Form from '../../../components/UI/Form/Form';
 import Heading from '../../../components/UI/Heading/Heading';
@@ -34,16 +36,21 @@ const validationSchema = Yup.object({
 const Signup = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
+  const dispatch = useDispatch();
+  const onRegisterUser = useCallback((creds) => dispatch(actions.registerUser(creds)), [dispatch])
+
   const goToNextStep = () => {
-    if (currentStep < 3) {
-      setCurrentStep((prevState) => prevState + 1);
-    }
+    setCurrentStep((prevState) => {
+      if (prevState < 3) return prevState + 1;
+      return prevState;
+    });
   };
 
   const goToPrevStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep((prevState) => prevState - 1);
-    }
+    setCurrentStep((prevState) => {
+      if (prevState > 1) return prevState - 1;
+      return prevState;
+    });
   };
 
   return (
@@ -70,18 +77,16 @@ const Signup = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(data) => {
-          console.log(data);
+          onRegisterUser(data);
         }}
       >
-        {({ errors, touched, setFieldTouched, setFieldValue, values }) => {
-          return (
-            <Form height={50}>
-              <Step1 goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} />
-              <Step2 goToPrevStep={goToPrevStep} goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} />
-              <Step3 goToPrevStep={goToPrevStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} formValues={values} />
-            </Form>
-          );
-        }}
+        {({ errors, touched, setFieldTouched, setFieldValue, values }) => (
+          <Form height={41}>
+            <Step1 goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} />
+            <Step2 goToPrevStep={goToPrevStep} goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} />
+            <Step3 goToPrevStep={goToPrevStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} formValues={values} />
+          </Form>
+        )}
       </Formik>
     </SC.Wrapper>
   );

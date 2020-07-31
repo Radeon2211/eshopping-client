@@ -65,7 +65,6 @@ SC.Wrapper = styled.div`
 
 const Loader = (props) => {
   const { size } = props;
-
   return <SC.Wrapper size={size}><div></div><div></div><div></div><div></div></SC.Wrapper>;
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
 import { getCountries } from 'country-fns';
+import { useSelector } from 'react-redux';
 import * as SC from '../Signup.sc';
 import Input from '../../../../components/UI/Input/Input';
 import Button from '../../../../components/UI/Button/Button';
@@ -10,6 +11,9 @@ import { stepFormVariants } from '../../../../shared/framer';
 
 const Step3 = (props) => {
   const { currentStep, goToPrevStep, errors, touched, setFieldTouched, setFieldValue, formValues } = props;
+
+  const isFormLoading = useSelector((state) => state.ui.isFormLoading);
+  const formError = useSelector((state) => state.ui.formError);
 
   let btnDisabled = false;
   if (
@@ -32,6 +36,8 @@ const Step3 = (props) => {
       label: finalValue,
     };
   });
+
+  const error = formError ? <span className="error">{formError}</span> : null;
 
   return (
     <AnimatePresence>
@@ -108,8 +114,9 @@ const Step3 = (props) => {
           />
           <SC.Buttons buttonsNumber={2}>
             <Button size="big" onClick={goToPrevStep}>Previous</Button>
-            <Button type="submit" filled size="big" disabled={btnDisabled}>Finish</Button>
+            <Button type="submit" filled size="big" disabled={btnDisabled || isFormLoading}>Finish</Button>
           </SC.Buttons>
+          {error}
         </SC.Step>
       )}
     </AnimatePresence>

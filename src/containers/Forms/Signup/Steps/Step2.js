@@ -5,6 +5,7 @@ import { getCountries } from 'country-fns';
 import * as SC from '../Signup.sc';
 import Input from '../../../../components/UI/Input/Input';
 import Button from '../../../../components/UI/Button/Button';
+import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 
 const Step2 = (props) => {
@@ -25,7 +26,7 @@ const Step2 = (props) => {
   }
 
   const listOfAreaCodes = getCountries().map(({ name, dial }) => {
-    const finalValue = `${name.split('(')[0].trim()} +${dial}`;
+    const finalValue = `+${dial} ${name.split('(')[0].trim()}`;
     return {
       value: dial,
       label: finalValue,
@@ -77,35 +78,37 @@ const Step2 = (props) => {
             isValid={!errors.lastName}
             isTouched={touched.lastName}
           />
-          <Input
-            kind="select"
-            config={{
-              name: 'phonePrefix',
-              id: 'phonePrefix',
-              value: '',
-              placeholder: 'Choose your phone number prefix',
-              options: listOfAreaCodes,
-              setFieldValue: setFieldValue,
-              setFieldTouched: setFieldTouched,
-            }}
-            label="Phone number prefix"
-            isValid={!errors.phonePrefix}
-            isTouched={touched.phonePrefix}
-          />
-          <Input
-            kind="input"
-            config={{
-              type: 'text',
-              name: 'phoneNumber',
-              id: 'phoneNumber',
-              placeholder: 'Your phone number',
-              autoComplete: 'tel-national',
-              onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
-            }}
-            label="Phone number"
-            isValid={!errors.phoneNumber}
-            isTouched={touched.phoneNumber}
-          />
+          <SideBySide proportion="1/1">
+            <Input
+              kind="select"
+              config={{
+                name: 'phonePrefix',
+                id: 'phonePrefix',
+                value: '',
+                placeholder: 'Choose your phone number prefix',
+                options: listOfAreaCodes,
+                setFieldValue: setFieldValue,
+                setFieldTouched: setFieldTouched,
+              }}
+              label="Phone number prefix"
+              isValid={!errors.phonePrefix}
+              isTouched={touched.phonePrefix}
+            />
+            <Input
+              kind="input"
+              config={{
+                type: 'text',
+                name: 'phoneNumber',
+                id: 'phoneNumber',
+                placeholder: 'Your phone number',
+                autoComplete: 'tel-national',
+                onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
+              }}
+              label="Phone number"
+              isValid={!errors.phoneNumber}
+              isTouched={touched.phoneNumber}
+            />
+          </SideBySide>
           <Input
             kind="input"
             config={{

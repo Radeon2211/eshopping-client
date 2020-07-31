@@ -19,18 +19,18 @@ export const Wrapper = styled.div`
   }}
 
   & .buttons-box {
-    display: flex;
     align-items: center;
+    display: flex;
   }
 
   & .cancel-button-box {
-    margin-left: 2.4rem;
+    margin-left: ${({ theme }) => theme.spacings.level3};
   }
 
   & .error {
-    color: var(--red);
+    color: ${({ theme }) => theme.colors.red};
     display: inline-block;
     font-size: 1.5rem;
-    margin-top: 2.4rem;
+    margin-top: ${({ theme }) => theme.spacings.level3};
   }
 `;

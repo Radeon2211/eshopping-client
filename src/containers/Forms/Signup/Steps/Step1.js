@@ -10,7 +10,14 @@ const Step1 = (props) => {
   const { currentStep, goToNextStep, errors, touched, setFieldTouched } = props;
 
   let btnDisabled = false;
-  if (errors.email || errors.username || errors.password || !touched.email || !touched.username || !touched.password) {
+  if (
+    errors.email
+    || errors.username
+    || errors.password
+    || !touched.email
+    || !touched.username
+    || !touched.password
+  ) {
     btnDisabled = true;
   }
 
