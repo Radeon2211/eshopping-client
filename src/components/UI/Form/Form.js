@@ -1,79 +1,59 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
 import { Form as FormikForm } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../../store/actions/indexActions';
 import * as SC from './Form.sc';
 import Button from '../Button/Button';
-import Loader from '../Loader/Loader';
 import Heading from '../Heading/Heading';
 
 const Form = (props) => {
-  const { headingText, btnText, isValid, cancelled, children, submitted, height } = props;
+  const { headingText, btnText, isValid, cancellable, children, height } = props;
 
-  // const { loading: postLoading, error: postError } = useSelector((state) => state.post);
-  // const { loading: authLoading, error: authError } = useSelector((state) => state.auth);
+  const formError = useSelector((state) => state.ui.formError);
 
-  // const loading = isPostForm ? postLoading : authLoading;
-  const loading = true;
-  // const loader = loading ? <Loader size="small" /> : null;
-  // const error = isPostForm ? postError : authError;
+  const dispatch = useDispatch();
+  const onSetModal = useCallback((isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)), [dispatch]);
+
+  const error = formError ? <span className="error">{formError}</span> : null;
 
   let heading = null;
   if (headingText) {
-    heading = (
-      <Heading variant="h3">{headingText}</Heading>
-    );
+    heading = <Heading variant="h3">{headingText}</Heading>;
   }
 
-  let errorNode = null;
-  // if (error) {
-  //   errorNode = <span className="error">{error}</span>;
-  // }
-
   let cancelButton = null;
-  if (cancelled) {
+  if (cancellable) {
     cancelButton = (
       <div className="cancel-button-box">
-        <Button size="small" clicked={cancelled}>Cancel</Button>
+        <Button size="small" clicked={() => onSetModal(false, '')}>cancel</Button>
       </div>
     );
   }
-
-  const submitButtonContent = loading ? <Loader size="small" /> : btnText;
 
   let buttonsBox = null;
   if (btnText) {
     buttonsBox = (
       <div className="buttons-box">
         {cancelButton}
-        <Button size="big" filled type="submit" disabled={!isValid || loading}>
-          {submitButtonContent}
+        <Button size="big" filled type="submit" disabled={!isValid}>
+          {btnText}
         </Button>
       </div>
     );
   }
 
-  let form = null;
-  if (submitted) {
-    form = (
-      <form onSubmit={submitted}>
-        {children}
-        {buttonsBox}
-      </form>
-    );
-  } else {
-    form = (
-      <FormikForm className="formik-form">
-        {children}
-        {buttonsBox}
-      </FormikForm>
-    );
-  }
+  const form = (
+    <FormikForm className="formik-form">
+      {children}
+      {buttonsBox}
+    </FormikForm>
+  );
 
   return (
     <SC.Wrapper height={height}>
       {heading}
       {form}
-      {errorNode}
+      {error}
     </SC.Wrapper>
   );
 };

@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   align-self: flex-start;
   justify-self: center;
   max-width: 100%;
+  text-align: left;
   width: 65rem;
 
   ${({ height }) => {
@@ -21,10 +22,11 @@ export const Wrapper = styled.div`
   & .buttons-box {
     align-items: center;
     display: flex;
+    justify-content: flex-end;
   }
 
   & .cancel-button-box {
-    margin-left: ${({ theme }) => theme.spacings.level3};
+    margin-right: ${({ theme }) => theme.spacings.level3};
   }
 
   & .error {

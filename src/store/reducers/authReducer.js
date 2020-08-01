@@ -29,7 +29,7 @@ const setUserProducts = (state, action) => {
   return updateObject(state, { products: action.products });
 };
 
-const updateProfile = (state, action) => {
+const setProfile = (state, action) => {
   return updateObject(state, { profile: action.profile });
 };
 
@@ -49,8 +49,8 @@ const authReducer = (state = initialState, action) => {
       return setSellHistory(state, action);
     case actionTypes.SET_USER_PRODUCTS:
       return setUserProducts(state, action);
-    case actionTypes.UPDATE_PROFILE:
-      return updateProfile(state, action);
+    case actionTypes.SET_PROFILE:
+      return setProfile(state, action);
     case actionTypes.UPDATE_TRANSACTION:
       return updateTransaction(state, action);
     default:
