@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../../components/UI/Form/Form';

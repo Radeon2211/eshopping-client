@@ -20,7 +20,7 @@ const Step3 = (props) => {
     errors.street
     || errors.zipCode
     || errors.city
-    || errors.country && !formValues.country
+    || (errors.country && !formValues.country)
     || !touched.street
     || !touched.zipCode
     || !touched.city

@@ -9,6 +9,7 @@ import Heading from '../Heading/Heading';
 const Form = (props) => {
   const { headingText, btnText, isValid, cancellable, children, height } = props;
 
+  const isFormLoading = useSelector((state) => state.ui.isFormLoading);
   const formError = useSelector((state) => state.ui.formError);
 
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const Form = (props) => {
     buttonsBox = (
       <div className="buttons-box">
         {cancelButton}
-        <Button size="big" filled type="submit" disabled={!isValid}>
+        <Button size="big" filled type="submit" disabled={!isValid || isFormLoading}>
           {btnText}
         </Button>
       </div>

@@ -4,7 +4,7 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
   isFormLoading: false,
   message: '',
-  formError: null,
+  formError: '',
   isModalOpen: false,
   modalContent: '',
 };
@@ -14,7 +14,7 @@ const formStart = (state) => {
 };
 
 const formSuccess = (state, action) => {
-  return updateObject(state, { isFormLoading: false, formError: null, message: action.message, isModalOpen: false, modalContent: '' });
+  return updateObject(state, { isFormLoading: false, formError: '', message: action.message, isModalOpen: false, modalContent: '' });
 };
 
 const formFail = (state, action) => {
@@ -26,7 +26,7 @@ const deleteMessage = (state) => {
 };
 
 const setModal = (state, action) => {
-  return updateObject(state, { isModalOpen: action.isModalOpen, modalContent: action.modalContent });
+  return updateObject(state, { isModalOpen: action.isModalOpen, modalContent: action.modalContent, formError: '' });
 };
 
 const uiReducer = (state = initialState, action) => {
