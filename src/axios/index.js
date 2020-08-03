@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: 'https://radeon2211-eshopping.herokuapp.com',
+  withCredentials: true,
 });
 
 const getCsrfToken = async () => {

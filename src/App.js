@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, Suspense, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as actions from './store/actions/indexActions';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Modal from './components/UI/Modal/Modal';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader/Loader';
+
+import Logout from './containers/Logout/Logout';
 
 const WaitingComponent = (Component) => {
   return (props) => (
@@ -22,6 +24,8 @@ const WaitingComponent = (Component) => {
 };
 
 const App = () => {
+  const userProfile = useSelector((state) => state.auth.profile);
+
   const dispatch = useDispatch();
   const getProfile = useCallback(() => dispatch(actions.getProfile()), [dispatch]);
 
@@ -29,12 +33,33 @@ const App = () => {
     getProfile();
   }, [getProfile]);
 
-  return (
-    <>
-      <Modal />
-      <Navbar />
-    </>
+  let routes = (
+    <div style={{ textAlign: 'center' }}>
+      <Loader size="big" />
+    </div>
   );
+
+  if (userProfile === null) {
+    routes = (
+      <>
+        <Modal />
+        <Navbar userProfile={userProfile} />
+      </>
+    );
+  }
+  if (userProfile) {
+    routes = (
+      <>
+        <Modal />
+        <Navbar userProfile={userProfile} />
+        <Switch>
+          <Route path="/logout" component={Logout} />
+        </Switch>
+      </>
+    );
+  }
+
+  return routes;
 };
 
 export default App;

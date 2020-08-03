@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility';
 
 const initialState = {
-  profile: null,
+  profile: undefined,
   placedOrders: null,
   sellHistory: null,
   products: null,

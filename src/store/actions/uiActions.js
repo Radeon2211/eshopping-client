@@ -14,6 +14,11 @@ export const formFail = (error) => ({
   error,
 });
 
+export const setMessage = (message) => ({
+  type: actionTypes.SET_MESSAGE,
+  message,
+});
+
 export const deleteMessage = () => ({
   type: actionTypes.DELETE_MESSAGE,
 });

@@ -21,6 +21,10 @@ const formFail = (state, action) => {
   return updateObject(state, { isFormLoading: false, formError: action.error, message: null });
 };
 
+const setMessage = (state, action) => {
+  return updateObject(state, { message: action.message });
+};
+
 const deleteMessage = (state) => {
   return updateObject(state, { message: '' });
 };
@@ -37,6 +41,8 @@ const uiReducer = (state = initialState, action) => {
       return formSuccess(state, action);
     case actionTypes.FORM_FAIL:
       return formFail(state, action);
+    case actionTypes.SET_MESSAGE:
+      return setMessage(state, action);
     case actionTypes.DELETE_MESSAGE:
       return deleteMessage(state, action);
     case actionTypes.SET_MODAL_OPEN_STATE:

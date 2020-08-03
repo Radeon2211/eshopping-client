@@ -7,7 +7,11 @@ import SearchForm from './SearchForm/SearchForm';
 import SignedOutLinks from './SignedOutLinks/SignedOutLinks';
 import SignedInLinks from './SignedInLinks/SignedInLinks';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { userProfile } = props;
+
+  const authNav = userProfile ? <SignedInLinks username={userProfile.username} /> : <SignedOutLinks />;
+
   return (
     <SC.Wrapper>
       <Link to="/" className="header-link">
@@ -17,7 +21,7 @@ const Navbar = () => {
         </header>
       </Link>
       <SearchForm />
-      <SignedOutLinks />
+      {authNav}
     </SC.Wrapper>
   );
 };

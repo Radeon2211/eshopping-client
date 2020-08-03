@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CartIcon } from '../../../images/SVG/cart.svg';
@@ -39,7 +40,9 @@ SC.Arrow = styled.div`
   }}
 `;
 
-const SignedInLinks = () => {
+const SignedInLinks = (props) => {
+  const { username } = props;
+
   const [dropdownIsVisible, setDropdownIsVisible] = useState(false);
 
   const userClickHandle = () => {
@@ -56,7 +59,7 @@ const SignedInLinks = () => {
         <MyIcon size="big"><CartIcon /></MyIcon>
       </Link>
       <SC.User id="user" onClick={userClickHandle}>
-        <span className="username">Radeon2211</span>
+        <span className="username">{username}</span>
         <SC.Arrow rotated={dropdownIsVisible}>
           <MyIcon size="small"><ArrowIcon /></MyIcon>
         </SC.Arrow>
@@ -64,6 +67,10 @@ const SignedInLinks = () => {
       </SC.User>
     </SC.Wrapper>
   );
+};
+
+SignedInLinks.propTypes = {
+  username: PropTypes.string.isRequired,
 };
 
 export default SignedInLinks;

@@ -61,3 +61,14 @@ export const getProfile = () => {
     }
   };
 };
+
+export const logoutUser = () => {
+  return async (dispatch) => {
+    try {
+      await axios.post('/users/logout');
+      dispatch(setProfile(null));
+    } catch (error) {
+      dispatch(uiActions.setMessage('Unable to logout. Something went wrong'));
+    }
+  };
+};
