@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.32b89328.chunk.js",
+    "main.js": "/eshopping-client/static/js/main.df5bf6c0.chunk.js",
     "runtime-main.js": "/eshopping-client/static/js/runtime-main.309ec03a.js",
     "static/js/2.ba7a215e.chunk.js": "/eshopping-client/static/js/2.ba7a215e.chunk.js",
     "index.html": "/eshopping-client/index.html",
-    "precache-manifest.59b98e52f8b1d9c37c47d5e4b6af9422.js": "/eshopping-client/precache-manifest.59b98e52f8b1d9c37c47d5e4b6af9422.js",
+    "precache-manifest.91d54f0f8ab27c9d652f6c6fcf72027d.js": "/eshopping-client/precache-manifest.91d54f0f8ab27c9d652f6c6fcf72027d.js",
     "service-worker.js": "/eshopping-client/service-worker.js",
     "static/js/2.ba7a215e.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.ba7a215e.chunk.js.LICENSE.txt",
     "static/media/add-product.ce98de71.svg": "/eshopping-client/static/media/add-product.ce98de71.svg",
@@ -21,6 +21,6 @@
   "entrypoints": [
     "static/js/runtime-main.309ec03a.js",
     "static/js/2.ba7a215e.chunk.js",
-    "static/js/main.32b89328.chunk.js"
+    "static/js/main.df5bf6c0.chunk.js"
   ]
 }
