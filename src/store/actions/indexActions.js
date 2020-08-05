@@ -6,6 +6,7 @@ export {
 } from './authActions';
 export {
   setModal,
+  deleteMessage,
 } from './uiActions';
 export {
   addProduct,

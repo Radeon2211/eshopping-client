@@ -31,3 +31,15 @@ export const modalVariants = {
     pointerEvents: 'initial',
   },
 };
+
+export const messageBoxVariants = {
+  hidden: {
+    pointerEvents: 'none',
+    y: '-150%',
+  },
+  visible: {
+    transition: { type: 'spring', duration: .2, stiffness: 100 },
+    pointerEvents: 'initial',
+    y: 0,
+  },
+};

@@ -25,7 +25,10 @@ export const addProduct = (product) => {
       const currentUserProducts = getState().auth.products;
       currentUserProducts.unshift(addedProduct);
       dispatch(authActions.setUserProducts(currentUserProducts));
-      dispatch(uiActions.formSuccess());
+      dispatch(uiActions.formSuccess('Product was added successfully'));
+      setTimeout(() => {
+        dispatch(uiActions.deleteMessage());
+      }, 5000);
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));

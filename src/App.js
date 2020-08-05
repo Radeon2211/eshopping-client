@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from './store/actions/indexActions';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Modal from './components/UI/Modal/Modal';
+import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader/Loader';
 
@@ -43,6 +44,7 @@ const App = () => {
     routes = (
       <>
         <Modal />
+        <MessageBox />
         <Navbar userProfile={userProfile} />
       </>
     );
@@ -51,6 +53,7 @@ const App = () => {
     routes = (
       <>
         <Modal />
+        <MessageBox />
         <Navbar userProfile={userProfile} />
         <Switch>
           <Route path="/logout" component={Logout} />
