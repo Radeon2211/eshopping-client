@@ -30,14 +30,6 @@ const Step1 = (props) => {
           animate="visible"
           exit="hidden"
         >
-          <div className="help-info-box">
-            <span className="help-info-line">
-              Email can be used by others to contact with you, but you can hide it.
-            </span>
-            <span className="help-info-line">
-              Username will be visible by everyone and cannot be changed.
-            </span>
-          </div>
           <Input
             kind="input"
             config={{
@@ -51,6 +43,7 @@ const Step1 = (props) => {
             label="Email"
             isValid={!errors.email}
             isTouched={touched.email}
+            captionText="Email can be used by others to contact with you, but you can hide it"
           />
           <Input
             kind="input"
@@ -74,6 +67,7 @@ const Step1 = (props) => {
             label="Username"
             isValid={!errors.username}
             isTouched={touched.username}
+            captionText="Username will be visible by everyone and cannot be changed"
           />
           <Input
             kind="input"

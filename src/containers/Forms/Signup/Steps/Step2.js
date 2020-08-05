@@ -43,12 +43,7 @@ const Step2 = (props) => {
           exit="hidden"
         >
           <div className="help-info-box">
-            <span className="help-info-line">
-              These data allow you to place orders.
-            </span>
-            <span className="help-info-line">
-              You can hide phone number, but this may make it difficult for the courier to contact you.
-            </span>
+            These data allow you to place orders.
           </div>
           <Input
             kind="input"
@@ -107,6 +102,7 @@ const Step2 = (props) => {
               label="Phone number"
               isValid={!errors.phoneNumber}
               isTouched={touched.phoneNumber}
+              captionText="You can hide phone number, but this may make it difficult for the courier to contact you"
             />
           </SideBySide>
           <Input

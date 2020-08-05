@@ -10,6 +10,7 @@ import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../../containers/Forms/Signup/Signup';
 import Login from '../../../containers/Forms/Login';
+import AddProduct from '../../../containers/Forms/AddProduct/AddProduct';
 
 const Modal = () => {
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -28,6 +29,9 @@ const Modal = () => {
       break;
     case modalTypes.LOGIN:
       modalContentNode = <Login />;
+      break;
+    case modalTypes.ADD_PRODUCT:
+      modalContentNode = <AddProduct />;
       break;
     default:
       break;

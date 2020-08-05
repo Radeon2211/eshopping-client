@@ -3,9 +3,9 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
   profile: undefined,
-  placedOrders: null,
-  sellHistory: null,
-  products: null,
+  placedOrders: [],
+  sellHistory: [],
+  products: [],
   transaction: null,
 };
 

@@ -9,18 +9,10 @@ export const Wrapper = styled.div`
   }
 
   & .help-info-box {
+    font-size: 1.4rem;
     margin-bottom: ${({ theme }) => theme.spacings.level3};
     padding: 0 ${({ theme }) => theme.spacings.level2};
     text-align: center;
-  }
-
-  & .help-info-line {
-    display: block;
-    font-size: 1.4rem;
-
-    &:not(:last-child) {
-      margin-bottom: 0.4rem;
-    }
   }
 `;
 

@@ -8,6 +8,11 @@ export const setProfile = (profile) => ({
   profile,
 });
 
+export const setUserProducts = (products) => ({
+  type: actionTypes.SET_USER_PRODUCTS,
+  products,
+});
+
 export const registerUser = (creds) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());

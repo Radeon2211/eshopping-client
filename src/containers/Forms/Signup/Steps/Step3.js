@@ -49,9 +49,7 @@ const Step3 = (props) => {
           exit="hidden"
         >
           <div className="help-info-box">
-            <span className="help-info-line">
-              These data are necessary to place orders.
-            </span>
+            These data are necessary to place orders.
           </div>
           <Input
             kind="input"

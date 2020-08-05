@@ -7,3 +7,6 @@ export {
 export {
   setModal,
 } from './uiActions';
+export {
+  addProduct,
+} from './productActions';

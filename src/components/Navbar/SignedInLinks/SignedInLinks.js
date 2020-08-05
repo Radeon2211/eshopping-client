@@ -9,8 +9,8 @@ import Dropdown from './Dropdown/Dropdown';
 
 const SC = {};
 SC.Wrapper = styled.nav`
-  display: flex;
   align-items: center;
+  display: flex;
 
   & > *:not(:last-child) {
     margin-right: ${({ theme }) => theme.spacings.level5};

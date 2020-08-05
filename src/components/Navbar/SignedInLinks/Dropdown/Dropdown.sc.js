@@ -34,6 +34,7 @@ export const Wrapper = styled.div`
     }
   }
 
+  & .link,
   & .link:link,
   & .link:visited {
     align-items: center;
@@ -44,7 +45,7 @@ export const Wrapper = styled.div`
     padding: ${({ theme }) => theme.spacings.level2};
     text-align: center;
     text-decoration: none;
-    transition: color 0.1s;
+    transition: color 0.12s;
     width: 100%;
 
     &:hover {

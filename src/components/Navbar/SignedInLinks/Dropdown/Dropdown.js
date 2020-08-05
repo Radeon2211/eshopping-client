@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import OutsideClickHandler from 'react-outside-click-handler';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../../../store/actions/indexActions';
+import * as modalTypes from '../../../../store/actions/modalTypes';
 import * as SC from './Dropdown.sc';
 import MyIcon from '../../../UI/MyIcon/MyIcon';
 import { ReactComponent as AddProductIcon } from '../../../../images/SVG/add-product.svg';
@@ -13,6 +16,10 @@ import { ReactComponent as LogOutIcon } from '../../../../images/SVG/log-out.svg
 
 const Dropdown = (props) => {
   const { visible, closed } = props;
+
+  const dispatch = useDispatch();
+  const onSetModal = useCallback((isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)), [dispatch]);
+
   return (
     <OutsideClickHandler
       onOutsideClick={(e) => {
@@ -22,10 +29,10 @@ const Dropdown = (props) => {
       <SC.Wrapper visible={visible}>
         <ul className="list">
           <li className="item">
-            <Link to="/add-product" className="link">
+            <div className="link" onClick={() => onSetModal(true, modalTypes.ADD_PRODUCT)}>
               <MyIcon size="small"><AddProductIcon /></MyIcon>
               <span>Add product</span>
-            </Link>
+            </div>
           </li>
           <li className="item">
             <Link to="/my-account" className="link">

@@ -13,3 +13,22 @@ export const getErrorMessage = (error) => {
   }
   return errorMessage;
 };
+
+const fileTypes = [
+  'image/jpeg',
+  'image/png',
+];
+
+export const isValidFileType = (type) => fileTypes.includes(type);
+
+export const calculateFileSize = (size) => {
+  if (size < 1024) {
+    return `${size} bytes`;
+  }
+  if (size >= 1024 && size < 1048576) {
+    return `${(size / 1024).toFixed(1)}KB`;
+  }
+  if (size >= 1048576) {
+    return `${(size / 1048576).toFixed(1)}MB`;
+  }
+};

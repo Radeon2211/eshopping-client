@@ -29,6 +29,39 @@ export const Wrapper = styled.div`
   & .select {
     font-size: 1.4rem;
   }
+
+  & .textarea {
+    font-size: 1.4rem;
+    resize: none;
+    font-family: inherit;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    transition: border-bottom 0.12s;
+    padding: 0 0 ${({ theme }) => theme.spacings.level1} 0;
+
+    &::-webkit-input-placeholder {
+      color: ${({ theme }) => theme.colors.light3};
+    }
+
+    &:focus {
+      border-bottom: 3px solid rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  &.valid .textarea {
+    border-bottom: 3px solid ${({ theme }) => theme.colors.greenDark};
+  }
+
+  &.invalid .textarea {
+    border-bottom: 3px solid ${({ theme }) => theme.colors.red};
+  }
+
+  & .caption {
+    display: block;
+    font-size: 1.3rem;
+    margin-top: ${({ theme }) => theme.spacings.level1};
+  }
 `;
 
 export const Input = styled.input`
@@ -104,5 +137,27 @@ export const Label = styled.label`
 
   ${Wrapper}.invalid & {
     color: ${({ theme }) => theme.colors.red};
+  }
+`;
+
+export const RadioWrapper = styled.div`
+  align-items: center;
+  display: flex;
+
+  & > label {
+    font-size: 1.4rem;
+    order: 1;
+    padding: 0 0 0 ${({ theme }) => theme.spacings.level1};
+  }
+
+  & > input {
+    height: 1.6rem;
+    margin: 0;
+    padding: 0;
+    width: 1.6rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: ${({ theme }) => theme.spacings.level1};
   }
 `;
