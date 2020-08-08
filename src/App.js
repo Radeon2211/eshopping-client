@@ -35,7 +35,7 @@ const App = () => {
   }, [getProfile]);
 
   let routes = (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'center', marginTop: '2.4rem' }}>
       <Loader size="big" />
     </div>
   );

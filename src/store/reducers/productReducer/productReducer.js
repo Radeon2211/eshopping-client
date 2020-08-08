@@ -1,8 +1,8 @@
-import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from '../../shared/utility';
+import * as actionTypes from '../../actions/actionTypes';
+import { updateObject } from '../../../shared/utility';
 
-const initialState = {
-  products: null,
+export const initialState = {
+  products: [],
 };
 
 const setProducts = (state, action) => {

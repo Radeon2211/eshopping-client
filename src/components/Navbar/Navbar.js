@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as SC from './Navbar.sc';
 import logo from '../../images/logo.png';
 import Heading from '../UI/Heading/Heading';
 import SearchForm from './SearchForm/SearchForm';
-import SignedOutLinks from './SignedOutLinks/SignedOutLinks';
-import SignedInLinks from './SignedInLinks/SignedInLinks';
+import LoggedOutLinks from './LoggedOutLinks/LoggedOutLinks';
+import LoggedInLinks from './LoggedInLinks/LoggedInLinks';
 
 const Navbar = (props) => {
   const { userProfile } = props;
 
-  const authNav = userProfile ? <SignedInLinks username={userProfile.username} /> : <SignedOutLinks />;
+  const authNav = userProfile ? <LoggedInLinks username={userProfile.username} /> : <LoggedOutLinks />;
 
   return (
     <SC.Wrapper>
@@ -24,6 +25,10 @@ const Navbar = (props) => {
       {authNav}
     </SC.Wrapper>
   );
+};
+
+Navbar.propTypes = {
+  userProfile: PropTypes.object,
 };
 
 export default Navbar;

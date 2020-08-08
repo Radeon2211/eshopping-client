@@ -1,7 +1,7 @@
-import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from '../../shared/utility';
+import * as actionTypes from '../../actions/actionTypes';
+import { updateObject } from '../../../shared/utility';
 
-const initialState = {
+export const initialState = {
   isFormLoading: false,
   message: '',
   formError: '',
@@ -18,7 +18,7 @@ const formSuccess = (state, action) => {
 };
 
 const formFail = (state, action) => {
-  return updateObject(state, { isFormLoading: false, formError: action.error, message: null });
+  return updateObject(state, { isFormLoading: false, formError: action.error, message: '' });
 };
 
 const setMessage = (state, action) => {

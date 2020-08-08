@@ -7,7 +7,7 @@ import { messageBoxVariants } from '../../../shared/framer';
 import MyIcon from '../MyIcon/MyIcon';
 import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 
-const SC = {};
+export const SC = {};
 SC.Wrapper = styled(motion.div)`
   display: flex;
   justify-content: center;

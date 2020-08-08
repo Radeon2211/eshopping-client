@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { HashRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider, useSelector } from 'react-redux';
-import styled, { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 
 import theme from './styled/theme';
 import GlobalStyles from './styled/globalStyles';

@@ -1,3 +1,5 @@
+import checkPropTypes from 'check-prop-types';
+
 export const updateObject = (oldObject, updatedProps) => ({
   ...oldObject,
   ...updatedProps,
@@ -31,4 +33,8 @@ export const calculateFileSize = (size) => {
   if (size >= 1048576) {
     return `${(size / 1048576).toFixed(1)}MB`;
   }
+};
+
+export const checkProps = (component, expectedProps) => {
+  return checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
 };

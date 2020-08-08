@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
 import { isValidFileType, calculateFileSize } from '../../../../shared/utility';
 import Button from '../../../../components/UI/Button/Button';
@@ -91,6 +92,10 @@ const UploadPhoto = (props) => {
       <input type="file" id="photo" name="photo" className="input" onChange={inputChangedHandler} />
     </SC.Wrapper>
   );
+};
+
+UploadPhoto.propTypes = {
+  setFieldValue: PropTypes.func.isRequired,
 };
 
 export default UploadPhoto;
