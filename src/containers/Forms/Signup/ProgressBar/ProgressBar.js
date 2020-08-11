@@ -8,8 +8,15 @@ const ProgressBar = (props) => {
   const { stepsNumber, currentStep } = props;
 
   const steps = [];
-  for (let i = 1; i <= stepsNumber; i++) {
-    const stepBoxContent = currentStep > i ? <MyIcon size="small" color="#000"><CheckMarkIcon /></MyIcon> : i;
+  for (let i = 1; i <= stepsNumber; i += 1) {
+    const stepBoxContent =
+      currentStep > i ? (
+        <MyIcon size="small" color="#000">
+          <CheckMarkIcon />
+        </MyIcon>
+      ) : (
+        i
+      );
     steps.push(
       <React.Fragment key={i}>
         <div className={`step-box${currentStep >= i ? ' active' : ''}`}>
@@ -20,7 +27,7 @@ const ProgressBar = (props) => {
             <div className={`step-line-fill${currentStep > i ? ' active' : ''}`} />
           </div>
         )}
-      </React.Fragment>
+      </React.Fragment>,
     );
   }
 

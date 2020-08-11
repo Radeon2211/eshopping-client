@@ -16,12 +16,19 @@ SC.Wrapper = styled.nav`
 
 const SignedOutLinks = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)), [dispatch]);
+  const onSetModal = useCallback(
+    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
+    [dispatch],
+  );
 
   return (
     <SC.Wrapper>
-      <Button size="big" clicked={() => onSetModal(true, modalTypes.LOGIN)}>login</Button>
-      <Button size="big" filled clicked={() => onSetModal(true, modalTypes.SIGNUP)}>signup</Button>
+      <Button size="big" clicked={() => onSetModal(true, modalTypes.LOGIN)}>
+        login
+      </Button>
+      <Button size="big" filled clicked={() => onSetModal(true, modalTypes.SIGNUP)}>
+        signup
+      </Button>
     </SC.Wrapper>
   );
 };

@@ -26,7 +26,7 @@ const AddProduct = () => {
         name: '',
         price: 0,
         quantity: 1,
-        condition: 'not applicable',
+        condition: 'not_applicable',
         description: '',
         photo: null,
       }}
@@ -36,7 +36,12 @@ const AddProduct = () => {
       }}
     >
       {({ errors, touched, dirty, isValid, setFieldTouched, setFieldValue, values }) => (
-        <Form btnText="Add an offer" headingText="Add product for sale" isValid={dirty && isValid} cancellable>
+        <Form
+          btnText="Add an offer"
+          headingText="Add product for sale"
+          isValid={dirty && isValid}
+          cancellable
+        >
           <Input
             kind="input"
             config={{
@@ -89,11 +94,15 @@ const AddProduct = () => {
             kind="radio"
             config={{
               name: 'condition',
-              value: 'not applicable',
+              value: 'not_applicable',
               options: [
                 { value: 'new', id: 'new', checked: values.condition === 'new' },
                 { value: 'used', id: 'used', checked: values.condition === 'used' },
-                { value: 'not applicable', id: 'not applicable', checked: values.condition === 'not applicable' },
+                {
+                  value: 'not_applicable',
+                  id: 'not_applicable',
+                  checked: values.condition === 'not_applicable',
+                },
               ],
             }}
             label="Condition"

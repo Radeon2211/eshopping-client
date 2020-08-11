@@ -4,7 +4,7 @@ export const stepFormVariants = {
   },
   visible: {
     opacity: 1,
-    transition: { duration: .12, delay: .12 },
+    transition: { duration: 0.12, delay: 0.12 },
   },
 };
 
@@ -16,7 +16,7 @@ export const backdropVariants = {
   visible: {
     opacity: 1,
     pointerEvents: 'initial',
-    transition: { duration: .25 },
+    transition: { duration: 0.25 },
   },
 };
 
@@ -27,7 +27,7 @@ export const modalVariants = {
   },
   visible: {
     opacity: 1,
-    transition: { delay: .2 },
+    transition: { delay: 0.2 },
     pointerEvents: 'initial',
   },
 };
@@ -38,7 +38,7 @@ export const messageBoxVariants = {
     y: '-150%',
   },
   visible: {
-    transition: { type: 'spring', duration: .2, stiffness: 100 },
+    transition: { type: 'spring', duration: 0.2, stiffness: 100 },
     pointerEvents: 'initial',
     y: 0,
   },

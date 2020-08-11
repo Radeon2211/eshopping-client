@@ -14,11 +14,10 @@ SC.IconWrapper = styled.div`
         return `
           fill: ${color};
         `;
-      } else {
-        return `
+      }
+      return `
           fill: ${theme.colors.light4};
         `;
-      }
     }}
 
     ${({ size }) => {
@@ -27,17 +26,17 @@ SC.IconWrapper = styled.div`
           width: 1.7rem;
           height: 1.7rem;
         `;
-      } else if (size === 'medium') {
+      }
+      if (size === 'medium') {
         return `
           width: 2.5rem;
           height: 2.5rem;
         `;
-      } else {
-        return `
+      }
+      return `
           width: 3.6rem;
           height: 3.6rem;
         `;
-      }
     }}
 
     ${({ disabled, theme }) => {
@@ -46,13 +45,14 @@ SC.IconWrapper = styled.div`
           fill: ${theme.colors.light3};
         `;
       }
+      return ``;
     }}
   }
 `;
 
 const MyIcon = (props) => {
   const { children } = props;
-  return  <SC.IconWrapper {...props}>{children}</SC.IconWrapper>;
+  return <SC.IconWrapper {...props}>{children}</SC.IconWrapper>;
 };
 
 MyIcon.defaultProps = {

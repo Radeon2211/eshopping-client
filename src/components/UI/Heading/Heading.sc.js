@@ -21,12 +21,14 @@ const StyledHeading = styled.h1`
         `;
       case 'h3':
         return `
-          font-size: 2.4rem;
+          font-size: 2.5rem;
           font-family: ${theme.fonts.heading};
           letter-spacing: 1px;
           line-height: 1;
           margin-bottom: ${theme.spacings.level3};
         `;
+      default:
+        return ``;
     }
   }}
 `;

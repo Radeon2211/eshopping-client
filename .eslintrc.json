@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "globals": {
@@ -34,6 +35,15 @@
         "trailingComma": "all",
         "printWidth": 100
       }
-    ]
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["label"],
+        "labelAttributes": ["htmlFor"],
+        "controlComponents": ["input"]
+      }
+    ],
+    "no-underscore-dangle": "off"
   }
 }

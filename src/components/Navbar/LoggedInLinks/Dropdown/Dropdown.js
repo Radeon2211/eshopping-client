@@ -18,7 +18,10 @@ const Dropdown = (props) => {
   const { visible, closed } = props;
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)), [dispatch]);
+  const onSetModal = useCallback(
+    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
+    [dispatch],
+  );
 
   return (
     <OutsideClickHandler
@@ -29,38 +32,56 @@ const Dropdown = (props) => {
       <SC.Wrapper visible={visible}>
         <ul className="list">
           <li className="item">
-            <div className="link" onClick={() => onSetModal(true, modalTypes.ADD_PRODUCT)}>
-              <MyIcon size="small"><AddProductIcon /></MyIcon>
+            <div
+              className="link"
+              onClick={() => onSetModal(true, modalTypes.ADD_PRODUCT)}
+              onKeyDown={() => onSetModal(true, modalTypes.ADD_PRODUCT)}
+              role="button"
+              tabIndex={0}
+            >
+              <MyIcon size="small">
+                <AddProductIcon />
+              </MyIcon>
               <span>Add product</span>
             </div>
           </li>
           <li className="item">
             <Link to="/my-account" className="link">
-              <MyIcon size="small"><MyAccountIcon /></MyIcon>
+              <MyIcon size="small">
+                <MyAccountIcon />
+              </MyIcon>
               <span>My account</span>
             </Link>
           </li>
           <li className="item">
             <Link to="/my-account/products" className="link">
-              <MyIcon size="small"><MyOffersIcon /></MyIcon>
+              <MyIcon size="small">
+                <MyOffersIcon />
+              </MyIcon>
               <span>My offers</span>
             </Link>
           </li>
           <li className="item">
             <Link to="/my-account/placed-orders" className="link">
-              <MyIcon size="small"><PlacedOrdersIcon /></MyIcon>
+              <MyIcon size="small">
+                <PlacedOrdersIcon />
+              </MyIcon>
               <span>Placed orders</span>
             </Link>
           </li>
           <li className="item">
             <Link to="/my-account/sell-history" className="link">
-              <MyIcon size="small"><SellHistoryIcon /></MyIcon>
+              <MyIcon size="small">
+                <SellHistoryIcon />
+              </MyIcon>
               <span>My sell history</span>
             </Link>
           </li>
           <li className="item">
             <Link to="/logout" className="link">
-              <MyIcon size="small"><LogOutIcon /></MyIcon>
+              <MyIcon size="small">
+                <LogOutIcon />
+              </MyIcon>
               <span>Log out</span>
             </Link>
           </li>

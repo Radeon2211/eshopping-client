@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import * as modalTypes from '../../../store/actions/modalTypes';
 import * as SC from './Modal.sc';
-import MyIcon from '../../UI/MyIcon/MyIcon';
-import Loader from '../../UI/Loader/Loader';
+import MyIcon from '../MyIcon/MyIcon';
+import Loader from '../Loader/Loader';
 import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../../containers/Forms/Signup/Signup';
@@ -18,9 +18,15 @@ const Modal = () => {
   const modalContent = useSelector((state) => state.ui.modalContent);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)), [dispatch]);
+  const onSetModal = useCallback((isOpen, content) => dispatch(actions.setModal(isOpen, content)), [
+    dispatch,
+  ]);
 
-  const loadingOverlay = isFormLoading ? <div className="loading-overlay"><Loader size="big" /></div> : null;
+  const loadingOverlay = isFormLoading ? (
+    <div className="loading-overlay">
+      <Loader size="big" />
+    </div>
+  ) : null;
 
   let modalContentNode = null;
   switch (modalContent) {
@@ -52,13 +58,10 @@ const Modal = () => {
             role="button"
             aria-label="Close modal"
           />
-          <SC.Popup
-            variants={modalVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
-            <MyIcon size="medium" onClick={() => onSetModal(false, '')} className="close-icon"><PlusIcon /></MyIcon>
+          <SC.Popup variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
+            <MyIcon size="medium" onClick={() => onSetModal(false, '')} className="close-icon">
+              <PlusIcon />
+            </MyIcon>
             {loadingOverlay}
             {modalContentNode}
           </SC.Popup>

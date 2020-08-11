@@ -37,6 +37,7 @@ SC.Arrow = styled.div`
         transform: rotate(-90deg);
       `;
     }
+    return ``;
   }}
 `;
 
@@ -56,12 +57,16 @@ const SignedInLinks = (props) => {
   return (
     <SC.Wrapper>
       <Link to="/cart">
-        <MyIcon size="big"><CartIcon /></MyIcon>
+        <MyIcon size="big">
+          <CartIcon />
+        </MyIcon>
       </Link>
       <SC.User id="user" onClick={userClickHandle}>
         <span className="username">{username}</span>
         <SC.Arrow rotated={dropdownIsVisible}>
-          <MyIcon size="small"><ArrowIcon /></MyIcon>
+          <MyIcon size="small">
+            <ArrowIcon />
+          </MyIcon>
         </SC.Arrow>
         <Dropdown visible={dropdownIsVisible} closed={closeDropdownHandle} />
       </SC.User>

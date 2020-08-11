@@ -1,23 +1,24 @@
-import React, { useCallback, useEffect, Suspense, lazy } from 'react';
+import React, { useCallback, useEffect, Suspense } from 'react';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from './store/actions/indexActions';
-import { Route, Redirect, Switch } from 'react-router-dom';
 import Modal from './components/UI/Modal/Modal';
 import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader/Loader';
+import Main from './components/UI/Main/Main';
 
+import Products from './containers/Products/Products';
 import Logout from './containers/Logout/Logout';
 
 const WaitingComponent = (Component) => {
   return (props) => (
     <Suspense
-      fallback={
-        // eslint-disable-next-line react/jsx-wrap-multilines
+      fallback={(
         <div style={{ textAlign: 'center' }}>
           <Loader size="big" />
         </div>
-      }
+      )}
     >
       <Component {...props} />
     </Suspense>
@@ -46,6 +47,12 @@ const App = () => {
         <Modal />
         <MessageBox />
         <Navbar userProfile={userProfile} />
+        <Main>
+          <Switch>
+            <Route path="/products" component={Products} />
+            <Redirect to="/products" />
+          </Switch>
+        </Main>
       </>
     );
   }
@@ -55,9 +62,13 @@ const App = () => {
         <Modal />
         <MessageBox />
         <Navbar userProfile={userProfile} />
-        <Switch>
-          <Route path="/logout" component={Logout} />
-        </Switch>
+        <Main>
+          <Switch>
+            <Route path="/logout" component={Logout} />
+            <Route path="/products" component={Products} />
+            <Redirect to="/products" />
+          </Switch>
+        </Main>
       </>
     );
   }

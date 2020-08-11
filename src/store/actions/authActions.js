@@ -26,7 +26,7 @@ export const registerUser = (creds) => {
       country,
       phone,
       contacts,
-    }
+    };
     delete correctCreds.hideEmail;
     delete correctCreds.hidePhone;
     delete correctCreds.phoneNumber;

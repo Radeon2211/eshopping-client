@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+export const baseURL = 'https://radeon2211-eshopping.herokuapp.com';
+
 const instance = axios.create({
-  baseURL: 'https://radeon2211-eshopping.herokuapp.com',
+  baseURL,
   withCredentials: true,
 });
 

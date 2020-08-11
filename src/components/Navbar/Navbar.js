@@ -11,14 +11,20 @@ import LoggedInLinks from './LoggedInLinks/LoggedInLinks';
 const Navbar = (props) => {
   const { userProfile } = props;
 
-  const authNav = userProfile ? <LoggedInLinks username={userProfile.username} /> : <LoggedOutLinks />;
+  const authNav = userProfile ? (
+    <LoggedInLinks username={userProfile.username} />
+  ) : (
+    <LoggedOutLinks />
+  );
 
   return (
     <SC.Wrapper>
       <Link to="/" className="header-link">
         <header className="header">
           <img src={logo} alt="E-Shopping" className="logo" />
-          <Heading variant="h1" className="heading">shopping</Heading>
+          <Heading variant="h1" className="heading">
+            shopping
+          </Heading>
         </header>
       </Link>
       <SearchForm />
@@ -27,8 +33,12 @@ const Navbar = (props) => {
   );
 };
 
+Navbar.defaultProps = {
+  userProfile: null,
+};
+
 Navbar.propTypes = {
-  userProfile: PropTypes.object,
+  userProfile: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default Navbar;

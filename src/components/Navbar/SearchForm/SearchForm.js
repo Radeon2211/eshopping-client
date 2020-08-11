@@ -20,7 +20,9 @@ const SearchForm = () => {
         autoComplete="off"
         onChange={(e) => setProductName(e.target.value)}
       />
-      <Button type="submit" size="big" filled>search</Button>
+      <Button type="submit" size="big" filled>
+        search
+      </Button>
     </SC.SearchForm>
   );
 };

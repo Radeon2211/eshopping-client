@@ -11,12 +11,12 @@ const Step1 = (props) => {
 
   let btnDisabled = false;
   if (
-    errors.email
-    || errors.username
-    || errors.password
-    || !touched.email
-    || !touched.username
-    || !touched.password
+    errors.email ||
+    errors.username ||
+    errors.password ||
+    !touched.email ||
+    !touched.username ||
+    !touched.password
   ) {
     btnDisabled = true;
   }
@@ -24,12 +24,7 @@ const Step1 = (props) => {
   return (
     <AnimatePresence exitBeforeEnter>
       {currentStep === 1 && (
-        <SC.Step
-          variants={stepFormVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
+        <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
           <Input
             kind="input"
             config={{
@@ -84,7 +79,9 @@ const Step1 = (props) => {
             isTouched={touched.password}
           />
           <SC.Buttons buttonsNumber={1}>
-            <Button size="big" filled onClick={goToNextStep} disabled={btnDisabled}>Next</Button>
+            <Button size="big" filled onClick={goToNextStep} disabled={btnDisabled}>
+              Next
+            </Button>
           </SC.Buttons>
         </SC.Step>
       )}
@@ -95,8 +92,8 @@ const Step1 = (props) => {
 Step1.propTypes = {
   currentStep: PropTypes.number.isRequired,
   goToNextStep: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  touched: PropTypes.object.isRequired,
+  errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
 };
 

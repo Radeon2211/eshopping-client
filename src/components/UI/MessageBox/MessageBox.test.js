@@ -21,7 +21,7 @@ describe('<MessageBox />', () => {
         <ThemeProvider theme={theme}>
           <MessageBox />
         </ThemeProvider>
-      </Provider>
+      </Provider>,
     );
     expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
     expect(wrapper.find(SC.Message)).toHaveLength(1);
@@ -38,7 +38,7 @@ describe('<MessageBox />', () => {
         <ThemeProvider theme={theme}>
           <MessageBox />
         </ThemeProvider>
-      </Provider>
+      </Provider>,
     );
     expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
     expect(wrapper.find(SC.Message)).toHaveLength(0);

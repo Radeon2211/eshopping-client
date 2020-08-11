@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const SC = {};
 SC.MyLink = styled.span`
   font-size: 1.6rem;
-  text-transform: ${({ size }) => size === 'big' ? 'uppercase' : 'lowercase'};
+  text-transform: ${({ size }) => (size === 'big' ? 'uppercase' : 'lowercase')};
 
   & .router-link:link,
   & .router-link:visited,

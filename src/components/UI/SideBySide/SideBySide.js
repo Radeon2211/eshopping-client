@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const SC = {};
 SC.Wrapper = styled.div`
   display: flex;
+  width: 100%;
 
   ${({ proportion, theme }) => {
     const [first, second] = proportion.split('/');

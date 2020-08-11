@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
 
 export const updateObject = (oldObject, updatedProps) => ({
@@ -16,10 +17,7 @@ export const getErrorMessage = (error) => {
   return errorMessage;
 };
 
-const fileTypes = [
-  'image/jpeg',
-  'image/png',
-];
+const fileTypes = ['image/jpeg', 'image/png'];
 
 export const isValidFileType = (type) => fileTypes.includes(type);
 
@@ -33,6 +31,7 @@ export const calculateFileSize = (size) => {
   if (size >= 1048576) {
     return `${(size / 1048576).toFixed(1)}MB`;
   }
+  return ``;
 };
 
 export const checkProps = (component, expectedProps) => {

@@ -54,12 +54,19 @@ const MessageBox = () => {
             exit="hidden"
           >
             {message}
-            <MyIcon size="small" color="#fff" onClick={() => onDeleteMessage()} className="close-icon"><PlusIcon /></MyIcon>
+            <MyIcon
+              size="small"
+              color="#fff"
+              onClick={() => onDeleteMessage()}
+              className="close-icon"
+            >
+              <PlusIcon />
+            </MyIcon>
           </SC.Message>
         </SC.Wrapper>
       )}
     </AnimatePresence>
-  )
+  );
 };
 
 export default MessageBox;

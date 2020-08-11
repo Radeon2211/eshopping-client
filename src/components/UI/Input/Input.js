@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-newline */
 import React from 'react';
 import { Field } from 'formik';
 import Textarea from 'react-textarea-autosize';
@@ -51,12 +52,14 @@ const Input = (props) => {
     case 'radio':
       input = (
         <Field name={config.name}>
-          {({ field }) => config.options.map((option) => (
-            <SC.RadioWrapper key={option.value}>
-              <SC.Input {...field} {...option} type="radio" />
-              <label htmlFor={option.id}>{option.value}</label>
-            </SC.RadioWrapper>
-          ))}
+          {({ field }) =>
+            config.options.map((option) => (
+              <SC.RadioWrapper key={option.value}>
+                <SC.Input {...field} {...option} type="radio" />
+                <label htmlFor={option.id}>{option.value}</label>
+              </SC.RadioWrapper>
+            ))
+          }
         </Field>
       );
       break;

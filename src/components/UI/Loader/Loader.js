@@ -11,12 +11,11 @@ SC.Wrapper = styled.div`
         width: 7rem;
         height: 7rem;
       `;
-    } else {
-      return `
+    }
+    return `
         width: 4rem;
         height: 4rem;
       `;
-    }
   }}
 
   & > div {
@@ -32,13 +31,12 @@ SC.Wrapper = styled.div`
           height: 7rem;
           border: 0.8rem solid #fff;
         `;
-      } else {
-        return `
+      }
+      return `
           width: 4rem;
           height: 4rem;
           border: 0.5rem solid #fff;
         `;
-      }
     }}
     border-color: #fff transparent transparent transparent;
   }
@@ -65,7 +63,14 @@ SC.Wrapper = styled.div`
 
 const Loader = (props) => {
   const { size } = props;
-  return <SC.Wrapper size={size}><div></div><div></div><div></div><div></div></SC.Wrapper>;
+  return (
+    <SC.Wrapper size={size}>
+      <div />
+      <div />
+      <div />
+      <div />
+    </SC.Wrapper>
+  );
 };
 
 export default Loader;

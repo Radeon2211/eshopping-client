@@ -14,7 +14,13 @@ const loginUser = (state, action) => {
 };
 
 const logoutUser = (state) => {
-  return updateObject(state, { profile: null, placedOrders: null, sellHistory: null, products: null, transaction: null });
+  return updateObject(state, {
+    profile: null,
+    placedOrders: null,
+    sellHistory: null,
+    products: null,
+    transaction: null,
+  });
 };
 
 const setPlacedOrders = (state, action) => {
@@ -42,7 +48,7 @@ const authReducer = (state = initialState, action) => {
     case actionTypes.LOGIN_USER:
       return loginUser(state, action);
     case actionTypes.LOGOUT_USER:
-      return logoutUser(state, action);
+      return logoutUser(state);
     case actionTypes.SET_PLACED_ORDERS:
       return setPlacedOrders(state, action);
     case actionTypes.SET_SELL_HISTORY:

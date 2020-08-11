@@ -31,10 +31,9 @@ export const Buttons = styled.div`
       return `
         justify-content: flex-end;
       `;
-    } else {
-      return `
-        justify-content: space-between;
-      `;
     }
+    return `
+      justify-content: space-between;
+    `;
   }}
 `;

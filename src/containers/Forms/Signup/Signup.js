@@ -18,26 +18,32 @@ const validationSchema = Yup.object({
   password: Yup.string().min(7).max(64).trim().required(),
   firstName: Yup.string().max(60).required(),
   lastName: Yup.string().max(80).required(),
-  phonePrefix: Yup.object().shape({
-    value: Yup.string().required(),
-    label: Yup.string().required(),
-  }).nullable().required(),
+  phonePrefix: Yup.object()
+    .shape({
+      value: Yup.string().required(),
+      label: Yup.string().required(),
+    })
+    .nullable()
+    .required(),
   phoneNumber: Yup.string().max(15).trim().required(),
   hidePhone: Yup.bool(),
   street: Yup.string().max(60).required(),
   zipCode: Yup.string().trim().required(),
   city: Yup.string().max(100).required(),
-  country: Yup.object().shape({
-    value: Yup.string().required(),
-    label: Yup.string().required(),
-  }).nullable().required(),
+  country: Yup.object()
+    .shape({
+      value: Yup.string().required(),
+      label: Yup.string().required(),
+    })
+    .nullable()
+    .required(),
 });
 
 const Signup = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const dispatch = useDispatch();
-  const onRegisterUser = useCallback((creds) => dispatch(actions.registerUser(creds)), [dispatch])
+  const onRegisterUser = useCallback((creds) => dispatch(actions.registerUser(creds)), [dispatch]);
 
   const goToNextStep = () => {
     setCurrentStep((prevState) => {
@@ -82,9 +88,31 @@ const Signup = () => {
       >
         {({ errors, touched, setFieldTouched, setFieldValue, values }) => (
           <Form height={41}>
-            <Step1 goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} />
-            <Step2 goToPrevStep={goToPrevStep} goToNextStep={goToNextStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} />
-            <Step3 goToPrevStep={goToPrevStep} errors={errors} touched={touched} currentStep={currentStep} setFieldTouched={setFieldTouched} setFieldValue={setFieldValue} formValues={values} />
+            <Step1
+              goToNextStep={goToNextStep}
+              errors={errors}
+              touched={touched}
+              currentStep={currentStep}
+              setFieldTouched={setFieldTouched}
+            />
+            <Step2
+              goToPrevStep={goToPrevStep}
+              goToNextStep={goToNextStep}
+              errors={errors}
+              touched={touched}
+              currentStep={currentStep}
+              setFieldTouched={setFieldTouched}
+              setFieldValue={setFieldValue}
+            />
+            <Step3
+              goToPrevStep={goToPrevStep}
+              errors={errors}
+              touched={touched}
+              currentStep={currentStep}
+              setFieldTouched={setFieldTouched}
+              setFieldValue={setFieldValue}
+              formValues={values}
+            />
           </Form>
         )}
       </Formik>

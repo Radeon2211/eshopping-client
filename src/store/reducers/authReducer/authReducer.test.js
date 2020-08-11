@@ -16,10 +16,12 @@ describe('Auth reducer', () => {
     const userProfile = {
       username: 'Test username',
     };
-    expect(authReducer(undefined, {
-      type: actionTypes.SET_PROFILE,
-      profile: userProfile,
-    })).toEqual({
+    expect(
+      authReducer(undefined, {
+        type: actionTypes.SET_PROFILE,
+        profile: userProfile,
+      }),
+    ).toEqual({
       profile: userProfile,
       placedOrders: [],
       sellHistory: [],

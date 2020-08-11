@@ -10,21 +10,29 @@ import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 
 const Step3 = (props) => {
-  const { currentStep, goToPrevStep, errors, touched, setFieldTouched, setFieldValue, formValues } = props;
+  const {
+    currentStep,
+    goToPrevStep,
+    errors,
+    touched,
+    setFieldTouched,
+    setFieldValue,
+    formValues,
+  } = props;
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
   const formError = useSelector((state) => state.ui.formError);
 
   let btnDisabled = false;
   if (
-    errors.street
-    || errors.zipCode
-    || errors.city
-    || (errors.country && !formValues.country)
-    || !touched.street
-    || !touched.zipCode
-    || !touched.city
-    || !touched.country
+    errors.street ||
+    errors.zipCode ||
+    errors.city ||
+    (errors.country && !formValues.country) ||
+    !touched.street ||
+    !touched.zipCode ||
+    !touched.city ||
+    !touched.country
   ) {
     btnDisabled = true;
   }
@@ -42,15 +50,8 @@ const Step3 = (props) => {
   return (
     <AnimatePresence>
       {currentStep === 3 && (
-        <SC.Step
-          variants={stepFormVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <div className="help-info-box">
-            These data are necessary to place orders.
-          </div>
+        <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
+          <div className="help-info-box">These data are necessary to place orders.</div>
           <Input
             kind="input"
             config={{
@@ -103,16 +104,20 @@ const Step3 = (props) => {
               value: '',
               placeholder: 'Choose your country',
               options: listOfCountries,
-              setFieldValue: setFieldValue,
-              setFieldTouched: setFieldTouched,
+              setFieldValue,
+              setFieldTouched,
             }}
             label="Country"
             isValid={!errors.country || formValues.country}
             isTouched={touched.country}
           />
           <SC.Buttons buttonsNumber={2}>
-            <Button size="big" onClick={goToPrevStep}>Previous</Button>
-            <Button type="submit" filled size="big" disabled={btnDisabled || isFormLoading}>Finish</Button>
+            <Button size="big" onClick={goToPrevStep}>
+              Previous
+            </Button>
+            <Button type="submit" filled size="big" disabled={btnDisabled || isFormLoading}>
+              Finish
+            </Button>
           </SC.Buttons>
           {error}
         </SC.Step>
@@ -124,11 +129,11 @@ const Step3 = (props) => {
 Step3.propTypes = {
   currentStep: PropTypes.number.isRequired,
   goToPrevStep: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  touched: PropTypes.object.isRequired,
+  errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
-  formValues: PropTypes.object.isRequired,
+  formValues: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default Step3;

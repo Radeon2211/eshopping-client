@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+// eslint-disable-next-line import/prefer-default-export
+export const Wrapper = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light1};
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);

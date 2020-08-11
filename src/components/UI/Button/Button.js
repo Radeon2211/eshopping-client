@@ -4,13 +4,17 @@ import * as SC from './Button.sc';
 
 const Button = (props) => {
   const { clicked, children } = props;
-  return <SC.Button onClick={clicked} {...props}>{children}</SC.Button>;
+  return (
+    <SC.Button onClick={clicked} {...props}>
+      {children}
+    </SC.Button>
+  );
 };
 
 Button.defaultProps = {
   type: 'button',
-  disabled: false,
   filled: false,
+  disabled: false,
   clicked: () => {},
 };
 

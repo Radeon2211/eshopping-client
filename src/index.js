@@ -17,10 +17,7 @@ const reduxDevToolsEnhancer =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : null || compose;
 
-const store = createStore(
-  rootReducer,
-  reduxDevToolsEnhancer(applyMiddleware(thunk)),
-);
+const store = createStore(rootReducer, reduxDevToolsEnhancer(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
@@ -33,7 +30,7 @@ ReactDOM.render(
       </HashRouter>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 serviceWorker.register();

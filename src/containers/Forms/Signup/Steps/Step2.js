@@ -9,18 +9,26 @@ import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 
 const Step2 = (props) => {
-  const { currentStep, goToNextStep, goToPrevStep, errors, touched, setFieldTouched, setFieldValue } = props;
+  const {
+    currentStep,
+    goToNextStep,
+    goToPrevStep,
+    errors,
+    touched,
+    setFieldTouched,
+    setFieldValue,
+  } = props;
 
   let btnDisabled = false;
   if (
-    errors.firstName
-    || errors.lastName
-    || errors.phoneNumber
-    || errors.phonePrefix
-    || !touched.firstName
-    || !touched.lastName
-    || !touched.phoneNumber
-    || !touched.phonePrefix
+    errors.firstName ||
+    errors.lastName ||
+    errors.phoneNumber ||
+    errors.phonePrefix ||
+    !touched.firstName ||
+    !touched.lastName ||
+    !touched.phoneNumber ||
+    !touched.phonePrefix
   ) {
     btnDisabled = true;
   }
@@ -36,15 +44,8 @@ const Step2 = (props) => {
   return (
     <AnimatePresence>
       {currentStep === 2 && (
-        <SC.Step
-          variants={stepFormVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <div className="help-info-box">
-            These data allow you to place orders.
-          </div>
+        <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
+          <div className="help-info-box">These data allow you to place orders.</div>
           <Input
             kind="input"
             config={{
@@ -82,8 +83,8 @@ const Step2 = (props) => {
                 value: '',
                 placeholder: 'Choose your phone number prefix',
                 options: listOfAreaCodes,
-                setFieldValue: setFieldValue,
-                setFieldTouched: setFieldTouched,
+                setFieldValue,
+                setFieldTouched,
               }}
               label="Phone number prefix"
               isValid={!errors.phonePrefix}
@@ -115,8 +116,12 @@ const Step2 = (props) => {
             label="Hide my phone number from others"
           />
           <SC.Buttons buttonsNumber={2}>
-            <Button size="big" onClick={goToPrevStep}>Previous</Button>
-            <Button size="big" filled onClick={goToNextStep} disabled={btnDisabled}>Next</Button>
+            <Button size="big" onClick={goToPrevStep}>
+              Previous
+            </Button>
+            <Button size="big" filled onClick={goToNextStep} disabled={btnDisabled}>
+              Next
+            </Button>
           </SC.Buttons>
         </SC.Step>
       )}
@@ -128,8 +133,8 @@ Step2.propTypes = {
   currentStep: PropTypes.number.isRequired,
   goToPrevStep: PropTypes.func.isRequired,
   goToNextStep: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  touched: PropTypes.object.isRequired,
+  errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
 };

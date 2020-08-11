@@ -22,7 +22,7 @@ describe('<Modal />', () => {
         <ThemeProvider theme={theme}>
           <Modal />
         </ThemeProvider>
-      </Provider>
+      </Provider>,
     );
     expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
     expect(wrapper.find(SC.Backdrop)).toHaveLength(1);
@@ -40,7 +40,7 @@ describe('<Modal />', () => {
         <ThemeProvider theme={theme}>
           <Modal />
         </ThemeProvider>
-      </Provider>
+      </Provider>,
     );
     expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
     expect(wrapper.find(SC.Backdrop)).toHaveLength(0);

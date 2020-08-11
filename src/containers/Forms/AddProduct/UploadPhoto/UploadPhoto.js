@@ -58,9 +58,8 @@ const UploadPhoto = (props) => {
     };
   };
 
-  let preview = (
-    <SC.Preview>Photo is optional. Max size is {PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG</SC.Preview>
-  );
+  const defaultPreviewText = `Photo is optional. Max size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG`;
+  let preview = <SC.Preview>{defaultPreviewText}</SC.Preview>;
   let deleteBtn = null;
   let errorNode = null;
 
@@ -71,19 +70,31 @@ const UploadPhoto = (props) => {
   if (photo || error) {
     preview = (
       <SC.Preview>
-        <span className="file-data">Name: {photoName}</span>
-        <span className="file-data">Size: {photoSize}</span>
+        <span className="file-data">
+          Name:
+          {photoName}
+        </span>
+        <span className="file-data">
+          Size:
+          {photoSize}
+        </span>
       </SC.Preview>
     );
 
-    deleteBtn = <Button size="small" clicked={resetState}>Delete</Button>;
+    deleteBtn = (
+      <Button size="small" clicked={resetState}>
+        Delete
+      </Button>
+    );
   }
 
   return (
     <SC.Wrapper className="content">
       <div className="buttons">
         <label htmlFor="photo" className="label">
-          <Button size="small" filled>Upload photo</Button>
+          <Button size="small" filled>
+            Upload photo
+          </Button>
         </label>
         {deleteBtn}
       </div>
