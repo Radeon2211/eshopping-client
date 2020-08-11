@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.75acb1c1.chunk.js",
+    "main.js": "/eshopping-client/static/js/main.b6a3388a.chunk.js",
     "runtime-main.js": "/eshopping-client/static/js/runtime-main.309ec03a.js",
-    "static/js/2.2b0bad10.chunk.js": "/eshopping-client/static/js/2.2b0bad10.chunk.js",
+    "static/js/2.34d1bdab.chunk.js": "/eshopping-client/static/js/2.34d1bdab.chunk.js",
     "index.html": "/eshopping-client/index.html",
-    "precache-manifest.bdc4dc6ddc650d495f446b24aa54aac9.js": "/eshopping-client/precache-manifest.bdc4dc6ddc650d495f446b24aa54aac9.js",
+    "precache-manifest.cd779ac325ef8eb78dc2b256346b00b3.js": "/eshopping-client/precache-manifest.cd779ac325ef8eb78dc2b256346b00b3.js",
     "service-worker.js": "/eshopping-client/service-worker.js",
-    "static/js/2.2b0bad10.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.2b0bad10.chunk.js.LICENSE.txt",
+    "static/js/2.34d1bdab.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.34d1bdab.chunk.js.LICENSE.txt",
     "static/media/add-product.ce98de71.svg": "/eshopping-client/static/media/add-product.ce98de71.svg",
     "static/media/arrow.89b04cb0.svg": "/eshopping-client/static/media/arrow.89b04cb0.svg",
     "static/media/cart.131ee69e.svg": "/eshopping-client/static/media/cart.131ee69e.svg",
@@ -20,7 +20,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.309ec03a.js",
-    "static/js/2.2b0bad10.chunk.js",
-    "static/js/main.75acb1c1.chunk.js"
+    "static/js/2.34d1bdab.chunk.js",
+    "static/js/main.b6a3388a.chunk.js"
   ]
 }
