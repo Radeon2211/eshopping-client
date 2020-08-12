@@ -5,7 +5,7 @@ import * as actions from '../../../store/actions/indexActions';
 import * as modalTypes from '../../../store/actions/modalTypes';
 import * as SC from './Modal.sc';
 import MyIcon from '../MyIcon/MyIcon';
-import Loader from '../Loader/Loader';
+import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../../containers/Forms/Signup/Signup';
@@ -23,9 +23,7 @@ const Modal = () => {
   ]);
 
   const loadingOverlay = isFormLoading ? (
-    <div className="loading-overlay">
-      <Loader size="big" />
-    </div>
+    <LoadingOverlay alignLoader="center" loaderSize="small" />
   ) : null;
 
   let modalContentNode = null;

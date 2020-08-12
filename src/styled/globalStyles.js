@@ -34,6 +34,15 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  a:active,
+  a:focus,
+  a:hover,
+  a:link,
+  a:visited {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyles;

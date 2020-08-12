@@ -24,21 +24,21 @@ SC.Wrapper = styled.div`
     position: absolute;
     border-radius: 50%;
     animation: rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    ${({ size }) => {
+    ${({ size, theme }) => {
       if (size === 'big') {
         return `
           width: 7rem;
           height: 7rem;
-          border: 0.8rem solid #fff;
+          border: 0.8rem solid ${theme.colors.blue};
         `;
       }
       return `
           width: 4rem;
           height: 4rem;
-          border: 0.5rem solid #fff;
+          border: 0.5rem solid ${theme.colors.blue};
         `;
     }}
-    border-color: #fff transparent transparent transparent;
+    border-color: ${({ theme }) => theme.colors.blue} transparent transparent transparent;
   }
 
   & > div:nth-child(1) {

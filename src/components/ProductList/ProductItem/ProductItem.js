@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as SC from './ProductItem.sc';
 import { baseURL } from '../../../axios';
 import noPhoto from '../../../images/no-photo.png';
@@ -29,21 +30,23 @@ const ProductItem = (props) => {
   }
 
   return (
-    <SC.Wrapper>
-      <div className="photo-box">
-        <img
-          src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
-          alt="product"
-          className="photo"
-        />
-      </div>
-      <div className="data-box">
-        <span className="name">{name}</span>
-        {conditionNode}
-        <span className="price">${price.toFixed(2)}</span>
-        {quantitySoldNode}
-      </div>
-    </SC.Wrapper>
+    <Link to={`/products/${_id}`}>
+      <SC.Wrapper>
+        <div className="photo-box">
+          <img
+            src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
+            alt="product"
+            className="photo"
+          />
+        </div>
+        <div className="data-box">
+          <span className="name">{name}</span>
+          {conditionNode}
+          <span className="price">${price.toFixed(2)}</span>
+          {quantitySoldNode}
+        </div>
+      </SC.Wrapper>
+    </Link>
   );
 };
 

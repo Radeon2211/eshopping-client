@@ -1,6 +1,7 @@
 const theme = {
   colors: {
     light1: '#fafafa',
+    light1Transparent: '#fafafa88',
     light2: '#dadfe1',
     light3: '#BFBFBF',
     light4: '#666',

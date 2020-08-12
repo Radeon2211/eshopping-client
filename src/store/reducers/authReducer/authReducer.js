@@ -5,7 +5,6 @@ export const initialState = {
   profile: undefined,
   placedOrders: [],
   sellHistory: [],
-  products: [],
   transaction: null,
 };
 
@@ -16,9 +15,8 @@ const loginUser = (state, action) => {
 const logoutUser = (state) => {
   return updateObject(state, {
     profile: null,
-    placedOrders: null,
-    sellHistory: null,
-    products: null,
+    placedOrders: [],
+    sellHistory: [],
     transaction: null,
   });
 };
@@ -29,10 +27,6 @@ const setPlacedOrders = (state, action) => {
 
 const setSellHistory = (state, action) => {
   return updateObject(state, { sellHistory: action.sellHistory });
-};
-
-const setUserProducts = (state, action) => {
-  return updateObject(state, { products: action.products });
 };
 
 const setProfile = (state, action) => {
@@ -53,8 +47,6 @@ const authReducer = (state = initialState, action) => {
       return setPlacedOrders(state, action);
     case actionTypes.SET_SELL_HISTORY:
       return setSellHistory(state, action);
-    case actionTypes.SET_USER_PRODUCTS:
-      return setUserProducts(state, action);
     case actionTypes.SET_PROFILE:
       return setProfile(state, action);
     case actionTypes.UPDATE_TRANSACTION:

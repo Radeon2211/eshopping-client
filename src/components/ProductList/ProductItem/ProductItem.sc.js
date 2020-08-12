@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.article`
   border-bottom: 1px solid ${({ theme }) => theme.colors.light2};
   display: flex;
-  padding: ${({ theme }) => theme.spacings.level3} ${({ theme }) => theme.spacings.level2};
+  padding: ${({ theme }) => theme.spacings.level2};
   transition: background-color 0.12s;
 
   &:hover {
@@ -16,7 +16,7 @@ export const Wrapper = styled.article`
     align-items: center;
     display: flex;
     justify-content: center;
-    max-height: 17rem;
+    max-height: 16rem;
     max-width: 13rem;
     margin-right: ${({ theme }) => theme.spacings.level3};
   }

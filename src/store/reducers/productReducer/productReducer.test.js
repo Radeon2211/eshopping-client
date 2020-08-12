@@ -4,7 +4,8 @@ import productReducer from './productReducer';
 describe('Product reducer', () => {
   it('Should return default state', () => {
     expect(productReducer(undefined, {})).toEqual({
-      products: [],
+      products: null,
+      productCount: 0,
       minPrice: 0,
       maxPrice: 0,
     });
@@ -19,6 +20,7 @@ describe('Product reducer', () => {
       }),
     ).toEqual({
       products,
+      productCount: 0,
       minPrice: 0,
       maxPrice: 0,
     });

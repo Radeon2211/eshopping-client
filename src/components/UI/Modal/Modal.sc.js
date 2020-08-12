@@ -45,17 +45,4 @@ export const Popup = styled(motion.div)`
     transform: rotate(45deg);
     right: ${({ theme }) => theme.spacings.level1};
   }
-
-  & .loading-overlay {
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: ${({ theme }) => theme.zIndexes.level1};
-  }
 `;

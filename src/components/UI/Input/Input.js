@@ -56,7 +56,7 @@ const Input = (props) => {
             config.options.map((option) => (
               <SC.RadioWrapper key={option.value}>
                 <SC.Input {...field} {...option} type="radio" />
-                <label htmlFor={option.id}>{option.value}</label>
+                <label htmlFor={option.id}>{option.label}</label>
               </SC.RadioWrapper>
             ))
           }

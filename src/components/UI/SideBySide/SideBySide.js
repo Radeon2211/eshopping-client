@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const SC = {};
 SC.Wrapper = styled.div`
+  align-items: start;
   display: flex;
   width: 100%;
 

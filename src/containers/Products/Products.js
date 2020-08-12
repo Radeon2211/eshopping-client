@@ -14,6 +14,7 @@ const Products = (props) => {
   } = props;
 
   const products = useSelector((state) => state.product.products);
+  const isListLoading = useSelector((state) => state.ui.isListLoading);
 
   const dispatch = useDispatch();
   const onFetchProducts = useCallback(
@@ -36,10 +37,10 @@ const Products = (props) => {
       <Heading variant="h3">{headingText}</Heading>
       <SideBySide proportion="1/3">
         <Panel>
-          <Filters fetchProducts={onFetchProducts} />
+          <Filters products={products} isListLoading={isListLoading} />
         </Panel>
         <Panel>
-          <ProductList products={products} />
+          <ProductList products={products} isListLoading={isListLoading} />
         </Panel>
       </SideBySide>
     </>

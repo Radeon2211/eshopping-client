@@ -7,7 +7,6 @@ describe('Auth reducer', () => {
       profile: undefined,
       placedOrders: [],
       sellHistory: [],
-      products: [],
       transaction: null,
     });
   });
@@ -25,7 +24,6 @@ describe('Auth reducer', () => {
       profile: userProfile,
       placedOrders: [],
       sellHistory: [],
-      products: [],
       transaction: null,
     });
   });

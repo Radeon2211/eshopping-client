@@ -27,6 +27,12 @@ const StyledHeading = styled.h1`
           line-height: 1;
           margin-bottom: ${theme.spacings.level3};
         `;
+      case 'h4':
+        return `
+          font-size: 1.8rem;
+          line-height: 1;
+          text-align: center;
+        `;
       default:
         return ``;
     }

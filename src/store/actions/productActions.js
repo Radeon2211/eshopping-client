@@ -1,22 +1,23 @@
 import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
-import * as authActions from './authActions';
 import { getErrorMessage } from '../../shared/utility';
 
-export const setProducts = (products) => ({
+export const setProducts = (products, productCount, minPrice, maxPrice) => ({
   type: actionTypes.SET_PRODUCTS,
   products,
-});
-
-export const setPrices = (minPrice, maxPrice) => ({
-  type: actionTypes.SET_PRICES,
+  productCount,
   minPrice,
   maxPrice,
 });
 
-export const addProduct = (product) => {
-  return async (dispatch, getState) => {
+export const addNewProduct = (product) => ({
+  type: actionTypes.ADD_PRODUCT,
+  product,
+});
+
+export const addProduct = (product, currentPath) => {
+  return async (dispatch) => {
     dispatch(uiActions.formStart());
     const correctProduct = {
       ...product,
@@ -35,10 +36,11 @@ export const addProduct = (product) => {
         );
         addedProduct = secondData.product;
       }
-      const currentUserProducts = getState().auth.products;
-      currentUserProducts.unshift(addedProduct);
-      dispatch(authActions.setUserProducts(currentUserProducts));
-      dispatch(uiActions.formSuccess('Product was added successfully'));
+      if (currentPath.startsWith('/my-account/products')) {
+        dispatch(addNewProduct(addedProduct));
+      }
+      dispatch(uiActions.formSuccess());
+      dispatch(uiActions.setMessage('Product was added successfully'));
       setTimeout(() => {
         dispatch(uiActions.deleteMessage());
       }, 5000);
@@ -52,13 +54,16 @@ export const addProduct = (product) => {
 export const fetchProducts = (queryStrings) => {
   return async (dispatch) => {
     dispatch(uiActions.listStart());
+    let minPriceOuter = 0;
+    let maxPriceOuter = 0;
     try {
       const { data } = await axios.get(`/products${queryStrings}`);
       if (data.productPrices.length > 0) {
         const { minPrice, maxPrice } = data.productPrices[0];
-        dispatch(setPrices(minPrice, maxPrice));
+        minPriceOuter = minPrice;
+        maxPriceOuter = maxPrice;
       }
-      dispatch(setProducts(data.products));
+      dispatch(setProducts(data.products, data.productCount, minPriceOuter, maxPriceOuter));
       dispatch(uiActions.listSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);

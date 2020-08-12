@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -17,8 +18,13 @@ const validationSchema = Yup.object({
 });
 
 const AddProduct = () => {
+  const history = useHistory();
+
   const dispatch = useDispatch();
-  const onAddProduct = useCallback((creds) => dispatch(actions.addProduct(creds)), [dispatch]);
+  const onAddProduct = useCallback(
+    (creds, currentPath) => dispatch(actions.addProduct(creds, currentPath)),
+    [dispatch],
+  );
 
   return (
     <Formik
@@ -32,7 +38,7 @@ const AddProduct = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onAddProduct(data);
+        onAddProduct(data, history.location.pathname);
       }}
     >
       {({ errors, touched, dirty, isValid, setFieldTouched, setFieldValue, values }) => (
@@ -96,12 +102,13 @@ const AddProduct = () => {
               name: 'condition',
               value: 'not_applicable',
               options: [
-                { value: 'new', id: 'new', checked: values.condition === 'new' },
-                { value: 'used', id: 'used', checked: values.condition === 'used' },
+                { value: 'new', id: 'new', checked: values.condition === 'new', label: 'new' },
+                { value: 'used', id: 'used', checked: values.condition === 'used', label: 'used' },
                 {
                   value: 'not_applicable',
                   id: 'not_applicable',
                   checked: values.condition === 'not_applicable',
+                  label: 'not applicable',
                 },
               ],
             }}

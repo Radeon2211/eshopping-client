@@ -12,7 +12,7 @@ export const Wrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: ${({ theme }) => theme.zIndexes.level1};
+  z-index: ${({ theme }) => theme.zIndexes.level2};
 
   & > *:not(:last-child) {
     margin-right: ${({ theme }) => theme.spacings.level5};
@@ -24,14 +24,6 @@ export const Wrapper = styled.header`
 
   & .logo {
     width: 4.6rem;
-  }
-
-  & .header-link:link,
-  & .header-link:visited,
-  & .header-link:active,
-  & .header-link:focus {
-    color: #000;
-    text-decoration: none;
   }
 
   .header {
