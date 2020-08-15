@@ -20,25 +20,13 @@ SC.User = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
+  padding: ${({ theme }) => theme.spacings.level1};
   position: relative;
 
   & .username {
     font-size: 1.5rem;
     margin-right: ${({ theme }) => theme.spacings.level1};
   }
-`;
-SC.Arrow = styled.div`
-  transform: rotate(90deg);
-  transition: transform 0.2s;
-
-  ${({ rotated }) => {
-    if (rotated) {
-      return `
-        transform: rotate(-90deg);
-      `;
-    }
-    return ``;
-  }}
 `;
 
 const SignedInLinks = (props) => {
@@ -63,11 +51,9 @@ const SignedInLinks = (props) => {
       </Link>
       <SC.User id="user" onClick={userClickHandle}>
         <span className="username">{username}</span>
-        <SC.Arrow rotated={dropdownIsVisible}>
-          <MyIcon size="small">
-            <ArrowIcon />
-          </MyIcon>
-        </SC.Arrow>
+        <MyIcon size="small" rotation={dropdownIsVisible ? -90 : 90}>
+          <ArrowIcon />
+        </MyIcon>
         <Dropdown visible={dropdownIsVisible} closed={closeDropdownHandle} />
       </SC.User>
     </SC.Wrapper>

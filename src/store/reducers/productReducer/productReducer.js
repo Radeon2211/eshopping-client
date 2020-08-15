@@ -3,13 +3,18 @@ import { updateObject } from '../../../shared/utility';
 
 export const initialState = {
   products: null,
-  productCount: 0,
+  productCount: undefined,
   minPrice: 0,
   maxPrice: 0,
 };
 
 const setProducts = (state, action) => {
-  return updateObject(state, { products: action.products });
+  return updateObject(state, {
+    products: action.products,
+    productCount: action.productCount,
+    minPrice: action.minPrice,
+    maxPrice: action.maxPrice,
+  });
 };
 
 const addProduct = (state, action) => {

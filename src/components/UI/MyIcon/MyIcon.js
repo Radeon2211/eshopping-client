@@ -9,6 +9,9 @@ SC.IconWrapper = styled.div`
   justify-content: center;
 
   & > svg {
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+
     ${({ color, theme }) => {
       if (color) {
         return `
@@ -47,6 +50,15 @@ SC.IconWrapper = styled.div`
       }
       return ``;
     }}
+
+    ${({ rotation }) => {
+      if (rotation) {
+        return `
+          transform: rotate(${rotation}deg);
+        `;
+      }
+      return ``;
+    }}
   }
 `;
 
@@ -57,6 +69,7 @@ const MyIcon = (props) => {
 
 MyIcon.defaultProps = {
   disabled: false,
+  rotation: 0,
   color: '',
 };
 
@@ -64,6 +77,7 @@ MyIcon.propTypes = {
   size: PropTypes.string.isRequired,
   color: PropTypes.string,
   disabled: PropTypes.bool,
+  rotation: PropTypes.number,
   children: PropTypes.node.isRequired,
 };
 

@@ -5,24 +5,27 @@ describe('Product reducer', () => {
   it('Should return default state', () => {
     expect(productReducer(undefined, {})).toEqual({
       products: null,
-      productCount: 0,
+      productCount: undefined,
       minPrice: 0,
       maxPrice: 0,
     });
   });
 
   it('Should return new state if receiving type', () => {
-    const products = [{ name: 'test name' }];
+    const products = [{ name: 'test name', price: 1 }];
     expect(
       productReducer(undefined, {
         type: actions.SET_PRODUCTS,
         products,
+        productCount: 1,
+        minPrice: 1,
+        maxPrice: 1,
       }),
     ).toEqual({
       products,
-      productCount: 0,
-      minPrice: 0,
-      maxPrice: 0,
+      productCount: 1,
+      minPrice: 1,
+      maxPrice: 1,
     });
   });
 });

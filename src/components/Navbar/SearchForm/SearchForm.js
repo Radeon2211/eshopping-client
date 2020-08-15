@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as SC from './SearchForm.sc';
 import Button from '../../UI/Button/Button';
 
 const SearchForm = () => {
   const [productName, setProductName] = useState('');
+  const history = useHistory();
 
   const formSubmitHandle = (e) => {
     e.preventDefault();
     if (!productName) return;
+    history.push(`/products?name=${productName}`);
   };
 
   return (
@@ -18,6 +21,7 @@ const SearchForm = () => {
         name="product"
         value={productName}
         autoComplete="off"
+        spellCheck="false"
         onChange={(e) => setProductName(e.target.value)}
       />
       <Button type="submit" size="big" filled>

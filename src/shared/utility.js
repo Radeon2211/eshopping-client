@@ -37,9 +37,3 @@ export const calculateFileSize = (size) => {
 export const checkProps = (component, expectedProps) => {
   return checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
 };
-
-export const pages = {
-  ALL_PRODUCTS: 'ALL_PRODUCTS',
-  MY_PRODUCTS: 'MY_PRODUCTS',
-  USER_PRODUCTS: 'USER_PRODUCTS',
-};

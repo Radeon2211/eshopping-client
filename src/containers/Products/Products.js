@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
-import { pages } from '../../shared/utility';
+import { pages } from '../../shared/constants';
 
 const Products = (props) => {
   const {

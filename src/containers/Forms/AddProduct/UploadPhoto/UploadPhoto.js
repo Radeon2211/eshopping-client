@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
@@ -70,14 +71,8 @@ const UploadPhoto = (props) => {
   if (photo || error) {
     preview = (
       <SC.Preview>
-        <span className="file-data">
-          Name:
-          {photoName}
-        </span>
-        <span className="file-data">
-          Size:
-          {photoSize}
-        </span>
+        <span className="file-data">Name: {photoName}</span>
+        <span className="file-data">Size: {photoSize}</span>
       </SC.Preview>
     );
 

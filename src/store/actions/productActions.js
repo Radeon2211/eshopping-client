@@ -1,7 +1,9 @@
+import queryString from 'query-string';
 import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { getErrorMessage } from '../../shared/utility';
+import { MAX_QUANTITY_ON_PAGE } from '../../shared/constants';
 
 export const setProducts = (products, productCount, minPrice, maxPrice) => ({
   type: actionTypes.SET_PRODUCTS,
@@ -52,12 +54,24 @@ export const addProduct = (product, currentPath) => {
 };
 
 export const fetchProducts = (queryStrings) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(uiActions.listStart());
     let minPriceOuter = 0;
     let maxPriceOuter = 0;
+    const parsedQueryParams = queryString.parse(queryStrings);
+    const { seller, p: page } = parsedQueryParams;
+    if (seller !== undefined) {
+      delete parsedQueryParams.seller;
+    }
+    if (page) {
+      const currentProductQuantity = getState().product.productCount;
+      if (page > Math.ceil(currentProductQuantity / MAX_QUANTITY_ON_PAGE) || page < 1) {
+        delete parsedQueryParams.p;
+      }
+    }
+    const updatedQueryParams = queryString.stringify(parsedQueryParams);
     try {
-      const { data } = await axios.get(`/products${queryStrings}`);
+      const { data } = await axios.get(`/products?${updatedQueryParams}`);
       if (data.productPrices.length > 0) {
         const { minPrice, maxPrice } = data.productPrices[0];
         minPriceOuter = minPrice;

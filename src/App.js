@@ -49,7 +49,7 @@ const App = () => {
         <Navbar userProfile={userProfile} />
         <Main>
           <Switch>
-            <Route path="/products" component={Products} />
+            <Route path="/products" exact component={Products} />
             <Redirect to="/products" />
           </Switch>
         </Main>
@@ -65,7 +65,7 @@ const App = () => {
         <Main>
           <Switch>
             <Route path="/logout" component={Logout} />
-            <Route path="/products" component={Products} />
+            <Route path="/products" exact component={Products} />
             <Redirect to="/products" />
           </Switch>
         </Main>

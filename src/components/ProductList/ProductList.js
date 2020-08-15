@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import ProductItem from './ProductItem/ProductItem';
 import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
 import Heading from '../UI/Heading/Heading';
-import { pages } from '../../shared/utility';
+import { pages } from '../../shared/constants';
 
 const SC = {};
 SC.Wrapper = styled.div`
