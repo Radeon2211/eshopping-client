@@ -9,4 +9,4 @@ export const historyActions = {
   REPLACE: 'REPLACE',
 };
 
-export const MAX_QUANTITY_ON_PAGE = 1;
+export const MAX_QUANTITY_ON_PAGE = 2;

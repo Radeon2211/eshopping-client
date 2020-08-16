@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { Form as FormikForm } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
@@ -62,6 +63,23 @@ const Form = (props) => {
       {error}
     </SC.Wrapper>
   );
+};
+
+Form.defaultProps = {
+  headingText: '',
+  btnText: '',
+  isValid: undefined,
+  cancellable: false,
+  height: undefined,
+};
+
+Form.propTypes = {
+  headingText: PropTypes.string,
+  btnText: PropTypes.string,
+  isValid: PropTypes.bool,
+  cancellable: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  height: PropTypes.number,
 };
 
 export default Form;

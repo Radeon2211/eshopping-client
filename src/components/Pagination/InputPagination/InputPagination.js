@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
+import { useLastLocation } from 'react-router-last-location';
 import { useHistory } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
 import MyIcon from '../../UI/MyIcon/MyIcon';
@@ -9,8 +10,11 @@ import { historyActions, MAX_QUANTITY_ON_PAGE } from '../../../shared/constants'
 
 const InputPagination = (props) => {
   const { itemQuantity, isListLoading } = props;
+
   const history = useHistory();
   const { search } = history.location;
+
+  const lastLocation = useLastLocation();
 
   const [inputValue, setInputValue] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,15 +27,20 @@ const InputPagination = (props) => {
         p: pageNumber,
       };
       const stringifiedQueryParams = queryString.stringify(correctQueryParams);
-      if (pageNumber === currentPage) {
+
+      const previousPath = `${lastLocation?.pathname}${lastLocation?.search}`;
+      const currentPath = `${history.location.pathname}${search}`;
+      const nextPath = `${history.location.pathname}?${stringifiedQueryParams}`;
+
+      if ((previousPath === currentPath || previousPath === nextPath) && history.length > 2) {
         history.goBack();
-      } else if (action === historyActions.PUSH) {
-        history.push(`${history.location.pathname}?${stringifiedQueryParams}`);
-      } else {
-        history.replace(`${history.location.pathname}?${stringifiedQueryParams}`);
+      } else if (action === historyActions.PUSH && nextPath !== currentPath) {
+        history.push(nextPath);
+      } else if (action === historyActions.REPLACE) {
+        history.replace(nextPath);
       }
     },
-    [history, search, currentPage],
+    [history, search, lastLocation],
   );
 
   useEffect(() => {
@@ -40,20 +49,22 @@ const InputPagination = (props) => {
     const { p: urlPage } = parsedQueryParams;
     const urlPageNumber = +urlPage;
     let correctPageNumber = 1;
+
     if (!Number.isNaN(urlPageNumber)) {
       if (urlPageNumber > maxPageNumber) {
         correctPageNumber = maxPageNumber;
+        changePage(correctPageNumber, historyActions.REPLACE);
       } else if (urlPageNumber < 1) {
         correctPageNumber = 1;
+        changePage(correctPageNumber, historyActions.REPLACE);
       } else {
         correctPageNumber = urlPageNumber;
-      }
-      if (urlPageNumber > maxPageNumber || urlPageNumber < 1) {
-        changePage(correctPageNumber, historyActions.REPLACE);
+        changePage(correctPageNumber, historyActions.PUSH);
       }
     } else {
       changePage(1, historyActions.REPLACE);
     }
+
     setInputValue(correctPageNumber);
     setCurrentPage(correctPageNumber);
   }, [itemQuantity, history, search, setInputValue, changePage]);

@@ -22,11 +22,14 @@ const ProductItem = (props) => {
   }
 
   let quantitySoldNode = null;
-  if (quantitySold === 1) {
-    quantitySoldNode = <span className="quantity-sold gray">1 person bought</span>;
-  }
-  if (quantitySold > 1) {
-    quantitySoldNode = <span className="quantity-sold gray">{quantitySold} people bought</span>;
+  if (quantitySold >= 1) {
+    quantitySoldNode = (
+      <div className="quantity-sold-box">
+        <span className="quantity-sold gray">
+          {quantitySold === 1 ? '1 person' : `${quantitySold} people`} bought
+        </span>
+      </div>
+    );
   }
 
   return (

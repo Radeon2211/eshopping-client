@@ -23,13 +23,20 @@ const ProductsAndFilters = (props) => {
   const productCount = useSelector((state) => state.product.productCount);
   const isListLoading = useSelector((state) => state.ui.isListLoading);
 
+  let inputPagination = null;
+  if (productCount !== 0) {
+    inputPagination = (
+      <SC.ProductsTopbar>
+        <InputPagination itemQuantity={productCount} isListLoading={isListLoading} />
+      </SC.ProductsTopbar>
+    );
+  }
+
   return (
     <SideBySide proportion="1/3">
       <Filters products={products} isListLoading={isListLoading} />
       <Panel>
-        <SC.ProductsTopbar>
-          <InputPagination itemQuantity={productCount} isListLoading={isListLoading} />
-        </SC.ProductsTopbar>
+        {inputPagination}
         <ProductList products={products} isListLoading={isListLoading} page={page} />
       </Panel>
     </SideBySide>

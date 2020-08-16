@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-curly-newline */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import Textarea from 'react-textarea-autosize';
 import Select from 'react-select';
@@ -76,6 +77,23 @@ const Input = (props) => {
       {caption}
     </SC.Wrapper>
   );
+};
+
+Input.defaultProps = {
+  isValid: undefined,
+  isTouched: undefined,
+  captionText: '',
+};
+
+Input.propTypes = {
+  kind: PropTypes.string.isRequired,
+  config: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  label: PropTypes.string.isRequired,
+  isValid: PropTypes.bool,
+  isTouched: PropTypes.bool,
+  captionText: PropTypes.string,
 };
 
 export default Input;

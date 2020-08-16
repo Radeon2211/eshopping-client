@@ -108,7 +108,7 @@ const Step3 = (props) => {
               setFieldTouched,
             }}
             label="Country"
-            isValid={!errors.country || formValues.country}
+            isValid={Boolean(!errors.country || formValues.country)}
             isTouched={touched.country}
           />
           <SC.Buttons buttonsNumber={2}>

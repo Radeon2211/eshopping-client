@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
-import { HashRouter } from 'react-router-dom';
+import { LastLocationProvider } from 'react-router-last-location';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
@@ -22,12 +23,14 @@ const store = createStore(rootReducer, reduxDevToolsEnhancer(applyMiddleware(thu
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <App />
-        </ThemeProvider>
-      </HashRouter>
+      <Router basename="/eshopping-client">
+        <LastLocationProvider>
+          <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <App />
+          </ThemeProvider>
+        </LastLocationProvider>
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

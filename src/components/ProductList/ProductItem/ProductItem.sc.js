@@ -22,9 +22,9 @@ export const Wrapper = styled.article`
   }
 
   & .photo {
-    height: 100%;
+    max-height: 100%;
     object-fit: cover;
-    width: 100%;
+    max-width: 100%;
   }
 
   & .data-box {
@@ -47,9 +47,15 @@ export const Wrapper = styled.article`
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
+  & .quantity-sold-box {
+    flex-grow: 1;
+    display: flex;
+    margin-top: 1.2rem;
+  }
+
   & .quantity-sold {
+    align-self: flex-end;
     font-size: 1.3rem;
-    margin-top: auto;
   }
 
   & .gray {

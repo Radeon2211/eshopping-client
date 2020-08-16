@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
 
   & .arrow {
+    align-self: stretch;
     cursor: pointer;
     padding: 0 ${({ theme }) => theme.spacings.level2};
   }
