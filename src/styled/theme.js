@@ -1,15 +1,15 @@
 const theme = {
   colors: {
-    light1: '#fafafa',
-    light1Transparent: '#fafafa88',
-    light2: '#dadfe1',
+    light1: '#FAFAFA',
+    light1Transparent: '#FAFAFA88',
+    light2: '#DADFE1',
     light3: '#BFBFBF',
     light4: '#666',
-    blue: '#1e8bc3',
+    blue: '#1E8BC3',
     blueLight: '#22A7F0',
     blueDark: '#67809F',
-    green: '#65c6bb',
-    greenDark: '#16A085',
+    green: '#00A790',
+    greenDark: '#009680',
     red: '#F22613',
   },
   shadows: {

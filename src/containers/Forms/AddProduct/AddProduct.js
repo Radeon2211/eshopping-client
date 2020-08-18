@@ -8,6 +8,7 @@ import Form from '../../../components/UI/Form/Form';
 import Input from '../../../components/UI/Input/Input';
 import UploadPhoto from './UploadPhoto/UploadPhoto';
 import SideBySide from '../../../components/UI/SideBySide/SideBySide';
+import { inputKinds } from '../../../shared/constants';
 
 const validationSchema = Yup.object({
   name: Yup.string().max(150).trim().required(),
@@ -49,7 +50,7 @@ const AddProduct = () => {
           cancellable
         >
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'text',
               name: 'name',
@@ -64,7 +65,7 @@ const AddProduct = () => {
           />
           <SideBySide proportion="1/1">
             <Input
-              kind="input"
+              kind={inputKinds.INPUT}
               config={{
                 type: 'number',
                 name: 'price',
@@ -81,7 +82,7 @@ const AddProduct = () => {
               isTouched={touched.price}
             />
             <Input
-              kind="input"
+              kind={inputKinds.INPUT}
               config={{
                 type: 'number',
                 name: 'quantity',
@@ -97,7 +98,7 @@ const AddProduct = () => {
             />
           </SideBySide>
           <Input
-            kind="radio"
+            kind={inputKinds.RADIO}
             config={{
               name: 'condition',
               value: 'not_applicable',
@@ -115,7 +116,7 @@ const AddProduct = () => {
             label="Condition"
           />
           <Input
-            kind="textarea"
+            kind={inputKinds.TEXTAREA}
             config={{
               name: 'description',
               id: 'description',

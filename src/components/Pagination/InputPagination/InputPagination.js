@@ -2,11 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { useLastLocation } from 'react-router-last-location';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
 import MyIcon from '../../UI/MyIcon/MyIcon';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
-import { historyActions, MAX_QUANTITY_ON_PAGE } from '../../../shared/constants';
+import { historyActions } from '../../../shared/constants';
+import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
 const InputPagination = (props) => {
   const { itemQuantity, isListLoading } = props;
@@ -21,16 +22,11 @@ const InputPagination = (props) => {
 
   const changePage = useCallback(
     (pageNumber, action) => {
-      const parsedQueryParams = queryString.parse(search);
-      const correctQueryParams = {
-        ...parsedQueryParams,
-        p: pageNumber,
-      };
-      const stringifiedQueryParams = queryString.stringify(correctQueryParams);
+      const updatedQueryParams = updateQueryParams(search, pageNumber);
 
       const previousPath = `${lastLocation?.pathname}${lastLocation?.search}`;
       const currentPath = `${history.location.pathname}${search}`;
-      const nextPath = `${history.location.pathname}?${stringifiedQueryParams}`;
+      const nextPath = `${history.location.pathname}?${updatedQueryParams}`;
 
       if ((previousPath === currentPath || previousPath === nextPath) && history.length > 2) {
         history.goBack();
@@ -44,22 +40,21 @@ const InputPagination = (props) => {
   );
 
   useEffect(() => {
-    const maxPageNumber = Math.ceil(itemQuantity / MAX_QUANTITY_ON_PAGE);
+    const numberOfPages = calculateNumberOfPages(itemQuantity);
     const parsedQueryParams = queryString.parse(search);
     const { p: urlPage } = parsedQueryParams;
     const urlPageNumber = +urlPage;
     let correctPageNumber = 1;
 
     if (!Number.isNaN(urlPageNumber)) {
-      if (urlPageNumber > maxPageNumber) {
-        correctPageNumber = maxPageNumber;
+      if (urlPageNumber > numberOfPages) {
+        correctPageNumber = numberOfPages;
         changePage(correctPageNumber, historyActions.REPLACE);
       } else if (urlPageNumber < 1) {
         correctPageNumber = 1;
         changePage(correctPageNumber, historyActions.REPLACE);
       } else {
         correctPageNumber = urlPageNumber;
-        changePage(correctPageNumber, historyActions.PUSH);
       }
     } else {
       changePage(1, historyActions.REPLACE);
@@ -81,32 +76,37 @@ const InputPagination = (props) => {
 
   const formSubmitHandle = (e) => {
     e.preventDefault();
-    changePage(inputValue, historyActions.PUSH);
+    const numberOfPages = calculateNumberOfPages(itemQuantity);
+    if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
+    const updatedQueryParams = updateQueryParams(search, inputValue);
+    history.push(`${history.location.pathname}?${updatedQueryParams}`);
   };
 
-  const arrowClickHandle = (action) => {
-    if (isListLoading) return;
-    const { p: urlPage } = queryString.parse(search);
-    const urlPageNumber = +urlPage;
-    const correctPageNumber = action === 'prev' ? urlPageNumber - 1 : urlPageNumber + 1;
-    changePage(correctPageNumber, historyActions.PUSH);
+  const arrowClickHandle = (e) => {
+    if (isListLoading) {
+      e.preventDefault();
+    }
   };
 
   let pagination = null;
   if (itemQuantity) {
+    const queryParamsPrevious = updateQueryParams(search, currentPage - 1);
+    const queryParamsNext = updateQueryParams(search, currentPage + 1);
+
     pagination = (
       <SC.Wrapper>
         {currentPage > 1 && (
-          <MyIcon
-            size="small"
-            rotation={180}
-            onClick={() => arrowClickHandle('prev')}
+          <Link
+            to={`${history.location.pathname}?${queryParamsPrevious}`}
+            onClick={arrowClickHandle}
             className="arrow"
           >
-            <ArrowIcon />
-          </MyIcon>
+            <MyIcon size="small" rotation={180}>
+              <ArrowIcon />
+            </MyIcon>
+          </Link>
         )}
-        <form onSubmit={formSubmitHandle}>
+        <form onSubmit={formSubmitHandle} className="form-number">
           <input
             type="number"
             name="page"
@@ -117,11 +117,17 @@ const InputPagination = (props) => {
           />
         </form>
         <span className="of">of</span>
-        <span className="of">{Math.ceil(itemQuantity / MAX_QUANTITY_ON_PAGE)}</span>
-        {currentPage < Math.ceil(itemQuantity / MAX_QUANTITY_ON_PAGE) && (
-          <MyIcon size="small" onClick={() => arrowClickHandle('next')} className="arrow">
-            <ArrowIcon />
-          </MyIcon>
+        <span className="of">{calculateNumberOfPages(itemQuantity)}</span>
+        {currentPage < calculateNumberOfPages(itemQuantity) && (
+          <Link
+            to={`${history.location.pathname}?${queryParamsNext}`}
+            onClick={arrowClickHandle}
+            className="arrow"
+          >
+            <MyIcon size="small">
+              <ArrowIcon />
+            </MyIcon>
+          </Link>
         )}
       </SC.Wrapper>
     );

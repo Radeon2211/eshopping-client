@@ -7,6 +7,7 @@ import Input from '../../../../components/UI/Input/Input';
 import Button from '../../../../components/UI/Button/Button';
 import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
+import { inputKinds } from '../../../../shared/constants';
 
 const Step2 = (props) => {
   const {
@@ -47,7 +48,7 @@ const Step2 = (props) => {
         <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
           <div className="help-info-box">These data allow you to place orders.</div>
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'text',
               name: 'firstName',
@@ -61,7 +62,7 @@ const Step2 = (props) => {
             isTouched={touched.firstName}
           />
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'text',
               name: 'lastName',
@@ -76,7 +77,7 @@ const Step2 = (props) => {
           />
           <SideBySide proportion="1/1">
             <Input
-              kind="select"
+              kind={inputKinds.SELECT}
               config={{
                 name: 'phonePrefix',
                 id: 'phonePrefix',
@@ -91,7 +92,7 @@ const Step2 = (props) => {
               isTouched={touched.phonePrefix}
             />
             <Input
-              kind="input"
+              kind={inputKinds.INPUT}
               config={{
                 type: 'text',
                 name: 'phoneNumber',
@@ -107,7 +108,7 @@ const Step2 = (props) => {
             />
           </SideBySide>
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'checkbox',
               name: 'hidePhone',

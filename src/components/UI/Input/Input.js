@@ -5,6 +5,7 @@ import { Field } from 'formik';
 import Textarea from 'react-textarea-autosize';
 import Select from 'react-select';
 import * as SC from './Input.sc';
+import { inputKinds } from '../../../shared/constants';
 
 const Input = (props) => {
   const { kind, config, label, isValid, isTouched, captionText } = props;
@@ -21,19 +22,19 @@ const Input = (props) => {
   }
 
   switch (kind) {
-    case 'input':
+    case inputKinds.INPUT:
       input = (
         <Field name={config.name}>{({ field }) => <SC.Input {...config} {...field} />}</Field>
       );
       break;
-    case 'textarea':
+    case inputKinds.TEXTAREA:
       input = (
         <Field name={config.name}>
           {({ field }) => <Textarea {...config} {...field} className="textarea" />}
         </Field>
       );
       break;
-    case 'select':
+    case inputKinds.SELECT:
       input = (
         <Field name={config.name}>
           {({ field }) => (
@@ -50,7 +51,7 @@ const Input = (props) => {
         </Field>
       );
       break;
-    case 'radio':
+    case inputKinds.RADIO:
       input = (
         <Field name={config.name}>
           {({ field }) =>

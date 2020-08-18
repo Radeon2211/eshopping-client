@@ -5,6 +5,7 @@ import * as SC from '../Signup.sc';
 import Input from '../../../../components/UI/Input/Input';
 import Button from '../../../../components/UI/Button/Button';
 import { stepFormVariants } from '../../../../shared/framer';
+import { inputKinds } from '../../../../shared/constants';
 
 const Step1 = (props) => {
   const { currentStep, goToNextStep, errors, touched, setFieldTouched } = props;
@@ -26,7 +27,7 @@ const Step1 = (props) => {
       {currentStep === 1 && (
         <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'email',
               name: 'email',
@@ -41,7 +42,7 @@ const Step1 = (props) => {
             captionText="Email can be used by others to contact with you, but you can hide it"
           />
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'checkbox',
               name: 'hideEmail',
@@ -50,7 +51,7 @@ const Step1 = (props) => {
             label="Hide my email address from others"
           />
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'text',
               name: 'username',
@@ -65,7 +66,7 @@ const Step1 = (props) => {
             captionText="Username will be visible by everyone and cannot be changed"
           />
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'password',
               name: 'password',

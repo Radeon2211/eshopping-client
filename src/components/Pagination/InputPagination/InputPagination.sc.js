@@ -6,9 +6,15 @@ export const Wrapper = styled.div`
   display: flex;
 
   & .arrow {
+    align-items: center;
     align-self: stretch;
     cursor: pointer;
-    padding: 0 ${({ theme }) => theme.spacings.level2};
+    display: flex;
+    padding: 0 ${({ theme }) => theme.spacings.level1};
+  }
+
+  & .form-number {
+    margin: 0 ${({ theme }) => theme.spacings.level1};
   }
 
   & .input-number {
@@ -37,6 +43,6 @@ export const Wrapper = styled.div`
 
   & .of {
     font-size: 1.5rem;
-    margin-left: ${({ theme }) => theme.spacings.level2};
+    margin: 0 ${({ theme }) => theme.spacings.level1};
   }
 `;

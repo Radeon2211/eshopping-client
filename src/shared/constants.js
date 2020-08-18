@@ -4,9 +4,21 @@ export const pages = {
   USER_PRODUCTS: 'USER_PRODUCTS',
 };
 
+export const listItemTypes = {
+  PRODUCT: 'PRODUCT',
+  ORDER: 'ORDER',
+};
+
 export const historyActions = {
   PUSH: 'PUSH',
   REPLACE: 'REPLACE',
 };
 
-export const MAX_QUANTITY_ON_PAGE = 2;
+export const inputKinds = {
+  INPUT: 'INPUT',
+  TEXTAREA: 'TEXTAREA',
+  SELECT: 'SELECT',
+  RADIO: 'RADIO',
+};
+
+export const MAX_QUANTITY_ON_PAGE = 3;

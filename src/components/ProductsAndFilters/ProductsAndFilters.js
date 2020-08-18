@@ -7,6 +7,9 @@ import Filters from '../Filters/Filters';
 import ProductList from '../ProductList/ProductList';
 import Panel from '../UI/Panel/Panel';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
+import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
+import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
+import { listItemTypes } from '../../shared/constants';
 
 const SC = {};
 SC.ProductsTopbar = styled.div`
@@ -14,6 +17,13 @@ SC.ProductsTopbar = styled.div`
   justify-content: flex-end;
   margin-bottom: ${({ theme }) => theme.spacings.level3};
   padding: 0 ${({ theme }) => theme.spacings.level3};
+`;
+SC.ProductsBottombar = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: ${({ theme }) => theme.spacings.level3};
+  padding: 0 ${({ theme }) => theme.spacings.level3} 0 0;
 `;
 
 const ProductsAndFilters = (props) => {
@@ -24,11 +34,18 @@ const ProductsAndFilters = (props) => {
   const isListLoading = useSelector((state) => state.ui.isListLoading);
 
   let inputPagination = null;
+  let numberPagination = null;
   if (productCount !== 0) {
     inputPagination = (
       <SC.ProductsTopbar>
         <InputPagination itemQuantity={productCount} isListLoading={isListLoading} />
       </SC.ProductsTopbar>
+    );
+    numberPagination = (
+      <SC.ProductsBottombar>
+        <PaginationCounter itemQuantity={productCount} itemsType={listItemTypes.PRODUCT} />
+        <NumberPagination itemQuantity={productCount} isListLoading={isListLoading} />
+      </SC.ProductsBottombar>
     );
   }
 
@@ -38,6 +55,7 @@ const ProductsAndFilters = (props) => {
       <Panel>
         {inputPagination}
         <ProductList products={products} isListLoading={isListLoading} page={page} />
+        {numberPagination}
       </Panel>
     </SideBySide>
   );

@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
+import queryString from 'query-string';
+import { MAX_QUANTITY_ON_PAGE } from './constants';
 
 export const updateObject = (oldObject, updatedProps) => ({
   ...oldObject,
@@ -35,5 +37,19 @@ export const calculateFileSize = (size) => {
 };
 
 export const checkProps = (component, expectedProps) => {
+  // eslint-disable-next-line react/forbid-foreign-prop-types
   return checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
+};
+
+export const updateQueryParams = (currentQueryParams, nextPageNumber) => {
+  const parsedQueryParams = queryString.parse(currentQueryParams);
+  const correctQueryParams = {
+    ...parsedQueryParams,
+    p: nextPageNumber,
+  };
+  return queryString.stringify(correctQueryParams);
+};
+
+export const calculateNumberOfPages = (itemQuantity) => {
+  return Math.ceil(itemQuantity / MAX_QUANTITY_ON_PAGE);
 };

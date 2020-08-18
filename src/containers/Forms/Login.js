@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../../components/UI/Form/Form';
 import Input from '../../components/UI/Input/Input';
+import { inputKinds } from '../../shared/constants';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Login = () => {
       {({ dirty }) => (
         <Form btnText="login" headingText="Login to your account" isValid={dirty} cancellable>
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'email',
               name: 'email',
@@ -33,7 +34,7 @@ const Login = () => {
             label="Email"
           />
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'password',
               name: 'password',

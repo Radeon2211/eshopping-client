@@ -8,6 +8,7 @@ import Input from '../../../../components/UI/Input/Input';
 import Button from '../../../../components/UI/Button/Button';
 import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
+import { inputKinds } from '../../../../shared/constants';
 
 const Step3 = (props) => {
   const {
@@ -53,7 +54,7 @@ const Step3 = (props) => {
         <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
           <div className="help-info-box">These data are necessary to place orders.</div>
           <Input
-            kind="input"
+            kind={inputKinds.INPUT}
             config={{
               type: 'text',
               name: 'street',
@@ -68,7 +69,7 @@ const Step3 = (props) => {
           />
           <SideBySide proportion="1/3">
             <Input
-              kind="input"
+              kind={inputKinds.INPUT}
               config={{
                 type: 'text',
                 name: 'zipCode',
@@ -82,7 +83,7 @@ const Step3 = (props) => {
               isTouched={touched.zipCode}
             />
             <Input
-              kind="input"
+              kind={inputKinds.INPUT}
               config={{
                 type: 'text',
                 name: 'city',
@@ -97,7 +98,7 @@ const Step3 = (props) => {
             />
           </SideBySide>
           <Input
-            kind="select"
+            kind={inputKinds.SELECT}
             config={{
               name: 'country',
               id: 'country',
