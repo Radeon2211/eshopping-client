@@ -9,6 +9,14 @@ import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds } from '../../../../shared/constants';
 
+const listOfAreaCodes = getCountries().map(({ name, dial }) => {
+  const finalValue = `+${dial} ${name.split('(')[0].trim()}`;
+  return {
+    value: dial,
+    label: finalValue,
+  };
+});
+
 const Step2 = (props) => {
   const {
     currentStep,
@@ -33,14 +41,6 @@ const Step2 = (props) => {
   ) {
     btnDisabled = true;
   }
-
-  const listOfAreaCodes = getCountries().map(({ name, dial }) => {
-    const finalValue = `+${dial} ${name.split('(')[0].trim()}`;
-    return {
-      value: dial,
-      label: finalValue,
-    };
-  });
 
   return (
     <AnimatePresence>

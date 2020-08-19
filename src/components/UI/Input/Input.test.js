@@ -6,6 +6,7 @@ import Textarea from 'react-textarea-autosize';
 import Select from 'react-select';
 import theme from '../../../styled/theme';
 import { checkProps } from '../../../shared/utility';
+import { inputKinds } from '../../../shared/constants';
 import Input from './Input';
 import * as SC from './Input.sc';
 
@@ -48,22 +49,22 @@ describe('<Input />', () => {
     });
 
     it('Should render <SC.Input />', () => {
-      const props = createProps('input');
+      const props = createProps(inputKinds.INPUT);
       const wrapper = setUpWrapper(props);
       expect(wrapper.find(SC.Input)).toHaveLength(1);
     });
     it('Should render <Textarea />', () => {
-      const props = createProps('textarea');
+      const props = createProps(inputKinds.TEXTAREA);
       const wrapper = setUpWrapper(props);
       expect(wrapper.find(Textarea)).toHaveLength(1);
     });
     it('Should render <Select />', () => {
-      const props = createProps('select');
+      const props = createProps(inputKinds.SELECT);
       const wrapper = setUpWrapper(props);
       expect(wrapper.find(Select)).toHaveLength(1);
     });
     it('Should render <SC.RadioWrapper />', () => {
-      const props = createProps('radio', {
+      const props = createProps(inputKinds.RADIO, {
         options: [
           {
             value: 'testValue',

@@ -11,7 +11,7 @@ const InputPagination = (props) => {
   const { itemQuantity, isListLoading } = props;
 
   const history = useHistory();
-  const { search } = history.location;
+  const { search, pathname } = history.location;
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -30,7 +30,7 @@ const InputPagination = (props) => {
   const createLinkNode = (pageNumber) => {
     return (
       <Link
-        to={`${history.location.pathname}?${updateQueryParams(search, pageNumber)}`}
+        to={`${pathname}?${updateQueryParams(search, pageNumber)}`}
         key={pageNumber}
         className={`number-link${pageNumber === currentPage ? ' active' : ''}`}
       >
@@ -42,15 +42,9 @@ const InputPagination = (props) => {
   let pagination = null;
   if (itemQuantity) {
     const numberOfPages = calculateNumberOfPages(itemQuantity);
-    const previousPagePath = `${history.location.pathname}?${updateQueryParams(
-      search,
-      currentPage - 1,
-    )}`;
-    const nextPagePath = `${history.location.pathname}?${updateQueryParams(
-      search,
-      currentPage + 1,
-    )}`;
-    const firstPagePath = `${history.location.pathname}?${updateQueryParams(search, 1)}`;
+    const previousPagePath = `${pathname}?${updateQueryParams(search, currentPage - 1)}`;
+    const nextPagePath = `${pathname}?${updateQueryParams(search, currentPage + 1)}`;
+    const firstPagePath = `${pathname}?${updateQueryParams(search, 1)}`;
 
     const paginationNumbers = [];
     if (numberOfPages <= 6 || (currentPage <= 4 && numberOfPages > 6)) {

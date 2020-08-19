@@ -13,7 +13,7 @@ const InputPagination = (props) => {
   const { itemQuantity, isListLoading } = props;
 
   const history = useHistory();
-  const { search } = history.location;
+  const { search, pathname } = history.location;
 
   const lastLocation = useLastLocation();
 
@@ -24,9 +24,9 @@ const InputPagination = (props) => {
     (pageNumber, action) => {
       const updatedQueryParams = updateQueryParams(search, pageNumber);
 
-      const previousPath = `${lastLocation?.pathname}${lastLocation?.search}`;
-      const currentPath = `${history.location.pathname}${search}`;
-      const nextPath = `${history.location.pathname}?${updatedQueryParams}`;
+      const previousPath = `${pathname}${lastLocation?.search}`;
+      const currentPath = `${pathname}${search}`;
+      const nextPath = `${pathname}?${updatedQueryParams}`;
 
       if ((previousPath === currentPath || previousPath === nextPath) && history.length > 2) {
         history.goBack();
@@ -36,7 +36,7 @@ const InputPagination = (props) => {
         history.replace(nextPath);
       }
     },
-    [history, search, lastLocation],
+    [history, search, pathname, lastLocation],
   );
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const InputPagination = (props) => {
     const numberOfPages = calculateNumberOfPages(itemQuantity);
     if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
     const updatedQueryParams = updateQueryParams(search, inputValue);
-    history.push(`${history.location.pathname}?${updatedQueryParams}`);
+    history.push(`${pathname}?${updatedQueryParams}`);
   };
 
   const arrowClickHandle = (e) => {
@@ -97,7 +97,7 @@ const InputPagination = (props) => {
       <SC.Wrapper>
         {currentPage > 1 && (
           <Link
-            to={`${history.location.pathname}?${queryParamsPrevious}`}
+            to={`${pathname}?${queryParamsPrevious}`}
             onClick={arrowClickHandle}
             className="arrow"
           >
@@ -119,11 +119,7 @@ const InputPagination = (props) => {
         <span className="of">of</span>
         <span className="of">{calculateNumberOfPages(itemQuantity)}</span>
         {currentPage < calculateNumberOfPages(itemQuantity) && (
-          <Link
-            to={`${history.location.pathname}?${queryParamsNext}`}
-            onClick={arrowClickHandle}
-            className="arrow"
-          >
+          <Link to={`${pathname}?${queryParamsNext}`} onClick={arrowClickHandle} className="arrow">
             <MyIcon size="small">
               <ArrowIcon />
             </MyIcon>

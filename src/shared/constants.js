@@ -21,4 +21,4 @@ export const inputKinds = {
   RADIO: 'RADIO',
 };
 
-export const MAX_QUANTITY_ON_PAGE = 3;
+export const MAX_QUANTITY_ON_PAGE = 2;
