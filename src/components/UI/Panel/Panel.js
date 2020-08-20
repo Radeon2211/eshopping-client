@@ -7,30 +7,15 @@ SC.Wrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.light1};
   padding: ${({ theme }) => theme.spacings.level3};
   width: 100%;
-
-  ${({ show }) => {
-    if (!show) {
-      return `
-        opacity: 0;
-        pointer-events: none;
-      `;
-    }
-    return ``;
-  }}
 `;
 
 const Panel = (props) => {
-  const { children, show } = props;
-  return <SC.Wrapper show={show}>{children}</SC.Wrapper>;
-};
-
-Panel.defaultProps = {
-  show: true,
+  const { children } = props;
+  return <SC.Wrapper>{children}</SC.Wrapper>;
 };
 
 Panel.propTypes = {
   children: PropTypes.node.isRequired,
-  show: PropTypes.bool,
 };
 
 export default Panel;

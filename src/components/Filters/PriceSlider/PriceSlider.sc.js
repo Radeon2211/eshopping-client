@@ -2,6 +2,32 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: relative;
+`;
+
+export const LabelAndInputs = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: ${({ theme }) => theme.spacings.level1};
+  padding-bottom: ${({ theme }) => theme.spacings.level1};
+
+  & .label {
+    font-size: 1.5rem;
+  }
+
+  & .inputs-gap {
+    margin: 0 ${({ theme }) => theme.spacings.level1};
+  }
+`;
+
+export const Slider = styled.div.attrs(({ positions: { left, right } }) => ({
+  left,
+  right,
+}))`
+  height: 1rem;
+  margin-top: ${({ theme }) => theme.spacings.level1};
+  position: relative;
+  z-index: ${({ theme }) => theme.zIndexes.level1};
 
   & .input {
     appearance: none;
@@ -11,7 +37,7 @@ export const Wrapper = styled.div`
     pointer-events: none;
     position: absolute;
     width: 100%;
-    z-index: ${({ theme }) => theme.zIndexes.level2};
+    z-index: ${({ theme }) => theme.zIndexes.level4};
 
     &::-webkit-slider-thumb {
       appearance: none;
@@ -23,12 +49,6 @@ export const Wrapper = styled.div`
       width: 2.4rem;
     }
   }
-`;
-
-export const Slider = styled.div`
-  height: 1rem;
-  position: relative;
-  z-index: ${({ theme }) => theme.zIndexes.level1};
 
   & .track {
     background-color: ${({ theme }) => theme.colors.light2};
@@ -45,10 +65,10 @@ export const Slider = styled.div`
     background-color: ${({ theme }) => theme.colors.blue};
     bottom: 0;
     border-radius: 5px;
-    left: ${({ positions: { left } }) => left}%;
+    left: ${({ left }) => left}%;
     position: absolute;
     top: 0;
-    right: ${({ positions: { right } }) => right}%;
+    right: ${({ right }) => right}%;
     z-index: ${({ theme }) => theme.zIndexes.level2};
   }
 
@@ -62,13 +82,13 @@ export const Slider = styled.div`
     z-index: ${({ theme }) => theme.zIndexes.level3};
 
     &.left {
-      left: ${({ positions: { left } }) => left}%;
-      transform: translate(-${({ positions: { left } }) => left}%, -0.7rem);
+      left: ${({ left }) => left}%;
+      transform: translate(-${({ left }) => left}%, -0.7rem);
     }
 
     &.right {
-      right: ${({ positions: { right } }) => right}%;
-      transform: translate(${({ positions: { right } }) => right}%, -0.7rem);
+      right: ${({ right }) => right}%;
+      transform: translate(${({ right }) => right}%, -0.7rem);
     }
   }
 `;

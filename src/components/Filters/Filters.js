@@ -82,6 +82,7 @@ const Filters = (props) => {
     const newQueryParams = {
       ...currentQueryParams,
       ...filtersQueryParams,
+      p: 1,
     };
     const stringifiedNewQueryParams = queryString.stringify(newQueryParams);
     history.push(`${pathname}?${stringifiedNewQueryParams}`);
@@ -96,9 +97,10 @@ const Filters = (props) => {
         value={controls.sortBy}
         placeholder="Default sorting"
         onChange={(change) => setControls((prevState) => ({ ...prevState, sortBy: change }))}
+        isSearchable={false}
       />
       <PriceSlider setControls={setControls} />
-      <Button filled size="small" clicked={btnClickHandle}>
+      <Button filled size="small" clicked={btnClickHandle} disabled={isListLoading}>
         Filter
       </Button>
     </SC.Wrapper>
@@ -106,7 +108,11 @@ const Filters = (props) => {
 
   if (products) {
     if (products.length <= 0) {
-      const queryParamsKeys = Object.keys(queryString.parse(search));
+      const queryParams = queryString.parse(search);
+      if (queryParams.p) {
+        delete queryParams.p;
+      }
+      const queryParamsKeys = Object.keys(queryParams);
       if (
         queryParamsKeys.length <= 0 ||
         (queryParamsKeys.length === 1 && queryParamsKeys.includes('name'))
@@ -116,7 +122,7 @@ const Filters = (props) => {
     }
   }
 
-  return <Panel show={!isListLoading}>{filters}</Panel>;
+  return <Panel>{filters}</Panel>;
 };
 
 Filters.defaultProps = {

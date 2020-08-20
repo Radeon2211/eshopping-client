@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import * as SC from './SearchForm.sc';
@@ -8,12 +8,20 @@ const SearchForm = () => {
   const [productName, setProductName] = useState('');
   const history = useHistory();
 
+  const checkQueryParams = useCallback(
+    (queryParams) => {
+      const { name = '' } = queryString.parse(queryParams);
+      setProductName(name);
+    },
+    [setProductName],
+  );
+
   useEffect(() => {
+    checkQueryParams(history.location.search);
     history.listen(({ search }) => {
-      const { name } = queryString.parse(search);
-      setProductName(name || '');
+      checkQueryParams(search);
     });
-  }, [history, setProductName]);
+  }, [history, setProductName, checkQueryParams]);
 
   const formSubmitHandle = (e) => {
     e.preventDefault();

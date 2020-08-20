@@ -5,6 +5,7 @@ import { useLastLocation } from 'react-router-last-location';
 import { useHistory, Link } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
 import MyIcon from '../../UI/MyIcon/MyIcon';
+import NumberInput from '../../UI/NumberInput/NumberInput';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import { historyActions } from '../../../shared/constants';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
@@ -68,12 +69,6 @@ const InputPagination = (props) => {
     setInputValue(e.target.value);
   };
 
-  const inputKeyDownHandle = (e) => {
-    if (e.key === 'e' || e.key === 'E' || e.key === '.' || e.key === ',' || e.key === '-') {
-      e.preventDefault();
-    }
-  };
-
   const formSubmitHandle = (e) => {
     e.preventDefault();
     const numberOfPages = calculateNumberOfPages(itemQuantity);
@@ -107,14 +102,7 @@ const InputPagination = (props) => {
           </Link>
         )}
         <form onSubmit={formSubmitHandle} className="form-number">
-          <input
-            type="number"
-            name="page"
-            className="input-number"
-            onChange={inputChangeHandle}
-            onKeyDown={inputKeyDownHandle}
-            value={inputValue}
-          />
+          <NumberInput name="page" changed={inputChangeHandle} value={inputValue} />
         </form>
         <span className="of">of</span>
         <span className="of">{calculateNumberOfPages(itemQuantity)}</span>
