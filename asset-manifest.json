@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.5416007f.chunk.js",
+    "main.js": "/eshopping-client/static/js/main.c95cb92b.chunk.js",
     "runtime-main.js": "/eshopping-client/static/js/runtime-main.309ec03a.js",
     "static/js/2.dc05d60d.chunk.js": "/eshopping-client/static/js/2.dc05d60d.chunk.js",
     "index.html": "/eshopping-client/index.html",
-    "precache-manifest.d3e12bb899f1a66a78fc647dab534fef.js": "/eshopping-client/precache-manifest.d3e12bb899f1a66a78fc647dab534fef.js",
+    "precache-manifest.78eb827f71df9fd90a5613021ab68050.js": "/eshopping-client/precache-manifest.78eb827f71df9fd90a5613021ab68050.js",
     "service-worker.js": "/eshopping-client/service-worker.js",
     "static/js/2.dc05d60d.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.dc05d60d.chunk.js.LICENSE.txt",
-    "static/media/add-product.38b8bc7d.svg": "/eshopping-client/static/media/add-product.38b8bc7d.svg",
-    "static/media/arrow.cce67825.svg": "/eshopping-client/static/media/arrow.cce67825.svg",
-    "static/media/cart.1d36b00f.svg": "/eshopping-client/static/media/cart.1d36b00f.svg",
-    "static/media/check-mark.7f8e0a8d.svg": "/eshopping-client/static/media/check-mark.7f8e0a8d.svg",
-    "static/media/filters.ff6dee7c.svg": "/eshopping-client/static/media/filters.ff6dee7c.svg",
-    "static/media/log-out.72adb1a6.svg": "/eshopping-client/static/media/log-out.72adb1a6.svg",
-    "static/media/my-account.6690ae16.svg": "/eshopping-client/static/media/my-account.6690ae16.svg",
-    "static/media/my-offers.0f73043c.svg": "/eshopping-client/static/media/my-offers.0f73043c.svg",
-    "static/media/placed-orders.6ca159e0.svg": "/eshopping-client/static/media/placed-orders.6ca159e0.svg",
-    "static/media/plus.4d642843.svg": "/eshopping-client/static/media/plus.4d642843.svg",
-    "static/media/sell-history.39505419.svg": "/eshopping-client/static/media/sell-history.39505419.svg"
+    "static/media/add-product.db646eb5.svg": "/eshopping-client/static/media/add-product.db646eb5.svg",
+    "static/media/arrow.cd8c1b41.svg": "/eshopping-client/static/media/arrow.cd8c1b41.svg",
+    "static/media/cart.ff000235.svg": "/eshopping-client/static/media/cart.ff000235.svg",
+    "static/media/check-mark.ea030947.svg": "/eshopping-client/static/media/check-mark.ea030947.svg",
+    "static/media/filters.cdc38046.svg": "/eshopping-client/static/media/filters.cdc38046.svg",
+    "static/media/log-out.24ab44e2.svg": "/eshopping-client/static/media/log-out.24ab44e2.svg",
+    "static/media/my-account.82138a40.svg": "/eshopping-client/static/media/my-account.82138a40.svg",
+    "static/media/my-offers.4cbeefcf.svg": "/eshopping-client/static/media/my-offers.4cbeefcf.svg",
+    "static/media/placed-orders.f908dfcb.svg": "/eshopping-client/static/media/placed-orders.f908dfcb.svg",
+    "static/media/plus.ab8cc723.svg": "/eshopping-client/static/media/plus.ab8cc723.svg",
+    "static/media/sell-history.40b39a4f.svg": "/eshopping-client/static/media/sell-history.40b39a4f.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.309ec03a.js",
     "static/js/2.dc05d60d.chunk.js",
-    "static/js/main.5416007f.chunk.js"
+    "static/js/main.c95cb92b.chunk.js"
   ]
 }
