@@ -28,14 +28,14 @@ SC.NumberInput = styled.input`
 `;
 
 const NumberInput = (props) => {
-  const { name, value, changed, blured, floating } = props;
+  const { name, value, changed, blured, pressed, floating } = props;
 
   const inputKeyDownHandle = (e) => {
     if (floating) {
-      if (floating && (e.key === 'e' || e.key === 'E' || e.key === '-')) {
+      if (e.key === 'e' || e.key === 'E' || e.key === '-' || e.key === '.') {
         e.preventDefault();
       }
-    } else if (e.key === 'e' || e.key === 'E' || e.key === '.' || e.key === ',' || e.key === '-') {
+    } else if (e.key === 'e' || e.key === 'E' || e.key === '-' || e.key === '.' || e.key === ',') {
       e.preventDefault();
     }
   };
@@ -46,6 +46,7 @@ const NumberInput = (props) => {
       name={name}
       value={value}
       onChange={changed}
+      onKeyPress={pressed}
       onBlur={blured}
       onKeyDown={inputKeyDownHandle}
     />
@@ -53,13 +54,14 @@ const NumberInput = (props) => {
 };
 
 NumberInput.defaultProps = {
+  value: '',
   floating: false,
   blured: () => {},
 };
 
 NumberInput.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   changed: PropTypes.func.isRequired,
   blured: PropTypes.func,
   floating: PropTypes.bool,

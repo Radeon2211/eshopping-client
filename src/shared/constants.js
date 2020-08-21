@@ -22,3 +22,11 @@ export const inputKinds = {
 };
 
 export const MAX_QUANTITY_ON_PAGE = 2;
+
+export const filtersActions = {
+  INIT_STATE: 'INIT_STATE',
+  SET_SORT_BY: 'SET_SORT_BY',
+  SET_MIN_PRICE: 'SET_MIN_PRICE',
+  SET_MAX_PRICE: 'SET_MAX_PRICE',
+  SET_CONDITION: 'SET_CONDITION',
+};

@@ -87,8 +87,8 @@ export const Slider = styled.div.attrs(({ positions: { left, right } }) => ({
     }
 
     &.right {
-      right: ${({ right }) => right}%;
       transform: translate(${({ right }) => right}%, -0.7rem);
+      right: ${({ right }) => right}%;
     }
   }
 `;

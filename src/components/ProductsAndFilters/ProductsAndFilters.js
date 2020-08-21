@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import { useWindowWidth } from '@react-hook/window-size';
+import * as SC from './ProductsAndFilters.sc';
 import SideBySide from '../UI/SideBySide/SideBySide';
 import Filters from '../Filters/Filters';
 import ProductList from '../ProductList/ProductList';
@@ -10,24 +11,15 @@ import InputPagination from '../Pagination/InputPagination/InputPagination';
 import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
 import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
 import { listItemTypes } from '../../shared/constants';
-
-const SC = {};
-SC.ProductsTopbar = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: ${({ theme }) => theme.spacings.level3};
-  padding: 0 ${({ theme }) => theme.spacings.level3};
-`;
-SC.ProductsBottombar = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-top: ${({ theme }) => theme.spacings.level3};
-  padding: 0 ${({ theme }) => theme.spacings.level3} 0 0;
-`;
+import MyIcon from '../UI/MyIcon/MyIcon';
+import { ReactComponent as FiltersIcon } from '../../images/SVG/filters.svg';
+import { ReactComponent as ArrowIcon } from '../../images/SVG/arrow.svg';
 
 const ProductsAndFilters = (props) => {
   const { page } = props;
+
+  const [filtersIsVisible, setFiltersIsVisible] = useState(false);
+  const windowWidth = useWindowWidth();
 
   const products = useSelector((state) => state.product.products);
   const productCount = useSelector((state) => state.product.productCount);
@@ -48,16 +40,37 @@ const ProductsAndFilters = (props) => {
       </SC.ProductsBottombar>
     );
   }
+  let filtersToggler = null;
+  if (windowWidth <= 1200) {
+    filtersToggler = (
+      <SC.FiltersToggler onClick={() => setFiltersIsVisible((prevState) => !prevState)}>
+        <MyIcon size="small">
+          <FiltersIcon />
+        </MyIcon>
+        <span className="label">Filters</span>
+        <MyIcon size="small" rotation={filtersIsVisible ? -90 : 90}>
+          <ArrowIcon />
+        </MyIcon>
+      </SC.FiltersToggler>
+    );
+  }
 
   return (
-    <SideBySide proportion="1/3">
-      <Filters products={products} isListLoading={isListLoading} />
-      <Panel>
-        {inputPagination}
-        <ProductList products={products} isListLoading={isListLoading} page={page} />
-        {numberPagination}
-      </Panel>
-    </SideBySide>
+    <SC.Wrapper>
+      {filtersToggler}
+      <SideBySide proportion="1/3" makeVerticalWhen={1200}>
+        <Filters
+          products={products}
+          isListLoading={isListLoading}
+          isVisible={filtersIsVisible || windowWidth > 1200}
+        />
+        <Panel>
+          {inputPagination}
+          <ProductList products={products} isListLoading={isListLoading} page={page} />
+          {numberPagination}
+        </Panel>
+      </SideBySide>
+    </SC.Wrapper>
   );
 };
 

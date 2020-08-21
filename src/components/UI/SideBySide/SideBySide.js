@@ -20,15 +20,36 @@ SC.Wrapper = styled.div`
       }
     `;
   }}
+
+  ${({ makeVerticalWhen, theme }) => {
+    if (makeVerticalWhen === 1200) {
+      return `
+        @media only screen and (max-width: 75em) {
+          flex-direction: column;
+
+          & > *:first-child {
+            margin-right: 0;
+            margin-bottom: ${theme.spacings.level3};
+          }
+        }
+        `;
+    }
+    return ``;
+  }}
 `;
 
 const SideBySide = (props) => {
-  const { children, proportion } = props;
-  return <SC.Wrapper proportion={proportion}>{children}</SC.Wrapper>;
+  const { children } = props;
+  return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
+};
+
+SideBySide.defaultProps = {
+  makeVerticalWhen: undefined,
 };
 
 SideBySide.propTypes = {
   proportion: PropTypes.string.isRequired,
+  makeVerticalWhen: PropTypes.number,
   children: PropTypes.node.isRequired,
 };
 

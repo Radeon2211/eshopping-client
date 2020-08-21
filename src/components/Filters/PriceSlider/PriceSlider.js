@@ -1,13 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import * as SC from './PriceSlider.sc';
 import NumberInput from '../../UI/NumberInput/NumberInput';
+import { filtersActions } from '../../../shared/constants';
+import { updateObject } from '../../../shared/utility';
+
+const positionsActions = {
+  SET_BOTH: 'SET_BOTH',
+  SET_LEFT: 'SET_LEFT',
+  SET_RIGHT: 'SET_RIGHT',
+};
+
+const positionsInitialState = {
+  left: 0,
+  right: 0,
+};
+
+const positionsReducer = (state = positionsInitialState, action) => {
+  switch (action.type) {
+    case positionsActions.SET_BOTH:
+      return { ...action.payload };
+    case positionsActions.SET_LEFT:
+      return updateObject(state, { left: action.left });
+    case positionsActions.SET_RIGHT:
+      return updateObject(state, { right: action.right });
+    default:
+      return state;
+  }
+};
 
 const PriceSlider = (props) => {
-  const { setControls } = props;
+  const { dispatchFilters } = props;
   const history = useHistory();
   const {
     location: { search },
@@ -17,6 +43,7 @@ const PriceSlider = (props) => {
     (state) => state.product,
   );
 
+  const [positions, dispatchPositions] = useReducer(positionsReducer, positionsInitialState);
   const [inputValues, setInputValues] = useState({
     minPrice: 0,
     maxPrice: 0,
@@ -25,19 +52,17 @@ const PriceSlider = (props) => {
     minPrice: 0,
     maxPrice: 0,
   });
-  const [positions, setPositions] = useState({
-    left: 0,
-    right: 0,
-  });
 
   useEffect(() => {
+    if (minPriceState === 0 || maxPriceState === 0) return;
+
     const parsedQueryParams = queryString.parse(search);
     const { minPrice, maxPrice } = parsedQueryParams;
-    let queryMinPrice = Number.parseFloat((+minPrice).toFixed(2));
+    const queryMinPrice = Number.parseFloat((+minPrice).toFixed(2));
     let queryMaxPrice = Number.parseFloat((+maxPrice).toFixed(2));
 
     let changeQueryParams = false;
-    if (queryMaxPrice && (queryMaxPrice >= maxPriceState || queryMaxPrice <= minPriceState)) {
+    if (queryMaxPrice && (queryMaxPrice > maxPriceState || queryMaxPrice <= minPriceState)) {
       queryMaxPrice = maxPriceState;
       delete parsedQueryParams.maxPrice;
       changeQueryParams = true;
@@ -46,7 +71,6 @@ const PriceSlider = (props) => {
       queryMinPrice &&
       (queryMinPrice >= (queryMaxPrice || maxPriceState) || queryMinPrice < minPriceState)
     ) {
-      queryMinPrice = minPriceState;
       delete parsedQueryParams.minPrice;
       changeQueryParams = true;
     }
@@ -71,9 +95,9 @@ const PriceSlider = (props) => {
       if (rightPercentValue > 100) rightPercentValue = 100;
     }
 
-    setPositions({
-      left: leftPercentValue,
-      right: rightPercentValue,
+    dispatchPositions({
+      type: positionsActions.SET_BOTH,
+      payload: { left: leftPercentValue, right: rightPercentValue },
     });
     setInputValues({
       minPrice: queryMinPrice || minPriceState,
@@ -83,26 +107,29 @@ const PriceSlider = (props) => {
       minPrice: queryMinPrice || minPriceState,
       maxPrice: queryMaxPrice || maxPriceState,
     });
-    setControls((prevState) => ({
-      ...prevState,
+    dispatchFilters({
+      type: filtersActions.SET_MIN_PRICE,
       minPrice: queryMinPrice || minPriceState,
+    });
+    dispatchFilters({
+      type: filtersActions.SET_MAX_PRICE,
       maxPrice: queryMaxPrice || maxPriceState,
-    }));
-  }, [minPriceState, maxPriceState, setRangeValues, setControls, history, search]);
+    });
+  }, [minPriceState, maxPriceState, setRangeValues, dispatchFilters, history, search]);
 
   const inputChangeHandle = (e) => {
     e.persist();
 
     setInputValues((prevState) => ({
       ...prevState,
-      [e.target.name]: +e.target.value,
+      [e.target.name]: +e.target.value || '',
     }));
   };
 
   const validateInputValue = (e) => {
     e.persist();
 
-    let value = +e.target.value;
+    let value = Number.parseFloat((+e.target.value).toFixed(2));
     const { name } = e.target;
 
     const maxPriceStateToCalculate = maxPriceState - minPriceState;
@@ -117,10 +144,8 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = (100 / maxPriceStateToCalculate) * minValueToCalculate;
       }
-      setPositions((prevState) => ({
-        ...prevState,
-        left: percentValue,
-      }));
+      dispatchPositions({ type: positionsActions.SET_LEFT, left: percentValue });
+      dispatchFilters({ type: filtersActions.SET_MIN_PRICE, minPrice: value });
     } else {
       if (value > maxPriceState) {
         value = maxPriceState;
@@ -131,10 +156,8 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = 100 - (100 / maxPriceStateToCalculate) * maxValueToCalculate;
       }
-      setPositions((prevState) => ({
-        ...prevState,
-        right: percentValue,
-      }));
+      dispatchPositions({ type: positionsActions.SET_RIGHT, right: percentValue });
+      dispatchFilters({ type: filtersActions.SET_MAX_PRICE, maxPrice: value });
     }
 
     setInputValues((prevState) => ({
@@ -145,10 +168,12 @@ const PriceSlider = (props) => {
       ...prevState,
       [e.target.name]: value,
     }));
-    setControls((prevState) => ({
-      ...prevState,
-      [e.target.name]: value,
-    }));
+  };
+
+  const inputPressHandle = (e) => {
+    if (e.key === 'Enter') {
+      e.target.blur();
+    }
   };
 
   const rangeChangeHandle = (e) => {
@@ -173,10 +198,8 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = (100 / maxPriceStateToCalculate) * minValueToCalculate;
       }
-      setPositions((prevState) => ({
-        ...prevState,
-        left: percentValue,
-      }));
+      dispatchPositions({ type: positionsActions.SET_LEFT, left: percentValue });
+      dispatchFilters({ type: filtersActions.SET_MIN_PRICE, minPrice: parsedValue });
     } else {
       if (maxPriceState - parsedValue <= maxPriceState / 1000) {
         parsedValue = maxPriceState;
@@ -185,10 +208,8 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = 100 - (100 / maxPriceStateToCalculate) * maxValueToCalculate;
       }
-      setPositions((prevState) => ({
-        ...prevState,
-        right: percentValue,
-      }));
+      dispatchPositions({ type: positionsActions.SET_RIGHT, right: percentValue });
+      dispatchFilters({ type: filtersActions.SET_MAX_PRICE, maxPrice: parsedValue });
     }
 
     setInputValues((prevState) => ({
@@ -196,10 +217,6 @@ const PriceSlider = (props) => {
       [e.target.name]: parsedValue,
     }));
     setRangeValues((prevState) => ({
-      ...prevState,
-      [e.target.name]: parsedValue,
-    }));
-    setControls((prevState) => ({
       ...prevState,
       [e.target.name]: parsedValue,
     }));
@@ -215,6 +232,7 @@ const PriceSlider = (props) => {
             value={inputValues.minPrice}
             changed={inputChangeHandle}
             blured={validateInputValue}
+            pressed={inputPressHandle}
             floating
           />
           <span className="inputs-gap">&mdash;</span>
@@ -223,6 +241,7 @@ const PriceSlider = (props) => {
             value={inputValues.maxPrice}
             changed={inputChangeHandle}
             blured={validateInputValue}
+            pressed={inputPressHandle}
             floating
           />
         </div>
@@ -258,7 +277,7 @@ const PriceSlider = (props) => {
 };
 
 PriceSlider.propTypes = {
-  setControls: PropTypes.func.isRequired,
+  dispatchFilters: PropTypes.func.isRequired,
 };
 
 export default PriceSlider;
