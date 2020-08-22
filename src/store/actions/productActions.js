@@ -3,7 +3,7 @@ import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { getErrorMessage } from '../../shared/utility';
-import { MAX_QUANTITY_ON_PAGE } from '../../shared/constants';
+import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
 
 export const setProducts = (products, productCount, minPrice, maxPrice) => ({
   type: actionTypes.SET_PRODUCTS,
@@ -60,12 +60,14 @@ export const fetchProducts = (queryStrings) => {
     let maxPriceOuter = 0;
     const parsedQueryParams = queryString.parse(queryStrings);
     const { seller, p: page } = parsedQueryParams;
+    const { maxQuantityPerPage } = getState().ui;
+    parsedQueryParams.limit = maxQuantityPerPage;
     if (seller !== undefined) {
       delete parsedQueryParams.seller;
     }
     if (page) {
       const currentProductQuantity = getState().product.productCount;
-      if (page > Math.ceil(currentProductQuantity / MAX_QUANTITY_ON_PAGE) || page < 1) {
+      if (page > Math.ceil(currentProductQuantity / maxQuantityPerPage) || page < 1) {
         delete parsedQueryParams.p;
       }
     }

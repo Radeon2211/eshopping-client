@@ -28,13 +28,14 @@ export const CheckboxBox = styled.div`
   display: flex;
 
   & > input {
-    height: 1.6rem;
+    height: 1.8rem;
     margin: 0 ${({ theme }) => theme.spacings.level1} 0 0;
     padding: 0;
-    width: 1.6rem;
+    width: 1.8rem;
   }
 
   & > label {
     font-size: 1.4rem;
+    line-height: 1;
   }
 `;

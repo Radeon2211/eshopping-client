@@ -27,7 +27,11 @@ const SearchForm = () => {
     e.preventDefault();
     const { name = '' } = queryString.parse(history.location.search);
     if (name === productName) return;
-    history.push(`/products?name=${productName}`);
+    let queryParams = '';
+    if (productName.length > 0) {
+      queryParams = `?name=${productName}`;
+    }
+    history.push(`/products${queryParams}`);
   };
 
   return (

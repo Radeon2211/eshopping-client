@@ -11,7 +11,7 @@ import { historyActions } from '../../../shared/constants';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
 const InputPagination = (props) => {
-  const { itemQuantity, isListLoading } = props;
+  const { itemQuantity, isListLoading, maxQuantityPerPage } = props;
 
   const history = useHistory();
   const { search, pathname } = history.location;
@@ -41,7 +41,7 @@ const InputPagination = (props) => {
   );
 
   useEffect(() => {
-    const numberOfPages = calculateNumberOfPages(itemQuantity);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
     const parsedQueryParams = queryString.parse(search);
     const { p: urlPage } = parsedQueryParams;
     const urlPageNumber = +urlPage;
@@ -71,7 +71,7 @@ const InputPagination = (props) => {
 
   const formSubmitHandle = (e) => {
     e.preventDefault();
-    const numberOfPages = calculateNumberOfPages(itemQuantity);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
     if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
     const updatedQueryParams = updateQueryParams(search, inputValue);
     history.push(`${pathname}?${updatedQueryParams}`);
@@ -102,11 +102,11 @@ const InputPagination = (props) => {
           </Link>
         )}
         <form onSubmit={formSubmitHandle} className="form-number">
-          <NumberInput name="page" changed={inputChangeHandle} value={inputValue} />
+          <NumberInput name="page" size="small" changed={inputChangeHandle} value={inputValue} />
         </form>
         <span className="of">of</span>
-        <span className="of">{calculateNumberOfPages(itemQuantity)}</span>
-        {currentPage < calculateNumberOfPages(itemQuantity) && (
+        <span className="of">{calculateNumberOfPages(itemQuantity, maxQuantityPerPage)}</span>
+        {currentPage < calculateNumberOfPages(itemQuantity, maxQuantityPerPage) && (
           <Link to={`${pathname}?${queryParamsNext}`} onClick={arrowClickHandle} className="arrow">
             <MyIcon size="small">
               <ArrowIcon />
@@ -127,6 +127,7 @@ InputPagination.propTypes = {
 InputPagination.propTypes = {
   itemQuantity: PropTypes.number,
   isListLoading: PropTypes.bool.isRequired,
+  maxQuantityPerPage: PropTypes.number.isRequired,
 };
 
 export default InputPagination;

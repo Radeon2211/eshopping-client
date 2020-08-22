@@ -21,7 +21,7 @@ export const inputKinds = {
   RADIO: 'RADIO',
 };
 
-export const MAX_QUANTITY_ON_PAGE = 2;
+export const MAX_QUANTITY_PER_PAGE = 2;
 
 export const filtersActions = {
   INIT_STATE: 'INIT_STATE',

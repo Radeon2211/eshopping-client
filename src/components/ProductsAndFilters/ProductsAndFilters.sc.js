@@ -6,10 +6,11 @@ export const Wrapper = styled.div`
 `;
 
 export const ProductsTopbar = styled.div`
+  align-items: center;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: ${({ theme }) => theme.spacings.level3};
-  padding: 0 ${({ theme }) => theme.spacings.level3};
+  padding: 0 ${({ theme }) => theme.spacings.level3} 0 0;
 
   @media only screen and (max-width: 37.5em) {
     padding: 0;

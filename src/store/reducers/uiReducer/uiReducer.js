@@ -1,5 +1,6 @@
 import * as actionTypes from '../../actions/actionTypes';
 import { updateObject } from '../../../shared/utility';
+import { MAX_QUANTITY_PER_PAGE } from '../../../shared/constants';
 
 export const initialState = {
   isFormLoading: false,
@@ -9,6 +10,7 @@ export const initialState = {
   message: '',
   isModalOpen: false,
   modalContent: '',
+  maxQuantityPerPage: MAX_QUANTITY_PER_PAGE,
 };
 
 const formStart = (state) => {
@@ -59,6 +61,10 @@ const setModal = (state, action) => {
   });
 };
 
+const setMaxQuantityPerPage = (state, action) => {
+  return updateObject(state, { maxQuantityPerPage: action.maxQuantityPerPage });
+};
+
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FORM_START:
@@ -79,6 +85,8 @@ const uiReducer = (state = initialState, action) => {
       return deleteMessage(state);
     case actionTypes.SET_MODAL_OPEN_STATE:
       return setModal(state, action);
+    case actionTypes.SET_MAX_QUANTITY_PER_PAGE:
+      return setMaxQuantityPerPage(state, action);
     default:
       return state;
   }

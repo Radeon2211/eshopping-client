@@ -13,14 +13,15 @@ export const Wrapper = styled.div`
 
         & > label {
           order: 1;
+          line-height: 1;
           padding: 0 0 0 ${theme.spacings.level1};
         }
 
         & > input {
-          height: 1.6rem;
+          height: 1.8rem;
           margin: 0;
           padding: 0;
-          width: 1.6rem;
+          width: 1.8rem;
         }
       `;
     }
@@ -114,14 +115,15 @@ export const RadioWrapper = styled.div`
   & > label {
     font-size: 1.4rem;
     order: 1;
+    line-height: 1;
     padding: 0 0 0 ${({ theme }) => theme.spacings.level1};
   }
 
   & > input {
-    height: 1.6rem;
+    height: 1.8rem;
     margin: 0;
     padding: 0;
-    width: 1.6rem;
+    width: 1.8rem;
   }
 
   &:not(:last-child) {

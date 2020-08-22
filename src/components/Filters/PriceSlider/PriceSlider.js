@@ -229,6 +229,7 @@ const PriceSlider = (props) => {
         <div className="inputs">
           <NumberInput
             name="minPrice"
+            size="big"
             value={inputValues.minPrice}
             changed={inputChangeHandle}
             blured={validateInputValue}
@@ -238,6 +239,7 @@ const PriceSlider = (props) => {
           <span className="inputs-gap">&mdash;</span>
           <NumberInput
             name="maxPrice"
+            size="big"
             value={inputValues.maxPrice}
             changed={inputChangeHandle}
             blured={validateInputValue}

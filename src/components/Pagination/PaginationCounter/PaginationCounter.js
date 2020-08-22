@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { MAX_QUANTITY_ON_PAGE, listItemTypes } from '../../../shared/constants';
+import { useHistory } from 'react-router-dom';
+import { listItemTypes } from '../../../shared/constants';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -12,7 +12,7 @@ SC.Wrapper = styled.div`
 `;
 
 const PaginationCounter = (props) => {
-  const { itemQuantity, itemsType } = props;
+  const { itemQuantity, itemsType, maxQuantityPerPage } = props;
 
   const history = useHistory();
   const { search } = history.location;
@@ -25,8 +25,8 @@ const PaginationCounter = (props) => {
     setCurrentPage(urlPageNumber);
   }, [search]);
 
-  const firstOfferNumber = currentPage * MAX_QUANTITY_ON_PAGE - (MAX_QUANTITY_ON_PAGE - 1);
-  let lastOfferNumber = firstOfferNumber + MAX_QUANTITY_ON_PAGE - 1;
+  const firstOfferNumber = currentPage * maxQuantityPerPage - (maxQuantityPerPage - 1);
+  let lastOfferNumber = firstOfferNumber + maxQuantityPerPage - 1;
   if (lastOfferNumber > itemQuantity) {
     lastOfferNumber = itemQuantity;
   }
@@ -56,6 +56,7 @@ const PaginationCounter = (props) => {
 PaginationCounter.propTyeps = {
   itemQuantity: PropTypes.number.isRequired,
   itemsType: PropTypes.string.isRequired,
+  maxQuantityPerPage: PropTypes.number.isRequired,
 };
 
 export default PaginationCounter;

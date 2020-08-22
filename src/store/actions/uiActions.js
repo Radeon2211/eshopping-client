@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import * as actionTypes from './actionTypes';
 
 export const formStart = () => ({
@@ -40,3 +41,25 @@ export const setModal = (isModalOpen, modalContent) => ({
   isModalOpen,
   modalContent,
 });
+
+export const setMaxQuantityPerPage = (quantity) => ({
+  type: actionTypes.SET_MAX_QUANTITY_PER_PAGE,
+  maxQuantityPerPage: quantity,
+});
+
+export const changeMaxQuantityPerPage = (quantity, history) => {
+  return async (dispatch, getState) => {
+    const currentMaxQuantityPerPage = getState().ui.maxQuantityPerPage;
+    dispatch(setMaxQuantityPerPage(quantity));
+    const { productCount } = getState().product;
+    if (currentMaxQuantityPerPage >= productCount && quantity >= productCount) return;
+    const parsedQueryParams = queryString.parse(history.location.search);
+    const correctQueryParams = {
+      ...parsedQueryParams,
+      p: 1,
+      limit: quantity,
+    };
+    const stringifiedQueryParams = queryString.stringify(correctQueryParams);
+    history.push(`${history.location.pathname}?${stringifiedQueryParams}`);
+  };
+};

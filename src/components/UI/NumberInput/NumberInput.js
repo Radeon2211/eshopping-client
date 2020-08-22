@@ -12,8 +12,18 @@ SC.NumberInput = styled.input`
   outline: none;
   padding: ${({ theme }) => theme.spacings.level1} 0;
   text-align: center;
-  width: 7.2rem;
   margin: 1px;
+
+  ${({ size }) => {
+    if (size === 'small') {
+      return `
+        width: 5rem;
+      `;
+    }
+    return `
+      width: 7.2rem;
+    `;
+  }}
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -28,7 +38,7 @@ SC.NumberInput = styled.input`
 `;
 
 const NumberInput = (props) => {
-  const { name, value, changed, blured, pressed, floating } = props;
+  const { name, value, changed, blured, pressed, floating, size } = props;
 
   const inputKeyDownHandle = (e) => {
     if (floating) {
@@ -43,6 +53,7 @@ const NumberInput = (props) => {
   return (
     <SC.NumberInput
       type="number"
+      size={size}
       name={name}
       value={value}
       onChange={changed}

@@ -10,6 +10,7 @@ import Panel from '../UI/Panel/Panel';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
 import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
+import QuantityPerPageController from '../Pagination/QuantityPerPageController/QuantityPerPageController';
 import { listItemTypes } from '../../shared/constants';
 import MyIcon from '../UI/MyIcon/MyIcon';
 import { ReactComponent as FiltersIcon } from '../../images/SVG/filters.svg';
@@ -24,19 +25,33 @@ const ProductsAndFilters = (props) => {
   const products = useSelector((state) => state.product.products);
   const productCount = useSelector((state) => state.product.productCount);
   const isListLoading = useSelector((state) => state.ui.isListLoading);
+  const maxQuantityPerPage = useSelector((state) => state.ui.maxQuantityPerPage);
 
   let inputPagination = null;
   let numberPagination = null;
   if (productCount !== 0) {
     inputPagination = (
       <SC.ProductsTopbar>
-        <InputPagination itemQuantity={productCount} isListLoading={isListLoading} />
+        <QuantityPerPageController />
+        <InputPagination
+          itemQuantity={productCount}
+          isListLoading={isListLoading}
+          maxQuantityPerPage={maxQuantityPerPage}
+        />
       </SC.ProductsTopbar>
     );
     numberPagination = (
       <SC.ProductsBottombar>
-        <PaginationCounter itemQuantity={productCount} itemsType={listItemTypes.PRODUCT} />
-        <NumberPagination itemQuantity={productCount} isListLoading={isListLoading} />
+        <PaginationCounter
+          itemQuantity={productCount}
+          itemsType={listItemTypes.PRODUCT}
+          maxQuantityPerPage={maxQuantityPerPage}
+        />
+        <NumberPagination
+          itemQuantity={productCount}
+          isListLoading={isListLoading}
+          maxQuantityPerPage={maxQuantityPerPage}
+        />
       </SC.ProductsBottombar>
     );
   }

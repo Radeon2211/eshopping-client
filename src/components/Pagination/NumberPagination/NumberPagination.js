@@ -7,8 +7,8 @@ import MyIcon from '../../UI/MyIcon/MyIcon';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
-const InputPagination = (props) => {
-  const { itemQuantity, isListLoading } = props;
+const NumberPagination = (props) => {
+  const { itemQuantity, isListLoading, maxQuantityPerPage } = props;
 
   const history = useHistory();
   const { search, pathname } = history.location;
@@ -41,7 +41,7 @@ const InputPagination = (props) => {
 
   let pagination = null;
   if (itemQuantity) {
-    const numberOfPages = calculateNumberOfPages(itemQuantity);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
     const previousPagePath = `${pathname}?${updateQueryParams(search, currentPage - 1)}`;
     const nextPagePath = `${pathname}?${updateQueryParams(search, currentPage + 1)}`;
     const firstPagePath = `${pathname}?${updateQueryParams(search, 1)}`;
@@ -100,13 +100,14 @@ const InputPagination = (props) => {
   return pagination;
 };
 
-InputPagination.propTypes = {
+NumberPagination.propTypes = {
   itemQuantity: undefined,
 };
 
-InputPagination.propTypes = {
+NumberPagination.propTypes = {
   itemQuantity: PropTypes.number,
   isListLoading: PropTypes.bool.isRequired,
+  maxQuantityPerPage: PropTypes.number.isRequired,
 };
 
-export default InputPagination;
+export default NumberPagination;

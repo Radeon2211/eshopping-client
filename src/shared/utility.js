@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
 import queryString from 'query-string';
-import { MAX_QUANTITY_ON_PAGE } from './constants';
+import { MAX_QUANTITY_PER_PAGE } from './constants';
 
 export const updateObject = (oldObject, updatedProps) => ({
   ...oldObject,
@@ -50,6 +50,6 @@ export const updateQueryParams = (currentQueryParams, nextPageNumber) => {
   return queryString.stringify(correctQueryParams);
 };
 
-export const calculateNumberOfPages = (itemQuantity) => {
-  return Math.ceil(itemQuantity / MAX_QUANTITY_ON_PAGE);
+export const calculateNumberOfPages = (itemQuantity, maxQuantity) => {
+  return Math.ceil(itemQuantity / maxQuantity);
 };

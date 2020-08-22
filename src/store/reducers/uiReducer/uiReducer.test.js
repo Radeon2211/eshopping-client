@@ -1,5 +1,6 @@
 import * as actionTypes from '../../actions/actionTypes';
 import uiReducer from './uiReducer';
+import { MAX_QUANTITY_PER_PAGE } from '../../../shared/constants';
 
 describe('UI reducer', () => {
   it('Should return default state', () => {
@@ -11,6 +12,7 @@ describe('UI reducer', () => {
       message: '',
       isModalOpen: false,
       modalContent: '',
+      maxQuantityPerPage: MAX_QUANTITY_PER_PAGE,
     });
   });
 
@@ -29,6 +31,7 @@ describe('UI reducer', () => {
       message: '',
       isModalOpen: false,
       modalContent: '',
+      maxQuantityPerPage: MAX_QUANTITY_PER_PAGE,
     });
   });
 });
