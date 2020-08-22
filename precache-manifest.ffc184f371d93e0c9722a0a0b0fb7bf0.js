@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5f7ca4d159fbb40afd4ba4b2b9a3a53d",
+    "revision": "eea4b2249e72ac24f1a3f57f2d80ff62",
     "url": "/eshopping-client/index.html"
   },
   {
-    "revision": "528dcd6a11e047a2ca44",
-    "url": "/eshopping-client/static/js/2.dc05d60d.chunk.js"
+    "revision": "470e77bbe18a76fbb938",
+    "url": "/eshopping-client/static/js/2.766715a1.chunk.js"
   },
   {
     "revision": "f925ff808c907f1e05af05a547934faf",
-    "url": "/eshopping-client/static/js/2.dc05d60d.chunk.js.LICENSE.txt"
+    "url": "/eshopping-client/static/js/2.766715a1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0812983aba13836bd925",
-    "url": "/eshopping-client/static/js/main.c95cb92b.chunk.js"
+    "revision": "3b6ddef61394f2dfa198",
+    "url": "/eshopping-client/static/js/main.e5a27c02.chunk.js"
   },
   {
     "revision": "5b469d27e5daf61c3f06",
