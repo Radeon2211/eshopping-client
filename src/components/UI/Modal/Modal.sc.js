@@ -11,7 +11,7 @@ export const Wrapper = styled(motion.div)`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: ${({ theme }) => theme.zIndexes.level3};
+  z-index: ${({ theme }) => theme.zIndexes.level4};
 `;
 
 export const Backdrop = styled(motion.div)`

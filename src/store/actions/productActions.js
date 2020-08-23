@@ -3,7 +3,6 @@ import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { getErrorMessage } from '../../shared/utility';
-import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
 
 export const setProducts = (products, productCount, minPrice, maxPrice) => ({
   type: actionTypes.SET_PRODUCTS,

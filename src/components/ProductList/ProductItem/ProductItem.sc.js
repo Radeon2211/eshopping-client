@@ -17,7 +17,7 @@ export const Wrapper = styled.article`
     display: flex;
     justify-content: center;
     max-height: 16rem;
-    max-width: 13rem;
+    width: 13rem;
     margin-right: ${({ theme }) => theme.spacings.level3};
   }
 

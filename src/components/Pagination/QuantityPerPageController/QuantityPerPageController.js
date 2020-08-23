@@ -4,7 +4,6 @@ import Select from 'react-select';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import { MAX_QUANTITY_PER_PAGE } from '../../../shared/constants';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -54,8 +53,10 @@ const quantityOptions = [
   { value: 25, label: '25' },
 ];
 
-const QuantityPerPageController = () => {
-  const defaultOption = quantityOptions.find(({ value }) => value === MAX_QUANTITY_PER_PAGE);
+const QuantityPerPageController = (props) => {
+  const { maxQuantityPerPage } = props;
+
+  const defaultOption = quantityOptions.find(({ value }) => value === maxQuantityPerPage);
   const [option, setOption] = useState(defaultOption);
 
   const history = useHistory();
@@ -80,7 +81,7 @@ const QuantityPerPageController = () => {
       </label>
       <Select
         options={quantityOptions}
-        value={option || defaultOption}
+        value={option}
         onChange={optionChangeHandle}
         isSearchable={false}
         styles={customStyles}

@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
 import queryString from 'query-string';
-import { MAX_QUANTITY_PER_PAGE } from './constants';
 
 export const updateObject = (oldObject, updatedProps) => ({
   ...oldObject,

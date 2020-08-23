@@ -63,7 +63,7 @@ const InputPagination = (props) => {
 
     setInputValue(correctPageNumber);
     setCurrentPage(correctPageNumber);
-  }, [itemQuantity, history, search, setInputValue, changePage]);
+  }, [itemQuantity, history, search, setInputValue, changePage, maxQuantityPerPage]);
 
   const inputChangeHandle = (e) => {
     setInputValue(e.target.value);

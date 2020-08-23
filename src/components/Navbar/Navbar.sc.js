@@ -12,7 +12,7 @@ export const Wrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: ${({ theme }) => theme.zIndexes.level2};
+  z-index: ${({ theme }) => theme.zIndexes.level3};
 
   & > *:not(:last-child) {
     margin-right: ${({ theme }) => theme.spacings.level5};

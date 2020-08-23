@@ -13,7 +13,7 @@ const Products = (props) => {
 
   const dispatch = useDispatch();
   const onFetchProducts = useCallback(
-    (queryStrings) => dispatch(actions.fetchProducts(queryStrings)),
+    (queryParams) => dispatch(actions.fetchProducts(queryParams)),
     [dispatch],
   );
 

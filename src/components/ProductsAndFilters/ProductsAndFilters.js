@@ -32,7 +32,7 @@ const ProductsAndFilters = (props) => {
   if (productCount !== 0) {
     inputPagination = (
       <SC.ProductsTopbar>
-        <QuantityPerPageController />
+        <QuantityPerPageController maxQuantityPerPage={maxQuantityPerPage} />
         <InputPagination
           itemQuantity={productCount}
           isListLoading={isListLoading}

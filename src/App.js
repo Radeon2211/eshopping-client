@@ -14,11 +14,11 @@ import Logout from './containers/Logout/Logout';
 const WaitingComponent = (Component) => {
   return (props) => (
     <Suspense
-      fallback={(
+      fallback={
         <div style={{ textAlign: 'center' }}>
           <Loader size="big" />
         </div>
-      )}
+      }
     >
       <Component {...props} />
     </Suspense>
@@ -65,6 +65,7 @@ const App = () => {
         <Main>
           <Switch>
             <Route path="/logout" component={Logout} />
+            <Route path="/products/:id" exact render={() => <span>eeeeeeeeeee</span>} />
             <Route path="/products" exact component={Products} />
             <Redirect to="/products" />
           </Switch>

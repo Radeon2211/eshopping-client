@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { listItemTypes } from '../../../shared/constants';
 
-const SC = {};
+export const SC = {};
 SC.Wrapper = styled.div`
   color: ${({ theme }) => theme.colors.light4};
   font-size: 1.3rem;
