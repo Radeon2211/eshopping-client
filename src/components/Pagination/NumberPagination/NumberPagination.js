@@ -77,7 +77,12 @@ const NumberPagination = (props) => {
     pagination = (
       <SC.Wrapper>
         {currentPage > 1 && (
-          <Link to={previousPagePath} onClick={arrowClickHandle} className="arrow">
+          <Link
+            to={previousPagePath}
+            onClick={arrowClickHandle}
+            className="arrow"
+            data-test="leftArrow"
+          >
             <MyIcon size="small" rotation={180}>
               <ArrowIcon />
             </MyIcon>
@@ -87,7 +92,12 @@ const NumberPagination = (props) => {
         <span className="of">of</span>
         <span className="of">{numberOfPages}</span>
         {currentPage < numberOfPages && (
-          <Link to={nextPagePath} onClick={arrowClickHandle} className="arrow">
+          <Link
+            to={nextPagePath}
+            onClick={arrowClickHandle}
+            className="arrow"
+            data-test="rightArrow"
+          >
             <MyIcon size="small">
               <ArrowIcon />
             </MyIcon>

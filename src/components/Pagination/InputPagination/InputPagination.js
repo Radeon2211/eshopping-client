@@ -74,6 +74,7 @@ const InputPagination = (props) => {
     const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
     if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
     const updatedQueryParams = updateQueryParams(search, inputValue);
+    console.log(updatedQueryParams);
     history.push(`${pathname}?${updatedQueryParams}`);
   };
 
@@ -87,6 +88,7 @@ const InputPagination = (props) => {
   if (itemQuantity) {
     const queryParamsPrevious = updateQueryParams(search, currentPage - 1);
     const queryParamsNext = updateQueryParams(search, currentPage + 1);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
 
     pagination = (
       <SC.Wrapper>
@@ -95,6 +97,7 @@ const InputPagination = (props) => {
             to={`${pathname}?${queryParamsPrevious}`}
             onClick={arrowClickHandle}
             className="arrow"
+            data-test="leftArrow"
           >
             <MyIcon size="small" rotation={180}>
               <ArrowIcon />
@@ -105,9 +108,14 @@ const InputPagination = (props) => {
           <NumberInput name="page" size="small" changed={inputChangeHandle} value={inputValue} />
         </form>
         <span className="of">of</span>
-        <span className="of">{calculateNumberOfPages(itemQuantity, maxQuantityPerPage)}</span>
-        {currentPage < calculateNumberOfPages(itemQuantity, maxQuantityPerPage) && (
-          <Link to={`${pathname}?${queryParamsNext}`} onClick={arrowClickHandle} className="arrow">
+        <span className="of">{numberOfPages}</span>
+        {currentPage < numberOfPages && (
+          <Link
+            to={`${pathname}?${queryParamsNext}`}
+            onClick={arrowClickHandle}
+            className="arrow"
+            data-test="rightArrow"
+          >
             <MyIcon size="small">
               <ArrowIcon />
             </MyIcon>
