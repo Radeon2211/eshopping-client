@@ -8,7 +8,7 @@ import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
 const NumberPagination = (props) => {
-  const { itemQuantity, isListLoading, maxQuantityPerPage } = props;
+  const { itemQuantity, isDataLoading, maxQuantityPerPage } = props;
 
   const history = useHistory();
   const { search, pathname } = history.location;
@@ -22,7 +22,7 @@ const NumberPagination = (props) => {
   }, [search]);
 
   const arrowClickHandle = (e) => {
-    if (isListLoading) {
+    if (isDataLoading) {
       e.preventDefault();
     }
   };
@@ -116,7 +116,7 @@ NumberPagination.propTypes = {
 
 NumberPagination.propTypes = {
   itemQuantity: PropTypes.number,
-  isListLoading: PropTypes.bool.isRequired,
+  isDataLoading: PropTypes.bool.isRequired,
   maxQuantityPerPage: PropTypes.number.isRequired,
 };
 

@@ -43,3 +43,17 @@ export const messageBoxVariants = {
     y: 0,
   },
 };
+
+export const dropdownVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+    y: '-10%',
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'initial',
+    y: '0',
+    transition: 'all 0.2s',
+  },
+};

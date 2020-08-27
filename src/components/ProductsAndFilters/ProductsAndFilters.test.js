@@ -55,7 +55,7 @@ describe('<ProductsAndFilters />', () => {
           productCount: 5,
         },
         ui: {
-          isListLoading: false,
+          isDataLoading: false,
           maxQuantityPerPage: 2,
         },
       });
@@ -86,7 +86,7 @@ describe('<ProductsAndFilters />', () => {
           productCount: 0,
         },
         ui: {
-          isListLoading: false,
+          isDataLoading: false,
           maxQuantityPerPage: 2,
         },
       });
@@ -118,7 +118,7 @@ describe('<ProductsAndFilters />', () => {
           maxPrice: 10000,
         },
         ui: {
-          isListLoading: false,
+          isDataLoading: false,
           maxQuantityPerPage: 2,
         },
       });

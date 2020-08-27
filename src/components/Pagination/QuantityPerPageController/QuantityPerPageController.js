@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Select from 'react-select';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 
-const SC = {};
+export const SC = {};
 SC.Wrapper = styled.div`
   align-items: center;
   display: flex;
@@ -89,6 +90,10 @@ const QuantityPerPageController = (props) => {
       />
     </SC.Wrapper>
   );
+};
+
+QuantityPerPageController.propTypes = {
+  maxQuantityPerPage: PropTypes.number.isRequired,
 };
 
 export default QuantityPerPageController;

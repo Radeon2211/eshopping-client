@@ -22,9 +22,9 @@ SC.Wrapper = styled.div`
   }}
 
   ${({ makeVerticalWhen, theme }) => {
-    if (makeVerticalWhen === 1200) {
+    if (makeVerticalWhen) {
       return `
-        @media only screen and (max-width: 75em) {
+        @media only screen and (max-width: ${makeVerticalWhen / 16}em) {
           flex-direction: column;
 
           & > *:first-child {
@@ -32,7 +32,7 @@ SC.Wrapper = styled.div`
             margin-bottom: ${theme.spacings.level3};
           }
         }
-        `;
+      `;
     }
     return ``;
   }}

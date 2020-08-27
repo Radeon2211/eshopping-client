@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SC = {};
@@ -71,6 +72,10 @@ const Loader = (props) => {
       <div />
     </SC.Wrapper>
   );
+};
+
+Loader.propTypes = {
+  size: PropTypes.string.isRequired,
 };
 
 export default Loader;

@@ -1,10 +1,12 @@
 import axios from 'axios';
+import adapter from 'axios/lib/adapters/http';
 
 export const baseURL = 'https://radeon2211-eshopping.herokuapp.com';
 
 const instance = axios.create({
   baseURL,
   withCredentials: true,
+  adapter,
 });
 
 const getCsrfToken = async () => {

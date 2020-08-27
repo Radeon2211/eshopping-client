@@ -15,16 +15,16 @@ export const formFail = (error) => ({
   error,
 });
 
-export const listStart = () => ({
-  type: actionTypes.LIST_START,
+export const dataStart = () => ({
+  type: actionTypes.DATA_START,
 });
 
-export const listSuccess = () => ({
-  type: actionTypes.LIST_SUCCESS,
+export const dataSuccess = () => ({
+  type: actionTypes.DATA_SUCCESS,
 });
 
-export const listFail = (error) => ({
-  type: actionTypes.LIST_FAIL,
+export const dataFail = (error) => ({
+  type: actionTypes.DATA_FAIL,
   error,
 });
 

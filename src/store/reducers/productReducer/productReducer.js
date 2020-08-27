@@ -4,6 +4,7 @@ import { updateObject } from '../../../shared/utility';
 export const initialState = {
   products: null,
   productCount: undefined,
+  productDetails: undefined,
   minPrice: 0,
   maxPrice: 0,
 };
@@ -31,12 +32,24 @@ const addProduct = (state, action) => {
   });
 };
 
+const setProductDetails = (state, action) => {
+  return updateObject(state, { productDetails: action.productDetails });
+};
+
+const deleteProductDetails = (state) => {
+  return updateObject(state, { productDetails: undefined });
+};
+
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_PRODUCTS:
       return setProducts(state, action);
     case actionTypes.ADD_PRODUCT:
       return addProduct(state, action);
+    case actionTypes.SET_PRODUCT_DETAILS:
+      return setProductDetails(state, action);
+    case actionTypes.DELETE_PRODUCT_DETAILS:
+      return deleteProductDetails(state);
     default:
       return state;
   }

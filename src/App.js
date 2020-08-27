@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader/Loader';
 import Main from './components/UI/Main/Main';
 
+import ProductDetails from './containers/ProductDetails/ProductDetails';
 import Products from './containers/Products/Products';
 import Logout from './containers/Logout/Logout';
 
@@ -49,6 +50,7 @@ const App = () => {
         <Navbar userProfile={userProfile} />
         <Main>
           <Switch>
+            <Route path="/products/:id" exact component={ProductDetails} />
             <Route path="/products" exact component={Products} />
             <Redirect to="/products" />
           </Switch>
@@ -65,7 +67,7 @@ const App = () => {
         <Main>
           <Switch>
             <Route path="/logout" component={Logout} />
-            <Route path="/products/:id" exact render={() => <span>eeeeeeeeeee</span>} />
+            <Route path="/products/:id" exact component={ProductDetails} />
             <Route path="/products" exact component={Products} />
             <Redirect to="/products" />
           </Switch>

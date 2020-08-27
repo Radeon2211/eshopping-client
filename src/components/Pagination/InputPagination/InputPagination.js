@@ -11,7 +11,7 @@ import { historyActions } from '../../../shared/constants';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
 const InputPagination = (props) => {
-  const { itemQuantity, isListLoading, maxQuantityPerPage } = props;
+  const { itemQuantity, isDataLoading, maxQuantityPerPage } = props;
 
   const history = useHistory();
   const { search, pathname } = history.location;
@@ -25,7 +25,7 @@ const InputPagination = (props) => {
     (pageNumber, action) => {
       const updatedQueryParams = updateQueryParams(search, pageNumber);
 
-      const previousPath = `${pathname}${lastLocation?.search}`;
+      const previousPath = `${lastLocation?.pathname}${lastLocation?.search}`;
       const currentPath = `${pathname}${search}`;
       const nextPath = `${pathname}?${updatedQueryParams}`;
 
@@ -74,12 +74,11 @@ const InputPagination = (props) => {
     const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
     if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
     const updatedQueryParams = updateQueryParams(search, inputValue);
-    console.log(updatedQueryParams);
     history.push(`${pathname}?${updatedQueryParams}`);
   };
 
   const arrowClickHandle = (e) => {
-    if (isListLoading) {
+    if (isDataLoading) {
       e.preventDefault();
     }
   };
@@ -134,7 +133,7 @@ InputPagination.propTypes = {
 
 InputPagination.propTypes = {
   itemQuantity: PropTypes.number,
-  isListLoading: PropTypes.bool.isRequired,
+  isDataLoading: PropTypes.bool.isRequired,
   maxQuantityPerPage: PropTypes.number.isRequired,
 };
 

@@ -15,13 +15,13 @@ SC.Wrapper = styled.div`
 `;
 
 const ProductList = (props) => {
-  const { products, isListLoading, page } = props;
+  const { products, isDataLoading, page } = props;
   const {
     location: { search },
   } = useHistory();
 
   let loadingOverlay = null;
-  if (isListLoading) loadingOverlay = <LoadingOverlay alignLoader="top" loaderSize="small" />;
+  if (isDataLoading) loadingOverlay = <LoadingOverlay alignLoader="top" loaderSize="small" />;
 
   let productList = null;
   if (products) {
@@ -29,8 +29,8 @@ const ProductList = (props) => {
       let headingText = '';
       const queryStringKeys = Object.keys(queryString.parse(search));
       if (
-        queryStringKeys.length >= 2 ||
-        (!queryStringKeys.includes('name') && queryStringKeys.length === 1)
+        queryStringKeys.length >= 3 ||
+        (!queryStringKeys.includes('name') && queryStringKeys.length === 2)
       ) {
         switch (page) {
           case pages.ALL_PRODUCTS:
@@ -78,7 +78,7 @@ ProductList.defaultProps = {
 
 ProductList.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object),
-  isListLoading: PropTypes.bool.isRequired,
+  isDataLoading: PropTypes.bool.isRequired,
   page: PropTypes.string.isRequired,
 };
 

@@ -10,40 +10,35 @@ import * as SC from './Modal.sc';
 
 const mockStore = configureMockStore([thunk]);
 
-describe('<Modal />', () => {
-  it('Should render modal wrapper with backdrop and popup', () => {
-    const store = mockStore({
-      ui: {
-        isModalOpen: true,
-      },
-    });
-    const wrapper = mount(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Modal />
-        </ThemeProvider>
-      </Provider>,
-    );
-    expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-    expect(wrapper.find(SC.Backdrop)).toHaveLength(1);
-    expect(wrapper.find(SC.Popup)).toHaveLength(1);
-  });
+const setUp = (store) => {
+  return mount(
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Modal />
+      </ThemeProvider>
+    </Provider>,
+  );
+};
 
-  it('Should NOT render modal wrapper with backdrop and popup', () => {
-    const store = mockStore({
-      ui: {
-        isModalOpen: false,
-      },
+describe('<Modal />', () => {
+  describe('Check if it renders correctly', () => {
+    it('Should render modal wrapper with backdrop and popup', () => {
+      const store = mockStore({
+        ui: { isModalOpen: true },
+      });
+      const wrapper = setUp(store);
+      expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
+      expect(wrapper.find(SC.Backdrop)).toHaveLength(1);
+      expect(wrapper.find(SC.Popup)).toHaveLength(1);
     });
-    const wrapper = mount(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Modal />
-        </ThemeProvider>
-      </Provider>,
-    );
-    expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
-    expect(wrapper.find(SC.Backdrop)).toHaveLength(0);
-    expect(wrapper.find(SC.Popup)).toHaveLength(0);
+    it('Should NOT render modal wrapper with backdrop and popup', () => {
+      const store = mockStore({
+        ui: { isModalOpen: false },
+      });
+      const wrapper = setUp(store);
+      expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
+      expect(wrapper.find(SC.Backdrop)).toHaveLength(0);
+      expect(wrapper.find(SC.Popup)).toHaveLength(0);
+    });
   });
 });

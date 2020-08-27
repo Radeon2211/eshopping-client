@@ -18,7 +18,7 @@ const setUp = (props = {}, history) => {
 
 const createProps = (itemQuantity = 5) => ({
   itemQuantity,
-  isListLoading: false,
+  isDataLoading: false,
   maxQuantityPerPage: 2,
 });
 

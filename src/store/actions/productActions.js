@@ -17,6 +17,15 @@ export const addNewProduct = (product) => ({
   product,
 });
 
+export const setProductDetails = (productDetails) => ({
+  type: actionTypes.SET_PRODUCT_DETAILS,
+  productDetails,
+});
+
+export const deleteProductDetails = () => ({
+  type: actionTypes.DELETE_PRODUCT_DETAILS,
+});
+
 export const addProduct = (product, currentPath) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
@@ -54,7 +63,7 @@ export const addProduct = (product, currentPath) => {
 
 export const fetchProducts = (queryStrings) => {
   return async (dispatch, getState) => {
-    dispatch(uiActions.listStart());
+    dispatch(uiActions.dataStart());
     let minPriceOuter = 0;
     let maxPriceOuter = 0;
     const parsedQueryParams = queryString.parse(queryStrings);
@@ -78,11 +87,29 @@ export const fetchProducts = (queryStrings) => {
         minPriceOuter = minPrice;
         maxPriceOuter = maxPrice;
       }
+      dispatch(uiActions.dataSuccess());
       dispatch(setProducts(data.products, data.productCount, minPriceOuter, maxPriceOuter));
-      dispatch(uiActions.listSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.listFail(errorMessage));
+      dispatch(uiActions.dataFail(errorMessage));
+    }
+  };
+};
+
+export const fetchProductDetails = (productId) => {
+  return async (dispatch) => {
+    dispatch(uiActions.dataStart());
+    try {
+      const { data } = await axios.get(`/products/${productId}`);
+      dispatch(uiActions.dataSuccess());
+      dispatch(setProductDetails(data));
+    } catch (error) {
+      if (error?.response?.data?.kind === 'ObjectId') {
+        dispatch(setProductDetails(null));
+      } else {
+        const errorMessage = getErrorMessage(error);
+        dispatch(uiActions.dataFail(errorMessage));
+      }
     }
   };
 };

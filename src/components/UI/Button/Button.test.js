@@ -24,13 +24,13 @@ describe('<Button />', () => {
 
   describe('Check if button renders', () => {
     let wrapper;
-    let mockFunc;
+    let clicked;
     beforeEach(() => {
-      mockFunc = jest.fn();
+      clicked = jest.fn();
       const props = {
         size: 'small',
         children: 'test button',
-        clicked: mockFunc,
+        clicked,
       };
       wrapper = setUp(props);
     });
@@ -40,8 +40,7 @@ describe('<Button />', () => {
     it('Should emit callback on click event', () => {
       const button = wrapper.find(SC.Button);
       button.simulate('click');
-      const callback = mockFunc.mock.calls;
-      expect(callback).toHaveLength(1);
+      expect(clicked).toHaveBeenCalled();
     });
   });
 });

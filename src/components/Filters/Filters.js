@@ -48,7 +48,7 @@ const filtersReducer = (state = filtersInitialState, action) => {
 };
 
 const Filters = (props) => {
-  const { products, isListLoading, isVisible } = props;
+  const { products, isDataLoading, isVisible } = props;
   const history = useHistory();
   const {
     location: { search, pathname },
@@ -154,7 +154,7 @@ const Filters = (props) => {
           <label htmlFor="not_applicable">not applicable</label>
         </SC.CheckboxBox>
       </SC.Checkboxes>
-      <Button filled size="small" clicked={btnClickHandle} disabled={isListLoading}>
+      <Button filled size="small" clicked={btnClickHandle} disabled={isDataLoading}>
         Filter
       </Button>
     </SC.Wrapper>
@@ -185,7 +185,7 @@ Filters.defaultProps = {
 
 Filters.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object),
-  isListLoading: PropTypes.bool.isRequired,
+  isDataLoading: PropTypes.bool.isRequired,
   isVisible: PropTypes.bool.isRequired,
 };
 

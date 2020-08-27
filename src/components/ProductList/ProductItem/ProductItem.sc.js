@@ -50,7 +50,7 @@ export const Wrapper = styled.article`
   & .quantity-sold-box {
     flex-grow: 1;
     display: flex;
-    margin-top: 1.2rem;
+    margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
   & .quantity-sold {

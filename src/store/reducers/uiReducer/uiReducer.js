@@ -5,8 +5,8 @@ import { MAX_QUANTITY_PER_PAGE } from '../../../shared/constants';
 export const initialState = {
   isFormLoading: false,
   formError: '',
-  isListLoading: false,
-  listError: '',
+  isDataLoading: false,
+  dataError: '',
   message: '',
   isModalOpen: false,
   modalContent: '',
@@ -30,19 +30,19 @@ const formFail = (state, action) => {
   return updateObject(state, { isFormLoading: false, formError: action.error });
 };
 
-const listStart = (state) => {
-  return updateObject(state, { isListLoading: true });
+const dataStart = (state) => {
+  return updateObject(state, { isDataLoading: true });
 };
 
-const listSuccess = (state) => {
+const dataSuccess = (state) => {
   return updateObject(state, {
-    isListLoading: false,
-    listError: '',
+    isDataLoading: false,
+    dataError: '',
   });
 };
 
-const listFail = (state, action) => {
-  return updateObject(state, { isListLoading: false, listError: action.error });
+const dataFail = (state, action) => {
+  return updateObject(state, { isDataLoading: false, dataError: action.error });
 };
 
 const setMessage = (state, action) => {
@@ -73,12 +73,12 @@ const uiReducer = (state = initialState, action) => {
       return formSuccess(state);
     case actionTypes.FORM_FAIL:
       return formFail(state, action);
-    case actionTypes.LIST_START:
-      return listStart(state);
-    case actionTypes.LIST_SUCCESS:
-      return listSuccess(state);
-    case actionTypes.LIST_FAIL:
-      return listFail(state, action);
+    case actionTypes.DATA_START:
+      return dataStart(state);
+    case actionTypes.DATA_SUCCESS:
+      return dataSuccess(state);
+    case actionTypes.DATA_FAIL:
+      return dataFail(state, action);
     case actionTypes.SET_MESSAGE:
       return setMessage(state, action);
     case actionTypes.DELETE_MESSAGE:

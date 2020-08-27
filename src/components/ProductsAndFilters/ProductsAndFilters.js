@@ -24,7 +24,7 @@ const ProductsAndFilters = (props) => {
 
   const products = useSelector((state) => state.product.products);
   const productCount = useSelector((state) => state.product.productCount);
-  const isListLoading = useSelector((state) => state.ui.isListLoading);
+  const isDataLoading = useSelector((state) => state.ui.isDataLoading);
   const maxQuantityPerPage = useSelector((state) => state.ui.maxQuantityPerPage);
 
   let inputPagination = null;
@@ -35,7 +35,7 @@ const ProductsAndFilters = (props) => {
         <QuantityPerPageController maxQuantityPerPage={maxQuantityPerPage} />
         <InputPagination
           itemQuantity={productCount}
-          isListLoading={isListLoading}
+          isDataLoading={isDataLoading}
           maxQuantityPerPage={maxQuantityPerPage}
         />
       </SC.ProductsTopbar>
@@ -49,7 +49,7 @@ const ProductsAndFilters = (props) => {
         />
         <NumberPagination
           itemQuantity={productCount}
-          isListLoading={isListLoading}
+          isDataLoading={isDataLoading}
           maxQuantityPerPage={maxQuantityPerPage}
         />
       </SC.ProductsBottombar>
@@ -76,12 +76,12 @@ const ProductsAndFilters = (props) => {
       <SideBySide proportion="1/3" makeVerticalWhen={1200}>
         <Filters
           products={products}
-          isListLoading={isListLoading}
+          isDataLoading={isDataLoading}
           isVisible={filtersIsVisible || windowWidth > 1200}
         />
         <Panel>
           {inputPagination}
-          <ProductList products={products} isListLoading={isListLoading} page={page} />
+          <ProductList products={products} isDataLoading={isDataLoading} page={page} />
           {numberPagination}
         </Panel>
       </SideBySide>

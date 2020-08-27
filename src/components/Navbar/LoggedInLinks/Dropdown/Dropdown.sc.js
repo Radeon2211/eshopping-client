@@ -1,28 +1,17 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.light1};
   border: 1px solid ${({ theme }) => theme.colors.light3};
   border-radius: 1px;
-  opacity: 0;
   overflow: hidden;
-  pointer-events: none;
   position: absolute;
   top: calc(100% + ${({ theme }) => theme.spacings.level2});
-  transform: translateY(-10%);
-  transition: all 0.2s;
   right: 0;
   width: 25rem;
   z-index: ${({ theme }) => theme.zIndexes.level2};
-
-  ${({ visible }) =>
-    visible &&
-    css`
-      opacity: 1;
-      pointer-events: initial;
-      transform: translateY(0);
-    `}
 
   & .list {
     list-style: none;

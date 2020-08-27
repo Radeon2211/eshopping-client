@@ -1,3 +1,9 @@
+/* eslint-disable import/no-cycle */
 export { registerUser, loginUser, getProfile, logoutUser } from './authActions';
 export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';
-export { addProduct, fetchProducts } from './productActions';
+export {
+  addProduct,
+  fetchProducts,
+  fetchProductDetails,
+  deleteProductDetails,
+} from './productActions';

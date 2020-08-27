@@ -6,6 +6,7 @@ describe('Product reducer', () => {
     expect(productReducer(undefined, {})).toEqual({
       products: null,
       productCount: undefined,
+      productDetails: undefined,
       minPrice: 0,
       maxPrice: 0,
     });
@@ -24,6 +25,7 @@ describe('Product reducer', () => {
     ).toEqual({
       products,
       productCount: 1,
+      productDetails: undefined,
       minPrice: 1,
       maxPrice: 1,
     });

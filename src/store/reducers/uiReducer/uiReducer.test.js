@@ -7,8 +7,8 @@ describe('UI reducer', () => {
     expect(uiReducer(undefined, {})).toEqual({
       isFormLoading: false,
       formError: '',
-      isListLoading: false,
-      listError: '',
+      isDataLoading: false,
+      dataError: '',
       message: '',
       isModalOpen: false,
       modalContent: '',
@@ -26,8 +26,8 @@ describe('UI reducer', () => {
     ).toEqual({
       isFormLoading: false,
       formError: error,
-      isListLoading: false,
-      listError: '',
+      isDataLoading: false,
+      dataError: '',
       message: '',
       isModalOpen: false,
       modalContent: '',
