@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.b151e7a9.chunk.js",
+    "main.js": "/eshopping-client/static/js/main.f4f944ef.chunk.js",
     "runtime-main.js": "/eshopping-client/static/js/runtime-main.309ec03a.js",
-    "static/js/2.44ea547d.chunk.js": "/eshopping-client/static/js/2.44ea547d.chunk.js",
+    "static/js/2.24e6f4d2.chunk.js": "/eshopping-client/static/js/2.24e6f4d2.chunk.js",
     "index.html": "/eshopping-client/index.html",
-    "precache-manifest.f30e28b11f51238a0ba1a1ab87b93b6a.js": "/eshopping-client/precache-manifest.f30e28b11f51238a0ba1a1ab87b93b6a.js",
+    "precache-manifest.2fe0c0d07d59fbe462365d7416a5888b.js": "/eshopping-client/precache-manifest.2fe0c0d07d59fbe462365d7416a5888b.js",
     "service-worker.js": "/eshopping-client/service-worker.js",
-    "static/js/2.44ea547d.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.44ea547d.chunk.js.LICENSE.txt",
+    "static/js/2.24e6f4d2.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.24e6f4d2.chunk.js.LICENSE.txt",
     "static/media/add-product.db646eb5.svg": "/eshopping-client/static/media/add-product.db646eb5.svg",
     "static/media/arrow.cd8c1b41.svg": "/eshopping-client/static/media/arrow.cd8c1b41.svg",
     "static/media/cart.ff000235.svg": "/eshopping-client/static/media/cart.ff000235.svg",
     "static/media/check-mark.ea030947.svg": "/eshopping-client/static/media/check-mark.ea030947.svg",
     "static/media/filters.cdc38046.svg": "/eshopping-client/static/media/filters.cdc38046.svg",
     "static/media/log-out.24ab44e2.svg": "/eshopping-client/static/media/log-out.24ab44e2.svg",
+    "static/media/minus.839e1024.svg": "/eshopping-client/static/media/minus.839e1024.svg",
     "static/media/my-account.82138a40.svg": "/eshopping-client/static/media/my-account.82138a40.svg",
     "static/media/my-offers.4cbeefcf.svg": "/eshopping-client/static/media/my-offers.4cbeefcf.svg",
     "static/media/placed-orders.f908dfcb.svg": "/eshopping-client/static/media/placed-orders.f908dfcb.svg",
@@ -21,7 +22,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.309ec03a.js",
-    "static/js/2.44ea547d.chunk.js",
-    "static/js/main.b151e7a9.chunk.js"
+    "static/js/2.24e6f4d2.chunk.js",
+    "static/js/main.f4f944ef.chunk.js"
   ]
 }
