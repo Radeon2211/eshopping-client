@@ -23,10 +23,8 @@ const SignedOutLinks = () => {
 
   return (
     <SC.Wrapper>
-      <Button size="big" clicked={() => onSetModal(true, modalTypes.LOGIN)}>
-        login
-      </Button>
-      <Button size="big" filled clicked={() => onSetModal(true, modalTypes.SIGNUP)}>
+      <Button clicked={() => onSetModal(true, modalTypes.LOGIN)}>login</Button>
+      <Button filled clicked={() => onSetModal(true, modalTypes.SIGNUP)}>
         signup
       </Button>
     </SC.Wrapper>

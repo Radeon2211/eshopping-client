@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Button = styled.button`
   border: 2px solid ${({ theme }) => theme.colors.blue};
   border-radius: 1px;
@@ -10,7 +11,7 @@ export const Button = styled.button`
   outline: none;
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   text-transform: uppercase;
-  transition: all .1s;
+  transition: all 0.1s;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.blueLight};
@@ -27,16 +28,15 @@ export const Button = styled.button`
           color: #fff;
         }
       `;
-    } else {
-      return `
-        background-color: transparent;
-        color: ${theme.colors.blue};
-
-        &:hover {
-          color: ${theme.colors.blueLight};
-        }
-      `;
     }
+    return `
+      background-color: transparent;
+      color: ${theme.colors.blue};
+
+      &:hover {
+        color: ${theme.colors.blueLight};
+      }
+    `;
   }}
 
   ${({ disabled, filled, theme }) => {
@@ -66,5 +66,6 @@ export const Button = styled.button`
         }
       `;
     }
+    return ``;
   }}
 `;

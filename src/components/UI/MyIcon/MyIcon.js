@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SC = {};
-SC.IconWrapper = styled.div`
+SC.Wrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
@@ -64,7 +64,7 @@ SC.IconWrapper = styled.div`
 
 const MyIcon = (props) => {
   const { children } = props;
-  return <SC.IconWrapper {...props}>{children}</SC.IconWrapper>;
+  return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
 };
 
 MyIcon.defaultProps = {

@@ -117,10 +117,8 @@ const Step2 = (props) => {
             label="Hide my phone number from others"
           />
           <SC.Buttons buttonsNumber={2}>
-            <Button size="big" onClick={goToPrevStep}>
-              Previous
-            </Button>
-            <Button size="big" filled onClick={goToNextStep} disabled={btnDisabled}>
+            <Button onClick={goToPrevStep}>Previous</Button>
+            <Button filled onClick={goToNextStep} disabled={btnDisabled}>
               Next
             </Button>
           </SC.Buttons>

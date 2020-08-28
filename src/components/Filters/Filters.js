@@ -154,7 +154,7 @@ const Filters = (props) => {
           <label htmlFor="not_applicable">not applicable</label>
         </SC.CheckboxBox>
       </SC.Checkboxes>
-      <Button filled size="small" clicked={btnClickHandle} disabled={isDataLoading}>
+      <Button filled clicked={btnClickHandle} disabled={isDataLoading}>
         Filter
       </Button>
     </SC.Wrapper>

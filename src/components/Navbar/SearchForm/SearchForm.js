@@ -45,7 +45,7 @@ const SearchForm = () => {
         spellCheck="false"
         onChange={(e) => setProductName(e.target.value)}
       />
-      <Button type="submit" size="big" filled>
+      <Button type="submit" filled>
         search
       </Button>
     </SC.SearchForm>

@@ -4,7 +4,7 @@ const theme = {
     light1Transparent: '#FAFAFA88',
     light2: '#DADFE1',
     light3: '#BFBFBF',
-    light4: '#666',
+    light4: '#777',
     blue: '#1E8BC3',
     blueLight: '#22A7F0',
     blueDark: '#67809F',

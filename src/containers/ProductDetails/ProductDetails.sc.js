@@ -8,19 +8,21 @@ export const Wrapper = styled.div`
   & .photo-box {
     align-items: center;
     display: flex;
-    justify-content: center;
     height: 45rem;
-    width: 100%;
+    justify-content: center;
     margin-right: ${({ theme }) => theme.spacings.level5};
+    padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
+    width: 100%;
   }
 
   & .photo {
-    max-height: 100%;
     object-fit: cover;
+    max-height: 100%;
     max-width: 100%;
   }
 
   & .data-box {
+    align-self: stretch;
     display: flex;
     flex-direction: column;
   }
@@ -42,22 +44,45 @@ export const Wrapper = styled.div`
 
   & .condition {
     font-size: 1.4rem;
-    text-transform: capitalize;
     margin-top: ${({ theme }) => theme.spacings.level2};
+    text-transform: capitalize;
   }
 
   & .price {
-    font-size: 2.6rem;
+    font-size: 2.7rem;
     letter-spacing: 1px;
-    margin-top: ${({ theme }) => theme.spacings.level3};
+    margin: ${({ theme }) => theme.spacings.level3} 0;
   }
 
   & .quantity-sold {
     font-size: 1.4rem;
+    margin-bottom: ${({ theme }) => theme.spacings.level3};
+  }
+
+  & .description-box {
+    display: flex;
+    flex-direction: column;
     margin-top: ${({ theme }) => theme.spacings.level3};
+  }
+
+  & .description-heading {
+    display: inline-block;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: ${({ theme }) => theme.spacings.level1};
+  }
+
+  & .description-content {
+    font-size: 1.5rem;
   }
 
   & .gray {
     color: ${({ theme }) => theme.colors.light4};
+  }
+
+  @media only screen and (max-width: 56.25em) {
+    & .photo-box {
+      margin-right: ${({ theme }) => theme.spacings.level3};
+    }
   }
 `;

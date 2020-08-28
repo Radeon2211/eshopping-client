@@ -20,7 +20,6 @@ Button.defaultProps = {
 
 Button.propTypes = {
   type: PropTypes.string,
-  size: PropTypes.string.isRequired,
   filled: PropTypes.bool,
   disabled: PropTypes.bool,
   clicked: PropTypes.func,

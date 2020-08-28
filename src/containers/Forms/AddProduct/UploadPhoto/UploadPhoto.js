@@ -76,20 +76,14 @@ const UploadPhoto = (props) => {
       </SC.Preview>
     );
 
-    deleteBtn = (
-      <Button size="small" clicked={resetState}>
-        Delete
-      </Button>
-    );
+    deleteBtn = <Button clicked={resetState}>Delete</Button>;
   }
 
   return (
     <SC.Wrapper className="content">
       <div className="buttons">
         <label htmlFor="photo" className="label">
-          <Button size="small" filled>
-            Upload photo
-          </Button>
+          <Button filled>Upload photo</Button>
         </label>
         {deleteBtn}
       </div>

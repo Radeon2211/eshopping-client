@@ -119,7 +119,6 @@ const PriceSlider = (props) => {
 
   const inputChangeHandle = (e) => {
     e.persist();
-
     setInputValues((prevState) => ({
       ...prevState,
       [e.target.name]: +e.target.value || '',
@@ -130,11 +129,10 @@ const PriceSlider = (props) => {
     e.persist();
 
     let value = Number.parseFloat((+e.target.value).toFixed(2));
-    const { name } = e.target;
 
     const maxPriceStateToCalculate = maxPriceState - minPriceState;
     let percentValue = 0;
-    if (name === 'minPrice') {
+    if (e.target.name === 'minPrice') {
       if (value < minPriceState) {
         value = minPriceState;
       } else if (value > rangeValues.maxPrice) {
@@ -168,12 +166,6 @@ const PriceSlider = (props) => {
       ...prevState,
       [e.target.name]: value,
     }));
-  };
-
-  const inputPressHandle = (e) => {
-    if (e.key === 'Enter') {
-      e.target.blur();
-    }
   };
 
   const rangeChangeHandle = (e) => {
@@ -233,7 +225,6 @@ const PriceSlider = (props) => {
             value={inputValues.minPrice}
             changed={inputChangeHandle}
             blured={validateInputValue}
-            pressed={inputPressHandle}
             floating
           />
           <span className="inputs-gap">&mdash;</span>
@@ -243,7 +234,6 @@ const PriceSlider = (props) => {
             value={inputValues.maxPrice}
             changed={inputChangeHandle}
             blured={validateInputValue}
-            pressed={inputPressHandle}
             floating
           />
         </div>

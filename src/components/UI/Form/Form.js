@@ -30,9 +30,7 @@ const Form = (props) => {
   if (cancellable) {
     cancelButton = (
       <div className="cancel-button-box">
-        <Button size="small" clicked={() => onSetModal(false, '')}>
-          cancel
-        </Button>
+        <Button clicked={() => onSetModal(false, '')}>cancel</Button>
       </div>
     );
   }
@@ -42,7 +40,7 @@ const Form = (props) => {
     buttonsBox = (
       <div className="buttons-box">
         {cancelButton}
-        <Button size="big" filled type="submit" disabled={!isValid || isFormLoading}>
+        <Button filled type="submit" disabled={!isValid || isFormLoading}>
           {btnText}
         </Button>
       </div>

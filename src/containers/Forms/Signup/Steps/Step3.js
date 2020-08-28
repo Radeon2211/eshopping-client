@@ -113,10 +113,8 @@ const Step3 = (props) => {
             isTouched={touched.country}
           />
           <SC.Buttons buttonsNumber={2}>
-            <Button size="big" onClick={goToPrevStep}>
-              Previous
-            </Button>
-            <Button type="submit" filled size="big" disabled={btnDisabled || isFormLoading}>
+            <Button onClick={goToPrevStep}>Previous</Button>
+            <Button type="submit" filled disabled={btnDisabled || isFormLoading}>
               Finish
             </Button>
           </SC.Buttons>

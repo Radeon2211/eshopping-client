@@ -80,7 +80,7 @@ const Step1 = (props) => {
             isTouched={touched.password}
           />
           <SC.Buttons buttonsNumber={1}>
-            <Button size="big" filled onClick={goToNextStep} disabled={btnDisabled}>
+            <Button filled onClick={goToNextStep} disabled={btnDisabled}>
               Next
             </Button>
           </SC.Buttons>
