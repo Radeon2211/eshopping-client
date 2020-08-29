@@ -42,7 +42,6 @@ export const Popup = styled(motion.div)`
     display: flex;
     position: absolute;
     top: ${({ theme }) => theme.spacings.level1};
-    transform: rotate(45deg);
     right: ${({ theme }) => theme.spacings.level1};
   }
 `;

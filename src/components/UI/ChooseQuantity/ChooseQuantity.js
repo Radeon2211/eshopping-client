@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import NumberInput from '../NumberInput/NumberInput';
 import MyIcon from '../MyIcon/MyIcon';
@@ -63,6 +64,16 @@ const ChooseQuantity = (props) => {
       </button>
     </SC.Wrapper>
   );
+};
+
+ChooseQuantity.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  maxQuantity: PropTypes.number.isRequired,
+  incremented: PropTypes.func.isRequired,
+  decremented: PropTypes.func.isRequired,
+  changed: PropTypes.func.isRequired,
+  blured: PropTypes.func.isRequired,
 };
 
 export default ChooseQuantity;

@@ -13,6 +13,7 @@ const Button = (props) => {
 
 Button.defaultProps = {
   type: 'button',
+  color: 'blue',
   filled: false,
   disabled: false,
   clicked: () => {},
@@ -20,6 +21,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   type: PropTypes.string,
+  color: PropTypes.string,
   filled: PropTypes.bool,
   disabled: PropTypes.bool,
   clicked: PropTypes.func,

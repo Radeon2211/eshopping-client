@@ -54,6 +54,7 @@ const deleteMessage = (state) => {
 };
 
 const setModal = (state, action) => {
+  if (state.isFormLoading && !action.isModalOpen) return state;
   return updateObject(state, {
     isModalOpen: action.isModalOpen,
     modalContent: action.modalContent,

@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import * as modalTypes from '../../store/actions/modalTypes';
 import * as actions from '../../store/actions/indexActions';
 import * as SC from './ProductDetails.sc';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
@@ -10,6 +11,7 @@ import Panel from '../../components/UI/Panel/Panel';
 import Heading from '../../components/UI/Heading/Heading';
 import SideBySide from '../../components/UI/SideBySide/SideBySide';
 import PurchaseSection from './PurchaseSection/PurchaseSection';
+import Button from '../../components/UI/Button/Button';
 import noPhoto from '../../images/no-photo.png';
 import { baseURL } from '../../axios';
 
@@ -22,6 +24,7 @@ const ProductDetails = (props) => {
 
   const windowWidth = useWindowWidth();
 
+  const userProfile = useSelector((state) => state.auth.profile);
   const productDetails = useSelector((state) => state.product.productDetails);
   const isDataLoading = useSelector((state) => state.ui.isDataLoading);
 
@@ -32,6 +35,10 @@ const ProductDetails = (props) => {
   const onDeleteProductDetails = useCallback(() => dispatch(actions.deleteProductDetails()), [
     dispatch,
   ]);
+  const onSetModal = useCallback(
+    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
+    [dispatch],
+  );
 
   useEffect(() => {
     onFetchProductDetails(productId);
@@ -81,6 +88,17 @@ const ProductDetails = (props) => {
       );
     }
 
+    let deleteProductBtn = null;
+    if (userProfile?._id === seller._id || userProfile?.isAdmin) {
+      deleteProductBtn = (
+        <div className="delete-btn-box">
+          <Button color="red" clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}>
+            Delete offer
+          </Button>
+        </div>
+      );
+    }
+
     details = (
       <>
         <SideBySide proportion={proportion} makeVerticalWhen={600}>
@@ -101,14 +119,20 @@ const ProductDetails = (props) => {
             </span>
             <span className="condition">
               <span className="gray">Condition: </span>
-              {conditionText}
+              {`${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
             </span>
             <span className="price">${price.toFixed(2)}</span>
             {quantitySoldNode}
-            <PurchaseSection productQuantity={quantity} />
+            <PurchaseSection
+              productQuantity={quantity}
+              productSellerId={seller._id}
+              onSetModal={onSetModal}
+              userProfile={userProfile}
+            />
           </div>
         </SideBySide>
         <div className="description-box">{descriptionContent}</div>
+        {deleteProductBtn}
       </>
     );
   }

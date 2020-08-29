@@ -11,6 +11,7 @@ import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../../containers/Forms/Signup/Signup';
 import Login from '../../../containers/Forms/Login';
 import AddProduct from '../../../containers/Forms/AddProduct/AddProduct';
+import DeleteProduct from '../../DeleteProduct/DeleteProduct';
 
 const Modal = () => {
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -23,7 +24,7 @@ const Modal = () => {
   ]);
 
   const loadingOverlay = isFormLoading ? (
-    <LoadingOverlay alignLoader="center" loaderSize="small" />
+    <LoadingOverlay alignLoader="center" loaderSize="small" zeroPadding />
   ) : null;
 
   let modalContentNode = null;
@@ -36,6 +37,9 @@ const Modal = () => {
       break;
     case modalTypes.ADD_PRODUCT:
       modalContentNode = <AddProduct />;
+      break;
+    case modalTypes.DELETE_PRODUCT:
+      modalContentNode = <DeleteProduct />;
       break;
     default:
       break;
@@ -57,7 +61,12 @@ const Modal = () => {
             aria-label="Close modal"
           />
           <SC.Popup variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
-            <MyIcon size="medium" onClick={() => onSetModal(false, '')} className="close-icon">
+            <MyIcon
+              size="medium"
+              rotation={45}
+              onClick={() => onSetModal(false, '')}
+              className="close-icon"
+            >
               <PlusIcon />
             </MyIcon>
             {loadingOverlay}

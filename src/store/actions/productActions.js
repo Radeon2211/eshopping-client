@@ -26,6 +26,11 @@ export const deleteProductDetails = () => ({
   type: actionTypes.DELETE_PRODUCT_DETAILS,
 });
 
+export const deleteProductFromList = (productId) => ({
+  type: actionTypes.DELETE_PRODUCT_FROM_LIST,
+  productId,
+});
+
 export const addProduct = (product, currentPath) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
@@ -50,7 +55,7 @@ export const addProduct = (product, currentPath) => {
         dispatch(addNewProduct(addedProduct));
       }
       dispatch(uiActions.formSuccess());
-      dispatch(uiActions.setMessage('Product was added successfully'));
+      dispatch(uiActions.setMessage('Product has been added successfully'));
       setTimeout(() => {
         dispatch(uiActions.deleteMessage());
       }, 5000);
@@ -105,11 +110,32 @@ export const fetchProductDetails = (productId) => {
       dispatch(setProductDetails(data));
     } catch (error) {
       if (error?.response?.data?.kind === 'ObjectId') {
-        dispatch(setProductDetails(null));
+        dispatch(uiActions.dataFail('Product ID given in URL is not correct'));
       } else {
         const errorMessage = getErrorMessage(error);
         dispatch(uiActions.dataFail(errorMessage));
       }
+      dispatch(setProductDetails(null));
+    }
+  };
+};
+
+export const deleteProduct = (productId, history) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      await axios.delete(`products/${productId}`);
+      dispatch(deleteProductDetails());
+      dispatch(deleteProductFromList(productId));
+      dispatch(uiActions.formSuccess());
+      dispatch(uiActions.setMessage('Product has been deleted succesfully'));
+      setTimeout(() => {
+        dispatch(uiActions.deleteMessage());
+      }, 5000);
+      history.goBack();
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
     }
   };
 };

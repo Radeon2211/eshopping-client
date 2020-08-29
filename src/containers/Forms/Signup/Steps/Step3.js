@@ -48,6 +48,8 @@ const Step3 = (props) => {
 
   const error = formError ? <span className="error">{formError}</span> : null;
 
+  console.log(touched);
+
   return (
     <AnimatePresence>
       {currentStep === 3 && (

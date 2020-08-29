@@ -19,4 +19,9 @@ export const Wrapper = styled.div`
     font-size: 1.4rem;
     margin-left: ${({ theme }) => theme.spacings.level1};
   }
+
+  & .not-able-to-buy {
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
 `;

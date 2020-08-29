@@ -45,7 +45,6 @@ export const Wrapper = styled.div`
   & .condition {
     font-size: 1.4rem;
     margin-top: ${({ theme }) => theme.spacings.level2};
-    text-transform: capitalize;
   }
 
   & .price {
@@ -74,6 +73,11 @@ export const Wrapper = styled.div`
 
   & .description-content {
     font-size: 1.5rem;
+  }
+
+  & .delete-btn-box {
+    margin-top: ${({ theme }) => theme.spacings.level5};
+    text-align: center;
   }
 
   & .gray {

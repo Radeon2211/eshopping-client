@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, Suspense } from 'react';
+/* eslint-disable react/jsx-wrap-multilines */
+import React, { useCallback, useEffect, Suspense, lazy } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from './store/actions/indexActions';
@@ -7,10 +8,10 @@ import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader/Loader';
 import Main from './components/UI/Main/Main';
-
-import ProductDetails from './containers/ProductDetails/ProductDetails';
 import Products from './containers/Products/Products';
 import Logout from './containers/Logout/Logout';
+
+const ProductDetails = lazy(() => import('./containers/ProductDetails/ProductDetails'));
 
 const WaitingComponent = (Component) => {
   return (props) => (
@@ -50,7 +51,7 @@ const App = () => {
         <Navbar userProfile={userProfile} />
         <Main>
           <Switch>
-            <Route path="/products/:id" exact component={ProductDetails} />
+            <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
             <Redirect to="/products" />
           </Switch>
@@ -67,7 +68,7 @@ const App = () => {
         <Main>
           <Switch>
             <Route path="/logout" component={Logout} />
-            <Route path="/products/:id" exact component={ProductDetails} />
+            <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
             <Redirect to="/products" />
           </Switch>

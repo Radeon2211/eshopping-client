@@ -11,6 +11,8 @@ const theme = {
     green: '#00A790',
     greenDark: '#009680',
     red: '#F22613',
+    redLight: '#F94D2A',
+    redDark: '#985A5A',
   },
   shadows: {
     level1: '0 0 2px rgba(0, 0, 0, .1)',
