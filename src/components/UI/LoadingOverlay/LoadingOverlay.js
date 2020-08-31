@@ -19,7 +19,7 @@ SC.Wrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndexes.level1};
 
   & .info {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 

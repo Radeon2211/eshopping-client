@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const SC = {};
 SC.Wrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.light1};
+  box-shadow: ${({ theme }) => theme.shadows.level1};
   padding: ${({ theme }) => theme.spacings.level3};
   width: 100%;
 

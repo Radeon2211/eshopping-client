@@ -1,12 +1,11 @@
 import React, { useEffect, useCallback } from 'react';
-import queryString from 'query-string';
-import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Heading from '../../components/UI/Heading/Heading';
-import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
-import { pages } from '../../shared/constants';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../../store/actions/indexActions';
+import { pages } from '../../../shared/constants';
+import Heading from '../../../components/UI/Heading/Heading';
+import ProductsAndFilters from '../../../components/ProductsAndFilters/ProductsAndFilters';
 
-const Products = (props) => {
+const MyProducts = (props) => {
   const {
     location: { search },
   } = props;
@@ -22,22 +21,16 @@ const Products = (props) => {
   const clearProducts = useCallback(() => dispatch(actions.clearProducts()), [dispatch]);
 
   useEffect(() => {
-    onFetchProducts(search, pages.ALL_PRODUCTS);
+    onFetchProducts(search, pages.MY_PRODUCTS);
     return () => clearProducts();
   }, [search, onFetchProducts, clearProducts, maxQuantityPerPage, userProfile]);
 
-  const { name } = queryString.parse(search);
-  let headingText = 'All products';
-  if (name) {
-    headingText = `Results for "${name}"`;
-  }
-
   return (
     <>
-      <Heading variant="h3">{headingText}</Heading>
+      <Heading variant="h3">My products</Heading>
       <ProductsAndFilters page={pages.ALL_PRODUCTS} />
     </>
   );
 };
 
-export default Products;
+export default MyProducts;

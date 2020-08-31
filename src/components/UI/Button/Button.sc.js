@@ -4,13 +4,13 @@ import styled from 'styled-components';
 export const Button = styled.button`
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: ${({ theme }) => theme.fontSizes.level2};
   font-weight: 700;
   letter-spacing: 2px;
   outline: none;
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   text-transform: uppercase;
-  transition: all 0.1s;
+  transition: all ${({ theme }) => theme.durations.level1}s;
 
   ${({ color, filled, theme }) => {
     if (color === 'blue') {

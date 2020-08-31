@@ -1,10 +1,12 @@
+import theme from '../styled/theme';
+
 export const stepFormVariants = {
   hidden: {
     opacity: 0,
   },
   visible: {
     opacity: 1,
-    transition: { duration: 0.12, delay: 0.12 },
+    transition: { duration: theme.durations.level1, delay: theme.durations.level1 },
   },
 };
 
@@ -16,7 +18,7 @@ export const backdropVariants = {
   visible: {
     opacity: 1,
     pointerEvents: 'initial',
-    transition: { duration: 0.25 },
+    transition: { duration: theme.durations.level3 },
   },
 };
 
@@ -27,7 +29,7 @@ export const modalVariants = {
   },
   visible: {
     opacity: 1,
-    transition: { delay: 0.2 },
+    transition: { delay: theme.durations.level2 },
     pointerEvents: 'initial',
   },
 };
@@ -38,7 +40,7 @@ export const messageBoxVariants = {
     y: '-150%',
   },
   visible: {
-    transition: { type: 'spring', duration: 0.2, stiffness: 100 },
+    transition: { type: 'spring', duration: theme.durations.level2, stiffness: 100 },
     pointerEvents: 'initial',
     y: 0,
   },
@@ -54,6 +56,5 @@ export const dropdownVariants = {
     opacity: 1,
     pointerEvents: 'initial',
     y: '0',
-    transition: 'all 0.2s',
   },
 };

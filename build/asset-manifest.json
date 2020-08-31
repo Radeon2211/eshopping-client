@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.f3d36dea.chunk.js",
-    "runtime-main.js": "/eshopping-client/static/js/runtime-main.d73d1fda.js",
-    "static/js/2.a0f0a133.chunk.js": "/eshopping-client/static/js/2.a0f0a133.chunk.js",
-    "static/js/3.38da626c.chunk.js": "/eshopping-client/static/js/3.38da626c.chunk.js",
+    "main.js": "/eshopping-client/static/js/main.f8309812.chunk.js",
+    "runtime-main.js": "/eshopping-client/static/js/runtime-main.d46e0219.js",
+    "static/js/2.b6b3fd4a.chunk.js": "/eshopping-client/static/js/2.b6b3fd4a.chunk.js",
+    "static/js/3.8bac6020.chunk.js": "/eshopping-client/static/js/3.8bac6020.chunk.js",
+    "static/js/4.6b7ace5e.chunk.js": "/eshopping-client/static/js/4.6b7ace5e.chunk.js",
     "index.html": "/eshopping-client/index.html",
-    "precache-manifest.efdc6e2561dc492f9830c7dedafb2539.js": "/eshopping-client/precache-manifest.efdc6e2561dc492f9830c7dedafb2539.js",
+    "precache-manifest.a63b5544bb9758d544b44cdd61a3e05d.js": "/eshopping-client/precache-manifest.a63b5544bb9758d544b44cdd61a3e05d.js",
     "service-worker.js": "/eshopping-client/service-worker.js",
-    "static/js/2.a0f0a133.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.a0f0a133.chunk.js.LICENSE.txt",
+    "static/js/2.b6b3fd4a.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.b6b3fd4a.chunk.js.LICENSE.txt",
     "static/media/add-product.db646eb5.svg": "/eshopping-client/static/media/add-product.db646eb5.svg",
-    "static/media/arrow.cd8c1b41.svg": "/eshopping-client/static/media/arrow.cd8c1b41.svg",
+    "static/media/arrow.svg": "/eshopping-client/static/media/arrow.cd8c1b41.svg",
     "static/media/cart.ff000235.svg": "/eshopping-client/static/media/cart.ff000235.svg",
     "static/media/check-mark.ea030947.svg": "/eshopping-client/static/media/check-mark.ea030947.svg",
     "static/media/filters.cdc38046.svg": "/eshopping-client/static/media/filters.cdc38046.svg",
@@ -22,8 +23,8 @@
     "static/media/sell-history.40b39a4f.svg": "/eshopping-client/static/media/sell-history.40b39a4f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d73d1fda.js",
-    "static/js/2.a0f0a133.chunk.js",
-    "static/js/main.f3d36dea.chunk.js"
+    "static/js/runtime-main.d46e0219.js",
+    "static/js/2.b6b3fd4a.chunk.js",
+    "static/js/main.f8309812.chunk.js"
   ]
 }

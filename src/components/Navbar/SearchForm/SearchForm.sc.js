@@ -9,7 +9,7 @@ export const SearchForm = styled.form`
   & .input-text {
     background-color: ${({ theme }) => theme.colors.light1};
     border: 1px solid ${({ theme }) => theme.colors.light3};
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
     outline: none;
     padding: ${({ theme }) => theme.spacings.level1};
     width: 100%;

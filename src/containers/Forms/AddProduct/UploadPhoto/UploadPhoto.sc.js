@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
 
     & > button {
       pointer-events: none;
-      transition: all 0.12s;
+      transition: all ${({ theme }) => theme.durations.level1}s;
     }
 
     &:hover > button {
@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Preview = styled.div`
-  font-size: 1.3rem;
+  font-size: ${({ theme }) => theme.fontSizes.level1};
   margin-top: ${({ theme }) => theme.spacings.level2};
 
   & .file-data:not(:last-child) {

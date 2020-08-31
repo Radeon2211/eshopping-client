@@ -8,7 +8,7 @@ import { listItemTypes } from '../../../shared/constants';
 export const SC = {};
 SC.Wrapper = styled.div`
   color: ${({ theme }) => theme.colors.light4};
-  font-size: 1.3rem;
+  font-size: ${({ theme }) => theme.fontSizes.level1};
 `;
 
 const PaginationCounter = (props) => {

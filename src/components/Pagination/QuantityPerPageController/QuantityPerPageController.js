@@ -12,12 +12,12 @@ SC.Wrapper = styled.div`
   display: flex;
 
   & .label {
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-right: ${({ theme }) => theme.spacings.level2};
   }
 
   & .select {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     z-index: ${({ theme }) => theme.zIndexes.level2};
   }
 `;

@@ -26,7 +26,7 @@ SC.Message = styled(motion.div)`
   box-shadow: ${({ theme }) => theme.shadows.level4};
   color: #fff;
   display: flex;
-  font-size: 1.4rem;
+  font-size: ${({ theme }) => theme.fontSizes.level2};
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   width: 100%;

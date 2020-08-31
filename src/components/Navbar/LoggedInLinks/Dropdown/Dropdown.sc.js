@@ -9,6 +9,7 @@ export const Wrapper = styled(motion.div)`
   overflow: hidden;
   position: absolute;
   top: calc(100% + ${({ theme }) => theme.spacings.level2});
+  transition: all ${({ theme }) => theme.durations.level2};
   right: 0;
   width: 25rem;
   z-index: ${({ theme }) => theme.zIndexes.level2};
@@ -29,12 +30,12 @@ export const Wrapper = styled(motion.div)`
     align-items: center;
     color: #000;
     display: flex;
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     justify-content: center;
     padding: ${({ theme }) => theme.spacings.level2};
     text-align: center;
     text-decoration: none;
-    transition: color 0.12s;
+    transition: color ${({ theme }) => theme.durations.level1}s;
     width: 100%;
 
     &:hover {
@@ -49,7 +50,7 @@ export const Wrapper = styled(motion.div)`
   @media only screen and (max-width: 37.5em) {
     & .link:link,
     & .link:visited {
-      font-size: 1.5rem;
+      font-size: ${({ theme }) => theme.fontSizes.level3};
     }
   }
 `;

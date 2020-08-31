@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   }
 
   & .of {
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
     margin: 0 ${({ theme }) => theme.spacings.level1};
   }
 `;

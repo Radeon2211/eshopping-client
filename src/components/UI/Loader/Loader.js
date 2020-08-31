@@ -6,6 +6,7 @@ const SC = {};
 SC.Wrapper = styled.div`
   display: inline-block;
   position: relative;
+
   ${({ size }) => {
     if (size === 'big') {
       return `
@@ -25,6 +26,7 @@ SC.Wrapper = styled.div`
     position: absolute;
     border-radius: 50%;
     animation: rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+
     ${({ size, theme }) => {
       if (size === 'big') {
         return `

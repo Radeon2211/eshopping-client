@@ -24,7 +24,7 @@ SC.User = styled.div`
   position: relative;
 
   & .username {
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-right: ${({ theme }) => theme.spacings.level1};
   }
 `;

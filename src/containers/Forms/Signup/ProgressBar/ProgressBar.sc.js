@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     display: flex;
     height: 3.2rem;
     justify-content: center;
-    transition: all 0.3s;
+    transition: all ${({ theme }) => theme.durations.level3}s;
     width: 3.2rem;
   }
 
@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
   }
 
   .step-number {
-    font-size: 1.6rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
     line-height: 1;
   }
 
@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
     left: 0;
     position: absolute;
     top: 0;
-    transition: width 0.3s;
+    transition: width ${({ theme }) => theme.durations.level3};s
     width: 0;
   }
 

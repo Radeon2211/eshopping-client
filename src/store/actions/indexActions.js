@@ -7,4 +7,5 @@ export {
   fetchProductDetails,
   deleteProductDetails,
   deleteProduct,
+  clearProducts,
 } from './productActions';

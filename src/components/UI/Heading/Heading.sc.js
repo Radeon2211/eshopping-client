@@ -29,7 +29,7 @@ const StyledHeading = styled.h1`
         `;
       case 'h4':
         return `
-          font-size: 1.8rem;
+          font-size: ${theme.fontSizes.level4};
           line-height: 1;
           text-align: center;
         `;

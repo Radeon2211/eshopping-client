@@ -31,6 +31,10 @@ export const deleteProductFromList = (productId) => ({
   productId,
 });
 
+export const clearProducts = () => ({
+  type: actionTypes.CLEAR_PRODUCTS,
+});
+
 export const addProduct = (product, currentPath) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
@@ -66,25 +70,35 @@ export const addProduct = (product, currentPath) => {
   };
 };
 
-export const fetchProducts = (queryStrings) => {
+export const fetchProducts = (queryStrings, page, sellerId) => {
   return async (dispatch, getState) => {
     dispatch(uiActions.dataStart());
     let minPriceOuter = 0;
     let maxPriceOuter = 0;
+
     const parsedQueryParams = queryString.parse(queryStrings);
-    const { seller, p: page } = parsedQueryParams;
+    const { seller, p: pageNumber } = parsedQueryParams;
+
     const { maxQuantityPerPage } = getState().ui;
     parsedQueryParams.limit = maxQuantityPerPage;
-    if (seller !== undefined) {
+
+    if (seller) {
       delete parsedQueryParams.seller;
     }
-    if (page) {
+    if (pageNumber) {
       const currentProductQuantity = getState().product.productCount;
-      if (page > Math.ceil(currentProductQuantity / maxQuantityPerPage) || page < 1) {
+      if (pageNumber > Math.ceil(currentProductQuantity / maxQuantityPerPage) || pageNumber < 1) {
         delete parsedQueryParams.p;
       }
     }
+
+    parsedQueryParams.page = page;
+    if (sellerId) {
+      parsedQueryParams.seller = sellerId;
+    }
+
     const updatedQueryParams = queryString.stringify(parsedQueryParams);
+
     try {
       const { data } = await axios.get(`/products?${updatedQueryParams}`);
       if (data.productPrices.length > 0) {

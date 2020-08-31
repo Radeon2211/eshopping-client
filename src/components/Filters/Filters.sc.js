@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   }
 
   & .select {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     z-index: ${({ theme }) => theme.zIndexes.level2};
   }
 `;
@@ -19,7 +19,13 @@ export const Checkboxes = styled.div`
 
   & .label {
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    & > *:not(:last-child) {
+      margin-bottom: ${({ theme }) => theme.spacings.level2};
+    }
   }
 `;
 
@@ -35,7 +41,7 @@ export const CheckboxBox = styled.div`
   }
 
   & > label {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     line-height: 1;
   }
 `;

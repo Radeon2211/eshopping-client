@@ -12,7 +12,7 @@ export const LabelAndInputs = styled.div`
   padding-bottom: ${({ theme }) => theme.spacings.level1};
 
   & .label {
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
   }
 
   & .inputs-gap {

@@ -29,17 +29,17 @@ export const Wrapper = styled.div`
   }}
 
   & .select {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
   }
 
   & .textarea {
     border: none;
     border-bottom: 3px solid rgba(0, 0, 0, 0.1);
     outline: none;
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     font-family: inherit;
     padding: 0 0 ${({ theme }) => theme.spacings.level1} 0;
-    transition: border-bottom 0.12s;
+    transition: border-bottom ${({ theme }) => theme.durations.level1}s;
     resize: none;
 
     &::-webkit-input-placeholder {
@@ -61,7 +61,7 @@ export const Wrapper = styled.div`
 
   & .caption {
     display: block;
-    font-size: 1.3rem;
+    font-size: ${({ theme }) => theme.fontSizes.level1};
     margin-top: ${({ theme }) => theme.spacings.level1};
   }
 `;
@@ -70,11 +70,11 @@ export const Input = styled.input`
   border: none;
   border-bottom: 3px solid rgba(0, 0, 0, 0.1);
   color: #000;
-  font-size: 1.4rem;
+  font-size: ${({ theme }) => theme.fontSizes.level1};
   font-family: inherit;
   outline: none;
   padding: 0 0 ${({ theme }) => theme.spacings.level1} 0;
-  transition: border-bottom 0.12s;
+  transition: border-bottom ${({ theme }) => theme.durations.level1}s;
   width: 100%;
 
   &::-webkit-input-placeholder {
@@ -95,9 +95,9 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
-  font-size: 1.5rem;
+  font-size: ${({ theme }) => theme.fontSizes.level3};
   padding-bottom: ${({ theme }) => theme.spacings.level1};
-  transition: color 0.12s;
+  transition: color ${({ theme }) => theme.durations.level1}s;
 
   ${Wrapper}.valid & {
     color: ${({ theme }) => theme.colors.greenDark};
@@ -128,5 +128,11 @@ export const RadioWrapper = styled.div`
 
   &:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.spacings.level1};
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    &:not(:last-child) {
+      margin-bottom: ${({ theme }) => theme.spacings.level2};
+    }
   }
 `;

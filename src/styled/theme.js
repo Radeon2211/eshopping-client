@@ -8,18 +8,17 @@ const theme = {
     blue: '#1E8BC3',
     blueLight: '#22A7F0',
     blueDark: '#67809F',
-    green: '#00A790',
+    green: '#06AD96',
     greenDark: '#009680',
     red: '#F22613',
     redLight: '#F94D2A',
     redDark: '#985A5A',
   },
   shadows: {
-    level1: '0 0 2px rgba(0, 0, 0, .1)',
+    level1: '0 0 1px rgba(0, 0, 0, .1)',
     level2: '0 0 2px rgba(0, 0, 0, .3)',
     level3: '0 0 3px rgba(0, 0, 0, .3)',
     level4: '0 0 5px rgba(0, 0, 0, .3)',
-    level5: '0 0 8px rgba(0, 0, 0, .3)',
   },
   fonts: {
     logo: 'Lobster, cursive',
@@ -38,6 +37,17 @@ const theme = {
     level2: 100,
     level3: 1000,
     level4: 10000,
+  },
+  fontSizes: {
+    level1: '1.3rem',
+    level2: '1.4rem',
+    level3: '1.5rem',
+    level4: '1.7rem',
+  },
+  durations: {
+    level1: 0.1,
+    level2: 0.2,
+    level3: 0.3,
   },
 };
 

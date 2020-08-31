@@ -8,7 +8,7 @@ SC.NumberInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.light4};
   border-radius: 1px;
   box-sizing: content-box;
-  font-size: 1.5rem;
+  font-size: ${({ theme }) => theme.fontSizes.level3};
   outline: none;
   padding: ${({ theme }) => theme.spacings.level1} 0;
   text-align: center;

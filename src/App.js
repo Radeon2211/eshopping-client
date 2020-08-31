@@ -12,6 +12,7 @@ import Products from './containers/Products/Products';
 import Logout from './containers/Logout/Logout';
 
 const ProductDetails = lazy(() => import('./containers/ProductDetails/ProductDetails'));
+const MyAccount = lazy(() => import('./containers/MyAccount/MyAccount'));
 
 const WaitingComponent = (Component) => {
   return (props) => (
@@ -70,6 +71,7 @@ const App = () => {
             <Route path="/logout" component={Logout} />
             <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
+            <Route path="/my-account" component={WaitingComponent(MyAccount)} />
             <Redirect to="/products" />
           </Switch>
         </Main>

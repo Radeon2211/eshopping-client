@@ -45,6 +45,15 @@ const deleteProductFromList = (state, action) => {
   return updateObject(state, { products: updatedProducts });
 };
 
+const clearProducts = (state) => {
+  return updateObject(state, {
+    products: null,
+    productCount: undefined,
+    minPrice: 0,
+    maxPrice: 0,
+  });
+};
+
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_PRODUCTS:
@@ -57,6 +66,8 @@ const productReducer = (state = initialState, action) => {
       return deleteProductDetails(state);
     case actionTypes.DELETE_PRODUCT_FROM_LIST:
       return deleteProductFromList(state, action);
+    case actionTypes.CLEAR_PRODUCTS:
+      return clearProducts(state);
     default:
       return state;
   }

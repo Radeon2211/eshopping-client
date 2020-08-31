@@ -66,7 +66,7 @@ const PurchaseSection = (props) => {
           <span className="quantity-number">{quantityNumberText}</span>
         </div>
         <Button filled>Add to cart</Button>
-        <Button filled clicked={buyNowClickHandle}>
+        <Button filled clicked={buyNowClickHandle} data-test="buy-btn">
           Buy now
         </Button>
       </>

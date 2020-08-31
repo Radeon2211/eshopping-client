@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   align-items: center;
   display: flex;
-  font-size: 1.5rem;
+  font-size: ${({ theme }) => theme.fontSizes.level3};
 
   & .arrow {
     align-items: center;
@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
 
   & .number-link {
     padding: ${({ theme }) => theme.spacings.level1};
-    transition: color 0.1s;
+    transition: color ${({ theme }) => theme.durations.level1}s;
 
     &:hover {
       color: ${({ theme }) => theme.colors.green};

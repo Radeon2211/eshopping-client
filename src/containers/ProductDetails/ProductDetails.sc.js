@@ -28,22 +28,22 @@ export const Wrapper = styled.div`
   }
 
   & .name {
-    font-size: 1.7rem;
+    font-size: ${({ theme }) => theme.fontSizes.level4};
     font-weight: 700;
   }
 
   & .seller {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
   & .seller-link {
     color: ${({ theme }) => theme.colors.green};
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
   }
 
   & .condition {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
@@ -54,7 +54,7 @@ export const Wrapper = styled.div`
   }
 
   & .quantity-sold {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-bottom: ${({ theme }) => theme.spacings.level3};
   }
 
@@ -66,13 +66,13 @@ export const Wrapper = styled.div`
 
   & .description-heading {
     display: inline-block;
-    font-size: 1.7rem;
+    font-size: ${({ theme }) => theme.fontSizes.level4};
     font-weight: 700;
     margin-bottom: ${({ theme }) => theme.spacings.level1};
   }
 
   & .description-content {
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
   }
 
   & .delete-btn-box {

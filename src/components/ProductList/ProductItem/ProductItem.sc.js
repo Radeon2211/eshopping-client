@@ -5,7 +5,7 @@ export const Wrapper = styled.article`
   border-bottom: 1px solid ${({ theme }) => theme.colors.light2};
   display: flex;
   padding: ${({ theme }) => theme.spacings.level2};
-  transition: background-color 0.12s;
+  transition: background-color ${({ theme }) => theme.durations.level1}s;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.07);
@@ -33,11 +33,11 @@ export const Wrapper = styled.article`
   }
 
   & .name {
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
   }
 
   & .condition {
-    font-size: 1.3rem;
+    font-size: ${({ theme }) => theme.fontSizes.level1};
     text-transform: capitalize;
     margin-top: ${({ theme }) => theme.spacings.level1};
   }
@@ -55,7 +55,7 @@ export const Wrapper = styled.article`
 
   & .quantity-sold {
     align-self: flex-end;
-    font-size: 1.3rem;
+    font-size: ${({ theme }) => theme.fontSizes.level1};
   }
 
   & .gray {

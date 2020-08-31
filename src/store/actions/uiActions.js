@@ -1,6 +1,5 @@
 import queryString from 'query-string';
 import * as actionTypes from './actionTypes';
-import { fetchProducts } from './indexActions';
 
 export const formStart = () => ({
   type: actionTypes.FORM_START,
@@ -49,21 +48,15 @@ export const setMaxQuantityPerPage = (quantity) => ({
 });
 
 export const changeMaxQuantityPerPage = (quantity, history) => {
-  return async (dispatch, getState) => {
-    const currentMaxQuantityPerPage = getState().ui.maxQuantityPerPage;
+  return async (dispatch) => {
     dispatch(setMaxQuantityPerPage(quantity));
-    const { productCount } = getState().product;
-    if (currentMaxQuantityPerPage >= productCount && quantity >= productCount) return;
     const parsedQueryParams = queryString.parse(history.location.search);
-    const correctQueryParams = {
-      ...parsedQueryParams,
-      p: 1,
-    };
-    const stringifiedQueryParams = queryString.stringify(correctQueryParams);
-    if (+parsedQueryParams.p === 1) {
-      const onFetchProducts = (queryParams) => dispatch(fetchProducts(queryParams));
-      onFetchProducts(stringifiedQueryParams);
-    } else {
+    if (+parsedQueryParams.p !== 1) {
+      const correctQueryParams = {
+        ...parsedQueryParams,
+        p: 1,
+      };
+      const stringifiedQueryParams = queryString.stringify(correctQueryParams);
       history.push(`${history.location.pathname}?${stringifiedQueryParams}`);
     }
   };

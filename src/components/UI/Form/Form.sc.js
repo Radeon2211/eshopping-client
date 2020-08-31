@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
         }
       `;
     }
+    return ``;
   }}
 
   & .buttons-box {
@@ -32,7 +33,7 @@ export const Wrapper = styled.div`
   & .error {
     color: ${({ theme }) => theme.colors.red};
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-top: ${({ theme }) => theme.spacings.level3};
   }
 `;

@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   }
 
   & .help-info-box {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-bottom: ${({ theme }) => theme.spacings.level3};
     padding: 0 ${({ theme }) => theme.spacings.level2};
     text-align: center;

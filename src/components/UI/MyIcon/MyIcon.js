@@ -10,7 +10,7 @@ SC.Wrapper = styled.div`
 
   & > svg {
     transform: rotate(0deg);
-    transition: transform 0.2s;
+    transition: transform ${({ theme }) => theme.durations.level2}s;
 
     ${({ color, theme }) => {
       if (color) {
