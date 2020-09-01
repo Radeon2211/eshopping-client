@@ -121,3 +121,56 @@ export const changePhoneNumber = (creds) => {
     }
   };
 };
+
+export const changeAddress = (creds) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const correctCreds = {
+        ...creds,
+        country: creds.country.value,
+      };
+      const { data } = await axios.patch('/users/me', correctCreds);
+      dispatch(uiActions.formSuccess());
+      dispatch(setProfile(data.user));
+      dispatch(uiActions.setAndDeleteMessage('Address has been changed successfully'));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};
+
+export const changeContacts = (creds) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const contacts = [];
+      if (!creds.hideEmail) contacts.push('email');
+      if (!creds.hidePhone) contacts.push('phone');
+      const correctCreds = { contacts };
+      const { data } = await axios.patch('/users/me', correctCreds);
+      dispatch(uiActions.formSuccess());
+      dispatch(setProfile(data.user));
+      dispatch(uiActions.setAndDeleteMessage('Contacts have been changed successfully'));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};
+
+export const changePassword = (creds) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const { data } = await axios.patch('/users/me', creds);
+      dispatch(uiActions.formSuccess());
+      dispatch(setProfile(data.user));
+      dispatch(uiActions.setAndDeleteMessage('Password has been changed successfully'));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};

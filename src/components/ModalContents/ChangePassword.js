@@ -1,54 +1,38 @@
 import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import { inputKinds } from '../../shared/constants';
 
 const validationSchema = Yup.object({
-  email: Yup.string().email().trim().required(),
+  password: Yup.string().min(7).max(64).trim().required(),
 });
 
-const ChangeEmail = () => {
-  const userProfile = useSelector((state) => state.auth.profile);
-
+const ChangePassword = () => {
   const dispatch = useDispatch();
-  const onChangeEmail = useCallback((creds) => dispatch(actions.changeEmail(creds)), [dispatch]);
+  const onChangeEmail = useCallback((creds) => dispatch(actions.changePassword(creds)), [dispatch]);
 
   return (
     <Formik
       initialValues={{
-        email: '',
         currentPassword: '',
+        password: '',
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
         onChangeEmail(data);
       }}
     >
-      {({ dirty, errors, touched, values, isValid, setFieldTouched }) => (
+      {({ dirty, errors, touched, isValid, setFieldTouched }) => (
         <Form
           btnText="change"
-          headingText="Change your email"
+          headingText="Change your password"
           isValid={dirty && isValid}
           cancellable
         >
-          <Input
-            kind={inputKinds.INPUT}
-            config={{
-              type: 'email',
-              name: 'email',
-              id: 'email',
-              placeholder: 'Your new email',
-              autoComplete: 'email',
-              onInput: setFieldTouched.bind(this, 'email', true, true),
-            }}
-            isValid={!errors.email && userProfile.email !== values.email}
-            isTouched={touched.email}
-            label="New email"
-          />
           <Input
             kind={inputKinds.INPUT}
             config={{
@@ -60,10 +44,24 @@ const ChangeEmail = () => {
             }}
             label="Current password"
           />
+          <Input
+            kind={inputKinds.INPUT}
+            config={{
+              type: 'password',
+              name: 'password',
+              id: 'password',
+              placeholder: 'Secure password (7-64 characters)',
+              autoComplete: 'off',
+              onInput: setFieldTouched.bind(this, 'password', true, true),
+            }}
+            isValid={!errors.password}
+            isTouched={touched.password}
+            label="New password"
+          />
         </Form>
       )}
     </Formik>
   );
 };
 
-export default ChangeEmail;
+export default ChangePassword;

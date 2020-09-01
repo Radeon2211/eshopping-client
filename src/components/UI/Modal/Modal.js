@@ -15,6 +15,9 @@ import DeleteProduct from '../../ModalContents/DeleteProduct';
 import ChangeName from '../../ModalContents/ChangeName';
 import ChangeEmail from '../../ModalContents/ChangeEmail';
 import ChangePhoneNumber from '../../ModalContents/ChangePhoneNumber';
+import ChangeAddress from '../../ModalContents/ChangeAddress';
+import ChangeContacts from '../../ModalContents/ChangeContacts';
+import ChangePassword from '../../ModalContents/ChangePassword';
 
 const Modal = () => {
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -52,6 +55,15 @@ const Modal = () => {
       break;
     case modalTypes.CHANGE_PHONE_NUMBER:
       modalContentNode = <ChangePhoneNumber />;
+      break;
+    case modalTypes.CHANGE_ADDRESS:
+      modalContentNode = <ChangeAddress />;
+      break;
+    case modalTypes.CHANGE_CONTACTS:
+      modalContentNode = <ChangeContacts />;
+      break;
+    case modalTypes.CHANGE_PASSWORD:
+      modalContentNode = <ChangePassword />;
       break;
     default:
       break;

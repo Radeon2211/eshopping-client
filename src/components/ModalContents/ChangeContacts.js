@@ -8,57 +8,53 @@ import Input from '../UI/Input/Input';
 import { inputKinds } from '../../shared/constants';
 
 const validationSchema = Yup.object({
-  email: Yup.string().email().trim().required(),
+  hideEmail: Yup.bool(),
+  hidePhone: Yup.bool(),
 });
 
-const ChangeEmail = () => {
+const ChangeContacts = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangeEmail = useCallback((creds) => dispatch(actions.changeEmail(creds)), [dispatch]);
+  const onChangeEmail = useCallback((creds) => dispatch(actions.changeContacts(creds)), [dispatch]);
 
   return (
     <Formik
       initialValues={{
-        email: '',
-        currentPassword: '',
+        hideEmail: !userProfile.contacts.includes('email'),
+        hidePhone: !userProfile.contacts.includes('phone'),
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
         onChangeEmail(data);
       }}
     >
-      {({ dirty, errors, touched, values, isValid, setFieldTouched }) => (
+      {({ dirty, isValid, values }) => (
         <Form
           btnText="change"
-          headingText="Change your email"
+          headingText="Change your contacts visibility"
           isValid={dirty && isValid}
           cancellable
         >
           <Input
             kind={inputKinds.INPUT}
             config={{
-              type: 'email',
-              name: 'email',
-              id: 'email',
-              placeholder: 'Your new email',
-              autoComplete: 'email',
-              onInput: setFieldTouched.bind(this, 'email', true, true),
+              type: 'checkbox',
+              name: 'hideEmail',
+              id: 'hideEmail',
+              checked: values.hideEmail,
             }}
-            isValid={!errors.email && userProfile.email !== values.email}
-            isTouched={touched.email}
-            label="New email"
+            label="Hide my email address from others"
           />
           <Input
             kind={inputKinds.INPUT}
             config={{
-              type: 'password',
-              name: 'currentPassword',
-              id: 'currentPassword',
-              placeholder: 'Your current password',
-              autoComplete: 'off',
+              type: 'checkbox',
+              name: 'hidePhone',
+              id: 'hidePhone',
+              checked: values.hidePhone,
             }}
-            label="Current password"
+            label="Hide my phone number from others"
           />
         </Form>
       )}
@@ -66,4 +62,4 @@ const ChangeEmail = () => {
   );
 };
 
-export default ChangeEmail;
+export default ChangeContacts;

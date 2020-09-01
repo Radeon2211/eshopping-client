@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   & .nav-link {
     border-bottom: 2px solid transparent;
     font-size: ${({ theme }) => theme.fontSizes.level2};
+    letter-spacing: 1px;
     padding: ${({ theme }) => theme.spacings.level2};
     text-transform: uppercase;
     transition: all ${({ theme }) => theme.durations.level1}s;
@@ -36,6 +37,12 @@ export const Wrapper = styled.div`
   @media only screen and (max-width: 37.5em) {
     & .nav-list {
       justify-content: center;
+    }
+  }
+
+  @media only screen and (max-width: 390px) {
+    & .nav-link {
+      letter-spacing: 0;
     }
   }
 

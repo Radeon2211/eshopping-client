@@ -6,6 +6,7 @@ import * as modalTypes from '../../../store/actions/modalTypes';
 import Panel from '../../../components/UI/Panel/Panel';
 import Heading from '../../../components/UI/Heading/Heading';
 import SingleInfo from './SingleInfo/SingleInfo';
+import Button from '../../../components/UI/Button/Button';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -13,8 +14,16 @@ SC.Wrapper = styled.div`
   grid-gap: ${({ theme }) => theme.spacings.level3};
   grid-template-columns: repeat(3, 1fr);
 
+  & .change-passwd-btn {
+    grid-area: 3 / 2 / 3 / 3;
+  }
+
   @media only screen and (max-width: 37.5em) {
     grid-template-columns: repeat(2, 1fr);
+
+    & .change-passwd-btn {
+      grid-area: 4 / 1 / 4 / 3;
+    }
   }
 `;
 
@@ -54,7 +63,11 @@ const MyData = () => {
           content={email}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_EMAIL)}
         />
-        <SingleInfo name="Username" content={username} />
+        <SingleInfo
+          name="Phone number"
+          content={phone}
+          clickHandler={() => onSetModal(true, modalTypes.CHANGE_PHONE_NUMBER)}
+        />
         <SingleInfo
           name="Address"
           content={{ street, zipCodeAndCity: `${zipCode} ${city}`, country }}
@@ -65,11 +78,13 @@ const MyData = () => {
           content={contacts}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_CONTACTS)}
         />
-        <SingleInfo
-          name="Phone number"
-          content={phone}
-          clickHandler={() => onSetModal(true, modalTypes.CHANGE_PHONE_NUMBER)}
-        />
+        <SingleInfo name="Username" content={username} />
+        <Button
+          className="change-passwd-btn"
+          clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}
+        >
+          Change password
+        </Button>
       </>
     );
   }

@@ -73,7 +73,6 @@ const Step2 = (props) => {
               config={{
                 name: 'phonePrefix',
                 id: 'phonePrefix',
-                value: '',
                 placeholder: 'Choose your phone number prefix',
                 options: listOfAreaCodes,
                 setFieldValue,

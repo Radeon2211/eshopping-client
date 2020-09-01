@@ -94,7 +94,6 @@ const Step3 = (props) => {
             config={{
               name: 'country',
               id: 'country',
-              value: '',
               placeholder: 'Choose your country',
               options: listOfCountries,
               setFieldValue,

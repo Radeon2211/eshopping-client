@@ -28,12 +28,18 @@ SC.Message = styled(motion.div)`
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.level2};
   justify-content: space-between;
+  margin: 0 ${({ theme }) => theme.spacings.level2};
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   width: 100%;
 
   & .close-icon {
     cursor: pointer;
     transform: rotate(45deg);
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: ${({ theme }) => theme.fontSizes.level3};
+    padding: ${({ theme }) => theme.spacings.level2};
   }
 `;
 

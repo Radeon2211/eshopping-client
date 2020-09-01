@@ -43,7 +43,7 @@ const ChangePhoneNumber = () => {
         onChangePhoneNumber(data);
       }}
     >
-      {({ dirty, setFieldTouched, setFieldValue, isValid, touched, errors }) => (
+      {({ dirty, isValid, touched, errors, setFieldTouched, setFieldValue }) => (
         <Form
           btnText="change"
           headingText="Change your phone number"
@@ -56,7 +56,6 @@ const ChangePhoneNumber = () => {
               config={{
                 name: 'phonePrefix',
                 id: 'phonePrefix',
-                value: '',
                 placeholder: 'Choose your phone number prefix',
                 options: listOfAreaCodes,
                 setFieldValue,

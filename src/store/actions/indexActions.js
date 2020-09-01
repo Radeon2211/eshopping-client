@@ -7,6 +7,9 @@ export {
   changeEmail,
   changeName,
   changePhoneNumber,
+  changeAddress,
+  changeContacts,
+  changePassword,
 } from './authActions';
 export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';
 export {
