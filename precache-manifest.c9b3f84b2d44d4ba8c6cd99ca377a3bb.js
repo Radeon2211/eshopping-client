@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e12411295611d58612029710a21bba1c",
+    "revision": "f1f4f525e4e84802b22755497990f687",
     "url": "/eshopping-client/index.html"
   },
   {
-    "revision": "ca1c4509518e604805ec",
-    "url": "/eshopping-client/static/js/2.b4d6ac25.chunk.js"
+    "revision": "858c1a54abb52df60867",
+    "url": "/eshopping-client/static/js/2.e95b699f.chunk.js"
   },
   {
     "revision": "f925ff808c907f1e05af05a547934faf",
-    "url": "/eshopping-client/static/js/2.b4d6ac25.chunk.js.LICENSE.txt"
+    "url": "/eshopping-client/static/js/2.e95b699f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "68a5643c4245baa7b937",
-    "url": "/eshopping-client/static/js/3.95f7b32c.chunk.js"
+    "revision": "f7b1ba0e45b56fea8d69",
+    "url": "/eshopping-client/static/js/3.0bbd752c.chunk.js"
   },
   {
-    "revision": "080645ce170f90ce0565",
-    "url": "/eshopping-client/static/js/4.d40b7e67.chunk.js"
+    "revision": "3b817ba5b97bd56333d9",
+    "url": "/eshopping-client/static/js/4.9f1644b2.chunk.js"
   },
   {
-    "revision": "a9489a6472822f558c20",
-    "url": "/eshopping-client/static/js/main.c049cfae.chunk.js"
+    "revision": "b9662269fa322247ccc1",
+    "url": "/eshopping-client/static/js/main.0c8dd407.chunk.js"
   },
   {
-    "revision": "2a02e6367d8790c80b34",
-    "url": "/eshopping-client/static/js/runtime-main.9ccd2620.js"
+    "revision": "79d23e45f85d349cb2b0",
+    "url": "/eshopping-client/static/js/runtime-main.39db397b.js"
   },
   {
     "revision": "db646eb5c58ea1936b92346615a89a11",
