@@ -42,6 +42,12 @@ const PurchaseSection = (props) => {
     }
   };
 
+  const addToCartClickHandle = () => {
+    if (!userProfile) {
+      onSetModal(true, modalTypes.LOGIN);
+    }
+  };
+
   const buyNowClickHandle = () => {
     if (!userProfile) {
       onSetModal(true, modalTypes.LOGIN);
@@ -65,8 +71,10 @@ const PurchaseSection = (props) => {
           />
           <span className="quantity-number">{quantityNumberText}</span>
         </div>
-        <Button filled>Add to cart</Button>
-        <Button filled clicked={buyNowClickHandle} data-test="buy-btn">
+        <Button filled clicked={addToCartClickHandle}>
+          Add to cart
+        </Button>
+        <Button filled clicked={buyNowClickHandle}>
           Buy now
         </Button>
       </>

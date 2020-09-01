@@ -1,6 +1,23 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
 import queryString from 'query-string';
+import { getCountries } from 'country-fns';
+
+export const listOfAreaCodes = getCountries().map(({ name, dial }) => {
+  const finalValue = `+${dial} ${name.split('(')[0].trim()}`;
+  return {
+    value: dial,
+    label: finalValue,
+  };
+});
+
+export const listOfCountries = getCountries().map(({ name }) => {
+  const finalValue = name.split('(')[0].trim();
+  return {
+    value: finalValue,
+    label: finalValue,
+  };
+});
 
 export const updateObject = (oldObject, updatedProps) => ({
   ...oldObject,

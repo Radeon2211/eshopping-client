@@ -69,6 +69,55 @@ export const logoutUser = () => {
       dispatch(setProfile(null));
     } catch (error) {
       dispatch(uiActions.setMessage('Unable to logout. Something went wrong'));
+      setTimeout(() => {
+        dispatch(uiActions.deleteMessage());
+      }, 5000);
+    }
+  };
+};
+
+export const changeEmail = (creds) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const { data } = await axios.patch('/users/me', creds);
+      dispatch(uiActions.formSuccess());
+      dispatch(setProfile(data.user));
+      dispatch(uiActions.setAndDeleteMessage('Email has been changed successfully'));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};
+
+export const changeName = (creds) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const { data } = await axios.patch('/users/me', creds);
+      dispatch(uiActions.formSuccess());
+      dispatch(setProfile(data.user));
+      dispatch(uiActions.setAndDeleteMessage('Name has been changed successfully'));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};
+
+export const changePhoneNumber = (creds) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const correctCreds = { phone: `+${creds.phonePrefix.value} ${creds.phoneNumber}` };
+      const { data } = await axios.patch('/users/me', correctCreds);
+      dispatch(uiActions.formSuccess());
+      dispatch(setProfile(data.user));
+      dispatch(uiActions.setAndDeleteMessage('Phone number has been changed successfully'));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
     }
   };
 };

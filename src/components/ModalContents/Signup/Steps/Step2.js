@@ -1,21 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
-import { getCountries } from 'country-fns';
 import * as SC from '../Signup.sc';
-import Input from '../../../../components/UI/Input/Input';
-import Button from '../../../../components/UI/Button/Button';
-import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
+import Input from '../../../UI/Input/Input';
+import Button from '../../../UI/Button/Button';
+import SideBySide from '../../../UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds } from '../../../../shared/constants';
-
-const listOfAreaCodes = getCountries().map(({ name, dial }) => {
-  const finalValue = `+${dial} ${name.split('(')[0].trim()}`;
-  return {
-    value: dial,
-    label: finalValue,
-  };
-});
+import { listOfAreaCodes } from '../../../../shared/utility';
 
 const Step2 = (props) => {
   const {

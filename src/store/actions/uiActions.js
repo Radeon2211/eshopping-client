@@ -47,6 +47,15 @@ export const setMaxQuantityPerPage = (quantity) => ({
   maxQuantityPerPage: quantity,
 });
 
+export const setAndDeleteMessage = (message) => {
+  return (dispatch) => {
+    dispatch(setMessage(message));
+    setTimeout(() => {
+      dispatch(deleteMessage());
+    }, 5000);
+  };
+};
+
 export const changeMaxQuantityPerPage = (quantity, history) => {
   return async (dispatch) => {
     dispatch(setMaxQuantityPerPage(quantity));

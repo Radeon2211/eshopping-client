@@ -19,12 +19,10 @@ const Products = (props) => {
     (queryParams, pageType) => dispatch(actions.fetchProducts(queryParams, pageType)),
     [dispatch],
   );
-  const clearProducts = useCallback(() => dispatch(actions.clearProducts()), [dispatch]);
 
   useEffect(() => {
     onFetchProducts(search, pages.ALL_PRODUCTS);
-    return () => clearProducts();
-  }, [search, onFetchProducts, clearProducts, maxQuantityPerPage, userProfile]);
+  }, [search, onFetchProducts, maxQuantityPerPage, userProfile]);
 
   const { name } = queryString.parse(search);
   let headingText = 'All products';

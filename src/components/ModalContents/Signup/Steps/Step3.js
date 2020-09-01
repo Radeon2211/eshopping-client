@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
-import { getCountries } from 'country-fns';
 import { useSelector } from 'react-redux';
 import * as SC from '../Signup.sc';
-import Input from '../../../../components/UI/Input/Input';
-import Button from '../../../../components/UI/Button/Button';
-import SideBySide from '../../../../components/UI/SideBySide/SideBySide';
+import Input from '../../../UI/Input/Input';
+import Button from '../../../UI/Button/Button';
+import SideBySide from '../../../UI/SideBySide/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds } from '../../../../shared/constants';
+import { listOfCountries } from '../../../../shared/utility';
 
 const Step3 = (props) => {
   const {
@@ -38,17 +38,7 @@ const Step3 = (props) => {
     btnDisabled = true;
   }
 
-  const listOfCountries = getCountries().map(({ name }) => {
-    const finalValue = name.split('(')[0].trim();
-    return {
-      value: finalValue,
-      label: finalValue,
-    };
-  });
-
   const error = formError ? <span className="error">{formError}</span> : null;
-
-  console.log(touched);
 
   return (
     <AnimatePresence>

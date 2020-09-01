@@ -18,12 +18,10 @@ const MyProducts = (props) => {
     (queryParams, pageType) => dispatch(actions.fetchProducts(queryParams, pageType)),
     [dispatch],
   );
-  const clearProducts = useCallback(() => dispatch(actions.clearProducts()), [dispatch]);
 
   useEffect(() => {
     onFetchProducts(search, pages.MY_PRODUCTS);
-    return () => clearProducts();
-  }, [search, onFetchProducts, clearProducts, maxQuantityPerPage, userProfile]);
+  }, [search, onFetchProducts, maxQuantityPerPage, userProfile]);
 
   return (
     <>

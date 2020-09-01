@@ -65,18 +65,22 @@ describe('<PurchaseSection />', () => {
     });
   });
 
-  describe('Check how buy button reacts on click', () => {
-    it('Should call onSetModal()', () => {
+  describe('Check how buttons reacts on click', () => {
+    it('Should buttons call onSetModal()', () => {
       const onSetModalFn = jest.fn();
       const wrapper = setUp({ userProfile: undefined, onSetModal: onSetModalFn });
+      const addToCartBtn = wrapper.find(Button).first();
       const buyBtn = wrapper.find(Button).last();
+      addToCartBtn.simulate('click');
       buyBtn.simulate('click');
-      expect(onSetModalFn.mock.calls).toHaveLength(1);
+      expect(onSetModalFn.mock.calls).toHaveLength(2);
     });
-    it('Should NOT call onSetModal()', () => {
+    it('Should NOT buttons call onSetModal()', () => {
       const onSetModalFn = jest.fn();
       const wrapper = setUp({ onSetModal: onSetModalFn });
+      const addToCartBtn = wrapper.find(Button).first();
       const buyBtn = wrapper.find(Button).last();
+      addToCartBtn.simulate('click');
       buyBtn.simulate('click');
       expect(onSetModalFn.mock.calls).toHaveLength(0);
     });

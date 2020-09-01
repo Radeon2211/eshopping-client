@@ -93,7 +93,7 @@ Input.propTypes = {
   }).isRequired,
   label: PropTypes.string.isRequired,
   isValid: PropTypes.bool,
-  isTouched: PropTypes.bool,
+  isTouched: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   captionText: PropTypes.string,
 };
 

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
 import * as SC from '../Signup.sc';
-import Input from '../../../../components/UI/Input/Input';
-import Button from '../../../../components/UI/Button/Button';
+import Input from '../../../UI/Input/Input';
+import Button from '../../../UI/Button/Button';
 import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds } from '../../../../shared/constants';
 

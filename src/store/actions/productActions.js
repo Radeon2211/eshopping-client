@@ -142,7 +142,7 @@ export const deleteProduct = (productId, history) => {
       dispatch(deleteProductDetails());
       dispatch(deleteProductFromList(productId));
       dispatch(uiActions.formSuccess());
-      dispatch(uiActions.setMessage('Product has been deleted succesfully'));
+      dispatch(uiActions.setMessage('Product has been deleted successfully'));
       setTimeout(() => {
         dispatch(uiActions.deleteMessage());
       }, 5000);

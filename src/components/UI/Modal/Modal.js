@@ -8,10 +8,13 @@ import MyIcon from '../MyIcon/MyIcon';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 import { backdropVariants, modalVariants } from '../../../shared/framer';
-import Signup from '../../../containers/Forms/Signup/Signup';
-import Login from '../../../containers/Forms/Login';
-import AddProduct from '../../../containers/Forms/AddProduct/AddProduct';
-import DeleteProduct from '../../DeleteProduct/DeleteProduct';
+import Signup from '../../ModalContents/Signup/Signup';
+import Login from '../../ModalContents/Login';
+import AddProduct from '../../ModalContents/AddProduct/AddProduct';
+import DeleteProduct from '../../ModalContents/DeleteProduct';
+import ChangeName from '../../ModalContents/ChangeName';
+import ChangeEmail from '../../ModalContents/ChangeEmail';
+import ChangePhoneNumber from '../../ModalContents/ChangePhoneNumber';
 
 const Modal = () => {
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -40,6 +43,15 @@ const Modal = () => {
       break;
     case modalTypes.DELETE_PRODUCT:
       modalContentNode = <DeleteProduct />;
+      break;
+    case modalTypes.CHANGE_NAME:
+      modalContentNode = <ChangeName />;
+      break;
+    case modalTypes.CHANGE_EMAIL:
+      modalContentNode = <ChangeEmail />;
+      break;
+    case modalTypes.CHANGE_PHONE_NUMBER:
+      modalContentNode = <ChangePhoneNumber />;
       break;
     default:
       break;

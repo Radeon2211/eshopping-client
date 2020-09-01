@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
     left: 0;
     position: absolute;
     top: 0;
-    transition: width ${({ theme }) => theme.durations.level3};s
+    transition: width ${({ theme }) => theme.durations.level3}s;
     width: 0;
   }
 
