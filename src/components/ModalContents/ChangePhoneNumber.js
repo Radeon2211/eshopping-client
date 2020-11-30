@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
-import SideBySide from '../UI/SideBySide/SideBySide';
+import SideBySide from '../UI/SideBySide';
 import { inputKinds } from '../../shared/constants';
 import { listOfAreaCodes } from '../../shared/utility';
 

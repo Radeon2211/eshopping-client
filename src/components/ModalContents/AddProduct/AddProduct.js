@@ -4,10 +4,10 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import Form from '../../../components/UI/Form/Form';
-import Input from '../../../components/UI/Input/Input';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
 import UploadPhoto from './UploadPhoto/UploadPhoto';
-import SideBySide from '../../../components/UI/SideBySide/SideBySide';
+import SideBySide from '../../UI/SideBySide';
 import { inputKinds } from '../../../shared/constants';
 
 const validationSchema = Yup.object({

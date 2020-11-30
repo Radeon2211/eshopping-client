@@ -8,7 +8,7 @@ import Button from '../Button/Button';
 import Heading from '../Heading/Heading';
 
 const Form = (props) => {
-  const { headingText, btnText, isValid, cancellable, children, height } = props;
+  const { headingText, btnText, isValid, cancellable, children, height, btnColor } = props;
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
   const formError = useSelector((state) => state.ui.formError);
@@ -40,7 +40,7 @@ const Form = (props) => {
     buttonsBox = (
       <div className="buttons-box">
         {cancelButton}
-        <Button filled type="submit" disabled={!isValid || isFormLoading}>
+        <Button filled type="submit" color={btnColor} disabled={!isValid || isFormLoading}>
           {btnText}
         </Button>
       </div>
@@ -69,6 +69,7 @@ Form.defaultProps = {
   isValid: undefined,
   cancellable: false,
   height: undefined,
+  btnColor: 'blue',
 };
 
 Form.propTypes = {
@@ -78,6 +79,7 @@ Form.propTypes = {
   cancellable: PropTypes.bool,
   children: PropTypes.node.isRequired,
   height: PropTypes.number,
+  btnColor: PropTypes.string,
 };
 
 export default Form;

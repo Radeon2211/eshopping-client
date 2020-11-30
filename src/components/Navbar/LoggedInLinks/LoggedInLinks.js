@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CartIcon } from '../../../images/SVG/cart.svg';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
-import MyIcon from '../../UI/MyIcon/MyIcon';
+import MyIcon from '../../UI/MyIcon';
 import Dropdown from './Dropdown/Dropdown';
 
 const SC = {};

@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import Select from 'react-select';
 import * as SC from './Filters.sc';
 import Heading from '../UI/Heading/Heading';
-import Panel from '../UI/Panel/Panel';
+import Panel from '../UI/Panel';
 import Button from '../UI/Button/Button';
 import PriceSlider from './PriceSlider/PriceSlider';
 import { updateObject } from '../../shared/utility';

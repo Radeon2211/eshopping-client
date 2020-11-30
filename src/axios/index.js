@@ -1,7 +1,10 @@
 import axios from 'axios';
 import adapter from 'axios/lib/adapters/http';
 
-export const baseURL = 'https://radeon2211-eshopping.herokuapp.com';
+const serverURL = 'https://radeon2211-eshopping.herokuapp.com';
+const localURL = 'http://192.168.1.109:4000';
+
+export const baseURL = serverURL;
 
 const instance = axios.create({
   baseURL,

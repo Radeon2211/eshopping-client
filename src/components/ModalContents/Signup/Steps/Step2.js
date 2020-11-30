@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import * as SC from '../Signup.sc';
 import Input from '../../../UI/Input/Input';
 import Button from '../../../UI/Button/Button';
-import SideBySide from '../../../UI/SideBySide/SideBySide';
+import SideBySide from '../../../UI/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds } from '../../../../shared/constants';
 import { listOfAreaCodes } from '../../../../shared/utility';

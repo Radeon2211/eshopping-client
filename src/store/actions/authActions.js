@@ -174,3 +174,21 @@ export const changePassword = (creds) => {
     }
   };
 };
+
+export const deleteAccount = (creds, history) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const { data } = await axios.delete('/users/me', { data: creds });
+      dispatch(uiActions.formSuccess());
+      dispatch(setProfile(null));
+      dispatch(
+        uiActions.setAndDeleteMessage(`Your account has been deleted. Goodbye ${data.username}!`),
+      );
+      history.replace('/products?p=1');
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};

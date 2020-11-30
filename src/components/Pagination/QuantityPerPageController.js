@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Select from 'react-select';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../../store/actions/indexActions';
+import * as actions from '../../store/actions/indexActions';
 
 export const SC = {};
 SC.Wrapper = styled.div`

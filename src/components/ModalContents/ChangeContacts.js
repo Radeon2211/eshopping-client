@@ -16,7 +16,9 @@ const ChangeContacts = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangeEmail = useCallback((creds) => dispatch(actions.changeContacts(creds)), [dispatch]);
+  const onChangeContacts = useCallback((creds) => dispatch(actions.changeContacts(creds)), [
+    dispatch,
+  ]);
 
   return (
     <Formik
@@ -26,7 +28,7 @@ const ChangeContacts = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangeEmail(data);
+        onChangeContacts(data);
       }}
     >
       {({ dirty, isValid, values }) => (

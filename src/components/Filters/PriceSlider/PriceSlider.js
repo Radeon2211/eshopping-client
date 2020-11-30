@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import * as SC from './PriceSlider.sc';
-import NumberInput from '../../UI/NumberInput/NumberInput';
+import NumberInput from '../../UI/NumberInput';
 import { filtersActions } from '../../../shared/constants';
 import { updateObject } from '../../../shared/utility';
 

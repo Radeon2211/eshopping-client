@@ -6,10 +6,10 @@ import * as actions from './store/actions/indexActions';
 import Modal from './components/UI/Modal/Modal';
 import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
-import Loader from './components/UI/Loader/Loader';
-import Main from './components/UI/Main/Main';
-import Products from './containers/Products/Products';
-import Logout from './containers/Logout/Logout';
+import Loader from './components/UI/Loader';
+import Main from './components/UI/Main';
+import Products from './containers/Products';
+import Logout from './containers/Logout';
 
 const ProductDetails = lazy(() => import('./containers/ProductDetails/ProductDetails'));
 const MyAccount = lazy(() => import('./containers/MyAccount/MyAccount'));

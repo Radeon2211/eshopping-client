@@ -11,7 +11,7 @@ import * as SC from './ProductsAndFilters.sc';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
 import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
-import QuantityPerPageController from '../Pagination/QuantityPerPageController/QuantityPerPageController';
+import QuantityPerPageController from '../Pagination/QuantityPerPageController';
 import * as FiltersSC from '../Filters/Filters.sc';
 import { checkProps } from '../../shared/utility';
 import { pages } from '../../shared/constants';

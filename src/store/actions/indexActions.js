@@ -10,6 +10,7 @@ export {
   changeAddress,
   changeContacts,
   changePassword,
+  deleteAccount,
 } from './authActions';
 export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';
 export {

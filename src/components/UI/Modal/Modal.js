@@ -2,10 +2,10 @@ import React, { useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import * as modalTypes from '../../../store/actions/modalTypes';
+import { modalTypes } from '../../../shared/constants';
 import * as SC from './Modal.sc';
-import MyIcon from '../MyIcon/MyIcon';
-import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
+import MyIcon from '../MyIcon';
+import LoadingOverlay from '../LoadingOverlay';
 import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../ModalContents/Signup/Signup';
@@ -18,6 +18,7 @@ import ChangePhoneNumber from '../../ModalContents/ChangePhoneNumber';
 import ChangeAddress from '../../ModalContents/ChangeAddress';
 import ChangeContacts from '../../ModalContents/ChangeContacts';
 import ChangePassword from '../../ModalContents/ChangePassword';
+import DeleteAccount from '../../ModalContents/DeleteAccount';
 
 const Modal = () => {
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -64,6 +65,9 @@ const Modal = () => {
       break;
     case modalTypes.CHANGE_PASSWORD:
       modalContentNode = <ChangePassword />;
+      break;
+    case modalTypes.DELETE_ACCOUNT:
+      modalContentNode = <DeleteAccount />;
       break;
     default:
       break;

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
-import SideBySide from '../UI/SideBySide/SideBySide';
+import SideBySide from '../UI/SideBySide';
 import { inputKinds } from '../../shared/constants';
 import { listOfCountries } from '../../shared/utility';
 
@@ -26,7 +26,7 @@ const ChangeAddress = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangePhoneNumber = useCallback((creds) => dispatch(actions.changeAddress(creds)), [
+  const onChangeAddress = useCallback((creds) => dispatch(actions.changeAddress(creds)), [
     dispatch,
   ]);
 
@@ -42,7 +42,7 @@ const ChangeAddress = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangePhoneNumber(data);
+        onChangeAddress(data);
       }}
     >
       {({ dirty, setFieldTouched, setFieldValue, isValid, touched, errors }) => (

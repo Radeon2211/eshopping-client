@@ -8,7 +8,7 @@ import ProductItem from './ProductItem/ProductItem';
 import Heading from '../UI/Heading/Heading';
 import { checkProps } from '../../shared/utility';
 import { pages } from '../../shared/constants';
-import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
+import LoadingOverlay from '../UI/LoadingOverlay';
 
 const createHistory = (search = '') => ({
   listen: jest.fn(),

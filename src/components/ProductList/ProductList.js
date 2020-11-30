@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import queryString from 'query-string';
 import ProductItem from './ProductItem/ProductItem';
-import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
+import LoadingOverlay from '../UI/LoadingOverlay';
 import Heading from '../UI/Heading/Heading';
 import { pages } from '../../shared/constants';
 

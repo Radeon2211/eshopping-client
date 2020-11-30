@@ -1,10 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import queryString from 'query-string';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Heading from '../../components/UI/Heading/Heading';
-import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
-import { pages } from '../../shared/constants';
+import * as actions from '../store/actions/indexActions';
+import Heading from '../components/UI/Heading/Heading';
+import ProductsAndFilters from '../components/ProductsAndFilters/ProductsAndFilters';
+import { pages } from '../shared/constants';
 
 const Products = (props) => {
   const {

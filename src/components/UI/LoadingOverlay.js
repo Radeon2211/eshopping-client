@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Loader from '../Loader/Loader';
+import Loader from './Loader';
 
 const SC = {};
 SC.Wrapper = styled.div`

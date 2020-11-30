@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { useHistory, Link } from 'react-router-dom';
 import * as SC from './NumberPagination.sc';
-import MyIcon from '../../UI/MyIcon/MyIcon';
+import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 

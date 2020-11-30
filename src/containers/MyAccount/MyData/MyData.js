@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import * as modalTypes from '../../../store/actions/modalTypes';
-import Panel from '../../../components/UI/Panel/Panel';
+import { modalTypes } from '../../../shared/constants';
+import Panel from '../../../components/UI/Panel';
 import Heading from '../../../components/UI/Heading/Heading';
 import SingleInfo from './SingleInfo/SingleInfo';
 import Button from '../../../components/UI/Button/Button';
@@ -79,11 +79,11 @@ const MyData = () => {
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_CONTACTS)}
         />
         <SingleInfo name="Username" content={username} />
-        <Button
-          className="change-passwd-btn"
-          clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}
-        >
+        <Button clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}>
           Change password
+        </Button>
+        <Button color="red" clicked={() => onSetModal(true, modalTypes.DELETE_ACCOUNT)}>
+          Delete account
         </Button>
       </>
     );

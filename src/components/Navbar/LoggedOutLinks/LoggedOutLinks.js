@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import * as modalTypes from '../../../store/actions/modalTypes';
+import { modalTypes } from '../../../shared/constants';
 import Button from '../../UI/Button/Button';
 
 const SC = {};

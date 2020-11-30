@@ -13,7 +13,9 @@ const validationSchema = Yup.object({
 
 const ChangePassword = () => {
   const dispatch = useDispatch();
-  const onChangeEmail = useCallback((creds) => dispatch(actions.changePassword(creds)), [dispatch]);
+  const onChangePassword = useCallback((creds) => dispatch(actions.changePassword(creds)), [
+    dispatch,
+  ]);
 
   return (
     <Formik
@@ -23,7 +25,7 @@ const ChangePassword = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangeEmail(data);
+        onChangePassword(data);
       }}
     >
       {({ dirty, errors, touched, isValid, setFieldTouched }) => (

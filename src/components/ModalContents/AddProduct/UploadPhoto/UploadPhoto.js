@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
 import { isValidFileType, calculateFileSize } from '../../../../shared/utility';
-import Button from '../../../../components/UI/Button/Button';
+import Button from '../../../UI/Button/Button';
 
 const PRODUCT_PHOTO_MAX_SIZE = 6291456;
 const PRODUCT_PHOTO_MAX_SIZE_STRING = calculateFileSize(PRODUCT_PHOTO_MAX_SIZE);

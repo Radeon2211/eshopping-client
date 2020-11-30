@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './PurchaseSection.sc';
-import * as modalTypes from '../../../store/actions/modalTypes';
+import { modalTypes } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
-import ChooseQuantity from '../../../components/UI/ChooseQuantity/ChooseQuantity';
+import ChooseQuantity from '../../../components/UI/ChooseQuantity';
 
 const PurchaseSection = (props) => {
   const { productQuantity, productSellerId, onSetModal, userProfile } = props;

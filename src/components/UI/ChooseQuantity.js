@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import NumberInput from '../NumberInput/NumberInput';
-import MyIcon from '../MyIcon/MyIcon';
-import { ReactComponent as MinusIcon } from '../../../images/SVG/minus.svg';
-import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
-import themeStyles from '../../../styled/theme';
+import NumberInput from './NumberInput';
+import MyIcon from './MyIcon';
+import { ReactComponent as MinusIcon } from '../../images/SVG/minus.svg';
+import { ReactComponent as PlusIcon } from '../../images/SVG/plus.svg';
+import themeStyles from '../../styled/theme';
 
 const SC = {};
 SC.Wrapper = styled.div`

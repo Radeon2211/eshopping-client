@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import { messageBoxVariants } from '../../../shared/framer';
-import MyIcon from '../MyIcon/MyIcon';
+import MyIcon from '../MyIcon';
 import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 
 export const SC = {};
