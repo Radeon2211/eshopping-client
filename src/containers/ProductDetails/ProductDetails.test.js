@@ -6,11 +6,11 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
-import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
+import LoadingOverlay from '../../components/UI/LoadingOverlay';
 import Heading from '../../components/UI/Heading/Heading';
 import { checkProps } from '../../shared/utility';
 import theme from '../../styled/theme';
-import SideBySide from '../../components/UI/SideBySide/SideBySide';
+import SideBySide from '../../components/UI/SideBySide';
 
 const mockStore = configureMockStore([thunk]);
 

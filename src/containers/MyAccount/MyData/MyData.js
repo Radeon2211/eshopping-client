@@ -54,7 +54,7 @@ const MyData = () => {
     wrapperContent = (
       <>
         <SingleInfo
-          name="First and last name"
+          name="Name"
           content={`${firstName} ${lastName}`}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_NAME)}
         />

@@ -26,6 +26,7 @@ export const updateObject = (oldObject, updatedProps) => ({
 
 export const getErrorMessage = (error) => {
   let errorMessage = 'Something went wrong';
+  console.log(error.response);
   if (error.response.data.errors) {
     errorMessage = Object.values(error.response.data.errors)[0].properties.message;
   }

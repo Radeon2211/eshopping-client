@@ -6,12 +6,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-items: stretch;
 
-  & > *:not(:last-child) {
+  & > button:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.spacings.level2};
   }
 
   & .quantity-box {
     align-items: center;
+    margin-bottom: ${({ theme }) => theme.spacings.level3};
     display: flex;
   }
 

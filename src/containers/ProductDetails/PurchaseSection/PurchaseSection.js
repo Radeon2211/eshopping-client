@@ -56,7 +56,6 @@ const PurchaseSection = (props) => {
 
   let purchaseSection = <span className="not-able-to-buy">You are the seller of this product</span>;
   if (userProfile?._id !== productSellerId) {
-    const quantityNumberText = `of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`;
     purchaseSection = (
       <>
         <div className="quantity-box">
@@ -69,7 +68,9 @@ const PurchaseSection = (props) => {
             changed={inputChangeHandle}
             blured={inputValidateHandle}
           />
-          <span className="quantity-number">{quantityNumberText}</span>
+          <span className="quantity-number">
+            {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
+          </span>
         </div>
         <Button filled clicked={addToCartClickHandle}>
           Add to cart

@@ -32,7 +32,7 @@ const ChangeEmail = () => {
         <Form
           btnText="change"
           headingText="Change your email"
-          isValid={dirty && isValid}
+          isValid={dirty && isValid && userProfile.email !== values.email}
           cancellable
         >
           <Input

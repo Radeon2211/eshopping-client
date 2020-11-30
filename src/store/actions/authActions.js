@@ -183,7 +183,9 @@ export const deleteAccount = (creds, history) => {
       dispatch(uiActions.formSuccess());
       dispatch(setProfile(null));
       dispatch(
-        uiActions.setAndDeleteMessage(`Your account has been deleted. Goodbye ${data.username}!`),
+        uiActions.setAndDeleteMessage(
+          `Your account has been deleted. Goodbye ${data.user.username}!`,
+        ),
       );
       history.replace('/products?p=1');
     } catch (error) {
