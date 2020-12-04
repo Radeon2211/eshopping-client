@@ -80,7 +80,7 @@ export const Wrapper = styled.div`
     text-align: center;
   }
 
-  & .gray {
+  & .gray-text {
     color: ${({ theme }) => theme.colors.light4};
   }
 

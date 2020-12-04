@@ -8,11 +8,26 @@ import { Formik } from 'formik';
 import theme from '../../../styled/theme';
 import Form from './Form';
 import Heading from '../Heading/Heading';
-import { checkProps } from '../../../shared/utility';
+import { checkProps } from '../../../shared/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUpWrapper = (props, store) => {
+const defaultProps = {
+  headingText: 'testHeadingText',
+  btnText: 'testBtnText',
+  isValid: true,
+  cancellable: true,
+  children: <div />,
+};
+
+const defaultStore = mockStore({
+  ui: {
+    isFormLoading: true,
+    formError: 'testError',
+  },
+});
+
+const setUp = (props, store) => {
   return mount(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -38,23 +53,10 @@ describe('<Form />', () => {
     });
   });
 
-  describe('Complete props and redux values', () => {
+  describe('Complete props (without btnColor) and redux values', () => {
     let wrapper;
     beforeEach(() => {
-      const props = {
-        headingText: 'testHeadingText',
-        btnText: 'testBtnText',
-        isValid: true,
-        cancellable: true,
-        children: <div />,
-      };
-      const store = mockStore({
-        ui: {
-          isFormLoading: true,
-          formError: 'testError',
-        },
-      });
-      wrapper = setUpWrapper(props, store);
+      wrapper = setUp(defaultProps, defaultStore);
     });
     it('Should render heading', () => {
       expect(wrapper.find(Heading)).toHaveLength(1);
@@ -70,7 +72,23 @@ describe('<Form />', () => {
     });
   });
 
-  describe('Incomplete props and redux values', () => {
+  describe('Check if submit button color is correct', () => {
+    it('Should render red submit button', () => {
+      const props = {
+        ...defaultProps,
+        btnColor: 'red',
+      };
+      const wrapper = setUp(props, defaultStore);
+      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toBe('red');
+    });
+
+    it('Should render blue submit button', () => {
+      const wrapper = setUp(defaultProps, defaultStore);
+      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toBe('blue');
+    });
+  });
+
+  describe('Incomplete props and redux values and btnColor = red', () => {
     let wrapper;
     beforeEach(() => {
       const props = {
@@ -82,7 +100,7 @@ describe('<Form />', () => {
           formError: '',
         },
       });
-      wrapper = setUpWrapper(props, store);
+      wrapper = setUp(props, store);
     });
     it('Should NOT render heading', () => {
       expect(wrapper.find(Heading)).toHaveLength(0);

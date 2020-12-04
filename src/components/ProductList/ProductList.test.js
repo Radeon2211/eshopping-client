@@ -6,7 +6,7 @@ import theme from '../../styled/theme';
 import ProductList from './ProductList';
 import ProductItem from './ProductItem/ProductItem';
 import Heading from '../UI/Heading/Heading';
-import { checkProps } from '../../shared/utility';
+import { checkProps } from '../../shared/testUtility';
 import { pages } from '../../shared/constants';
 import LoadingOverlay from '../UI/LoadingOverlay';
 
@@ -18,6 +18,12 @@ const createHistory = (search = '') => ({
 
 const defaultHistory = createHistory();
 
+const createProps = (isDataLoading, products, page = pages.ALL_PRODUCTS) => ({
+  isDataLoading,
+  products,
+  page,
+});
+
 const setUp = (props, history = defaultHistory) => {
   return mount(
     <Router history={history}>
@@ -27,12 +33,6 @@ const setUp = (props, history = defaultHistory) => {
     </Router>,
   );
 };
-
-const createProps = (isDataLoading, products, page = pages.ALL_PRODUCTS) => ({
-  isDataLoading,
-  products,
-  page,
-});
 
 describe('<ProductItem />', () => {
   describe('Check prop types', () => {

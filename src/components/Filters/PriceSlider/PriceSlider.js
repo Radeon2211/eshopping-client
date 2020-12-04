@@ -5,32 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import * as SC from './PriceSlider.sc';
 import NumberInput from '../../UI/NumberInput';
-import { filtersActions } from '../../../shared/constants';
-import { updateObject } from '../../../shared/utility';
-
-const positionsActions = {
-  SET_BOTH: 'SET_BOTH',
-  SET_LEFT: 'SET_LEFT',
-  SET_RIGHT: 'SET_RIGHT',
-};
-
-const positionsInitialState = {
-  left: 0,
-  right: 0,
-};
-
-const positionsReducer = (state = positionsInitialState, action) => {
-  switch (action.type) {
-    case positionsActions.SET_BOTH:
-      return { ...action.payload };
-    case positionsActions.SET_LEFT:
-      return updateObject(state, { left: action.left });
-    case positionsActions.SET_RIGHT:
-      return updateObject(state, { right: action.right });
-    default:
-      return state;
-  }
-};
+import { filtersActions, sliderPositionsActions } from '../../../shared/constants';
+import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
 const PriceSlider = (props) => {
   const { dispatchFilters } = props;
@@ -43,7 +19,10 @@ const PriceSlider = (props) => {
     (state) => state.product,
   );
 
-  const [positions, dispatchPositions] = useReducer(positionsReducer, positionsInitialState);
+  const [positions, dispatchPositions] = useReducer(
+    sliderPositionsReducer,
+    sliderPositionsInitialState,
+  );
   const [inputValues, setInputValues] = useState({
     minPrice: 0,
     maxPrice: 0,
@@ -96,7 +75,7 @@ const PriceSlider = (props) => {
     }
 
     dispatchPositions({
-      type: positionsActions.SET_BOTH,
+      type: sliderPositionsActions.SET_BOTH,
       payload: { left: leftPercentValue, right: rightPercentValue },
     });
     setInputValues({
@@ -142,7 +121,7 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = (100 / maxPriceStateToCalculate) * minValueToCalculate;
       }
-      dispatchPositions({ type: positionsActions.SET_LEFT, left: percentValue });
+      dispatchPositions({ type: sliderPositionsActions.SET_LEFT, left: percentValue });
       dispatchFilters({ type: filtersActions.SET_MIN_PRICE, minPrice: value });
     } else {
       if (value > maxPriceState) {
@@ -154,7 +133,7 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = 100 - (100 / maxPriceStateToCalculate) * maxValueToCalculate;
       }
-      dispatchPositions({ type: positionsActions.SET_RIGHT, right: percentValue });
+      dispatchPositions({ type: sliderPositionsActions.SET_RIGHT, right: percentValue });
       dispatchFilters({ type: filtersActions.SET_MAX_PRICE, maxPrice: value });
     }
 
@@ -190,7 +169,7 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = (100 / maxPriceStateToCalculate) * minValueToCalculate;
       }
-      dispatchPositions({ type: positionsActions.SET_LEFT, left: percentValue });
+      dispatchPositions({ type: sliderPositionsActions.SET_LEFT, left: percentValue });
       dispatchFilters({ type: filtersActions.SET_MIN_PRICE, minPrice: parsedValue });
     } else {
       if (maxPriceState - parsedValue <= maxPriceState / 1000) {
@@ -200,7 +179,7 @@ const PriceSlider = (props) => {
       if (maxPriceStateToCalculate !== 0) {
         percentValue = 100 - (100 / maxPriceStateToCalculate) * maxValueToCalculate;
       }
-      dispatchPositions({ type: positionsActions.SET_RIGHT, right: percentValue });
+      dispatchPositions({ type: sliderPositionsActions.SET_RIGHT, right: percentValue });
       dispatchFilters({ type: filtersActions.SET_MAX_PRICE, maxPrice: parsedValue });
     }
 
@@ -226,6 +205,7 @@ const PriceSlider = (props) => {
             changed={inputChangeHandle}
             blured={validateInputValue}
             floating
+            data-test="min-price-input"
           />
           <span className="inputs-gap">&mdash;</span>
           <NumberInput
@@ -235,6 +215,7 @@ const PriceSlider = (props) => {
             changed={inputChangeHandle}
             blured={validateInputValue}
             floating
+            data-test="max-price-input"
           />
         </div>
       </SC.LabelAndInputs>
@@ -248,6 +229,7 @@ const PriceSlider = (props) => {
           value={rangeValues.minPrice}
           onChange={rangeChangeHandle}
           className="input min"
+          data-test="min-price-range"
         />
         <input
           type="range"
@@ -258,6 +240,7 @@ const PriceSlider = (props) => {
           value={rangeValues.maxPrice}
           onChange={rangeChangeHandle}
           className="input max"
+          data-test="max-price-range"
         />
         <div className="track" />
         <div className="range" />

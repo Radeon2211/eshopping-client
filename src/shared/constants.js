@@ -31,6 +31,12 @@ export const filtersActions = {
   SET_CONDITION: 'SET_CONDITION',
 };
 
+export const sliderPositionsActions = {
+  SET_BOTH: 'SET_BOTH',
+  SET_LEFT: 'SET_LEFT',
+  SET_RIGHT: 'SET_RIGHT',
+};
+
 export const modalTypes = {
   SIGNUP: 'SIGNUP',
   LOGIN: 'LOGIN',
@@ -43,4 +49,22 @@ export const modalTypes = {
   CHANGE_ADDRESS: 'CHANGE_ADDRESS',
   CHANGE_CONTACTS: 'CHANGE_CONTACTS',
   CHANGE_PASSWORD: 'CHANGE_PASSWORD',
+  PRIVACY_POLICY: 'PRIVACY_POLICY',
+};
+
+export const sortOptions = [
+  { value: undefined, label: 'Default sorting' },
+  { value: 'price:asc', label: `Price - ascending` },
+  { value: 'price:desc', label: 'Price - descending' },
+  { value: 'name:asc', label: 'Name - A to Z' },
+  { value: 'name:desc', label: 'Name - Z to A' },
+];
+
+export const singleInfoNames = {
+  NAME: 'Name',
+  EMAIL: 'Email',
+  PHONE_NUMBER: 'Phone number',
+  ADDRESS: 'Address',
+  CONTACTS: 'Contacts',
+  USERNAME: 'Username',
 };

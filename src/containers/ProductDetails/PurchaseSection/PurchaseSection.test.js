@@ -4,7 +4,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import PurchaseSection from './PurchaseSection';
 import Button from '../../../components/UI/Button/Button';
-import { checkProps } from '../../../shared/utility';
+import { checkProps } from '../../../shared/testUtility';
 import theme from '../../../styled/theme';
 
 const defaultProps = {

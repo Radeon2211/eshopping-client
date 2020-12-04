@@ -17,7 +17,7 @@ import { ReactComponent as SellHistoryIcon } from '../../../../images/SVG/sell-h
 import { ReactComponent as LogOutIcon } from '../../../../images/SVG/log-out.svg';
 
 const Dropdown = (props) => {
-  const { visible, closed } = props;
+  const { isVisible, closed } = props;
 
   const dispatch = useDispatch();
   const onSetModal = useCallback(
@@ -28,13 +28,13 @@ const Dropdown = (props) => {
   return (
     <OutsideClickHandler
       onOutsideClick={(e) => {
-        if (visible && !e.target.closest('#user')) {
+        if (isVisible && !e.target.closest('#user')) {
           closed();
         }
       }}
     >
       <AnimatePresence exitBeforeEnter>
-        {visible && (
+        {isVisible && (
           <SC.Wrapper variants={dropdownVariants} initial="hidden" animate="visible" exit="hidden">
             <ul className="list">
               <li className="item">
@@ -100,7 +100,7 @@ const Dropdown = (props) => {
 };
 
 Dropdown.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   closed: PropTypes.func.isRequired,
 };
 

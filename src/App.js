@@ -8,6 +8,7 @@ import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader';
 import Main from './components/UI/Main';
+import Footer from './components/Footer';
 import Products from './containers/Products';
 import Logout from './containers/Logout';
 
@@ -57,6 +58,7 @@ const App = () => {
             <Redirect to="/products" />
           </Switch>
         </Main>
+        <Footer />
       </>
     );
   }
@@ -75,6 +77,7 @@ const App = () => {
             <Redirect to="/products" />
           </Switch>
         </Main>
+        <Footer />
       </>
     );
   }

@@ -4,7 +4,7 @@ import { Router, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import InputPagination from './InputPagination';
-import { checkProps } from '../../../shared/utility';
+import { checkProps, historyPageNum, propsPagination } from '../../../shared/testUtility';
 
 const setUp = (props = {}, history) => {
   return mount(
@@ -16,20 +16,7 @@ const setUp = (props = {}, history) => {
   );
 };
 
-const createProps = (itemQuantity = 5) => ({
-  itemQuantity,
-  isDataLoading: false,
-  maxQuantityPerPage: 2,
-});
-
-const defaultProps = createProps();
-
-const createHistory = (pageNumber) => ({
-  listen: jest.fn(),
-  location: { search: `?p=${pageNumber}` },
-  createHref: jest.fn(),
-  push: jest.fn(),
-});
+const defaultProps = propsPagination();
 
 describe('<NumberPagination />', () => {
   describe('Check prop types', () => {
@@ -43,7 +30,7 @@ describe('<NumberPagination />', () => {
 
   describe('Check if arrows render correctly', () => {
     it('Should render only right arrow', () => {
-      const history = createHistory(1);
+      const history = historyPageNum(1);
       const wrapper = setUp(defaultProps, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {
@@ -57,7 +44,7 @@ describe('<NumberPagination />', () => {
       ).toHaveLength(1);
     });
     it('Should render only left arrow', () => {
-      const history = createHistory(3);
+      const history = historyPageNum(3);
       const wrapper = setUp(defaultProps, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {
@@ -71,7 +58,7 @@ describe('<NumberPagination />', () => {
       ).toHaveLength(0);
     });
     it('Should render both arrows', () => {
-      const history = createHistory(2);
+      const history = historyPageNum(2);
       const wrapper = setUp(defaultProps, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {
@@ -85,8 +72,8 @@ describe('<NumberPagination />', () => {
       ).toHaveLength(1);
     });
     it('Should NOT render both arrows', () => {
-      const history = createHistory(1);
-      const props = createProps(2);
+      const history = historyPageNum(1);
+      const props = propsPagination(2);
       const wrapper = setUp(props, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {

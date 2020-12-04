@@ -19,16 +19,18 @@ import ChangeAddress from '../../ModalContents/ChangeAddress';
 import ChangeContacts from '../../ModalContents/ChangeContacts';
 import ChangePassword from '../../ModalContents/ChangePassword';
 import DeleteAccount from '../../ModalContents/DeleteAccount';
+import PrivacyPolicy from '../../ModalContents/PrivacyPolicy';
 
 const Modal = () => {
-  const isFormLoading = useSelector((state) => state.ui.isFormLoading);
-  const isModalOpen = useSelector((state) => state.ui.isModalOpen);
-  const modalContent = useSelector((state) => state.ui.modalContent);
+  const { isFormLoading, isModalOpen, modalContent } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isOpen, content) => dispatch(actions.setModal(isOpen, content)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (isOpen, content) => {
+      dispatch(actions.setModal(isOpen, content));
+    },
+    [dispatch],
+  );
 
   const loadingOverlay = isFormLoading ? (
     <LoadingOverlay alignLoader="center" loaderSize="small" zeroPadding />
@@ -68,6 +70,9 @@ const Modal = () => {
       break;
     case modalTypes.DELETE_ACCOUNT:
       modalContentNode = <DeleteAccount />;
+      break;
+    case modalTypes.PRIVACY_POLICY:
+      modalContentNode = <PrivacyPolicy />;
       break;
     default:
       break;

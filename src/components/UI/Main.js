@@ -7,7 +7,7 @@ SC.Main = styled.main`
   margin: 0 auto;
   max-width: 120rem;
   min-height: 100vh;
-  padding: 8.7rem ${({ theme }) => theme.spacings.level2} 0;
+  padding: 8.7rem ${({ theme }) => theme.spacings.level2} ${({ theme }) => theme.spacings.level3};
 
   @media only screen and (max-width: 37.5em) {
     padding-top: 14.5rem;

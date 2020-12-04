@@ -27,18 +27,18 @@ const SearchForm = () => {
     e.preventDefault();
     const { name = '' } = queryString.parse(history.location.search);
     if (name === productName) return;
-    let queryParams = '';
+    let nameParam = '';
     if (productName.length > 0) {
-      queryParams = `?name=${productName}`;
+      nameParam = `&name=${productName}`;
     }
-    history.push(`/products${queryParams}`);
+    history.push(`/products?p=1${nameParam}`);
   };
 
   return (
     <SC.SearchForm onSubmit={formSubmitHandle}>
       <input
         type="text"
-        className="input-text"
+        className="name-input"
         name="product"
         value={productName}
         autoComplete="off"

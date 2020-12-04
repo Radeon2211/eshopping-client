@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Button from './Button';
 import * as SC from './Button.sc';
-import { checkProps } from '../../../shared/utility';
+import { checkProps } from '../../../shared/testUtility';
 
 const setUp = (props = {}) => {
   return shallow(<Button {...props} />);

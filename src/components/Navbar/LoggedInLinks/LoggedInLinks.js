@@ -54,7 +54,7 @@ const SignedInLinks = (props) => {
         <MyIcon size="small" rotation={dropdownIsVisible ? -90 : 90}>
           <ArrowIcon />
         </MyIcon>
-        <Dropdown visible={dropdownIsVisible} closed={closeDropdownHandle} />
+        <Dropdown isVisible={dropdownIsVisible} closed={closeDropdownHandle} />
       </SC.User>
     </SC.Wrapper>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../../../../components/UI/Button/Button';
+import { singleInfoNames } from '../../../../shared/constants';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -27,7 +28,7 @@ const SingleInfo = (props) => {
   const { name, content, clickHandler } = props;
 
   let contentNode = '';
-  if (name === 'Address') {
+  if (name === singleInfoNames.ADDRESS) {
     const { street, zipCodeAndCity, country } = content;
     contentNode = (
       <>
@@ -36,7 +37,7 @@ const SingleInfo = (props) => {
         <span className="content">{country}</span>
       </>
     );
-  } else if (name === 'Contacts') {
+  } else if (name === singleInfoNames.CONTACTS) {
     contentNode = (
       <>
         <span className="content">

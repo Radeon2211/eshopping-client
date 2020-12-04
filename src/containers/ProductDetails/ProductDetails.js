@@ -69,7 +69,7 @@ const ProductDetails = (props) => {
     let quantitySoldNode = null;
     if (quantitySold >= 1) {
       quantitySoldNode = (
-        <span className="quantity-sold gray">
+        <span className="quantity-sold gray-text">
           {quantitySold === 1 ? '1 person' : `${quantitySold} people`} bought
         </span>
       );
@@ -112,13 +112,13 @@ const ProductDetails = (props) => {
           <div className="data-box">
             <span className="name">{name}</span>
             <span className="seller">
-              <span className="gray">from </span>
+              <span className="gray-text">from </span>
               <Link to={`/users/${seller._id}`} className="seller-link">
                 {seller.username}
               </Link>
             </span>
             <span className="condition">
-              <span className="gray">Condition: </span>
+              <span className="gray-text">Condition: </span>
               {`${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
             </span>
             <span className="price">${price.toFixed(2)}</span>

@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import PaginationCounter, { SC } from './PaginationCounter';
-import { checkProps } from '../../../shared/utility';
+import { checkProps, historyPageNum } from '../../../shared/testUtility';
 import { listItemTypes } from '../../../shared/constants';
 
 const setUp = (props = {}, history) => {
@@ -23,11 +23,6 @@ const createProps = (itemQuantity, maxQuantityPerPage) => ({
   maxQuantityPerPage,
 });
 
-const createHistory = (pageNumber) => ({
-  listen: jest.fn(),
-  location: { search: `?p=${pageNumber}` },
-});
-
 describe('<PaginationCounter />', () => {
   describe('Check prop types', () => {
     const props = createProps(5, 2);
@@ -40,33 +35,33 @@ describe('<PaginationCounter />', () => {
   });
 
   describe('Check if correct text render', () => {
-    it('Should should be 1 - 2, 5', () => {
+    it('Should be 1 - 2, 5', () => {
       const props = createProps(5, 2);
-      const history = createHistory(1);
+      const history = historyPageNum(1);
       const wrapper = setUp(props, history);
       expect(wrapper.find(SC.Wrapper).text()).toBe('1 - 2 of 5 products');
     });
-    it('Should should be 3 - 4, 5', () => {
+    it('Should be 3 - 4, 5', () => {
       const props = createProps(5, 2);
-      const history = createHistory(2);
+      const history = historyPageNum(2);
       const wrapper = setUp(props, history);
       expect(wrapper.find(SC.Wrapper).text()).toBe('3 - 4 of 5 products');
     });
-    it('Should should be 5 - 7, 7', () => {
+    it('Should be 5 - 7, 7', () => {
       const props = createProps(7, 4);
-      const history = createHistory(2);
+      const history = historyPageNum(2);
       const wrapper = setUp(props, history);
       expect(wrapper.find(SC.Wrapper).text()).toBe('5 - 7 of 7 products');
     });
-    it('Should should be 1 - 1, 10', () => {
+    it('Should be 1 - 1, 10', () => {
       const props = createProps(10, 1);
-      const history = createHistory(1);
+      const history = historyPageNum(1);
       const wrapper = setUp(props, history);
       expect(wrapper.find(SC.Wrapper).text()).toBe('1 - 1 of 10 products');
     });
-    it('Should should be 1 - 1, 10', () => {
+    it('Should be 1 - 1, 10', () => {
       const props = createProps(10, 1);
-      const history = createHistory(10);
+      const history = historyPageNum(10);
       const wrapper = setUp(props, history);
       expect(wrapper.find(SC.Wrapper).text()).toBe('10 - 10 of 10 products');
     });

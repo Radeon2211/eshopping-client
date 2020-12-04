@@ -8,14 +8,18 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../../../../styled/theme';
 import Dropdown from './Dropdown';
 import * as SC from './Dropdown.sc';
-import { checkProps } from '../../../../shared/utility';
+import { checkProps } from '../../../../shared/testUtility';
 
 const mockStore = configureMockStore([thunk]);
+const defaultStore = mockStore({});
 
-const setUp = (props = {}) => {
-  const store = mockStore({});
+const setUp = (isVisible, closed) => {
+  const props = {
+    isVisible,
+    closed,
+  };
   return mount(
-    <Provider store={store}>
+    <Provider store={defaultStore}>
       <Router>
         <ThemeProvider theme={theme}>
           <Dropdown {...props} />
@@ -29,7 +33,7 @@ describe('<Dropdown />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
       const props = {
-        visible: true,
+        isVisible: true,
         closed: jest.fn(),
       };
       expect(checkProps(Dropdown, props)).toBeUndefined();
@@ -41,19 +45,11 @@ describe('<Dropdown />', () => {
 
   describe('Check if it renders correctly', () => {
     it('Should render <SC.Wrapper />', () => {
-      const props = {
-        visible: true,
-        closed: jest.fn(),
-      };
-      const wrapper = setUp(props);
+      const wrapper = setUp(true, jest.fn());
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
     });
     it('Should NOT render <SC.Wrapper />', () => {
-      const props = {
-        visible: false,
-        closed: jest.fn(),
-      };
-      const wrapper = setUp(props);
+      const wrapper = setUp(false, jest.fn());
       expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
     });
   });

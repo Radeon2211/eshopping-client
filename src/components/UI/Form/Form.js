@@ -40,7 +40,13 @@ const Form = (props) => {
     buttonsBox = (
       <div className="buttons-box">
         {cancelButton}
-        <Button filled type="submit" color={btnColor} disabled={!isValid || isFormLoading}>
+        <Button
+          filled
+          type="submit"
+          color={btnColor}
+          disabled={!isValid || isFormLoading}
+          data-test="submit-btn"
+        >
           {btnText}
         </Button>
       </div>

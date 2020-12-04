@@ -4,9 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import theme from '../../../styled/theme';
 import ProductItem from './ProductItem';
-import { checkProps } from '../../../shared/utility';
+import { checkProps } from '../../../shared/testUtility';
 
-const setUpWrapper = (props) => {
+const setUp = (props) => {
   return mount(
     <Router>
       <ThemeProvider theme={theme}>
@@ -33,39 +33,29 @@ describe('<ProductItem />', () => {
   });
 
   describe('Complete data object', () => {
-    let wrapper;
-    beforeEach(() => {
+    it('Should render condition and quantitySold', () => {
       const data = {
         name: 'testName',
         price: 3,
         condition: 'used',
         quantitySold: 1,
       };
-      wrapper = setUpWrapper({ data });
-    });
-    it('Should render condition node', () => {
+      const wrapper = setUp({ data });
       expect(wrapper.find('.condition')).toHaveLength(1);
-    });
-    it('Should render quantitySold node', () => {
       expect(wrapper.find('.quantity-sold-box')).toHaveLength(1);
     });
   });
 
   describe('Incomplete data object', () => {
-    let wrapper;
-    beforeEach(() => {
-      const data = {
-        name: 'testName',
-        price: 3,
-        condition: 'not_applicable',
-        quantitySold: 0,
-      };
-      wrapper = setUpWrapper({ data });
-    });
-    it('Should NOT render condition node', () => {
+    const data = {
+      name: 'testName',
+      price: 3,
+      condition: 'not_applicable',
+      quantitySold: 0,
+    };
+    const wrapper = setUp({ data });
+    it('Should NOT render condition and quantitySold', () => {
       expect(wrapper.find('.condition')).toHaveLength(0);
-    });
-    it('Should NOT render quantitySold node', () => {
       expect(wrapper.find('.quantity-sold-box')).toHaveLength(0);
     });
   });

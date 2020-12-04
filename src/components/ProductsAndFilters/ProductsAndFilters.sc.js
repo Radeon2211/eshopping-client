@@ -28,18 +28,3 @@ export const ProductsBottombar = styled.div`
     padding: 0;
   }
 `;
-
-export const FiltersToggler = styled.div`
-  align-self: flex-end;
-  border: 1px solid ${({ theme }) => theme.colors.light4};
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  font-size: 1.4rem;
-  margin-bottom: ${({ theme }) => theme.spacings.level3};
-  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
-
-  & .label {
-    margin: 0 ${({ theme }) => theme.spacings.level2} 0 ${({ theme }) => theme.spacings.level1};
-  }
-`;

@@ -2,6 +2,49 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
+${({ align }) => {
+  if (align === 'left') {
+    return `
+      text-align: left;
+    `;
+  }
+  if (align === 'center') {
+    return `
+      text-align: center;
+    `;
+  }
+  if (align === 'right') {
+    return `
+      text-align: right;
+    `;
+  }
+  return ``;
+}}
+
+${({ mgBottom, theme }) => {
+  if (mgBottom === 'small') {
+    return `
+      margin-bottom: ${theme.spacings.level2};
+    `;
+  }
+  if (mgBottom === 'medium') {
+    return `
+      margin-bottom: ${theme.spacings.level3};
+    `;
+  }
+  if (mgBottom === 'big') {
+    return `
+      margin-bottom: ${theme.spacings.level4};
+    `;
+  }
+  if (mgBottom === 'large') {
+    return `
+      margin-bottom: ${theme.spacings.level5};
+    `;
+  }
+  return ``;
+}}
+
   ${({ variant, theme }) => {
     switch (variant) {
       case 'h1':

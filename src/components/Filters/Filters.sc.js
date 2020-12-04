@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.div`
   & > *:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.spacings.level3};
@@ -9,6 +8,21 @@ export const Wrapper = styled.div`
   & .select {
     font-size: ${({ theme }) => theme.fontSizes.level2};
     z-index: ${({ theme }) => theme.zIndexes.level2};
+  }
+`;
+
+export const Toggler = styled.div`
+  align-self: flex-end;
+  border: 1px solid ${({ theme }) => theme.colors.light4};
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.4rem;
+  margin-bottom: ${({ theme }) => theme.spacings.level3};
+  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
+
+  & .label {
+    margin: 0 ${({ theme }) => theme.spacings.level2} 0 ${({ theme }) => theme.spacings.level1};
   }
 `;
 

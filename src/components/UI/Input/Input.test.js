@@ -5,12 +5,12 @@ import { Formik } from 'formik';
 import Textarea from 'react-textarea-autosize';
 import Select from 'react-select';
 import theme from '../../../styled/theme';
-import { checkProps } from '../../../shared/utility';
+import { checkProps } from '../../../shared/testUtility';
 import { inputKinds } from '../../../shared/constants';
 import Input from './Input';
 import * as SC from './Input.sc';
 
-const setUpWrapper = (props) => {
+const setUp = (props) => {
   return mount(
     <ThemeProvider theme={theme}>
       <Formik>
@@ -50,17 +50,17 @@ describe('<Input />', () => {
 
     it('Should render <SC.Input />', () => {
       const props = createProps(inputKinds.INPUT);
-      const wrapper = setUpWrapper(props);
+      const wrapper = setUp(props);
       expect(wrapper.find(SC.Input)).toHaveLength(1);
     });
     it('Should render <Textarea />', () => {
       const props = createProps(inputKinds.TEXTAREA);
-      const wrapper = setUpWrapper(props);
+      const wrapper = setUp(props);
       expect(wrapper.find(Textarea)).toHaveLength(1);
     });
     it('Should render <Select />', () => {
       const props = createProps(inputKinds.SELECT);
-      const wrapper = setUpWrapper(props);
+      const wrapper = setUp(props);
       expect(wrapper.find(Select)).toHaveLength(1);
     });
     it('Should render <SC.RadioWrapper />', () => {
@@ -72,19 +72,18 @@ describe('<Input />', () => {
           },
         ],
       });
-      const wrapper = setUpWrapper(props);
+      const wrapper = setUp(props);
       expect(wrapper.find(SC.RadioWrapper)).toHaveLength(1);
     });
     it('Should render <SC.Input />', () => {
       const props = createProps('incorrectKind');
-      const wrapper = setUpWrapper(props);
+      const wrapper = setUp(props);
       expect(wrapper.find(SC.Input)).toHaveLength(1);
     });
   });
 
   describe('Complete props', () => {
-    let wrapper;
-    beforeEach(() => {
+    it('Should render caption', () => {
       const props = {
         kind: 'input',
         config: {
@@ -93,16 +92,13 @@ describe('<Input />', () => {
         label: 'testLabel',
         captionText: 'testCaptionText',
       };
-      wrapper = setUpWrapper(props);
-    });
-    it('Should render caption', () => {
+      const wrapper = setUp(props);
       expect(wrapper.find('.caption')).toHaveLength(1);
     });
   });
 
   describe('Incomplete props', () => {
-    let wrapper;
-    beforeEach(() => {
+    it('Should NOT render caption', () => {
       const props = {
         kind: 'input',
         config: {
@@ -110,9 +106,7 @@ describe('<Input />', () => {
         },
         label: 'testLabel',
       };
-      wrapper = setUpWrapper(props);
-    });
-    it('Should NOT render caption', () => {
+      const wrapper = setUp(props);
       expect(wrapper.find('.caption')).toHaveLength(0);
     });
   });

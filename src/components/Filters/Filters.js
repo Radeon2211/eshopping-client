@@ -1,60 +1,31 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useWindowWidth } from '@react-hook/window-size';
 import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import Select from 'react-select';
 import * as SC from './Filters.sc';
+import { filtersReducer, filtersInitialState } from './filtersReducer';
 import Heading from '../UI/Heading/Heading';
 import Panel from '../UI/Panel';
 import Button from '../UI/Button/Button';
 import PriceSlider from './PriceSlider/PriceSlider';
-import { updateObject } from '../../shared/utility';
-import { filtersActions } from '../../shared/constants';
-
-const sortOptions = [
-  { value: undefined, label: 'Default sorting' },
-  { value: 'price:asc', label: `Price - ascending` },
-  { value: 'price:desc', label: 'Price - descending' },
-  { value: 'name:asc', label: 'Name - A to Z' },
-  { value: 'name:desc', label: 'Name - Z to A' },
-];
-
-const filtersInitialState = {
-  sortBy: sortOptions[0],
-  minPrice: undefined,
-  maxPrice: undefined,
-  condition: {
-    new: false,
-    used: false,
-    not_applicable: false,
-  },
-};
-
-const filtersReducer = (state = filtersInitialState, action) => {
-  switch (action.type) {
-    case filtersActions.INIT_STATE:
-      return updateObject(state, action.payload);
-    case filtersActions.SET_SORT_BY:
-      return updateObject(state, { sortBy: action.sortBy });
-    case filtersActions.SET_MIN_PRICE:
-      return updateObject(state, { minPrice: action.minPrice });
-    case filtersActions.SET_MAX_PRICE:
-      return updateObject(state, { maxPrice: action.maxPrice });
-    case filtersActions.SET_CONDITION:
-      return updateObject(state, { condition: { ...state.condition, ...action.condition } });
-    default:
-      return state;
-  }
-};
+import { filtersActions, sortOptions } from '../../shared/constants';
+import MyIcon from '../UI/MyIcon';
+import { ReactComponent as FiltersIcon } from '../../images/SVG/filters.svg';
+import { ReactComponent as ArrowIcon } from '../../images/SVG/arrow.svg';
 
 const Filters = (props) => {
-  const { products, isDataLoading, isVisible } = props;
+  const { products, isDataLoading } = props;
   const history = useHistory();
   const {
     location: { search, pathname },
   } = history;
 
   const [filters, dispatchFilters] = useReducer(filtersReducer, filtersInitialState);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const windowWidth = useWindowWidth();
 
   useEffect(() => {
     const parsedQueryParams = queryString.parse(search);
@@ -107,6 +78,21 @@ const Filters = (props) => {
     });
   };
 
+  let filtersToggler = null;
+  if (windowWidth <= 1200) {
+    filtersToggler = (
+      <SC.Toggler onClick={() => setIsVisible((prevState) => !prevState)}>
+        <MyIcon size="small">
+          <FiltersIcon />
+        </MyIcon>
+        <span className="label">Filters</span>
+        <MyIcon size="small" rotation={isVisible ? -90 : 90}>
+          <ArrowIcon />
+        </MyIcon>
+      </SC.Toggler>
+    );
+  }
+
   let filtersWrapper = (
     <SC.Wrapper>
       <Select
@@ -154,7 +140,12 @@ const Filters = (props) => {
           <label htmlFor="not_applicable">not applicable</label>
         </SC.CheckboxBox>
       </SC.Checkboxes>
-      <Button filled clicked={btnClickHandle} disabled={isDataLoading}>
+      <Button
+        filled
+        clicked={btnClickHandle}
+        disabled={isDataLoading}
+        data-test="filters-submit-btn"
+      >
         Filter
       </Button>
     </SC.Wrapper>
@@ -171,12 +162,26 @@ const Filters = (props) => {
         queryParamsKeys.length <= 0 ||
         (queryParamsKeys.length === 1 && queryParamsKeys.includes('name'))
       ) {
-        filtersWrapper = <Heading variant="h4">Filters are unavailable</Heading>;
+        filtersWrapper = (
+          <Heading variant="h4" data-test="unavailable-heading">
+            Filters are unavailable
+          </Heading>
+        );
       }
     }
   }
 
-  return isVisible && <Panel>{filtersWrapper}</Panel>;
+  let filtersPanel = null;
+  if (isVisible || windowWidth >= 1200) {
+    filtersPanel = <Panel>{filtersWrapper}</Panel>;
+  }
+
+  return (
+    <>
+      {filtersToggler}
+      {filtersPanel}
+    </>
+  );
 };
 
 Filters.defaultProps = {
@@ -186,7 +191,6 @@ Filters.defaultProps = {
 Filters.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object),
   isDataLoading: PropTypes.bool.isRequired,
-  isVisible: PropTypes.bool.isRequired,
 };
 
 export default Filters;

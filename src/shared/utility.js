@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import checkPropTypes from 'check-prop-types';
 import queryString from 'query-string';
 import { getCountries } from 'country-fns';
 
@@ -26,7 +24,6 @@ export const updateObject = (oldObject, updatedProps) => ({
 
 export const getErrorMessage = (error) => {
   let errorMessage = 'Something went wrong';
-  console.log(error.response);
   if (error.response.data.errors) {
     errorMessage = Object.values(error.response.data.errors)[0].properties.message;
   }
@@ -51,11 +48,6 @@ export const calculateFileSize = (size) => {
     return `${(size / 1048576).toFixed(1)}MB`;
   }
   return ``;
-};
-
-export const checkProps = (component, expectedProps) => {
-  // eslint-disable-next-line react/forbid-foreign-prop-types
-  return checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
 };
 
 export const updateQueryParams = (currentQueryParams, nextPageNumber) => {

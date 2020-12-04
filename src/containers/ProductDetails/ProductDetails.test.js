@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
 import LoadingOverlay from '../../components/UI/LoadingOverlay';
 import Heading from '../../components/UI/Heading/Heading';
-import { checkProps } from '../../shared/utility';
+import { checkProps } from '../../shared/testUtility';
 import theme from '../../styled/theme';
 import SideBySide from '../../components/UI/SideBySide';
 

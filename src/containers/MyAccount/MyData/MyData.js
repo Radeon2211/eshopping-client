@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes } from '../../../shared/constants';
+import { modalTypes, singleInfoNames } from '../../../shared/constants';
 import Panel from '../../../components/UI/Panel';
 import Heading from '../../../components/UI/Heading/Heading';
 import SingleInfo from './SingleInfo/SingleInfo';
@@ -54,31 +54,31 @@ const MyData = () => {
     wrapperContent = (
       <>
         <SingleInfo
-          name="Name"
+          name={singleInfoNames.NAME}
           content={`${firstName} ${lastName}`}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_NAME)}
         />
         <SingleInfo
-          name="Email"
+          name={singleInfoNames.EMAIL}
           content={email}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_EMAIL)}
         />
         <SingleInfo
-          name="Phone number"
+          name={singleInfoNames.PHONE_NUMBER}
           content={phone}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_PHONE_NUMBER)}
         />
         <SingleInfo
-          name="Address"
+          name={singleInfoNames.ADDRESS}
           content={{ street, zipCodeAndCity: `${zipCode} ${city}`, country }}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_ADDRESS)}
         />
         <SingleInfo
-          name="Contacts"
+          name={singleInfoNames.CONTACTS}
           content={contacts}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_CONTACTS)}
         />
-        <SingleInfo name="Username" content={username} />
+        <SingleInfo name={singleInfoNames.USERNAME} content={username} />
         <Button clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}>
           Change password
         </Button>
