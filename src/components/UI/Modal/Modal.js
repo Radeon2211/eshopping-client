@@ -10,7 +10,8 @@ import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
 import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../ModalContents/Signup/Signup';
 import Login from '../../ModalContents/Login';
-import AddProduct from '../../ModalContents/AddProduct/AddProduct';
+import AddProduct from '../../ModalContents/AddProduct';
+import EditProduct from '../../ModalContents/EditProduct';
 import DeleteProduct from '../../ModalContents/DeleteProduct';
 import ChangeName from '../../ModalContents/ChangeName';
 import ChangeEmail from '../../ModalContents/ChangeEmail';
@@ -19,7 +20,7 @@ import ChangeAddress from '../../ModalContents/ChangeAddress';
 import ChangeContacts from '../../ModalContents/ChangeContacts';
 import ChangePassword from '../../ModalContents/ChangePassword';
 import DeleteAccount from '../../ModalContents/DeleteAccount';
-import PrivacyPolicy from '../../ModalContents/PrivacyPolicy';
+import AboutWebsite from '../../ModalContents/AboutWebsite';
 
 const Modal = () => {
   const { isFormLoading, isModalOpen, modalContent } = useSelector((state) => state.ui);
@@ -47,6 +48,9 @@ const Modal = () => {
     case modalTypes.ADD_PRODUCT:
       modalContentNode = <AddProduct />;
       break;
+    case modalTypes.EDIT_PRODUCT:
+      modalContentNode = <EditProduct />;
+      break;
     case modalTypes.DELETE_PRODUCT:
       modalContentNode = <DeleteProduct />;
       break;
@@ -71,8 +75,8 @@ const Modal = () => {
     case modalTypes.DELETE_ACCOUNT:
       modalContentNode = <DeleteAccount />;
       break;
-    case modalTypes.PRIVACY_POLICY:
-      modalContentNode = <PrivacyPolicy />;
+    case modalTypes.ABOUT_WEBSITE:
+      modalContentNode = <AboutWebsite />;
       break;
     default:
       break;

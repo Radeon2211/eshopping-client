@@ -68,10 +68,7 @@ export const logoutUser = () => {
       await axios.post('/users/logout');
       dispatch(setProfile(null));
     } catch (error) {
-      dispatch(uiActions.setMessage('Unable to logout. Something went wrong'));
-      setTimeout(() => {
-        dispatch(uiActions.deleteMessage());
-      }, 5000);
+      dispatch(uiActions.setAndDeleteMessage('Unable to logout. Something went wrong'));
     }
   };
 };

@@ -38,7 +38,7 @@ SC.Wrapper = styled.footer`
     margin-left: ${({ theme }) => theme.spacings.level1};
   }
 
-  & .privacy-policy {
+  & .terms-of-use {
     color: ${({ theme }) => theme.colors.light4};
     cursor: pointer;
     font-size: ${({ theme }) => theme.fontSizes.level1};
@@ -70,6 +70,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/rados%C5%82aw-mikrut-a8600b198/"
           rel="noopener noreferrer"
           className="social-link"
+          target="_blank"
         >
           <MyIcon size="medium">
             <LinkedinIcon />
@@ -83,13 +84,13 @@ const Footer = () => {
         </a>
       </div>
       <span
-        className="privacy-policy"
-        onClick={() => onSetModal(true, modalTypes.PRIVACY_POLICY)}
+        className="terms-of-use"
+        onClick={() => onSetModal(true, modalTypes.ABOUT_WEBSITE)}
         role="button"
         tabIndex={0}
-        onKeyDown={() => onSetModal(true, modalTypes.PRIVACY_POLICY)}
+        onKeyDown={() => onSetModal(true, modalTypes.ABOUT_WEBSITE)}
       >
-        Privacy policy
+        About website
       </span>
     </SC.Wrapper>
   );

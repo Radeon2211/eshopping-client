@@ -88,13 +88,31 @@ const ProductDetails = (props) => {
       );
     }
 
+    const userIsOwner = userProfile?._id === seller._id;
+
+    let editProductBtn = null;
     let deleteProductBtn = null;
-    if (userProfile?._id === seller._id || userProfile?.isAdmin) {
+    if (userIsOwner) {
+      editProductBtn = (
+        <Button color="blue" clicked={() => onSetModal(true, modalTypes.EDIT_PRODUCT)}>
+          Edit offer
+        </Button>
+      );
+    }
+    if (userIsOwner || userProfile?.isAdmin) {
       deleteProductBtn = (
-        <div className="delete-btn-box">
-          <Button color="red" clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}>
-            Delete offer
-          </Button>
+        <Button color="red" clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}>
+          Delete offer
+        </Button>
+      );
+    }
+
+    let manageButtonBox = null;
+    if (deleteProductBtn || editProductBtn) {
+      manageButtonBox = (
+        <div className="manage-button-box">
+          {editProductBtn}
+          {deleteProductBtn}
         </div>
       );
     }
@@ -132,7 +150,7 @@ const ProductDetails = (props) => {
           </div>
         </SideBySide>
         <div className="description-box">{descriptionContent}</div>
-        {deleteProductBtn}
+        {manageButtonBox}
       </>
     );
   }

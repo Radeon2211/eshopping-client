@@ -15,6 +15,7 @@ export {
 export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';
 export {
   addProduct,
+  editProduct,
   fetchProducts,
   fetchProductDetails,
   deleteProductDetails,

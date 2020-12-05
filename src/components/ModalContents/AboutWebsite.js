@@ -10,18 +10,20 @@ SC.Wrapper = styled.div`
   }
 `;
 
-const PrivacyPolicy = () => {
+const AboutWebsite = () => {
   return (
     <SC.Wrapper>
       <Heading variant="h4" align="center" mgBottom="medium">
-        Privacy Policy
+        About website
       </Heading>
       <div className="content">
-        Data that you specify in forms do not need to be real. However they are not processed in any
-        way except of storing in database and displaying them on this website.
+        This website is not used to buy and sell products. Offers on this website are not real and
+        orders will not be realized. Data that you specify in forms do not need to be real. However
+        they are not processed in any way except of storing in database and displaying them on this
+        website.
       </div>
     </SC.Wrapper>
   );
 };
 
-export default PrivacyPolicy;
+export default AboutWebsite;

@@ -2,19 +2,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
-import { isValidFileType, calculateFileSize } from '../../../../shared/utility';
-import Button from '../../../UI/Button/Button';
+import { isValidFileType, calculateFileSize } from '../../shared/utility';
+import Button from '../UI/Button/Button';
 
 const PRODUCT_PHOTO_MAX_SIZE = 6291456;
 const PRODUCT_PHOTO_MAX_SIZE_STRING = calculateFileSize(PRODUCT_PHOTO_MAX_SIZE);
 
 const UploadPhoto = (props) => {
-  const { setFieldValue } = props;
+  const { setFieldValue, hasCurrentPhoto } = props;
 
   const [photo, setPhoto] = useState(null);
   const [photoName, setPhotoName] = useState('');
   const [photoSize, setPhotoSize] = useState('');
   const [error, setError] = useState('');
+  const [isCurrentPhotoDeleted, setIsCurrentPhotoDeleted] = useState(!hasCurrentPhoto);
 
   const resetState = () => {
     setPhoto(null);
@@ -22,6 +23,11 @@ const UploadPhoto = (props) => {
     setPhotoName('');
     setPhotoSize('');
     setError('');
+  };
+
+  const deleteCurrentPhotoHandle = () => {
+    setIsCurrentPhotoDeleted(true);
+    setFieldValue('photo', 'DELETED');
   };
 
   const inputChangedHandler = async (e) => {
@@ -55,13 +61,15 @@ const UploadPhoto = (props) => {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPhoto(file);
+      setIsCurrentPhotoDeleted(true);
       setFieldValue('photo', file);
     };
   };
 
   const defaultPreviewText = `Photo is optional. Max size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG`;
   let preview = <SC.Preview>{defaultPreviewText}</SC.Preview>;
-  let deleteBtn = null;
+  let deleteThisBtn = null;
+  let deleteCurrentBtn = null;
   let errorNode = null;
 
   if (error) {
@@ -75,8 +83,19 @@ const UploadPhoto = (props) => {
         <span className="file-data">Size: {photoSize}</span>
       </SC.Preview>
     );
+    deleteThisBtn = (
+      <Button color="red" clicked={resetState}>
+        Delete
+      </Button>
+    );
+  }
 
-    deleteBtn = <Button clicked={resetState}>Delete</Button>;
+  if (!isCurrentPhotoDeleted) {
+    deleteCurrentBtn = (
+      <Button color="red" clicked={deleteCurrentPhotoHandle}>
+        Delete current
+      </Button>
+    );
   }
 
   return (
@@ -85,7 +104,8 @@ const UploadPhoto = (props) => {
         <label htmlFor="photo" className="label">
           <Button filled>Upload photo</Button>
         </label>
-        {deleteBtn}
+        {deleteThisBtn}
+        {deleteCurrentBtn}
       </div>
       {preview}
       {errorNode}
@@ -94,8 +114,13 @@ const UploadPhoto = (props) => {
   );
 };
 
+UploadPhoto.defaultProps = {
+  hasCurrentPhoto: false,
+};
+
 UploadPhoto.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
+  hasCurrentPhoto: PropTypes.bool,
 };
 
 export default UploadPhoto;

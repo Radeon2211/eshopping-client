@@ -1,54 +1,48 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import * as actions from '../../../store/actions/indexActions';
-import Form from '../../UI/Form/Form';
-import Input from '../../UI/Input/Input';
-import UploadPhoto from './UploadPhoto/UploadPhoto';
-import SideBySide from '../../UI/SideBySide';
-import { inputKinds } from '../../../shared/constants';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../store/actions/indexActions';
+import Form from '../UI/Form/Form';
+import Input from '../UI/Input/Input';
+import UploadPhoto from '../UploadPhoto/UploadPhoto';
+import SideBySide from '../UI/SideBySide';
+import { inputKinds } from '../../shared/constants';
 
 const validationSchema = Yup.object({
   name: Yup.string().max(150).trim().required(),
   price: Yup.number().moreThan(0).max(1000000).required(),
   quantity: Yup.number().min(1).max(100000).required(),
-  condition: Yup.string(),
+  condition: Yup.string().required(),
   description: Yup.string().max(600).trim(),
 });
 
-const AddProduct = () => {
-  const history = useHistory();
+const EditProduct = () => {
+  const { productDetails } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
-  const onAddProduct = useCallback(
-    (creds, currentPath) => dispatch(actions.addProduct(creds, currentPath)),
+  const onEditProduct = useCallback(
+    (data, productId) => dispatch(actions.editProduct(data, productId)),
     [dispatch],
   );
 
   return (
     <Formik
       initialValues={{
-        name: '',
-        price: 0,
-        quantity: 1,
-        condition: 'not_applicable',
-        description: '',
+        name: productDetails?.name,
+        price: productDetails?.price,
+        quantity: productDetails?.quantity,
+        condition: productDetails?.condition,
+        description: productDetails?.description,
         photo: null,
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onAddProduct(data, history.location.pathname);
+        onEditProduct(data, productDetails._id);
       }}
     >
       {({ errors, touched, dirty, isValid, setFieldTouched, setFieldValue, values }) => (
-        <Form
-          btnText="Add an offer"
-          headingText="Add product for sale"
-          isValid={dirty && isValid}
-          cancellable
-        >
+        <Form btnText="Edit" headingText="Edit a product" isValid={dirty && isValid} cancellable>
           <Input
             kind={inputKinds.INPUT}
             config={{
@@ -122,16 +116,20 @@ const AddProduct = () => {
               id: 'description',
               placeholder: 'Describe your product (up to 800 characters)',
               onInput: setFieldTouched.bind(this, 'description', true, true),
+              maxRows: 6,
             }}
             label="Description"
             isValid={!errors.description}
             isTouched={touched.description}
           />
-          <UploadPhoto setFieldValue={setFieldValue} />
+          <UploadPhoto
+            setFieldValue={setFieldValue}
+            hasCurrentPhoto={Boolean(productDetails.photo)}
+          />
         </Form>
       )}
     </Formik>
   );
 };
 
-export default AddProduct;
+export default EditProduct;

@@ -18,20 +18,6 @@ const setProducts = (state, action) => {
   });
 };
 
-const addProduct = (state, action) => {
-  const { products, productCount, minPrice, maxPrice } = state;
-  const addedProduct = action.product;
-  const updatedMinPrice = addedProduct.price < minPrice ? addedProduct.price : minPrice;
-  const updatedMaxPrice = addedProduct.price > maxPrice ? addedProduct.price : maxPrice;
-  const updatedProducts = [addedProduct, ...products];
-  return updateObject(state, {
-    products: updatedProducts,
-    productCount: productCount + 1,
-    minPrice: updatedMinPrice,
-    maxPrice: updatedMaxPrice,
-  });
-};
-
 const setProductDetails = (state, action) => {
   return updateObject(state, { productDetails: action.productDetails });
 };
@@ -41,6 +27,7 @@ const deleteProductDetails = (state) => {
 };
 
 const deleteProductFromList = (state, action) => {
+  if (!state.products) return state;
   const updatedProducts = state.products.filter(({ _id }) => _id !== action.productId);
   return updateObject(state, { products: updatedProducts });
 };
@@ -58,8 +45,6 @@ const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_PRODUCTS:
       return setProducts(state, action);
-    case actionTypes.ADD_PRODUCT:
-      return addProduct(state, action);
     case actionTypes.SET_PRODUCT_DETAILS:
       return setProductDetails(state, action);
     case actionTypes.DELETE_PRODUCT_DETAILS:

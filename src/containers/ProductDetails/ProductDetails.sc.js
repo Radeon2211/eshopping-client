@@ -75,9 +75,15 @@ export const Wrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.level3};
   }
 
-  & .delete-btn-box {
+  & .manage-button-box {
+    display: flex;
+    justify-content: center;
     margin-top: ${({ theme }) => theme.spacings.level5};
     text-align: center;
+
+    & > *:not(:last-child) {
+      margin-right: ${({ theme }) => theme.spacings.level3};
+    }
   }
 
   & .gray-text {

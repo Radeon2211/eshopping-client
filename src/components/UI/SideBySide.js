@@ -27,7 +27,7 @@ SC.Wrapper = styled.div`
         @media only screen and (max-width: ${makeVerticalWhen / 16}em) {
           flex-direction: column;
 
-          & > *:first-child {
+          & > *:not(:last-child) {
             margin-right: 0;
             margin-bottom: ${theme.spacings.level3};
           }
