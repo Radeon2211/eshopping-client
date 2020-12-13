@@ -3,6 +3,7 @@ import { updateObject } from '../../../shared/utility';
 
 export const initialState = {
   profile: undefined,
+  cart: undefined,
   placedOrders: [],
   sellHistory: [],
   transaction: null,
@@ -15,6 +16,7 @@ const loginUser = (state, action) => {
 const logoutUser = (state) => {
   return updateObject(state, {
     profile: null,
+    cart: null,
     placedOrders: [],
     sellHistory: [],
     transaction: null,
@@ -30,7 +32,16 @@ const setSellHistory = (state, action) => {
 };
 
 const setProfile = (state, action) => {
-  return updateObject(state, { profile: action.profile });
+  if (!action.profile) return updateObject(state, { profile: action.profile });
+  const profile = {
+    ...action.profile,
+    cart: undefined,
+  };
+  return updateObject(state, { profile, cart: action.profile?.cart });
+};
+
+const setCart = (state, action) => {
+  return updateObject(state, { cart: action.cart });
 };
 
 const updateTransaction = (state, action) => {
@@ -49,6 +60,8 @@ const authReducer = (state = initialState, action) => {
       return setSellHistory(state, action);
     case actionTypes.SET_PROFILE:
       return setProfile(state, action);
+    case actionTypes.SET_CART:
+      return setCart(state, action);
     case actionTypes.UPDATE_TRANSACTION:
       return updateTransaction(state, action);
     default:

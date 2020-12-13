@@ -14,6 +14,8 @@ import PurchaseSection from './PurchaseSection/PurchaseSection';
 import Button from '../../components/UI/Button/Button';
 import noPhoto from '../../images/no-photo.png';
 import { baseURL } from '../../axios';
+import { GreenText } from '../../styled/components';
+import HorizontalWrapper from '../../components/UI/HorizontalWrapper';
 
 const ProductDetails = (props) => {
   const {
@@ -46,11 +48,15 @@ const ProductDetails = (props) => {
   }, [productId, onFetchProductDetails, onDeleteProductDetails]);
 
   let loadingOverlay = null;
-  if (isDataLoading) loadingOverlay = <LoadingOverlay alignLoader="top" loaderSize="small" />;
+  if (isDataLoading) loadingOverlay = <LoadingOverlay alignLoader="start" />;
 
   let details = null;
   if (productDetails === null) {
-    details = <Heading variant="h4">Such product does not exist or has already been sold</Heading>;
+    details = (
+      <Heading variant="h4" align="center">
+        Such product does not exist or has already been sold
+      </Heading>
+    );
   } else if (productDetails) {
     const {
       condition,
@@ -75,7 +81,6 @@ const ProductDetails = (props) => {
       );
     }
 
-    const proportion = windowWidth <= 900 ? '1/1' : '3/2';
     let descriptionContent = (
       <span className="description-heading">This product has no description</span>
     );
@@ -94,14 +99,22 @@ const ProductDetails = (props) => {
     let deleteProductBtn = null;
     if (userIsOwner) {
       editProductBtn = (
-        <Button color="blue" clicked={() => onSetModal(true, modalTypes.EDIT_PRODUCT)}>
+        <Button
+          color="blue"
+          clicked={() => onSetModal(true, modalTypes.EDIT_PRODUCT)}
+          data-test="edit-button"
+        >
           Edit offer
         </Button>
       );
     }
     if (userIsOwner || userProfile?.isAdmin) {
       deleteProductBtn = (
-        <Button color="red" clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}>
+        <Button
+          color="red"
+          clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}
+          data-test="delete-button"
+        >
           Delete offer
         </Button>
       );
@@ -110,16 +123,16 @@ const ProductDetails = (props) => {
     let manageButtonBox = null;
     if (deleteProductBtn || editProductBtn) {
       manageButtonBox = (
-        <div className="manage-button-box">
+        <HorizontalWrapper mgTop="level5">
           {editProductBtn}
           {deleteProductBtn}
-        </div>
+        </HorizontalWrapper>
       );
     }
 
     details = (
       <>
-        <SideBySide proportion={proportion} makeVerticalWhen={600}>
+        <SideBySide proportion={windowWidth <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
           <div className="photo-box">
             <img
               src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
@@ -131,8 +144,8 @@ const ProductDetails = (props) => {
             <span className="name">{name}</span>
             <span className="seller">
               <span className="gray-text">from </span>
-              <Link to={`/users/${seller._id}`} className="seller-link">
-                {seller.username}
+              <Link to={`/users/${seller._id}`}>
+                <GreenText>{seller.username}</GreenText>
               </Link>
             </span>
             <span className="condition">
@@ -142,6 +155,7 @@ const ProductDetails = (props) => {
             <span className="price">${price.toFixed(2)}</span>
             {quantitySoldNode}
             <PurchaseSection
+              productId={productId}
               productQuantity={quantity}
               productSellerId={seller._id}
               onSetModal={onSetModal}

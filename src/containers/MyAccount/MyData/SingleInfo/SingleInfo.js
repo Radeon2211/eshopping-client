@@ -21,6 +21,7 @@ SC.Wrapper = styled.div`
   & .content {
     font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-bottom: ${({ theme }) => theme.spacings.level1};
+    word-break: break-all;
   }
 `;
 

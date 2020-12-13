@@ -12,7 +12,11 @@ export {
   changePassword,
   deleteAccount,
 } from './authActions';
+
+export { fetchCart, addCartItem, updateCartItem, clearCart, removeCartItem } from './cartActions';
+
 export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';
+
 export {
   addProduct,
   editProduct,

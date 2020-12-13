@@ -6,20 +6,14 @@ import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import SideBySide from '../UI/SideBySide';
-import { inputKinds } from '../../shared/constants';
+import { inputKinds, userRules } from '../../shared/constants';
 import { listOfCountries } from '../../shared/utility';
 
 const validationSchema = Yup.object({
-  street: Yup.string().max(60).required(),
-  zipCode: Yup.string().trim().required(),
-  city: Yup.string().max(100).required(),
-  country: Yup.object()
-    .shape({
-      value: Yup.string().required(),
-      label: Yup.string().required(),
-    })
-    .nullable()
-    .required(),
+  street: userRules.street,
+  zipCode: userRules.zipCode,
+  city: userRules.city,
+  country: userRules.country,
 });
 
 const ChangeAddress = () => {

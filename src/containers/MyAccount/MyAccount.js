@@ -5,6 +5,7 @@ import MyData from './MyData/MyData';
 import MyProducts from './MyProducts/MyProducts';
 import MySellHistory from './MySellHistory/MySellHistory';
 import MyPlacedOrders from './MyPlacedOrders/MyPlacedOrders';
+import { DEFAULT_PATH } from '../../shared/constants';
 
 const MyAccount = () => {
   return (
@@ -18,7 +19,7 @@ const MyAccount = () => {
           </li>
           <li>
             <NavLink
-              to="/my-account/products?p=1"
+              to={`/my-account${DEFAULT_PATH}`}
               className="nav-link"
               activeClassName="nav-link-active"
             >

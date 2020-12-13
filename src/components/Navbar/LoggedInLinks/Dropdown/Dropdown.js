@@ -68,19 +68,19 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link to="/my-account/placed-orders" className="link">
-                  <MyIcon size="small">
-                    <PlacedOrdersIcon />
-                  </MyIcon>
-                  <span>Placed orders</span>
-                </Link>
-              </li>
-              <li className="item">
                 <Link to="/my-account/sell-history" className="link">
                   <MyIcon size="small">
                     <SellHistoryIcon />
                   </MyIcon>
                   <span>My sell history</span>
+                </Link>
+              </li>
+              <li className="item">
+                <Link to="/my-account/placed-orders" className="link">
+                  <MyIcon size="small">
+                    <PlacedOrdersIcon />
+                  </MyIcon>
+                  <span>Placed orders</span>
                 </Link>
               </li>
               <li className="item">

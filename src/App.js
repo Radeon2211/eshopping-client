@@ -2,7 +2,11 @@
 import React, { useCallback, useEffect, Suspense, lazy } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from './axios';
 import * as actions from './store/actions/indexActions';
+import { DEFAULT_PATH } from './shared/constants';
+
+import Heading from './components/UI/Heading/Heading';
 import Modal from './components/UI/Modal/Modal';
 import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
@@ -14,6 +18,7 @@ import Logout from './containers/Logout';
 
 const ProductDetails = lazy(() => import('./containers/ProductDetails/ProductDetails'));
 const MyAccount = lazy(() => import('./containers/MyAccount/MyAccount'));
+const Cart = lazy(() => import('./containers/Cart/Cart'));
 
 const WaitingComponent = (Component) => {
   return (props) => (
@@ -46,21 +51,29 @@ const App = () => {
   );
 
   if (userProfile === null) {
-    routes = (
-      <>
-        <Modal />
-        <MessageBox />
-        <Navbar userProfile={userProfile} />
-        <Main>
-          <Switch>
-            <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
-            <Route path="/products" exact component={Products} />
-            <Redirect to="/products" />
-          </Switch>
-        </Main>
-        <Footer />
-      </>
-    );
+    if (!axios.defaults.headers.post['X-CSRF-Token']) {
+      routes = (
+        <Heading variant="h3" align="center">
+          Server connection error. Try again later
+        </Heading>
+      );
+    } else {
+      routes = (
+        <>
+          <Modal />
+          <MessageBox />
+          <Navbar userProfile={userProfile} />
+          <Main>
+            <Switch>
+              <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
+              <Route path="/products" exact component={Products} />
+              <Redirect to="/products" />
+            </Switch>
+          </Main>
+          <Footer />
+        </>
+      );
+    }
   }
   if (userProfile) {
     routes = (
@@ -73,8 +86,9 @@ const App = () => {
             <Route path="/logout" component={Logout} />
             <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
+            <Route path="/cart" exact component={WaitingComponent(Cart)} />
             <Route path="/my-account" component={WaitingComponent(MyAccount)} />
-            <Redirect to="/products" />
+            <Redirect to={DEFAULT_PATH} />
           </Switch>
         </Main>
         <Footer />

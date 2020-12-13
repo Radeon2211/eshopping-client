@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
+import { useWindowWidth } from '@react-hook/window-size';
 import * as SC from './SearchForm.sc';
 import Button from '../../UI/Button/Button';
+import MyIcon from '../../UI/MyIcon';
+import { ReactComponent as SearchIcon } from '../../../images/SVG/search.svg';
+import { DEFAULT_PATH } from '../../../shared/constants';
 
 const SearchForm = () => {
   const [productName, setProductName] = useState('');
   const history = useHistory();
+
+  const windowWidth = useWindowWidth();
 
   const checkQueryParams = useCallback(
     (queryParams) => {
@@ -31,8 +37,17 @@ const SearchForm = () => {
     if (productName.length > 0) {
       nameParam = `&name=${productName}`;
     }
-    history.push(`/products?p=1${nameParam}`);
+    history.push(`${DEFAULT_PATH}${nameParam}`);
   };
+
+  let buttonContent = 'search';
+  if (windowWidth < 900) {
+    buttonContent = (
+      <MyIcon size="small" color="#fff">
+        <SearchIcon />
+      </MyIcon>
+    );
+  }
 
   return (
     <SC.SearchForm onSubmit={formSubmitHandle}>
@@ -46,7 +61,7 @@ const SearchForm = () => {
         onChange={(e) => setProductName(e.target.value)}
       />
       <Button type="submit" filled>
-        search
+        {buttonContent}
       </Button>
     </SC.SearchForm>
   );

@@ -2,6 +2,7 @@ import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { getErrorMessage } from '../../shared/utility';
+import { DEFAULT_PATH } from '../../shared/constants';
 
 export const setProfile = (profile) => ({
   type: actionTypes.SET_PROFILE,
@@ -184,7 +185,7 @@ export const deleteAccount = (creds, history) => {
           `Your account has been deleted. Goodbye ${data.user.username}!`,
         ),
       );
-      history.replace('/products?p=1');
+      history.replace(DEFAULT_PATH);
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));

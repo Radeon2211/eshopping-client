@@ -7,18 +7,18 @@ import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import UploadPhoto from '../UploadPhoto/UploadPhoto';
 import SideBySide from '../UI/SideBySide';
-import { inputKinds } from '../../shared/constants';
+import { inputKinds, productRules } from '../../shared/constants';
 
 const validationSchema = Yup.object({
-  name: Yup.string().max(150).trim().required(),
-  price: Yup.number().moreThan(0).max(1000000).required(),
-  quantity: Yup.number().min(1).max(100000).required(),
-  condition: Yup.string().required(),
-  description: Yup.string().max(600).trim(),
+  name: productRules.name,
+  price: productRules.price,
+  quantity: productRules.quantity,
+  condition: productRules.condition,
+  description: productRules.description,
 });
 
 const EditProduct = () => {
-  const { productDetails } = useSelector((state) => state.product);
+  const productDetails = useSelector((state) => state.product.productDetails);
 
   const dispatch = useDispatch();
   const onEditProduct = useCallback(

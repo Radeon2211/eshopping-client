@@ -10,34 +10,9 @@ import ProgressBar from './ProgressBar/ProgressBar';
 import Step1 from './Steps/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
+import { userRules } from '../../../shared/constants';
 
-const validationSchema = Yup.object({
-  email: Yup.string().email().trim().required(),
-  hideEmail: Yup.bool(),
-  username: Yup.string().min(3).max(20).trim().required(),
-  password: Yup.string().min(7).max(64).trim().required(),
-  firstName: Yup.string().max(60).required(),
-  lastName: Yup.string().max(80).required(),
-  phonePrefix: Yup.object()
-    .shape({
-      value: Yup.string().required(),
-      label: Yup.string().required(),
-    })
-    .nullable()
-    .required(),
-  phoneNumber: Yup.string().max(15).trim().required(),
-  hidePhone: Yup.bool(),
-  street: Yup.string().max(60).required(),
-  zipCode: Yup.string().trim().required(),
-  city: Yup.string().max(100).required(),
-  country: Yup.object()
-    .shape({
-      value: Yup.string().required(),
-      label: Yup.string().required(),
-    })
-    .nullable()
-    .required(),
-});
+const validationSchema = Yup.object(userRules);
 
 const Signup = () => {
   const [currentStep, setCurrentStep] = useState(1);

@@ -32,9 +32,11 @@ const defaultProductDetails = {
 
 const defaultProfile = { _id: '123' };
 
+const defaultCart = [{ _id: '123', product: 'productId', quantity: 1 }];
+
 const defaultStore = {
   ui: { isDataLoading: false },
-  auth: { profile: defaultProfile },
+  auth: { profile: defaultProfile, cart: defaultCart },
   product: {
     productDetails: defaultProductDetails,
   },
@@ -63,6 +65,7 @@ describe('<ProductDetails />', () => {
     it('Should NOT throw a warning', () => {
       expect(checkProps(ProductDetails, defaultProps)).toBeUndefined();
     });
+
     it('Should throw a warning', () => {
       expect(checkProps(ProductDetails, {})).not.toBe(null);
     });
@@ -73,6 +76,7 @@ describe('<ProductDetails />', () => {
       const wrapper = setUp();
       expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
     });
+
     it('Should NOT render <LoadingOverlay />', () => {
       const store = { ui: { isDataLoading: true } };
       const wrapper = setUp(store);
@@ -88,6 +92,7 @@ describe('<ProductDetails />', () => {
         expect(wrapper.find(Heading)).toHaveLength(1);
         expect(wrapper.find(SideBySide)).toHaveLength(0);
       });
+
       it('Should NOT render <LoadingOverlay /> and render <SideBySide />', () => {
         const wrapper = setUp();
         expect(wrapper.find(Heading)).toHaveLength(0);
@@ -104,6 +109,7 @@ describe('<ProductDetails />', () => {
         expect(wrapper.find('.description-heading')).toHaveLength(1);
         expect(wrapper.find('.description-content')).toHaveLength(1);
       });
+
       it('Should render description heading and NOT render heading content', () => {
         const wrapper = setUp();
         expect(wrapper.find('.description-heading')).toHaveLength(1);
@@ -121,6 +127,7 @@ describe('<ProductDetails />', () => {
         expect(quantitySoldNode).toHaveLength(1);
         expect(quantitySoldNode.text()).toEqual('3 people bought');
       });
+
       it('Should render quantity sold node - "1 person bought"', () => {
         const store = {
           product: { productDetails: { ...defaultProductDetails, quantitySold: 1 } },
@@ -130,36 +137,45 @@ describe('<ProductDetails />', () => {
         expect(quantitySoldNode).toHaveLength(1);
         expect(quantitySoldNode.text()).toEqual('1 person bought');
       });
+
       it('Should NOT render quantity sold node', () => {
         const wrapper = setUp();
         expect(wrapper.find('.quantity-sold')).toHaveLength(0);
       });
     });
 
-    describe('Check how delete button renders', () => {
-      it('Should render delete button when user is owner', () => {
+    describe('Check how buttons render', () => {
+      it('Should render delete and edit button when user is owner', () => {
         const wrapper = setUp();
-        expect(wrapper.find('.delete-btn-box')).toHaveLength(1);
+        expect(wrapper.find('[data-test="edit-button"]').length).toBeGreaterThan(0);
+        expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
       });
-      it('Should render delete button when user is admin and owner', () => {
+
+      it('Should render delete and edit button when user is admin and owner', () => {
         const wrapper = setUp({ auth: { profile: { ...defaultProfile, isAdmin: true } } });
-        expect(wrapper.find('.delete-btn-box')).toHaveLength(1);
+        expect(wrapper.find('[data-test="edit-button"]').length).toBeGreaterThan(0);
+        expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
       });
+
       it('Should render delete button when user is admin', () => {
         const wrapper = setUp({
-          auth: { profile: { ...defaultProfile, _id: '987', isAdmin: true } },
+          auth: { profile: { ...defaultProfile, _id: '987', isAdmin: true }, cart: defaultCart },
         });
-        expect(wrapper.find('.delete-btn-box')).toHaveLength(1);
+        expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
       });
-      it('Should NOT render delete button when user not admin and not owner', () => {
+
+      it('Should NOT render edit and delete button when user is not admin and not owner', () => {
         const wrapper = setUp({
-          auth: { profile: { ...defaultProfile, _id: '987' } },
+          auth: { profile: { ...defaultProfile, _id: '987' }, cart: defaultCart },
         });
-        expect(wrapper.find('.delete-btn-box')).toHaveLength(0);
+        expect(wrapper.find('[data-test="edit-button"]')).toHaveLength(0);
+        expect(wrapper.find('[data-test="delete-button"]')).toHaveLength(0);
       });
-      it('Should NOT render delete button when user is logged out', () => {
-        const wrapper = setUp({ auth: { profile: undefined } });
-        expect(wrapper.find('.delete-btn-box')).toHaveLength(0);
+
+      it('Should NOT render edit and delete button when user is logged out', () => {
+        const wrapper = setUp({ auth: { profile: undefined, cart: defaultCart } });
+        expect(wrapper.find('[data-test="edit-button"]')).toHaveLength(0);
+        expect(wrapper.find('[data-test="delete-button"]')).toHaveLength(0);
       });
     });
   });

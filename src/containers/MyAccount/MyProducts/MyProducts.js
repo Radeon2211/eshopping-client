@@ -26,7 +26,7 @@ const MyProducts = (props) => {
   return (
     <>
       <Heading variant="h3">My products</Heading>
-      <ProductsAndFilters page={pages.ALL_PRODUCTS} />
+      <ProductsAndFilters page={pages.MY_PRODUCTS} />
     </>
   );
 };

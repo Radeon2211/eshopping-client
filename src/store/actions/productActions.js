@@ -156,7 +156,7 @@ export const fetchProductDetails = (productId) => {
     try {
       const { data } = await axios.get(`/products/${productId}`);
       dispatch(uiActions.dataSuccess());
-      dispatch(setProductDetails(data));
+      dispatch(setProductDetails(data.product));
     } catch (error) {
       if (error?.response?.data?.kind === 'ObjectId') {
         dispatch(uiActions.dataFail('Product ID given in URL is not correct'));

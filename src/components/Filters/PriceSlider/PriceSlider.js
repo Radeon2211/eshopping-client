@@ -15,9 +15,8 @@ const PriceSlider = (props) => {
     location: { search },
   } = history;
 
-  const { minPrice: minPriceState, maxPrice: maxPriceState } = useSelector(
-    (state) => state.product,
-  );
+  const minPriceState = useSelector((state) => state.product.minPrice);
+  const maxPriceState = useSelector((state) => state.product.maxPrice);
 
   const [positions, dispatchPositions] = useReducer(
     sliderPositionsReducer,

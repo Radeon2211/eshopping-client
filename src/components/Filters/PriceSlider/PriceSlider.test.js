@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import PriceSlider from './PriceSlider';
 import { checkProps } from '../../../shared/testUtility';
 import theme from '../../../styled/theme';
-import { sliderPositionsActions } from '../../../shared/constants';
+import { DEFAULT_PATH, sliderPositionsActions } from '../../../shared/constants';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
 const mockStore = configureMockStore([thunk]);
@@ -74,7 +74,7 @@ describe('<PriceSlider />', () => {
     it('Should call history.replace() when lower and higher than default are set in url', () => {
       const replaceFn = jest.fn();
       setUp('?p=1&minPrice=5&maxPrice=120', replaceFn);
-      expect(replaceFn).toHaveBeenCalledWith('/products?p=1');
+      expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
     });
   });
 

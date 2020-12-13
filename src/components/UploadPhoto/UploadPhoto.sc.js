@@ -3,14 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   margin-bottom: ${({ theme }) => theme.spacings.level3};
 
-  & .buttons {
-    display: flex;
-
-    & > *:not(:last-child) {
-      margin-right: ${({ theme }) => theme.spacings.level3};
-    }
-  }
-
   & .error {
     margin-top: ${({ theme }) => theme.spacings.level2};
   }

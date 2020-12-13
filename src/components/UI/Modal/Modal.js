@@ -13,6 +13,7 @@ import Login from '../../ModalContents/Login';
 import AddProduct from '../../ModalContents/AddProduct';
 import EditProduct from '../../ModalContents/EditProduct';
 import DeleteProduct from '../../ModalContents/DeleteProduct';
+import CartItemAdded from '../../ModalContents/CartItemAdded';
 import ChangeName from '../../ModalContents/ChangeName';
 import ChangeEmail from '../../ModalContents/ChangeEmail';
 import ChangePhoneNumber from '../../ModalContents/ChangePhoneNumber';
@@ -21,38 +22,33 @@ import ChangeContacts from '../../ModalContents/ChangeContacts';
 import ChangePassword from '../../ModalContents/ChangePassword';
 import DeleteAccount from '../../ModalContents/DeleteAccount';
 import AboutWebsite from '../../ModalContents/AboutWebsite';
+import ClearCart from '../../ModalContents/ClearCart';
 
 const Modal = () => {
-  const { isFormLoading, isModalOpen, modalContent } = useSelector((state) => state.ui);
+  const isFormLoading = useSelector((state) => state.ui.isFormLoading);
+  const isModalOpen = useSelector((state) => state.ui.isModalOpen);
+  const modalContent = useSelector((state) => state.ui.modalContent);
 
   const dispatch = useDispatch();
   const onSetModal = useCallback(
-    (isOpen, content) => {
-      dispatch(actions.setModal(isOpen, content));
+    (isOpen) => {
+      dispatch(actions.setModal(isOpen));
     },
     [dispatch],
   );
 
-  const loadingOverlay = isFormLoading ? (
-    <LoadingOverlay alignLoader="center" loaderSize="small" zeroPadding />
-  ) : null;
+  const loadingOverlay = isFormLoading ? <LoadingOverlay zeroPadding /> : null;
 
   let modalContentNode = null;
   switch (modalContent) {
-    case modalTypes.SIGNUP:
-      modalContentNode = <Signup />;
-      break;
-    case modalTypes.LOGIN:
-      modalContentNode = <Login />;
-      break;
     case modalTypes.ADD_PRODUCT:
       modalContentNode = <AddProduct />;
       break;
-    case modalTypes.EDIT_PRODUCT:
-      modalContentNode = <EditProduct />;
+    case modalTypes.ABOUT_WEBSITE:
+      modalContentNode = <AboutWebsite />;
       break;
-    case modalTypes.DELETE_PRODUCT:
-      modalContentNode = <DeleteProduct />;
+    case modalTypes.CART_ITEM_ADDED:
+      modalContentNode = <CartItemAdded />;
       break;
     case modalTypes.CHANGE_NAME:
       modalContentNode = <ChangeName />;
@@ -72,11 +68,23 @@ const Modal = () => {
     case modalTypes.CHANGE_PASSWORD:
       modalContentNode = <ChangePassword />;
       break;
+    case modalTypes.CLEAR_CART:
+      modalContentNode = <ClearCart />;
+      break;
     case modalTypes.DELETE_ACCOUNT:
       modalContentNode = <DeleteAccount />;
       break;
-    case modalTypes.ABOUT_WEBSITE:
-      modalContentNode = <AboutWebsite />;
+    case modalTypes.DELETE_PRODUCT:
+      modalContentNode = <DeleteProduct />;
+      break;
+    case modalTypes.EDIT_PRODUCT:
+      modalContentNode = <EditProduct />;
+      break;
+    case modalTypes.LOGIN:
+      modalContentNode = <Login />;
+      break;
+    case modalTypes.SIGNUP:
+      modalContentNode = <Signup />;
       break;
     default:
       break;
@@ -91,8 +99,8 @@ const Modal = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            onClick={() => onSetModal(false, '')}
-            onKeyDown={() => onSetModal(false, '')}
+            onClick={() => onSetModal(false)}
+            onKeyDown={() => onSetModal(false)}
             tabIndex="0"
             role="button"
             aria-label="Close modal"
@@ -101,7 +109,7 @@ const Modal = () => {
             <MyIcon
               size="medium"
               rotation={45}
-              onClick={() => onSetModal(false, '')}
+              onClick={() => onSetModal(false)}
               className="close-icon"
             >
               <PlusIcon />

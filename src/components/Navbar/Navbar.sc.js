@@ -8,14 +8,14 @@ export const Wrapper = styled.header`
   display: flex;
   justify-content: center;
   left: 0;
-  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level5};
+  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level4};
   position: fixed;
   top: 0;
   width: 100%;
   z-index: ${({ theme }) => theme.zIndexes.level3};
 
   & > *:not(:last-child) {
-    margin-right: ${({ theme }) => theme.spacings.level5};
+    margin-right: ${({ theme }) => theme.spacings.level4};
   }
 
   & .heading {
@@ -30,15 +30,17 @@ export const Wrapper = styled.header`
     display: flex;
   }
 
-  @media only screen and (max-width: 56.25em) {
-    padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level4};
-
-    & > *:not(:last-child) {
-      margin-right: ${({ theme }) => theme.spacings.level4};
-    }
-
+  @media only screen and (max-width: 75em) {
     & .heading {
       display: none;
+    }
+  }
+
+  @media only screen and (max-width: 56.25em) {
+    padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
+
+    & > *:not(:last-child) {
+      margin-right: ${({ theme }) => theme.spacings.level3};
     }
   }
 

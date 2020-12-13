@@ -8,13 +8,15 @@ const Heading = (props) => {
 };
 
 Heading.defaultProps = {
-  align: '',
-  mgBottom: '',
+  align: 'left',
+  mgBottom: '0',
+  lineHeight: '',
 };
 
 Heading.propTypes = {
   align: PropTypes.string,
   mgBottom: PropTypes.string,
+  lineHeight: PropTypes.string,
   variant: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };

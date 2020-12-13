@@ -7,6 +7,7 @@ export const initialState = {
   formError: '',
   isDataLoading: false,
   dataError: '',
+  isCartLoading: false,
   message: '',
   isModalOpen: false,
   modalContent: '',
@@ -45,6 +46,14 @@ const dataFail = (state, action) => {
   return updateObject(state, { isDataLoading: false, dataError: action.error });
 };
 
+const cartStart = (state) => {
+  return updateObject(state, { isCartLoading: true });
+};
+
+const cartEnd = (state) => {
+  return updateObject(state, { isCartLoading: false });
+};
+
 const setMessage = (state, action) => {
   return updateObject(state, { message: action.message });
 };
@@ -80,6 +89,10 @@ const uiReducer = (state = initialState, action) => {
       return dataSuccess(state);
     case actionTypes.DATA_FAIL:
       return dataFail(state, action);
+    case actionTypes.CART_START:
+      return cartStart(state);
+    case actionTypes.CART_END:
+      return cartEnd(state);
     case actionTypes.SET_MESSAGE:
       return setMessage(state, action);
     case actionTypes.DELETE_MESSAGE:

@@ -2,48 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
-${({ align }) => {
-  if (align === 'left') {
-    return `
-      text-align: left;
-    `;
-  }
-  if (align === 'center') {
-    return `
-      text-align: center;
-    `;
-  }
-  if (align === 'right') {
-    return `
-      text-align: right;
-    `;
-  }
-  return ``;
-}}
-
-${({ mgBottom, theme }) => {
-  if (mgBottom === 'small') {
-    return `
-      margin-bottom: ${theme.spacings.level2};
-    `;
-  }
-  if (mgBottom === 'medium') {
-    return `
-      margin-bottom: ${theme.spacings.level3};
-    `;
-  }
-  if (mgBottom === 'big') {
-    return `
-      margin-bottom: ${theme.spacings.level4};
-    `;
-  }
-  if (mgBottom === 'large') {
-    return `
-      margin-bottom: ${theme.spacings.level5};
-    `;
-  }
-  return ``;
-}}
+  margin-bottom: ${({ mgBottom, theme }) => (mgBottom ? theme.spacings[mgBottom] : mgBottom)};
+  text-align: ${({ align }) => align};
 
   ${({ variant, theme }) => {
     switch (variant) {
@@ -79,6 +39,25 @@ ${({ mgBottom, theme }) => {
       default:
         return ``;
     }
+  }}
+
+  ${({ lineHeight }) => {
+    if (lineHeight === 'small') {
+      return `
+        line-height: 1.15;
+      `;
+    }
+    if (lineHeight === 'medium') {
+      return `
+        line-height: 1.3;
+      `;
+    }
+    if (lineHeight === 'big') {
+      return `
+        line-height: 1.45;
+      `;
+    }
+    return ``;
   }}
 `;
 

@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as SC from './PurchaseSection.sc';
+import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
 import ChooseQuantity from '../../../components/UI/ChooseQuantity';
+import { GreenText } from '../../../styled/components';
 
 const PurchaseSection = (props) => {
-  const { productQuantity, productSellerId, onSetModal, userProfile } = props;
+  const { productId, productQuantity, productSellerId, onSetModal, userProfile } = props;
 
   const [chosenQuantity, setChosenQuantity] = useState(1);
+
+  const cart = useSelector((state) => state.auth.cart);
+  const isCartLoading = useSelector((state) => state.ui.isCartLoading);
+
+  const dispatch = useDispatch();
+  const onAddCartItem = useCallback((item) => dispatch(actions.addCartItem(item)), [dispatch]);
 
   const inputChangeHandle = (e) => {
     const value = +e.target.value || '';
@@ -45,6 +55,11 @@ const PurchaseSection = (props) => {
   const addToCartClickHandle = () => {
     if (!userProfile) {
       onSetModal(true, modalTypes.LOGIN);
+    } else {
+      onAddCartItem({
+        quantity: chosenQuantity,
+        product: productId,
+      });
     }
   };
 
@@ -54,11 +69,38 @@ const PurchaseSection = (props) => {
     }
   };
 
-  let purchaseSection = <span className="not-able-to-buy">You are the seller of this product</span>;
+  let purchaseSection = (
+    <SC.InfoToSeller>
+      <div className="info-quantity-box">
+        <span className="quantity-text gray-text">Quantity: </span>
+        <span className="quantity-number">{productQuantity}</span>
+      </div>
+      <span className="text">You are the seller of this product</span>
+    </SC.InfoToSeller>
+  );
+
   if (userProfile?._id !== productSellerId) {
+    const givenProductInCart = cart.find((item) => item.product._id === productId);
+    let addToCartBtn = (
+      <Button filled clicked={addToCartClickHandle} loading={isCartLoading ? 1 : 0}>
+        Add to cart
+      </Button>
+    );
+    if (givenProductInCart?.quantity >= productQuantity) {
+      console.log('eeeeeeeeeeeee');
+      addToCartBtn = (
+        <span className="not-able-to-add">
+          You have all pieces added to&nbsp;
+          <Link to="/cart">
+            <GreenText>cart</GreenText>
+          </Link>
+        </span>
+      );
+    }
+
     purchaseSection = (
       <>
-        <div className="quantity-box">
+        <div className="choose-quantity-box">
           <ChooseQuantity
             name="quantity"
             maxQuantity={productQuantity}
@@ -70,13 +112,12 @@ const PurchaseSection = (props) => {
           />
           <span className="quantity-number">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
+            {givenProductInCart ? ` (${givenProductInCart?.quantity} in cart)` : ''}
           </span>
         </div>
-        <Button filled clicked={addToCartClickHandle}>
-          Add to cart
-        </Button>
+        {addToCartBtn}
         <Button filled clicked={buyNowClickHandle}>
-          Buy now
+          buy now
         </Button>
       </>
     );
@@ -91,6 +132,7 @@ PurchaseSection.defaultProps = {
 };
 
 PurchaseSection.propTypes = {
+  productId: PropTypes.string.isRequired,
   productQuantity: PropTypes.number.isRequired,
   productSellerId: PropTypes.string,
   onSetModal: PropTypes.func.isRequired,

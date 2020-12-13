@@ -1,3 +1,41 @@
+import * as Yup from 'yup';
+
+export const userRules = {
+  email: Yup.string().email().max(320).trim().required(),
+  hideEmail: Yup.bool(),
+  username: Yup.string().min(3).max(20).trim().required(),
+  password: Yup.string().min(7).max(64).trim().required(),
+  firstName: Yup.string().max(60).required(),
+  lastName: Yup.string().max(80).required(),
+  phonePrefix: Yup.object()
+    .shape({
+      value: Yup.string().required(),
+      label: Yup.string().required(),
+    })
+    .nullable()
+    .required(),
+  phoneNumber: Yup.string().max(15).trim().required(),
+  hidePhone: Yup.bool(),
+  street: Yup.string().max(60).required(),
+  zipCode: Yup.string().max(12).trim().required(),
+  city: Yup.string().max(100).required(),
+  country: Yup.object()
+    .shape({
+      value: Yup.string().required(),
+      label: Yup.string().required(),
+    })
+    .nullable()
+    .required(),
+};
+
+export const productRules = {
+  name: Yup.string().max(150).trim().required(),
+  price: Yup.number().moreThan(0).max(1000000).required(),
+  quantity: Yup.number().min(1).max(100000).required(),
+  condition: Yup.string().required(),
+  description: Yup.string().max(600).trim(),
+};
+
 export const pages = {
   ALL_PRODUCTS: 'ALL_PRODUCTS',
   MY_PRODUCTS: 'MY_PRODUCTS',
@@ -21,7 +59,9 @@ export const inputKinds = {
   RADIO: 'RADIO',
 };
 
-export const MAX_QUANTITY_PER_PAGE = 2;
+export const MAX_QUANTITY_PER_PAGE = 5;
+
+export const DEFAULT_PATH = '/products?p=1';
 
 export const filtersActions = {
   INIT_STATE: 'INIT_STATE',
@@ -38,18 +78,22 @@ export const sliderPositionsActions = {
 };
 
 export const modalTypes = {
-  SIGNUP: 'SIGNUP',
-  LOGIN: 'LOGIN',
+  ABOUT_WEBSITE: 'ABOUT_WEBSITE',
   ADD_PRODUCT: 'ADD_PRODUCT',
-  DELETE_PRODUCT: 'DELETE_PRODUCT',
+  CART_ITEM_ADDED: 'CART_ITEM_ADDED',
   CHANGE_NAME: 'CHANGE_NAME',
   CHANGE_EMAIL: 'CHANGE_EMAIL',
   CHANGE_USERNAME: 'CHANGE_USERNAME',
   CHANGE_PHONE_NUMBER: 'CHANGE_PHONE_NUMBER',
   CHANGE_ADDRESS: 'CHANGE_ADDRESS',
-  CHANGE_CONTACTS: 'CHANGE_CONTACTS',
   CHANGE_PASSWORD: 'CHANGE_PASSWORD',
-  ABOUT_WEBSITE: 'ABOUT_WEBSITE',
+  CHANGE_CONTACTS: 'CHANGE_CONTACTS',
+  CLEAR_CART: 'CLEAR_CART',
+  DELETE_ACCOUNT: 'DELETE_ACCOUNT',
+  DELETE_PRODUCT: 'DELETE_PRODUCT',
+  EDIT_PRODUCT: 'EDIT_PRODUCT',
+  LOGIN: 'LOGIN',
+  SIGNUP: 'SIGNUP',
 };
 
 export const sortOptions = [

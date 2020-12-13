@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
-import { inputKinds } from '../../shared/constants';
+import { inputKinds, userRules } from '../../shared/constants';
 
 const validationSchema = Yup.object({
-  password: Yup.string().min(7).max(64).trim().required(),
+  password: userRules.password,
 });
 
 const ChangePassword = () => {

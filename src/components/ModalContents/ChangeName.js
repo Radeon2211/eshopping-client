@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
-import { inputKinds } from '../../shared/constants';
+import { inputKinds, userRules } from '../../shared/constants';
 
 const validationSchema = Yup.object({
-  firstName: Yup.string().max(60).required(),
-  lastName: Yup.string().max(80).required(),
+  firstName: userRules.firstName,
+  lastName: userRules.lastName,
 });
 
 const ChangeName = () => {

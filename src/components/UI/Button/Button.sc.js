@@ -9,8 +9,19 @@ export const Button = styled.button`
   letter-spacing: 2px;
   outline: none;
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
+  position: relative;
+  text-align: center;
   text-transform: uppercase;
   transition: all ${({ theme }) => theme.durations.level1}s;
+
+  ${({ stretch }) => {
+    if (stretch) {
+      return `
+        width: 100%;
+      `;
+    }
+    return ``;
+  }}
 
   ${({ color, filled, theme }) => {
     if (color === 'blue') {

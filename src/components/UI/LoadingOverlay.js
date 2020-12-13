@@ -11,6 +11,7 @@ SC.Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  justify-items: ${({ alignLoader }) => alignLoader};
   left: 0;
   padding-top: ${({ theme }) => theme.spacings.level5};
   position: absolute;
@@ -23,20 +24,6 @@ SC.Wrapper = styled.div`
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
-  ${({ alignLoader }) => {
-    if (alignLoader === 'top') {
-      return `
-        justify-items: start;
-      `;
-    }
-    if (alignLoader === 'center') {
-      return `
-        justify-items: center;
-      `;
-    }
-    return ``;
-  }}
-
   ${({ zeroPadding }) => {
     if (zeroPadding) {
       return `
@@ -48,7 +35,7 @@ SC.Wrapper = styled.div`
 `;
 
 const LoadingOverlay = (props) => {
-  const { alignLoader, loaderSize, zeroPadding } = props;
+  const { alignLoader, loaderSize, zeroPadding, disableText } = props;
 
   const [isInfoVisible, setIsInfoVisible] = useState(false);
 
@@ -60,7 +47,7 @@ const LoadingOverlay = (props) => {
   }, [setIsInfoVisible]);
 
   let info = false;
-  if (isInfoVisible) {
+  if (isInfoVisible && !disableText) {
     info = <span className="info">Just a second</span>;
   }
 
@@ -74,12 +61,16 @@ const LoadingOverlay = (props) => {
 
 LoadingOverlay.defaultProps = {
   zeroPadding: false,
+  alignLoader: 'center',
+  disableText: false,
+  loaderSize: '',
 };
 
 LoadingOverlay.propTypes = {
   zeroPadding: PropTypes.bool,
-  alignLoader: PropTypes.string.isRequired,
-  loaderSize: PropTypes.string.isRequired,
+  alignLoader: PropTypes.string,
+  loaderSize: PropTypes.string,
+  disableText: PropTypes.bool,
 };
 
 export default LoadingOverlay;

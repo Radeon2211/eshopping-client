@@ -37,11 +37,6 @@ export const Wrapper = styled.div`
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
-  & .seller-link {
-    color: ${({ theme }) => theme.colors.green};
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-  }
-
   & .condition {
     font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-top: ${({ theme }) => theme.spacings.level2};
@@ -73,17 +68,6 @@ export const Wrapper = styled.div`
 
   & .description-content {
     font-size: ${({ theme }) => theme.fontSizes.level3};
-  }
-
-  & .manage-button-box {
-    display: flex;
-    justify-content: center;
-    margin-top: ${({ theme }) => theme.spacings.level5};
-    text-align: center;
-
-    & > *:not(:last-child) {
-      margin-right: ${({ theme }) => theme.spacings.level3};
-    }
   }
 
   & .gray-text {

@@ -27,6 +27,14 @@ export const dataFail = (error) => ({
   error,
 });
 
+export const cartStart = () => ({
+  type: actionTypes.CART_START,
+});
+
+export const cartEnd = () => ({
+  type: actionTypes.CART_END,
+});
+
 export const setMessage = (message) => ({
   type: actionTypes.SET_MESSAGE,
   message,
@@ -36,7 +44,7 @@ export const deleteMessage = () => ({
   type: actionTypes.DELETE_MESSAGE,
 });
 
-export const setModal = (isModalOpen, modalContent) => ({
+export const setModal = (isModalOpen, modalContent = '') => ({
   type: actionTypes.SET_MODAL_OPEN_STATE,
   isModalOpen,
   modalContent,

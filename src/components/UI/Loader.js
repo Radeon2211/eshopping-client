@@ -14,6 +14,12 @@ SC.Wrapper = styled.div`
         height: 7rem;
       `;
     }
+    if (size === 'small') {
+      return `
+        width: 2.5rem;
+        height: 2.5rem;
+      `;
+    }
     return `
         width: 4rem;
         height: 4rem;
@@ -33,6 +39,13 @@ SC.Wrapper = styled.div`
           width: 7rem;
           height: 7rem;
           border: 0.8rem solid ${theme.colors.blue};
+        `;
+      }
+      if (size === 'small') {
+        return `
+          width: 2.5rem;
+          height: 2.5rem;
+          border: 0.3rem solid ${theme.colors.blue};
         `;
       }
       return `
@@ -76,8 +89,12 @@ const Loader = (props) => {
   );
 };
 
+Loader.defaultProps = {
+  size: '',
+};
+
 Loader.propTypes = {
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
 };
 
 export default Loader;

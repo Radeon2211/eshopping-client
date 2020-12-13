@@ -21,7 +21,7 @@ const ProductList = (props) => {
   } = useHistory();
 
   let loadingOverlay = null;
-  if (isDataLoading) loadingOverlay = <LoadingOverlay alignLoader="top" loaderSize="small" />;
+  if (isDataLoading) loadingOverlay = <LoadingOverlay alignLoader="start" />;
 
   let productList = null;
   if (products) {
@@ -58,7 +58,11 @@ const ProductList = (props) => {
             headingText = 'Not found any results';
         }
       }
-      productList = <Heading variant="h4">{headingText}</Heading>;
+      productList = (
+        <Heading variant="h4" align="center">
+          {headingText}
+        </Heading>
+      );
     } else {
       productList = products.map((product) => <ProductItem key={product._id} data={product} />);
     }

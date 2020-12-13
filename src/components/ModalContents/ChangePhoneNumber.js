@@ -6,18 +6,12 @@ import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import SideBySide from '../UI/SideBySide';
-import { inputKinds } from '../../shared/constants';
+import { inputKinds, userRules } from '../../shared/constants';
 import { listOfAreaCodes } from '../../shared/utility';
 
 const validationSchema = Yup.object({
-  phonePrefix: Yup.object()
-    .shape({
-      value: Yup.string().required(),
-      label: Yup.string().required(),
-    })
-    .nullable()
-    .required(),
-  phoneNumber: Yup.string().max(15).trim().required(),
+  phonePrefix: userRules.phonePrefix,
+  phoneNumber: userRules.phoneNumber,
 });
 
 const ChangePhoneNumber = () => {

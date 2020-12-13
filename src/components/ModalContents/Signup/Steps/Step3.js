@@ -22,7 +22,6 @@ const Step3 = (props) => {
   } = props;
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
-  const formError = useSelector((state) => state.ui.formError);
 
   let btnDisabled = false;
   if (
@@ -37,8 +36,6 @@ const Step3 = (props) => {
   ) {
     btnDisabled = true;
   }
-
-  const error = formError ? <span className="error">{formError}</span> : null;
 
   return (
     <AnimatePresence>
@@ -109,7 +106,6 @@ const Step3 = (props) => {
               Finish
             </Button>
           </SC.Buttons>
-          {error}
         </SC.Step>
       )}
     </AnimatePresence>

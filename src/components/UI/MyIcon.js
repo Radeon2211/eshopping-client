@@ -37,8 +37,8 @@ SC.Wrapper = styled.div`
         `;
       }
       return `
-          width: 3.6rem;
-          height: 3.6rem;
+          width: 3.4rem;
+          height: 3.4rem;
         `;
     }}
 
