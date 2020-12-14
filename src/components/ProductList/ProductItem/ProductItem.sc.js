@@ -57,8 +57,4 @@ export const Wrapper = styled.article`
     align-self: flex-end;
     font-size: ${({ theme }) => theme.fontSizes.level1};
   }
-
-  & .gray {
-    color: ${({ theme }) => theme.colors.light4};
-  }
 `;

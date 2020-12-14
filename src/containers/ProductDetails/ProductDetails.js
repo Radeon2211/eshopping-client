@@ -14,8 +14,9 @@ import PurchaseSection from './PurchaseSection/PurchaseSection';
 import Button from '../../components/UI/Button/Button';
 import noPhoto from '../../images/no-photo.png';
 import { baseURL } from '../../axios';
-import { GreenText } from '../../styled/components';
+import { GrayText, GreenText } from '../../styled/components';
 import HorizontalWrapper from '../../components/UI/HorizontalWrapper';
+import { formatPrice } from '../../shared/utility';
 
 const ProductDetails = (props) => {
   const {
@@ -53,7 +54,7 @@ const ProductDetails = (props) => {
   let details = null;
   if (productDetails === null) {
     details = (
-      <Heading variant="h4" align="center">
+      <Heading variant="h4" align="center" data-test="not-found">
         Such product does not exist or has already been sold
       </Heading>
     );
@@ -75,21 +76,25 @@ const ProductDetails = (props) => {
     let quantitySoldNode = null;
     if (quantitySold >= 1) {
       quantitySoldNode = (
-        <span className="quantity-sold gray-text">
+        <GrayText className="quantity-sold">
           {quantitySold === 1 ? '1 person' : `${quantitySold} people`} bought
-        </span>
+        </GrayText>
       );
     }
 
-    let descriptionContent = (
-      <span className="description-heading">This product has no description</span>
+    let descriptionSection = (
+      <Heading variant="h4" data-test="no-description">
+        This product has no description
+      </Heading>
     );
     if (description) {
-      descriptionContent = (
-        <>
-          <span className="description-heading">Description</span>
-          <span className="description-content">{description}</span>
-        </>
+      descriptionSection = (
+        <section>
+          <Heading variant="h4" mgBottom="level2" mgTop="level3">
+            Description
+          </Heading>
+          <p className="description-content">{description}</p>
+        </section>
       );
     }
 
@@ -120,9 +125,9 @@ const ProductDetails = (props) => {
       );
     }
 
-    let manageButtonBox = null;
+    let manageButtonsBox = null;
     if (deleteProductBtn || editProductBtn) {
-      manageButtonBox = (
+      manageButtonsBox = (
         <HorizontalWrapper mgTop="level5">
           {editProductBtn}
           {deleteProductBtn}
@@ -133,26 +138,26 @@ const ProductDetails = (props) => {
     details = (
       <>
         <SideBySide proportion={windowWidth <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
-          <div className="photo-box">
+          <section className="photo-section">
             <img
               src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
               alt="product"
               className="photo"
             />
-          </div>
-          <div className="data-box">
+          </section>
+          <section className="data-section">
             <span className="name">{name}</span>
             <span className="seller">
-              <span className="gray-text">from </span>
+              <GrayText>from </GrayText>
               <Link to={`/users/${seller._id}`}>
                 <GreenText>{seller.username}</GreenText>
               </Link>
             </span>
             <span className="condition">
-              <span className="gray-text">Condition: </span>
+              <GrayText>Condition: </GrayText>
               {`${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
             </span>
-            <span className="price">${price.toFixed(2)}</span>
+            <span className="price">{formatPrice(price)}</span>
             {quantitySoldNode}
             <PurchaseSection
               productId={productId}
@@ -161,10 +166,10 @@ const ProductDetails = (props) => {
               onSetModal={onSetModal}
               userProfile={userProfile}
             />
-          </div>
+          </section>
         </SideBySide>
-        <div className="description-box">{descriptionContent}</div>
-        {manageButtonBox}
+        {descriptionSection}
+        {manageButtonsBox}
       </>
     );
   }

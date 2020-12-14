@@ -7,7 +7,6 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
 import LoadingOverlay from '../../components/UI/LoadingOverlay';
-import Heading from '../../components/UI/Heading/Heading';
 import { checkProps } from '../../shared/testUtility';
 import theme from '../../styled/theme';
 import SideBySide from '../../components/UI/SideBySide';
@@ -86,33 +85,33 @@ describe('<ProductDetails />', () => {
 
   describe('Check how everything renders', () => {
     describe('Check what renders if productDetails are and not', () => {
-      it('Should render <Heading /> and NOT render <SideBySide />', () => {
+      it('Should render not found <Heading /> and NOT render <SideBySide />', () => {
         const store = { product: { productDetails: null } };
         const wrapper = setUp(store);
-        expect(wrapper.find(Heading)).toHaveLength(1);
+        expect(wrapper.find('[data-test="not-found"]').length).toBeGreaterThan(0);
         expect(wrapper.find(SideBySide)).toHaveLength(0);
       });
 
-      it('Should NOT render <LoadingOverlay /> and render <SideBySide />', () => {
+      it('Should NOT render not found <Heading /> and should render <SideBySide />', () => {
         const wrapper = setUp();
-        expect(wrapper.find(Heading)).toHaveLength(0);
+        expect(wrapper.find('[data-test="not-found"]')).toHaveLength(0);
         expect(wrapper.find(SideBySide)).toHaveLength(1);
       });
     });
 
     describe('Check how description renders', () => {
-      it('Should render description heading and heading content', () => {
+      it('Should NOT render no description <Heading /> and should render description content', () => {
         const store = {
           product: { productDetails: { ...defaultProductDetails, description: 'testDescription' } },
         };
         const wrapper = setUp(store);
-        expect(wrapper.find('.description-heading')).toHaveLength(1);
+        expect(wrapper.find('[data-test="no-description"]')).toHaveLength(0);
         expect(wrapper.find('.description-content')).toHaveLength(1);
       });
 
-      it('Should render description heading and NOT render heading content', () => {
+      it('Should render no description <Heading /> and NOT render description content', () => {
         const wrapper = setUp();
-        expect(wrapper.find('.description-heading')).toHaveLength(1);
+        expect(wrapper.find('[data-test="no-description"]').length).toBeGreaterThan(1);
         expect(wrapper.find('.description-content')).toHaveLength(0);
       });
     });
@@ -123,9 +122,7 @@ describe('<ProductDetails />', () => {
           product: { productDetails: { ...defaultProductDetails, quantitySold: 3 } },
         };
         const wrapper = setUp(store);
-        const quantitySoldNode = wrapper.find('.quantity-sold');
-        expect(quantitySoldNode).toHaveLength(1);
-        expect(quantitySoldNode.text()).toEqual('3 people bought');
+        expect(wrapper.find('.quantity-sold').first().text()).toEqual('3 people bought');
       });
 
       it('Should render quantity sold node - "1 person bought"', () => {
@@ -133,9 +130,7 @@ describe('<ProductDetails />', () => {
           product: { productDetails: { ...defaultProductDetails, quantitySold: 1 } },
         };
         const wrapper = setUp(store);
-        const quantitySoldNode = wrapper.find('.quantity-sold');
-        expect(quantitySoldNode).toHaveLength(1);
-        expect(quantitySoldNode.text()).toEqual('1 person bought');
+        expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought');
       });
 
       it('Should NOT render quantity sold node', () => {

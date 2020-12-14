@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import * as SC from './ProductItem.sc';
 import { baseURL } from '../../../axios';
 import noPhoto from '../../../images/no-photo.png';
+import { GrayText } from '../../../styled/components';
+import { formatPrice } from '../../../shared/utility';
 
 const ProductItem = (props) => {
   const {
@@ -15,7 +17,7 @@ const ProductItem = (props) => {
   if (condition !== 'not_applicable') {
     conditionNode = (
       <span className="condition">
-        <span className="gray">Condition: </span>
+        <GrayText>Condition: </GrayText>
         {condition}
       </span>
     );
@@ -25,9 +27,9 @@ const ProductItem = (props) => {
   if (quantitySold >= 1) {
     quantitySoldNode = (
       <div className="quantity-sold-box">
-        <span className="quantity-sold gray">
+        <GrayText className="quantity-sold">
           {quantitySold === 1 ? '1 person' : `${quantitySold} people`} bought
-        </span>
+        </GrayText>
       </div>
     );
   }
@@ -45,7 +47,7 @@ const ProductItem = (props) => {
         <div className="data-box">
           <span className="name">{name}</span>
           {conditionNode}
-          <span className="price">${price.toFixed(2)}</span>
+          <span className="price">{formatPrice(price)}</span>
           {quantitySoldNode}
         </div>
       </SC.Wrapper>

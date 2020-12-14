@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   min-height: 14rem;
   position: relative;
 
-  & .photo-box {
+  & .photo-section {
     align-items: center;
     display: flex;
     height: 45rem;
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
     max-width: 100%;
   }
 
-  & .data-box {
+  & .data-section {
     align-self: stretch;
     display: flex;
     flex-direction: column;
@@ -53,29 +53,13 @@ export const Wrapper = styled.div`
     margin-bottom: ${({ theme }) => theme.spacings.level3};
   }
 
-  & .description-box {
-    display: flex;
-    flex-direction: column;
-    margin-top: ${({ theme }) => theme.spacings.level3};
-  }
-
-  & .description-heading {
-    display: inline-block;
-    font-size: ${({ theme }) => theme.fontSizes.level4};
-    font-weight: 700;
-    margin-bottom: ${({ theme }) => theme.spacings.level1};
-  }
-
   & .description-content {
     font-size: ${({ theme }) => theme.fontSizes.level3};
-  }
-
-  & .gray-text {
-    color: ${({ theme }) => theme.colors.light4};
+    line-height: 1.35;
   }
 
   @media only screen and (max-width: 56.25em) {
-    & .photo-box {
+    & .photo-section {
       margin-right: ${({ theme }) => theme.spacings.level3};
     }
   }

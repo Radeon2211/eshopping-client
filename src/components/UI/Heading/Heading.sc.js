@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
+  margin-top: ${({ mgTop, theme }) => (mgTop ? theme.spacings[mgTop] : mgTop)};
   margin-bottom: ${({ mgBottom, theme }) => (mgBottom ? theme.spacings[mgBottom] : mgBottom)};
   text-align: ${({ align }) => align};
 
@@ -34,7 +35,6 @@ const StyledHeading = styled.h1`
         return `
           font-size: ${theme.fontSizes.level4};
           line-height: 1;
-          text-align: center;
         `;
       default:
         return ``;

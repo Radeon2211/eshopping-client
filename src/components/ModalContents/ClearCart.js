@@ -19,10 +19,10 @@ const ClearCart = () => {
 
   return (
     <>
-      <Heading variant="h3" mgBottom="medium" align="center">
+      <Heading variant="h3" mgBottom="level3" align="center">
         Clear the shopping cart
       </Heading>
-      <Heading variant="h4" mgBottom="medium" align="center">
+      <Heading variant="h4" mgBottom="level3" align="center">
         Are you sure to do that?
       </Heading>
       <HorizontalWrapper mgTop="level3">

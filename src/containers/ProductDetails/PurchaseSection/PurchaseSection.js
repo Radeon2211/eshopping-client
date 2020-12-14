@@ -7,7 +7,7 @@ import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
 import ChooseQuantity from '../../../components/UI/ChooseQuantity';
-import { GreenText } from '../../../styled/components';
+import { GreenText, GrayText } from '../../../styled/components';
 
 const PurchaseSection = (props) => {
   const { productId, productQuantity, productSellerId, onSetModal, userProfile } = props;
@@ -82,12 +82,11 @@ const PurchaseSection = (props) => {
   if (userProfile?._id !== productSellerId) {
     const givenProductInCart = cart.find((item) => item.product._id === productId);
     let addToCartBtn = (
-      <Button filled clicked={addToCartClickHandle} loading={isCartLoading ? 1 : 0}>
+      <Button filled stretch clicked={addToCartClickHandle} isLoading={isCartLoading}>
         Add to cart
       </Button>
     );
     if (givenProductInCart?.quantity >= productQuantity) {
-      console.log('eeeeeeeeeeeee');
       addToCartBtn = (
         <span className="not-able-to-add">
           You have all pieces added to&nbsp;
@@ -112,11 +111,13 @@ const PurchaseSection = (props) => {
           />
           <span className="quantity-number">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
-            {givenProductInCart ? ` (${givenProductInCart?.quantity} in cart)` : ''}
+            <GrayText>
+              {givenProductInCart ? ` (${givenProductInCart?.quantity} in cart)` : ''}
+            </GrayText>
           </span>
         </div>
         {addToCartBtn}
-        <Button filled clicked={buyNowClickHandle}>
+        <Button filled stretch clicked={buyNowClickHandle}>
           buy now
         </Button>
       </>

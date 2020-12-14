@@ -11,6 +11,7 @@ import CartItemList from './CartItemList/CartItemList';
 import Loader from '../../components/UI/Loader';
 import { DEFAULT_PATH } from '../../shared/constants';
 import { GreenText } from '../../styled/components';
+import { formatPrice } from '../../shared/utility';
 
 const Cart = () => {
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
@@ -35,6 +36,7 @@ const Cart = () => {
       const cartValue = cart.reduce((acc, { product, quantity }) => {
         return acc + product.price * quantity;
       }, 0);
+      const roundedCartValue = Math.round((cartValue + Number.EPSILON) * 100) / 100;
 
       content = (
         <>
@@ -46,7 +48,7 @@ const Cart = () => {
             <Panel>
               <SC.PayBox>
                 <span className="to-pay-text">To pay</span>
-                <span className="to-pay-value">{`$${cartValue}`}</span>
+                <span className="to-pay-value">{formatPrice(roundedCartValue)}</span>
               </SC.PayBox>
               <Button filled isLoading={isCartLoading} stretch>
                 go to summary
@@ -58,7 +60,7 @@ const Cart = () => {
     } else {
       content = (
         <>
-          <Heading variant="h3" mgBottom="medium" align="center" lineHeight="medium">
+          <Heading variant="h3" mgBottom="level3" align="center" lineHeight="medium">
             Your shopping cart is empty. Check out the latest&nbsp;
             <Link to={DEFAULT_PATH}>
               <GreenText>offers</GreenText>

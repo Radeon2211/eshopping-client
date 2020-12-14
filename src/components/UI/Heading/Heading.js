@@ -10,12 +10,14 @@ const Heading = (props) => {
 Heading.defaultProps = {
   align: 'left',
   mgBottom: '0',
+  mgTop: '0',
   lineHeight: '',
 };
 
 Heading.propTypes = {
   align: PropTypes.string,
   mgBottom: PropTypes.string,
+  mgTop: PropTypes.string,
   lineHeight: PropTypes.string,
   variant: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,

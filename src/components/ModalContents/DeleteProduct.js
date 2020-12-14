@@ -23,7 +23,7 @@ const DeleteProduct = () => {
 
   return (
     <>
-      <Heading variant="h4" mgBottom="medium" lineHeight="medium" align="center">
+      <Heading variant="h4" mgBottom="level3" lineHeight="medium" align="center">
         Are you sure to delete &quot;{productDetails?.name}&quot;?
       </Heading>
       <HorizontalWrapper>

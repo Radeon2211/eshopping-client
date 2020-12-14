@@ -13,7 +13,7 @@ import Login from '../../ModalContents/Login';
 import AddProduct from '../../ModalContents/AddProduct';
 import EditProduct from '../../ModalContents/EditProduct';
 import DeleteProduct from '../../ModalContents/DeleteProduct';
-import CartItemAdded from '../../ModalContents/CartItemAdded';
+import CartItemAdded from '../../ModalContents/CartItemAdded/CartItemAdded';
 import ChangeName from '../../ModalContents/ChangeName';
 import ChangeEmail from '../../ModalContents/ChangeEmail';
 import ChangePhoneNumber from '../../ModalContents/ChangePhoneNumber';
