@@ -9,25 +9,29 @@ export const ProductPreview = styled.div`
     display: flex;
     justify-content: center;
     max-height: 11rem;
-    width: 8rem;
     margin-right: ${({ theme }) => theme.spacings.level3};
+    width: 8rem;
   }
 
   & .photo {
     max-height: 100%;
-    object-fit: cover;
     max-width: 100%;
+    object-fit: cover;
   }
 
   & .data-box {
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
   }
 
   & .name {
     font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-top: ${({ theme }) => theme.spacings.level1};
+  }
+
+  & .quantity {
+    font-size: ${({ theme }) => theme.fontSizes.level2};
   }
 
   & .price {

@@ -29,7 +29,7 @@ const PurchaseSection = (props) => {
     setChosenQuantity(value);
   };
 
-  const inputValidateHandle = (e) => {
+  const inputBlurHandle = (e) => {
     const value = +e.target.value;
     if (!value || value < 1) {
       setChosenQuantity(1);
@@ -80,7 +80,10 @@ const PurchaseSection = (props) => {
   );
 
   if (userProfile?._id !== productSellerId) {
-    const givenProductInCart = cart.find((item) => item.product._id === productId);
+    let givenProductInCart = null;
+    if (cart) {
+      givenProductInCart = cart.find((item) => item.product._id === productId);
+    }
     let addToCartBtn = (
       <Button filled stretch clicked={addToCartClickHandle} isLoading={isCartLoading}>
         Add to cart
@@ -107,7 +110,7 @@ const PurchaseSection = (props) => {
             incremented={incrementQuantityHandle}
             decremented={decrementQuantityHandle}
             changed={inputChangeHandle}
-            blured={inputValidateHandle}
+            blured={inputBlurHandle}
           />
           <span className="quantity-number">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}

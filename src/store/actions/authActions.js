@@ -31,6 +31,7 @@ export const registerUser = (creds) => {
       const { data } = await axios.post('/users', correctCreds);
       dispatch(setProfile(data.user));
       dispatch(uiActions.formSuccess());
+      dispatch(uiActions.setAndDeleteMessage('Your account has been created successfully!'));
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));

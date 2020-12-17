@@ -62,7 +62,7 @@ describe('<CartItemAdded />', () => {
 
     it('Should render proper data about default product', () => {
       const wrapper = setUp();
-      expect(wrapper.find('.name').text()).toEqual('test name');
+      expect(wrapper.find('.name').text()).toEqual('3x test name');
       expect(wrapper.find('.price').text()).toEqual('$15 (total in the cart 3 x $5)');
     });
 

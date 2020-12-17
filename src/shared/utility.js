@@ -28,6 +28,10 @@ export const getErrorMessage = (error) => {
     errorMessage = Object.values(error.response.data.errors)[0].properties.message;
   } else if (error?.response?.data?.message) {
     errorMessage = error.response.data.message;
+  } else if (error?.response?.data?.modifiedPaths) {
+    if (error.response.data.modifiedPaths.includes('cart')) {
+      window.location.reload();
+    }
   }
   return errorMessage;
 };

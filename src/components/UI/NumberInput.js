@@ -46,7 +46,7 @@ SC.NumberInput = styled.input`
 `;
 
 const NumberInput = (props) => {
-  const { name, value, changed, blured, floating, size, focusable } = props;
+  const { name, value, changed, blured, focused, floating, size, focusable } = props;
 
   const inputKeyDownHandle = (e) => {
     if (floating) {
@@ -74,6 +74,7 @@ const NumberInput = (props) => {
       onKeyPress={inputPressHandle}
       onBlur={blured}
       onKeyDown={inputKeyDownHandle}
+      onFocus={focused}
       focusable={focusable}
     />
   );
@@ -84,6 +85,7 @@ NumberInput.defaultProps = {
   floating: false,
   focusable: true,
   blured: () => {},
+  focused: () => {},
 };
 
 NumberInput.propTypes = {
@@ -91,6 +93,7 @@ NumberInput.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   changed: PropTypes.func.isRequired,
   blured: PropTypes.func,
+  focused: PropTypes.func,
   floating: PropTypes.bool,
   focusable: PropTypes.bool,
 };

@@ -1,8 +1,11 @@
+import { v4 as uuidv4 } from 'uuid';
 import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { getErrorMessage } from '../../shared/utility';
 import { modalTypes } from '../../shared/constants';
+
+let updateCartItemRequests = [];
 
 export const setCart = (cart) => ({
   type: actionTypes.SET_CART,
@@ -39,13 +42,19 @@ export const addCartItem = (item) => {
   };
 };
 
-export const updateCartItem = (itemId, action) => {
+export const updateCartItem = (itemId, action, quantity) => {
   return async (dispatch) => {
-    dispatch(uiActions.dataStart());
+    dispatch(uiActions.cartStart());
     try {
-      const { data } = await axios.patch(`/cart/${itemId}/update?action=${action}`);
-      dispatch(uiActions.cartEnd());
-      dispatch(setCart(data.cart));
+      const requestId = uuidv4();
+      updateCartItemRequests.push(requestId);
+      const quantityParam = quantity ? `&quantity=${quantity}` : '';
+      const { data } = await axios.patch(`/cart/${itemId}/update?action=${action}${quantityParam}`);
+      updateCartItemRequests = updateCartItemRequests.filter((request) => request !== requestId);
+      if (updateCartItemRequests.length <= 0) {
+        dispatch(uiActions.cartEnd());
+        dispatch(setCart(data.cart));
+      }
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -56,7 +65,7 @@ export const updateCartItem = (itemId, action) => {
 
 export const clearCart = () => {
   return async (dispatch) => {
-    dispatch(uiActions.dataStart());
+    dispatch(uiActions.cartStart());
     try {
       await axios.patch('/cart/clear');
       dispatch(uiActions.cartEnd());
@@ -71,7 +80,7 @@ export const clearCart = () => {
 
 export const removeCartItem = (itemId) => {
   return async (dispatch) => {
-    dispatch(uiActions.dataStart());
+    dispatch(uiActions.cartStart());
     try {
       const { data } = await axios.patch(`/cart/${itemId}/remove`);
       dispatch(uiActions.cartEnd());

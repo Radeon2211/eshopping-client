@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import * as SC from './Modal.sc';
@@ -25,6 +26,8 @@ import AboutWebsite from '../../ModalContents/AboutWebsite';
 import ClearCart from '../../ModalContents/ClearCart';
 
 const Modal = () => {
+  const history = useHistory();
+
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
   const isModalOpen = useSelector((state) => state.ui.isModalOpen);
   const modalContent = useSelector((state) => state.ui.modalContent);
@@ -36,6 +39,10 @@ const Modal = () => {
     },
     [dispatch],
   );
+
+  useEffect(() => {
+    return history.listen(() => onSetModal(false));
+  }, [history, onSetModal]);
 
   const loadingOverlay = isFormLoading ? <LoadingOverlay zeroPadding /> : null;
 

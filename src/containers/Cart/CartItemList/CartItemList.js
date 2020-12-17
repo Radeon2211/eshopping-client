@@ -14,25 +14,35 @@ SC.Wrapper = styled.div`
   min-height: 14rem;
 
   & .clear-btn-box {
-    margin-bottom: ${({ theme }) => theme.spacings.level3};
     text-align: center;
   }
 `;
 SC.SingleSeller = styled.div`
+  padding: ${({ theme }) => theme.spacings.level3} 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.light3};
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
   & .seller {
     font-size: ${({ theme }) => theme.fontSizes.level3};
+    margin-bottom: calc(0.5 * ${({ theme }) => theme.spacings.level2});
   }
 `;
 
 const CartItemList = (props) => {
-  const { items } = props;
+  const { cart, isCartLoading } = props;
 
   const dispatch = useDispatch();
   const onSetModal = useCallback(
     (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
     [dispatch],
   );
-  const sellersObject = items.reduce((acc, item) => {
+  const sellersObject = cart.reduce((acc, item) => {
     if (!acc[item.product.seller._id]) {
       acc[item.product.seller._id] = {
         items: [],
@@ -48,7 +58,7 @@ const CartItemList = (props) => {
     ...rest,
   }));
 
-  const sellerList = sellersArray.map(({ sellerId, sellerUsername, products }) => (
+  const sellerList = sellersArray.map(({ sellerId, sellerUsername, items }) => (
     <SC.SingleSeller key={sellerId}>
       <div className="seller">
         <span>seller </span>
@@ -56,6 +66,9 @@ const CartItemList = (props) => {
           <GreenText>{sellerUsername}</GreenText>
         </Link>
       </div>
+      {items.map((item) => (
+        <CartItem key={item._id} data={item} isCartLoading={isCartLoading} />
+      ))}
     </SC.SingleSeller>
   ));
 
@@ -72,7 +85,8 @@ const CartItemList = (props) => {
 };
 
 CartItemList.propTypes = {
-  items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object)]).isRequired,
+  cart: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object)]).isRequired,
+  isCartLoading: PropTypes.bool.isRequired,
 };
 
 export default CartItemList;

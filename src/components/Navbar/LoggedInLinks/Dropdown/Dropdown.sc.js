@@ -32,7 +32,7 @@ export const Wrapper = styled(motion.div)`
     display: flex;
     font-size: ${({ theme }) => theme.fontSizes.level2};
     justify-content: center;
-    padding: ${({ theme }) => theme.spacings.level2};
+    padding: calc(1.5 * ${({ theme }) => theme.spacings.level2});
     text-align: center;
     text-decoration: none;
     transition: color ${({ theme }) => theme.durations.level1}s;

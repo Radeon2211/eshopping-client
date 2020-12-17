@@ -53,7 +53,7 @@ const App = () => {
   if (userProfile === null) {
     if (!axios.defaults.headers.post['X-CSRF-Token']) {
       routes = (
-        <Heading variant="h3" align="center">
+        <Heading variant="h3" align="center" mgTop="level3">
           Server connection error. Try again later
         </Heading>
       );

@@ -17,14 +17,14 @@ export const Wrapper = styled.article`
     display: flex;
     justify-content: center;
     max-height: 16rem;
-    width: 13rem;
     margin-right: ${({ theme }) => theme.spacings.level3};
+    width: 13rem;
   }
 
   & .photo {
     max-height: 100%;
-    object-fit: cover;
     max-width: 100%;
+    object-fit: cover;
   }
 
   & .data-box {
@@ -38,8 +38,8 @@ export const Wrapper = styled.article`
 
   & .condition {
     font-size: ${({ theme }) => theme.fontSizes.level1};
-    text-transform: capitalize;
     margin-top: ${({ theme }) => theme.spacings.level1};
+    text-transform: capitalize;
   }
 
   & .price {

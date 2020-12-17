@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as SC from './Cart.sc';
@@ -14,6 +14,8 @@ import { GreenText } from '../../styled/components';
 import { formatPrice } from '../../shared/utility';
 
 const Cart = () => {
+  const summaryRef = useRef(null);
+
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
   const cart = useSelector((state) => state.auth.cart);
 
@@ -21,6 +23,11 @@ const Cart = () => {
   const onFetchCart = useCallback(() => dispatch(actions.fetchCart()), [dispatch]);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([e]) => e.target.classList.toggle('is-sticky', e.intersectionRatio < 1),
+      { threshold: [1] },
+    );
+    observer.observe(summaryRef.current);
     onFetchCart();
   }, [onFetchCart]);
 
@@ -43,17 +50,19 @@ const Cart = () => {
           <Heading variant="h3">Your shopping cart</Heading>
           <SideBySide proportion="3/1" makeVerticalWhen={900}>
             <Panel>
-              <CartItemList items={cart} />
+              <CartItemList cart={cart} isCartLoading={isCartLoading} />
             </Panel>
-            <Panel>
-              <SC.PayBox>
-                <span className="to-pay-text">To pay</span>
-                <span className="to-pay-value">{formatPrice(roundedCartValue)}</span>
-              </SC.PayBox>
-              <Button filled isLoading={isCartLoading} stretch>
-                go to summary
-              </Button>
-            </Panel>
+            <SC.Summary ref={summaryRef}>
+              <Panel>
+                <SC.PayBox>
+                  <span className="to-pay-text">To pay</span>
+                  <span className="to-pay-value">{formatPrice(roundedCartValue)}</span>
+                </SC.PayBox>
+                <Button filled isLoading={isCartLoading} stretch>
+                  go to summary
+                </Button>
+              </Panel>
+            </SC.Summary>
           </SideBySide>
         </>
       );

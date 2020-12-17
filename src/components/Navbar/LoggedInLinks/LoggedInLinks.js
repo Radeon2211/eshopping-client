@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useWindowWidth } from '@react-hook/window-size';
-import { ReactComponent as CartIcon } from '../../../images/SVG/cart.svg';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import MyIcon from '../../UI/MyIcon';
 import Dropdown from './Dropdown/Dropdown';
+import CartLink from './CartLink/CartLink';
 
 const usernameLengthBig = 15;
 const usernameLengthSmall = 9;
@@ -65,11 +64,7 @@ const SignedInLinks = (props) => {
 
   return (
     <SC.Wrapper>
-      <Link to="/cart">
-        <MyIcon size="big">
-          <CartIcon />
-        </MyIcon>
-      </Link>
+      <CartLink />
       <SC.User id="user" onClick={userClickHandle}>
         <span className="username" ref={usernameRef}>
           {usernameToDisplay}

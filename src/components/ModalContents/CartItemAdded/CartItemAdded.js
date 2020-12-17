@@ -50,7 +50,10 @@ const CartItemAdded = () => {
               {formatPrice(price * quantity)}
               <span className="total-in-cart">{` (total in the cart ${quantity} x ${formattedPrice})`}</span>
             </span>
-            <span className="name">{name}</span>
+            <span className="name">
+              <span className="quantity">{`${quantity}x `}</span>
+              {name}
+            </span>
           </div>
         </SC.ProductPreview>
         <HorizontalWrapper mgTop="level3">

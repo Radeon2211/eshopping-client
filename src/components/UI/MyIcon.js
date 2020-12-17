@@ -19,8 +19,8 @@ SC.Wrapper = styled.div`
         `;
       }
       return `
-          fill: ${theme.colors.light4};
-        `;
+        fill: ${theme.colors.light4};
+      `;
     }}
 
     ${({ size }) => {
@@ -37,9 +37,9 @@ SC.Wrapper = styled.div`
         `;
       }
       return `
-          width: 3.4rem;
-          height: 3.4rem;
-        `;
+        width: 3.4rem;
+        height: 3.4rem;
+      `;
     }}
 
     ${({ disabled, theme }) => {

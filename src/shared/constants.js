@@ -112,3 +112,9 @@ export const singleInfoNames = {
   CONTACTS: 'Contacts',
   USERNAME: 'Username',
 };
+
+export const updateCartActions = {
+  INCREMENT: 'INCREMENT',
+  DECREMENT: 'DECREMENT',
+  NUMBER: 'NUMBER',
+};
