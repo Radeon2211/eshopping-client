@@ -20,5 +20,5 @@ export const CART_START = 'CART_START';
 export const CART_END = 'CART_END';
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const DELETE_MESSAGE = 'DELETE_MESSAGE';
-export const SET_MODAL_OPEN_STATE = 'SET_MODAL_OPEN_STATE';
+export const SET_MODAL = 'SET_MODAL';
 export const SET_MAX_QUANTITY_PER_PAGE = 'SET_MAX_QUANTITY_PER_PAGE';

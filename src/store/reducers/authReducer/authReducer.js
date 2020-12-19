@@ -16,7 +16,7 @@ const loginUser = (state, action) => {
 const logoutUser = (state) => {
   return updateObject(state, {
     profile: null,
-    cart: null,
+    cart: undefined,
     placedOrders: [],
     sellHistory: [],
     transaction: null,

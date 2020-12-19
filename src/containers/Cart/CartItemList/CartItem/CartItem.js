@@ -84,7 +84,7 @@ const CartItem = (props) => {
 
   return (
     <SC.Wrapper>
-      <Link to={`/products/${productId}`}>
+      <Link to={`/products/${productId}`} data-test="product-link">
         <div className="photo-box">
           <img
             src={photo ? `${baseURL}/products/${productId}/photo` : noPhoto}
@@ -94,7 +94,9 @@ const CartItem = (props) => {
         </div>
       </Link>
       <span className="name">
-        <Link to={`/products/${productId}`}>{name}</Link>
+        <Link to={`/products/${productId}`} data-test="product-link">
+          {name}
+        </Link>
       </span>
       <div className="mobile-lower-row">
         <div className="choose-quantity-box">

@@ -34,7 +34,7 @@ const Cart = () => {
   let content = <Loader />;
   if (cart === null) {
     content = (
-      <Heading variant="h3" align="center">
+      <Heading variant="h3" align="center" data-test="cart-error-heading">
         There is a problem to get your shopping cart
       </Heading>
     );
@@ -48,7 +48,7 @@ const Cart = () => {
       content = (
         <>
           <Heading variant="h3">Your shopping cart</Heading>
-          <SideBySide proportion="3/1" makeVerticalWhen={900}>
+          <SideBySide proportion="3/1" makeVerticalWhen={1200}>
             <Panel>
               <CartItemList cart={cart} isCartLoading={isCartLoading} />
             </Panel>
@@ -69,13 +69,19 @@ const Cart = () => {
     } else {
       content = (
         <>
-          <Heading variant="h3" mgBottom="level3" align="center" lineHeight="medium">
+          <Heading
+            variant="h3"
+            mgBottom="level3"
+            align="center"
+            lineHeight="medium"
+            data-test="cart-empty-heading"
+          >
             Your shopping cart is empty. Check out the latest&nbsp;
             <Link to={DEFAULT_PATH}>
               <GreenText>offers</GreenText>
             </Link>
           </Heading>
-          <Heading variant="h4" align="center">
+          <Heading variant="h4" align="center" data-test="cart-info-heading">
             You can have up to 50 products in the cart
           </Heading>
         </>

@@ -45,7 +45,7 @@ export const deleteMessage = () => ({
 });
 
 export const setModal = (isModalOpen, modalContent = '') => ({
-  type: actionTypes.SET_MODAL_OPEN_STATE,
+  type: actionTypes.SET_MODAL,
   isModalOpen,
   modalContent,
 });

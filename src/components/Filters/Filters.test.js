@@ -63,18 +63,20 @@ describe('<Filters />', () => {
   });
 
   describe(`Check if renders correctly`, () => {
-    it('Should render <SC.Wrapper /> and submit button should NOT be disabled', () => {
+    it('Should render <SC.Wrapper /> and submit button should NOT be loading', () => {
       const wrapper = setUp(defaultProps);
       simulateTogglerClick(wrapper);
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('disabled')).toBe(false);
+      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toBe(
+        false,
+      );
     });
 
     it('Should submit button be disabled', () => {
       const props = createProps([{ id: 1 }], true);
       const wrapper = setUp(props);
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('disabled')).toBe(true);
+      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toBe(true);
     });
 
     it('Should NOT render <SC.Wrapper /> and unavailable heading', () => {

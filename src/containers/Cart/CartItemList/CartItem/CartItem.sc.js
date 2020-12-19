@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-left: ${({ theme }) => theme.spacings.level3};
     transition: color ${({ theme }) => theme.durations.level1}s;
-    width: 30rem;
+    width: 31rem;
 
     &:hover {
       color: ${({ theme }) => theme.colors.green};
@@ -72,6 +72,7 @@ export const Wrapper = styled.div`
 
   & .price-per-piece {
     font-size: ${({ theme }) => theme.fontSizes.level2};
+    text-align: right;
   }
 
   & .remove-icon {
@@ -81,7 +82,7 @@ export const Wrapper = styled.div`
     padding: calc(0.5 * ${({ theme }) => theme.spacings.level1});
   }
 
-  @media only screen and (max-width: 75em) {
+  @media only screen and (max-width: 56.25em) {
     & .mobile-lower-row {
       margin-top: ${({ theme }) => theme.spacings.level2};
       min-width: 100%;

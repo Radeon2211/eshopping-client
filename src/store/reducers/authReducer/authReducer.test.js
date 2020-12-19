@@ -1,17 +1,12 @@
 import * as actionTypes from '../../actions/actionTypes';
-import authReducer from './authReducer';
+import authReducer, { initialState } from './authReducer';
 
 describe('Auth reducer', () => {
   it('Should return default state', () => {
-    expect(authReducer(undefined, {})).toEqual({
-      profile: undefined,
-      placedOrders: [],
-      sellHistory: [],
-      transaction: null,
-    });
+    expect(authReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('Should return new state if receiving type', () => {
+  it('Should return new state after SET_PROFILE', () => {
     const userProfile = {
       username: 'Test username',
     };
@@ -21,10 +16,47 @@ describe('Auth reducer', () => {
         profile: userProfile,
       }),
     ).toEqual({
+      ...initialState,
       profile: userProfile,
-      placedOrders: [],
-      sellHistory: [],
-      transaction: null,
+    });
+  });
+
+  it('Should return new state after LOGIN_USER', () => {
+    const userProfile = {
+      username: 'Test username',
+    };
+    expect(
+      authReducer(undefined, {
+        type: actionTypes.LOGIN_USER,
+        profile: userProfile,
+      }),
+    ).toEqual({
+      ...initialState,
+      profile: userProfile,
+    });
+  });
+
+  it('Should return new state after LOGOUT_USER', () => {
+    expect(
+      authReducer(undefined, {
+        type: actionTypes.LOGOUT_USER,
+      }),
+    ).toEqual({
+      ...initialState,
+      profile: null,
+    });
+  });
+
+  it('Should return new state after SET_CART', () => {
+    const cart = [{ _id: '1' }];
+    expect(
+      authReducer(undefined, {
+        type: actionTypes.SET_CART,
+        cart,
+      }),
+    ).toEqual({
+      ...initialState,
+      cart,
     });
   });
 });

@@ -66,7 +66,7 @@ const setModal = (state, action) => {
   if (state.isFormLoading && !action.isModalOpen) return state;
   return updateObject(state, {
     isModalOpen: action.isModalOpen,
-    modalContent: action.modalContent,
+    modalContent: action.modalContent || '',
     formError: '',
   });
 };
@@ -97,7 +97,7 @@ const uiReducer = (state = initialState, action) => {
       return setMessage(state, action);
     case actionTypes.DELETE_MESSAGE:
       return deleteMessage(state);
-    case actionTypes.SET_MODAL_OPEN_STATE:
+    case actionTypes.SET_MODAL:
       return setModal(state, action);
     case actionTypes.SET_MAX_QUANTITY_PER_PAGE:
       return setMaxQuantityPerPage(state, action);

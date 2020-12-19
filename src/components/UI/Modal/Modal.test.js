@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import Modal from './Modal';
 import * as SC from './Modal.sc';
 import theme from '../../../styled/theme';
@@ -17,6 +17,7 @@ const mockStore = configureMockStore([thunk]);
 
 const defaultHistory = {
   listen: jest.fn(),
+  location: { pathname: '' },
 };
 
 const setUp = (isModalOpen, modalContent, isFormLoading) => {

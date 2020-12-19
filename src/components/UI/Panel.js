@@ -9,7 +9,7 @@ SC.Wrapper = styled.section`
   padding: ${({ theme }) => theme.spacings.level3};
   width: 100%;
 
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 56.25em) {
     padding: ${({ theme }) => theme.spacings.level3} ${({ theme }) => theme.spacings.level2};
   }
 `;

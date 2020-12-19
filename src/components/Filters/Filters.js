@@ -143,7 +143,7 @@ const Filters = (props) => {
       <Button
         filled
         clicked={btnClickHandle}
-        disabled={isDataLoading}
+        isLoading={isDataLoading}
         data-test="filters-submit-btn"
       >
         Filter

@@ -23,20 +23,21 @@ export const Summary = styled.div`
   position: sticky;
   top: 9rem;
 
-  @media only screen and (max-width: 56.25em) {
-    bottom: -1px;
-    padding-bottom: 1px;
-  }
-
   & > *:first-child {
     transition: padding ${({ theme }) => theme.durations.level2}s;
   }
 
   &.is-sticky {
     border-top: 1px solid ${({ theme }) => theme.colors.light3};
+  }
+
+  @media only screen and (max-width: 75em) {
+    bottom: -1px;
+    padding-bottom: 1px;
 
     & > *:first-child {
       padding: ${({ theme }) => theme.spacings.level2};
+      transition: width ${({ theme }) => theme.durations.level2}s;
     }
   }
 `;
