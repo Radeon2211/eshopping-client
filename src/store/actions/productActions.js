@@ -4,7 +4,12 @@ import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { getErrorMessage } from '../../shared/utility';
 
-export const setProducts = (products, productCount, minPrice, maxPrice) => ({
+export const setProducts = (
+  products = undefined,
+  productCount = undefined,
+  minPrice = 0,
+  maxPrice = 0,
+) => ({
   type: actionTypes.SET_PRODUCTS,
   products,
   productCount,
@@ -17,17 +22,9 @@ export const setProductDetails = (productDetails) => ({
   productDetails,
 });
 
-export const deleteProductDetails = () => ({
-  type: actionTypes.DELETE_PRODUCT_DETAILS,
-});
-
 export const deleteProductFromList = (productId) => ({
   type: actionTypes.DELETE_PRODUCT_FROM_LIST,
   productId,
-});
-
-export const clearProducts = () => ({
-  type: actionTypes.CLEAR_PRODUCTS,
 });
 
 export const addProduct = (product, currentPath) => {
@@ -105,7 +102,7 @@ export const editProduct = (productData, productId) => {
   };
 };
 
-export const fetchProducts = (queryStrings, page, sellerId) => {
+export const fetchProducts = (queryStrings, page, sellerUsername) => {
   return async (dispatch, getState) => {
     dispatch(uiActions.dataStart());
     let minPriceOuter = 0;
@@ -128,8 +125,8 @@ export const fetchProducts = (queryStrings, page, sellerId) => {
     }
 
     parsedQueryParams.page = page;
-    if (sellerId) {
-      parsedQueryParams.seller = sellerId;
+    if (sellerUsername) {
+      parsedQueryParams.seller = sellerUsername;
     }
 
     const updatedQueryParams = queryString.stringify(parsedQueryParams);
@@ -145,6 +142,7 @@ export const fetchProducts = (queryStrings, page, sellerId) => {
       dispatch(setProducts(data.products, data.productCount, minPriceOuter, maxPriceOuter));
     } catch (error) {
       const errorMessage = getErrorMessage(error);
+      dispatch(setProducts(null));
       dispatch(uiActions.dataFail(errorMessage));
     }
   };
@@ -174,7 +172,7 @@ export const deleteProduct = (productId, history) => {
     dispatch(uiActions.formStart());
     try {
       await axios.delete(`products/${productId}`);
-      dispatch(deleteProductDetails());
+      dispatch(setProductDetails(undefined));
       dispatch(deleteProductFromList(productId));
       dispatch(uiActions.formSuccess());
       dispatch(uiActions.setAndDeleteMessage('Product has been deleted successfully'));

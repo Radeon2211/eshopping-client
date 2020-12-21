@@ -72,8 +72,7 @@ const PurchaseSection = (props) => {
   let purchaseSection = (
     <SC.InfoToSeller>
       <div className="info-quantity-box">
-        <span className="quantity-text gray-text">Quantity: </span>
-        <span className="quantity-number">{productQuantity}</span>
+        <span className="quantity-text gray-text">{`Quantity: ${productQuantity}`}</span>
       </div>
       <span className="text">You are the seller of this product</span>
     </SC.InfoToSeller>

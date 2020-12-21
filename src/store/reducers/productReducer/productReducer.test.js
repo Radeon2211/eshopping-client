@@ -59,28 +59,4 @@ describe('Product reducer', () => {
       products: [{ _id: '2', price: 2 }],
     });
   });
-
-  it('Should return new state after CLEAR_PRODUCTS', () => {
-    const state = {
-      products: [
-        { _id: '1', price: 1 },
-        { _id: '2', price: 2 },
-      ],
-      productCount: 5,
-      minPrice: 1,
-      maxPrice: 2,
-      productDetails: undefined,
-    };
-    expect(
-      productReducer(state, {
-        type: actions.CLEAR_PRODUCTS,
-      }),
-    ).toEqual({
-      products: null,
-      productCount: undefined,
-      minPrice: 0,
-      maxPrice: 0,
-      productDetails: undefined,
-    });
-  });
 });

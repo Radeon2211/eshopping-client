@@ -66,6 +66,12 @@ const ProductList = (props) => {
     } else {
       productList = products.map((product) => <ProductItem key={product._id} data={product} />);
     }
+  } else if (products === null) {
+    productList = (
+      <Heading variant="h4" align="center">
+        There is a problem to fetch products
+      </Heading>
+    );
   }
 
   return (
@@ -76,12 +82,9 @@ const ProductList = (props) => {
   );
 };
 
-ProductList.defaultProps = {
-  products: null,
-};
-
 ProductList.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object),
+  // eslint-disable-next-line react/require-default-props
+  products: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object)]),
   isDataLoading: PropTypes.bool.isRequired,
   page: PropTypes.string.isRequired,
 };

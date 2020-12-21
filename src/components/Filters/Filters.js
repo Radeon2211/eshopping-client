@@ -163,7 +163,7 @@ const Filters = (props) => {
         (queryParamsKeys.length === 1 && queryParamsKeys.includes('name'))
       ) {
         filtersWrapper = (
-          <Heading variant="h4" data-test="unavailable-heading">
+          <Heading variant="h4" data-test="unavailable-heading" align="center">
             Filters are unavailable
           </Heading>
         );

@@ -13,7 +13,6 @@ SC.Wrapper = styled.div`
   justify-content: center;
   justify-items: ${({ alignLoader }) => alignLoader};
   left: 0;
-  padding-top: ${({ theme }) => theme.spacings.level5};
   position: absolute;
   top: 0;
   width: 100%;

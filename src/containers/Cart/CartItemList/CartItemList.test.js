@@ -62,11 +62,11 @@ describe('<CartItemList />', () => {
 
     it('Should render three <SC.SingleSeller /> and five <CartItem />', () => {
       const cart = [
-        createCartItem('u1'),
-        createCartItem('u1'),
-        createCartItem('u2'),
-        createCartItem('u3'),
-        createCartItem('u3'),
+        createCartItem('u1', 'user1'),
+        createCartItem('u1', 'user1'),
+        createCartItem('u2', 'user2'),
+        createCartItem('u3', 'user3'),
+        createCartItem('u3', 'user3'),
       ];
       const wrapper = setUp(cart);
       expect(wrapper.find(SC.SingleSeller)).toHaveLength(3);
@@ -77,7 +77,7 @@ describe('<CartItemList />', () => {
       const cart = [createCartItem('u1', 'user1')];
       const wrapper = setUp(cart);
       expect(wrapper.find(Link).first().text()).toBe('user1');
-      expect(wrapper.find(Link).first().prop('to')).toBe('/users/u1');
+      expect(wrapper.find(Link).first().prop('to')).toBe('/user/user1?p=1');
     });
   });
 });

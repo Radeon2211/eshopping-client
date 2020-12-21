@@ -17,9 +17,10 @@ import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
 
-const createStore = (productCount) =>
+const createStore = (products, productCount) =>
   mockStore({
     product: {
+      products,
       productCount,
     },
     ui: {
@@ -45,6 +46,10 @@ const setUp = (store) => {
 };
 
 describe('<ProductsAndFilters />', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
       expect(checkProps(ProductsAndFilters, defaultProps)).toBeUndefined();
@@ -57,7 +62,7 @@ describe('<ProductsAndFilters />', () => {
   describe('Check if paginations, controller render', () => {
     let wrapper;
     beforeEach(() => {
-      const store = createStore(5);
+      const store = createStore([{ _id: 'p1' }], 5);
       wrapper = setUp(store);
     });
     it('Should render <InputPagination />', () => {

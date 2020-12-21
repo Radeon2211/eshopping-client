@@ -17,6 +17,7 @@ import Products from './containers/Products';
 import Logout from './containers/Logout';
 
 const ProductDetails = lazy(() => import('./containers/ProductDetails/ProductDetails'));
+const OtherUser = lazy(() => import('./containers/OtherUser/OtherUser'));
 const MyAccount = lazy(() => import('./containers/MyAccount/MyAccount'));
 const Cart = lazy(() => import('./containers/Cart/Cart'));
 
@@ -38,11 +39,11 @@ const App = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const getProfile = useCallback(() => dispatch(actions.getProfile()), [dispatch]);
+  const onFetchProfile = useCallback(() => dispatch(actions.fetchProfile()), [dispatch]);
 
   useEffect(() => {
-    getProfile();
-  }, [getProfile]);
+    onFetchProfile();
+  }, [onFetchProfile]);
 
   let routes = (
     <div style={{ textAlign: 'center', marginTop: '2.4rem' }}>
@@ -86,6 +87,7 @@ const App = () => {
             <Route path="/logout" component={Logout} />
             <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
+            <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
             <Route path="/cart" exact component={WaitingComponent(Cart)} />
             <Route path="/my-account" component={WaitingComponent(MyAccount)} />
             <Redirect to={DEFAULT_PATH} />

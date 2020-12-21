@@ -9,6 +9,11 @@ export const setProfile = (profile) => ({
   profile,
 });
 
+export const setOtherUser = (user) => ({
+  type: actionTypes.SET_OTHER_USER,
+  otherUser: user,
+});
+
 export const registerUser = (creds) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
@@ -53,7 +58,7 @@ export const loginUser = (creds) => {
   };
 };
 
-export const getProfile = () => {
+export const fetchProfile = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get('/users/me');
@@ -190,6 +195,22 @@ export const deleteAccount = (creds, history) => {
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};
+
+export const fetchOtherUser = (username) => {
+  return async (dispatch) => {
+    dispatch(uiActions.dataStart());
+    try {
+      const { data } = await axios.get(`/users/${username}`);
+      dispatch(uiActions.dataSuccess());
+      dispatch(setOtherUser(data.profile));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(setOtherUser(null));
+      dispatch(uiActions.dataFail(errorMessage));
+      dispatch(uiActions.setAndDeleteMessage(errorMessage));
     }
   };
 };

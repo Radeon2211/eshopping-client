@@ -1,9 +1,10 @@
-/* eslint-disable import/no-cycle */
 export {
   registerUser,
   loginUser,
-  getProfile,
+  fetchProfile,
   logoutUser,
+  fetchOtherUser,
+  setOtherUser,
   changeEmail,
   changeName,
   changePhoneNumber,
@@ -22,7 +23,6 @@ export {
   editProduct,
   fetchProducts,
   fetchProductDetails,
-  deleteProductDetails,
+  setProductDetails,
   deleteProduct,
-  clearProducts,
 } from './productActions';

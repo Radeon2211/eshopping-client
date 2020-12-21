@@ -22,7 +22,7 @@ const ProductsAndFilters = (props) => {
 
   let inputPagination = null;
   let numberPagination = null;
-  if (productCount !== 0) {
+  if (products && productCount > 0) {
     inputPagination = (
       <SC.ProductsTopbar>
         <QuantityPerPageController maxQuantityPerPage={maxQuantityPerPage} />
@@ -49,10 +49,15 @@ const ProductsAndFilters = (props) => {
     );
   }
 
+  let filters = null;
+  if (products || productCount > 0) {
+    filters = <Filters products={products} isDataLoading={isDataLoading} />;
+  }
+
   return (
     <SC.Wrapper>
       <SideBySide proportion="1/3" makeVerticalWhen={1200}>
-        <Filters products={products} isDataLoading={isDataLoading} />
+        {filters}
         <Panel>
           {inputPagination}
           <ProductList products={products} isDataLoading={isDataLoading} page={page} />

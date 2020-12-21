@@ -23,11 +23,13 @@ const Cart = () => {
   const onFetchCart = useCallback(() => dispatch(actions.fetchCart()), [dispatch]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([e]) => e.target.classList.toggle('is-sticky', e.intersectionRatio < 1),
-      { threshold: [1] },
-    );
-    observer.observe(summaryRef.current);
+    if (summaryRef.current) {
+      const observer = new IntersectionObserver(
+        ([e]) => e.target.classList.toggle('is-sticky', e.intersectionRatio < 1),
+        { threshold: [1] },
+      );
+      observer.observe(summaryRef.current);
+    }
     onFetchCart();
   }, [onFetchCart]);
 

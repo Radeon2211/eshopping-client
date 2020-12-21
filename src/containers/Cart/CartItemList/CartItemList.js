@@ -19,26 +19,26 @@ const CartItemList = (props) => {
   );
 
   const sellersObject = cart.reduce((acc, item) => {
-    if (!acc[item.product.seller._id]) {
-      acc[item.product.seller._id] = {
+    if (!acc[item.product.seller.username]) {
+      acc[item.product.seller.username] = {
         items: [],
         sellerUsername: item.product.seller.username,
       };
     }
-    acc[item.product.seller._id].items.push(item);
+    acc[item.product.seller.username].items.push(item);
     return acc;
   }, {});
 
-  const sellersArray = Object.entries(sellersObject).map(([sellerId, rest]) => ({
-    sellerId,
+  const sellersArray = Object.entries(sellersObject).map(([sellerUsername, rest]) => ({
+    sellerUsername,
     ...rest,
   }));
 
-  const sellerList = sellersArray.map(({ sellerId, sellerUsername, items }) => (
-    <SC.SingleSeller key={sellerId}>
+  const sellerList = sellersArray.map(({ sellerUsername, items }) => (
+    <SC.SingleSeller key={sellerUsername}>
       <div className="seller">
         <span>seller </span>
-        <Link to={`/users/${sellerId}`}>
+        <Link to={`/user/${sellerUsername}?p=1`}>
           <GreenText>{sellerUsername}</GreenText>
         </Link>
       </div>

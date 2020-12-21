@@ -70,21 +70,15 @@ describe('<ProductDetails />', () => {
     });
   });
 
-  describe('Check how <LoadingOverlay /> renders', () => {
-    it('Should NOT render <LoadingOverlay />', () => {
-      const wrapper = setUp();
-      expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
-    });
-
-    it('Should NOT render <LoadingOverlay />', () => {
-      const store = { ui: { isDataLoading: true } };
-      const wrapper = setUp(store);
-      expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
-    });
-  });
-
   describe('Check how everything renders', () => {
     describe('Check what renders if productDetails are and not', () => {
+      it('Should render <LoadingOverlay/> and NOT render <SideBySide />', () => {
+        const store = { product: { productDetails: undefined } };
+        const wrapper = setUp(store);
+        expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
+        expect(wrapper.find(SideBySide)).toHaveLength(0);
+      });
+
       it('Should render not found <Heading /> and NOT render <SideBySide />', () => {
         const store = { product: { productDetails: null } };
         const wrapper = setUp(store);

@@ -1,11 +1,10 @@
-import { v4 as uuidv4 } from 'uuid';
 import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { getErrorMessage } from '../../shared/utility';
 import { modalTypes } from '../../shared/constants';
 
-let updateCartItemRequests = [];
+let updateCartItemReqCounter = 0;
 
 export const setCart = (cart) => ({
   type: actionTypes.SET_CART,
@@ -46,12 +45,11 @@ export const updateCartItem = (itemId, action, quantity) => {
   return async (dispatch) => {
     dispatch(uiActions.cartStart());
     try {
-      const requestId = uuidv4();
-      updateCartItemRequests.push(requestId);
+      updateCartItemReqCounter += 1;
       const quantityParam = quantity ? `&quantity=${quantity}` : '';
       const { data } = await axios.patch(`/cart/${itemId}/update?action=${action}${quantityParam}`);
-      updateCartItemRequests = updateCartItemRequests.filter((request) => request !== requestId);
-      if (updateCartItemRequests.length <= 0) {
+      updateCartItemReqCounter -= 1;
+      if (updateCartItemReqCounter <= 0) {
         dispatch(uiActions.cartEnd());
         dispatch(setCart(data.cart));
       }

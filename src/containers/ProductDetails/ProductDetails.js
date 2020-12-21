@@ -29,15 +29,12 @@ const ProductDetails = (props) => {
 
   const userProfile = useSelector((state) => state.auth.profile);
   const productDetails = useSelector((state) => state.product.productDetails);
-  const isDataLoading = useSelector((state) => state.ui.isDataLoading);
 
   const dispatch = useDispatch();
   const onFetchProductDetails = useCallback((id) => dispatch(actions.fetchProductDetails(id)), [
     dispatch,
   ]);
-  const onDeleteProductDetails = useCallback(() => dispatch(actions.deleteProductDetails()), [
-    dispatch,
-  ]);
+  const onSetProductDetails = useCallback(() => dispatch(actions.setProductDetails()), [dispatch]);
   const onSetModal = useCallback(
     (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
     [dispatch],
@@ -45,13 +42,10 @@ const ProductDetails = (props) => {
 
   useEffect(() => {
     onFetchProductDetails(productId);
-    return () => onDeleteProductDetails();
-  }, [productId, onFetchProductDetails, onDeleteProductDetails]);
+    return () => onSetProductDetails();
+  }, [productId, onFetchProductDetails, onSetProductDetails]);
 
-  let loadingOverlay = null;
-  if (isDataLoading) loadingOverlay = <LoadingOverlay alignLoader="start" />;
-
-  let details = null;
+  let details = <LoadingOverlay alignLoader="start" />;
   if (productDetails === null) {
     details = (
       <Heading variant="h4" align="center" data-test="not-found">
@@ -149,7 +143,7 @@ const ProductDetails = (props) => {
             <span className="name">{name}</span>
             <span className="seller">
               <GrayText>from </GrayText>
-              <Link to={`/users/${seller._id}`}>
+              <Link to={`/user/${seller.username}?p=1`}>
                 <GreenText>{seller.username}</GreenText>
               </Link>
             </span>
@@ -176,10 +170,7 @@ const ProductDetails = (props) => {
 
   return (
     <Panel>
-      <SC.Wrapper>
-        {loadingOverlay}
-        {details}
-      </SC.Wrapper>
+      <SC.Wrapper>{details}</SC.Wrapper>
     </Panel>
   );
 };

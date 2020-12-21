@@ -40,6 +40,7 @@ describe('<ProductItem />', () => {
       const expectedProps = createProps(false);
       expect(checkProps(ProductList, expectedProps)).toBeUndefined();
     });
+
     it('Should throw a warning', () => {
       expect(checkProps(ProductList, {})).not.toBeNull();
     });
@@ -51,22 +52,26 @@ describe('<ProductItem />', () => {
       const wrapper = setUp(props);
       expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
     });
+
     it('Should NOT render <LoadingOverlay />', () => {
       const props = createProps(false, null);
       const wrapper = setUp(props);
       expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
     });
+
     it('Should render one <ProductItem />', () => {
       const props = createProps(false, [{ _id: '123', name: 'testName', price: 2 }]);
       const wrapper = setUp(props);
       expect(wrapper.find(ProductItem)).toHaveLength(1);
     });
+
     it('Should render <Heading /> and NOT render <ProductItem />', () => {
       const props = createProps(false, []);
       const wrapper = setUp(props);
       expect(wrapper.find(ProductItem)).toHaveLength(0);
       expect(wrapper.find(Heading)).toHaveLength(1);
     });
+
     it('Should render info about changing results', () => {
       const props = createProps(false, []);
       const history = createHistory('?p=1&name=testName&condition=new');
@@ -75,6 +80,7 @@ describe('<ProductItem />', () => {
         `We didn't find any matching results. Try to search something else or change filters`,
       );
     });
+
     it('Should render info about trying something else', () => {
       const props = createProps(false, []);
       const history = createHistory();
