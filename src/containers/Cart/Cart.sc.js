@@ -41,3 +41,12 @@ export const Summary = styled.div`
     }
   }
 `;
+
+export const EmptyCart = styled.div`
+  text-align: center;
+
+  & .empty-cart-image {
+    max-width: 100%;
+    width: 50rem;
+  }
+`;

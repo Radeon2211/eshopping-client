@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import * as SC from './OtherUser.sc';
 import Heading from '../../components/UI/Heading/Heading';
+import Loader from '../../components/UI/Loader';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { pages } from '../../shared/constants';
 
@@ -34,10 +35,10 @@ const UserDetails = (props) => {
     return () => onSetOtherUser(undefined);
   }, [userUsername, onFetchOtherUser, onFetchProducts, maxQuantityPerPage, onSetOtherUser, search]);
 
-  let content = null;
+  let content = <Loader align="center" />;
   if (otherUser === null) {
     content = (
-      <Heading variant="h3" align="center" data-test="not-found">
+      <Heading variant="h4" align="center" data-test="not-found">
         Such user does not exist or problem during fetching occurred
       </Heading>
     );
@@ -45,7 +46,7 @@ const UserDetails = (props) => {
     const { username, email, phone } = otherUser;
 
     let contactData = (
-      <Heading variant="h4" mgBottom="level3">
+      <Heading variant="h4" mgBottom="level3" data-test="private-data">
         This user has his contact data set to private
       </Heading>
     );
@@ -70,7 +71,7 @@ const UserDetails = (props) => {
 
     content = (
       <>
-        <Heading variant="h3" mgBottom="level3">
+        <Heading variant="h3" mgBottom="level3" data-test="username">
           {username}
         </Heading>
         {contactData}
@@ -78,6 +79,7 @@ const UserDetails = (props) => {
       </>
     );
   }
+
   return content;
 };
 

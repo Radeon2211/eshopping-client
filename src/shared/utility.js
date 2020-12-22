@@ -23,7 +23,6 @@ export const updateObject = (oldObject, updatedProps) => ({
 });
 
 export const getErrorMessage = (error) => {
-  console.log(error);
   let errorMessage = 'Something went wrong';
   if (error?.response?.data?.errors) {
     errorMessage = Object.values(error.response.data.errors)[0].properties.message;
@@ -74,4 +73,9 @@ export const formatPrice = (value) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   }).format(value);
+};
+
+export const validateURL = (url) => {
+  const parsed = new URL(url);
+  return ['https:', 'http:'].includes(parsed.protocol);
 };

@@ -6,7 +6,7 @@ import * as SC from './ProductItem.sc';
 import { baseURL } from '../../../axios';
 import noPhoto from '../../../images/no-photo.png';
 import { GrayText } from '../../../styled/components';
-import { formatPrice } from '../../../shared/utility';
+import { formatPrice, validateURL } from '../../../shared/utility';
 
 const ProductItem = (props) => {
   const {
@@ -34,15 +34,14 @@ const ProductItem = (props) => {
     );
   }
 
+  const photoURL = `${baseURL}/products/${_id}/photo`;
+  const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
+
   return (
     <Link to={`/products/${_id}`}>
       <SC.Wrapper>
         <div className="photo-box">
-          <img
-            src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
-            alt="product"
-            className="photo"
-          />
+          <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
         </div>
         <div className="data-box">
           <span className="name">{name}</span>

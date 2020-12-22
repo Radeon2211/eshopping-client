@@ -6,7 +6,6 @@ import queryString from 'query-string';
 import Select from 'react-select';
 import * as SC from './Filters.sc';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
-import Heading from '../UI/Heading/Heading';
 import Panel from '../UI/Panel';
 import Button from '../UI/Button/Button';
 import PriceSlider from './PriceSlider/PriceSlider';
@@ -16,7 +15,7 @@ import { ReactComponent as FiltersIcon } from '../../images/SVG/filters.svg';
 import { ReactComponent as ArrowIcon } from '../../images/SVG/arrow.svg';
 
 const Filters = (props) => {
-  const { products, isDataLoading } = props;
+  const { isDataLoading } = props;
   const history = useHistory();
   const {
     location: { search, pathname },
@@ -93,7 +92,7 @@ const Filters = (props) => {
     );
   }
 
-  let filtersWrapper = (
+  const filtersWrapper = (
     <SC.Wrapper>
       <Select
         name="sortBy"
@@ -151,26 +150,6 @@ const Filters = (props) => {
     </SC.Wrapper>
   );
 
-  if (products) {
-    if (products.length <= 0) {
-      const queryParams = queryString.parse(search);
-      if (queryParams.p) {
-        delete queryParams.p;
-      }
-      const queryParamsKeys = Object.keys(queryParams);
-      if (
-        queryParamsKeys.length <= 0 ||
-        (queryParamsKeys.length === 1 && queryParamsKeys.includes('name'))
-      ) {
-        filtersWrapper = (
-          <Heading variant="h4" data-test="unavailable-heading" align="center">
-            Filters are unavailable
-          </Heading>
-        );
-      }
-    }
-  }
-
   let filtersPanel = null;
   if (isVisible || windowWidth >= 1200) {
     filtersPanel = <Panel>{filtersWrapper}</Panel>;
@@ -184,12 +163,7 @@ const Filters = (props) => {
   );
 };
 
-Filters.defaultProps = {
-  products: null,
-};
-
 Filters.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object),
   isDataLoading: PropTypes.bool.isRequired,
 };
 

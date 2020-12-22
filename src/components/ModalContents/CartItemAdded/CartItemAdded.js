@@ -9,7 +9,7 @@ import HorizontalWrapper from '../../UI/HorizontalWrapper';
 import Loader from '../../UI/Loader';
 import noPhoto from '../../../images/no-photo.png';
 import { baseURL } from '../../../axios';
-import { formatPrice } from '../../../shared/utility';
+import { formatPrice, validateURL } from '../../../shared/utility';
 
 const CartItemAdded = () => {
   const productDetails = useSelector((state) => state.product.productDetails);
@@ -31,6 +31,8 @@ const CartItemAdded = () => {
     } = addedProductInCart;
 
     const formattedPrice = formatPrice(price);
+    const photoURL = `${baseURL}/products/${_id}/photo`;
+    const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
 
     content = (
       <>
@@ -39,11 +41,7 @@ const CartItemAdded = () => {
         </Heading>
         <SC.ProductPreview>
           <div className="photo-box">
-            <img
-              src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
-              alt="product"
-              className="photo"
-            />
+            <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
           </div>
           <div className="data-box">
             <span className="price">

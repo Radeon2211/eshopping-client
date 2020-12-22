@@ -6,7 +6,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
-import LoadingOverlay from '../../components/UI/LoadingOverlay';
+import Loader from '../../components/UI/Loader';
 import { checkProps } from '../../shared/testUtility';
 import theme from '../../styled/theme';
 import SideBySide from '../../components/UI/SideBySide';
@@ -72,10 +72,10 @@ describe('<ProductDetails />', () => {
 
   describe('Check how everything renders', () => {
     describe('Check what renders if productDetails are and not', () => {
-      it('Should render <LoadingOverlay/> and NOT render <SideBySide />', () => {
+      it('Should render <Loader/> and NOT render <SideBySide />', () => {
         const store = { product: { productDetails: undefined } };
         const wrapper = setUp(store);
-        expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
+        expect(wrapper.find(Loader)).toHaveLength(1);
         expect(wrapper.find(SideBySide)).toHaveLength(0);
       });
 

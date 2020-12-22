@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from './axios';
 import * as actions from './store/actions/indexActions';
 import { DEFAULT_PATH } from './shared/constants';
+import theme from './styled/theme';
 
 import Heading from './components/UI/Heading/Heading';
 import Modal from './components/UI/Modal/Modal';
@@ -42,11 +43,20 @@ const App = () => {
   const onFetchProfile = useCallback(() => dispatch(actions.fetchProfile()), [dispatch]);
 
   useEffect(() => {
-    onFetchProfile();
+    const getCsrfToken = async () => {
+      try {
+        const { data } = await axios.get('/csrf-token');
+        axios.defaults.headers.post['X-CSRF-Token'] = data.csrfToken;
+        onFetchProfile();
+      } catch (error) {
+        onFetchProfile();
+      }
+    };
+    getCsrfToken();
   }, [onFetchProfile]);
 
   let routes = (
-    <div style={{ textAlign: 'center', marginTop: '2.4rem' }}>
+    <div style={{ textAlign: 'center', marginTop: theme.spacings.level3 }}>
       <Loader size="big" />
     </div>
   );

@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 const SC = {};
 SC.Wrapper = styled.div`
+  text-align: ${({ align }) => align};
+`;
+SC.Loader = styled.div`
   display: inline-block;
   position: relative;
 
@@ -78,22 +81,34 @@ SC.Wrapper = styled.div`
 `;
 
 const Loader = (props) => {
-  const { size } = props;
-  return (
-    <SC.Wrapper size={size}>
+  const { size, align } = props;
+
+  const loader = (
+    <SC.Loader size={size}>
       <div />
       <div />
       <div />
       <div />
-    </SC.Wrapper>
+    </SC.Loader>
   );
+
+  let wrapper = null;
+  if (align) {
+    wrapper = <SC.Wrapper align={align}>{loader}</SC.Wrapper>;
+  } else {
+    wrapper = loader;
+  }
+
+  return wrapper;
 };
 
 Loader.defaultProps = {
+  align: '',
   size: '',
 };
 
 Loader.propTypes = {
+  align: PropTypes.string,
   size: PropTypes.string,
 };
 

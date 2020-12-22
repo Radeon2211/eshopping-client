@@ -8,7 +8,7 @@ import ChooseQuantity from '../../../../components/UI/ChooseQuantity';
 import { baseURL } from '../../../../axios';
 import noPhoto from '../../../../images/no-photo.png';
 import { updateCartActions } from '../../../../shared/constants';
-import { formatPrice } from '../../../../shared/utility';
+import { formatPrice, validateURL } from '../../../../shared/utility';
 import { GrayText } from '../../../../styled/components';
 import MyIcon from '../../../../components/UI/MyIcon';
 import { ReactComponent as TrashIcon } from '../../../../images/SVG/trash.svg';
@@ -82,15 +82,14 @@ const CartItem = (props) => {
     onUpdateCartItem(itemId, updateCartActions.DECREMENT);
   };
 
+  const photoURL = `${baseURL}/products/${productId}/photo`;
+  const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
+
   return (
     <SC.Wrapper>
       <Link to={`/products/${productId}`} data-test="product-link">
         <div className="photo-box">
-          <img
-            src={photo ? `${baseURL}/products/${productId}/photo` : noPhoto}
-            alt="product"
-            className="photo"
-          />
+          <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
         </div>
       </Link>
       <span className="name">

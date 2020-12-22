@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.div`
-  min-height: 14rem;
-  position: relative;
-
   & .photo-section {
     align-items: center;
     display: flex;

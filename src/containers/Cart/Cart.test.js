@@ -6,6 +6,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import Cart from './Cart';
+import * as SC from './Cart.sc';
 import SideBySide from '../../components/UI/SideBySide';
 import theme from '../../styled/theme';
 import { createCartItem } from '../../shared/testUtility';
@@ -44,10 +45,9 @@ describe('<Cart />', () => {
     expect(wrapper.find(SideBySide).length).toBeGreaterThan(0);
   });
 
-  it('Should render cart empty and cart info <Heading /> if cart is empty', () => {
+  it('Should render <SC.EmptyCart /> if cart is empty', () => {
     const wrapper = setUp([]);
-    expect(wrapper.find('[data-test="cart-empty-heading"]').length).toBeGreaterThan(0);
-    expect(wrapper.find('[data-test="cart-info-heading"]').length).toBeGreaterThan(0);
+    expect(wrapper.find(SC.EmptyCart)).toHaveLength(1);
   });
 
   it('Should render cart error <Heading /> if cart is null', () => {

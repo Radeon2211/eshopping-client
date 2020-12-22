@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { modalTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 import * as SC from './ProductDetails.sc';
-import LoadingOverlay from '../../components/UI/LoadingOverlay';
+import Loader from '../../components/UI/Loader';
 import Panel from '../../components/UI/Panel';
 import Heading from '../../components/UI/Heading/Heading';
 import SideBySide from '../../components/UI/SideBySide';
@@ -45,7 +45,7 @@ const ProductDetails = (props) => {
     return () => onSetProductDetails();
   }, [productId, onFetchProductDetails, onSetProductDetails]);
 
-  let details = <LoadingOverlay alignLoader="start" />;
+  let details = <Loader align="center" />;
   if (productDetails === null) {
     details = (
       <Heading variant="h4" align="center" data-test="not-found">

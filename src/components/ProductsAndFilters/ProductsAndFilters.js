@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import queryString from 'query-string';
 import * as SC from './ProductsAndFilters.sc';
 import SideBySide from '../UI/SideBySide';
 import Filters from '../Filters/Filters';
@@ -14,6 +16,10 @@ import { listItemTypes } from '../../shared/constants';
 
 const ProductsAndFilters = (props) => {
   const { page } = props;
+  const history = useHistory();
+  const {
+    location: { search },
+  } = history;
 
   const products = useSelector((state) => state.product.products);
   const productCount = useSelector((state) => state.product.productCount);
@@ -51,7 +57,16 @@ const ProductsAndFilters = (props) => {
 
   let filters = null;
   if (products || productCount > 0) {
-    filters = <Filters products={products} isDataLoading={isDataLoading} />;
+    const queryParams = queryString.parse(search);
+    if (queryParams.p) delete queryParams.p;
+    const queryParamsKeys = Object.keys(queryParams);
+    if (
+      products?.length > 0 ||
+      queryParamsKeys.length >= 2 ||
+      (queryParamsKeys.length === 1 && !queryParamsKeys.includes('name'))
+    ) {
+      filters = <Filters products={products} isDataLoading={isDataLoading} />;
+    }
   }
 
   return (

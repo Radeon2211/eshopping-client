@@ -21,19 +21,13 @@ const defaultStore = mockStore({
   },
 });
 
-const createProps = (products, isDataLoading = false) => ({
-  products,
-  isDataLoading,
-});
-
-const defaultProps = createProps([{ id: 1 }]);
-
 const simulateTogglerClick = (wrapper) => {
   const toggler = wrapper.find(SC.Toggler);
   toggler.simulate('click');
 };
 
-const setUp = (props, search = '', push = jest.fn()) => {
+const setUp = (isDataLoading = false, search = '', push = jest.fn()) => {
+  const props = { isDataLoading };
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
@@ -54,7 +48,7 @@ const setUp = (props, search = '', push = jest.fn()) => {
 describe('<Filters />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
-      expect(checkProps(Filters, defaultProps)).toBeUndefined();
+      expect(checkProps(Filters, { isDataLoading: false })).toBeUndefined();
     });
 
     it('Should throw a warning', () => {
@@ -64,7 +58,7 @@ describe('<Filters />', () => {
 
   describe(`Check if renders correctly`, () => {
     it('Should render <SC.Wrapper /> and submit button should NOT be loading', () => {
-      const wrapper = setUp(defaultProps);
+      const wrapper = setUp();
       simulateTogglerClick(wrapper);
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
       expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toBe(
@@ -73,50 +67,15 @@ describe('<Filters />', () => {
     });
 
     it('Should submit button be disabled', () => {
-      const props = createProps([{ id: 1 }], true);
-      const wrapper = setUp(props);
+      const wrapper = setUp(true);
       simulateTogglerClick(wrapper);
       expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toBe(true);
-    });
-
-    it('Should NOT render <SC.Wrapper /> and unavailable heading', () => {
-      const wrapper = setUp(defaultProps);
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
-      expect(wrapper.find('[data-test="unavailable-heading"]')).toHaveLength(0);
-    });
-
-    it('Should render unavailable heading', () => {
-      const props = createProps([]);
-      const wrapper = setUp(props);
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('[data-test="unavailable-heading"]').length).toBeGreaterThan(0);
-    });
-
-    it('Should NOT render unavailable heading if in url is p and sth else than name', () => {
-      const props = createProps([]);
-      const wrapper = setUp(props, '?p=1&minPrice=10');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('[data-test="unavailable-heading"]')).toHaveLength(0);
-    });
-
-    it('Should render unavailable heading if in url is name', () => {
-      const props = createProps([]);
-      const wrapper = setUp(props, '?name=test-name');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('[data-test="unavailable-heading"]').length).toBeGreaterThan(0);
-    });
-
-    it('Should NOT render unavailable heading if in url is sth expect p and name', () => {
-      const props = createProps([]);
-      const wrapper = setUp(props, '?minPrice=10');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('[data-test="unavailable-heading"]')).toHaveLength(0);
     });
   });
 
   describe(`Check if controls' values are correct`, () => {
     it('Should condition checkboxes be checked', () => {
-      const wrapper = setUp(defaultProps, '?p=1&condition=new,used,not_applicable');
+      const wrapper = setUp(true, '?p=1&condition=new,used,not_applicable');
       simulateTogglerClick(wrapper);
       expect(wrapper.find('#new').prop('checked')).toBe(true);
       expect(wrapper.find('#used').prop('checked')).toBe(true);
@@ -124,7 +83,7 @@ describe('<Filters />', () => {
     });
 
     it('Should NOT condition checkboxes be checked', () => {
-      const wrapper = setUp(defaultProps);
+      const wrapper = setUp(true);
       simulateTogglerClick(wrapper);
       expect(wrapper.find('#new').prop('checked')).toBe(false);
       expect(wrapper.find('#used').prop('checked')).toBe(false);
@@ -132,25 +91,25 @@ describe('<Filters />', () => {
     });
 
     it('Should sort by price ascending', () => {
-      const wrapper = setUp(defaultProps, '?p=1&sortBy=price:asc');
+      const wrapper = setUp(true, '?p=1&sortBy=price:asc');
       simulateTogglerClick(wrapper);
       expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[1]);
     });
 
     it('Should sort by price descending', () => {
-      const wrapper = setUp(defaultProps, '?p=1&sortBy=price:desc');
+      const wrapper = setUp(true, '?p=1&sortBy=price:desc');
       simulateTogglerClick(wrapper);
       expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[2]);
     });
 
     it('Should sort by name ascending', () => {
-      const wrapper = setUp(defaultProps, '?p=1&sortBy=name:asc');
+      const wrapper = setUp(true, '?p=1&sortBy=name:asc');
       simulateTogglerClick(wrapper);
       expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[3]);
     });
 
     it('Should sort by name descending', () => {
-      const wrapper = setUp(defaultProps, '?p=1&sortBy=name:desc');
+      const wrapper = setUp(true, '?p=1&sortBy=name:desc');
       simulateTogglerClick(wrapper);
       expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[4]);
     });

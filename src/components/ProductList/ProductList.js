@@ -10,7 +10,7 @@ import { pages } from '../../shared/constants';
 
 const SC = {};
 SC.Wrapper = styled.div`
-  min-height: 14rem;
+  min-height: 4rem;
   position: relative;
 `;
 

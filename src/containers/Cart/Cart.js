@@ -12,6 +12,7 @@ import Loader from '../../components/UI/Loader';
 import { DEFAULT_PATH } from '../../shared/constants';
 import { GreenText } from '../../styled/components';
 import { formatPrice } from '../../shared/utility';
+import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 
 const Cart = () => {
   const summaryRef = useRef(null);
@@ -33,7 +34,7 @@ const Cart = () => {
     onFetchCart();
   }, [onFetchCart]);
 
-  let content = <Loader />;
+  let content = <Loader align="center" />;
   if (cart === null) {
     content = (
       <Heading variant="h3" align="center" data-test="cart-error-heading">
@@ -70,7 +71,7 @@ const Cart = () => {
       );
     } else {
       content = (
-        <>
+        <SC.EmptyCart>
           <Heading
             variant="h3"
             mgBottom="level3"
@@ -83,10 +84,11 @@ const Cart = () => {
               <GreenText>offers</GreenText>
             </Link>
           </Heading>
-          <Heading variant="h4" align="center" data-test="cart-info-heading">
+          <Heading variant="h4" align="center" data-test="cart-info-heading" mgBottom="level3">
             You can have up to 50 products in the cart
           </Heading>
-        </>
+          <EmptyCart className="empty-cart-image" />
+        </SC.EmptyCart>
       );
     }
   }

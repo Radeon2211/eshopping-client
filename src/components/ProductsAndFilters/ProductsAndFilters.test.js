@@ -3,16 +3,17 @@ import React from 'react';
 import { mount } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
+import Filters from '../Filters/Filters';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
 import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
 import QuantityPerPageController from '../Pagination/QuantityPerPageController';
 import { checkProps } from '../../shared/testUtility';
-import { pages } from '../../shared/constants';
+import { pages, MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
 import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
@@ -25,7 +26,7 @@ const createStore = (products, productCount) =>
     },
     ui: {
       isDataLoading: false,
-      maxQuantityPerPage: 2,
+      maxQuantityPerPage: MAX_QUANTITY_PER_PAGE,
     },
   });
 
@@ -33,10 +34,16 @@ const defaultProps = {
   page: pages.ALL_PRODUCTS,
 };
 
-const setUp = (store) => {
+const setUp = (store, search = 'p=1') => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/products', search },
+    replace: jest.fn(),
+  };
   return mount(
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <ThemeProvider theme={theme}>
           <ProductsAndFilters {...defaultProps} />
         </ThemeProvider>
@@ -54,48 +61,61 @@ describe('<ProductsAndFilters />', () => {
     it('Should NOT throw a warning', () => {
       expect(checkProps(ProductsAndFilters, defaultProps)).toBeUndefined();
     });
+
     it('Should throw a warning', () => {
       expect(checkProps(ProductsAndFilters, {})).not.toBe(null);
     });
   });
 
-  describe('Check if paginations, controller render', () => {
-    let wrapper;
-    beforeEach(() => {
+  describe('Check how paginations and controller render', () => {
+    it('Should render everything', () => {
       const store = createStore([{ _id: 'p1' }], 5);
-      wrapper = setUp(store);
-    });
-    it('Should render <InputPagination />', () => {
+      const wrapper = setUp(store);
       expect(wrapper.find(InputPagination)).toHaveLength(1);
-    });
-    it('Should render <NumberPagination />', () => {
       expect(wrapper.find(NumberPagination)).toHaveLength(1);
-    });
-    it('Should render <PaginationCounter />', () => {
       expect(wrapper.find(PaginationCounter)).toHaveLength(1);
-    });
-    it('Should render <QuantityPerPageController />', () => {
       expect(wrapper.find(QuantityPerPageController)).toHaveLength(1);
+    });
+
+    it('Should NOT render anything', () => {
+      const store = createStore([], 0);
+      const wrapper = setUp(store);
+      expect(wrapper.find(InputPagination)).toHaveLength(0);
+      expect(wrapper.find(NumberPagination)).toHaveLength(0);
+      expect(wrapper.find(PaginationCounter)).toHaveLength(0);
+      expect(wrapper.find(QuantityPerPageController)).toHaveLength(0);
     });
   });
 
-  describe('Check if paginations and controller NOT render', () => {
-    let wrapper;
-    beforeEach(() => {
-      const store = createStore(0);
-      wrapper = setUp(store);
+  describe('Check how <Filters /> render', () => {
+    it('Should render if products length is 1', () => {
+      const store = createStore([{ _id: 'p1' }], 1);
+      const wrapper = setUp(store);
+      expect(wrapper.find(Filters)).toHaveLength(1);
     });
-    it('Should NOT render <InputPagination />', () => {
-      expect(wrapper.find(InputPagination)).toHaveLength(0);
+
+    it('Should render if in url is p and sth else than name', () => {
+      const store = createStore([], 1);
+      const wrapper = setUp(store, '?p=1&minPrice=10');
+      expect(wrapper.find(Filters)).toHaveLength(1);
     });
-    it('Should NOT render <NumberPagination />', () => {
-      expect(wrapper.find(NumberPagination)).toHaveLength(0);
+
+    it('Should render if in url is sth expect p and name', () => {
+      const store = createStore([], 1);
+      const wrapper = setUp(store, '?minPrice=10');
+      expect(wrapper.find(Filters)).toHaveLength(1);
     });
-    it('Should NOT render <PaginationCounter />', () => {
-      expect(wrapper.find(PaginationCounter)).toHaveLength(0);
+
+    it('Should NOT render if in url is name', () => {
+      const store = createStore([], 0);
+      const wrapper = setUp(store, '?name=test-name');
+      expect(wrapper.find(Filters)).toHaveLength(0);
     });
-    it('Should NOT render <QuantityPerPageController />', () => {
-      expect(wrapper.find(QuantityPerPageController)).toHaveLength(0);
+
+    it('Should NOT render if in url is p and sth else than name', () => {
+      const store = createStore([], 0);
+      const wrapper = setUp(store, '?p=1&minPrice=10');
+      expect(wrapper.find('[data-test="unavailable-heading"]')).toHaveLength(0);
     });
   });
 });

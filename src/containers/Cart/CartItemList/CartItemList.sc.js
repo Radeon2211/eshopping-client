@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  min-height: 14rem;
-
   & .clear-btn-box {
     text-align: center;
   }
