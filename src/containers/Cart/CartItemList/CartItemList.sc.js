@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  & .clear-btn-box {
-    text-align: center;
-  }
-`;
-
+// eslint-disable-next-line import/prefer-default-export
 export const SingleSeller = styled.div`
   padding: ${({ theme }) => theme.spacings.level3} 0;
 

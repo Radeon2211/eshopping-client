@@ -24,6 +24,7 @@ const PurchaseSection = (props) => {
     const value = +e.target.value || '';
     if (!value) {
       setChosenQuantity(value);
+      return;
     }
     if (value < 1 || value > productQuantity) return;
     setChosenQuantity(value);
@@ -91,7 +92,7 @@ const PurchaseSection = (props) => {
     if (givenProductInCart?.quantity >= productQuantity) {
       addToCartBtn = (
         <span className="not-able-to-add">
-          You have all pieces added to&nbsp;
+          You have added all pieces to&nbsp;
           <Link to="/cart">
             <GreenText>cart</GreenText>
           </Link>

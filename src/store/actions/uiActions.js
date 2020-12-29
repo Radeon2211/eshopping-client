@@ -64,6 +64,18 @@ export const setAndDeleteMessage = (message) => {
   };
 };
 
+export const writeChangeCartInfo = (condition) => {
+  return (dispatch) => {
+    if (condition) {
+      dispatch(
+        setAndDeleteMessage(
+          'Some product in cart does not exist any more or their quantity has been changed',
+        ),
+      );
+    }
+  };
+};
+
 export const changeMaxQuantityPerPage = (quantity, history) => {
   return async (dispatch) => {
     dispatch(setMaxQuantityPerPage(quantity));

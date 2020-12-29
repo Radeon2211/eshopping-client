@@ -15,12 +15,18 @@ export const Wrapper = styled.div`
     padding-bottom: calc(0.5 * ${({ theme }) => theme.spacings.level2});
   }
 
+  & .photo-and-name {
+    align-items: center;
+    display: flex;
+  }
+
   & .photo-box {
     align-items: center;
     display: flex;
     justify-content: center;
-    overflow: hidden;
     max-height: 7rem;
+    min-width: 7rem;
+    overflow: hidden;
     width: 7rem;
   }
 
@@ -33,11 +39,14 @@ export const Wrapper = styled.div`
   & .name {
     font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-left: ${({ theme }) => theme.spacings.level3};
-    transition: color ${({ theme }) => theme.durations.level1}s;
     width: 31rem;
 
-    &:hover {
-      color: ${({ theme }) => theme.colors.green};
+    & > a {
+      transition: color ${({ theme }) => theme.durations.level1}s;
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.green};
+      }
     }
   }
 
@@ -59,10 +68,10 @@ export const Wrapper = styled.div`
   }
 
   & .price-box {
-    height: ${({ theme }) => theme.spacings.level4};
     align-items: flex-end;
     display: flex;
     flex-direction: column;
+    height: ${({ theme }) => theme.spacings.level4};
     justify-content: center;
   }
 

@@ -10,6 +10,7 @@ import * as SC from './Cart.sc';
 import SideBySide from '../../components/UI/SideBySide';
 import theme from '../../styled/theme';
 import { createCartItem } from '../../shared/testUtility';
+import LoadingOverlay from '../../components/UI/LoadingOverlay';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -40,14 +41,17 @@ window.IntersectionObserver = jest.fn(() => ({
 }));
 
 describe('<Cart />', () => {
-  it('Should render <SideBySide /> if cart items length is more than 0', () => {
-    const wrapper = setUp([createCartItem()]);
+  it('Should render <SideBySide /> and <LoadingOverlay /> and correct price if cart items length is more than 0 and isCartLoading is true', () => {
+    const wrapper = setUp([createCartItem('u1', 'user1', 5, 'p1', 499.97)], true);
     expect(wrapper.find(SideBySide).length).toBeGreaterThan(0);
+    expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
+    expect(wrapper.find('.to-pay-value').text()).toBe('$2,499.85');
   });
 
-  it('Should render <SC.EmptyCart /> if cart is empty', () => {
+  it('Should render <SC.EmptyCart /> if cart is empty and NOT render <LoadingOverlay />', () => {
     const wrapper = setUp([]);
     expect(wrapper.find(SC.EmptyCart)).toHaveLength(1);
+    expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
   });
 
   it('Should render cart error <Heading /> if cart is null', () => {

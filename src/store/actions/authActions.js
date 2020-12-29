@@ -51,6 +51,7 @@ export const loginUser = (creds) => {
       const { data } = await axios.post('/users/login', creds);
       dispatch(setProfile(data.user));
       dispatch(uiActions.formSuccess());
+      dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));
@@ -63,6 +64,7 @@ export const fetchProfile = () => {
     try {
       const { data } = await axios.get('/users/me');
       dispatch(setProfile(data.user));
+      dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
     } catch (error) {
       dispatch(setProfile(null));
     }

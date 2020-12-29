@@ -9,8 +9,9 @@ import Panel from '../../components/UI/Panel';
 import Button from '../../components/UI/Button/Button';
 import CartItemList from './CartItemList/CartItemList';
 import Loader from '../../components/UI/Loader';
-import { DEFAULT_PATH } from '../../shared/constants';
-import { GreenText } from '../../styled/components';
+import LoadingOverlay from '../../components/UI/LoadingOverlay';
+import { DEFAULT_PATH, modalTypes } from '../../shared/constants';
+import { GreenText, AlignCenter } from '../../styled/components';
 import { formatPrice } from '../../shared/utility';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 
@@ -22,6 +23,10 @@ const Cart = () => {
 
   const dispatch = useDispatch();
   const onFetchCart = useCallback(() => dispatch(actions.fetchCart()), [dispatch]);
+  const onSetModal = useCallback(
+    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
+    [dispatch],
+  );
 
   useEffect(() => {
     if (summaryRef.current) {
@@ -53,6 +58,11 @@ const Cart = () => {
           <Heading variant="h3">Your shopping cart</Heading>
           <SideBySide proportion="3/1" makeVerticalWhen={1200}>
             <Panel>
+              <AlignCenter>
+                <Button color="red" clicked={() => onSetModal(true, modalTypes.CLEAR_CART)}>
+                  clear the cart
+                </Button>
+              </AlignCenter>
               <CartItemList cart={cart} isCartLoading={isCartLoading} />
             </Panel>
             <SC.Summary ref={summaryRef}>
@@ -61,9 +71,10 @@ const Cart = () => {
                   <span className="to-pay-text">To pay</span>
                   <span className="to-pay-value">{formatPrice(roundedCartValue)}</span>
                 </SC.PayBox>
-                <Button filled isLoading={isCartLoading} stretch>
+                <Button filled stretch disabled={isCartLoading}>
                   go to summary
                 </Button>
+                {isCartLoading && <LoadingOverlay />}
               </Panel>
             </SC.Summary>
           </SideBySide>

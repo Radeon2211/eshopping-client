@@ -21,21 +21,6 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after LOGIN_USER', () => {
-    const userProfile = {
-      username: 'Test username',
-    };
-    expect(
-      authReducer(undefined, {
-        type: actionTypes.LOGIN_USER,
-        profile: userProfile,
-      }),
-    ).toEqual({
-      ...initialState,
-      profile: userProfile,
-    });
-  });
-
   it('Should return new state after LOGOUT_USER', () => {
     expect(
       authReducer(undefined, {

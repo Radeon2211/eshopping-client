@@ -40,13 +40,13 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media only screen and (max-width: 390px) {
+  @media only screen and (max-width: 24.5em) {
     & .nav-link {
       letter-spacing: 0;
     }
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: 22.5em) {
     & .nav-link {
       font-size: ${({ theme }) => theme.fontSizes.level1};
       padding: ${({ theme }) => theme.spacings.level1};

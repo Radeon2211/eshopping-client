@@ -60,7 +60,7 @@ const CartItem = (props) => {
     } else if (value > productQuantity) {
       setInputValue(productQuantity);
       onUpdateCartItem(itemId, updateCartActions.NUMBER, productQuantity);
-    } else {
+    } else if (value !== quantity) {
       onUpdateCartItem(itemId, updateCartActions.NUMBER, value);
     }
     setIsInputFocused(false);
@@ -87,16 +87,18 @@ const CartItem = (props) => {
 
   return (
     <SC.Wrapper>
-      <Link to={`/products/${productId}`} data-test="product-link">
-        <div className="photo-box">
-          <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
-        </div>
-      </Link>
-      <span className="name">
+      <div className="photo-and-name">
         <Link to={`/products/${productId}`} data-test="product-link">
-          {name}
+          <div className="photo-box">
+            <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
+          </div>
         </Link>
-      </span>
+        <span className="name">
+          <Link to={`/products/${productId}`} data-test="product-link">
+            {name}
+          </Link>
+        </span>
+      </div>
       <div className="mobile-lower-row">
         <div className="choose-quantity-box">
           <ChooseQuantity

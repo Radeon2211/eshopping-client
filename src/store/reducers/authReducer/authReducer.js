@@ -10,10 +10,6 @@ export const initialState = {
   transaction: null,
 };
 
-const loginUser = (state, action) => {
-  return updateObject(state, { profile: action.profile });
-};
-
 const logoutUser = (state) => {
   return updateObject(state, {
     profile: null,
@@ -55,8 +51,6 @@ const updateTransaction = (state, action) => {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN_USER:
-      return loginUser(state, action);
     case actionTypes.LOGOUT_USER:
       return logoutUser(state);
     case actionTypes.SET_PROFILE:

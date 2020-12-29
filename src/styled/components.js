@@ -12,3 +12,7 @@ export const GreenText = styled.span`
 export const GrayText = styled.span`
   color: ${({ theme }) => theme.colors.light4};
 `;
+
+export const AlignCenter = styled.div`
+  text-align: center;
+`;

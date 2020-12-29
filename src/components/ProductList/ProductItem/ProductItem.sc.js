@@ -18,6 +18,7 @@ export const Wrapper = styled.article`
     justify-content: center;
     max-height: 16rem;
     margin-right: ${({ theme }) => theme.spacings.level3};
+    min-width: 13rem;
     width: 13rem;
   }
 
@@ -56,5 +57,21 @@ export const Wrapper = styled.article`
   & .quantity-sold {
     align-self: flex-end;
     font-size: ${({ theme }) => theme.fontSizes.level1};
+  }
+
+  @media only screen and (max-width: 24.5em) {
+    & .photo-box {
+      max-height: 13rem;
+      min-width: 10rem;
+      width: 10rem;
+    }
+  }
+
+  @media only screen and (max-width: 22.5em) {
+    & .photo-box {
+      max-height: 11rem;
+      min-width: 8rem;
+      width: 8rem;
+    }
   }
 `;

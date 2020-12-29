@@ -14,9 +14,10 @@ SC.Wrapper = styled(motion.div)`
   left: 50%;
   transform: translateX(-50%);
   max-width: 100%;
+  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   position: fixed;
   top: ${({ theme }) => theme.spacings.level2};
-  width: 50rem;
+  width: 60rem;
   z-index: ${({ theme }) => theme.zIndexes.level4};
 `;
 
@@ -31,9 +32,11 @@ SC.Message = styled(motion.div)`
   margin: 0 ${({ theme }) => theme.spacings.level2};
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   width: 100%;
+  word-break: break-all;
 
   & .close-icon {
     cursor: pointer;
+    margin-left: ${({ theme }) => theme.spacings.level1};
     transform: rotate(45deg);
   }
 

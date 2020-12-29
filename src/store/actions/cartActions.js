@@ -18,7 +18,10 @@ export const fetchCart = () => {
       const { data } = await axios.get('/cart');
       dispatch(uiActions.cartEnd());
       dispatch(setCart(data.cart));
+      dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
     } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.setAndDeleteMessage(errorMessage));
       dispatch(uiActions.cartEnd());
       dispatch(setCart(null));
     }
@@ -33,6 +36,7 @@ export const addCartItem = (item) => {
       dispatch(uiActions.cartEnd());
       dispatch(setCart(data.cart));
       dispatch(uiActions.setModal(true, modalTypes.CART_ITEM_ADDED));
+      dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -52,6 +56,7 @@ export const updateCartItem = (itemId, action, quantity) => {
       if (updateCartItemReqCounter <= 0) {
         dispatch(uiActions.cartEnd());
         dispatch(setCart(data.cart));
+        dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
       }
     } catch (error) {
       const errorMessage = getErrorMessage(error);
@@ -83,6 +88,7 @@ export const removeCartItem = (itemId) => {
       const { data } = await axios.patch(`/cart/${itemId}/remove`);
       dispatch(uiActions.cartEnd());
       dispatch(setCart(data.cart));
+      dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));

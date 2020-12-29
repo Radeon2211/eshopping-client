@@ -77,7 +77,7 @@ const ProductDetails = (props) => {
     }
 
     let descriptionSection = (
-      <Heading variant="h4" data-test="no-description">
+      <Heading variant="h4" mgTop="level3" data-test="no-description">
         This product has no description
       </Heading>
     );
