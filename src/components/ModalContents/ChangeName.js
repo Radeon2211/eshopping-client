@@ -6,6 +6,7 @@ import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import { inputKinds, userRules } from '../../shared/constants';
+import { getChangedValues } from '../../shared/utility';
 
 const validationSchema = Yup.object({
   firstName: userRules.firstName,
@@ -16,17 +17,22 @@ const ChangeName = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangeName = useCallback((creds) => dispatch(actions.changeName(creds)), [dispatch]);
+  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
+    dispatch,
+  ]);
+
+  const initialValues = {
+    firstName: userProfile.firstName,
+    lastName: userProfile.lastName,
+  }
 
   return (
     <Formik
-      initialValues={{
-        firstName: userProfile.firstName,
-        lastName: userProfile.lastName,
-      }}
+      initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangeName(data);
+        const changedValues = getChangedValues(data, initialValues);
+        onUpdateUser(changedValues, 'Name has been changed successfully');
       }}
     >
       {({ dirty, errors, touched, isValid, setFieldTouched }) => (

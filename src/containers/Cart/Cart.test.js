@@ -11,6 +11,7 @@ import SideBySide from '../../components/UI/SideBySide';
 import theme from '../../styled/theme';
 import { createCartItem } from '../../shared/testUtility';
 import LoadingOverlay from '../../components/UI/LoadingOverlay';
+import ToPayInfo from '../../components/UI/ToPayInfo';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -45,7 +46,7 @@ describe('<Cart />', () => {
     const wrapper = setUp([createCartItem('u1', 'user1', 5, 'p1', 499.97)], true);
     expect(wrapper.find(SideBySide).length).toBeGreaterThan(0);
     expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
-    expect(wrapper.find('.to-pay-value').text()).toBe('$2,499.85');
+    expect(wrapper.find(ToPayInfo).text()).toEqual('To pay$2,499.85');
   });
 
   it('Should render <SC.EmptyCart /> if cart is empty and NOT render <LoadingOverlay />', () => {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes, singleInfoNames } from '../../../shared/constants';
-import Panel from '../../../components/UI/Panel';
+import PlainPanel from '../../../components/UI/Panels/PlainPanel';
 import Heading from '../../../components/UI/Heading/Heading';
 import SingleInfo from './SingleInfo/SingleInfo';
 import Button from '../../../components/UI/Button/Button';
@@ -70,7 +70,7 @@ const MyData = () => {
         />
         <SingleInfo
           name={singleInfoNames.ADDRESS}
-          content={{ street, zipCodeAndCity: `${zipCode} ${city}`, country }}
+          content={[street, `${zipCode} ${city}`, country]}
           clickHandler={() => onSetModal(true, modalTypes.CHANGE_ADDRESS)}
         />
         <SingleInfo
@@ -92,9 +92,9 @@ const MyData = () => {
   return (
     <>
       <Heading variant="h3">My data</Heading>
-      <Panel>
+      <PlainPanel>
         <SC.Wrapper>{wrapperContent}</SC.Wrapper>
-      </Panel>
+      </PlainPanel>
     </>
   );
 };

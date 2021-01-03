@@ -27,12 +27,12 @@ export const dataFail = (error) => ({
   error,
 });
 
-export const cartStart = () => ({
-  type: actionTypes.CART_START,
+export const tradeStart = () => ({
+  type: actionTypes.TRADE_START,
 });
 
-export const cartEnd = () => ({
-  type: actionTypes.CART_END,
+export const tradeEnd = () => ({
+  type: actionTypes.TRADE_END,
 });
 
 export const setMessage = (message) => ({

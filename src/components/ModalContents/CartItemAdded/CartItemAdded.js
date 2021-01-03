@@ -1,15 +1,33 @@
 import React, { useCallback } from 'react';
+import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as SC from './CartItemAdded.sc';
 import * as actions from '../../../store/actions/indexActions';
 import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
-import HorizontalWrapper from '../../UI/HorizontalWrapper';
+import FlexWrapper from '../../UI/FlexWrapper';
 import Loader from '../../UI/Loader';
-import noPhoto from '../../../images/no-photo.png';
-import { baseURL } from '../../../axios';
-import { formatPrice, validateURL } from '../../../shared/utility';
+import { formatPrice } from '../../../shared/utility';
+import ProductThumbnail from '../../../components/UI/ProductThumbnail';
+
+export const SC = {};
+SC.ProductPreview = styled(FlexWrapper)`
+  & .name {
+    font-size: ${({ theme }) => theme.fontSizes.level3};
+  }
+
+  & .quantity {
+    font-size: ${({ theme }) => theme.fontSizes.level2};
+  }
+
+  & .price {
+    font-size: ${({ theme }) => theme.fontSizes.level5};
+  }
+
+  & .total-in-cart {
+    font-size: ${({ theme }) => theme.fontSizes.level2};
+  }
+`;
 
 const CartItemAdded = () => {
   const productDetails = useSelector((state) => state.product.productDetails);
@@ -27,12 +45,10 @@ const CartItemAdded = () => {
   if (!isCartLoading && addedProductInCart) {
     const {
       quantity,
-      product: { _id, name, price, photo },
+      product: { _id: productId, name, price, photo },
     } = addedProductInCart;
 
     const formattedPrice = formatPrice(price);
-    const photoURL = `${baseURL}/products/${_id}/photo`;
-    const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
 
     content = (
       <>
@@ -40,10 +56,8 @@ const CartItemAdded = () => {
           Product added to cart
         </Heading>
         <SC.ProductPreview>
-          <div className="photo-box">
-            <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
-          </div>
-          <div className="data-box">
+          <ProductThumbnail photo={photo} alt={name} productId={productId} width={8} height={8} />
+          <FlexWrapper direction="column" align="start" spacing="level1">
             <span className="price">
               {formatPrice(price * quantity)}
               <span className="total-in-cart">{` (total in the cart ${quantity} x ${formattedPrice})`}</span>
@@ -52,9 +66,9 @@ const CartItemAdded = () => {
               <span className="quantity">{`${quantity}x `}</span>
               {name}
             </span>
-          </div>
+          </FlexWrapper>
         </SC.ProductPreview>
-        <HorizontalWrapper mgTop="level3">
+        <FlexWrapper mgTop="level3" justify="center">
           <Button color="blue" clicked={() => onSetModal(false)}>
             Continue shopping
           </Button>
@@ -63,7 +77,7 @@ const CartItemAdded = () => {
               Go to cart
             </Button>
           </Link>
-        </HorizontalWrapper>
+        </FlexWrapper>
       </>
     );
   }

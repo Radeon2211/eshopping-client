@@ -7,7 +7,7 @@ import { modalTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 import * as SC from './ProductDetails.sc';
 import Loader from '../../components/UI/Loader';
-import Panel from '../../components/UI/Panel';
+import PlainPanel from '../../components/UI/Panels/PlainPanel';
 import Heading from '../../components/UI/Heading/Heading';
 import SideBySide from '../../components/UI/SideBySide';
 import PurchaseSection from './PurchaseSection/PurchaseSection';
@@ -15,7 +15,7 @@ import Button from '../../components/UI/Button/Button';
 import noPhoto from '../../images/no-photo.png';
 import { baseURL } from '../../axios';
 import { GrayText, GreenText } from '../../styled/components';
-import HorizontalWrapper from '../../components/UI/HorizontalWrapper';
+import FlexWrapper from '../../components/UI/FlexWrapper';
 import { formatPrice } from '../../shared/utility';
 
 const ProductDetails = (props) => {
@@ -122,10 +122,10 @@ const ProductDetails = (props) => {
     let manageButtonsBox = null;
     if (deleteProductBtn || editProductBtn) {
       manageButtonsBox = (
-        <HorizontalWrapper mgTop="level5">
+        <FlexWrapper mgTop="level5" justify="center">
           {editProductBtn}
           {deleteProductBtn}
-        </HorizontalWrapper>
+        </FlexWrapper>
       );
     }
 
@@ -140,7 +140,8 @@ const ProductDetails = (props) => {
             />
           </section>
           <section className="data-section">
-            <span className="name">{name}</span>
+            <Heading variant="h4">{name}</Heading>
+            {/* <span className="name">{name}</span> */}
             <span className="seller">
               <GrayText>from </GrayText>
               <Link to={`/user/${seller.username}?p=1`}>
@@ -169,9 +170,9 @@ const ProductDetails = (props) => {
   }
 
   return (
-    <Panel>
+    <PlainPanel>
       <SC.Wrapper>{details}</SC.Wrapper>
-    </Panel>
+    </PlainPanel>
   );
 };
 

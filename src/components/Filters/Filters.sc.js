@@ -17,7 +17,7 @@ export const Toggler = styled.div`
   border-radius: 5px;
   cursor: pointer;
   display: flex;
-  font-size: 1.4rem;
+  font-size: ${({ theme }) => theme.fontSizes.level2};
   margin-bottom: ${({ theme }) => theme.spacings.level3};
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
 

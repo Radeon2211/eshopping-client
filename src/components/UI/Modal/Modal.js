@@ -21,6 +21,7 @@ import ChangePhoneNumber from '../../ModalContents/ChangePhoneNumber';
 import ChangeAddress from '../../ModalContents/ChangeAddress';
 import ChangeContacts from '../../ModalContents/ChangeContacts';
 import ChangePassword from '../../ModalContents/ChangePassword';
+import ChangeDeliveryAddress from '../../ModalContents/ChangeDeliveryAddress';
 import DeleteAccount from '../../ModalContents/DeleteAccount';
 import AboutWebsite from '../../ModalContents/AboutWebsite';
 import ClearCart from '../../ModalContents/ClearCart';
@@ -74,6 +75,9 @@ const Modal = () => {
       break;
     case modalTypes.CHANGE_PASSWORD:
       modalContentNode = <ChangePassword />;
+      break;
+    case modalTypes.CHANGE_DELIVERY_ADDRESS:
+      modalContentNode = <ChangeDeliveryAddress />;
       break;
     case modalTypes.CLEAR_CART:
       modalContentNode = <ClearCart />;

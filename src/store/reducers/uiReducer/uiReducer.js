@@ -46,11 +46,11 @@ const dataFail = (state, action) => {
   return updateObject(state, { isDataLoading: false, dataError: action.error });
 };
 
-const cartStart = (state) => {
+const tradeStart = (state) => {
   return updateObject(state, { isCartLoading: true });
 };
 
-const cartEnd = (state) => {
+const tradeEnd = (state) => {
   return updateObject(state, { isCartLoading: false });
 };
 
@@ -63,7 +63,9 @@ const deleteMessage = (state) => {
 };
 
 const setModal = (state, action) => {
-  if (state.isFormLoading && !action.isModalOpen) return state;
+  if ((state.isFormLoading && !action.isModalOpen) || (!state.isModalOpen && !action.isModalOpen)) {
+    return state;
+  }
   return updateObject(state, {
     isModalOpen: action.isModalOpen,
     modalContent: action.modalContent || '',
@@ -89,10 +91,10 @@ const uiReducer = (state = initialState, action) => {
       return dataSuccess(state);
     case actionTypes.DATA_FAIL:
       return dataFail(state, action);
-    case actionTypes.CART_START:
-      return cartStart(state);
-    case actionTypes.CART_END:
-      return cartEnd(state);
+    case actionTypes.TRADE_START:
+      return tradeStart(state);
+    case actionTypes.TRADE_END:
+      return tradeEnd(state);
     case actionTypes.SET_MESSAGE:
       return setMessage(state, action);
     case actionTypes.DELETE_MESSAGE:

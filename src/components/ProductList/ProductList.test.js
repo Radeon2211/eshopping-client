@@ -60,7 +60,7 @@ describe('<ProductItem />', () => {
     });
 
     it('Should render one <ProductItem />', () => {
-      const props = createProps(false, [{ _id: '123', name: 'testName', price: 2 }]);
+      const props = createProps(false, [{ _id: '123', name: 'testName', price: 2, photo: false }]);
       const wrapper = setUp(props);
       expect(wrapper.find(ProductItem)).toHaveLength(1);
     });
@@ -76,7 +76,7 @@ describe('<ProductItem />', () => {
       const props = createProps(false, []);
       const history = createHistory('?p=1&name=testName&condition=new');
       const wrapper = setUp(props, history);
-      expect(wrapper.find(Heading).text()).toBe(
+      expect(wrapper.find(Heading).text()).toEqual(
         `We didn't find any matching results. Try to search something else or change filters`,
       );
     });
@@ -85,7 +85,7 @@ describe('<ProductItem />', () => {
       const props = createProps(false, []);
       const history = createHistory();
       const wrapper = setUp(props, history);
-      expect(wrapper.find(Heading).text()).toBe(
+      expect(wrapper.find(Heading).text()).toEqual(
         `We didn't find any matching results. Try search something else`,
       );
     });

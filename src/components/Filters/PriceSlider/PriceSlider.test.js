@@ -57,18 +57,18 @@ describe('<PriceSlider />', () => {
   describe(`Check if inputs' values are correct`, () => {
     it('Should min inputs have 10 and max inputs 100 by default', () => {
       const wrapper = setUp();
-      expect(wrapper.find('[data-test="min-price-input"]').prop('value')).toBe(10);
-      expect(wrapper.find('[data-test="min-price-range"]').prop('value')).toBe(10);
-      expect(wrapper.find('[data-test="max-price-input"]').prop('value')).toBe(100);
-      expect(wrapper.find('[data-test="max-price-range"]').prop('value')).toBe(100);
+      expect(wrapper.find('[data-test="min-price-input"]').prop('value')).toEqual(10);
+      expect(wrapper.find('[data-test="min-price-range"]').prop('value')).toEqual(10);
+      expect(wrapper.find('[data-test="max-price-input"]').prop('value')).toEqual(100);
+      expect(wrapper.find('[data-test="max-price-range"]').prop('value')).toEqual(100);
     });
 
     it('Should min inputs have 20 and max inputs 80 when these are set in url', () => {
       const wrapper = setUp('?minPrice=20&maxPrice=80');
-      expect(wrapper.find('[data-test="min-price-input"]').prop('value')).toBe(20);
-      expect(wrapper.find('[data-test="min-price-range"]').prop('value')).toBe(20);
-      expect(wrapper.find('[data-test="max-price-input"]').prop('value')).toBe(80);
-      expect(wrapper.find('[data-test="max-price-range"]').prop('value')).toBe(80);
+      expect(wrapper.find('[data-test="min-price-input"]').prop('value')).toEqual(20);
+      expect(wrapper.find('[data-test="min-price-range"]').prop('value')).toEqual(20);
+      expect(wrapper.find('[data-test="max-price-input"]').prop('value')).toEqual(80);
+      expect(wrapper.find('[data-test="max-price-range"]').prop('value')).toEqual(80);
     });
 
     it('Should call history.replace() when lower and higher than default are set in url', () => {

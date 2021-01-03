@@ -75,21 +75,21 @@ export const editProduct = (productData, productId) => {
       if (productData.photo) {
         if (productData.photo === 'DELETED') {
           await axios.delete(`/products/${firstData.product._id}/photo`);
-          editedProduct.photo = undefined;
+          editedProduct.photo = false;
         } else {
           const formData = new FormData();
           formData.append('photo', productData.photo);
-          const { data: secondData } = await axios.post(
+          await axios.post(
             `/products/${firstData.product._id}/photo`,
             formData,
           );
-          editedProduct = secondData.product;
+          editedProduct.photo = true;
         }
       }
       dispatch(
         setProductDetails({
           ...editedProduct,
-          photo: undefined,
+          photo: false,
         }),
       );
       dispatch(setProductDetails(editedProduct));

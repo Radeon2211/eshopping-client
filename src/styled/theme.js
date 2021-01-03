@@ -43,6 +43,8 @@ const theme = {
     level2: '1.4rem',
     level3: '1.5rem',
     level4: '1.7rem',
+    level5: '2.2rem',
+    level6: '2.6rem',
   },
   durations: {
     level1: 0.1,

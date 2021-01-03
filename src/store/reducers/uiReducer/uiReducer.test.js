@@ -103,10 +103,10 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after CART_START', () => {
+  it('Should return new state after TRADE_START', () => {
     expect(
       uiReducer(undefined, {
-        type: actionTypes.CART_START,
+        type: actionTypes.TRADE_START,
       }),
     ).toEqual({
       ...initialState,
@@ -114,14 +114,14 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after CART_END', () => {
+  it('Should return new state after TRADE_END', () => {
     const state = {
       ...initialState,
       isCartLoading: true,
     };
     expect(
       uiReducer(state, {
-        type: actionTypes.CART_END,
+        type: actionTypes.TRADE_END,
       }),
     ).toEqual({
       ...initialState,

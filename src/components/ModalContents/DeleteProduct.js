@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
 import Button from '../UI/Button/Button';
 import Heading from '../UI/Heading/Heading';
-import HorizontalWrapper from '../UI/HorizontalWrapper';
+import FlexWrapper from '../UI/FlexWrapper';
 
 const DeleteProduct = () => {
   const history = useHistory();
@@ -26,12 +26,12 @@ const DeleteProduct = () => {
       <Heading variant="h4" mgBottom="level3" lineHeight="medium" align="center">
         Are you sure to delete &quot;{productDetails?.name}&quot;?
       </Heading>
-      <HorizontalWrapper>
+      <FlexWrapper justify="center">
         <Button clicked={() => onSetModal(false)}>Cancel</Button>
         <Button filled color="red" clicked={() => onDeleteProduct(productDetails?._id, history)}>
           Delete
         </Button>
-      </HorizontalWrapper>
+      </FlexWrapper>
     </>
   );
 };

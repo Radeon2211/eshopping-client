@@ -3,20 +3,22 @@ import { updateObject } from '../../../shared/utility';
 
 export const initialState = {
   profile: undefined,
+  deliveryAddress: undefined,
   cart: undefined,
   otherUser: undefined,
   placedOrders: [],
   sellHistory: [],
-  transaction: null,
+  transaction: undefined,
 };
 
 const logoutUser = (state) => {
   return updateObject(state, {
     profile: null,
+    deliveryAddress: undefined,
     cart: undefined,
     placedOrders: [],
     sellHistory: [],
-    transaction: null,
+    transaction: undefined,
   });
 };
 
@@ -26,7 +28,24 @@ const setProfile = (state, action) => {
     ...action.profile,
     cart: undefined,
   };
-  return updateObject(state, { profile, cart: action.profile?.cart });
+  const deliveryAddress = {
+    firstName: profile.firstName,
+    lastName: profile.lastName,
+    street: profile.street,
+    zipCode: profile.zipCode,
+    city: profile.city,
+    country: profile.country,
+    phone: profile.phone,
+  };
+  return updateObject(state, { profile, cart: action.profile?.cart, deliveryAddress });
+};
+
+const setDeliveryAddress = (state, action) => {
+  const updatedDeliveryAddress = {
+    ...state.deliveryAddress,
+    ...action.deliveryAddress,
+  };
+  return updateObject(state, { deliveryAddress: updatedDeliveryAddress });
 };
 
 const setCart = (state, action) => {
@@ -45,8 +64,8 @@ const setSellHistory = (state, action) => {
   return updateObject(state, { sellHistory: action.sellHistory });
 };
 
-const updateTransaction = (state, action) => {
-  return updateObject(state, { profile: action.transaction });
+const setTransaction = (state, action) => {
+  return updateObject(state, { transaction: action.transaction });
 };
 
 const authReducer = (state = initialState, action) => {
@@ -55,6 +74,8 @@ const authReducer = (state = initialState, action) => {
       return logoutUser(state);
     case actionTypes.SET_PROFILE:
       return setProfile(state, action);
+    case actionTypes.SET_DELIVERY_ADDRESS:
+      return setDeliveryAddress(state, action);
     case actionTypes.SET_CART:
       return setCart(state, action);
     case actionTypes.SET_OTHER_USER:
@@ -63,8 +84,8 @@ const authReducer = (state = initialState, action) => {
       return setPlacedOrders(state, action);
     case actionTypes.SET_SELL_HISTORY:
       return setSellHistory(state, action);
-    case actionTypes.UPDATE_TRANSACTION:
-      return updateTransaction(state, action);
+    case actionTypes.SET_TRANSACTION:
+      return setTransaction(state, action);
     default:
       return state;
   }

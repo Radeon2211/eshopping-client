@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { getCountries } from 'country-fns';
 
 export const userRules = {
   email: Yup.string().email().max(320).trim().required(),
@@ -36,10 +37,31 @@ export const productRules = {
   description: Yup.string().max(600).trim(),
 };
 
+export const listOfAreaCodes = getCountries().map(({ name, dial }) => {
+  const finalValue = `+${dial} ${name.split('(')[0].trim()}`;
+  return {
+    value: dial,
+    label: finalValue,
+  };
+});
+
+export const listOfCountries = getCountries().map(({ name }) => {
+  const finalValue = name.split('(')[0].trim();
+  return {
+    value: finalValue,
+    label: finalValue,
+  };
+});
+
 export const pages = {
   ALL_PRODUCTS: 'ALL_PRODUCTS',
   MY_PRODUCTS: 'MY_PRODUCTS',
   USER_PRODUCTS: 'USER_PRODUCTS',
+};
+
+export const CTItemTypes = {
+  CART: 'CART',
+  TRANSACTION: 'TRANSACTION',
 };
 
 export const listItemTypes = {
@@ -88,6 +110,7 @@ export const modalTypes = {
   CHANGE_ADDRESS: 'CHANGE_ADDRESS',
   CHANGE_PASSWORD: 'CHANGE_PASSWORD',
   CHANGE_CONTACTS: 'CHANGE_CONTACTS',
+  CHANGE_DELIVERY_ADDRESS: 'CHANGE_DELIVERY_ADDRESS',
   CLEAR_CART: 'CLEAR_CART',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   DELETE_PRODUCT: 'DELETE_PRODUCT',

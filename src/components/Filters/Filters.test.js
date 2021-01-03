@@ -61,7 +61,7 @@ describe('<Filters />', () => {
       const wrapper = setUp();
       simulateTogglerClick(wrapper);
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toBe(
+      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toEqual(
         false,
       );
     });
@@ -69,7 +69,7 @@ describe('<Filters />', () => {
     it('Should submit button be disabled', () => {
       const wrapper = setUp(true);
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toBe(true);
+      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toEqual(true);
     });
   });
 
@@ -77,41 +77,41 @@ describe('<Filters />', () => {
     it('Should condition checkboxes be checked', () => {
       const wrapper = setUp(true, '?p=1&condition=new,used,not_applicable');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('#new').prop('checked')).toBe(true);
-      expect(wrapper.find('#used').prop('checked')).toBe(true);
-      expect(wrapper.find('#not_applicable').prop('checked')).toBe(true);
+      expect(wrapper.find('#new').prop('checked')).toEqual(true);
+      expect(wrapper.find('#used').prop('checked')).toEqual(true);
+      expect(wrapper.find('#not_applicable').prop('checked')).toEqual(true);
     });
 
     it('Should NOT condition checkboxes be checked', () => {
       const wrapper = setUp(true);
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('#new').prop('checked')).toBe(false);
-      expect(wrapper.find('#used').prop('checked')).toBe(false);
-      expect(wrapper.find('#not_applicable').prop('checked')).toBe(false);
+      expect(wrapper.find('#new').prop('checked')).toEqual(false);
+      expect(wrapper.find('#used').prop('checked')).toEqual(false);
+      expect(wrapper.find('#not_applicable').prop('checked')).toEqual(false);
     });
 
     it('Should sort by price ascending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=price:asc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[1]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[1]);
     });
 
     it('Should sort by price descending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=price:desc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[2]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[2]);
     });
 
     it('Should sort by name ascending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=name:asc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[3]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[3]);
     });
 
     it('Should sort by name descending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=name:desc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toBe(sortOptions[4]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[4]);
     });
   });
 

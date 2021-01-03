@@ -28,7 +28,7 @@ export const createCartItem = (
   price = 2,
   name = 'product name',
   productQuantity = 2,
-  photo,
+  photo = false,
 ) => ({
   _id: uuidv4(),
   product: {

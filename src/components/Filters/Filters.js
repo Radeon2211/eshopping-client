@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import Select from 'react-select';
 import * as SC from './Filters.sc';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
-import Panel from '../UI/Panel';
+import PlainPanel from '../UI/Panels/PlainPanel';
 import Button from '../UI/Button/Button';
 import PriceSlider from './PriceSlider/PriceSlider';
 import { filtersActions, sortOptions } from '../../shared/constants';
@@ -152,7 +152,7 @@ const Filters = (props) => {
 
   let filtersPanel = null;
   if (isVisible || windowWidth >= 1200) {
-    filtersPanel = <Panel>{filtersWrapper}</Panel>;
+    filtersPanel = <PlainPanel>{filtersWrapper}</PlainPanel>;
   }
 
   return (

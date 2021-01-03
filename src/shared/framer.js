@@ -37,10 +37,10 @@ export const modalVariants = {
 export const messageBoxVariants = {
   hidden: {
     pointerEvents: 'none',
-    y: '-150%',
+    y: '-200%',
   },
   visible: {
-    transition: { type: 'spring', duration: theme.durations.level2, stiffness: 100 },
+    transition: { type: 'spring', duration: theme.durations.level2, stiffness: 110 },
     pointerEvents: 'initial',
     y: 0,
   },

@@ -7,8 +7,7 @@ import Input from '../../../UI/Input/Input';
 import Button from '../../../UI/Button/Button';
 import SideBySide from '../../../UI/SideBySide';
 import { stepFormVariants } from '../../../../shared/framer';
-import { inputKinds } from '../../../../shared/constants';
-import { listOfCountries } from '../../../../shared/utility';
+import { inputKinds, listOfCountries } from '../../../../shared/constants';
 
 const Step3 = (props) => {
   const {

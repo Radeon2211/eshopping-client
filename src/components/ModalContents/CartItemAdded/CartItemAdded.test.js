@@ -5,8 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import CartItemAdded from './CartItemAdded';
-import * as SC from './CartItemAdded.sc';
+import CartItemAdded, { SC } from './CartItemAdded';
 import Loader from '../../UI/Loader';
 import theme from '../../../styled/theme';
 
@@ -23,6 +22,7 @@ const defaultProduct = {
   _id: '123',
   name: 'test name',
   price: 5,
+  photo: false,
 };
 
 const defaultCart = [{ _id: 'itemId', quantity: 3, product: defaultProduct }];

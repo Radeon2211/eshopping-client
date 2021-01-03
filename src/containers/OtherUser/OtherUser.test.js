@@ -53,21 +53,21 @@ describe('<OtherUser />', () => {
   it('Should render default username and private data <Heading /> if other user has hidden contact data', () => {
     const wrapper = setUp(defaultOtherUser);
     expect(wrapper.find('[data-test="private-data"]').length).toBeGreaterThan(0);
-    expect(wrapper.find('[data-test="username"]').first().text()).toBe('user1');
+    expect(wrapper.find('[data-test="username"]').first().text()).toEqual('user1');
   });
 
   it('Should render email and phone number if other user has set it to public', () => {
     const otherUser = { ...defaultOtherUser, email: 'test@email.com', phone: '123' };
     const wrapper = setUp(otherUser);
     expect(wrapper.find('.single-data')).toHaveLength(2);
-    expect(wrapper.find('.data-value').first().text()).toBe('test@email.com');
-    expect(wrapper.find('.data-value').last().text()).toBe('123');
+    expect(wrapper.find('.data-value').first().text()).toEqual('test@email.com');
+    expect(wrapper.find('.data-value').last().text()).toEqual('123');
   });
 
   it('Should render only phone number if other user has only phone number set to public', () => {
     const otherUser = { ...defaultOtherUser, phone: '123' };
     const wrapper = setUp(otherUser);
     expect(wrapper.find('.single-data')).toHaveLength(1);
-    expect(wrapper.find('.data-value').first().text()).toBe('123');
+    expect(wrapper.find('.data-value').first().text()).toEqual('123');
   });
 });

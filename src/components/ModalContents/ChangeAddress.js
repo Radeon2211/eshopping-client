@@ -6,8 +6,8 @@ import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import SideBySide from '../UI/SideBySide';
-import { inputKinds, userRules } from '../../shared/constants';
-import { listOfCountries } from '../../shared/utility';
+import { inputKinds, userRules, listOfCountries } from '../../shared/constants';
+import { getChangedValues } from '../../shared/utility';
 
 const validationSchema = Yup.object({
   street: userRules.street,
@@ -20,23 +20,29 @@ const ChangeAddress = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangeAddress = useCallback((creds) => dispatch(actions.changeAddress(creds)), [
+  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
     dispatch,
   ]);
 
   const defaultCountry = listOfCountries.find(({ value }) => value === userProfile.country);
 
+  const initialValues = {
+    street: userProfile.street,
+    zipCode: userProfile.zipCode,
+    city: userProfile.city,
+    country: defaultCountry,
+  };
+
   return (
     <Formik
-      initialValues={{
-        street: userProfile.street,
-        zipCode: userProfile.zipCode,
-        city: userProfile.city,
-        country: defaultCountry,
-      }}
+      initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangeAddress(data);
+        const changedValues = getChangedValues(data, initialValues);
+        if (changedValues.country) {
+          changedValues.country = data.country.value;
+        }
+        onUpdateUser(changedValues, 'Address has been changed successfully');
       }}
     >
       {({ dirty, setFieldTouched, setFieldValue, isValid, touched, errors }) => (

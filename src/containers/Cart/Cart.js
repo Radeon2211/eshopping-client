@@ -1,28 +1,36 @@
 import React, { useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as SC from './Cart.sc';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import SideBySide from '../../components/UI/SideBySide';
-import Panel from '../../components/UI/Panel';
+import PlainPanel from '../../components/UI/Panels/PlainPanel';
+import StickyPanel from '../../components/UI/Panels/StickyPanel';
 import Button from '../../components/UI/Button/Button';
-import CartItemList from './CartItemList/CartItemList';
 import Loader from '../../components/UI/Loader';
 import LoadingOverlay from '../../components/UI/LoadingOverlay';
-import { DEFAULT_PATH, modalTypes } from '../../shared/constants';
+import ToPayInfo from '../../components/UI/ToPayInfo';
+import { CTItemTypes, DEFAULT_PATH, modalTypes } from '../../shared/constants';
 import { GreenText, AlignCenter } from '../../styled/components';
-import { formatPrice } from '../../shared/utility';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
+import FlexWrapper from '../../components/UI/FlexWrapper';
+import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 
 const Cart = () => {
   const summaryRef = useRef(null);
+
+  const history = useHistory();
 
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
   const cart = useSelector((state) => state.auth.cart);
 
   const dispatch = useDispatch();
   const onFetchCart = useCallback(() => dispatch(actions.fetchCart()), [dispatch]);
+  const onGoToTransaction = useCallback(
+    (currentHistory) => dispatch(actions.goToTransaction(currentHistory)),
+    [dispatch],
+  );
   const onSetModal = useCallback(
     (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
     [dispatch],
@@ -57,26 +65,28 @@ const Cart = () => {
         <>
           <Heading variant="h3">Your shopping cart</Heading>
           <SideBySide proportion="3/1" makeVerticalWhen={1200}>
-            <Panel>
+            <PlainPanel>
               <AlignCenter>
                 <Button color="red" clicked={() => onSetModal(true, modalTypes.CLEAR_CART)}>
                   clear the cart
                 </Button>
               </AlignCenter>
-              <CartItemList cart={cart} isCartLoading={isCartLoading} />
-            </Panel>
-            <SC.Summary ref={summaryRef}>
-              <Panel>
-                <SC.PayBox>
-                  <span className="to-pay-text">To pay</span>
-                  <span className="to-pay-value">{formatPrice(roundedCartValue)}</span>
-                </SC.PayBox>
-                <Button filled stretch disabled={isCartLoading}>
+              <CartAndTransactionItems items={cart} type={CTItemTypes.CART} isCartLoading={isCartLoading} />
+            </PlainPanel>
+            <StickyPanel>
+              <FlexWrapper direction="column" spacing="level2">
+                <ToPayInfo value={roundedCartValue} />
+                <Button
+                  filled
+                  stretch
+                  disabled={isCartLoading}
+                  clicked={() => onGoToTransaction(history)}
+                >
                   go to summary
                 </Button>
-                {isCartLoading && <LoadingOverlay />}
-              </Panel>
-            </SC.Summary>
+              </FlexWrapper>
+              {isCartLoading && <LoadingOverlay />}
+            </StickyPanel>
           </SideBySide>
         </>
       );

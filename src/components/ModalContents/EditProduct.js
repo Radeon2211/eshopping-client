@@ -8,14 +8,9 @@ import Input from '../UI/Input/Input';
 import UploadPhoto from '../UploadPhoto/UploadPhoto';
 import SideBySide from '../UI/SideBySide';
 import { inputKinds, productRules } from '../../shared/constants';
+import { getChangedValues } from '../../shared/utility';
 
-const validationSchema = Yup.object({
-  name: productRules.name,
-  price: productRules.price,
-  quantity: productRules.quantity,
-  condition: productRules.condition,
-  description: productRules.description,
-});
+const validationSchema = Yup.object(productRules);
 
 const EditProduct = () => {
   const productDetails = useSelector((state) => state.product.productDetails);
@@ -26,19 +21,22 @@ const EditProduct = () => {
     [dispatch],
   );
 
+  const initialValues = {
+    name: productDetails?.name,
+    price: productDetails?.price,
+    quantity: productDetails?.quantity,
+    condition: productDetails?.condition,
+    description: productDetails?.description,
+    photo: null,
+  };
+
   return (
     <Formik
-      initialValues={{
-        name: productDetails?.name,
-        price: productDetails?.price,
-        quantity: productDetails?.quantity,
-        condition: productDetails?.condition,
-        description: productDetails?.description,
-        photo: null,
-      }}
+      initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onEditProduct(data, productDetails._id);
+        const changedValues = getChangedValues(data, initialValues);
+        onEditProduct(changedValues, productDetails?._id);
       }}
     >
       {({ errors, touched, dirty, isValid, setFieldTouched, setFieldValue, values }) => (

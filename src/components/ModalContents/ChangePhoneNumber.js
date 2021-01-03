@@ -6,8 +6,8 @@ import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import SideBySide from '../UI/SideBySide';
-import { inputKinds, userRules } from '../../shared/constants';
-import { listOfAreaCodes } from '../../shared/utility';
+import { inputKinds, userRules, listOfAreaCodes } from '../../shared/constants';
+import { getPhonePrefixAndNumber } from '../../shared/utility';
 
 const validationSchema = Yup.object({
   phonePrefix: userRules.phonePrefix,
@@ -18,23 +18,22 @@ const ChangePhoneNumber = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangePhoneNumber = useCallback((creds) => dispatch(actions.changePhoneNumber(creds)), [
+  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
     dispatch,
   ]);
 
-  const currentPhonePrefix = userProfile.phone.split(' ')[0].split('+')[1];
-  const defaultPhonePrefix = listOfAreaCodes.find(({ value }) => value === currentPhonePrefix);
-  const defaultPhoneNumber = userProfile.phone.split(' ')[1];
+  const { phoneNumber, phonePrefix } = getPhonePrefixAndNumber(userProfile.phone);
 
   return (
     <Formik
       initialValues={{
-        phonePrefix: defaultPhonePrefix,
-        phoneNumber: defaultPhoneNumber,
+        phonePrefix,
+        phoneNumber,
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangePhoneNumber(data);
+        const correctData = { phone: `+${data.phonePrefix.value} ${data.phoneNumber}` };
+        onUpdateUser(correctData, 'Phone number has been changed successfully');
       }}
     >
       {({ dirty, isValid, touched, errors, setFieldTouched, setFieldValue }) => (

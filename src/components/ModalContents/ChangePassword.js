@@ -13,7 +13,7 @@ const validationSchema = Yup.object({
 
 const ChangePassword = () => {
   const dispatch = useDispatch();
-  const onChangePassword = useCallback((creds) => dispatch(actions.changePassword(creds)), [
+  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
     dispatch,
   ]);
 
@@ -25,7 +25,7 @@ const ChangePassword = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangePassword(data);
+        onUpdateUser(data, 'Password has been changed successfully');
       }}
     >
       {({ dirty, errors, touched, isValid, setFieldTouched }) => (

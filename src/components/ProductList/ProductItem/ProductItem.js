@@ -3,14 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as SC from './ProductItem.sc';
-import { baseURL } from '../../../axios';
-import noPhoto from '../../../images/no-photo.png';
+import FlexWrapper from '../../UI/FlexWrapper';
 import { GrayText } from '../../../styled/components';
-import { formatPrice, validateURL } from '../../../shared/utility';
+import { formatPrice } from '../../../shared/utility';
+import ProductThumbnail from '../../UI/ProductThumbnail';
 
 const ProductItem = (props) => {
   const {
-    data: { name, price, condition, quantitySold, photo, _id },
+    data: { _id, name, price, condition, quantitySold, photo },
   } = props;
 
   let conditionNode = null;
@@ -34,21 +34,16 @@ const ProductItem = (props) => {
     );
   }
 
-  const photoURL = `${baseURL}/products/${_id}/photo`;
-  const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
-
   return (
     <Link to={`/products/${_id}`}>
       <SC.Wrapper>
-        <div className="photo-box">
-          <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
-        </div>
-        <div className="data-box">
+        <ProductThumbnail photo={photo} alt={name} productId={_id} width={13} height={15} />
+        <FlexWrapper direction="column" spacing="0">
           <span className="name">{name}</span>
           {conditionNode}
           <span className="price">{formatPrice(price)}</span>
           {quantitySoldNode}
-        </div>
+        </FlexWrapper>
       </SC.Wrapper>
     </Link>
   );

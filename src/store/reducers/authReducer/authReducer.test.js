@@ -7,8 +7,18 @@ describe('Auth reducer', () => {
   });
 
   it('Should return new state after SET_PROFILE', () => {
+    const deliveryAddress = {
+      firstName: 'firstName',
+      lastName: 'lastName',
+      street: 'street',
+      zipCode: 'zipCode',
+      city: 'city',
+      country: 'country',
+      phone: 'phone',
+    };
     const userProfile = {
       username: 'Test username',
+      ...deliveryAddress,
     };
     expect(
       authReducer(undefined, {
@@ -18,6 +28,7 @@ describe('Auth reducer', () => {
     ).toEqual({
       ...initialState,
       profile: userProfile,
+      deliveryAddress,
     });
   });
 

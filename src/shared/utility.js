@@ -1,21 +1,26 @@
 import queryString from 'query-string';
-import { getCountries } from 'country-fns';
+import { listOfAreaCodes } from './constants';
 
-export const listOfAreaCodes = getCountries().map(({ name, dial }) => {
-  const finalValue = `+${dial} ${name.split('(')[0].trim()}`;
-  return {
-    value: dial,
-    label: finalValue,
-  };
-});
+export const getPhonePrefixAndNumber = (phone) => {
+  const currentPhonePrefix = phone.split(' ')[0].split('+')[1];
+  const phonePrefix = listOfAreaCodes.find(({ value }) => value === currentPhonePrefix);
+  const phoneNumber = phone.split(' ')[1];
+  return { phonePrefix, phoneNumber };
+};
 
-export const listOfCountries = getCountries().map(({ name }) => {
-  const finalValue = name.split('(')[0].trim();
-  return {
-    value: finalValue,
-    label: finalValue,
-  };
-});
+export const getChangedValues = (data, initialValues) => {
+  return Object.entries(data)
+    .filter(([key, value]) => {
+      if (key === 'country' || key === 'phonePrefix') {
+        return value.value !== initialValues[key].value;
+      }
+      return value !== initialValues[key];
+    })
+    .reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+};
 
 export const updateObject = (oldObject, updatedProps) => ({
   ...oldObject,
@@ -67,10 +72,12 @@ export const calculateNumberOfPages = (itemQuantity, maxQuantity) => {
 };
 
 export const formatPrice = (value) => {
+  let minimumFractionDigits = 2;
+  if (value % 1 === 0) minimumFractionDigits = 0;
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    minimumFractionDigits: 0,
+    minimumFractionDigits,
     maximumFractionDigits: 2,
   }).format(value);
 };

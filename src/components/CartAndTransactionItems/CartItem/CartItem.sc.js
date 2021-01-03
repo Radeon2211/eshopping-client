@@ -12,28 +12,12 @@ export const Wrapper = styled.div`
   }
 
   &:last-child {
-    padding-bottom: calc(0.5 * ${({ theme }) => theme.spacings.level2});
+    padding-bottom: 0;
   }
 
   & .photo-and-name {
     align-items: center;
     display: flex;
-  }
-
-  & .photo-box {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    max-height: 7rem;
-    min-width: 7rem;
-    overflow: hidden;
-    width: 7rem;
-  }
-
-  & .photo {
-    max-height: 7rem;
-    max-width: 7rem;
-    object-fit: cover;
   }
 
   & .name {
@@ -76,7 +60,7 @@ export const Wrapper = styled.div`
   }
 
   & .overall-price {
-    font-size: 2.2rem;
+    font-size: ${({ theme }) => theme.fontSizes.level5};
   }
 
   & .price-per-piece {

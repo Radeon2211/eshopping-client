@@ -79,12 +79,12 @@ describe('<Form />', () => {
         btnColor: 'red',
       };
       const wrapper = setUp(props, defaultStore);
-      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toBe('red');
+      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toEqual('red');
     });
 
     it('Should render blue submit button', () => {
       const wrapper = setUp(defaultProps, defaultStore);
-      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toBe('blue');
+      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toEqual('blue');
     });
   });
 

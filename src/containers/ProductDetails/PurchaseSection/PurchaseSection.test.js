@@ -70,14 +70,14 @@ describe('<PurchaseSection />', () => {
       const wrapper = setUp({ userProfile: { _id: '123' } });
       expect(wrapper.find('.choose-quantity-box')).toHaveLength(0);
       expect(wrapper.find(Button)).toHaveLength(0);
-      expect(wrapper.find(SC.InfoToSeller)).toHaveLength(1);
+      expect(wrapper.find('[data-test="info-to-seller"]').length).toBeGreaterThan(0);
     });
 
-    it('Should render .not-able-to-add and only buy <Button /> if product quantity in cart equals to product quantity in db', () => {
+    it('Should render not-able-to-add and only buy <Button /> if product quantity in cart equals to product quantity in db', () => {
       const wrapper = setUp(null, [{ quantity: 5, product: { _id: 'productId' } }]);
-      expect(wrapper.find('.not-able-to-add')).toHaveLength(1);
+      expect(wrapper.find('[data-test="not-able-to-add"]').length).toBeGreaterThan(1);
       expect(wrapper.find(Button)).toHaveLength(1);
-      expect(wrapper.find(Button).text()).toBe('buy now');
+      expect(wrapper.find(Button).text()).toEqual('buy now');
     });
   });
 

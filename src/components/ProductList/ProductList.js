@@ -16,6 +16,7 @@ SC.Wrapper = styled.div`
 
 const ProductList = (props) => {
   const { products, isDataLoading, page } = props;
+
   const {
     location: { search },
   } = useHistory();

@@ -5,16 +5,20 @@ export {
   logoutUser,
   fetchOtherUser,
   setOtherUser,
-  changeEmail,
-  changeName,
-  changePhoneNumber,
-  changeAddress,
-  changeContacts,
-  changePassword,
+  updateUser,
+  changeDeliveryAddress,
   deleteAccount,
 } from './authActions';
 
-export { fetchCart, addCartItem, updateCartItem, clearCart, removeCartItem } from './cartActions';
+export {
+  fetchCart,
+  addCartItem,
+  updateCartItem,
+  clearCart,
+  removeCartItem,
+  goToTransaction,
+  setTransaction,
+} from './tradeActions';
 
 export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';
 

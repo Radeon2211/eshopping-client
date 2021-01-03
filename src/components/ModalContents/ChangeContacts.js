@@ -16,7 +16,7 @@ const ChangeContacts = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangeContacts = useCallback((creds) => dispatch(actions.changeContacts(creds)), [
+  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
     dispatch,
   ]);
 
@@ -28,7 +28,11 @@ const ChangeContacts = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangeContacts(data);
+        const contacts = [];
+        if (!data.hideEmail) contacts.push('email');
+        if (!data.hidePhone) contacts.push('phone');
+        const correctData = { contacts };
+        onUpdateUser(correctData, 'Contacts have been changed successfully');
       }}
     >
       {({ dirty, isValid, values }) => (

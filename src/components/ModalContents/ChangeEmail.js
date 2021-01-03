@@ -15,7 +15,9 @@ const ChangeEmail = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onChangeEmail = useCallback((creds) => dispatch(actions.changeEmail(creds)), [dispatch]);
+  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
+    dispatch,
+  ]);
 
   return (
     <Formik
@@ -25,7 +27,7 @@ const ChangeEmail = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onChangeEmail(data);
+        onUpdateUser(data, 'Email has been changed successfully');
       }}
     >
       {({ dirty, errors, touched, values, isValid, setFieldTouched }) => (

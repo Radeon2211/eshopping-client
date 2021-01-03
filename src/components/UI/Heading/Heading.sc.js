@@ -34,6 +34,7 @@ const StyledHeading = styled.h1`
       case 'h4':
         return `
           font-size: ${theme.fontSizes.level4};
+          letter-spacing: 1px;
           line-height: 1;
         `;
       default:

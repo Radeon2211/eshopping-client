@@ -7,7 +7,7 @@ import * as SC from './ProductsAndFilters.sc';
 import SideBySide from '../UI/SideBySide';
 import Filters from '../Filters/Filters';
 import ProductList from '../ProductList/ProductList';
-import Panel from '../UI/Panel';
+import PlainPanel from '../UI/Panels/PlainPanel';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
 import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
@@ -73,11 +73,11 @@ const ProductsAndFilters = (props) => {
     <SC.Wrapper>
       <SideBySide proportion="1/3" makeVerticalWhen={1200}>
         {filters}
-        <Panel>
+        <PlainPanel>
           {inputPagination}
           <ProductList products={products} isDataLoading={isDataLoading} page={page} />
           {numberPagination}
-        </Panel>
+        </PlainPanel>
       </SideBySide>
     </SC.Wrapper>
   );

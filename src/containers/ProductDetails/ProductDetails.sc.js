@@ -24,11 +24,6 @@ export const Wrapper = styled.div`
     flex-direction: column;
   }
 
-  & .name {
-    font-size: ${({ theme }) => theme.fontSizes.level4};
-    font-weight: 700;
-  }
-
   & .seller {
     font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-top: ${({ theme }) => theme.spacings.level2};
@@ -40,7 +35,7 @@ export const Wrapper = styled.div`
   }
 
   & .price {
-    font-size: 2.7rem;
+    font-size: ${({ theme }) => theme.fontSizes.level6};
     letter-spacing: 1px;
     margin: ${({ theme }) => theme.spacings.level3} 0;
   }

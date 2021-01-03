@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
 import { isValidFileType, calculateFileSize } from '../../shared/utility';
 import Button from '../UI/Button/Button';
-import HorizontalWrapper from '../UI/HorizontalWrapper';
+import FlexWrapper from '../UI/FlexWrapper';
 
 const PRODUCT_PHOTO_MAX_SIZE = 6291456;
 const PRODUCT_PHOTO_MAX_SIZE_STRING = calculateFileSize(PRODUCT_PHOTO_MAX_SIZE);
@@ -101,13 +101,13 @@ const UploadPhoto = (props) => {
 
   return (
     <SC.Wrapper className="content">
-      <HorizontalWrapper justify="left">
+      <FlexWrapper>
         <label htmlFor="photo" className="label">
           <Button filled>Upload photo</Button>
         </label>
         {deleteThisBtn}
         {deleteCurrentBtn}
-      </HorizontalWrapper>
+      </FlexWrapper>
       {preview}
       {errorNode}
       <input type="file" id="photo" name="photo" className="input" onChange={inputChangedHandler} />

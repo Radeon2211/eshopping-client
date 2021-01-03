@@ -2,17 +2,16 @@ import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as actions from '../../../../store/actions/indexActions';
+import * as actions from '../../../store/actions/indexActions';
 import * as SC from './CartItem.sc';
-import ChooseQuantity from '../../../../components/UI/ChooseQuantity';
-import { baseURL } from '../../../../axios';
-import noPhoto from '../../../../images/no-photo.png';
-import { updateCartActions } from '../../../../shared/constants';
-import { formatPrice, validateURL } from '../../../../shared/utility';
-import { GrayText } from '../../../../styled/components';
-import MyIcon from '../../../../components/UI/MyIcon';
-import { ReactComponent as TrashIcon } from '../../../../images/SVG/trash.svg';
-import theme from '../../../../styled/theme';
+import ChooseQuantity from '../../UI/ChooseQuantity';
+import { updateCartActions } from '../../../shared/constants';
+import { formatPrice } from '../../../shared/utility';
+import { GrayText } from '../../../styled/components';
+import MyIcon from '../../UI/MyIcon';
+import { ReactComponent as TrashIcon } from '../../../images/SVG/trash.svg';
+import theme from '../../../styled/theme';
+import ProductThumbnail from '../../UI/ProductThumbnail';
 
 const CartItem = (props) => {
   const { data, isCartLoading } = props;
@@ -82,16 +81,11 @@ const CartItem = (props) => {
     onUpdateCartItem(itemId, updateCartActions.DECREMENT);
   };
 
-  const photoURL = `${baseURL}/products/${productId}/photo`;
-  const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
-
   return (
     <SC.Wrapper>
       <div className="photo-and-name">
         <Link to={`/products/${productId}`} data-test="product-link">
-          <div className="photo-box">
-            <img src={photo ? validPhotoURL : noPhoto} alt="product" className="photo" />
-          </div>
+          <ProductThumbnail photo={photo} alt={name} productId={productId} width={7} height={7} />
         </Link>
         <span className="name">
           <Link to={`/products/${productId}`} data-test="product-link">

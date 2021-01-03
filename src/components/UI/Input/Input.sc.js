@@ -113,7 +113,7 @@ export const RadioWrapper = styled.div`
   display: flex;
 
   & > label {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
     order: 1;
     line-height: 1;
     padding: 0 0 0 ${({ theme }) => theme.spacings.level1};

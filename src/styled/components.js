@@ -16,3 +16,8 @@ export const GrayText = styled.span`
 export const AlignCenter = styled.div`
   text-align: center;
 `;
+
+export const UserDataValue = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.level3};
+  word-break: break-all;
+`;

@@ -6,6 +6,7 @@ import { checkProps } from '../../../../shared/testUtility';
 import { singleInfoNames } from '../../../../shared/constants';
 import theme from '../../../../styled/theme';
 import Button from '../../../../components/UI/Button/Button';
+import { UserDataValue } from '../../../../styled/components';
 
 const setUp = (name, content, clickHandler) => {
   const props = {
@@ -40,9 +41,9 @@ describe('<SingleInfo />', () => {
     it('Should render name, one content and <Button /> and fire off a clickHandler when <Button /> is clicked', () => {
       const clickHandlerFn = jest.fn();
       const wrapper = setUp(singleInfoNames.NAME, 'test name', clickHandlerFn);
-      expect(wrapper.find('.name').text()).toBe(singleInfoNames.NAME);
-      expect(wrapper.find('.content')).toHaveLength(1);
-      expect(wrapper.find('.content').text()).toBe('test name');
+      expect(wrapper.find('[data-test="name"]').first().text()).toEqual(singleInfoNames.NAME);
+      expect(wrapper.find(UserDataValue)).toHaveLength(1);
+      expect(wrapper.find(UserDataValue).text()).toEqual('test name');
       const button = wrapper.find(Button);
       expect(button).toHaveLength(1);
       button.simulate('click');
@@ -55,27 +56,23 @@ describe('<SingleInfo />', () => {
     });
 
     it('Should render address', () => {
-      const address = {
-        street: 'Street 1',
-        zipCodeAndCity: `00-000 City`,
-        country: 'Poland',
-      };
+      const address = ['Street 1', '00-000 City', 'Poland'];
       const wrapper = setUp(singleInfoNames.ADDRESS, address);
-      expect(wrapper.find('.content').at(0).text()).toBe(address.street);
-      expect(wrapper.find('.content').at(1).text()).toBe(address.zipCodeAndCity);
-      expect(wrapper.find('.content').at(2).text()).toBe(address.country);
+      expect(wrapper.find(UserDataValue).at(0).text()).toEqual(address[0]);
+      expect(wrapper.find(UserDataValue).at(1).text()).toEqual(address[1]);
+      expect(wrapper.find(UserDataValue).at(2).text()).toEqual(address[2]);
     });
 
     it('Should render contacts with all visible', () => {
       const wrapper = setUp(singleInfoNames.CONTACTS, ['email', 'phone']);
-      expect(wrapper.find('.content').at(0).text()).toBe('Email: visible');
-      expect(wrapper.find('.content').at(1).text()).toBe('Phone number: visible');
+      expect(wrapper.find(UserDataValue).at(0).text()).toEqual('Email: visible');
+      expect(wrapper.find(UserDataValue).at(1).text()).toEqual('Phone number: visible');
     });
 
     it('Should render contacts with all hidden', () => {
       const wrapper = setUp(singleInfoNames.CONTACTS, []);
-      expect(wrapper.find('.content').at(0).text()).toBe('Email: hidden');
-      expect(wrapper.find('.content').at(1).text()).toBe('Phone number: hidden');
+      expect(wrapper.find(UserDataValue).at(0).text()).toEqual('Email: hidden');
+      expect(wrapper.find(UserDataValue).at(1).text()).toEqual('Phone number: hidden');
     });
   });
 });

@@ -34,12 +34,12 @@ const setUp = (cart) => {
 describe('<CartLink />', () => {
   it('Should render <SC.Quantity /> with value 1', () => {
     const wrapper = setUp([{ _id: '1' }]);
-    expect(wrapper.find(SC.Quantity).text()).toBe('1');
+    expect(wrapper.find(SC.Quantity).text()).toEqual('1');
   });
 
   it('Should render <SC.Quantity /> with value 3', () => {
     const wrapper = setUp([{ _id: '1' }, { _id: '2' }, { _id: '3' }]);
-    expect(wrapper.find(SC.Quantity).text()).toBe('3');
+    expect(wrapper.find(SC.Quantity).text()).toEqual('3');
   });
 
   it('Should NOT render <SC.Quantity /> if cart is null', () => {

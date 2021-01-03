@@ -9,6 +9,11 @@ export const setProfile = (profile) => ({
   profile,
 });
 
+export const setDeliveryAddress = (deliveryAddress) => ({
+  type: actionTypes.SET_DELIVERY_ADDRESS,
+  deliveryAddress,
+});
+
 export const setOtherUser = (user) => ({
   type: actionTypes.SET_OTHER_USER,
   otherUser: user,
@@ -82,98 +87,14 @@ export const logoutUser = () => {
   };
 };
 
-export const changeEmail = (creds) => {
+export const updateUser = (creds, message) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
     try {
       const { data } = await axios.patch('/users/me', creds);
       dispatch(uiActions.formSuccess());
       dispatch(setProfile(data.user));
-      dispatch(uiActions.setAndDeleteMessage('Email has been changed successfully'));
-    } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.formFail(errorMessage));
-    }
-  };
-};
-
-export const changeName = (creds) => {
-  return async (dispatch) => {
-    dispatch(uiActions.formStart());
-    try {
-      const { data } = await axios.patch('/users/me', creds);
-      dispatch(uiActions.formSuccess());
-      dispatch(setProfile(data.user));
-      dispatch(uiActions.setAndDeleteMessage('Name has been changed successfully'));
-    } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.formFail(errorMessage));
-    }
-  };
-};
-
-export const changePhoneNumber = (creds) => {
-  return async (dispatch) => {
-    dispatch(uiActions.formStart());
-    try {
-      const correctCreds = { phone: `+${creds.phonePrefix.value} ${creds.phoneNumber}` };
-      const { data } = await axios.patch('/users/me', correctCreds);
-      dispatch(uiActions.formSuccess());
-      dispatch(setProfile(data.user));
-      dispatch(uiActions.setAndDeleteMessage('Phone number has been changed successfully'));
-    } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.formFail(errorMessage));
-    }
-  };
-};
-
-export const changeAddress = (creds) => {
-  return async (dispatch) => {
-    dispatch(uiActions.formStart());
-    try {
-      const correctCreds = {
-        ...creds,
-        country: creds.country.value,
-      };
-      const { data } = await axios.patch('/users/me', correctCreds);
-      dispatch(uiActions.formSuccess());
-      dispatch(setProfile(data.user));
-      dispatch(uiActions.setAndDeleteMessage('Address has been changed successfully'));
-    } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.formFail(errorMessage));
-    }
-  };
-};
-
-export const changeContacts = (creds) => {
-  return async (dispatch) => {
-    dispatch(uiActions.formStart());
-    try {
-      const contacts = [];
-      if (!creds.hideEmail) contacts.push('email');
-      if (!creds.hidePhone) contacts.push('phone');
-      const correctCreds = { contacts };
-      const { data } = await axios.patch('/users/me', correctCreds);
-      dispatch(uiActions.formSuccess());
-      dispatch(setProfile(data.user));
-      dispatch(uiActions.setAndDeleteMessage('Contacts have been changed successfully'));
-    } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.formFail(errorMessage));
-    }
-  };
-};
-
-export const changePassword = (creds) => {
-  return async (dispatch) => {
-    dispatch(uiActions.formStart());
-    try {
-      const { data } = await axios.patch('/users/me', creds);
-      dispatch(uiActions.formSuccess());
-      dispatch(setProfile(data.user));
-      dispatch(uiActions.setAndDeleteMessage('Password has been changed successfully'));
+      dispatch(uiActions.setAndDeleteMessage(message));
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));
@@ -194,6 +115,28 @@ export const deleteAccount = (creds, history) => {
         ),
       );
       history.replace(DEFAULT_PATH);
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};
+
+export const changeDeliveryAddress = (creds) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      const { onlyTheseOrders } = creds;
+      delete creds.onlyTheseOrders;
+
+      if (onlyTheseOrders) {
+        dispatch(setDeliveryAddress(creds));
+      } else {
+        const { data } = await axios.patch('/users/me', creds);
+        dispatch(setProfile(data.user));
+        dispatch(uiActions.setAndDeleteMessage('Delivery address has been saved in your profile'));
+      }
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));

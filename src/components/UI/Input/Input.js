@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import Textarea from 'react-textarea-autosize';
-import Select from 'react-select';
 import * as SC from './Input.sc';
 import { inputKinds } from '../../../shared/constants';
+import Select from 'react-select';
 
 const Input = (props) => {
   const { kind, config, label, isValid, isTouched, captionText } = props;

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Button from '../UI/Button/Button';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../UI/Heading/Heading';
-import HorizontalWrapper from '../UI/HorizontalWrapper';
+import FlexWrapper from '../UI/FlexWrapper';
 
 const ClearCart = () => {
   const dispatch = useDispatch();
@@ -25,14 +25,14 @@ const ClearCart = () => {
       <Heading variant="h4" mgBottom="level3" align="center">
         Are you sure to do that?
       </Heading>
-      <HorizontalWrapper mgTop="level3">
+      <FlexWrapper mgTop="level3" justify="center">
         <Button color="blue" clicked={() => onSetModal(false)}>
           cancel
         </Button>
         <Button color="red" filled clicked={clearCartClickHandle}>
           clear
         </Button>
-      </HorizontalWrapper>
+      </FlexWrapper>
     </>
   );
 };

@@ -1,16 +1,19 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as SC from './PurchaseSection.sc';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
 import ChooseQuantity from '../../../components/UI/ChooseQuantity';
 import { GreenText, GrayText } from '../../../styled/components';
+import Heading from '../../../components/UI/Heading/Heading';
 
 const PurchaseSection = (props) => {
   const { productId, productQuantity, productSellerId, onSetModal, userProfile } = props;
+
+  const history = useHistory();
 
   const [chosenQuantity, setChosenQuantity] = useState(1);
 
@@ -19,6 +22,10 @@ const PurchaseSection = (props) => {
 
   const dispatch = useDispatch();
   const onAddCartItem = useCallback((item) => dispatch(actions.addCartItem(item)), [dispatch]);
+  const onGoToTransaction = useCallback(
+    (currentHistory, item) => dispatch(actions.goToTransaction(currentHistory, item)),
+    [dispatch],
+  );
 
   const inputChangeHandle = (e) => {
     const value = +e.target.value || '';
@@ -67,16 +74,19 @@ const PurchaseSection = (props) => {
   const buyNowClickHandle = () => {
     if (!userProfile) {
       onSetModal(true, modalTypes.LOGIN);
+    } else {
+      onGoToTransaction(history, {
+        product: productId,
+        quantity: chosenQuantity,
+      });
     }
   };
 
   let purchaseSection = (
-    <SC.InfoToSeller>
-      <div className="info-quantity-box">
-        <span className="quantity-text gray-text">{`Quantity: ${productQuantity}`}</span>
-      </div>
-      <span className="text">You are the seller of this product</span>
-    </SC.InfoToSeller>
+    <>
+      <span className="quantity-info gray-text">{`Quantity: ${productQuantity}`}</span>
+      <Heading variant="h4" mgTop="level3" data-test="info-to-seller">You are the seller of this product</Heading>
+    </>
   );
 
   if (userProfile?._id !== productSellerId) {
@@ -91,12 +101,12 @@ const PurchaseSection = (props) => {
     );
     if (givenProductInCart?.quantity >= productQuantity) {
       addToCartBtn = (
-        <span className="not-able-to-add">
+        <Heading variant="h4" align="center" mgBottom="level2" data-test="not-able-to-add">
           You have added all pieces to&nbsp;
           <Link to="/cart">
             <GreenText>cart</GreenText>
           </Link>
-        </span>
+        </Heading>
       );
     }
 
@@ -120,7 +130,7 @@ const PurchaseSection = (props) => {
           </span>
         </div>
         {addToCartBtn}
-        <Button filled stretch clicked={buyNowClickHandle}>
+        <Button filled stretch clicked={buyNowClickHandle} isLoading={isCartLoading}>
           buy now
         </Button>
       </>

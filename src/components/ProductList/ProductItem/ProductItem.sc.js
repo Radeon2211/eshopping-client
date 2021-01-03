@@ -1,36 +1,15 @@
 import styled from 'styled-components';
+import FlexWrapper from '../../UI/FlexWrapper';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Wrapper = styled.article`
+export const Wrapper = styled(FlexWrapper)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.light2};
-  display: flex;
   padding: ${({ theme }) => theme.spacings.level2};
   transition: background-color ${({ theme }) => theme.durations.level1}s;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.07);
     cursor: pointer;
-  }
-
-  & .photo-box {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    max-height: 16rem;
-    margin-right: ${({ theme }) => theme.spacings.level3};
-    min-width: 13rem;
-    width: 13rem;
-  }
-
-  & .photo {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-  }
-
-  & .data-box {
-    display: flex;
-    flex-direction: column;
   }
 
   & .name {
@@ -44,7 +23,7 @@ export const Wrapper = styled.article`
   }
 
   & .price {
-    font-size: 2.4rem;
+    font-size: ${({ theme }) => theme.fontSizes.level5};
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 

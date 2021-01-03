@@ -21,6 +21,7 @@ const ProductDetails = lazy(() => import('./containers/ProductDetails/ProductDet
 const OtherUser = lazy(() => import('./containers/OtherUser/OtherUser'));
 const MyAccount = lazy(() => import('./containers/MyAccount/MyAccount'));
 const Cart = lazy(() => import('./containers/Cart/Cart'));
+const Transaction = lazy(() => import('./containers/Transaction/Transaction'));
 
 const WaitingComponent = (Component) => {
   return (props) => (
@@ -99,6 +100,7 @@ const App = () => {
             <Route path="/products" exact component={Products} />
             <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
             <Route path="/cart" exact component={WaitingComponent(Cart)} />
+            <Route path="/transaction" exact component={WaitingComponent(Transaction)} />
             <Route path="/my-account" component={WaitingComponent(MyAccount)} />
             <Redirect to={DEFAULT_PATH} />
           </Switch>
