@@ -16,8 +16,9 @@ export {
   updateCartItem,
   clearCart,
   removeCartItem,
-  goToTransaction,
   setTransaction,
+  goToTransaction,
+  buyProducts,
 } from './tradeActions';
 
 export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';

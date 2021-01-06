@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../store/actions/indexActions';
 import { useHistory } from 'react-router-dom';
 import SideBySide from '../../components/UI/SideBySide';
 import FlexWrapper from '../../components/UI/FlexWrapper';
@@ -8,15 +9,20 @@ import StickyPanel from '../../components/UI/Panels/StickyPanel';
 import DeliveryAddress from './DeliveryAddress/DeliveryAddress';
 import Heading from '../../components/UI/Heading/Heading';
 import ToPayInfo from '../../components/UI/ToPayInfo';
-import { CTItemTypes } from '../../shared/constants';
+import { CTItemTypes, modalTypes } from '../../shared/constants';
 import Button from '../../components/UI/Button/Button';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 
 const Transaction = () => {
-  const transaction = useSelector((state) => state.auth.transaction);
-  const isCartLoading = useSelector((state) => state.ui.isCartLoading);
-
   const history = useHistory();
+
+  const transaction = useSelector((state) => state.auth.transaction);
+
+  const dispatch = useDispatch();
+  const onSetModal = useCallback(
+    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
+    [dispatch],
+  );
 
   useEffect(() => {
     if (!transaction || transaction?.length <= 0) {
@@ -46,7 +52,7 @@ const Transaction = () => {
           <StickyPanel>
             <FlexWrapper direction="column" spacing="level2">
               <ToPayInfo value={roundedToPayValue} />
-              <Button filled disabled={isCartLoading}>
+              <Button filled clicked={() => onSetModal(true, modalTypes.BUY_PRODUCTS)}>
                 I buy and pay
               </Button>
             </FlexWrapper>

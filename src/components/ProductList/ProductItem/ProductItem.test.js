@@ -42,12 +42,12 @@ describe('<ProductItem />', () => {
         name: 'testName',
         price: 3,
         condition: 'used',
-        quantitySold: 1,
+        buyerQuantity: 1,
         photo: false,
       };
       const wrapper = setUp(data);
       expect(wrapper.find('.condition')).toHaveLength(1);
-      expect(wrapper.find('.quantity-sold-box')).toHaveLength(1);
+      expect(wrapper.find('.buyer-quantity-box')).toHaveLength(1);
     });
   });
 
@@ -57,13 +57,13 @@ describe('<ProductItem />', () => {
       name: 'testName',
       price: 3,
       condition: 'not_applicable',
-      quantitySold: 0,
+      buyerQuantity: 0,
       photo: false,
     };
     const wrapper = setUp(data);
     it('Should NOT render condition and quantitySold', () => {
       expect(wrapper.find('.condition')).toHaveLength(0);
-      expect(wrapper.find('.quantity-sold-box')).toHaveLength(0);
+      expect(wrapper.find('.buyer-quantity-box')).toHaveLength(0);
     });
   });
 });

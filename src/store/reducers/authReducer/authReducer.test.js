@@ -43,6 +43,64 @@ describe('Auth reducer', () => {
     });
   });
 
+  it('Should return new state after SET_DELIVERY_ADDRESS - completely new', () => {
+    const deliveryAddress = {
+      firstName: 'firstName',
+      lastName: 'lastName',
+      street: 'street',
+      zipCode: 'zipCode',
+      city: 'city',
+      country: 'country',
+      phone: 'phone',
+    };
+    expect(
+      authReducer(undefined, {
+        type: actionTypes.SET_DELIVERY_ADDRESS,
+        deliveryAddress,
+      }),
+    ).toEqual({
+      ...initialState,
+      deliveryAddress,
+    });
+  });
+
+  
+  it('Should return new state after SET_DELIVERY_ADDRESS - only update', () => {
+    const state = {
+      ...initialState,
+      deliveryAddress: {
+        firstName: 'firstName',
+        lastName: 'lastName',
+        street: 'street',
+        zipCode: 'zipCode',
+        city: 'city',
+        country: 'country',
+        phone: 'phone',
+      },
+    };
+    const updatedDeliveryAddress = {
+      firstName: 'firstName2',
+      lastName: 'lastName2',
+    };
+    expect(
+      authReducer(state, {
+        type: actionTypes.SET_DELIVERY_ADDRESS,
+        deliveryAddress: updatedDeliveryAddress,
+      }),
+    ).toEqual({
+      ...initialState,
+      deliveryAddress: {
+        firstName: 'firstName2',
+        lastName: 'lastName2',
+        street: 'street',
+        zipCode: 'zipCode',
+        city: 'city',
+        country: 'country',
+        phone: 'phone',
+      },
+    });
+  });
+
   it('Should return new state after SET_CART', () => {
     const cart = [{ _id: '1' }];
     expect(
@@ -53,6 +111,41 @@ describe('Auth reducer', () => {
     ).toEqual({
       ...initialState,
       cart,
+    });
+  });
+
+  it('Should return new state after SET_OTHER_USER', () => {
+    const otherUser = {
+      _id: 'u1',
+      username: 'user1'
+    }
+    expect(
+      authReducer(undefined, {
+        type: actionTypes.SET_OTHER_USER,
+        otherUser,
+      }),
+    ).toEqual({
+      ...initialState,
+      otherUser,
+    });
+  });
+
+  it('Should return new state after SET_TRANSACTION', () => {
+    const transaction = [{
+      seller: 'u1',
+      products: [{
+        _id: 'p1',
+        name: 'product1',
+      }],
+    }];
+    expect(
+      authReducer(undefined, {
+        type: actionTypes.SET_TRANSACTION,
+        transaction,
+      }),
+    ).toEqual({
+      ...initialState,
+      transaction,
     });
   });
 });

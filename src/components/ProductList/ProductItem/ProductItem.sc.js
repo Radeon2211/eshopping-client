@@ -27,13 +27,13 @@ export const Wrapper = styled(FlexWrapper)`
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
-  & .quantity-sold-box {
+  & .buyer-quantity-box {
     flex-grow: 1;
     display: flex;
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
 
-  & .quantity-sold {
+  & .buyer-quantity {
     align-self: flex-end;
     font-size: ${({ theme }) => theme.fontSizes.level1};
   }

@@ -102,6 +102,7 @@ export const sliderPositionsActions = {
 export const modalTypes = {
   ABOUT_WEBSITE: 'ABOUT_WEBSITE',
   ADD_PRODUCT: 'ADD_PRODUCT',
+  BUY_PRODUCTS: 'BUY_PRODUCTS',
   CART_ITEM_ADDED: 'CART_ITEM_ADDED',
   CHANGE_NAME: 'CHANGE_NAME',
   CHANGE_EMAIL: 'CHANGE_EMAIL',

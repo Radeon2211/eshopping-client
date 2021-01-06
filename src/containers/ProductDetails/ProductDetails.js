@@ -61,6 +61,7 @@ const ProductDetails = (props) => {
       price,
       quantity,
       quantitySold,
+      buyerQuantity,
       seller,
       _id,
     } = productDetails;
@@ -71,7 +72,7 @@ const ProductDetails = (props) => {
     if (quantitySold >= 1) {
       quantitySoldNode = (
         <GrayText className="quantity-sold">
-          {quantitySold === 1 ? '1 person' : `${quantitySold} people`} bought
+          {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought {quantitySold} {quantitySold === 1 ? 'unit' : 'units'}
         </GrayText>
       );
     }
@@ -130,50 +131,47 @@ const ProductDetails = (props) => {
     }
 
     details = (
-      <>
-        <SideBySide proportion={windowWidth <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
-          <section className="photo-section">
-            <img
-              src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
-              alt="product"
-              className="photo"
-            />
-          </section>
-          <section className="data-section">
-            <Heading variant="h4">{name}</Heading>
-            {/* <span className="name">{name}</span> */}
-            <span className="seller">
-              <GrayText>from </GrayText>
-              <Link to={`/user/${seller.username}?p=1`}>
-                <GreenText>{seller.username}</GreenText>
-              </Link>
-            </span>
-            <span className="condition">
-              <GrayText>Condition: </GrayText>
-              {`${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
-            </span>
-            <span className="price">{formatPrice(price)}</span>
-            {quantitySoldNode}
-            <PurchaseSection
-              productId={productId}
-              productQuantity={quantity}
-              productSellerId={seller._id}
-              onSetModal={onSetModal}
-              userProfile={userProfile}
-            />
-          </section>
-        </SideBySide>
-        {descriptionSection}
-        {manageButtonsBox}
-      </>
+      <PlainPanel>
+        <SC.Wrapper>
+          <SideBySide proportion={windowWidth <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
+            <section className="photo-section">
+              <img
+                src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
+                alt="product"
+                className="photo"
+              />
+            </section>
+            <section className="data-section">
+              <Heading variant="h4">{name}</Heading>
+              <span className="seller">
+                <GrayText>from </GrayText>
+                <Link to={`/user/${seller.username}?p=1`}>
+                  <GreenText>{seller.username}</GreenText>
+                </Link>
+              </span>
+              <span className="condition">
+                <GrayText>Condition: </GrayText>
+                {`${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
+              </span>
+              <span className="price">{formatPrice(price)}</span>
+              {quantitySoldNode}
+              <PurchaseSection
+                productId={productId}
+                productQuantity={quantity}
+                productSellerId={seller._id}
+                onSetModal={onSetModal}
+                userProfile={userProfile}
+              />
+            </section>
+          </SideBySide>
+          {descriptionSection}
+          {manageButtonsBox}
+        </SC.Wrapper>
+      </PlainPanel>
     );
   }
 
-  return (
-    <PlainPanel>
-      <SC.Wrapper>{details}</SC.Wrapper>
-    </PlainPanel>
-  );
+  return details;
 };
 
 export default ProductDetails;

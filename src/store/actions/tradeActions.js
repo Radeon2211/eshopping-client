@@ -146,3 +146,39 @@ export const goToTransaction = (history, singleItem) => {
     }
   };
 };
+
+export const buyProducts = (history, lastPath) => {
+  return async (dispatch, getState) => {
+    dispatch(uiActions.formStart());
+    try {
+      const { transaction, deliveryAddress } = getState().auth;
+
+      let clearCart = false;
+      if (lastPath === '/cart') clearCart = true;
+
+      const { data: { transaction: updatedTransaction, cart } } = await axios.post('/orders', { transaction, deliveryAddress, clearCart });
+
+      dispatch(uiActions.formSuccess());
+      dispatch(setCart(cart));
+      if (updatedTransaction) {
+        if (updatedTransaction.length > 0) {
+          dispatch(
+            uiActions.setAndDeleteMessage(
+              'Availability of the products changed meanwhile. Check all the products in transaction and try again'
+            ),
+          );
+        } else {
+          dispatch(uiActions.setAndDeleteMessage('Sorry, these products do not exist any more'));
+        }
+      } else {
+        dispatch(uiActions.setAndDeleteMessage('Transaction was successful'));
+        history.replace('/my-account/placed-orders');
+      }
+      dispatch(setTransaction(updatedTransaction || []));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.setAndDeleteMessage(errorMessage));
+      dispatch(uiActions.formFail(errorMessage));
+    }
+  };
+};

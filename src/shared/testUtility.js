@@ -44,3 +44,23 @@ export const createCartItem = (
   },
   quantity,
 });
+
+export const createTransactionItem = (
+  sellerId = uuidv4(),
+  sellerUsername = 'username',
+  productId,
+  quantity = 1,
+  price = 2,
+  name = 'product name',
+  photo = false,
+) => ({
+  _id: productId || uuidv4(),
+  name,
+  photo,
+  price,
+  quantity,
+  seller: {
+    _id: sellerId,
+    username: sellerUsername,
+  },
+});

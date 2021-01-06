@@ -27,6 +27,7 @@ const defaultProductDetails = {
   quantity: 5,
   name: 'testName',
   quantitySold: 0,
+  buyerQuantity: 0,
 };
 
 const defaultProfile = { _id: '123' };
@@ -111,20 +112,28 @@ describe('<ProductDetails />', () => {
     });
 
     describe('Check how quantity sold node renders', () => {
-      it('Should render quantity sold node - "3 people bought"', () => {
+      it('Should render quantity sold node - "2 people bought 3 units"', () => {
         const store = {
-          product: { productDetails: { ...defaultProductDetails, quantitySold: 3 } },
+          product: { productDetails: { ...defaultProductDetails, buyerQuantity: 2, quantitySold: 3 } },
         };
         const wrapper = setUp(store);
-        expect(wrapper.find('.quantity-sold').first().text()).toEqual('3 people bought');
+        expect(wrapper.find('.quantity-sold').first().text()).toEqual('2 people bought 3 units');
       });
 
-      it('Should render quantity sold node - "1 person bought"', () => {
+      it('Should render quantity sold node - "1 person bought 1 unit"', () => {
         const store = {
-          product: { productDetails: { ...defaultProductDetails, quantitySold: 1 } },
+          product: { productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 1 } },
         };
         const wrapper = setUp(store);
-        expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought');
+        expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought 1 unit');
+      });
+
+      it('Should render quantity sold node - "1 person bought 5 units"', () => {
+        const store = {
+          product: { productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 5 } },
+        };
+        const wrapper = setUp(store);
+        expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought 5 units');
       });
 
       it('Should NOT render quantity sold node', () => {

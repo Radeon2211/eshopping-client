@@ -49,7 +49,7 @@ const CartAndTransactionItems = (props) => {
     <SC.SingleSeller key={sellerUsername}>
       <div className="seller">
         <span>seller </span>
-        <Link to={`/user/${sellerUsername}?p=1`}>
+        <Link to={`/user/${sellerUsername}?p=1`} data-test="user-link">
           <GreenText>{sellerUsername}</GreenText>
         </Link>
       </div>

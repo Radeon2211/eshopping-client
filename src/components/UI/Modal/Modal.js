@@ -12,6 +12,7 @@ import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../ModalContents/Signup/Signup';
 import Login from '../../ModalContents/Login';
 import AddProduct from '../../ModalContents/AddProduct';
+import BuyProducts from '../../ModalContents/BuyProducts';
 import EditProduct from '../../ModalContents/EditProduct';
 import DeleteProduct from '../../ModalContents/DeleteProduct';
 import CartItemAdded from '../../ModalContents/CartItemAdded/CartItemAdded';
@@ -54,6 +55,9 @@ const Modal = () => {
       break;
     case modalTypes.ABOUT_WEBSITE:
       modalContentNode = <AboutWebsite />;
+      break;
+    case modalTypes.BUY_PRODUCTS:
+      modalContentNode = <BuyProducts />;
       break;
     case modalTypes.CART_ITEM_ADDED:
       modalContentNode = <CartItemAdded />;

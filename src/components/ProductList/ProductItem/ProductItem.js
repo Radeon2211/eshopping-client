@@ -10,7 +10,7 @@ import ProductThumbnail from '../../UI/ProductThumbnail';
 
 const ProductItem = (props) => {
   const {
-    data: { _id, name, price, condition, quantitySold, photo },
+    data: { _id, name, price, condition, buyerQuantity, photo },
   } = props;
 
   let conditionNode = null;
@@ -23,12 +23,12 @@ const ProductItem = (props) => {
     );
   }
 
-  let quantitySoldNode = null;
-  if (quantitySold >= 1) {
-    quantitySoldNode = (
-      <div className="quantity-sold-box">
-        <GrayText className="quantity-sold">
-          {quantitySold === 1 ? '1 person' : `${quantitySold} people`} bought
+  let buyerQuantityNode = null;
+  if (buyerQuantity >= 1) {
+    buyerQuantityNode = (
+      <div className="buyer-quantity-box">
+        <GrayText className="buyer-quantity">
+          {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought
         </GrayText>
       </div>
     );
@@ -42,7 +42,7 @@ const ProductItem = (props) => {
           <span className="name">{name}</span>
           {conditionNode}
           <span className="price">{formatPrice(price)}</span>
-          {quantitySoldNode}
+          {buyerQuantityNode}
         </FlexWrapper>
       </SC.Wrapper>
     </Link>
