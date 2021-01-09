@@ -54,25 +54,24 @@ const quantityOptions = [
   { value: 25, label: '25' },
 ];
 
-const QuantityPerPageController = (props) => {
-  const { maxQuantityPerPage } = props;
+const ProductsPerPageController = (props) => {
+  const { quantityPerPage } = props;
 
-  const defaultOption = quantityOptions.find(({ value }) => value === maxQuantityPerPage);
+  const defaultOption = quantityOptions.find(({ value }) => value === quantityPerPage);
   const [option, setOption] = useState(defaultOption);
 
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const onChangeMaxQuantityPerPage = useCallback(
-    (quantity, currentHistory) =>
-      dispatch(actions.changeMaxQuantityPerPage(quantity, currentHistory)),
+  const onChangeProductsPerPage = useCallback(
+    (quantity, currentHistory) => dispatch(actions.changeProductsPerPage(quantity, currentHistory)),
     [dispatch],
   );
 
   const optionChangeHandle = (change) => {
     if (change.value === option.value) return;
     setOption(change);
-    onChangeMaxQuantityPerPage(change.value, history);
+    onChangeProductsPerPage(change.value, history);
   };
 
   return (
@@ -92,8 +91,8 @@ const QuantityPerPageController = (props) => {
   );
 };
 
-QuantityPerPageController.propTypes = {
-  maxQuantityPerPage: PropTypes.number.isRequired,
+ProductsPerPageController.propTypes = {
+  quantityPerPage: PropTypes.number.isRequired,
 };
 
-export default QuantityPerPageController;
+export default ProductsPerPageController;

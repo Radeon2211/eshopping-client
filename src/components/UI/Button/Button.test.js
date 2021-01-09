@@ -14,9 +14,11 @@ describe('<Button />', () => {
       size: 'small',
       children: 'test button',
     };
+
     it('Should NOT throw a warning', () => {
       expect(checkProps(Button, expectedProps)).toBeUndefined();
     });
+
     it('Should throw a warning', () => {
       expect(checkProps(Button, {})).not.toBe(null);
     });
@@ -34,9 +36,11 @@ describe('<Button />', () => {
       };
       wrapper = setUp(props);
     });
+
     it('Should render a button', () => {
       expect(wrapper.find(SC.Button)).toHaveLength(1);
     });
+
     it('Should emit callback on click event', () => {
       const button = wrapper.find(SC.Button);
       button.simulate('click');

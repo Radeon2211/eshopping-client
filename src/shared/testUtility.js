@@ -17,7 +17,7 @@ export const historyPageNum = (pageNumber) => ({
 export const propsPagination = (itemQuantity = 5) => ({
   itemQuantity,
   isDataLoading: false,
-  maxQuantityPerPage: 2,
+  quantityPerPage: 2,
 });
 
 export const createCartItem = (
@@ -45,7 +45,7 @@ export const createCartItem = (
   quantity,
 });
 
-export const createTransactionItem = (
+export const createTransactionAndOrderProdItem = (
   sellerId = uuidv4(),
   sellerUsername = 'username',
   productId,
@@ -64,3 +64,27 @@ export const createTransactionItem = (
     username: sellerUsername,
   },
 });
+
+export const createOrder = (
+  products,
+  orderId = uuidv4(),
+  sellerUsername = 'seller',
+  buyerUsername = 'buyer',
+  overallPrice,
+  createdAt,
+) => {
+  return {
+    _id: orderId,
+    seller: {
+      _id: uuidv4(),
+      username: sellerUsername,
+    },
+    buyer: {
+      _id: uuidv4(),
+      username: buyerUsername,
+    },
+    products,
+    overallPrice,
+    createdAt,
+  };
+};

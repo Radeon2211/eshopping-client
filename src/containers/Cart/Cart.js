@@ -11,11 +11,12 @@ import Button from '../../components/UI/Button/Button';
 import Loader from '../../components/UI/Loader';
 import LoadingOverlay from '../../components/UI/LoadingOverlay';
 import ToPayInfo from '../../components/UI/ToPayInfo';
-import { CTItemTypes, DEFAULT_PATH, modalTypes } from '../../shared/constants';
+import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
+import FlexWrapper from '../../components/UI/FlexWrapper';
+import { itemTypes, DEFAULT_PATH, modalTypes } from '../../shared/constants';
+import { roundOverallPrice } from '../../shared/utility';
 import { GreenText, AlignCenter } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
-import FlexWrapper from '../../components/UI/FlexWrapper';
-import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 
 const Cart = () => {
   const summaryRef = useRef(null);
@@ -59,7 +60,7 @@ const Cart = () => {
       const cartValue = cart.reduce((acc, { product, quantity }) => {
         return acc + product.price * quantity;
       }, 0);
-      const roundedCartValue = Math.round((cartValue + Number.EPSILON) * 100) / 100;
+      const roundedCartValue = roundOverallPrice(cartValue);
 
       content = (
         <>
@@ -71,7 +72,11 @@ const Cart = () => {
                   clear the cart
                 </Button>
               </AlignCenter>
-              <CartAndTransactionItems items={cart} type={CTItemTypes.CART} isCartLoading={isCartLoading} />
+              <CartAndTransactionItems
+                items={cart}
+                type={itemTypes.CART}
+                isCartLoading={isCartLoading}
+              />
             </PlainPanel>
             <StickyPanel>
               <FlexWrapper direction="column" spacing="level2">

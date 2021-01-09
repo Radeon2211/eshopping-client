@@ -11,7 +11,7 @@ import { GrayText } from '../../../styled/components';
 import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as TrashIcon } from '../../../images/SVG/trash.svg';
 import theme from '../../../styled/theme';
-import ProductThumbnail from '../../UI/ProductThumbnail';
+import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
 const CartItem = (props) => {
   const { data, isCartLoading } = props;
@@ -84,11 +84,11 @@ const CartItem = (props) => {
   return (
     <SC.Wrapper>
       <div className="photo-and-name">
-        <Link to={`/products/${productId}`} data-test="product-link">
+        <Link to={`/product/${productId}`} data-test="product-link">
           <ProductThumbnail photo={photo} alt={name} productId={productId} width={7} height={7} />
         </Link>
         <span className="name">
-          <Link to={`/products/${productId}`} data-test="product-link">
+          <Link to={`/product/${productId}`} data-test="product-link">
             {name}
           </Link>
         </span>

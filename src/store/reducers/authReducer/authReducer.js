@@ -5,10 +5,12 @@ export const initialState = {
   profile: undefined,
   deliveryAddress: undefined,
   cart: undefined,
-  otherUser: undefined,
-  placedOrders: [],
-  sellHistory: [],
   transaction: undefined,
+  placedOrders: undefined,
+  sellHistory: undefined,
+  orderDetails: undefined,
+  orderCount: undefined,
+  otherUser: undefined,
 };
 
 const logoutUser = (state) => {
@@ -16,9 +18,11 @@ const logoutUser = (state) => {
     profile: null,
     deliveryAddress: undefined,
     cart: undefined,
-    placedOrders: [],
-    sellHistory: [],
     transaction: undefined,
+    placedOrders: undefined,
+    sellHistory: undefined,
+    orderDetails: undefined,
+    orderCount: undefined,
   });
 };
 
@@ -52,20 +56,24 @@ const setCart = (state, action) => {
   return updateObject(state, { cart: action.cart });
 };
 
-const setOtherUser = (state, action) => {
-  return updateObject(state, { otherUser: action.otherUser });
+const setTransaction = (state, action) => {
+  return updateObject(state, { transaction: action.transaction });
 };
 
 const setPlacedOrders = (state, action) => {
-  return updateObject(state, { placedOrders: action.placedOrders });
+  return updateObject(state, { placedOrders: action.placedOrders, orderCount: action.orderCount });
 };
 
 const setSellHistory = (state, action) => {
-  return updateObject(state, { sellHistory: action.sellHistory });
+  return updateObject(state, { sellHistory: action.sellHistory, orderCount: action.orderCount });
 };
 
-const setTransaction = (state, action) => {
-  return updateObject(state, { transaction: action.transaction });
+const setOrderDetails = (state, action) => {
+  return updateObject(state, { orderDetails: action.orderDetails });
+};
+
+const setOtherUser = (state, action) => {
+  return updateObject(state, { otherUser: action.otherUser });
 };
 
 const authReducer = (state = initialState, action) => {
@@ -78,14 +86,16 @@ const authReducer = (state = initialState, action) => {
       return setDeliveryAddress(state, action);
     case actionTypes.SET_CART:
       return setCart(state, action);
-    case actionTypes.SET_OTHER_USER:
-      return setOtherUser(state, action);
     case actionTypes.SET_PLACED_ORDERS:
       return setPlacedOrders(state, action);
     case actionTypes.SET_SELL_HISTORY:
       return setSellHistory(state, action);
     case actionTypes.SET_TRANSACTION:
       return setTransaction(state, action);
+    case actionTypes.SET_ORDER_DETAILS:
+      return setOrderDetails(state, action);
+    case actionTypes.SET_OTHER_USER:
+      return setOtherUser(state, action);
     default:
       return state;
   }

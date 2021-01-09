@@ -28,7 +28,7 @@ const MyAccount = () => {
           </li>
           <li>
             <NavLink
-              to="/my-account/sell-history"
+              to="/my-account/sell-history?p=1"
               className="nav-link"
               activeClassName="nav-link-active"
             >
@@ -37,7 +37,7 @@ const MyAccount = () => {
           </li>
           <li>
             <NavLink
-              to="/my-account/placed-orders"
+              to="/my-account/placed-orders?p=1"
               className="nav-link"
               activeClassName="nav-link-active"
             >

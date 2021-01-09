@@ -8,7 +8,7 @@ import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
 const NumberPagination = (props) => {
-  const { itemQuantity, isDataLoading, maxQuantityPerPage } = props;
+  const { itemQuantity, quantityPerPage } = props;
 
   const history = useHistory();
   const { search, pathname } = history.location;
@@ -20,12 +20,6 @@ const NumberPagination = (props) => {
     const urlPageNumber = +urlPage;
     setCurrentPage(urlPageNumber);
   }, [search]);
-
-  const arrowClickHandle = (e) => {
-    if (isDataLoading) {
-      e.preventDefault();
-    }
-  };
 
   const createLinkNode = (pageNumber) => {
     return (
@@ -41,7 +35,7 @@ const NumberPagination = (props) => {
 
   let pagination = null;
   if (itemQuantity) {
-    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
     const previousPagePath = `${pathname}?${updateQueryParams(search, currentPage - 1)}`;
     const nextPagePath = `${pathname}?${updateQueryParams(search, currentPage + 1)}`;
     const firstPagePath = `${pathname}?${updateQueryParams(search, 1)}`;
@@ -76,33 +70,27 @@ const NumberPagination = (props) => {
 
     pagination = (
       <SC.Wrapper>
-        {currentPage > 1 && (
-          <Link
-            to={previousPagePath}
-            onClick={arrowClickHandle}
-            className="arrow"
-            data-test="leftArrow"
-          >
-            <MyIcon size="small" rotation={180}>
-              <ArrowIcon />
-            </MyIcon>
-          </Link>
-        )}
+        <Link
+          to={previousPagePath}
+          className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
+          data-test="leftArrow"
+        >
+          <MyIcon size="small" rotation={180}>
+            <ArrowIcon />
+          </MyIcon>
+        </Link>
         {paginationNumbers}
         <span className="of">of</span>
         <span className="of">{numberOfPages}</span>
-        {currentPage < numberOfPages && (
-          <Link
-            to={nextPagePath}
-            onClick={arrowClickHandle}
-            className="arrow"
-            data-test="rightArrow"
-          >
-            <MyIcon size="small">
-              <ArrowIcon />
-            </MyIcon>
-          </Link>
-        )}
+        <Link
+          to={nextPagePath}
+          className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
+          data-test="rightArrow"
+        >
+          <MyIcon size="small">
+            <ArrowIcon />
+          </MyIcon>
+        </Link>
       </SC.Wrapper>
     );
   }
@@ -116,8 +104,7 @@ NumberPagination.propTypes = {
 
 NumberPagination.propTypes = {
   itemQuantity: PropTypes.number,
-  isDataLoading: PropTypes.bool.isRequired,
-  maxQuantityPerPage: PropTypes.number.isRequired,
+  quantityPerPage: PropTypes.number.isRequired,
 };
 
 export default NumberPagination;

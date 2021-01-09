@@ -72,7 +72,8 @@ const ProductDetails = (props) => {
     if (quantitySold >= 1) {
       quantitySoldNode = (
         <GrayText className="quantity-sold">
-          {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought {quantitySold} {quantitySold === 1 ? 'unit' : 'units'}
+          {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought {quantitySold}{' '}
+          {quantitySold === 1 ? 'unit' : 'units'}
         </GrayText>
       );
     }

@@ -114,7 +114,9 @@ describe('<ProductDetails />', () => {
     describe('Check how quantity sold node renders', () => {
       it('Should render quantity sold node - "2 people bought 3 units"', () => {
         const store = {
-          product: { productDetails: { ...defaultProductDetails, buyerQuantity: 2, quantitySold: 3 } },
+          product: {
+            productDetails: { ...defaultProductDetails, buyerQuantity: 2, quantitySold: 3 },
+          },
         };
         const wrapper = setUp(store);
         expect(wrapper.find('.quantity-sold').first().text()).toEqual('2 people bought 3 units');
@@ -122,7 +124,9 @@ describe('<ProductDetails />', () => {
 
       it('Should render quantity sold node - "1 person bought 1 unit"', () => {
         const store = {
-          product: { productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 1 } },
+          product: {
+            productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 1 },
+          },
         };
         const wrapper = setUp(store);
         expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought 1 unit');
@@ -130,7 +134,9 @@ describe('<ProductDetails />', () => {
 
       it('Should render quantity sold node - "1 person bought 5 units"', () => {
         const store = {
-          product: { productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 5 } },
+          product: {
+            productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 5 },
+          },
         };
         const wrapper = setUp(store);
         expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought 5 units');

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import FlexWrapper from './FlexWrapper';
-import { baseURL } from '../../axios';
-import { validateURL } from '../../shared/utility';
-import noPhoto from '../../images/no-photo.png';
+import FlexWrapper from '../FlexWrapper';
+import { baseURL } from '../../../axios';
+import { validateURL } from '../../../shared/utility';
+import noPhoto from '../../../images/no-photo.png';
 
 const SC = {};
 SC.Wrapper = styled(FlexWrapper)`
@@ -20,9 +20,11 @@ SC.Wrapper = styled(FlexWrapper)`
 `;
 
 const ProductThumbnail = (props) => {
-  const { photo, alt, productId, width, height } = props;
+  const { photo, alt, productId, width, height, orderId } = props;
 
-  const photoURL = `${baseURL}/products/${productId}/photo`;
+  const photoURL = orderId
+    ? `${baseURL}/orders/${orderId}/${productId}/photo`
+    : `${baseURL}/products/${productId}/photo`;
   const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
 
   return (
@@ -32,12 +34,17 @@ const ProductThumbnail = (props) => {
   );
 };
 
+ProductThumbnail.defaultProps = {
+  orderId: '',
+};
+
 ProductThumbnail.propTypes = {
   photo: PropTypes.bool.isRequired,
   alt: PropTypes.string.isRequired,
   productId: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  orderId: PropTypes.string,
 };
 
 export default ProductThumbnail;

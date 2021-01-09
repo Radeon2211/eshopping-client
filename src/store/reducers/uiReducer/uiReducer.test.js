@@ -68,38 +68,18 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after DATA_SUCCESS', () => {
-    const state = {
-      ...initialState,
-      isDataLoading: true,
-      dataError: 'test error',
-    };
-    expect(
-      uiReducer(state, {
-        type: actionTypes.DATA_SUCCESS,
-      }),
-    ).toEqual({
-      ...initialState,
-      isDataLoading: false,
-      dataError: '',
-    });
-  });
-
-  it('Should return new state after DATA_FAIL', () => {
-    const error = 'test error';
+  it('Should return new state after DATA_END', () => {
     const state = {
       ...initialState,
       isDataLoading: true,
     };
     expect(
       uiReducer(state, {
-        type: actionTypes.DATA_FAIL,
-        error,
+        type: actionTypes.DATA_END,
       }),
     ).toEqual({
       ...initialState,
       isDataLoading: false,
-      dataError: error,
     });
   });
 
@@ -232,15 +212,15 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after SET_MAX_QUANTITY_PER_PAGE', () => {
+  it('Should return new state after SET_PRODUCTS_PER_PAGE', () => {
     expect(
       uiReducer(undefined, {
-        type: actionTypes.SET_MAX_QUANTITY_PER_PAGE,
-        maxQuantityPerPage: 15,
+        type: actionTypes.SET_PRODUCTS_PER_PAGE,
+        productsPerPage: 15,
       }),
     ).toEqual({
       ...initialState,
-      maxQuantityPerPage: 15,
+      productsPerPage: 15,
     });
   });
 });

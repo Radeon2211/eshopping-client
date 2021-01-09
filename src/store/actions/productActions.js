@@ -79,10 +79,7 @@ export const editProduct = (productData, productId) => {
         } else {
           const formData = new FormData();
           formData.append('photo', productData.photo);
-          await axios.post(
-            `/products/${firstData.product._id}/photo`,
-            formData,
-          );
+          await axios.post(`/products/${firstData.product._id}/photo`, formData);
           editedProduct.photo = true;
         }
       }
@@ -111,15 +108,15 @@ export const fetchProducts = (queryStrings, page, sellerUsername) => {
     const parsedQueryParams = queryString.parse(queryStrings);
     const { seller, p: pageNumber } = parsedQueryParams;
 
-    const { maxQuantityPerPage } = getState().ui;
-    parsedQueryParams.limit = maxQuantityPerPage;
+    const { productsPerPage } = getState().ui;
+    parsedQueryParams.limit = productsPerPage;
 
     if (seller) {
       delete parsedQueryParams.seller;
     }
     if (pageNumber) {
       const currentProductQuantity = getState().product.productCount;
-      if (pageNumber > Math.ceil(currentProductQuantity / maxQuantityPerPage) || pageNumber < 1) {
+      if (pageNumber > Math.ceil(currentProductQuantity / productsPerPage) || pageNumber < 1) {
         delete parsedQueryParams.p;
       }
     }
@@ -138,12 +135,13 @@ export const fetchProducts = (queryStrings, page, sellerUsername) => {
         minPriceOuter = minPrice;
         maxPriceOuter = maxPrice;
       }
-      dispatch(uiActions.dataSuccess());
       dispatch(setProducts(data.products, data.productCount, minPriceOuter, maxPriceOuter));
+      dispatch(uiActions.dataEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.setAndDeleteMessage(errorMessage));
+      dispatch(uiActions.dataEnd());
       dispatch(setProducts(null));
-      dispatch(uiActions.dataFail(errorMessage));
     }
   };
 };
@@ -153,16 +151,18 @@ export const fetchProductDetails = (productId) => {
     dispatch(uiActions.dataStart());
     try {
       const { data } = await axios.get(`/products/${productId}`);
-      dispatch(uiActions.dataSuccess());
       dispatch(setProductDetails(data.product));
+      dispatch(uiActions.dataEnd());
     } catch (error) {
+      dispatch(setProductDetails(null));
       if (error?.response?.data?.kind === 'ObjectId') {
-        dispatch(uiActions.dataFail('Product ID given in URL is not correct'));
+        dispatch(uiActions.setAndDeleteMessage('Product ID given in URL is not correct'));
+        dispatch(uiActions.dataEnd());
       } else {
         const errorMessage = getErrorMessage(error);
-        dispatch(uiActions.dataFail(errorMessage));
+        dispatch(uiActions.setAndDeleteMessage(errorMessage));
+        dispatch(uiActions.dataEnd());
       }
-      dispatch(setProductDetails(null));
     }
   };
 };

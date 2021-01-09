@@ -6,9 +6,7 @@ import LoadingOverlay from '../LoadingOverlay';
 const Button = (props) => {
   const { clicked, isLoading, disabled, children } = props;
 
-  const loadingOverlay = isLoading ? (
-    <LoadingOverlay zeroPadding loaderSize="small" disableText />
-  ) : null;
+  const loadingOverlay = isLoading ? <LoadingOverlay loaderSize="small" disableText /> : null;
 
   return (
     <SC.Button onClick={clicked} {...props} disabled={disabled || isLoading}>

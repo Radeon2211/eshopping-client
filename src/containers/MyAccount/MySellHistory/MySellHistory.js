@@ -1,7 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { orderTypes } from '../../../shared/constants';
+import Orders from '../../../components/Orders/Orders';
+import Heading from '../../../components/UI/Heading/Heading';
 
 const MySellHistory = () => {
-  return <div>MySellHistory</div>;
+  const sellHistory = useSelector((state) => state.auth.sellHistory);
+
+  return (
+    <>
+      <Heading variant="h3" mgBottom="level3">
+        My sell history
+      </Heading>
+      <Orders orders={sellHistory} type={orderTypes.SELL_HISTORY} />
+    </>
+  );
 };
 
 export default MySellHistory;

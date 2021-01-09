@@ -17,10 +17,10 @@ const setUp = (props = {}, history) => {
   );
 };
 
-const createProps = (itemQuantity, maxQuantityPerPage) => ({
+const createProps = (itemQuantity, quantityPerPage) => ({
   itemQuantity,
   itemsType: listItemTypes.PRODUCT,
-  maxQuantityPerPage,
+  quantityPerPage,
 });
 
 describe('<PaginationCounter />', () => {

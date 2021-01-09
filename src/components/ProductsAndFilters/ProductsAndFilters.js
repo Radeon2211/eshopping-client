@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import queryString from 'query-string';
-import * as SC from './ProductsAndFilters.sc';
 import SideBySide from '../UI/SideBySide';
 import Filters from '../Filters/Filters';
 import ProductList from '../ProductList/ProductList';
 import PlainPanel from '../UI/Panels/PlainPanel';
+import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
-import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
-import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
-import QuantityPerPageController from '../Pagination/QuantityPerPageController';
+import ProductsPerPageController from '../Pagination/ProductsPerPageController';
+import FlexWrapper from '../UI/FlexWrapper';
+import { TopPagination } from '../../styled/components';
 import { listItemTypes } from '../../shared/constants';
 
 const ProductsAndFilters = (props) => {
   const { page } = props;
+
   const history = useHistory();
   const {
     location: { search },
@@ -24,34 +25,23 @@ const ProductsAndFilters = (props) => {
   const products = useSelector((state) => state.product.products);
   const productCount = useSelector((state) => state.product.productCount);
   const isDataLoading = useSelector((state) => state.ui.isDataLoading);
-  const maxQuantityPerPage = useSelector((state) => state.ui.maxQuantityPerPage);
+  const productsPerPage = useSelector((state) => state.ui.productsPerPage);
 
-  let inputPagination = null;
-  let numberPagination = null;
+  let topPagination = null;
+  let bottomPagination = null;
   if (products && productCount > 0) {
-    inputPagination = (
-      <SC.ProductsTopbar>
-        <QuantityPerPageController maxQuantityPerPage={maxQuantityPerPage} />
-        <InputPagination
-          itemQuantity={productCount}
-          isDataLoading={isDataLoading}
-          maxQuantityPerPage={maxQuantityPerPage}
-        />
-      </SC.ProductsTopbar>
+    topPagination = (
+      <TopPagination>
+        <ProductsPerPageController quantityPerPage={productsPerPage} />
+        <InputPagination itemQuantity={productCount} quantityPerPage={productsPerPage} />
+      </TopPagination>
     );
-    numberPagination = (
-      <SC.ProductsBottombar>
-        <PaginationCounter
-          itemQuantity={productCount}
-          itemsType={listItemTypes.PRODUCT}
-          maxQuantityPerPage={maxQuantityPerPage}
-        />
-        <NumberPagination
-          itemQuantity={productCount}
-          isDataLoading={isDataLoading}
-          maxQuantityPerPage={maxQuantityPerPage}
-        />
-      </SC.ProductsBottombar>
+    bottomPagination = (
+      <BottomPagination
+        itemQuantity={productCount}
+        itemsType={listItemTypes.PRODUCT}
+        quantityPerPage={productsPerPage}
+      />
     );
   }
 
@@ -70,16 +60,16 @@ const ProductsAndFilters = (props) => {
   }
 
   return (
-    <SC.Wrapper>
+    <FlexWrapper direction="column" spacing="0">
       <SideBySide proportion="1/3" makeVerticalWhen={1200}>
         {filters}
         <PlainPanel>
-          {inputPagination}
+          {topPagination}
           <ProductList products={products} isDataLoading={isDataLoading} page={page} />
-          {numberPagination}
+          {bottomPagination}
         </PlainPanel>
       </SideBySide>
-    </SC.Wrapper>
+    </FlexWrapper>
   );
 };
 

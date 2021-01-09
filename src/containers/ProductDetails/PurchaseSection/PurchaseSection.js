@@ -85,7 +85,9 @@ const PurchaseSection = (props) => {
   let purchaseSection = (
     <>
       <span className="quantity-info gray-text">{`Quantity: ${productQuantity}`}</span>
-      <Heading variant="h4" mgTop="level3" data-test="info-to-seller">You are the seller of this product</Heading>
+      <Heading variant="h4" mgTop="level3" data-test="info-to-seller">
+        You are the seller of this product
+      </Heading>
     </>
   );
 

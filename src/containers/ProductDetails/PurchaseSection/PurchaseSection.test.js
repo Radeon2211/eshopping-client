@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import PurchaseSection from './PurchaseSection';
-import * as SC from './PurchaseSection.sc';
 import Button from '../../../components/UI/Button/Button';
 import { checkProps } from '../../../shared/testUtility';
 import theme from '../../../styled/theme';

@@ -59,14 +59,20 @@ export const pages = {
   USER_PRODUCTS: 'USER_PRODUCTS',
 };
 
-export const CTItemTypes = {
+export const itemTypes = {
   CART: 'CART',
+  ORDER: 'ORDER',
   TRANSACTION: 'TRANSACTION',
 };
 
 export const listItemTypes = {
   PRODUCT: 'PRODUCT',
   ORDER: 'ORDER',
+};
+
+export const orderTypes = {
+  PLACED_ORDERS: 'PLACED_ORDERS',
+  SELL_HISTORY: 'SELL_HISTORY',
 };
 
 export const historyActions = {
@@ -81,7 +87,9 @@ export const inputKinds = {
   RADIO: 'RADIO',
 };
 
-export const MAX_QUANTITY_PER_PAGE = 5;
+export const PRODUCTS_PER_PAGE = 10;
+
+export const ORDERS_PER_PAGE = 6;
 
 export const DEFAULT_PATH = '/products?p=1';
 
@@ -120,12 +128,19 @@ export const modalTypes = {
   SIGNUP: 'SIGNUP',
 };
 
-export const sortOptions = [
+export const sortProductsOptions = [
   { value: undefined, label: 'Default sorting' },
   { value: 'price:asc', label: `Price - ascending` },
   { value: 'price:desc', label: 'Price - descending' },
   { value: 'name:asc', label: 'Name - A to Z' },
   { value: 'name:desc', label: 'Name - Z to A' },
+];
+
+export const sortOrdersOptions = [
+  { value: 'createdAt:desc', label: 'Date - from newest' },
+  { value: 'createdAt:asc', label: 'Date - from oldest' },
+  { value: 'overallPrice:asc', label: `Price - ascending` },
+  { value: 'overallPrice:desc', label: 'Price - descending' },
 ];
 
 export const singleInfoNames = {

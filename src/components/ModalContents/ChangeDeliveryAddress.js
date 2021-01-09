@@ -75,11 +75,11 @@ const ChangeDeliveryAddress = () => {
         touched,
         errors,
         values,
-        initialValues,
+        initialValues: initValues,
       }) => {
         const changedKeys = Object.entries(values)
           .map(([key, value]) => {
-            if (value !== initialValues[key]) return key;
+            if (value !== initValues[key]) return key;
             return false;
           })
           .filter(Boolean);

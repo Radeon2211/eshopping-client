@@ -9,7 +9,7 @@ import Filters from './Filters';
 import * as SC from './Filters.sc';
 import { checkProps } from '../../shared/testUtility';
 import theme from '../../styled/theme';
-import { sortOptions, filtersActions } from '../../shared/constants';
+import { sortProductsOptions, filtersActions } from '../../shared/constants';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
 
 const mockStore = configureMockStore([thunk]);
@@ -93,25 +93,25 @@ describe('<Filters />', () => {
     it('Should sort by price ascending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=price:asc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[1]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[1]);
     });
 
     it('Should sort by price descending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=price:desc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[2]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[2]);
     });
 
     it('Should sort by name ascending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=name:asc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[3]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[3]);
     });
 
     it('Should sort by name descending', () => {
       const wrapper = setUp(true, '?p=1&sortBy=name:desc');
       simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortOptions[4]);
+      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[4]);
     });
   });
 
@@ -122,7 +122,7 @@ describe('<Filters />', () => {
 
     it('Should return new state after INIT_STATE', () => {
       const payload = {
-        sortBy: sortOptions[1],
+        sortBy: sortProductsOptions[1],
         minPrice: 10,
         maxPrice: 100,
         condition: {
@@ -143,11 +143,11 @@ describe('<Filters />', () => {
       expect(
         filtersReducer(undefined, {
           type: filtersActions.SET_SORT_BY,
-          sortBy: sortOptions[2],
+          sortBy: sortProductsOptions[2],
         }),
       ).toEqual({
         ...filtersInitialState,
-        sortBy: sortOptions[2],
+        sortBy: sortProductsOptions[2],
       });
     });
 

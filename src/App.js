@@ -77,7 +77,8 @@ const App = () => {
           <Navbar userProfile={userProfile} />
           <Main>
             <Switch>
-              <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
+              <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
+              <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
               <Route path="/products" exact component={Products} />
               <Redirect to="/products" />
             </Switch>
@@ -96,7 +97,7 @@ const App = () => {
         <Main>
           <Switch>
             <Route path="/logout" component={Logout} />
-            <Route path="/products/:id" exact component={WaitingComponent(ProductDetails)} />
+            <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
             <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
             <Route path="/cart" exact component={WaitingComponent(Cart)} />

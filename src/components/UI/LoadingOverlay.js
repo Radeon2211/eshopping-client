@@ -22,19 +22,10 @@ SC.Wrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.level2};
     margin-top: ${({ theme }) => theme.spacings.level2};
   }
-
-  ${({ zeroPadding }) => {
-    if (zeroPadding) {
-      return `
-        padding: 0;
-      `;
-    }
-    return ``;
-  }}
 `;
 
 const LoadingOverlay = (props) => {
-  const { alignLoader, loaderSize, zeroPadding, disableText } = props;
+  const { alignLoader, loaderSize, disableText } = props;
 
   const [isInfoVisible, setIsInfoVisible] = useState(false);
 
@@ -51,7 +42,7 @@ const LoadingOverlay = (props) => {
   }
 
   return (
-    <SC.Wrapper alignLoader={alignLoader} zeroPadding={zeroPadding}>
+    <SC.Wrapper alignLoader={alignLoader}>
       <Loader size={loaderSize} />
       {info}
     </SC.Wrapper>
@@ -59,14 +50,12 @@ const LoadingOverlay = (props) => {
 };
 
 LoadingOverlay.defaultProps = {
-  zeroPadding: false,
   alignLoader: 'center',
   disableText: false,
   loaderSize: '',
 };
 
 LoadingOverlay.propTypes = {
-  zeroPadding: PropTypes.bool,
   alignLoader: PropTypes.string,
   loaderSize: PropTypes.string,
   disableText: PropTypes.bool,

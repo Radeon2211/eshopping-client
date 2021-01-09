@@ -58,7 +58,7 @@ describe('<CartItem />', () => {
       const wrapper = setUp(data);
       expect(
         wrapper.find('[data-test="product-link"]').every((link) => {
-          return link.prop('to') === '/products/p1';
+          return link.prop('to') === '/product/p1';
         }),
       );
       expect(wrapper.find('img').prop('src')).toEqual(`${baseURL}/products/p1/photo`);

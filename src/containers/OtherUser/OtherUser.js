@@ -16,7 +16,7 @@ const UserDetails = (props) => {
   } = props;
 
   const otherUser = useSelector((state) => state.auth.otherUser);
-  const maxQuantityPerPage = useSelector((state) => state.ui.maxQuantityPerPage);
+  const productsPerPage = useSelector((state) => state.ui.productsPerPage);
 
   const dispatch = useDispatch();
   const onFetchOtherUser = useCallback((username) => dispatch(actions.fetchOtherUser(username)), [
@@ -33,7 +33,7 @@ const UserDetails = (props) => {
     onFetchOtherUser(userUsername);
     onFetchProducts(search, pages.USER_PRODUCTS, userUsername);
     return () => onSetOtherUser(undefined);
-  }, [userUsername, onFetchOtherUser, onFetchProducts, maxQuantityPerPage, onSetOtherUser, search]);
+  }, [userUsername, onFetchOtherUser, onFetchProducts, productsPerPage, onSetOtherUser, search]);
 
   let content = <Loader align="center" />;
   if (otherUser === null) {

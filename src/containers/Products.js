@@ -11,7 +11,7 @@ const Products = (props) => {
     location: { search },
   } = props;
 
-  const maxQuantityPerPage = useSelector((state) => state.ui.maxQuantityPerPage);
+  const productsPerPage = useSelector((state) => state.ui.productsPerPage);
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Products = (props) => {
 
   useEffect(() => {
     onFetchProducts(search, pages.ALL_PRODUCTS);
-  }, [search, onFetchProducts, maxQuantityPerPage, userProfile]);
+  }, [search, onFetchProducts, productsPerPage, userProfile]);
 
   const { name } = queryString.parse(search);
   let headingText = 'All products';

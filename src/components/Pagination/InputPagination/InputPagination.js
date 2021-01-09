@@ -11,7 +11,7 @@ import { historyActions } from '../../../shared/constants';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
 const InputPagination = (props) => {
-  const { itemQuantity, isDataLoading, maxQuantityPerPage } = props;
+  const { itemQuantity, quantityPerPage } = props;
 
   const history = useHistory();
   const { search, pathname } = history.location;
@@ -41,7 +41,7 @@ const InputPagination = (props) => {
   );
 
   useEffect(() => {
-    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
     const parsedQueryParams = queryString.parse(search);
     const { p: urlPage } = parsedQueryParams;
     const urlPageNumber = +urlPage;
@@ -63,7 +63,7 @@ const InputPagination = (props) => {
 
     setInputValue(correctPageNumber);
     setCurrentPage(correctPageNumber);
-  }, [itemQuantity, history, search, setInputValue, changePage, maxQuantityPerPage]);
+  }, [itemQuantity, history, search, setInputValue, changePage, quantityPerPage]);
 
   const inputChangeHandle = (e) => {
     setInputValue(e.target.value);
@@ -71,55 +71,43 @@ const InputPagination = (props) => {
 
   const formSubmitHandle = (e) => {
     e.preventDefault();
-    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
     if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
     const updatedQueryParams = updateQueryParams(search, inputValue);
     history.push(`${pathname}?${updatedQueryParams}`);
-  };
-
-  const arrowClickHandle = (e) => {
-    if (isDataLoading) {
-      e.preventDefault();
-    }
   };
 
   let pagination = null;
   if (itemQuantity) {
     const queryParamsPrevious = updateQueryParams(search, currentPage - 1);
     const queryParamsNext = updateQueryParams(search, currentPage + 1);
-    const numberOfPages = calculateNumberOfPages(itemQuantity, maxQuantityPerPage);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
 
     pagination = (
       <SC.Wrapper>
-        {currentPage > 1 && (
-          <Link
-            to={`${pathname}?${queryParamsPrevious}`}
-            onClick={arrowClickHandle}
-            className="arrow"
-            data-test="leftArrow"
-          >
-            <MyIcon size="small" rotation={180}>
-              <ArrowIcon />
-            </MyIcon>
-          </Link>
-        )}
+        <Link
+          to={`${pathname}?${queryParamsPrevious}`}
+          className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
+          data-test="leftArrow"
+        >
+          <MyIcon size="small" rotation={180}>
+            <ArrowIcon />
+          </MyIcon>
+        </Link>
         <form onSubmit={formSubmitHandle} className="form-number">
           <NumberInput name="page" size="small" changed={inputChangeHandle} value={inputValue} />
         </form>
         <span className="of">of</span>
         <span className="of">{numberOfPages}</span>
-        {currentPage < numberOfPages && (
-          <Link
-            to={`${pathname}?${queryParamsNext}`}
-            onClick={arrowClickHandle}
-            className="arrow"
-            data-test="rightArrow"
-          >
-            <MyIcon size="small">
-              <ArrowIcon />
-            </MyIcon>
-          </Link>
-        )}
+        <Link
+          to={`${pathname}?${queryParamsNext}`}
+          className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
+          data-test="rightArrow"
+        >
+          <MyIcon size="small">
+            <ArrowIcon />
+          </MyIcon>
+        </Link>
       </SC.Wrapper>
     );
   }
@@ -133,8 +121,7 @@ InputPagination.propTypes = {
 
 InputPagination.propTypes = {
   itemQuantity: PropTypes.number,
-  isDataLoading: PropTypes.bool.isRequired,
-  maxQuantityPerPage: PropTypes.number.isRequired,
+  quantityPerPage: PropTypes.number.isRequired,
 };
 
 export default InputPagination;

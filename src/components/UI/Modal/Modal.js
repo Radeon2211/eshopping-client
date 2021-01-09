@@ -46,7 +46,7 @@ const Modal = () => {
     return history.listen(() => onSetModal(false));
   }, [history, onSetModal]);
 
-  const loadingOverlay = isFormLoading ? <LoadingOverlay zeroPadding /> : null;
+  const loadingOverlay = isFormLoading ? <LoadingOverlay /> : null;
 
   let modalContentNode = null;
   switch (modalContent) {

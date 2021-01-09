@@ -82,6 +82,10 @@ export const formatPrice = (value) => {
   }).format(value);
 };
 
+export const roundOverallPrice = (value) => {
+  return Math.round((value + Number.EPSILON) * 100) / 100;
+};
+
 export const validateURL = (url) => {
   const parsed = new URL(url);
   return ['https:', 'http:'].includes(parsed.protocol);

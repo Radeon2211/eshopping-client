@@ -10,7 +10,7 @@ const MyProducts = (props) => {
     location: { search },
   } = props;
 
-  const maxQuantityPerPage = useSelector((state) => state.ui.maxQuantityPerPage);
+  const productsPerPage = useSelector((state) => state.ui.productsPerPage);
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const MyProducts = (props) => {
 
   useEffect(() => {
     onFetchProducts(search, pages.MY_PRODUCTS);
-  }, [search, onFetchProducts, maxQuantityPerPage, userProfile]);
+  }, [search, onFetchProducts, productsPerPage, userProfile]);
 
   return (
     <>

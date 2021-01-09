@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
 import { useHistory } from 'react-router-dom';
+import * as actions from '../../store/actions/indexActions';
 import SideBySide from '../../components/UI/SideBySide';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import PlainPanel from '../../components/UI/Panels/PlainPanel';
@@ -9,9 +9,10 @@ import StickyPanel from '../../components/UI/Panels/StickyPanel';
 import DeliveryAddress from './DeliveryAddress/DeliveryAddress';
 import Heading from '../../components/UI/Heading/Heading';
 import ToPayInfo from '../../components/UI/ToPayInfo';
-import { CTItemTypes, modalTypes } from '../../shared/constants';
-import Button from '../../components/UI/Button/Button';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
+import Button from '../../components/UI/Button/Button';
+import { itemTypes, modalTypes } from '../../shared/constants';
+import { roundOverallPrice } from '../../shared/utility';
 
 const Transaction = () => {
   const history = useHistory();
@@ -36,7 +37,7 @@ const Transaction = () => {
     const toPayValue = transaction.reduce((acc, { price, quantity }) => {
       return acc + price * quantity;
     }, 0);
-    const roundedToPayValue = Math.round((toPayValue + Number.EPSILON) * 100) / 100;
+    const roundedToPayValue = roundOverallPrice(toPayValue);
 
     content = (
       <>
@@ -46,7 +47,7 @@ const Transaction = () => {
             <DeliveryAddress />
             <PlainPanel>
               <Heading variant="h4">Products</Heading>
-              <CartAndTransactionItems items={transaction} type={CTItemTypes.TRANSACTION} />
+              <CartAndTransactionItems items={transaction} type={itemTypes.TRANSACTION} />
             </PlainPanel>
           </FlexWrapper>
           <StickyPanel>

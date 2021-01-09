@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import TransactionItem from './TransactionItem/TransactionItem';
+import TransactionAndOrderProdItem from '../TransactionAndOrderProdItem/TransactionAndOrderProdItem';
 import CartItem from './CartItem/CartItem';
 import { GreenText } from '../../styled/components';
-import { CTItemTypes } from '../../shared/constants';
+import { itemTypes } from '../../shared/constants';
 
 export const SC = {};
 SC.SingleSeller = styled.div`
@@ -21,7 +21,6 @@ SC.SingleSeller = styled.div`
 
   & .seller {
     font-size: ${({ theme }) => theme.fontSizes.level3};
-    margin-bottom: calc(0.5 * ${({ theme }) => theme.spacings.level2});
   }
 `;
 
@@ -29,7 +28,8 @@ const CartAndTransactionItems = (props) => {
   const { items, type, isCartLoading } = props;
 
   const sellersObject = items.reduce((acc, item) => {
-    const sellerUsername = type === CTItemTypes.CART ? item.product.seller.username : item.seller.username;
+    const sellerUsername =
+      type === itemTypes.CART ? item.product.seller.username : item.seller.username;
     if (!acc[sellerUsername]) {
       acc[sellerUsername] = {
         items: [],
@@ -45,7 +45,7 @@ const CartAndTransactionItems = (props) => {
     ...rest,
   }));
 
-  const sellerList = sellersArray.map(({ sellerUsername, items }) => (
+  const sellerList = sellersArray.map(({ sellerUsername, items: listItem }) => (
     <SC.SingleSeller key={sellerUsername}>
       <div className="seller">
         <span>seller </span>
@@ -53,15 +53,12 @@ const CartAndTransactionItems = (props) => {
           <GreenText>{sellerUsername}</GreenText>
         </Link>
       </div>
-      {type === CTItemTypes.CART ? (
-        items.map((item) => (
-          <CartItem key={item._id} data={item} isCartLoading={isCartLoading} />
-        ))
-      ) : (
-        items.map((item) => (
-          <TransactionItem key={item._id} data={item} />
-        ))
-      )}
+      {type === itemTypes.CART
+        ? listItem.map((item) => (
+            // eslint-disable-next-line react/jsx-indent
+            <CartItem key={item._id} data={item} isCartLoading={isCartLoading} />
+          ))
+        : listItem.map((item) => <TransactionAndOrderProdItem key={item._id} data={item} />)}
     </SC.SingleSeller>
   ));
 

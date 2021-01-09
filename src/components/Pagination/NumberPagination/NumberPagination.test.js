@@ -29,62 +29,83 @@ describe('<NumberPagination />', () => {
   });
 
   describe('Check if arrows render correctly', () => {
-    it('Should render only right arrow', () => {
+    it('Should be visible only right arrow', () => {
       const history = historyPageNum(1);
       const wrapper = setUp(defaultProps, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'leftArrow';
+          return (
+            item.prop('data-test') === 'leftArrow' && item.prop('className').includes('hide-arrow')
+          );
         }),
-      ).toHaveLength(0);
+      ).toHaveLength(1);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'rightArrow';
+          return (
+            item.prop('data-test') === 'rightArrow' &&
+            !item.prop('className').includes('hide-arrow')
+          );
         }),
       ).toHaveLength(1);
     });
-    it('Should render only left arrow', () => {
+
+    it('Should be visible only left arrow', () => {
       const history = historyPageNum(3);
       const wrapper = setUp(defaultProps, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'leftArrow';
+          return (
+            item.prop('data-test') === 'leftArrow' && !item.prop('className').includes('hide-arrow')
+          );
         }),
       ).toHaveLength(1);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'rightArrow';
+          return (
+            item.prop('data-test') === 'rightArrow' && item.prop('className').includes('hide-arrow')
+          );
         }),
-      ).toHaveLength(0);
+      ).toHaveLength(1);
     });
-    it('Should render both arrows', () => {
+
+    it('Should be visible both arrows', () => {
       const history = historyPageNum(2);
       const wrapper = setUp(defaultProps, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'leftArrow';
+          return (
+            item.prop('data-test') === 'leftArrow' && !item.prop('className').includes('hide-arrow')
+          );
         }),
       ).toHaveLength(1);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'rightArrow';
+          return (
+            item.prop('data-test') === 'rightArrow' &&
+            !item.prop('className').includes('hide-arrow')
+          );
         }),
       ).toHaveLength(1);
     });
-    it('Should NOT render both arrows', () => {
+
+    it('Should NOT be visible both arrows', () => {
       const history = historyPageNum(1);
       const props = propsPagination(2);
       const wrapper = setUp(props, history);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'leftArrow';
+          return (
+            item.prop('data-test') === 'leftArrow' && item.prop('className').includes('hide-arrow')
+          );
         }),
-      ).toHaveLength(0);
+      ).toHaveLength(1);
       expect(
         wrapper.find(Link).filterWhere((item) => {
-          return item.prop('data-test') === 'rightArrow';
+          return (
+            item.prop('data-test') === 'rightArrow' && item.prop('className').includes('hide-arrow')
+          );
         }),
-      ).toHaveLength(0);
+      ).toHaveLength(1);
     });
   });
 

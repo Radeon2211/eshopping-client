@@ -8,7 +8,7 @@ import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 import Loader from '../../UI/Loader';
 import { formatPrice } from '../../../shared/utility';
-import ProductThumbnail from '../../../components/UI/ProductThumbnail';
+import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
 export const SC = {};
 SC.ProductPreview = styled(FlexWrapper)`

@@ -18,9 +18,10 @@ const ChangePhoneNumber = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
-    dispatch,
-  ]);
+  const onUpdateUser = useCallback(
+    (creds, message) => dispatch(actions.updateUser(creds, message)),
+    [dispatch],
+  );
 
   const { phoneNumber, phonePrefix } = getPhonePrefixAndNumber(userProfile.phone);
 

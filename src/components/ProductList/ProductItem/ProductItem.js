@@ -6,7 +6,7 @@ import * as SC from './ProductItem.sc';
 import FlexWrapper from '../../UI/FlexWrapper';
 import { GrayText } from '../../../styled/components';
 import { formatPrice } from '../../../shared/utility';
-import ProductThumbnail from '../../UI/ProductThumbnail';
+import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
 const ProductItem = (props) => {
   const {
@@ -35,7 +35,7 @@ const ProductItem = (props) => {
   }
 
   return (
-    <Link to={`/products/${_id}`}>
+    <Link to={`/product/${_id}`}>
       <SC.Wrapper>
         <ProductThumbnail photo={photo} alt={name} productId={_id} width={13} height={15} />
         <FlexWrapper direction="column" spacing="0">

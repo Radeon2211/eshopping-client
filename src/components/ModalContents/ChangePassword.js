@@ -13,9 +13,10 @@ const validationSchema = Yup.object({
 
 const ChangePassword = () => {
   const dispatch = useDispatch();
-  const onUpdateUser = useCallback((creds, message) => dispatch(actions.updateUser(creds, message)), [
-    dispatch,
-  ]);
+  const onUpdateUser = useCallback(
+    (creds, message) => dispatch(actions.updateUser(creds, message)),
+    [dispatch],
+  );
 
   return (
     <Formik

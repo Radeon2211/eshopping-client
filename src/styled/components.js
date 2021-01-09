@@ -21,3 +21,15 @@ export const UserDataValue = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.level3};
   word-break: break-all;
 `;
+
+export const TopPagination = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: ${({ theme }) => theme.spacings.level3};
+  padding: 0 ${({ theme }) => theme.spacings.level2} 0 0;
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 0;
+  }
+`;

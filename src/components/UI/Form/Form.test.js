@@ -47,6 +47,7 @@ describe('<Form />', () => {
       };
       expect(checkProps(Form, expectedProps)).toBeUndefined();
     });
+
     it('Should throw a warning', () => {
       const expectedProps = {};
       expect(checkProps(Form, expectedProps)).not.toBeNull();
@@ -58,15 +59,19 @@ describe('<Form />', () => {
     beforeEach(() => {
       wrapper = setUp(defaultProps, defaultStore);
     });
+
     it('Should render heading', () => {
       expect(wrapper.find(Heading)).toHaveLength(1);
     });
+
     it('Should render cancel button wrapper', () => {
       expect(wrapper.find('.cancel-button-box')).toHaveLength(1);
     });
+
     it('Should render error', () => {
       expect(wrapper.find('.error')).toHaveLength(1);
     });
+
     it('Should render buttons wrapper', () => {
       expect(wrapper.find('.buttons-box')).toHaveLength(1);
     });
@@ -102,15 +107,19 @@ describe('<Form />', () => {
       });
       wrapper = setUp(props, store);
     });
+
     it('Should NOT render heading', () => {
       expect(wrapper.find(Heading)).toHaveLength(0);
     });
+
     it('Should NOT render cancel button wrapper', () => {
       expect(wrapper.find('.cancel-button-box')).toHaveLength(0);
     });
+
     it('Should NOT render error', () => {
       expect(wrapper.find('.error')).toHaveLength(0);
     });
+
     it('Should NOT render buttons wrapper', () => {
       expect(wrapper.find('.buttons-box')).toHaveLength(0);
     });

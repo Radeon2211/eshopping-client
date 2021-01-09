@@ -12,7 +12,7 @@ SC.Wrapper = styled.div`
 `;
 
 const PaginationCounter = (props) => {
-  const { itemQuantity, itemsType, maxQuantityPerPage } = props;
+  const { itemQuantity, itemsType, quantityPerPage } = props;
 
   const history = useHistory();
   const { search } = history.location;
@@ -25,8 +25,8 @@ const PaginationCounter = (props) => {
     setCurrentPage(urlPageNumber);
   }, [search]);
 
-  const firstOfferNumber = currentPage * maxQuantityPerPage - (maxQuantityPerPage - 1);
-  let lastOfferNumber = firstOfferNumber + maxQuantityPerPage - 1;
+  const firstOfferNumber = currentPage * quantityPerPage - (quantityPerPage - 1);
+  let lastOfferNumber = firstOfferNumber + quantityPerPage - 1;
   if (lastOfferNumber > itemQuantity) {
     lastOfferNumber = itemQuantity;
   }
@@ -56,7 +56,7 @@ const PaginationCounter = (props) => {
 PaginationCounter.propTyeps = {
   itemQuantity: PropTypes.number.isRequired,
   itemsType: PropTypes.string.isRequired,
-  maxQuantityPerPage: PropTypes.number.isRequired,
+  quantityPerPage: PropTypes.number.isRequired,
 };
 
 export default PaginationCounter;

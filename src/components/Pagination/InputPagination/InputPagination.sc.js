@@ -10,7 +10,12 @@ export const Wrapper = styled.div`
     align-self: stretch;
     cursor: pointer;
     display: flex;
-    padding: 0 ${({ theme }) => theme.spacings.level1};
+    margin: 0 ${({ theme }) => theme.spacings.level1};
+  }
+
+  & .hide-arrow {
+    opacity: 0;
+    pointer-events: none;
   }
 
   & .form-number {

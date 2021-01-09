@@ -32,6 +32,15 @@ SC.Wrapper = styled.div`
     return ``;
   }}
 
+  ${({ flex }) => {
+    if (flex) {
+      return `
+        flex: ${flex};
+      `;
+    }
+    return ``;
+  }}
+
   ${({ theme, direction, spacing }) => {
     if (direction === 'row') {
       return `
@@ -57,6 +66,7 @@ FlexWrapper.defaultProps = {
   direction: 'row',
   justify: '',
   align: '',
+  flex: '',
   wrap: 'nowrap',
   spacing: 'level3',
   mgBottom: '0',
@@ -69,6 +79,7 @@ FlexWrapper.propTypes = {
   direction: PropTypes.string,
   justify: PropTypes.string,
   align: PropTypes.string,
+  flex: PropTypes.string,
   wrap: PropTypes.string,
   spacing: PropTypes.string,
   mgBottom: PropTypes.string,

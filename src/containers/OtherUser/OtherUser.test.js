@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import OtherUser from './OtherUser';
 import Loader from '../../components/UI/Loader';
 import theme from '../../styled/theme';
-import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
+import { PRODUCTS_PER_PAGE } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -23,7 +23,7 @@ const defaultOtherUser = { _id: 'u1', username: 'user1' };
 
 const setUp = (otherUser) => {
   const store = mockStore({
-    ui: { isDataLoading: false, maxQuantityPerPage: MAX_QUANTITY_PER_PAGE },
+    ui: { isDataLoading: false, productsPerPage: PRODUCTS_PER_PAGE },
     auth: { otherUser },
     product: {},
   });

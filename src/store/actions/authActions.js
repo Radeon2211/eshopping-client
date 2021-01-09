@@ -9,6 +9,10 @@ export const setProfile = (profile) => ({
   profile,
 });
 
+export const logout = () => ({
+  type: actionTypes.LOGOUT_USER,
+});
+
 export const setDeliveryAddress = (deliveryAddress) => ({
   type: actionTypes.SET_DELIVERY_ADDRESS,
   deliveryAddress,
@@ -40,8 +44,8 @@ export const registerUser = (creds) => {
     try {
       const { data } = await axios.post('/users', correctCreds);
       dispatch(setProfile(data.user));
-      dispatch(uiActions.formSuccess());
       dispatch(uiActions.setAndDeleteMessage('Your account has been created successfully!'));
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));
@@ -55,8 +59,8 @@ export const loginUser = (creds) => {
     try {
       const { data } = await axios.post('/users/login', creds);
       dispatch(setProfile(data.user));
-      dispatch(uiActions.formSuccess());
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));
@@ -92,9 +96,9 @@ export const updateUser = (creds, message) => {
     dispatch(uiActions.formStart());
     try {
       const { data } = await axios.patch('/users/me', creds);
-      dispatch(uiActions.formSuccess());
       dispatch(setProfile(data.user));
       dispatch(uiActions.setAndDeleteMessage(message));
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));
@@ -107,13 +111,13 @@ export const deleteAccount = (creds, history) => {
     dispatch(uiActions.formStart());
     try {
       const { data } = await axios.delete('/users/me', { data: creds });
-      dispatch(uiActions.formSuccess());
       dispatch(setProfile(null));
       dispatch(
         uiActions.setAndDeleteMessage(
           `Your account has been deleted. Goodbye ${data.user.username}!`,
         ),
       );
+      dispatch(uiActions.formSuccess());
       history.replace(DEFAULT_PATH);
     } catch (error) {
       const errorMessage = getErrorMessage(error);
@@ -127,6 +131,7 @@ export const changeDeliveryAddress = (creds) => {
     dispatch(uiActions.formStart());
     try {
       const { onlyTheseOrders } = creds;
+      // eslint-disable-next-line no-param-reassign
       delete creds.onlyTheseOrders;
 
       if (onlyTheseOrders) {
@@ -149,13 +154,13 @@ export const fetchOtherUser = (username) => {
     dispatch(uiActions.dataStart());
     try {
       const { data } = await axios.get(`/users/${username}`);
-      dispatch(uiActions.dataSuccess());
       dispatch(setOtherUser(data.profile));
+      dispatch(uiActions.dataEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
-      dispatch(setOtherUser(null));
-      dispatch(uiActions.dataFail(errorMessage));
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
+      dispatch(setOtherUser(null));
+      dispatch(uiActions.dataEnd());
     }
   };
 };

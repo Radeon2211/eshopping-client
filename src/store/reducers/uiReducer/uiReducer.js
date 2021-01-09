@@ -1,17 +1,16 @@
 import * as actionTypes from '../../actions/actionTypes';
 import { updateObject } from '../../../shared/utility';
-import { MAX_QUANTITY_PER_PAGE } from '../../../shared/constants';
+import { PRODUCTS_PER_PAGE } from '../../../shared/constants';
 
 export const initialState = {
   isFormLoading: false,
   formError: '',
   isDataLoading: false,
-  dataError: '',
   isCartLoading: false,
   message: '',
   isModalOpen: false,
   modalContent: '',
-  maxQuantityPerPage: MAX_QUANTITY_PER_PAGE,
+  productsPerPage: PRODUCTS_PER_PAGE,
 };
 
 const formStart = (state) => {
@@ -35,15 +34,8 @@ const dataStart = (state) => {
   return updateObject(state, { isDataLoading: true });
 };
 
-const dataSuccess = (state) => {
-  return updateObject(state, {
-    isDataLoading: false,
-    dataError: '',
-  });
-};
-
-const dataFail = (state, action) => {
-  return updateObject(state, { isDataLoading: false, dataError: action.error });
+const dataEnd = (state) => {
+  return updateObject(state, { isDataLoading: false });
 };
 
 const tradeStart = (state) => {
@@ -73,8 +65,8 @@ const setModal = (state, action) => {
   });
 };
 
-const setMaxQuantityPerPage = (state, action) => {
-  return updateObject(state, { maxQuantityPerPage: action.maxQuantityPerPage });
+const setProductsPerPage = (state, action) => {
+  return updateObject(state, { productsPerPage: action.productsPerPage });
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -87,10 +79,8 @@ const uiReducer = (state = initialState, action) => {
       return formFail(state, action);
     case actionTypes.DATA_START:
       return dataStart(state);
-    case actionTypes.DATA_SUCCESS:
-      return dataSuccess(state);
-    case actionTypes.DATA_FAIL:
-      return dataFail(state, action);
+    case actionTypes.DATA_END:
+      return dataEnd(state);
     case actionTypes.TRADE_START:
       return tradeStart(state);
     case actionTypes.TRADE_END:
@@ -101,8 +91,8 @@ const uiReducer = (state = initialState, action) => {
       return deleteMessage(state);
     case actionTypes.SET_MODAL:
       return setModal(state, action);
-    case actionTypes.SET_MAX_QUANTITY_PER_PAGE:
-      return setMaxQuantityPerPage(state, action);
+    case actionTypes.SET_PRODUCTS_PER_PAGE:
+      return setProductsPerPage(state, action);
     default:
       return state;
   }

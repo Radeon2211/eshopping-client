@@ -11,9 +11,9 @@ import Filters from '../Filters/Filters';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import NumberPagination from '../Pagination/NumberPagination/NumberPagination';
 import PaginationCounter from '../Pagination/PaginationCounter/PaginationCounter';
-import QuantityPerPageController from '../Pagination/QuantityPerPageController';
+import ProductsPerPageController from '../Pagination/ProductsPerPageController';
 import { checkProps } from '../../shared/testUtility';
-import { pages, MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
+import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
 import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
@@ -26,7 +26,7 @@ const createStore = (products, productCount) =>
     },
     ui: {
       isDataLoading: false,
-      maxQuantityPerPage: MAX_QUANTITY_PER_PAGE,
+      productsPerPage: PRODUCTS_PER_PAGE,
     },
   });
 
@@ -74,7 +74,7 @@ describe('<ProductsAndFilters />', () => {
       expect(wrapper.find(InputPagination)).toHaveLength(1);
       expect(wrapper.find(NumberPagination)).toHaveLength(1);
       expect(wrapper.find(PaginationCounter)).toHaveLength(1);
-      expect(wrapper.find(QuantityPerPageController)).toHaveLength(1);
+      expect(wrapper.find(ProductsPerPageController)).toHaveLength(1);
     });
 
     it('Should NOT render anything', () => {
@@ -83,7 +83,7 @@ describe('<ProductsAndFilters />', () => {
       expect(wrapper.find(InputPagination)).toHaveLength(0);
       expect(wrapper.find(NumberPagination)).toHaveLength(0);
       expect(wrapper.find(PaginationCounter)).toHaveLength(0);
-      expect(wrapper.find(QuantityPerPageController)).toHaveLength(0);
+      expect(wrapper.find(ProductsPerPageController)).toHaveLength(0);
     });
   });
 

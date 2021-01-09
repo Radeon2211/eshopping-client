@@ -18,13 +18,8 @@ export const dataStart = () => ({
   type: actionTypes.DATA_START,
 });
 
-export const dataSuccess = () => ({
-  type: actionTypes.DATA_SUCCESS,
-});
-
-export const dataFail = (error) => ({
-  type: actionTypes.DATA_FAIL,
-  error,
+export const dataEnd = () => ({
+  type: actionTypes.DATA_END,
 });
 
 export const tradeStart = () => ({
@@ -50,9 +45,9 @@ export const setModal = (isModalOpen, modalContent = '') => ({
   modalContent,
 });
 
-export const setMaxQuantityPerPage = (quantity) => ({
-  type: actionTypes.SET_MAX_QUANTITY_PER_PAGE,
-  maxQuantityPerPage: quantity,
+export const setProductsPerPage = (quantity) => ({
+  type: actionTypes.SET_PRODUCTS_PER_PAGE,
+  productsPerPage: quantity,
 });
 
 export const setAndDeleteMessage = (message) => {
@@ -76,9 +71,9 @@ export const writeChangeCartInfo = (condition) => {
   };
 };
 
-export const changeMaxQuantityPerPage = (quantity, history) => {
+export const changeProductsPerPage = (quantity, history) => {
   return async (dispatch) => {
-    dispatch(setMaxQuantityPerPage(quantity));
+    dispatch(setProductsPerPage(quantity));
     const parsedQueryParams = queryString.parse(history.location.search);
     if (+parsedQueryParams.p !== 1) {
       const correctQueryParams = {

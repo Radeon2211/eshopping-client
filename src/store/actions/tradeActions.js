@@ -21,9 +21,9 @@ export const fetchCart = () => {
     dispatch(uiActions.tradeStart());
     try {
       const { data } = await axios.get('/cart');
-      dispatch(uiActions.tradeEnd());
       dispatch(setCart(data.cart));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
+      dispatch(uiActions.tradeEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -38,10 +38,10 @@ export const addCartItem = (item) => {
     dispatch(uiActions.tradeStart());
     try {
       const { data } = await axios.patch('/cart/add', item);
-      dispatch(uiActions.tradeEnd());
       dispatch(setCart(data.cart));
       dispatch(uiActions.setModal(true, modalTypes.CART_ITEM_ADDED));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
+      dispatch(uiActions.tradeEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -59,9 +59,9 @@ export const updateCartItem = (itemId, action, quantity) => {
       const { data } = await axios.patch(`/cart/${itemId}/update?action=${action}${quantityParam}`);
       updateCartItemReqCounter -= 1;
       if (updateCartItemReqCounter <= 0) {
-        dispatch(uiActions.tradeEnd());
         dispatch(setCart(data.cart));
         dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
+        dispatch(uiActions.tradeEnd());
       }
     } catch (error) {
       const errorMessage = getErrorMessage(error);
@@ -76,8 +76,8 @@ export const clearCart = () => {
     dispatch(uiActions.tradeStart());
     try {
       await axios.patch('/cart/clear');
-      dispatch(uiActions.tradeEnd());
       dispatch(setCart([]));
+      dispatch(uiActions.tradeEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -91,9 +91,9 @@ export const removeCartItem = (itemId) => {
     dispatch(uiActions.tradeStart());
     try {
       const { data } = await axios.patch(`/cart/${itemId}/remove`);
-      dispatch(uiActions.tradeEnd());
       dispatch(setCart(data.cart));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
+      dispatch(uiActions.tradeEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -110,7 +110,6 @@ export const goToTransaction = (history, singleItem) => {
         data: { transaction, isDifferent, cart },
       } = await axios.patch('/transaction', { singleItem });
 
-      dispatch(uiActions.tradeEnd());
       dispatch(setTransaction(transaction));
       if (cart) dispatch(setCart(cart));
 
@@ -139,6 +138,8 @@ export const goToTransaction = (history, singleItem) => {
           );
         }
       }
+
+      dispatch(uiActions.tradeEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -153,18 +154,20 @@ export const buyProducts = (history, lastPath) => {
     try {
       const { transaction, deliveryAddress } = getState().auth;
 
-      let clearCart = false;
-      if (lastPath === '/cart') clearCart = true;
+      let clearCartBool = false;
+      if (lastPath === '/cart') clearCartBool = true;
 
-      const { data: { transaction: updatedTransaction, cart } } = await axios.post('/orders', { transaction, deliveryAddress, clearCart });
+      const {
+        data: { transaction: updatedTransaction, cart },
+      } = await axios.post('/orders', { transaction, deliveryAddress, clearCart: clearCartBool });
 
-      dispatch(uiActions.formSuccess());
       dispatch(setCart(cart));
+
       if (updatedTransaction) {
         if (updatedTransaction.length > 0) {
           dispatch(
             uiActions.setAndDeleteMessage(
-              'Availability of the products changed meanwhile. Check all the products in transaction and try again'
+              'Availability of the products changed meanwhile. Check all the products in transaction and try again',
             ),
           );
         } else {
@@ -174,7 +177,9 @@ export const buyProducts = (history, lastPath) => {
         dispatch(uiActions.setAndDeleteMessage('Transaction was successful'));
         history.replace('/my-account/placed-orders');
       }
+
       dispatch(setTransaction(updatedTransaction || []));
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));

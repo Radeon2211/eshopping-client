@@ -10,7 +10,7 @@ import ToPayInfo from '../../components/UI/ToPayInfo';
 import SideBySide from '../../components/UI/SideBySide';
 import Heading from '../../components/UI/Heading/Heading';
 import theme from '../../styled/theme';
-import { createTransactionItem } from '../../shared/testUtility';
+import { createTransactionAndOrderProdItem } from '../../shared/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -48,8 +48,8 @@ describe('<Transaction />', () => {
   describe('Check how everything render', () => {
     it('Should render content with correct pay value', () => {
       const transaction = [
-        createTransactionItem('u1', 'user1', 'p1', 4, 10.6, 'product1'),
-        createTransactionItem('u1', 'user1', 'p2', 6, 299.98, 'product2'),
+        createTransactionAndOrderProdItem('u1', 'user1', 'p1', 4, 10.6, 'product1'),
+        createTransactionAndOrderProdItem('u1', 'user1', 'p2', 6, 299.98, 'product2'),
       ];
       const wrapper = setUp(transaction);
       expect(wrapper.find(ToPayInfo).prop('value')).toEqual(1842.28);

@@ -1,8 +1,8 @@
 import { updateObject } from '../../shared/utility';
-import { filtersActions, sortOptions } from '../../shared/constants';
+import { filtersActions, sortProductsOptions } from '../../shared/constants';
 
 export const filtersInitialState = {
-  sortBy: sortOptions[0],
+  sortBy: sortProductsOptions[0],
   minPrice: undefined,
   maxPrice: undefined,
   condition: {

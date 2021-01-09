@@ -9,13 +9,14 @@ import { filtersReducer, filtersInitialState } from './filtersReducer';
 import PlainPanel from '../UI/Panels/PlainPanel';
 import Button from '../UI/Button/Button';
 import PriceSlider from './PriceSlider/PriceSlider';
-import { filtersActions, sortOptions } from '../../shared/constants';
+import { filtersActions, sortProductsOptions } from '../../shared/constants';
 import MyIcon from '../UI/MyIcon';
 import { ReactComponent as FiltersIcon } from '../../images/SVG/filters.svg';
 import { ReactComponent as ArrowIcon } from '../../images/SVG/arrow.svg';
 
 const Filters = (props) => {
   const { isDataLoading } = props;
+
   const history = useHistory();
   const {
     location: { search, pathname },
@@ -36,7 +37,8 @@ const Filters = (props) => {
       type: filtersActions.INIT_STATE,
       payload: {
         sortBy:
-          sortOptions.find(({ value }) => value === parsedQueryParams.sortBy) || sortOptions[0],
+          sortProductsOptions.find(({ value }) => value === parsedQueryParams.sortBy) ||
+          sortProductsOptions[0],
         minPrice: parsedQueryParams.minPrice,
         maxPrice: parsedQueryParams.maxPrice,
         condition: {
@@ -96,7 +98,7 @@ const Filters = (props) => {
     <SC.Wrapper>
       <Select
         name="sortBy"
-        options={sortOptions}
+        options={sortProductsOptions}
         className="select"
         value={filters.sortBy}
         placeholder="Default sorting"

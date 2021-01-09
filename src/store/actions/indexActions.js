@@ -21,7 +21,7 @@ export {
   buyProducts,
 } from './tradeActions';
 
-export { setModal, deleteMessage, changeMaxQuantityPerPage } from './uiActions';
+export { setModal, deleteMessage, changeProductsPerPage } from './uiActions';
 
 export {
   addProduct,
@@ -31,3 +31,5 @@ export {
   setProductDetails,
   deleteProduct,
 } from './productActions';
+
+export { fetchOrders, fetchOrderDetails } from './orderActions';
