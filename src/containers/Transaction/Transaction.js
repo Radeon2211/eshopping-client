@@ -6,7 +6,7 @@ import SideBySide from '../../components/UI/SideBySide';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import PlainPanel from '../../components/UI/Panels/PlainPanel';
 import StickyPanel from '../../components/UI/Panels/StickyPanel';
-import DeliveryAddress from './DeliveryAddress/DeliveryAddress';
+import DeliveryAddressSection from './DeliveryAddressSection/DeliveryAddressSection';
 import Heading from '../../components/UI/Heading/Heading';
 import ToPayInfo from '../../components/UI/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
@@ -44,7 +44,7 @@ const Transaction = () => {
         <Heading variant="h3">Transaction</Heading>
         <SideBySide proportion="3/1" makeVerticalWhen={1200}>
           <FlexWrapper direction="column" align="stretch">
-            <DeliveryAddress />
+            <DeliveryAddressSection />
             <PlainPanel>
               <Heading variant="h4">Products</Heading>
               <CartAndTransactionItems items={transaction} type={itemTypes.TRANSACTION} />

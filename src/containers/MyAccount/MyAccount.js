@@ -46,13 +46,15 @@ const MyAccount = () => {
           </li>
         </ul>
       </nav>
-      <Switch>
-        <Route path="/my-account/data" exact component={MyData} />
-        <Route path="/my-account/products" exact component={MyProducts} />
-        <Route path="/my-account/sell-history" exact component={MySellHistory} />
-        <Route path="/my-account/placed-orders" exact component={MyPlacedOrders} />
-        <Redirect to="/my-account/data" />
-      </Switch>
+      <div className="routes">
+        <Switch>
+          <Route path="/my-account/data" exact component={MyData} />
+          <Route path="/my-account/products" exact component={MyProducts} />
+          <Route path="/my-account/sell-history" exact component={MySellHistory} />
+          <Route path="/my-account/placed-orders" exact component={MyPlacedOrders} />
+          <Redirect to="/my-account/data" />
+        </Switch>
+      </div>
     </SC.Wrapper>
   );
 };

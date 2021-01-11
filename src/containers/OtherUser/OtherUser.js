@@ -6,15 +6,19 @@ import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { pages } from '../../shared/constants';
+import { BoldText } from '../../styled/components';
 
-const UserDetails = (props) => {
+const OtherUser = (props) => {
   const {
     match: {
-      params: { username: userUsername },
+      params: { username: otherUserUsername },
     },
     location: { search },
+    history,
   } = props;
 
+  const userProfile = useSelector((state) => state.auth.profile);
+  const currentUserUsername = userProfile?.username;
   const otherUser = useSelector((state) => state.auth.otherUser);
   const productsPerPage = useSelector((state) => state.ui.productsPerPage);
 
@@ -30,10 +34,23 @@ const UserDetails = (props) => {
   );
 
   useEffect(() => {
-    onFetchOtherUser(userUsername);
-    onFetchProducts(search, pages.USER_PRODUCTS, userUsername);
+    if (otherUserUsername === currentUserUsername) {
+      history.replace('/my-account/data');
+    } else {
+      onFetchOtherUser(otherUserUsername);
+      onFetchProducts(search, pages.USER_PRODUCTS, otherUserUsername);
+    }
     return () => onSetOtherUser(undefined);
-  }, [userUsername, onFetchOtherUser, onFetchProducts, productsPerPage, onSetOtherUser, search]);
+  }, [
+    otherUserUsername,
+    currentUserUsername,
+    onFetchOtherUser,
+    onFetchProducts,
+    productsPerPage,
+    onSetOtherUser,
+    search,
+    history,
+  ]);
 
   let content = <Loader align="center" />;
   if (otherUser === null) {
@@ -55,14 +72,14 @@ const UserDetails = (props) => {
         <SC.ContactData>
           {email && (
             <div className="single-data">
-              <span className="data-name">Email:&nbsp;</span>
-              <span className="data-value">{email}</span>
+              <BoldText>Email:&nbsp;</BoldText>
+              <span data-test="email-value">{email}</span>
             </div>
           )}
           {phone && (
             <div className="single-data">
-              <span className="data-name">Phone number:&nbsp;</span>
-              <span className="data-value">{phone}</span>
+              <BoldText>Phone number:&nbsp;</BoldText>
+              <span data-test="phone-value">{phone}</span>
             </div>
           )}
         </SC.ContactData>
@@ -83,4 +100,4 @@ const UserDetails = (props) => {
   return content;
 };
 
-export default UserDetails;
+export default OtherUser;

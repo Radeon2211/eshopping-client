@@ -32,4 +32,4 @@ export {
   deleteProduct,
 } from './productActions';
 
-export { fetchOrders, fetchOrderDetails } from './orderActions';
+export { fetchOrders, fetchOrderDetails, setOrderDetails } from './orderActions';

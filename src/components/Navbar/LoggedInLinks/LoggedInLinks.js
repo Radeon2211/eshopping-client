@@ -1,16 +1,12 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useWindowWidth } from '@react-hook/window-size';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import MyIcon from '../../UI/MyIcon';
 import Dropdown from './Dropdown/Dropdown';
 import CartLink from './CartLink/CartLink';
 
-const usernameLengthBig = 15;
-const usernameLengthSmall = 9;
-
-const SC = {};
+export const SC = {};
 SC.Wrapper = styled.nav`
   align-items: center;
   display: flex;
@@ -35,13 +31,16 @@ SC.User = styled.div`
   & .username {
     font-size: ${({ theme }) => theme.fontSizes.level3};
     margin-right: ${({ theme }) => theme.spacings.level1};
+    overflow: hidden;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 15rem;
   }
 `;
 
 const SignedInLinks = (props) => {
   const { username } = props;
-
-  const windowWidth = useWindowWidth();
 
   const usernameRef = useRef();
 
@@ -55,19 +54,12 @@ const SignedInLinks = (props) => {
     setDropdownIsVisible(false);
   };
 
-  let usernameToDisplay = username;
-  if (windowWidth > 900 && username.length > usernameLengthBig + 1) {
-    usernameToDisplay = `${username.slice(0, usernameLengthBig)}...`;
-  } else if (windowWidth < 900 && username.length > usernameLengthSmall + 1) {
-    usernameToDisplay = `${username.slice(0, usernameLengthSmall)}...`;
-  }
-
   return (
     <SC.Wrapper>
       <CartLink />
       <SC.User id="user" onClick={userClickHandle}>
         <span className="username" ref={usernameRef}>
-          {usernameToDisplay}
+          {username}
         </span>
         <MyIcon size="small" rotation={dropdownIsVisible ? -90 : 90}>
           <ArrowIcon />

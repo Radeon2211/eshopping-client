@@ -1,18 +1,25 @@
 import styled from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.div`
   & .nav {
-    margin-bottom: ${({ theme }) => theme.spacings.level4};
+    background-color: ${({ theme }) => theme.colors.light1};
+    position: fixed;
+    top: 6.2rem;
+    left: 0;
+    width: 100%;
+    padding-bottom: ${({ theme }) => theme.spacings.level1};
+    z-index: ${({ theme }) => theme.zIndexes.level3};
   }
 
   & .nav-list {
     display: flex;
+    justify-content: center;
     list-style: none;
   }
 
   & .nav-link {
     border-bottom: 2px solid transparent;
+    display: block;
     font-size: ${({ theme }) => theme.fontSizes.level2};
     letter-spacing: 1px;
     padding: ${({ theme }) => theme.spacings.level2};
@@ -34,7 +41,15 @@ export const Wrapper = styled.div`
     }
   }
 
+  .routes {
+    margin-top: ${({ theme }) => theme.spacings.level5};
+  }
+
   @media only screen and (max-width: 37.5em) {
+    & .nav {
+      top: 10.8rem;
+    }
+
     & .nav-list {
       justify-content: center;
     }
@@ -52,4 +67,10 @@ export const Wrapper = styled.div`
       padding: ${({ theme }) => theme.spacings.level1};
     }
   }
+`;
+
+export const OrdersWrapper = styled.div`
+  max-width: 100%;
+  margin: 0 auto;
+  width: 80rem;
 `;

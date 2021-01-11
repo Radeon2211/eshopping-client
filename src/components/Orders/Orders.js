@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
@@ -13,13 +12,6 @@ import Heading from '../UI/Heading/Heading';
 import Loader from '../UI/Loader';
 import { listItemTypes, orderTypes, ORDERS_PER_PAGE } from '../../shared/constants';
 import { TopPagination } from '../../styled/components';
-
-export const SC = {};
-SC.Wrapper = styled.div`
-  max-width: 100%;
-  margin: 0 auto;
-  width: 80rem;
-`;
 
 const Orders = (props) => {
   const { orders, type } = props;
@@ -61,7 +53,7 @@ const Orders = (props) => {
       );
     } else if (orderCount > 0) {
       content = (
-        <SC.Wrapper>
+        <>
           <PlainPanel>
             <TopPagination>
               <SortOrders />
@@ -74,7 +66,7 @@ const Orders = (props) => {
               quantityPerPage={ORDERS_PER_PAGE}
             />
           </PlainPanel>
-        </SC.Wrapper>
+        </>
       );
     }
   }

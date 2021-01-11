@@ -52,7 +52,7 @@ const Dropdown = (props) => {
                 </div>
               </li>
               <li className="item">
-                <Link to="/my-account" className="link">
+                <Link to="/my-account/data" className="link">
                   <MyIcon size="small">
                     <MyAccountIcon />
                   </MyIcon>

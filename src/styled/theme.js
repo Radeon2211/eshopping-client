@@ -37,6 +37,7 @@ const theme = {
     level2: 100,
     level3: 1000,
     level4: 10000,
+    level5: 100000,
   },
   fontSizes: {
     level1: '1.3rem',

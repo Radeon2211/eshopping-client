@@ -13,11 +13,15 @@ export const GrayText = styled.span`
   color: ${({ theme }) => theme.colors.light4};
 `;
 
+export const BoldText = styled.span`
+  font-weight: 700;
+`;
+
 export const AlignCenter = styled.div`
   text-align: center;
 `;
 
-export const UserDataValue = styled.div`
+export const UserDataValue = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.level3};
   word-break: break-all;
 `;

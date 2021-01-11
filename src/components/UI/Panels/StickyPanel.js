@@ -6,7 +6,7 @@ import PlainPanel from './PlainPanel';
 const SC = {};
 SC.Wrapper = styled.section`
   position: sticky;
-  top: calc(6.5rem + ${({ theme }) => theme.spacings.level3});
+  top: calc(6.4rem + ${({ theme }) => theme.spacings.level3});
   width: 100%;
 
   & > *:first-child {

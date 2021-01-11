@@ -21,7 +21,6 @@ export const propsPagination = (itemQuantity = 5) => ({
 });
 
 export const createCartItem = (
-  sellerId = uuidv4(),
   sellerUsername = 'username',
   quantity = 1,
   productId,
@@ -38,7 +37,6 @@ export const createCartItem = (
     price,
     quantity: productQuantity,
     seller: {
-      _id: sellerId,
       username: sellerUsername,
     },
   },
@@ -46,7 +44,6 @@ export const createCartItem = (
 });
 
 export const createTransactionAndOrderProdItem = (
-  sellerId = uuidv4(),
   sellerUsername = 'username',
   productId,
   quantity = 1,
@@ -60,7 +57,6 @@ export const createTransactionAndOrderProdItem = (
   price,
   quantity,
   seller: {
-    _id: sellerId,
     username: sellerUsername,
   },
 });
@@ -68,23 +64,43 @@ export const createTransactionAndOrderProdItem = (
 export const createOrder = (
   products,
   orderId = uuidv4(),
-  sellerUsername = 'seller',
-  buyerUsername = 'buyer',
+  sellerUsername,
+  buyerUsername,
   overallPrice,
   createdAt,
+  sellerEmail,
+  sellerPhone,
 ) => {
+  const seller = sellerUsername
+    ? {
+        username: sellerUsername,
+        email: sellerEmail,
+        phone: sellerPhone,
+      }
+    : null;
+
+  const buyer = buyerUsername
+    ? {
+        username: buyerUsername,
+      }
+    : null;
+
   return {
     _id: orderId,
-    seller: {
-      _id: uuidv4(),
-      username: sellerUsername,
-    },
-    buyer: {
-      _id: uuidv4(),
-      username: buyerUsername,
-    },
+    seller,
+    buyer,
     products,
     overallPrice,
     createdAt,
   };
+};
+
+export const defaultDeliveryAddress = {
+  firstName: 'firstName',
+  lastName: 'lastName',
+  street: 'street',
+  zipCode: 'zipCode',
+  city: 'city',
+  country: 'country',
+  phone: 'phone',
 };

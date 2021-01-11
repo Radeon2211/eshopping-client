@@ -14,8 +14,4 @@ export const ContactData = styled.section`
     display: flex;
     font-size: ${({ theme }) => theme.fontSizes.level4};
   }
-
-  & .data-name {
-    font-weight: 700;
-  }
 `;

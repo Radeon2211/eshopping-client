@@ -38,6 +38,7 @@ describe('<Dropdown />', () => {
       };
       expect(checkProps(Dropdown, props)).toBeUndefined();
     });
+
     it('Should throw a warning', () => {
       expect(checkProps(Dropdown, {})).not.toBe(null);
     });
@@ -48,6 +49,7 @@ describe('<Dropdown />', () => {
       const wrapper = setUp(true, jest.fn());
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
     });
+
     it('Should NOT render <SC.Wrapper />', () => {
       const wrapper = setUp(false, jest.fn());
       expect(wrapper.find(SC.Wrapper)).toHaveLength(0);

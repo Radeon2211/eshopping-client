@@ -1,4 +1,5 @@
 import queryString from 'query-string';
+import moment from 'moment';
 import { listOfAreaCodes } from './constants';
 
 export const getPhonePrefixAndNumber = (phone) => {
@@ -84,6 +85,10 @@ export const formatPrice = (value) => {
 
 export const roundOverallPrice = (value) => {
   return Math.round((value + Number.EPSILON) * 100) / 100;
+};
+
+export const formatOrderDate = (date) => {
+  return moment(date).format('D MMM YYYY, HH:mm');
 };
 
 export const validateURL = (url) => {

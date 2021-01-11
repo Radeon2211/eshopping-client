@@ -54,7 +54,7 @@ describe('<CartItem />', () => {
 
   describe('Checks how everything render', () => {
     it('Should render correctly with full data', () => {
-      const data = createCartItem('u1', 'user1', 5, 'p1', 299.98, 'productName', 6, true);
+      const data = createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true);
       const wrapper = setUp(data);
       expect(
         wrapper.find('[data-test="product-link"]').every((link) => {

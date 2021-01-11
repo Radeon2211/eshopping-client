@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import theme from '../../styled/theme';
-import Orders, { SC } from './Orders';
+import Orders from './Orders';
 import Loader from '../UI/Loader';
 import PlainPanel from '../UI/Panels/PlainPanel';
 import { TopPagination } from '../../styled/components';
@@ -14,7 +14,11 @@ import SortOrders from './SortOrders/SortOrders';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import OrderList from './OrderList/OrderList';
 import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
-import { checkProps, createOrder, createTransactionAndOrderProdItem } from '../../shared/testUtility';
+import {
+  checkProps,
+  createOrder,
+  createTransactionAndOrderProdItem,
+} from '../../shared/testUtility';
 import { orderTypes } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
@@ -96,7 +100,6 @@ describe('<ProductItem />', () => {
 
     it('Should render full content', () => {
       const wrapper = setUp([createOrder([createTransactionAndOrderProdItem()])], 1);
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
       expect(wrapper.find(PlainPanel)).toHaveLength(1);
       expect(wrapper.find(TopPagination)).toHaveLength(1);
       expect(wrapper.find(SortOrders)).toHaveLength(1);

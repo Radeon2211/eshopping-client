@@ -18,7 +18,7 @@ SC.Wrapper = styled(motion.div)`
   position: fixed;
   top: ${({ theme }) => theme.spacings.level2};
   width: 60rem;
-  z-index: ${({ theme }) => theme.zIndexes.level4};
+  z-index: ${({ theme }) => theme.zIndexes.level5};
 `;
 
 SC.Message = styled(motion.div)`

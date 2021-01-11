@@ -5,19 +5,19 @@ import * as uiActions from './uiActions';
 import { orderTypes } from '../../shared/constants';
 import { getErrorMessage } from '../../shared/utility';
 
-const setPlacedOrders = (placedOrders, orderCount = undefined) => ({
+export const setPlacedOrders = (placedOrders, orderCount = undefined) => ({
   type: actionTypes.SET_PLACED_ORDERS,
   placedOrders,
   orderCount,
 });
 
-const setSellHistory = (sellHistory, orderCount = undefined) => ({
+export const setSellHistory = (sellHistory, orderCount = undefined) => ({
   type: actionTypes.SET_SELL_HISTORY,
   sellHistory,
   orderCount,
 });
 
-const setOrderDetails = (orderDetails) => ({
+export const setOrderDetails = (orderDetails) => ({
   type: actionTypes.SET_ORDER_DETAILS,
   orderDetails,
 });

@@ -1,5 +1,6 @@
 import * as actionTypes from '../../actions/actionTypes';
 import authReducer, { initialState } from './authReducer';
+import { defaultDeliveryAddress } from '../../../shared/testUtility';
 
 describe('Auth reducer', () => {
   it('Should return default state', () => {
@@ -7,18 +8,9 @@ describe('Auth reducer', () => {
   });
 
   it('Should return new state after SET_PROFILE', () => {
-    const deliveryAddress = {
-      firstName: 'firstName',
-      lastName: 'lastName',
-      street: 'street',
-      zipCode: 'zipCode',
-      city: 'city',
-      country: 'country',
-      phone: 'phone',
-    };
     const userProfile = {
       username: 'Test username',
-      ...deliveryAddress,
+      ...defaultDeliveryAddress,
     };
     expect(
       authReducer(undefined, {
@@ -28,7 +20,7 @@ describe('Auth reducer', () => {
     ).toEqual({
       ...initialState,
       profile: userProfile,
-      deliveryAddress,
+      deliveryAddress: defaultDeliveryAddress,
     });
   });
 
@@ -44,38 +36,21 @@ describe('Auth reducer', () => {
   });
 
   it('Should return new state after SET_DELIVERY_ADDRESS - completely new', () => {
-    const deliveryAddress = {
-      firstName: 'firstName',
-      lastName: 'lastName',
-      street: 'street',
-      zipCode: 'zipCode',
-      city: 'city',
-      country: 'country',
-      phone: 'phone',
-    };
     expect(
       authReducer(undefined, {
         type: actionTypes.SET_DELIVERY_ADDRESS,
-        deliveryAddress,
+        deliveryAddress: defaultDeliveryAddress,
       }),
     ).toEqual({
       ...initialState,
-      deliveryAddress,
+      deliveryAddress: defaultDeliveryAddress,
     });
   });
 
   it('Should return new state after SET_DELIVERY_ADDRESS - only update', () => {
     const state = {
       ...initialState,
-      deliveryAddress: {
-        firstName: 'firstName',
-        lastName: 'lastName',
-        street: 'street',
-        zipCode: 'zipCode',
-        city: 'city',
-        country: 'country',
-        phone: 'phone',
-      },
+      deliveryAddress: defaultDeliveryAddress,
     };
     const updatedDeliveryAddress = {
       firstName: 'firstName2',
@@ -89,13 +64,8 @@ describe('Auth reducer', () => {
     ).toEqual({
       ...initialState,
       deliveryAddress: {
-        firstName: 'firstName2',
-        lastName: 'lastName2',
-        street: 'street',
-        zipCode: 'zipCode',
-        city: 'city',
-        country: 'country',
-        phone: 'phone',
+        ...defaultDeliveryAddress,
+        ...updatedDeliveryAddress,
       },
     });
   });

@@ -1,45 +1,58 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import DeliveryAddress from './DeliveryAddress';
 import theme from '../../../styled/theme';
 import { UserDataValue } from '../../../styled/components';
+import { checkProps } from '../../../shared/testUtility';
 
-const mockStore = configureMockStore([thunk]);
-
-const setUp = (deliveryAddress) => {
-  const store = mockStore({
-    auth: { deliveryAddress },
-  });
+const setUp = (data) => {
+  const props = { data };
   return mount(
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <DeliveryAddress />
-      </ThemeProvider>
-    </Provider>,
+    <ThemeProvider theme={theme}>
+      <DeliveryAddress {...props} />
+    </ThemeProvider>,
   );
 };
 
-window.IntersectionObserver = jest.fn(() => ({
-  observe: jest.fn(),
-}));
+const delAddress = {
+  firstName: 'firstName',
+  lastName: 'lastName',
+  street: 'street',
+  zipCode: 'zipCode',
+  city: 'city',
+  country: 'country',
+  phone: 'phone',
+};
 
 describe('<DeliveryAddress />', () => {
+  describe('Check prop types', () => {
+    it('Should NOT throw a warning', () => {
+      const expectedProps = {
+        data: delAddress,
+      };
+      expect(checkProps(DeliveryAddress, expectedProps)).toBeUndefined();
+    });
+
+    it('Should throw a warning if data is uncomplete', () => {
+      const expectedProps = {
+        data: {
+          ...delAddress,
+          phone: undefined,
+        },
+      };
+      expect(checkProps(DeliveryAddress, expectedProps)).not.toBe(null);
+    });
+
+    it('Should throw a warning if data is empty', () => {
+      expect(checkProps(DeliveryAddress, {})).not.toBe(null);
+    });
+  });
+
   describe('Check how <UserDataValue /> render', () => {
     it('Should render five <UserDataValue /> with correct values', () => {
-      const delAddress = {
-        firstName: 'firstName',
-        lastName: 'lastName',
-        street: 'street',
-        zipCode: 'zipCode',
-        city: 'city',
-        country: 'country',
-        phone: 'phone',
-      };
       const wrapper = setUp(delAddress);
+
       expect(wrapper.find(UserDataValue)).toHaveLength(5);
       expect(wrapper.find(UserDataValue).at(0).text()).toEqual(
         `${delAddress.firstName} ${delAddress.lastName}`,

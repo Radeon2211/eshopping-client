@@ -61,7 +61,7 @@ describe('<CartAndTransactionItems />', () => {
 
   describe('Check how render - CART ITEMS', () => {
     it('Should render one <SC.SingleSeller /> with correct data and two <CartItem />', () => {
-      const items = [createCartItem('u1', 'user1'), createCartItem('u1', 'user1')];
+      const items = [createCartItem('user1'), createCartItem('user1')];
       const wrapper = setUp(items, itemTypes.CART);
       expect(wrapper.find(SC.SingleSeller)).toHaveLength(1);
       expect(wrapper.find('[data-test="user-link"]').first().prop('to')).toEqual('/user/user1?p=1');
@@ -71,11 +71,11 @@ describe('<CartAndTransactionItems />', () => {
 
     it('Should render three <SC.SingleSeller /> and five <CartItem />', () => {
       const items = [
-        createCartItem('u1', 'user1'),
-        createCartItem('u1', 'user1'),
-        createCartItem('u2', 'user2'),
-        createCartItem('u3', 'user3'),
-        createCartItem('u3', 'user3'),
+        createCartItem('user1'),
+        createCartItem('user1'),
+        createCartItem('user2'),
+        createCartItem('user3'),
+        createCartItem('user3'),
       ];
       const wrapper = setUp(items, itemTypes.CART);
       expect(wrapper.find(SC.SingleSeller)).toHaveLength(3);
@@ -86,8 +86,8 @@ describe('<CartAndTransactionItems />', () => {
   describe('Check how render - TRANSACTION ITEMS', () => {
     it('Should render one <SC.SingleSeller /> with correct data and two <TransactionAndOrderProdItem />', () => {
       const items = [
-        createTransactionAndOrderProdItem('u1', 'user1'),
-        createTransactionAndOrderProdItem('u1', 'user1'),
+        createTransactionAndOrderProdItem('user1'),
+        createTransactionAndOrderProdItem('user1'),
       ];
       const wrapper = setUp(items, itemTypes.TRANSACTION);
       expect(wrapper.find(SC.SingleSeller)).toHaveLength(1);
@@ -98,11 +98,11 @@ describe('<CartAndTransactionItems />', () => {
 
     it('Should render three <SC.SingleSeller /> and five <TransactionAndOrderProdItem />', () => {
       const items = [
-        createTransactionAndOrderProdItem('u1', 'user1'),
-        createTransactionAndOrderProdItem('u1', 'user1'),
-        createTransactionAndOrderProdItem('u2', 'user2'),
-        createTransactionAndOrderProdItem('u3', 'user3'),
-        createTransactionAndOrderProdItem('u3', 'user3'),
+        createTransactionAndOrderProdItem('user1'),
+        createTransactionAndOrderProdItem('user1'),
+        createTransactionAndOrderProdItem('user2'),
+        createTransactionAndOrderProdItem('user3'),
+        createTransactionAndOrderProdItem('user3'),
       ];
       const wrapper = setUp(items, itemTypes.TRANSACTION);
       expect(wrapper.find(SC.SingleSeller)).toHaveLength(3);

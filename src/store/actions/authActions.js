@@ -107,15 +107,14 @@ export const updateUser = (creds, message) => {
 };
 
 export const deleteAccount = (creds, history) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(uiActions.formStart());
     try {
-      const { data } = await axios.delete('/users/me', { data: creds });
+      const { username } = getState().auth.profile;
+      await axios.delete('/users/me', { data: creds });
       dispatch(setProfile(null));
       dispatch(
-        uiActions.setAndDeleteMessage(
-          `Your account has been deleted. Goodbye ${data.user.username}!`,
-        ),
+        uiActions.setAndDeleteMessage(`Your account has been deleted. Goodbye ${username}!`),
       );
       dispatch(uiActions.formSuccess());
       history.replace(DEFAULT_PATH);
