@@ -21,7 +21,7 @@ const defaultProps = {
 
 const defaultProductDetails = {
   _id: '1234',
-  seller: { _id: '123' },
+  seller: { username: 'user1' },
   condition: 'not_applicable',
   price: 2.5,
   quantity: 5,
@@ -30,7 +30,7 @@ const defaultProductDetails = {
   buyerQuantity: 0,
 };
 
-const defaultProfile = { _id: '123' };
+const defaultProfile = { username: 'user1' };
 
 const defaultCart = [{ _id: '123', product: 'productId', quantity: 1 }];
 
@@ -163,14 +163,17 @@ describe('<ProductDetails />', () => {
 
       it('Should render delete button when user is admin', () => {
         const wrapper = setUp({
-          auth: { profile: { ...defaultProfile, _id: '987', isAdmin: true }, cart: defaultCart },
+          auth: {
+            profile: { ...defaultProfile, username: 'user2', isAdmin: true },
+            cart: defaultCart,
+          },
         });
         expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
       });
 
       it('Should NOT render edit and delete button when user is not admin and not owner', () => {
         const wrapper = setUp({
-          auth: { profile: { ...defaultProfile, _id: '987' }, cart: defaultCart },
+          auth: { profile: { ...defaultProfile, username: 'user2' }, cart: defaultCart },
         });
         expect(wrapper.find('[data-test="edit-button"]')).toHaveLength(0);
         expect(wrapper.find('[data-test="delete-button"]')).toHaveLength(0);

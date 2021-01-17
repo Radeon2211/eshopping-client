@@ -42,7 +42,7 @@ export const registerUser = (creds) => {
     delete correctCreds.phoneNumber;
     delete correctCreds.phonePrefix;
     try {
-      const { data } = await axios.post('/users', correctCreds);
+      const { data } = await axios.post('/users', { data: correctCreds });
       dispatch(setProfile(data.user));
       dispatch(uiActions.setAndDeleteMessage('Your account has been created successfully!'));
       dispatch(uiActions.formSuccess());
@@ -57,7 +57,7 @@ export const loginUser = (creds) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
     try {
-      const { data } = await axios.post('/users/login', creds);
+      const { data } = await axios.post('/users/login', { data: creds });
       dispatch(setProfile(data.user));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
       dispatch(uiActions.formSuccess());

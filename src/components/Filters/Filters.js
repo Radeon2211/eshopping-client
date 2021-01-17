@@ -29,7 +29,16 @@ const Filters = (props) => {
 
   useEffect(() => {
     const parsedQueryParams = queryString.parse(search);
-    const conditionParam = parsedQueryParams.condition
+    const arrayQueryParams = Object.entries(parsedQueryParams).map(([key, value]) => {
+      const correctValue = Array.isArray(value) ? value.slice(-1)[0] : value;
+      return [key, correctValue];
+    });
+    const correctQueryParams = arrayQueryParams.reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+
+    const conditionParam = correctQueryParams.condition
       ? parsedQueryParams.condition.split(',')
       : [];
 
@@ -37,10 +46,10 @@ const Filters = (props) => {
       type: filtersActions.INIT_STATE,
       payload: {
         sortBy:
-          sortProductsOptions.find(({ value }) => value === parsedQueryParams.sortBy) ||
+          sortProductsOptions.find(({ value }) => value === correctQueryParams.sortBy) ||
           sortProductsOptions[0],
-        minPrice: parsedQueryParams.minPrice,
-        maxPrice: parsedQueryParams.maxPrice,
+        minPrice: correctQueryParams.minPrice,
+        maxPrice: correctQueryParams.maxPrice,
         condition: {
           new: conditionParam.includes('new'),
           used: conditionParam.includes('used'),

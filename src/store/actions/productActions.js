@@ -35,11 +35,11 @@ export const addProduct = (product, currentPath) => {
       photo: undefined,
     };
     try {
-      const { data } = await axios.post('/products', correctProduct);
+      const { data } = await axios.post('/products', { data: correctProduct });
       if (product.photo) {
         const formData = new FormData();
         formData.append('photo', product.photo);
-        await axios.post(`/products/${data.product._id}/photo`, formData);
+        await axios.post(`/products/${data.productId}/photo`, formData);
       }
       dispatch(uiActions.formSuccess());
       if (currentPath.startsWith('/my-account/products')) {
@@ -67,10 +67,9 @@ export const editProduct = (productData, productId) => {
     };
     try {
       let editedProduct = null;
-      const { data: firstData } = await axios.patch(
-        `/products/${productId}/seller`,
-        correctProduct,
-      );
+      const { data: firstData } = await axios.patch(`/products/${productId}`, {
+        data: correctProduct,
+      });
       editedProduct = firstData.product;
       if (productData.photo) {
         if (productData.photo === 'DELETED') {

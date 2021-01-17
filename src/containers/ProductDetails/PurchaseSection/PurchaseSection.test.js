@@ -21,8 +21,8 @@ const createStore = (cart, isCartLoading = false) =>
 const defaultProps = {
   productId: 'productId',
   onSetModal: jest.fn(),
-  userProfile: { _id: '987' },
-  productSellerId: '123',
+  userProfile: { username: 'user2' },
+  productSellerusername: 'user1',
   productQuantity: 5,
 };
 

@@ -94,7 +94,7 @@ const ProductDetails = (props) => {
       );
     }
 
-    const userIsOwner = userProfile?._id === seller._id;
+    const userIsOwner = userProfile?.username === seller.username;
 
     let editProductBtn = null;
     let deleteProductBtn = null;
@@ -159,7 +159,7 @@ const ProductDetails = (props) => {
               <PurchaseSection
                 productId={productId}
                 productQuantity={quantity}
-                productSellerId={seller._id}
+                productSellerUsername={seller.username}
                 onSetModal={onSetModal}
                 userProfile={userProfile}
               />

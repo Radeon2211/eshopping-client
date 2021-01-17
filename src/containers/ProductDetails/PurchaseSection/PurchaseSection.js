@@ -11,7 +11,7 @@ import { GreenText, GrayText } from '../../../styled/components';
 import Heading from '../../../components/UI/Heading/Heading';
 
 const PurchaseSection = (props) => {
-  const { productId, productQuantity, productSellerId, onSetModal, userProfile } = props;
+  const { productId, productQuantity, productSellerUsername, onSetModal, userProfile } = props;
 
   const history = useHistory();
 
@@ -91,7 +91,7 @@ const PurchaseSection = (props) => {
     </>
   );
 
-  if (userProfile?._id !== productSellerId) {
+  if (userProfile?.username !== productSellerUsername) {
     let givenProductInCart = null;
     if (cart) {
       givenProductInCart = cart.find((item) => item.product._id === productId);
@@ -143,14 +143,14 @@ const PurchaseSection = (props) => {
 };
 
 PurchaseSection.defaultProps = {
-  productSellerId: undefined,
+  productSellerUsername: undefined,
   userProfile: null,
 };
 
 PurchaseSection.propTypes = {
   productId: PropTypes.string.isRequired,
   productQuantity: PropTypes.number.isRequired,
-  productSellerId: PropTypes.string,
+  productSellerUsername: PropTypes.string,
   onSetModal: PropTypes.func.isRequired,
   userProfile: PropTypes.oneOfType([PropTypes.object]),
 };
