@@ -22,7 +22,7 @@ const defaultProps = {
   productId: 'productId',
   onSetModal: jest.fn(),
   userProfile: { username: 'user2' },
-  productSellerusername: 'user1',
+  productSellerUsername: 'user1',
   productQuantity: 5,
 };
 
@@ -66,7 +66,7 @@ describe('<PurchaseSection />', () => {
     });
 
     it('Should NOT render quantity box and two buttons & should render <SC.InfoToSeller /> when seller and current user are the same', () => {
-      const wrapper = setUp({ userProfile: { _id: '123' } });
+      const wrapper = setUp({ userProfile: { username: 'user1' } });
       expect(wrapper.find('.choose-quantity-box')).toHaveLength(0);
       expect(wrapper.find(Button)).toHaveLength(0);
       expect(wrapper.find('[data-test="info-to-seller"]').length).toBeGreaterThan(0);

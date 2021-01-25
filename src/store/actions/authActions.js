@@ -42,7 +42,7 @@ export const registerUser = (creds) => {
     delete correctCreds.phoneNumber;
     delete correctCreds.phonePrefix;
     try {
-      const { data } = await axios.post('/users', { data: correctCreds });
+      const { data } = await axios.post('/users', correctCreds);
       dispatch(setProfile(data.user));
       dispatch(uiActions.setAndDeleteMessage('Your account has been created successfully!'));
       dispatch(uiActions.formSuccess());
@@ -57,7 +57,7 @@ export const loginUser = (creds) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
     try {
-      const { data } = await axios.post('/users/login', { data: creds });
+      const { data } = await axios.post('/users/login', creds);
       dispatch(setProfile(data.user));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
       dispatch(uiActions.formSuccess());
@@ -111,7 +111,7 @@ export const deleteAccount = (creds, history) => {
     dispatch(uiActions.formStart());
     try {
       const { username } = getState().auth.profile;
-      await axios.delete('/users/me', { data: creds });
+      await axios.delete('/users/me', creds);
       dispatch(setProfile(null));
       dispatch(
         uiActions.setAndDeleteMessage(`Your account has been deleted. Goodbye ${username}!`),

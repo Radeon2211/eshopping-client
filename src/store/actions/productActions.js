@@ -35,7 +35,7 @@ export const addProduct = (product, currentPath) => {
       photo: undefined,
     };
     try {
-      const { data } = await axios.post('/products', { data: correctProduct });
+      const { data } = await axios.post('/products', correctProduct);
       if (product.photo) {
         const formData = new FormData();
         formData.append('photo', product.photo);
@@ -67,9 +67,7 @@ export const editProduct = (productData, productId) => {
     };
     try {
       let editedProduct = null;
-      const { data: firstData } = await axios.patch(`/products/${productId}`, {
-        data: correctProduct,
-      });
+      const { data: firstData } = await axios.patch(`/products/${productId}`, correctProduct);
       editedProduct = firstData.product;
       if (productData.photo) {
         if (productData.photo === 'DELETED') {
