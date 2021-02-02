@@ -23,11 +23,11 @@ const SingleInfo = (props) => {
       <FlexWrapper direction="column" spacing="level1">
         <UserDataValue>
           Email:
-          {content.includes('email') ? ' visible' : ' hidden'}
+          {content.email ? ' visible' : ' hidden'}
         </UserDataValue>
         <UserDataValue>
           Phone number:
-          {content.includes('phone') ? ' visible' : ' hidden'}
+          {content.phone ? ' visible' : ' hidden'}
         </UserDataValue>
       </FlexWrapper>
     );

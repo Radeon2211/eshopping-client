@@ -64,13 +64,13 @@ describe('<SingleInfo />', () => {
     });
 
     it('Should render contacts with all visible', () => {
-      const wrapper = setUp(singleInfoNames.CONTACTS, ['email', 'phone']);
+      const wrapper = setUp(singleInfoNames.CONTACTS, { email: true, phone: true });
       expect(wrapper.find(UserDataValue).at(0).text()).toEqual('Email: visible');
       expect(wrapper.find(UserDataValue).at(1).text()).toEqual('Phone number: visible');
     });
 
     it('Should render contacts with all hidden', () => {
-      const wrapper = setUp(singleInfoNames.CONTACTS, []);
+      const wrapper = setUp(singleInfoNames.CONTACTS, { email: false, phone: false });
       expect(wrapper.find(UserDataValue).at(0).text()).toEqual('Email: hidden');
       expect(wrapper.find(UserDataValue).at(1).text()).toEqual('Phone number: hidden');
     });

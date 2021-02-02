@@ -24,14 +24,15 @@ const ChangeContacts = () => {
   return (
     <Formik
       initialValues={{
-        hideEmail: !userProfile.contacts.includes('email'),
-        hidePhone: !userProfile.contacts.includes('phone'),
+        hideEmail: !userProfile.contacts.email,
+        hidePhone: !userProfile.contacts.phone,
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        const contacts = [];
-        if (!data.hideEmail) contacts.push('email');
-        if (!data.hidePhone) contacts.push('phone');
+        const contacts = {
+          email: !data.hideEmail,
+          phone: !data.hidePhone,
+        };
         const correctData = { contacts };
         onUpdateUser(correctData, 'Contacts have been changed successfully');
       }}

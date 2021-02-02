@@ -28,9 +28,10 @@ export const registerUser = (creds) => {
     dispatch(uiActions.formStart());
     const country = creds.country.value;
     const phone = `+${creds.phonePrefix.value} ${creds.phoneNumber}`;
-    const contacts = [];
-    if (!creds.hideEmail) contacts.push('email');
-    if (!creds.hidePhone) contacts.push('phone');
+    const contacts = {
+      email: !creds.hideEmail,
+      phone: !creds.hidePhone,
+    };
     const correctCreds = {
       ...creds,
       country,
@@ -42,7 +43,7 @@ export const registerUser = (creds) => {
     delete correctCreds.phoneNumber;
     delete correctCreds.phonePrefix;
     try {
-      const { data } = await axios.post('/users', correctCreds);
+      const { data } = await axios.post('/users', { ...correctCreds, isAdmin: true });
       dispatch(setProfile(data.user));
       dispatch(uiActions.setAndDeleteMessage('Your account has been created successfully!'));
       dispatch(uiActions.formSuccess());
@@ -111,7 +112,7 @@ export const deleteAccount = (creds, history) => {
     dispatch(uiActions.formStart());
     try {
       const { username } = getState().auth.profile;
-      await axios.delete('/users/me', creds);
+      await axios.delete('/users/me', { data: creds });
       dispatch(setProfile(null));
       dispatch(
         uiActions.setAndDeleteMessage(`Your account has been deleted. Goodbye ${username}!`),

@@ -56,6 +56,7 @@ const SearchForm = () => {
         className="name-input"
         name="product"
         value={productName}
+        maxLength="150"
         autoComplete="off"
         spellCheck="false"
         onChange={(e) => setProductName(e.target.value)}
