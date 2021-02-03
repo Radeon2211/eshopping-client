@@ -164,3 +164,37 @@ export const fetchOtherUser = (username) => {
     }
   };
 };
+
+export const addAdmin = (email) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      await axios.patch('/users/add-admin', { email });
+      dispatch(uiActions.formSuccess());
+      dispatch(uiActions.setAndDeleteMessage(`"${email}" has been made an admin successfully`));
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.setAndDeleteMessage(errorMessage));
+      dispatch(uiActions.formFail());
+    }
+  };
+};
+
+export const removeAdmin = (email) => {
+  return async (dispatch) => {
+    dispatch(uiActions.formStart());
+    try {
+      await axios.patch('/users/remove-admin', { email });
+      dispatch(uiActions.formSuccess());
+      dispatch(
+        uiActions.setAndDeleteMessage(
+          `Admin privileges have been revoked from "${email}" successfully`,
+        ),
+      );
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      dispatch(uiActions.setAndDeleteMessage(errorMessage));
+      dispatch(uiActions.formFail());
+    }
+  };
+};

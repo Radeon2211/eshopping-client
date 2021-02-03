@@ -12,6 +12,8 @@ import { backdropVariants, modalVariants } from '../../../shared/framer';
 import Signup from '../../ModalContents/Signup/Signup';
 import Login from '../../ModalContents/Login';
 import AddProduct from '../../ModalContents/AddProduct';
+import AddAdmin from '../../ModalContents/AddAdmin';
+import RemoveAdmin from '../../ModalContents/RemoveAdmin';
 import BuyProducts from '../../ModalContents/BuyProducts';
 import EditProduct from '../../ModalContents/EditProduct';
 import DeleteProduct from '../../ModalContents/DeleteProduct';
@@ -52,6 +54,9 @@ const Modal = () => {
   switch (modalContent) {
     case modalTypes.ADD_PRODUCT:
       modalContentNode = <AddProduct />;
+      break;
+    case modalTypes.ADD_ADMIN:
+      modalContentNode = <AddAdmin />;
       break;
     case modalTypes.ABOUT_WEBSITE:
       modalContentNode = <AboutWebsite />;
@@ -97,6 +102,9 @@ const Modal = () => {
       break;
     case modalTypes.LOGIN:
       modalContentNode = <Login />;
+      break;
+    case modalTypes.REMOVE_ADMIN:
+      modalContentNode = <RemoveAdmin />;
       break;
     case modalTypes.SIGNUP:
       modalContentNode = <Signup />;

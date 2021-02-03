@@ -8,6 +8,8 @@ export {
   updateUser,
   changeDeliveryAddress,
   deleteAccount,
+  addAdmin,
+  removeAdmin,
 } from './authActions';
 
 export {
