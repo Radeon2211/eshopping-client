@@ -69,7 +69,7 @@ describe('<ProductsAndFilters />', () => {
 
   describe('Check how paginations and controller render', () => {
     it('Should render everything', () => {
-      const store = createStore([{ _id: 'p1' }], 5);
+      const store = createStore([{ _id: 'p1', condition: 'new' }], 5);
       const wrapper = setUp(store);
       expect(wrapper.find(InputPagination)).toHaveLength(1);
       expect(wrapper.find(NumberPagination)).toHaveLength(1);
@@ -89,7 +89,7 @@ describe('<ProductsAndFilters />', () => {
 
   describe('Check how <Filters /> render', () => {
     it('Should render if products length is 1', () => {
-      const store = createStore([{ _id: 'p1' }], 1);
+      const store = createStore([{ _id: 'p1', condition: 'new' }], 1);
       const wrapper = setUp(store);
       expect(wrapper.find(Filters)).toHaveLength(1);
     });

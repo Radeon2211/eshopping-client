@@ -7,16 +7,12 @@ import { modalTypes } from '../../../shared/constants';
 import * as SC from './Modal.sc';
 import MyIcon from '../MyIcon';
 import LoadingOverlay from '../LoadingOverlay';
-import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
+import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
 import { backdropVariants, modalVariants } from '../../../shared/framer';
-import Signup from '../../ModalContents/Signup/Signup';
-import Login from '../../ModalContents/Login';
+import AboutWebsite from '../../ModalContents/AboutWebsite';
 import AddProduct from '../../ModalContents/AddProduct';
 import AddAdmin from '../../ModalContents/AddAdmin';
-import RemoveAdmin from '../../ModalContents/RemoveAdmin';
 import BuyProducts from '../../ModalContents/BuyProducts';
-import EditProduct from '../../ModalContents/EditProduct';
-import DeleteProduct from '../../ModalContents/DeleteProduct';
 import CartItemAdded from '../../ModalContents/CartItemAdded/CartItemAdded';
 import ChangeName from '../../ModalContents/ChangeName';
 import ChangeEmail from '../../ModalContents/ChangeEmail';
@@ -25,9 +21,16 @@ import ChangeAddress from '../../ModalContents/ChangeAddress';
 import ChangeContacts from '../../ModalContents/ChangeContacts';
 import ChangePassword from '../../ModalContents/ChangePassword';
 import ChangeDeliveryAddress from '../../ModalContents/ChangeDeliveryAddress';
-import DeleteAccount from '../../ModalContents/DeleteAccount';
-import AboutWebsite from '../../ModalContents/AboutWebsite';
 import ClearCart from '../../ModalContents/ClearCart';
+import DeleteAccount from '../../ModalContents/DeleteAccount';
+import DeleteProduct from '../../ModalContents/DeleteProduct';
+import EditProduct from '../../ModalContents/EditProduct';
+import Login from '../../ModalContents/Login';
+import RemoveAdmin from '../../ModalContents/RemoveAdmin';
+import ResetPassword from '../../ModalContents/ResetPassword';
+import PendingUserInfo from '../../ModalContents/PendingUserInfo';
+import Signup from '../../ModalContents/Signup/Signup';
+import SendVerificationLink from '../../ModalContents/SendVerificationLink';
 
 const Modal = () => {
   const history = useHistory();
@@ -106,8 +109,17 @@ const Modal = () => {
     case modalTypes.REMOVE_ADMIN:
       modalContentNode = <RemoveAdmin />;
       break;
+    case modalTypes.RESET_PASSWORD:
+      modalContentNode = <ResetPassword />;
+      break;
+    case modalTypes.PENDING_USER_INFO:
+      modalContentNode = <PendingUserInfo />;
+      break;
     case modalTypes.SIGNUP:
       modalContentNode = <Signup />;
+      break;
+    case modalTypes.SEND_VERIFICATION_LINK:
+      modalContentNode = <SendVerificationLink />;
       break;
     default:
       break;

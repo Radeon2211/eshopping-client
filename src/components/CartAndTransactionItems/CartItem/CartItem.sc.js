@@ -46,26 +46,12 @@ export const Wrapper = styled.div`
     display: flex;
   }
 
-  & .quantity-number {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-    margin-left: ${({ theme }) => theme.spacings.level1};
-  }
-
   & .price-box {
     align-items: flex-end;
     display: flex;
     flex-direction: column;
     height: ${({ theme }) => theme.spacings.level4};
     justify-content: center;
-  }
-
-  & .overall-price {
-    font-size: ${({ theme }) => theme.fontSizes.level5};
-  }
-
-  & .price-per-piece {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-    text-align: right;
   }
 
   & .remove-icon {

@@ -1,6 +1,6 @@
 import * as actionTypes from '../../actions/actionTypes';
 import authReducer, { initialState } from './authReducer';
-import { defaultDeliveryAddress } from '../../../shared/testUtility';
+import { defaultDeliveryAddress, defaultUserProfile } from '../../../shared/testUtility';
 
 describe('Auth reducer', () => {
   it('Should return default state', () => {
@@ -8,18 +8,14 @@ describe('Auth reducer', () => {
   });
 
   it('Should return new state after SET_PROFILE', () => {
-    const userProfile = {
-      username: 'Test username',
-      ...defaultDeliveryAddress,
-    };
     expect(
       authReducer(undefined, {
         type: actionTypes.SET_PROFILE,
-        profile: userProfile,
+        profile: defaultUserProfile,
       }),
     ).toEqual({
       ...initialState,
-      profile: userProfile,
+      profile: defaultUserProfile,
       deliveryAddress: defaultDeliveryAddress,
     });
   });

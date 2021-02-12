@@ -4,11 +4,17 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
-import { inputKinds } from '../../shared/constants';
+import PlainText from '../UI/PlainText';
+import { inputKinds, modalTypes } from '../../shared/constants';
+import { GreenText } from '../../styled/components';
 
 const Login = () => {
   const dispatch = useDispatch();
   const onLoginUser = useCallback((creds) => dispatch(actions.loginUser(creds)), [dispatch]);
+  const onSetModal = useCallback(
+    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
+    [dispatch],
+  );
 
   return (
     <Formik
@@ -30,6 +36,7 @@ const Login = () => {
               id: 'email',
               placeholder: 'Your email address',
               autoComplete: 'email',
+              autoFocus: true,
             }}
             label="Email"
           />
@@ -44,6 +51,11 @@ const Login = () => {
             }}
             label="Password"
           />
+          <PlainText size="1" mgBottom="3">
+            <GreenText onClick={() => onSetModal(true, modalTypes.RESET_PASSWORD)}>
+              Forgot password
+            </GreenText>
+          </PlainText>
         </Form>
       )}
     </Formik>

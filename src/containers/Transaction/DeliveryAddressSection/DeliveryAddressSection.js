@@ -19,7 +19,7 @@ const DeliveryAddressSection = () => {
 
   return (
     <PlainPanel>
-      <FlexWrapper direction="column" align="start">
+      <FlexWrapper direction="column" align="start" spacing="3">
         <Heading variant="h4">Delivery address</Heading>
         <DeliveryAddress data={deliveryAddress} />
         <Button clicked={() => onSetModal(true, modalTypes.CHANGE_DELIVERY_ADDRESS)}>

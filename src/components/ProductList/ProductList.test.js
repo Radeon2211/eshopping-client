@@ -60,7 +60,9 @@ describe('<ProductItem />', () => {
     });
 
     it('Should render one <ProductItem />', () => {
-      const props = createProps(false, [{ _id: '123', name: 'testName', price: 2, photo: false }]);
+      const props = createProps(false, [
+        { _id: '123', name: 'testName', price: 2, photo: false, condition: 'new' },
+      ]);
       const wrapper = setUp(props);
       expect(wrapper.find(ProductItem)).toHaveLength(1);
     });

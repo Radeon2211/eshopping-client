@@ -31,11 +31,6 @@ export const Checkboxes = styled.div`
     margin-bottom: ${({ theme }) => theme.spacings.level1};
   }
 
-  & .label {
-    display: inline-block;
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-  }
-
   @media only screen and (max-width: 56.25em) {
     & > *:not(:last-child) {
       margin-bottom: calc(1.5 * ${({ theme }) => theme.spacings.level2});
@@ -58,7 +53,7 @@ export const CheckboxBox = styled.div`
   & > label {
     cursor: pointer;
     font-size: ${({ theme }) => theme.fontSizes.level2};
-    line-height: 1;
+    line-height: ${({ theme }) => theme.lineHeights.level1};
     padding: 0.2rem ${({ theme }) => theme.spacings.level1};
   }
 

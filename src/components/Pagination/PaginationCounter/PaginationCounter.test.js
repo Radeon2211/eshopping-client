@@ -3,7 +3,8 @@ import { mount } from 'enzyme';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
-import PaginationCounter, { SC } from './PaginationCounter';
+import PaginationCounter from './PaginationCounter';
+import PlainText from '../../UI/PlainText';
 import { checkProps, historyPageNum } from '../../../shared/testUtility';
 import { listItemTypes } from '../../../shared/constants';
 
@@ -39,31 +40,31 @@ describe('<PaginationCounter />', () => {
       const props = createProps(5, 2);
       const history = historyPageNum(1);
       const wrapper = setUp(props, history);
-      expect(wrapper.find(SC.Wrapper).text()).toEqual('1 - 2 of 5 products');
+      expect(wrapper.find(PlainText).text()).toEqual('1 - 2 of 5 products');
     });
     it('Should be 3 - 4, 5', () => {
       const props = createProps(5, 2);
       const history = historyPageNum(2);
       const wrapper = setUp(props, history);
-      expect(wrapper.find(SC.Wrapper).text()).toEqual('3 - 4 of 5 products');
+      expect(wrapper.find(PlainText).text()).toEqual('3 - 4 of 5 products');
     });
     it('Should be 5 - 7, 7', () => {
       const props = createProps(7, 4);
       const history = historyPageNum(2);
       const wrapper = setUp(props, history);
-      expect(wrapper.find(SC.Wrapper).text()).toEqual('5 - 7 of 7 products');
+      expect(wrapper.find(PlainText).text()).toEqual('5 - 7 of 7 products');
     });
     it('Should be 1 - 1, 10', () => {
       const props = createProps(10, 1);
       const history = historyPageNum(1);
       const wrapper = setUp(props, history);
-      expect(wrapper.find(SC.Wrapper).text()).toEqual('1 - 1 of 10 products');
+      expect(wrapper.find(PlainText).text()).toEqual('1 - 1 of 10 products');
     });
     it('Should be 1 - 1, 10', () => {
       const props = createProps(10, 1);
       const history = historyPageNum(10);
       const wrapper = setUp(props, history);
-      expect(wrapper.find(SC.Wrapper).text()).toEqual('10 - 10 of 10 products');
+      expect(wrapper.find(PlainText).text()).toEqual('10 - 10 of 10 products');
     });
   });
 });

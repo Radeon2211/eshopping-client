@@ -23,10 +23,10 @@ const DeleteProduct = () => {
 
   return (
     <>
-      <Heading variant="h4" mgBottom="level3" lineHeight="medium" align="center">
+      <Heading variant="h4" mgBottom="3" lineHeight="4" align="center">
         Are you sure to delete &quot;{productDetails?.name}&quot;?
       </Heading>
-      <FlexWrapper justify="center">
+      <FlexWrapper justify="center" spacing="3">
         <Button clicked={() => onSetModal(false)}>Cancel</Button>
         <Button filled color="red" clicked={() => onDeleteProduct(productDetails?._id, history)}>
           Delete

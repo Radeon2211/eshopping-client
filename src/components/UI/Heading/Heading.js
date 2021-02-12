@@ -9,8 +9,8 @@ const Heading = (props) => {
 
 Heading.defaultProps = {
   align: 'left',
-  mgBottom: '0',
-  mgTop: '0',
+  mgBottom: '',
+  mgTop: '',
   lineHeight: '',
 };
 

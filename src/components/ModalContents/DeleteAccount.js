@@ -41,6 +41,7 @@ const DeleteAccount = () => {
               id: 'currentPassword',
               placeholder: 'Your current password',
               autoComplete: 'off',
+              autoFocus: true,
             }}
             label="Current password"
           />

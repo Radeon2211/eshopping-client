@@ -32,6 +32,7 @@ describe('<Input />', () => {
       };
       expect(checkProps(Input, expectedProps)).toBeUndefined();
     });
+
     it('Should throw a warning', () => {
       const expectedProps = {};
       expect(checkProps(Input, expectedProps)).not.toBeNull();
@@ -53,16 +54,19 @@ describe('<Input />', () => {
       const wrapper = setUp(props);
       expect(wrapper.find(SC.Input)).toHaveLength(1);
     });
+
     it('Should render <Textarea />', () => {
       const props = createProps(inputKinds.TEXTAREA);
       const wrapper = setUp(props);
       expect(wrapper.find(Textarea)).toHaveLength(1);
     });
+
     it('Should render <Select />', () => {
       const props = createProps(inputKinds.SELECT);
       const wrapper = setUp(props);
       expect(wrapper.find(Select)).toHaveLength(1);
     });
+
     it('Should render <SC.RadioWrapper />', () => {
       const props = createProps(inputKinds.RADIO, {
         options: [
@@ -75,39 +79,11 @@ describe('<Input />', () => {
       const wrapper = setUp(props);
       expect(wrapper.find(SC.RadioWrapper)).toHaveLength(1);
     });
+
     it('Should render <SC.Input />', () => {
       const props = createProps('incorrectKind');
       const wrapper = setUp(props);
       expect(wrapper.find(SC.Input)).toHaveLength(1);
-    });
-  });
-
-  describe('Complete props', () => {
-    it('Should render caption', () => {
-      const props = {
-        kind: 'input',
-        config: {
-          name: 'testName',
-        },
-        label: 'testLabel',
-        captionText: 'testCaptionText',
-      };
-      const wrapper = setUp(props);
-      expect(wrapper.find('.caption')).toHaveLength(1);
-    });
-  });
-
-  describe('Incomplete props', () => {
-    it('Should NOT render caption', () => {
-      const props = {
-        kind: 'input',
-        config: {
-          name: 'testName',
-        },
-        label: 'testLabel',
-      };
-      const wrapper = setUp(props);
-      expect(wrapper.find('.caption')).toHaveLength(0);
     });
   });
 });

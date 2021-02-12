@@ -102,6 +102,7 @@ const ChangeDeliveryAddress = () => {
                 id: 'firstName',
                 placeholder: 'Your first name',
                 autoComplete: 'given-name',
+                autoFocus: true,
                 onInput: setFieldTouched.bind(this, 'firstName', true, true),
               }}
               label="First name"

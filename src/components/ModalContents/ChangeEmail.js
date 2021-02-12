@@ -46,6 +46,7 @@ const ChangeEmail = () => {
               id: 'email',
               placeholder: 'Your new email',
               autoComplete: 'email',
+              autoFocus: true,
               onInput: setFieldTouched.bind(this, 'email', true, true),
             }}
             isValid={!errors.email && userProfile.email !== values.email}

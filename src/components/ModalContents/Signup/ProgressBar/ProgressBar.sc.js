@@ -26,11 +26,6 @@ export const Wrapper = styled.div`
     color: #000;
   }
 
-  .step-number {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    line-height: 1;
-  }
-
   .step-line {
     align-self: center;
     background-color: ${({ theme }) => theme.colors.light2};

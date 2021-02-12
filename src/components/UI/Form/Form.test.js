@@ -65,15 +65,15 @@ describe('<Form />', () => {
     });
 
     it('Should render cancel button wrapper', () => {
-      expect(wrapper.find('.cancel-button-box')).toHaveLength(1);
+      expect(wrapper.find('[data-test="cancel-btn-wrapper"]').length).toBeGreaterThan(0);
     });
 
     it('Should render error', () => {
-      expect(wrapper.find('.error')).toHaveLength(1);
+      expect(wrapper.find('[data-test="error"]').length).toBeGreaterThan(0);
     });
 
     it('Should render buttons wrapper', () => {
-      expect(wrapper.find('.buttons-box')).toHaveLength(1);
+      expect(wrapper.find('[data-test="buttons-wrapper"]').length).toBeGreaterThan(0);
     });
   });
 
@@ -113,15 +113,15 @@ describe('<Form />', () => {
     });
 
     it('Should NOT render cancel button wrapper', () => {
-      expect(wrapper.find('.cancel-button-box')).toHaveLength(0);
+      expect(wrapper.find('[data-test="cancel-btn-wrapper"]')).toHaveLength(0);
     });
 
     it('Should NOT render error', () => {
-      expect(wrapper.find('.error')).toHaveLength(0);
+      expect(wrapper.find('[data-test="error"]')).toHaveLength(0);
     });
 
     it('Should NOT render buttons wrapper', () => {
-      expect(wrapper.find('.buttons-box')).toHaveLength(0);
+      expect(wrapper.find('[data-test="buttons-wrapper"]')).toHaveLength(0);
     });
   });
 });

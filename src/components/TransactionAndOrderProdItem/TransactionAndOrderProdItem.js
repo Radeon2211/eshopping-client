@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as SC from './TransactionAndOrderProdItem.sc';
+import theme from '../../styled/theme';
 import ProductThumbnail from '../UI/ProductThumbnail/ProductThumbnail';
-import { GrayText } from '../../styled/components';
+import PlainText from '../UI/PlainText';
 import { formatPrice, roundOverallPrice } from '../../shared/utility';
 
 const TransactionAndOrderProdItem = (props) => {
@@ -13,14 +14,14 @@ const TransactionAndOrderProdItem = (props) => {
   const roundedOverallPrice = roundOverallPrice(price * quantity);
 
   return (
-    <SC.Wrapper>
+    <SC.Wrapper spacing="2">
       <Link to={`/product/${productId}`} data-test="product-link">
         <ProductThumbnail
           photo={photo}
           alt={name}
           productId={productId}
-          width={5}
-          height={5}
+          width="5"
+          height="5"
           orderId={orderId}
         />
       </Link>
@@ -31,8 +32,12 @@ const TransactionAndOrderProdItem = (props) => {
           </Link>
         </span>
         <SC.Price justify="space-between" align="center" flex="1">
-          <GrayText className="price-per-piece">{`${quantity} x ${formatPrice(price)}`}</GrayText>
-          <span className="overall-price">{formatPrice(roundedOverallPrice)}</span>
+          <PlainText size="2" color={theme.colors.light4} data-test="price-per-piece">
+            {`${quantity} x ${formatPrice(price)}`}
+          </PlainText>
+          <PlainText size="4" data-test="overall-price">
+            {formatPrice(roundedOverallPrice)}
+          </PlainText>
         </SC.Price>
       </SC.NameAndPrice>
     </SC.Wrapper>

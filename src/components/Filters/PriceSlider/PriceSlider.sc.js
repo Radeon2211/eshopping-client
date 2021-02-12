@@ -11,10 +11,6 @@ export const LabelAndInputs = styled.div`
   margin-bottom: ${({ theme }) => theme.spacings.level1};
   padding-bottom: ${({ theme }) => theme.spacings.level1};
 
-  & .label {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-  }
-
   & .inputs-gap {
     margin: 0 ${({ theme }) => theme.spacings.level1};
   }
@@ -44,9 +40,9 @@ export const Slider = styled.div.attrs(({ positions: { left, right } }) => ({
       border: 0 none;
       border-radius: 0;
       cursor: pointer;
-      height: 2.4rem;
+      height: 2.6rem;
       pointer-events: all;
-      width: 2.4rem;
+      width: 2.6rem;
     }
   }
 
@@ -76,18 +72,18 @@ export const Slider = styled.div.attrs(({ positions: { left, right } }) => ({
     background-color: ${({ theme }) => theme.colors.light1};
     border: 2px solid ${({ theme }) => theme.colors.blue};
     border-radius: 50%;
-    height: 2.4rem;
+    height: 2.6rem;
     position: absolute;
-    width: 2.4rem;
+    width: 2.6rem;
     z-index: ${({ theme }) => theme.zIndexes.level3};
 
     &.left {
       left: ${({ left }) => left}%;
-      transform: translate(-${({ left }) => left}%, -0.7rem);
+      transform: translate(-${({ left }) => left}%, -0.8rem);
     }
 
     &.right {
-      transform: translate(${({ right }) => right}%, -0.7rem);
+      transform: translate(${({ right }) => right}%, -0.8rem);
       right: ${({ right }) => right}%;
     }
   }

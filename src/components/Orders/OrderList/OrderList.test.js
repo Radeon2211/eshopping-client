@@ -72,16 +72,14 @@ describe('<OrderList />', () => {
         expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
         const firstOrder = wrapper.find(SC.SingleOrder);
 
-        expect(firstOrder.find('[data-test="user-link"]').first().prop('to')).toEqual(
+        expect(firstOrder.find('[data-test="user-link"]').at(0).prop('to')).toEqual(
           '/user/sellerUser?p=1',
         );
-        expect(firstOrder.find('[data-test="user-link"]').first().text()).toEqual('sellerUser');
-        expect(firstOrder.find('.username').text()).toEqual('seller sellerUser');
-        expect(firstOrder.find('.date').text()).toEqual('8 Jan 2021, 12:08');
-        expect(firstOrder.find('[data-test="details-link"]').first().prop('to')).toEqual(
-          '/order/o1',
-        );
-        expect(firstOrder.find('.price').text()).toEqual('$50.49');
+        expect(firstOrder.find('[data-test="user-link"]').at(0).text()).toEqual('sellerUser');
+        expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual('seller sellerUser');
+        expect(firstOrder.find('[data-test="date"]').at(0).text()).toEqual('8 Jan 2021, 12:08');
+        expect(firstOrder.find('[data-test="details-link"]').at(0).prop('to')).toEqual('/order/o1');
+        expect(firstOrder.find('[data-test="overall-order-price"]').at(0).text()).toEqual('$50.49');
         expect(firstOrder.find(TransactionAndOrderProdItem)).toHaveLength(2);
       });
 
@@ -105,28 +103,28 @@ describe('<OrderList />', () => {
         const firstOrder = wrapper.find(SC.SingleOrder).at(0);
         const secondOrder = wrapper.find(SC.SingleOrder).at(1);
 
-        expect(firstOrder.find('[data-test="user-link"]').first().prop('to')).toEqual(
+        expect(firstOrder.find('[data-test="user-link"]').at(0).prop('to')).toEqual(
           '/user/buyerUser1?p=1',
         );
-        expect(firstOrder.find('[data-test="user-link"]').first().text()).toEqual('buyerUser1');
-        expect(firstOrder.find('.username').text()).toEqual('buyer buyerUser1');
-        expect(firstOrder.find('.date').text()).toEqual('8 Jan 2021, 00:08');
-        expect(firstOrder.find('[data-test="details-link"]').first().prop('to')).toEqual(
-          '/order/o1',
+        expect(firstOrder.find('[data-test="user-link"]').at(0).text()).toEqual('buyerUser1');
+        expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual('buyer buyerUser1');
+        expect(firstOrder.find('[data-test="date"]').at(0).text()).toEqual('8 Jan 2021, 00:08');
+        expect(firstOrder.find('[data-test="details-link"]').at(0).prop('to')).toEqual('/order/o1');
+        expect(firstOrder.find('[data-test="overall-order-price"]').at(0).text()).toEqual(
+          '$111.10',
         );
-        expect(firstOrder.find('.price').text()).toEqual('$111.10');
         expect(firstOrder.find(TransactionAndOrderProdItem)).toHaveLength(1);
 
         expect(secondOrder.find('[data-test="user-link"]').first().prop('to')).toEqual(
           '/user/buyerUser2?p=1',
         );
-        expect(secondOrder.find('[data-test="user-link"]').first().text()).toEqual('buyerUser2');
-        expect(secondOrder.find('.username').text()).toEqual('buyer buyerUser2');
-        expect(secondOrder.find('.date').text()).toEqual('9 Jan 2021, 03:08');
-        expect(secondOrder.find('[data-test="details-link"]').first().prop('to')).toEqual(
+        expect(secondOrder.find('[data-test="user-link"]').at(0).text()).toEqual('buyerUser2');
+        expect(secondOrder.find('[data-test="username"]').at(0).text()).toEqual('buyer buyerUser2');
+        expect(secondOrder.find('[data-test="date"]').at(0).text()).toEqual('9 Jan 2021, 03:08');
+        expect(secondOrder.find('[data-test="details-link"]').at(0).prop('to')).toEqual(
           '/order/o2',
         );
-        expect(secondOrder.find('.price').text()).toEqual('$40');
+        expect(secondOrder.find('[data-test="overall-order-price"]').at(0).text()).toEqual('$40');
         expect(secondOrder.find(TransactionAndOrderProdItem)).toHaveLength(1);
       });
     });
@@ -149,7 +147,9 @@ describe('<OrderList />', () => {
       const firstOrder = wrapper.find(SC.SingleOrder);
 
       expect(firstOrder.find('[data-test="user-link"]')).toHaveLength(0);
-      expect(firstOrder.find('.username').text()).toEqual('seller (account has been deleted)');
+      expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual(
+        'seller (account has been deleted)',
+      );
     });
 
     it(`Should render info that buyer's account has been deleted if type is SELL_HISTORY`, () => {
@@ -163,7 +163,9 @@ describe('<OrderList />', () => {
       const firstOrder = wrapper.find(SC.SingleOrder);
 
       expect(firstOrder.find('[data-test="user-link"]')).toHaveLength(0);
-      expect(firstOrder.find('.username').text()).toEqual('buyer (account has been deleted)');
+      expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual(
+        'buyer (account has been deleted)',
+      );
     });
   });
 });

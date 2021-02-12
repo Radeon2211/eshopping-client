@@ -67,7 +67,8 @@ describe('<OtherUser />', () => {
       const otherUser = { ...defaultOtherUser, email: 'test@email.com', phone: '123' };
       const wrapper = setUp(otherUser);
       expect(wrapper.find('[data-test="private-data"]')).toHaveLength(0);
-      expect(wrapper.find('.single-data')).toHaveLength(2);
+      expect(wrapper.find('[data-test="email-wrapper"]').length).toBeGreaterThan(0);
+      expect(wrapper.find('[data-test="phone-wrapper"]').length).toBeGreaterThan(0);
       expect(wrapper.find('[data-test="email-value"]').at(0).text()).toEqual('test@email.com');
       expect(wrapper.find('[data-test="phone-value"]').at(0).text()).toEqual('123');
     });
@@ -75,8 +76,17 @@ describe('<OtherUser />', () => {
     it('Should render only phone number if other user has only phone number set to public', () => {
       const otherUser = { ...defaultOtherUser, phone: '123' };
       const wrapper = setUp(otherUser);
-      expect(wrapper.find('.single-data')).toHaveLength(1);
+      expect(wrapper.find('[data-test="email-wrapper"]')).toHaveLength(0);
+      expect(wrapper.find('[data-test="phone-wrapper"]').length).toBeGreaterThan(0);
       expect(wrapper.find('[data-test="phone-value"]').at(0).text()).toEqual('123');
+    });
+
+    it('Should render only phone number if other user has only phone number set to public', () => {
+      const otherUser = { ...defaultOtherUser, email: 'email' };
+      const wrapper = setUp(otherUser);
+      expect(wrapper.find('[data-test="phone-wrapper"]')).toHaveLength(0);
+      expect(wrapper.find('[data-test="email-wrapper"]').length).toBeGreaterThan(0);
+      expect(wrapper.find('[data-test="email-value"]').at(0).text()).toEqual('email');
     });
   });
 

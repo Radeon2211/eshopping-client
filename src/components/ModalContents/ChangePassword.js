@@ -44,6 +44,7 @@ const ChangePassword = () => {
               id: 'currentPassword',
               placeholder: 'Your current password',
               autoComplete: 'off',
+              autoFocus: true,
             }}
             label="Current password"
           />

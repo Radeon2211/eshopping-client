@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from './Loader';
+import PlainText from './PlainText';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -17,11 +18,6 @@ SC.Wrapper = styled.div`
   top: 0;
   width: 100%;
   z-index: ${({ theme }) => theme.zIndexes.level1};
-
-  & .info {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-    margin-top: ${({ theme }) => theme.spacings.level2};
-  }
 `;
 
 const LoadingOverlay = (props) => {
@@ -38,7 +34,11 @@ const LoadingOverlay = (props) => {
 
   let info = false;
   if (isInfoVisible && !disableText) {
-    info = <span className="info">Just a second</span>;
+    info = (
+      <PlainText size="2" mgTop="2">
+        Just a second
+      </PlainText>
+    );
   }
 
   return (

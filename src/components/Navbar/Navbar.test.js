@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import Navbar from './Navbar';
 import LoggedInLinks from './LoggedInLinks/LoggedInLinks';
 import LoggedOutLinks from './LoggedOutLinks/LoggedOutLinks';
+import { defaultUserProfile } from '../../shared/testUtility';
 
 const setUp = (props = {}) => {
   return shallow(<Navbar {...props} />);
@@ -11,9 +12,7 @@ const setUp = (props = {}) => {
 describe('<Navbar />', () => {
   describe('User is logged in', () => {
     const props = {
-      userProfile: {
-        username: 'UserName',
-      },
+      userProfile: defaultUserProfile,
     };
     const navbar = setUp(props);
     it('Should render one <LoggedInLinks />', () => {

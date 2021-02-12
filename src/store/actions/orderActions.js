@@ -24,8 +24,8 @@ export const setOrderDetails = (orderDetails) => ({
 
 export const fetchOrders = (queryStrings, type) => {
   return async (dispatch) => {
-    dispatch(uiActions.dataStart());
     try {
+      dispatch(uiActions.dataStart());
       const parsedQueryParams = queryString.parse(queryStrings);
       const { p: pageNumber } = parsedQueryParams;
 
@@ -55,8 +55,8 @@ export const fetchOrders = (queryStrings, type) => {
 
 export const fetchOrderDetails = (orderId) => {
   return async (dispatch) => {
-    dispatch(uiActions.dataStart());
     try {
+      dispatch(uiActions.dataStart());
       const { data } = await axios.get(`/orders/${orderId}`);
       dispatch(setOrderDetails(data.order));
       dispatch(uiActions.dataEnd());

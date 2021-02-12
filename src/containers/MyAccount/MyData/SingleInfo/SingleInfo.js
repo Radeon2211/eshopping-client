@@ -4,7 +4,7 @@ import Button from '../../../../components/UI/Button/Button';
 import Heading from '../../../../components/UI/Heading/Heading';
 import { singleInfoNames } from '../../../../shared/constants';
 import FlexWrapper from '../../../../components/UI/FlexWrapper';
-import { UserDataValue } from '../../../../styled/components';
+import PlainText from '../../../../components/UI/PlainText';
 
 const SingleInfo = (props) => {
   const { name, content, clickHandler } = props;
@@ -12,27 +12,33 @@ const SingleInfo = (props) => {
   let contentNode = '';
   if (name === singleInfoNames.ADDRESS) {
     contentNode = (
-      <FlexWrapper direction="column" spacing="level1">
+      <FlexWrapper direction="column" spacing="1">
         {content.map((value, idx) => (
-          <UserDataValue key={idx}>{value}</UserDataValue>
+          <PlainText key={idx} size="3" wordBreak="break-all">
+            {value}
+          </PlainText>
         ))}
       </FlexWrapper>
     );
   } else if (name === singleInfoNames.CONTACTS) {
     contentNode = (
-      <FlexWrapper direction="column" spacing="level1">
-        <UserDataValue>
+      <FlexWrapper direction="column" spacing="1">
+        <PlainText size="3" wordBreak="break-all">
           Email:
           {content.email ? ' visible' : ' hidden'}
-        </UserDataValue>
-        <UserDataValue>
+        </PlainText>
+        <PlainText size="3" wordBreak="break-all">
           Phone number:
           {content.phone ? ' visible' : ' hidden'}
-        </UserDataValue>
+        </PlainText>
       </FlexWrapper>
     );
   } else {
-    contentNode = <UserDataValue>{content}</UserDataValue>;
+    contentNode = (
+      <PlainText size="3" wordBreak="break-all">
+        {content}
+      </PlainText>
+    );
   }
 
   let button = null;
@@ -41,7 +47,7 @@ const SingleInfo = (props) => {
   }
 
   return (
-    <FlexWrapper direction="column" spacing="level2" align="start">
+    <FlexWrapper direction="column" spacing="2" align="start">
       <Heading variant="h4" data-test="name">
         {name}
       </Heading>

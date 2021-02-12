@@ -5,8 +5,9 @@ import { useLastLocation } from 'react-router-last-location';
 import { useHistory, Link } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
 import MyIcon from '../../UI/MyIcon';
+import PlainText from '../../UI/PlainText';
 import NumberInput from '../../UI/NumberInput';
-import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
+import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
 import { historyActions } from '../../../shared/constants';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
 
@@ -97,8 +98,12 @@ const InputPagination = (props) => {
         <form onSubmit={formSubmitHandle} className="form-number">
           <NumberInput name="page" size="small" changed={inputChangeHandle} value={inputValue} />
         </form>
-        <span className="of">of</span>
-        <span className="of">{numberOfPages}</span>
+        <PlainText size="3" mgLeft="1" mgRight="1">
+          of
+        </PlainText>
+        <PlainText size="3" mgLeft="1" mgRight="1">
+          {numberOfPages}
+        </PlainText>
         <Link
           to={`${pathname}?${queryParamsNext}`}
           className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}

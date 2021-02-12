@@ -9,12 +9,12 @@ import { modalTypes } from '../../../../shared/constants';
 import * as SC from './Dropdown.sc';
 import { dropdownVariants } from '../../../../shared/framer';
 import MyIcon from '../../../UI/MyIcon';
-import { ReactComponent as AddProductIcon } from '../../../../images/SVG/add-product.svg';
-import { ReactComponent as MyAccountIcon } from '../../../../images/SVG/my-account.svg';
-import { ReactComponent as MyOffersIcon } from '../../../../images/SVG/my-offers.svg';
-import { ReactComponent as PlacedOrdersIcon } from '../../../../images/SVG/placed-orders.svg';
-import { ReactComponent as SellHistoryIcon } from '../../../../images/SVG/sell-history.svg';
-import { ReactComponent as LogOutIcon } from '../../../../images/SVG/log-out.svg';
+import { ReactComponent as AddProductIcon } from '../../../../images/icons/add-product.svg';
+import { ReactComponent as MyAccountIcon } from '../../../../images/icons/my-account.svg';
+import { ReactComponent as MyOffersIcon } from '../../../../images/icons/my-offers.svg';
+import { ReactComponent as PlacedOrdersIcon } from '../../../../images/icons/placed-orders.svg';
+import { ReactComponent as SellHistoryIcon } from '../../../../images/icons/sell-history.svg';
+import { ReactComponent as LogOutIcon } from '../../../../images/icons/log-out.svg';
 
 const Dropdown = (props) => {
   const { isVisible, closed } = props;

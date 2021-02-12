@@ -67,6 +67,7 @@ const ChangePhoneNumber = () => {
                 id: 'phoneNumber',
                 placeholder: 'Your phone number',
                 autoComplete: 'tel-national',
+                autoFocus: true,
                 onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
               }}
               label="Phone number"

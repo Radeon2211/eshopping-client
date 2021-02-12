@@ -8,15 +8,16 @@ import * as actions from '../../store/actions/indexActions';
 import * as SC from './ProductDetails.sc';
 import Loader from '../../components/UI/Loader';
 import PlainPanel from '../../components/UI/Panels/PlainPanel';
+import PlainText from '../../components/UI/PlainText';
 import Heading from '../../components/UI/Heading/Heading';
 import SideBySide from '../../components/UI/SideBySide';
 import PurchaseSection from './PurchaseSection/PurchaseSection';
 import Button from '../../components/UI/Button/Button';
 import noPhoto from '../../images/no-photo.png';
-import { baseURL } from '../../axios';
-import { GrayText, GreenText } from '../../styled/components';
+import { GreenText } from '../../styled/components';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import { formatPrice } from '../../shared/utility';
+import theme from '../../styled/theme';
 
 const ProductDetails = (props) => {
   const {
@@ -48,7 +49,7 @@ const ProductDetails = (props) => {
   let details = <Loader align="center" />;
   if (productDetails === null) {
     details = (
-      <Heading variant="h4" align="center" data-test="not-found">
+      <Heading variant="h4" align="center" lineHeight="4" data-test="not-found">
         Such product does not exist or has already been sold
       </Heading>
     );
@@ -71,25 +72,27 @@ const ProductDetails = (props) => {
     let quantitySoldNode = null;
     if (quantitySold >= 1) {
       quantitySoldNode = (
-        <GrayText className="quantity-sold">
+        <PlainText size="2" mgBottom="3" color={theme.colors.light4} data-test="quantity-sold">
           {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought {quantitySold}{' '}
           {quantitySold === 1 ? 'unit' : 'units'}
-        </GrayText>
+        </PlainText>
       );
     }
 
     let descriptionSection = (
-      <Heading variant="h4" mgTop="level3" data-test="no-description">
+      <Heading variant="h4" mgTop="3" data-test="no-description">
         This product has no description
       </Heading>
     );
     if (description) {
       descriptionSection = (
-        <section>
-          <Heading variant="h4" mgBottom="level2" mgTop="level3">
+        <section data-test="description-section">
+          <Heading variant="h4" mgBottom="2" mgTop="3">
             Description
           </Heading>
-          <p className="description-content">{description}</p>
+          <PlainText size="3" lineHeight="5" data-test="description-content">
+            {description}
+          </PlainText>
         </section>
       );
     }
@@ -124,7 +127,7 @@ const ProductDetails = (props) => {
     let manageButtonsBox = null;
     if (deleteProductBtn || editProductBtn) {
       manageButtonsBox = (
-        <FlexWrapper mgTop="level5" justify="center">
+        <FlexWrapper mgTop="5" justify="center" spacing="3">
           {editProductBtn}
           {deleteProductBtn}
         </FlexWrapper>
@@ -137,24 +140,28 @@ const ProductDetails = (props) => {
           <SideBySide proportion={windowWidth <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
             <section className="photo-section">
               <img
-                src={photo ? `${baseURL}/products/${_id}/photo` : noPhoto}
+                src={photo ? `${process.env.REACT_APP_API_URL}/products/${_id}/photo` : noPhoto}
                 alt="product"
                 className="photo"
               />
             </section>
             <section className="data-section">
-              <Heading variant="h4">{name}</Heading>
-              <span className="seller">
-                <GrayText>from </GrayText>
+              <Heading variant="h4" data-test="name">
+                {name}
+              </Heading>
+              <PlainText size="2" mgTop="2" mgBottom="2">
+                <PlainText color={theme.colors.light4}>from&nbsp;</PlainText>
                 <Link to={`/user/${seller.username}?p=1`}>
-                  <GreenText>{seller.username}</GreenText>
+                  <GreenText data-test="seller-username">{seller.username}</GreenText>
                 </Link>
-              </span>
-              <span className="condition">
-                <GrayText>Condition: </GrayText>
-                {`${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
-              </span>
-              <span className="price">{formatPrice(price)}</span>
+              </PlainText>
+              <PlainText size="2" data-test="condition">
+                <PlainText color={theme.colors.light4}>Condition:</PlainText>
+                {` ${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
+              </PlainText>
+              <PlainText size="6" spacing="1px" mgTop="3" mgBottom="3" data-test="price">
+                {formatPrice(price)}
+              </PlainText>
               {quantitySoldNode}
               <PurchaseSection
                 productId={productId}

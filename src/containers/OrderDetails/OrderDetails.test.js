@@ -115,7 +115,7 @@ describe('<OrderDetails />', () => {
         expect(wrapper.find('[data-test="seller-phone"]').at(0).text()).toEqual('123');
 
         expect(wrapper.find(TransactionAndOrderProdItem)).toHaveLength(2);
-        expect(wrapper.find('.total-price-value').text()).toEqual('$111.10');
+        expect(wrapper.find('[data-test="overall-order-price"]').at(0).text()).toEqual('$111.10');
       });
     });
 

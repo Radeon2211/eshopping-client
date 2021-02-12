@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FlexWrapper from '../FlexWrapper';
-import { UserDataValue } from '../../../styled/components';
+import PlainText from '../PlainText';
 
 const DeliveryAddress = (props) => {
   const { data } = props;
@@ -10,9 +10,11 @@ const DeliveryAddress = (props) => {
   const rowValues = [`${firstName} ${lastName}`, street, `${zipCode} ${city}`, country, phone];
 
   return (
-    <FlexWrapper direction="column" spacing="level1">
+    <FlexWrapper direction="column" spacing="1">
       {rowValues.map((value, idx) => (
-        <UserDataValue key={idx}>{value}</UserDataValue>
+        <PlainText key={idx} size="3" wordBreak="break-all">
+          {value}
+        </PlainText>
       ))}
     </FlexWrapper>
   );

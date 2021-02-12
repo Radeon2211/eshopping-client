@@ -5,6 +5,8 @@ import * as SC from './UploadPhoto.sc';
 import { isValidFileType, calculateFileSize } from '../../shared/utility';
 import Button from '../UI/Button/Button';
 import FlexWrapper from '../UI/FlexWrapper';
+import PlainText from '../UI/PlainText';
+import theme from '../../styled/theme';
 
 const PRODUCT_PHOTO_MAX_SIZE = 6291456;
 const PRODUCT_PHOTO_MAX_SIZE_STRING = calculateFileSize(PRODUCT_PHOTO_MAX_SIZE);
@@ -39,11 +41,7 @@ const UploadPhoto = (props) => {
     }
 
     const file = files[0];
-    let fileName = file.name;
-    if (fileName.length > 30) {
-      fileName = `${fileName.slice(0, 25)}...${file.type.split('/')[1]}`;
-    }
-    setPhotoName(fileName);
+    setPhotoName(file.name);
     setPhotoSize(calculateFileSize(file.size));
 
     if (!isValidFileType(file.type)) {
@@ -68,21 +66,37 @@ const UploadPhoto = (props) => {
   };
 
   const defaultPreviewText = `Photo is optional. Max size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG`;
-  let preview = <SC.Preview>{defaultPreviewText}</SC.Preview>;
+  let preview = (
+    <PlainText size="2" mgTop="2">
+      {defaultPreviewText}
+    </PlainText>
+  );
   let deleteThisBtn = null;
   let deleteCurrentBtn = null;
   let errorNode = null;
 
   if (error) {
-    errorNode = <span className="error">{error}</span>;
+    errorNode = (
+      <PlainText size="1" mgTop="2" color={theme.colors.red}>
+        {error}
+      </PlainText>
+    );
   }
 
   if (photo || error) {
     preview = (
-      <SC.Preview>
-        <span className="file-data">Name: {photoName}</span>
-        <span className="file-data">Size: {photoSize}</span>
-      </SC.Preview>
+      <FlexWrapper mgTop="2" spacing="3">
+        <PlainText
+          size="1"
+          maxWidth="75%"
+          textOverflow="ellipsis"
+          whiteSpace="nowrap"
+          overflow="hidden"
+        >
+          Name: {photoName}
+        </PlainText>
+        <PlainText size="1">Size: {photoSize}</PlainText>
+      </FlexWrapper>
     );
     deleteThisBtn = (
       <Button color="red" clicked={resetState}>
@@ -100,8 +114,8 @@ const UploadPhoto = (props) => {
   }
 
   return (
-    <SC.Wrapper className="content">
-      <FlexWrapper>
+    <SC.Wrapper>
+      <FlexWrapper spacing="3">
         <label htmlFor="photo" className="label">
           <Button filled>Upload photo</Button>
         </label>

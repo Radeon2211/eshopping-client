@@ -2,9 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import theme from '../../../styled/theme';
 import * as SC from './ProductItem.sc';
+import PlainText from '../../UI/PlainText';
 import FlexWrapper from '../../UI/FlexWrapper';
-import { GrayText } from '../../../styled/components';
 import { formatPrice } from '../../../shared/utility';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
@@ -16,10 +17,10 @@ const ProductItem = (props) => {
   let conditionNode = null;
   if (condition !== 'not_applicable') {
     conditionNode = (
-      <span className="condition">
-        <GrayText>Condition: </GrayText>
-        {condition}
-      </span>
+      <PlainText size="1" mgTop="1" data-test="condition">
+        <PlainText color={theme.colors.light4}>Condition:</PlainText>
+        {` ${condition.slice(0, 1).toUpperCase()}${condition.slice(1)}`}
+      </PlainText>
     );
   }
 
@@ -27,21 +28,25 @@ const ProductItem = (props) => {
   if (buyerQuantity >= 1) {
     buyerQuantityNode = (
       <div className="buyer-quantity-box">
-        <GrayText className="buyer-quantity">
+        <PlainText size="1" color={theme.colors.light4} alignSelf="flex-end">
           {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought
-        </GrayText>
+        </PlainText>
       </div>
     );
   }
 
   return (
     <Link to={`/product/${_id}`}>
-      <SC.Wrapper>
-        <ProductThumbnail photo={photo} alt={name} productId={_id} width={13} height={15} />
-        <FlexWrapper direction="column" spacing="0">
-          <span className="name">{name}</span>
+      <SC.Wrapper spacing="3">
+        <ProductThumbnail photo={photo} alt={name} productId={_id} width="13" height="15" />
+        <FlexWrapper direction="column">
+          <PlainText size="3" data-test="name">
+            {name}
+          </PlainText>
           {conditionNode}
-          <span className="price">{formatPrice(price)}</span>
+          <PlainText size="5" mgTop="2" data-test="price">
+            {formatPrice(price)}
+          </PlainText>
           {buyerQuantityNode}
         </FlexWrapper>
       </SC.Wrapper>

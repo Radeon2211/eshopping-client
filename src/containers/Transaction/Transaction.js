@@ -43,7 +43,7 @@ const Transaction = () => {
       <>
         <Heading variant="h3">Transaction</Heading>
         <SideBySide proportion="3/1" makeVerticalWhen={1200}>
-          <FlexWrapper direction="column" align="stretch">
+          <FlexWrapper direction="column" align="stretch" spacing="3">
             <DeliveryAddressSection />
             <PlainPanel>
               <Heading variant="h4">Products</Heading>
@@ -51,7 +51,7 @@ const Transaction = () => {
             </PlainPanel>
           </FlexWrapper>
           <StickyPanel>
-            <FlexWrapper direction="column" spacing="level2">
+            <FlexWrapper direction="column" spacing="2">
               <ToPayInfo value={roundedToPayValue} />
               <Button filled clicked={() => onSetModal(true, modalTypes.BUY_PRODUCTS)}>
                 I buy and pay

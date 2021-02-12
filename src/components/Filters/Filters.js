@@ -7,12 +7,13 @@ import Select from 'react-select';
 import * as SC from './Filters.sc';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
 import PlainPanel from '../UI/Panels/PlainPanel';
+import PlainText from '../UI/PlainText';
 import Button from '../UI/Button/Button';
 import PriceSlider from './PriceSlider/PriceSlider';
 import { filtersActions, sortProductsOptions } from '../../shared/constants';
 import MyIcon from '../UI/MyIcon';
-import { ReactComponent as FiltersIcon } from '../../images/SVG/filters.svg';
-import { ReactComponent as ArrowIcon } from '../../images/SVG/arrow.svg';
+import { ReactComponent as FiltersIcon } from '../../images/icons/filters.svg';
+import { ReactComponent as ArrowIcon } from '../../images/icons/arrow.svg';
 
 const Filters = (props) => {
   const { isDataLoading } = props;
@@ -118,7 +119,7 @@ const Filters = (props) => {
       />
       <PriceSlider dispatchFilters={dispatchFilters} />
       <SC.Checkboxes>
-        <span className="label">Condition</span>
+        <PlainText size="3">Condition</PlainText>
         <SC.CheckboxBox>
           <input
             type="checkbox"

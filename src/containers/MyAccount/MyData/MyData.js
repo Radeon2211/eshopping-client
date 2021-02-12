@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import * as SC from './MyData.sc';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes, singleInfoNames } from '../../../shared/constants';
 import PlainPanel from '../../../components/UI/Panels/PlainPanel';
@@ -8,35 +8,11 @@ import FlexWrapper from '../../../components/UI/FlexWrapper';
 import Heading from '../../../components/UI/Heading/Heading';
 import SingleInfo from './SingleInfo/SingleInfo';
 import Button from '../../../components/UI/Button/Button';
+import PlainText from '../../../components/UI/PlainText';
 
-const SC = {};
-SC.Wrapper = styled.div`
-  display: grid;
-  grid-gap: ${({ theme }) => theme.spacings.level3};
-  grid-template-columns: repeat(3, 1fr);
+const MyData = (props) => {
+  const { history } = props;
 
-  & .change-passwd-btn {
-    grid-area: 3 / 2 / 3 / 3;
-  }
-
-  & .actions {
-    grid-column: 1 / -1;
-  }
-
-  @media only screen and (max-width: 37.5em) {
-    grid-template-columns: repeat(2, 1fr);
-
-    & .change-passwd-btn {
-      grid-area: 4 / 1 / 4 / 3;
-    }
-
-    & .actions > * {
-      flex-grow: 1;
-    }
-  }
-`;
-
-const MyData = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -45,7 +21,8 @@ const MyData = () => {
     [dispatch],
   );
 
-  let wrapperContent = null;
+  let dataAndActions = null;
+  let pendingUserContent = null;
   if (userProfile) {
     const {
       firstName,
@@ -58,18 +35,16 @@ const MyData = () => {
       country,
       phone,
       contacts,
+      status,
       isAdmin,
     } = userProfile;
+
+    const isAccountActive = status === 'active';
 
     let adminContent = null;
     if (isAdmin) {
       adminContent = (
-        <FlexWrapper
-          spacing="level3"
-          className="actions"
-          justify="center"
-          data-test="admin-content"
-        >
+        <FlexWrapper spacing="3" className="actions" justify="center" data-test="admin-content">
           <Button clicked={() => onSetModal(true, modalTypes.ADD_ADMIN)}>Add admin</Button>
           <Button color="red" clicked={() => onSetModal(true, modalTypes.REMOVE_ADMIN)}>
             Remove admin
@@ -78,43 +53,63 @@ const MyData = () => {
       );
     }
 
-    wrapperContent = (
+    let pendingUserActions = null;
+    if (!isAccountActive) {
+      pendingUserActions = (
+        <FlexWrapper
+          spacing="3"
+          justify="center"
+          className="actions"
+          data-test="pending-user-actions"
+        >
+          <Button clicked={() => onSetModal(true, modalTypes.SEND_VERIFICATION_LINK)}>
+            Send verification link
+          </Button>
+          <Button clicked={() => history.push('/logout')}>Logout</Button>
+        </FlexWrapper>
+      );
+    }
+
+    dataAndActions = (
       <>
+        <SingleInfo name={singleInfoNames.USERNAME} content={username} />
         <SingleInfo
           name={singleInfoNames.NAME}
           content={`${firstName} ${lastName}`}
-          clickHandler={() => onSetModal(true, modalTypes.CHANGE_NAME)}
+          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_NAME) : null}
         />
         <SingleInfo
           name={singleInfoNames.EMAIL}
           content={email}
-          clickHandler={() => onSetModal(true, modalTypes.CHANGE_EMAIL)}
-        />
-        <SingleInfo
-          name={singleInfoNames.PHONE_NUMBER}
-          content={phone}
-          clickHandler={() => onSetModal(true, modalTypes.CHANGE_PHONE_NUMBER)}
+          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_EMAIL) : null}
         />
         <SingleInfo
           name={singleInfoNames.ADDRESS}
           content={[street, `${zipCode} ${city}`, country]}
-          clickHandler={() => onSetModal(true, modalTypes.CHANGE_ADDRESS)}
+          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_ADDRESS) : null}
         />
         <SingleInfo
           name={singleInfoNames.CONTACTS}
           content={contacts}
-          clickHandler={() => onSetModal(true, modalTypes.CHANGE_CONTACTS)}
+          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_CONTACTS) : null}
         />
-        <SingleInfo name={singleInfoNames.USERNAME} content={username} />
-        <FlexWrapper
-          spacing="level3"
-          className="actions"
-          justify="center"
-          data-test="all-users-content"
-        >
-          <Button clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}>
-            Change password
-          </Button>
+        <SingleInfo
+          name={singleInfoNames.PHONE_NUMBER}
+          content={phone}
+          clickHandler={
+            isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_PHONE_NUMBER) : null
+          }
+        />
+        {pendingUserActions}
+        <FlexWrapper spacing="3" className="actions" justify="center">
+          {isAccountActive && (
+            <Button
+              clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}
+              data-test="change-password-btn"
+            >
+              Change password
+            </Button>
+          )}
           <Button color="red" clicked={() => onSetModal(true, modalTypes.DELETE_ACCOUNT)}>
             Delete account
           </Button>
@@ -122,14 +117,29 @@ const MyData = () => {
         {adminContent}
       </>
     );
+
+    if (!isAccountActive) {
+      pendingUserContent = (
+        <PlainPanel data-test="pending-user-content">
+          <PlainText size="3" lineHeight="5">
+            You need to activate your account to unlock all app functionalities. Verification link
+            is active for 10 minutes. You can resend it below. If you do not activate your account
+            within 1 hour, account will be deleted permanently.
+          </PlainText>
+        </PlainPanel>
+      );
+    }
   }
 
   return (
     <>
       <Heading variant="h3">My data</Heading>
-      <PlainPanel>
-        <SC.Wrapper>{wrapperContent}</SC.Wrapper>
-      </PlainPanel>
+      <FlexWrapper direction="column" spacing="3">
+        {pendingUserContent}
+        <PlainPanel>
+          <SC.Wrapper>{dataAndActions}</SC.Wrapper>
+        </PlainPanel>
+      </FlexWrapper>
     </>
   );
 };

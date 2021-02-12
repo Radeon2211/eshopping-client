@@ -1,18 +1,9 @@
 import React, { useCallback } from 'react';
-import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import Button from '../../UI/Button/Button';
-
-const SC = {};
-SC.Wrapper = styled.nav`
-  display: flex;
-
-  & > *:not(:last-child) {
-    margin-right: ${({ theme }) => theme.spacings.level3};
-  }
-`;
+import FlexWrapper from '../../UI/FlexWrapper';
 
 const SignedOutLinks = () => {
   const dispatch = useDispatch();
@@ -22,12 +13,12 @@ const SignedOutLinks = () => {
   );
 
   return (
-    <SC.Wrapper>
+    <FlexWrapper width="auto" spacing="3">
       <Button clicked={() => onSetModal(true, modalTypes.LOGIN)}>login</Button>
       <Button filled clicked={() => onSetModal(true, modalTypes.SIGNUP)}>
         signup
       </Button>
-    </SC.Wrapper>
+    </FlexWrapper>
   );
 };
 

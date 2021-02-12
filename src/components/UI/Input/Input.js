@@ -8,17 +8,12 @@ import * as SC from './Input.sc';
 import { inputKinds } from '../../../shared/constants';
 
 const Input = (props) => {
-  const { kind, config, label, isValid, isTouched, captionText } = props;
+  const { kind, config, label, isValid, isTouched } = props;
 
   let input = null;
   let valid = null;
   if (isValid !== undefined && isTouched) {
     valid = isValid ? 'valid' : 'invalid';
-  }
-
-  let caption = null;
-  if (captionText) {
-    caption = <span className="caption">{captionText}</span>;
   }
 
   switch (kind) {
@@ -75,7 +70,6 @@ const Input = (props) => {
     <SC.Wrapper className={valid} type={config.type}>
       <SC.Label htmlFor={config.id}>{label}</SC.Label>
       {input}
-      {caption}
     </SC.Wrapper>
   );
 };

@@ -60,7 +60,7 @@ const ProductsAndFilters = (props) => {
   }
 
   return (
-    <FlexWrapper direction="column" spacing="0">
+    <FlexWrapper direction="column" spacing="3">
       <SideBySide proportion="1/3" makeVerticalWhen={1200}>
         {filters}
         <PlainPanel>

@@ -7,13 +7,6 @@ export const Wrapper = styled.div`
   & .progress-bar-box {
     padding: 0 ${({ theme }) => theme.spacings.level3};
   }
-
-  & .help-info-box {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-    margin-bottom: ${({ theme }) => theme.spacings.level3};
-    padding: 0 ${({ theme }) => theme.spacings.level2};
-    text-align: center;
-  }
 `;
 
 export const Step = styled(motion.div)`

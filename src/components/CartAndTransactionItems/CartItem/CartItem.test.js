@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 import CartItem from './CartItem';
 import theme from '../../../styled/theme';
 import { checkProps, createCartItem } from '../../../shared/testUtility';
-import { baseURL } from '../../../axios';
 import noPhoto from '../../../images/no-photo.png';
 
 const mockStore = configureMockStore([thunk]);
@@ -61,18 +60,22 @@ describe('<CartItem />', () => {
           return link.prop('to') === '/product/p1';
         }),
       );
-      expect(wrapper.find('img').prop('src')).toEqual(`${baseURL}/products/p1/photo`);
+      expect(wrapper.find('img').prop('src')).toEqual(
+        `${process.env.REACT_APP_API_URL}/products/p1/photo`,
+      );
       expect(wrapper.find('.name').text()).toEqual('productName');
-      expect(wrapper.find('.quantity-number').text()).toEqual('of 6');
-      expect(wrapper.find('.overall-price').text()).toEqual('$1,499.90');
-      expect(wrapper.find('.price-per-piece').first().text()).toEqual('per piece $299.98');
+      expect(wrapper.find('[data-test="quantity"]').at(0).text()).toEqual('of 6');
+      expect(wrapper.find('[data-test="overall-price"]').at(0).text()).toEqual('$1,499.90');
+      expect(wrapper.find('[data-test="price-per-piece"]').at(0).text()).toEqual(
+        'per piece $299.98',
+      );
     });
 
     it('Should NOT render price per piece and should render default photo', () => {
       const data = createCartItem();
       const wrapper = setUp(data);
       expect(wrapper.find('img').prop('src')).toBe(noPhoto);
-      expect(wrapper.find('.price-per-piece')).toHaveLength(0);
+      expect(wrapper.find('[data-test="price-per-piece"]')).toHaveLength(0);
     });
   });
 });

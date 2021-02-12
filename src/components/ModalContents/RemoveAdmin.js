@@ -26,7 +26,13 @@ const RemoveAdmin = () => {
       }}
     >
       {({ dirty, errors, touched, isValid, setFieldTouched }) => (
-        <Form btnText="Remove" headingText="Remove admin" isValid={dirty && isValid} cancellable>
+        <Form
+          btnText="Remove"
+          btnColor="red"
+          headingText="Remove admin"
+          isValid={dirty && isValid}
+          cancellable
+        >
           <Input
             kind={inputKinds.INPUT}
             config={{
@@ -35,6 +41,7 @@ const RemoveAdmin = () => {
               id: 'email',
               placeholder: 'Email of the user whose admin rights you want to revoke',
               autoComplete: 'email',
+              autoFocus: true,
               onInput: setFieldTouched.bind(this, 'email', true, true),
             }}
             isValid={!errors.email}

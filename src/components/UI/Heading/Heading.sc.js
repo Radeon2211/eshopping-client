@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
-  margin-top: ${({ mgTop, theme }) => (mgTop ? theme.spacings[mgTop] : mgTop)};
-  margin-bottom: ${({ mgBottom, theme }) => (mgBottom ? theme.spacings[mgBottom] : mgBottom)};
+  margin-top: ${({ mgTop, theme }) => (mgTop ? theme.spacings[`level${mgTop}`] : '0')};
+  margin-bottom: ${({ mgBottom, theme }) => (mgBottom ? theme.spacings[`level${mgBottom}`] : '0')};
   text-align: ${({ align }) => align};
 
   ${({ variant, theme }) => {
@@ -20,7 +20,7 @@ const StyledHeading = styled.h1`
           font-size: 3.5rem;
           font-family: ${theme.fonts.heading};
           letter-spacing: 2px;
-          line-height: 1;
+          line-height: ${theme.lineHeights.level1};
           text-shadow: ${theme.shadows.level3};
         `;
       case 'h3':
@@ -28,34 +28,25 @@ const StyledHeading = styled.h1`
           font-size: 2.5rem;
           font-family: ${theme.fonts.heading};
           letter-spacing: 1px;
-          line-height: 1;
+          line-height: ${theme.lineHeights.level1};
           margin-bottom: ${theme.spacings.level3};
         `;
       case 'h4':
         return `
           font-size: ${theme.fontSizes.level4};
           letter-spacing: 1px;
-          line-height: 1;
+          line-height: ${theme.lineHeights.level1};
         `;
       default:
         return ``;
     }
   }}
 
-  ${({ lineHeight }) => {
-    if (lineHeight === 'small') {
+  ${({ lineHeight, theme }) => {
+    if (lineHeight) {
+      const level = `level${lineHeight}`;
       return `
-        line-height: 1.15;
-      `;
-    }
-    if (lineHeight === 'medium') {
-      return `
-        line-height: 1.3;
-      `;
-    }
-    if (lineHeight === 'big') {
-      return `
-        line-height: 1.45;
+        line-height: ${theme.lineHeights[level]};
       `;
     }
     return ``;

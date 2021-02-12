@@ -1,12 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
-import * as SC from './OtherUser.sc';
 import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader';
+import PlainText from '../../components/UI/PlainText';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { pages } from '../../shared/constants';
-import { BoldText } from '../../styled/components';
+import FlexWrapper from '../../components/UI/FlexWrapper';
 
 const OtherUser = (props) => {
   const {
@@ -55,7 +55,7 @@ const OtherUser = (props) => {
   let content = <Loader align="center" />;
   if (otherUser === null) {
     content = (
-      <Heading variant="h4" align="center" data-test="not-found">
+      <Heading variant="h4" align="center" lineHeight="4" data-test="not-found">
         Such user does not exist or problem during fetching occurred
       </Heading>
     );
@@ -63,32 +63,32 @@ const OtherUser = (props) => {
     const { username, email, phone } = otherUser;
 
     let contactData = (
-      <Heading variant="h4" mgBottom="level3" data-test="private-data">
+      <Heading variant="h4" mgBottom="3" data-test="private-data">
         This user has his contact data set to private
       </Heading>
     );
     if (email || phone) {
       contactData = (
-        <SC.ContactData>
+        <FlexWrapper wrap="wrap" mgBottom="3" spacing="3">
           {email && (
-            <div className="single-data">
-              <BoldText>Email:&nbsp;</BoldText>
+            <PlainText size="4" data-test="email-wrapper">
+              <PlainText weight="700">Email:&nbsp;</PlainText>
               <span data-test="email-value">{email}</span>
-            </div>
+            </PlainText>
           )}
           {phone && (
-            <div className="single-data">
-              <BoldText>Phone number:&nbsp;</BoldText>
+            <PlainText size="4" data-test="phone-wrapper">
+              <PlainText weight="700">Phone number:&nbsp;</PlainText>
               <span data-test="phone-value">{phone}</span>
-            </div>
+            </PlainText>
           )}
-        </SC.ContactData>
+        </FlexWrapper>
       );
     }
 
     content = (
       <>
-        <Heading variant="h3" mgBottom="level3" data-test="username">
+        <Heading variant="h3" mgBottom="3" data-test="username">
           {username}
         </Heading>
         {contactData}

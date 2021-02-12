@@ -18,8 +18,8 @@ export const setTransaction = (transaction) => ({
 
 export const fetchCart = () => {
   return async (dispatch) => {
-    dispatch(uiActions.tradeStart());
     try {
+      dispatch(uiActions.tradeStart());
       const { data } = await axios.get('/cart');
       dispatch(setCart(data.cart));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
@@ -35,8 +35,8 @@ export const fetchCart = () => {
 
 export const addCartItem = (item) => {
   return async (dispatch) => {
-    dispatch(uiActions.tradeStart());
     try {
+      dispatch(uiActions.tradeStart());
       const { data } = await axios.patch('/cart/add', item);
       dispatch(setCart(data.cart));
       dispatch(uiActions.setModal(true, modalTypes.CART_ITEM_ADDED));
@@ -52,8 +52,8 @@ export const addCartItem = (item) => {
 
 export const updateCartItem = (itemId, action, quantity) => {
   return async (dispatch) => {
-    dispatch(uiActions.tradeStart());
     try {
+      dispatch(uiActions.tradeStart());
       updateCartItemReqCounter += 1;
       const quantityParam = quantity ? `&quantity=${quantity}` : '';
       const { data } = await axios.patch(`/cart/${itemId}/update?action=${action}${quantityParam}`);
@@ -73,8 +73,8 @@ export const updateCartItem = (itemId, action, quantity) => {
 
 export const clearCart = () => {
   return async (dispatch) => {
-    dispatch(uiActions.tradeStart());
     try {
+      dispatch(uiActions.tradeStart());
       await axios.patch('/cart/clear');
       dispatch(setCart([]));
       dispatch(uiActions.tradeEnd());
@@ -88,8 +88,8 @@ export const clearCart = () => {
 
 export const removeCartItem = (itemId) => {
   return async (dispatch) => {
-    dispatch(uiActions.tradeStart());
     try {
+      dispatch(uiActions.tradeStart());
       const { data } = await axios.patch(`/cart/${itemId}/remove`);
       dispatch(setCart(data.cart));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
@@ -104,8 +104,8 @@ export const removeCartItem = (itemId) => {
 
 export const goToTransaction = (history, singleItem) => {
   return async (dispatch) => {
-    dispatch(uiActions.tradeStart());
     try {
+      dispatch(uiActions.tradeStart());
       const {
         data: { transaction, isDifferent, cart },
       } = await axios.patch('/transaction', { singleItem });
@@ -150,8 +150,8 @@ export const goToTransaction = (history, singleItem) => {
 
 export const buyProducts = (history, lastPath) => {
   return async (dispatch, getState) => {
-    dispatch(uiActions.formStart());
     try {
+      dispatch(uiActions.formStart());
       const { transaction, deliveryAddress } = getState().auth;
 
       let clearCartBool = false;

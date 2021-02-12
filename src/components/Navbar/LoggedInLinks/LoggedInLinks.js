@@ -1,10 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
+import { Link } from 'react-router-dom';
+import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
+import { ReactComponent as SettingsIcon } from '../../../images/icons/settings.svg';
 import MyIcon from '../../UI/MyIcon';
 import Dropdown from './Dropdown/Dropdown';
 import CartLink from './CartLink/CartLink';
+import PlainText from '../../UI/PlainText';
 
 export const SC = {};
 SC.Wrapper = styled.nav`
@@ -27,22 +30,10 @@ SC.User = styled.div`
   display: flex;
   padding: ${({ theme }) => theme.spacings.level1} 0;
   position: relative;
-
-  & .username {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    margin-right: ${({ theme }) => theme.spacings.level1};
-    overflow: hidden;
-    text-align: right;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 15rem;
-  }
 `;
 
-const SignedInLinks = (props) => {
-  const { username } = props;
-
-  const usernameRef = useRef();
+const LoggedInLinks = (props) => {
+  const { username, status } = props;
 
   const [dropdownIsVisible, setDropdownIsVisible] = useState(false);
 
@@ -54,24 +45,54 @@ const SignedInLinks = (props) => {
     setDropdownIsVisible(false);
   };
 
-  return (
-    <SC.Wrapper>
-      <CartLink />
-      <SC.User id="user" onClick={userClickHandle}>
-        <span className="username" ref={usernameRef}>
-          {username}
-        </span>
-        <MyIcon size="small" rotation={dropdownIsVisible ? -90 : 90}>
-          <ArrowIcon />
-        </MyIcon>
-        <Dropdown isVisible={dropdownIsVisible} closed={closeDropdownHandle} />
-      </SC.User>
-    </SC.Wrapper>
-  );
+  const showUsername = (name) => {
+    return (
+      <PlainText
+        size="3"
+        mgRight="1"
+        maxWidth="15rem"
+        overflow="hidden"
+        textOverflow="ellipsis"
+        whiteSpace="nowrap"
+        textAlign="right"
+        data-test="username"
+      >
+        {name}
+      </PlainText>
+    );
+  };
+
+  const content =
+    status === 'active' ? (
+      <SC.Wrapper>
+        <CartLink />
+        <SC.User id="user" onClick={userClickHandle}>
+          {showUsername(username)}
+          <MyIcon size="small" rotation={dropdownIsVisible ? -90 : 90}>
+            <ArrowIcon />
+          </MyIcon>
+          <Dropdown isVisible={dropdownIsVisible} closed={closeDropdownHandle} />
+        </SC.User>
+      </SC.Wrapper>
+    ) : (
+      <SC.Wrapper>
+        <Link to="/my-account/data" data-test="my-account-link">
+          <SC.User id="user">
+            {showUsername(username)}
+            <MyIcon size="small">
+              <SettingsIcon />
+            </MyIcon>
+          </SC.User>
+        </Link>
+      </SC.Wrapper>
+    );
+
+  return content;
 };
 
-SignedInLinks.propTypes = {
+LoggedInLinks.propTypes = {
   username: PropTypes.string.isRequired,
+  status: PropTypes.oneOf(['active', 'pending']).isRequired,
 };
 
-export default SignedInLinks;
+export default LoggedInLinks;

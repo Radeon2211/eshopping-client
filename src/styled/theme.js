@@ -52,6 +52,14 @@ const theme = {
     level2: 0.2,
     level3: 0.3,
   },
+  lineHeights: {
+    level1: '1',
+    level2: '1.1',
+    level3: '1.2',
+    level4: '1.3',
+    level5: '1.4',
+    level6: '1.5',
+  },
 };
 
 export default theme;

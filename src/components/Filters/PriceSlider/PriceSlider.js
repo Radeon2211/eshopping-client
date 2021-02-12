@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import * as SC from './PriceSlider.sc';
 import NumberInput from '../../UI/NumberInput';
+import PlainText from '../../UI/PlainText';
 import { filtersActions, sliderPositionsActions } from '../../../shared/constants';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
@@ -195,7 +196,7 @@ const PriceSlider = (props) => {
   return (
     <SC.Wrapper>
       <SC.LabelAndInputs>
-        <span className="label">Price ($)</span>
+        <PlainText size="3">Price ($)</PlainText>
         <div className="inputs">
           <NumberInput
             name="minPrice"

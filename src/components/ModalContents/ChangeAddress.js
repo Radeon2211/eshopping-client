@@ -61,6 +61,7 @@ const ChangeAddress = () => {
               id: 'street',
               placeholder: 'Your street and number',
               autoComplete: 'street-address',
+              autoFocus: true,
               onInput: setFieldTouched.bind(this, 'street', true, true),
             }}
             label="Street and number"

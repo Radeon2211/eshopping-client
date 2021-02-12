@@ -7,7 +7,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import PurchaseSection from './PurchaseSection';
 import Button from '../../../components/UI/Button/Button';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps, defaultUserProfile } from '../../../shared/testUtility';
 import theme from '../../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
@@ -21,7 +21,7 @@ const createStore = (cart, isCartLoading = false) =>
 const defaultProps = {
   productId: 'productId',
   onSetModal: jest.fn(),
-  userProfile: { username: 'user2' },
+  userProfile: { ...defaultUserProfile, username: 'user2' },
   productSellerUsername: 'user1',
   productQuantity: 5,
 };
@@ -61,13 +61,13 @@ describe('<PurchaseSection />', () => {
   describe('Check how overall section renders', () => {
     it('Should render quantity box and two buttons when seller and current user are different', () => {
       const wrapper = setUp();
-      expect(wrapper.find('.choose-quantity-box')).toHaveLength(1);
+      expect(wrapper.find('[data-test="choose-quantity-wrapper"]').length).toBeGreaterThan(0);
       expect(wrapper.find(Button)).toHaveLength(2);
     });
 
     it('Should NOT render quantity box and two buttons & should render <SC.InfoToSeller /> when seller and current user are the same', () => {
-      const wrapper = setUp({ userProfile: { username: 'user1' } });
-      expect(wrapper.find('.choose-quantity-box')).toHaveLength(0);
+      const wrapper = setUp({ userProfile: { ...defaultUserProfile, username: 'user1' } });
+      expect(wrapper.find('[data-test="choose-quantity-wrapper"]')).toHaveLength(0);
       expect(wrapper.find(Button)).toHaveLength(0);
       expect(wrapper.find('[data-test="info-to-seller"]').length).toBeGreaterThan(0);
     });
@@ -83,24 +83,28 @@ describe('<PurchaseSection />', () => {
   describe('Check how quantity number text renders', () => {
     it('Should render appropriate text when quantity is 1', () => {
       const wrapper = setUp({ productQuantity: 1 });
-      expect(wrapper.find('.quantity-number').text()).toEqual('of 1 piece');
+      expect(wrapper.find('[data-test="quantity"]').at(0).text()).toEqual('of 1 piece');
     });
 
     it('Should render appropriate text when quantity is 3', () => {
       const wrapper = setUp({ productQuantity: 3 });
-      expect(wrapper.find('.quantity-number').text()).toEqual('of 3 pieces');
+      expect(wrapper.find('[data-test="quantity"]').at(0).text()).toEqual('of 3 pieces');
     });
 
     it('Should render appropriate text when quantity is 3 and 3 in cart', () => {
       const wrapper = setUp({ productQuantity: 3 }, [
         { quantity: 3, product: { _id: 'productId' } },
       ]);
-      expect(wrapper.find('.quantity-number').text()).toEqual('of 3 pieces (3 in cart)');
+      expect(wrapper.find('[data-test="quantity"]').at(0).text()).toEqual(
+        'of 3 pieces (3 in cart)',
+      );
     });
 
     it('Should render appropriate text when quantity is 5 and 3 in cart', () => {
       const wrapper = setUp(null, [{ quantity: 3, product: { _id: 'productId' } }]);
-      expect(wrapper.find('.quantity-number').text()).toEqual('of 5 pieces (3 in cart)');
+      expect(wrapper.find('[data-test="quantity"]').at(0).text()).toEqual(
+        'of 5 pieces (3 in cart)',
+      );
     });
   });
 });

@@ -7,11 +7,11 @@ import ProductsAndFilters from '../../../components/ProductsAndFilters/ProductsA
 
 const MyProducts = (props) => {
   const {
+    userProfile,
     location: { search },
   } = props;
 
   const productsPerPage = useSelector((state) => state.ui.productsPerPage);
-  const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
   const onFetchProducts = useCallback(

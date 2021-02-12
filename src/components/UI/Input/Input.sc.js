@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 
         & > label {
           order: 1;
-          line-height: 1;
+          line-height: ${theme.lineHeights.level1};
           padding: 0 0 0 ${theme.spacings.level1};
         }
 
@@ -57,12 +57,6 @@ export const Wrapper = styled.div`
 
   &.invalid .textarea {
     border-bottom: 3px solid ${({ theme }) => theme.colors.red};
-  }
-
-  & .caption {
-    display: block;
-    font-size: ${({ theme }) => theme.fontSizes.level1};
-    margin-top: ${({ theme }) => theme.spacings.level1};
   }
 `;
 
@@ -115,7 +109,7 @@ export const RadioWrapper = styled.div`
   & > label {
     font-size: ${({ theme }) => theme.fontSizes.level3};
     order: 1;
-    line-height: 1;
+    line-height: ${({ theme }) => theme.lineHeights.level1};
     padding: 0 0 0 ${({ theme }) => theme.spacings.level1};
   }
 

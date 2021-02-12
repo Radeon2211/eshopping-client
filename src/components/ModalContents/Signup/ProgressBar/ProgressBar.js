@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './ProgressBar.sc';
-import { ReactComponent as CheckMarkIcon } from '../../../../images/SVG/check-mark.svg';
+import { ReactComponent as CheckMarkIcon } from '../../../../images/icons/check-mark.svg';
 import MyIcon from '../../../UI/MyIcon';
+import PlainText from '../../../UI/PlainText';
 
 const ProgressBar = (props) => {
   const { stepsNumber, currentStep } = props;
@@ -20,7 +21,9 @@ const ProgressBar = (props) => {
     steps.push(
       <React.Fragment key={i}>
         <div className={`step-box${currentStep >= i ? ' active' : ''}`}>
-          <span className="step-number">{stepBoxContent}</span>
+          <PlainText size="3" lineHeight="1">
+            {stepBoxContent}
+          </PlainText>
         </div>
         {i < 3 && (
           <div className="step-line">

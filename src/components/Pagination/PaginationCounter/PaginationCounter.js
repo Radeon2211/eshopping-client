@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { listItemTypes } from '../../../shared/constants';
-
-export const SC = {};
-SC.Wrapper = styled.div`
-  color: ${({ theme }) => theme.colors.light4};
-  font-size: ${({ theme }) => theme.fontSizes.level1};
-`;
+import theme from '../../../styled/theme';
+import PlainText from '../../UI/PlainText';
 
 const PaginationCounter = (props) => {
   const { itemQuantity, itemsType, quantityPerPage } = props;
@@ -44,9 +39,9 @@ const PaginationCounter = (props) => {
   let paginationCounter = null;
   if (itemQuantity) {
     paginationCounter = (
-      <SC.Wrapper>
+      <PlainText size="1" color={theme.colors.light4}>
         {`${firstOfferNumber} - ${lastOfferNumber} of ${itemQuantity} ${itemsTypeText}`}
-      </SC.Wrapper>
+      </PlainText>
     );
   }
 

@@ -30,11 +30,12 @@ export const deleteProductFromList = (productId) => ({
 export const addProduct = (product, currentPath) => {
   return async (dispatch) => {
     dispatch(uiActions.formStart());
-    const correctProduct = {
-      ...product,
-      photo: undefined,
-    };
     try {
+      const correctProduct = {
+        ...product,
+        photo: undefined,
+      };
+
       const { data } = await axios.post('/products', correctProduct);
       if (product.photo) {
         const formData = new FormData();
@@ -42,6 +43,7 @@ export const addProduct = (product, currentPath) => {
         await axios.post(`/products/${data.productId}/photo`, formData);
       }
       dispatch(uiActions.formSuccess());
+
       if (currentPath.startsWith('/my-account/products')) {
         dispatch(
           uiActions.setAndDeleteMessage(
@@ -60,15 +62,17 @@ export const addProduct = (product, currentPath) => {
 
 export const editProduct = (productData, productId) => {
   return async (dispatch) => {
-    dispatch(uiActions.formStart());
-    const correctProduct = {
-      ...productData,
-      photo: undefined,
-    };
     try {
+      dispatch(uiActions.formStart());
+      const correctProduct = {
+        ...productData,
+        photo: undefined,
+      };
+
       let editedProduct = null;
       const { data: firstData } = await axios.patch(`/products/${productId}`, correctProduct);
       editedProduct = firstData.product;
+
       if (productData.photo) {
         if (productData.photo === 'DELETED') {
           await axios.delete(`/products/${firstData.product._id}/photo`);
@@ -80,6 +84,7 @@ export const editProduct = (productData, productId) => {
           editedProduct.photo = true;
         }
       }
+
       dispatch(
         setProductDetails({
           ...editedProduct,
@@ -98,34 +103,33 @@ export const editProduct = (productData, productId) => {
 
 export const fetchProducts = (queryStrings, page, sellerUsername) => {
   return async (dispatch, getState) => {
-    dispatch(uiActions.dataStart());
-    let minPriceOuter = 0;
-    let maxPriceOuter = 0;
-
-    const parsedQueryParams = queryString.parse(queryStrings);
-    const { seller, p: pageNumber } = parsedQueryParams;
-
-    const { productsPerPage } = getState().ui;
-    parsedQueryParams.limit = productsPerPage;
-
-    if (seller) {
-      delete parsedQueryParams.seller;
-    }
-    if (pageNumber) {
-      const currentProductQuantity = getState().product.productCount;
-      if (pageNumber > Math.ceil(currentProductQuantity / productsPerPage) || pageNumber < 1) {
-        delete parsedQueryParams.p;
-      }
-    }
-
-    parsedQueryParams.page = page;
-    if (sellerUsername) {
-      parsedQueryParams.seller = sellerUsername;
-    }
-
-    const updatedQueryParams = queryString.stringify(parsedQueryParams);
-
     try {
+      dispatch(uiActions.dataStart());
+      let minPriceOuter = 0;
+      let maxPriceOuter = 0;
+
+      const parsedQueryParams = queryString.parse(queryStrings);
+      const { seller, p: pageNumber } = parsedQueryParams;
+
+      const { productsPerPage } = getState().ui;
+      parsedQueryParams.limit = productsPerPage;
+
+      if (seller) {
+        delete parsedQueryParams.seller;
+      }
+      if (pageNumber) {
+        const currentProductQuantity = getState().product.productCount;
+        if (pageNumber > Math.ceil(currentProductQuantity / productsPerPage) || pageNumber < 1) {
+          delete parsedQueryParams.p;
+        }
+      }
+
+      parsedQueryParams.page = page;
+      if (sellerUsername) {
+        parsedQueryParams.seller = sellerUsername;
+      }
+
+      const updatedQueryParams = queryString.stringify(parsedQueryParams);
       const { data } = await axios.get(`/products?${updatedQueryParams}`);
       if (data.productPrices.length > 0) {
         const { minPrice, maxPrice } = data.productPrices[0];
@@ -145,8 +149,8 @@ export const fetchProducts = (queryStrings, page, sellerUsername) => {
 
 export const fetchProductDetails = (productId) => {
   return async (dispatch) => {
-    dispatch(uiActions.dataStart());
     try {
+      dispatch(uiActions.dataStart());
       const { data } = await axios.get(`/products/${productId}`);
       dispatch(setProductDetails(data.product));
       dispatch(uiActions.dataEnd());

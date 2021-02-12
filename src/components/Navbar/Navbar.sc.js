@@ -18,12 +18,10 @@ export const Wrapper = styled.header`
     margin-right: ${({ theme }) => theme.spacings.level4};
   }
 
-  & .heading {
-    margin-left: ${({ theme }) => theme.spacings.level1};
-  }
-
   & .logo {
     width: 4.6rem;
+    height: 4.6rem;
+    margin-right: ${({ theme }) => theme.spacings.level1};
   }
 
   .header {

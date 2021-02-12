@@ -41,10 +41,6 @@ export const Wrapper = styled.div`
     }
   }
 
-  .routes {
-    margin-top: ${({ theme }) => theme.spacings.level5};
-  }
-
   @media only screen and (max-width: 37.5em) {
     & .nav {
       top: 10.8rem;
@@ -67,6 +63,17 @@ export const Wrapper = styled.div`
       padding: ${({ theme }) => theme.spacings.level1};
     }
   }
+`;
+
+export const Routes = styled.div`
+  ${({ extraMargin, theme }) => {
+    if (extraMargin) {
+      return `
+        margin-top: ${theme.spacings.level5};
+      `;
+    }
+    return ``;
+  }}
 `;
 
 export const OrdersWrapper = styled.div`

@@ -6,6 +6,7 @@ import * as SC from '../Signup.sc';
 import Input from '../../../UI/Input/Input';
 import Button from '../../../UI/Button/Button';
 import SideBySide from '../../../UI/SideBySide';
+import PlainText from '../../../UI/PlainText';
 import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds, listOfCountries } from '../../../../shared/constants';
 
@@ -40,7 +41,6 @@ const Step3 = (props) => {
     <AnimatePresence>
       {currentStep === 3 && (
         <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
-          <div className="help-info-box">These data are necessary to place orders.</div>
           <Input
             kind={inputKinds.INPUT}
             config={{
@@ -49,6 +49,7 @@ const Step3 = (props) => {
               id: 'street',
               placeholder: 'Your street and number',
               autoComplete: 'street-address',
+              autoFocus: true,
               onInput: setFieldTouched.bind(this, 'street', true, true),
             }}
             label="Street and number"
@@ -99,6 +100,11 @@ const Step3 = (props) => {
             isValid={Boolean(!errors.country || formValues.country)}
             isTouched={touched.country}
           />
+          <PlainText size="1" mgBottom="3" textAlign="justify">
+            We will send verification link to email provided by you. It will be active for 10
+            minutes, but you will be able to resend the activation link later. If you do not
+            activate your account within 1 hour, account will be deleted permanently.
+          </PlainText>
           <SC.Buttons buttonsNumber={2}>
             <Button onClick={goToPrevStep}>Previous</Button>
             <Button type="submit" filled disabled={btnDisabled || isFormLoading}>

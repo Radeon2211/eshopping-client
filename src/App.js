@@ -66,7 +66,7 @@ const App = () => {
   if (userProfile === null) {
     if (!axios.defaults.headers.post['X-CSRF-Token']) {
       routes = (
-        <Heading variant="h3" align="center" mgTop="level3">
+        <Heading variant="h3" align="center" mgTop="3">
           Server connection error. Try again later
         </Heading>
       );
@@ -89,28 +89,50 @@ const App = () => {
       );
     }
   }
+
   if (userProfile) {
-    routes = (
-      <>
-        <Modal />
-        <MessageBox />
-        <Navbar userProfile={userProfile} />
-        <Main>
-          <Switch>
-            <Route path="/logout" component={Logout} />
-            <Route path="/order/:id" exact component={WaitingComponent(OrderDetails)} />
-            <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
-            <Route path="/products" exact component={Products} />
-            <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
-            <Route path="/cart" exact component={WaitingComponent(Cart)} />
-            <Route path="/transaction" exact component={WaitingComponent(Transaction)} />
-            <Route path="/my-account" component={WaitingComponent(MyAccount)} />
-            <Redirect to={DEFAULT_PATH} />
-          </Switch>
-        </Main>
-        <Footer />
-      </>
-    );
+    if (userProfile.status === 'active') {
+      routes = (
+        <>
+          <Modal />
+          <MessageBox />
+          <Navbar userProfile={userProfile} />
+          <Main>
+            <Switch>
+              <Route path="/logout" component={Logout} />
+              <Route path="/order/:id" exact component={WaitingComponent(OrderDetails)} />
+              <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
+              <Route path="/products" exact component={Products} />
+              <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
+              <Route path="/cart" exact component={WaitingComponent(Cart)} />
+              <Route path="/transaction" exact component={WaitingComponent(Transaction)} />
+              <Route path="/my-account" component={WaitingComponent(MyAccount)} />
+              <Redirect to={DEFAULT_PATH} />
+            </Switch>
+          </Main>
+          <Footer />
+        </>
+      );
+    } else {
+      routes = (
+        <>
+          <Modal />
+          <MessageBox />
+          <Navbar userProfile={userProfile} />
+          <Main>
+            <Switch>
+              <Route path="/logout" component={Logout} />
+              <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
+              <Route path="/products" exact component={Products} />
+              <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
+              <Route path="/my-account" component={WaitingComponent(MyAccount)} />
+              <Redirect to={DEFAULT_PATH} />
+            </Switch>
+          </Main>
+          <Footer />
+        </>
+      );
+    }
   }
 
   return routes;

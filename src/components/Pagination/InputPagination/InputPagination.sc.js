@@ -21,9 +21,4 @@ export const Wrapper = styled.div`
   & .form-number {
     margin: 0 ${({ theme }) => theme.spacings.level1};
   }
-
-  & .of {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    margin: 0 ${({ theme }) => theme.spacings.level1};
-  }
 `;

@@ -6,6 +6,7 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes.level2};
   font-weight: 700;
+  line-height: ${({ theme }) => theme.lineHeights.level3};
   letter-spacing: 2px;
   outline: none;
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};

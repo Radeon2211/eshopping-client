@@ -11,22 +11,4 @@ export const SingleOrder = styled.div`
   &:first-child {
     padding-top: 0;
   }
-
-  & .username {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-  }
-
-  & .date {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-  }
-
-  & .total-text {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    letter-spacing: 1px;
-    margin-right: ${({ theme }) => theme.spacings.level1};
-  }
-
-  & .price {
-    font-size: ${({ theme }) => theme.fontSizes.level5};
-  }
 `;

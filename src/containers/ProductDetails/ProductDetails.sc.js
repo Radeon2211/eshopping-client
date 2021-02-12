@@ -24,32 +24,6 @@ export const Wrapper = styled.div`
     flex-direction: column;
   }
 
-  & .seller {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-    margin-top: ${({ theme }) => theme.spacings.level2};
-  }
-
-  & .condition {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-    margin-top: ${({ theme }) => theme.spacings.level2};
-  }
-
-  & .price {
-    font-size: ${({ theme }) => theme.fontSizes.level6};
-    letter-spacing: 1px;
-    margin: ${({ theme }) => theme.spacings.level3} 0;
-  }
-
-  & .quantity-sold {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-    margin-bottom: ${({ theme }) => theme.spacings.level3};
-  }
-
-  & .description-content {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    line-height: 1.35;
-  }
-
   @media only screen and (max-width: 56.25em) {
     & .photo-section {
       margin-right: ${({ theme }) => theme.spacings.level3};

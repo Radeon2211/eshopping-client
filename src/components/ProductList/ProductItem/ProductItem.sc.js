@@ -12,30 +12,10 @@ export const Wrapper = styled(FlexWrapper)`
     cursor: pointer;
   }
 
-  & .name {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-  }
-
-  & .condition {
-    font-size: ${({ theme }) => theme.fontSizes.level1};
-    margin-top: ${({ theme }) => theme.spacings.level1};
-    text-transform: capitalize;
-  }
-
-  & .price {
-    font-size: ${({ theme }) => theme.fontSizes.level5};
-    margin-top: ${({ theme }) => theme.spacings.level2};
-  }
-
   & .buyer-quantity-box {
     flex-grow: 1;
     display: flex;
     margin-top: ${({ theme }) => theme.spacings.level2};
-  }
-
-  & .buyer-quantity {
-    align-self: flex-end;
-    font-size: ${({ theme }) => theme.fontSizes.level1};
   }
 
   @media only screen and (max-width: 24.5em) {

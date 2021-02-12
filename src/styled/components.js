@@ -4,26 +4,14 @@ export const GreenText = styled.span`
   color: ${({ theme }) => theme.colors.green} !important;
   transition: color ${({ theme }) => theme.durations.level1}s;
 
-  &: hover {
+  &:hover {
     color: ${({ theme }) => theme.colors.greenDark} !important;
+    cursor: pointer;
   }
-`;
-
-export const GrayText = styled.span`
-  color: ${({ theme }) => theme.colors.light4};
-`;
-
-export const BoldText = styled.span`
-  font-weight: 700;
 `;
 
 export const AlignCenter = styled.div`
   text-align: center;
-`;
-
-export const UserDataValue = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes.level3};
-  word-break: break-all;
 `;
 
 export const TopPagination = styled.div`

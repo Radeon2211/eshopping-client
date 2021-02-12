@@ -8,11 +8,11 @@ SC.Wrapper = styled.div`
   flex-direction: ${({ direction }) => direction};
   flex-wrap: ${({ wrap }) => wrap};
   justify-content: ${({ justify }) => justify};
-  margin-top: ${({ theme, mgTop }) => (mgTop ? theme.spacings[mgTop] : mgTop)};
-  margin-right: ${({ theme, mgRight }) => (mgRight ? theme.spacings[mgRight] : mgRight)};
-  margin-bottom: ${({ theme, mgBottom }) => (mgBottom ? theme.spacings[mgBottom] : mgBottom)};
-  margin-left: ${({ theme, mgLeft }) => (mgLeft ? theme.spacings[mgLeft] : mgLeft)};
-  width: 100%;
+  margin-top: ${({ theme, mgTop }) => (mgTop ? theme.spacings[`level${mgTop}`] : '0')};
+  margin-right: ${({ theme, mgRight }) => (mgRight ? theme.spacings[`level${mgRight}`] : '0')};
+  margin-bottom: ${({ theme, mgBottom }) => (mgBottom ? theme.spacings[`level${mgBottom}`] : '0')};
+  margin-left: ${({ theme, mgLeft }) => (mgLeft ? theme.spacings[`level${mgLeft}`] : '0')};
+  width: ${({ width }) => width};
 
   ${({ justify }) => {
     if (justify) {
@@ -42,16 +42,17 @@ SC.Wrapper = styled.div`
   }}
 
   ${({ theme, direction, spacing }) => {
+    const level = `level${spacing}`;
     if (direction === 'row') {
       return `
         & > *:not(:last-child) {
-          margin-right: ${spacing ? theme.spacings[spacing] : spacing};
+          margin-right: ${spacing ? theme.spacings[level] : '0'};
         }
       `;
     }
     return `
       & > *:not(:last-child) {
-        margin-bottom: ${spacing ? theme.spacings[spacing] : spacing};
+        margin-bottom: ${spacing ? theme.spacings[level] : '0'};
       }
     `;
   }}
@@ -68,11 +69,12 @@ FlexWrapper.defaultProps = {
   align: '',
   flex: '',
   wrap: 'nowrap',
-  spacing: 'level3',
-  mgBottom: '0',
-  mgTop: '0',
-  mgRight: '0',
-  mgLeft: '0',
+  spacing: '',
+  mgBottom: '',
+  mgTop: '',
+  mgRight: '',
+  mgLeft: '',
+  width: '100%',
 };
 
 FlexWrapper.propTypes = {
@@ -86,6 +88,7 @@ FlexWrapper.propTypes = {
   mgTop: PropTypes.string,
   mgRight: PropTypes.string,
   mgLeft: PropTypes.string,
+  width: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 

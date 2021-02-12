@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, Switch, Route, Redirect } from 'react-router-dom';
 import * as SC from './MyAccount.sc';
 import MyData from './MyData/MyData';
@@ -8,8 +9,11 @@ import MyPlacedOrders from './MyPlacedOrders/MyPlacedOrders';
 import { DEFAULT_PATH } from '../../shared/constants';
 
 const MyAccount = () => {
-  return (
-    <SC.Wrapper>
+  const userProfile = useSelector((state) => state.auth.profile);
+
+  let navigation = null;
+  if (userProfile.status === 'active') {
+    navigation = (
       <nav className="nav">
         <ul className="nav-list">
           <li>
@@ -46,15 +50,34 @@ const MyAccount = () => {
           </li>
         </ul>
       </nav>
-      <div className="routes">
+    );
+  }
+
+  let routes = <Route path="/my-account/data" exact component={MyData} />;
+  if (userProfile.status === 'active') {
+    routes = (
+      <>
+        <Route path="/my-account/data" exact component={MyData} />
+        <Route
+          path="/my-account/products"
+          exact
+          render={(props) => <MyProducts userProfile={userProfile} {...props} />}
+        />
+        <Route path="/my-account/sell-history" exact component={MySellHistory} />
+        <Route path="/my-account/placed-orders" exact component={MyPlacedOrders} />
+      </>
+    );
+  }
+
+  return (
+    <SC.Wrapper>
+      {navigation}
+      <SC.Routes extraMargin={userProfile.status === 'active'}>
         <Switch>
-          <Route path="/my-account/data" exact component={MyData} />
-          <Route path="/my-account/products" exact component={MyProducts} />
-          <Route path="/my-account/sell-history" exact component={MySellHistory} />
-          <Route path="/my-account/placed-orders" exact component={MyPlacedOrders} />
+          {routes}
           <Redirect to="/my-account/data" />
         </Switch>
-      </div>
+      </SC.Routes>
     </SC.Wrapper>
   );
 };

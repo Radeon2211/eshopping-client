@@ -19,13 +19,13 @@ const ClearCart = () => {
 
   return (
     <>
-      <Heading variant="h3" mgBottom="level3" align="center">
+      <Heading variant="h3" mgBottom="3" align="center">
         Clear the shopping cart
       </Heading>
-      <Heading variant="h4" mgBottom="level3" align="center">
+      <Heading variant="h4" mgBottom="3" align="center">
         Are you sure to do that?
       </Heading>
-      <FlexWrapper mgTop="level3" justify="center">
+      <FlexWrapper mgTop="3" justify="center" spacing="3">
         <Button color="blue" clicked={() => onSetModal(false)}>
           cancel
         </Button>

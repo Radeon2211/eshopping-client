@@ -101,13 +101,24 @@ describe('<ProductDetails />', () => {
         };
         const wrapper = setUp(store);
         expect(wrapper.find('[data-test="no-description"]')).toHaveLength(0);
-        expect(wrapper.find('.description-content')).toHaveLength(1);
+        expect(wrapper.find('[data-test="description-section"]').length).toBeGreaterThan(0);
+        expect(wrapper.find('[data-test="description-content"]').at(0).text()).toEqual(
+          'testDescription',
+        );
       });
 
-      it('Should render no description <Heading /> and NOT render description content', () => {
+      it('Should render correct name, seller username, condition, price, no description <Heading /> and NOT render description content', () => {
         const wrapper = setUp();
+        expect(wrapper.find('[data-test="name"]').at(0).text()).toEqual(defaultProductDetails.name);
+        expect(wrapper.find('[data-test="seller-username"]').at(0).text()).toEqual(
+          defaultProductDetails.seller.username,
+        );
+        expect(wrapper.find('[data-test="condition"]').at(0).text()).toEqual(
+          'Condition: Not applicable',
+        );
+        expect(wrapper.find('[data-test="price"]').at(0).text()).toEqual('$2.50');
         expect(wrapper.find('[data-test="no-description"]').length).toBeGreaterThan(1);
-        expect(wrapper.find('.description-content')).toHaveLength(0);
+        expect(wrapper.find('[data-test="description-section"]')).toHaveLength(0);
       });
     });
 
@@ -119,7 +130,9 @@ describe('<ProductDetails />', () => {
           },
         };
         const wrapper = setUp(store);
-        expect(wrapper.find('.quantity-sold').first().text()).toEqual('2 people bought 3 units');
+        expect(wrapper.find('[data-test="quantity-sold"]').at(0).text()).toEqual(
+          '2 people bought 3 units',
+        );
       });
 
       it('Should render quantity sold node - "1 person bought 1 unit"', () => {
@@ -129,7 +142,9 @@ describe('<ProductDetails />', () => {
           },
         };
         const wrapper = setUp(store);
-        expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought 1 unit');
+        expect(wrapper.find('[data-test="quantity-sold"]').at(0).text()).toEqual(
+          '1 person bought 1 unit',
+        );
       });
 
       it('Should render quantity sold node - "1 person bought 5 units"', () => {
@@ -139,12 +154,14 @@ describe('<ProductDetails />', () => {
           },
         };
         const wrapper = setUp(store);
-        expect(wrapper.find('.quantity-sold').first().text()).toEqual('1 person bought 5 units');
+        expect(wrapper.find('[data-test="quantity-sold"]').at(0).text()).toEqual(
+          '1 person bought 5 units',
+        );
       });
 
       it('Should NOT render quantity sold node', () => {
         const wrapper = setUp();
-        expect(wrapper.find('.quantity-sold')).toHaveLength(0);
+        expect(wrapper.find('[data-test="quantity-sold"]')).toHaveLength(0);
       });
     });
 

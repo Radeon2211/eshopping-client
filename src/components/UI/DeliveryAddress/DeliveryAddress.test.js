@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import { ThemeProvider } from 'styled-components';
 import DeliveryAddress from './DeliveryAddress';
 import theme from '../../../styled/theme';
-import { UserDataValue } from '../../../styled/components';
-import { checkProps } from '../../../shared/testUtility';
+import PlainText from '../PlainText';
+import { checkProps, defaultDeliveryAddress } from '../../../shared/testUtility';
 
 const setUp = (data) => {
   const props = { data };
@@ -15,21 +15,11 @@ const setUp = (data) => {
   );
 };
 
-const delAddress = {
-  firstName: 'firstName',
-  lastName: 'lastName',
-  street: 'street',
-  zipCode: 'zipCode',
-  city: 'city',
-  country: 'country',
-  phone: 'phone',
-};
-
 describe('<DeliveryAddress />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
       const expectedProps = {
-        data: delAddress,
+        data: defaultDeliveryAddress,
       };
       expect(checkProps(DeliveryAddress, expectedProps)).toBeUndefined();
     });
@@ -37,7 +27,7 @@ describe('<DeliveryAddress />', () => {
     it('Should throw a warning if data is uncomplete', () => {
       const expectedProps = {
         data: {
-          ...delAddress,
+          ...defaultDeliveryAddress,
           phone: undefined,
         },
       };
@@ -49,20 +39,16 @@ describe('<DeliveryAddress />', () => {
     });
   });
 
-  describe('Check how <UserDataValue /> render', () => {
-    it('Should render five <UserDataValue /> with correct values', () => {
-      const wrapper = setUp(delAddress);
+  describe('Check how <PlainText /> render', () => {
+    it('Should render five <PlainText /> with correct values', () => {
+      const wrapper = setUp(defaultDeliveryAddress);
 
-      expect(wrapper.find(UserDataValue)).toHaveLength(5);
-      expect(wrapper.find(UserDataValue).at(0).text()).toEqual(
-        `${delAddress.firstName} ${delAddress.lastName}`,
-      );
-      expect(wrapper.find(UserDataValue).at(1).text()).toEqual(delAddress.street);
-      expect(wrapper.find(UserDataValue).at(2).text()).toEqual(
-        `${delAddress.zipCode} ${delAddress.city}`,
-      );
-      expect(wrapper.find(UserDataValue).at(3).text()).toEqual(delAddress.country);
-      expect(wrapper.find(UserDataValue).at(4).text()).toEqual(delAddress.phone);
+      expect(wrapper.find(PlainText)).toHaveLength(5);
+      expect(wrapper.find(PlainText).at(0).text()).toEqual('firstName lastName');
+      expect(wrapper.find(PlainText).at(1).text()).toEqual('street');
+      expect(wrapper.find(PlainText).at(2).text()).toEqual('zipCode city');
+      expect(wrapper.find(PlainText).at(3).text()).toEqual('country');
+      expect(wrapper.find(PlainText).at(4).text()).toEqual('phone');
     });
   });
 });

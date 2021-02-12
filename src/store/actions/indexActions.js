@@ -10,6 +10,8 @@ export {
   deleteAccount,
   addAdmin,
   removeAdmin,
+  sendAccountVerificationLink,
+  resetPassword,
 } from './authActions';
 
 export {

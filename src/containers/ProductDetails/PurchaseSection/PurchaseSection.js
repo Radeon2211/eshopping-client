@@ -7,8 +7,11 @@ import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
 import ChooseQuantity from '../../../components/UI/ChooseQuantity';
-import { GreenText, GrayText } from '../../../styled/components';
+import PlainText from '../../../components/UI/PlainText';
+import { GreenText } from '../../../styled/components';
 import Heading from '../../../components/UI/Heading/Heading';
+import theme from '../../../styled/theme';
+import FlexWrapper from '../../../components/UI/FlexWrapper';
 
 const PurchaseSection = (props) => {
   const { productId, productQuantity, productSellerUsername, onSetModal, userProfile } = props;
@@ -63,6 +66,8 @@ const PurchaseSection = (props) => {
   const addToCartClickHandle = () => {
     if (!userProfile) {
       onSetModal(true, modalTypes.LOGIN);
+    } else if (userProfile?.status !== 'active') {
+      onSetModal(true, modalTypes.PENDING_USER_INFO);
     } else {
       onAddCartItem({
         quantity: chosenQuantity,
@@ -74,6 +79,8 @@ const PurchaseSection = (props) => {
   const buyNowClickHandle = () => {
     if (!userProfile) {
       onSetModal(true, modalTypes.LOGIN);
+    } else if (userProfile?.status !== 'active') {
+      onSetModal(true, modalTypes.PENDING_USER_INFO);
     } else {
       onGoToTransaction(history, {
         product: productId,
@@ -84,8 +91,8 @@ const PurchaseSection = (props) => {
 
   let purchaseSection = (
     <>
-      <span className="quantity-info gray-text">{`Quantity: ${productQuantity}`}</span>
-      <Heading variant="h4" mgTop="level3" data-test="info-to-seller">
+      <PlainText size="2">{`Quantity: ${productQuantity}`}</PlainText>
+      <Heading variant="h4" mgTop="3" data-test="info-to-seller">
         You are the seller of this product
       </Heading>
     </>
@@ -103,7 +110,7 @@ const PurchaseSection = (props) => {
     );
     if (givenProductInCart?.quantity >= productQuantity) {
       addToCartBtn = (
-        <Heading variant="h4" align="center" mgBottom="level2" data-test="not-able-to-add">
+        <Heading variant="h4" align="center" mgBottom="2" data-test="not-able-to-add">
           You have added all pieces to&nbsp;
           <Link to="/cart">
             <GreenText>cart</GreenText>
@@ -114,7 +121,7 @@ const PurchaseSection = (props) => {
 
     purchaseSection = (
       <>
-        <div className="choose-quantity-box">
+        <FlexWrapper align="center" mgBottom="3" data-test="choose-quantity-wrapper">
           <ChooseQuantity
             name="quantity"
             maxQuantity={productQuantity}
@@ -124,13 +131,15 @@ const PurchaseSection = (props) => {
             changed={inputChangeHandle}
             blured={inputBlurHandle}
           />
-          <span className="quantity-number">
+          <PlainText size="2" mgLeft="1" data-test="quantity">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
-            <GrayText>
-              {givenProductInCart ? ` (${givenProductInCart?.quantity} in cart)` : ''}
-            </GrayText>
-          </span>
-        </div>
+            {givenProductInCart && (
+              <PlainText color={theme.colors.light4}>
+                {` (${givenProductInCart.quantity} in cart)`}
+              </PlainText>
+            )}
+          </PlainText>
+        </FlexWrapper>
         {addToCartBtn}
         <Button filled stretch clicked={buyNowClickHandle} isLoading={isCartLoading}>
           buy now

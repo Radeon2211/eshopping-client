@@ -51,7 +51,7 @@ const Cart = () => {
   let content = <Loader align="center" />;
   if (cart === null) {
     content = (
-      <Heading variant="h3" align="center" data-test="cart-error-heading">
+      <Heading variant="h3" align="center" lineHeight="4" data-test="cart-error-heading">
         There is a problem to get your shopping cart
       </Heading>
     );
@@ -79,7 +79,7 @@ const Cart = () => {
               />
             </PlainPanel>
             <StickyPanel>
-              <FlexWrapper direction="column" spacing="level2">
+              <FlexWrapper direction="column" spacing="2">
                 <ToPayInfo value={roundedCartValue} />
                 <Button
                   filled
@@ -100,9 +100,9 @@ const Cart = () => {
         <SC.EmptyCart>
           <Heading
             variant="h3"
-            mgBottom="level3"
+            mgBottom="3"
             align="center"
-            lineHeight="medium"
+            lineHeight="4"
             data-test="cart-empty-heading"
           >
             Your shopping cart is empty. Check out the latest&nbsp;
@@ -110,7 +110,13 @@ const Cart = () => {
               <GreenText>offers</GreenText>
             </Link>
           </Heading>
-          <Heading variant="h4" align="center" data-test="cart-info-heading" mgBottom="level3">
+          <Heading
+            variant="h4"
+            align="center"
+            data-test="cart-info-heading"
+            lineHeight="4"
+            mgBottom="3"
+          >
             You can have up to 50 products in the cart
           </Heading>
           <EmptyCart className="empty-cart-image" />

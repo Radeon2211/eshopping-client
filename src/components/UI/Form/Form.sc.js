@@ -19,21 +19,4 @@ export const Wrapper = styled.div`
     }
     return ``;
   }}
-
-  & .buttons-box {
-    align-items: center;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  & .cancel-button-box {
-    margin-right: ${({ theme }) => theme.spacings.level3};
-  }
-
-  & .error {
-    color: ${({ theme }) => theme.colors.red};
-    display: inline-block;
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    margin-top: ${({ theme }) => theme.spacings.level3};
-  }
 `;

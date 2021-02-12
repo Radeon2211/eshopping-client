@@ -104,3 +104,16 @@ export const defaultDeliveryAddress = {
   country: 'country',
   phone: 'phone',
 };
+
+export const defaultUserProfile = {
+  ...defaultDeliveryAddress,
+  _id: 'id',
+  username: 'username',
+  email: 'email',
+  status: 'active',
+  contacts: {
+    email: true,
+    phone: true,
+  },
+  createdAt: 'createdAt',
+};

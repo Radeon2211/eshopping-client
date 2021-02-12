@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import MyIcon from '../../../UI/MyIcon';
-import { ReactComponent as CartIcon } from '../../../../images/SVG/cart.svg';
+import { ReactComponent as CartIcon } from '../../../../images/icons/cart.svg';
 
 export const SC = {};
 SC.Link = styled(Link)`

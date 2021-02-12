@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import TransactionAndOrderProdItem from '../TransactionAndOrderProdItem/TransactionAndOrderProdItem';
 import CartItem from './CartItem/CartItem';
+import PlainText from '../UI/PlainText';
 import { GreenText } from '../../styled/components';
 import { itemTypes } from '../../shared/constants';
 
@@ -17,10 +18,6 @@ SC.SingleSeller = styled.div`
 
   &:last-child {
     padding-bottom: 0;
-  }
-
-  & .seller {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
   }
 `;
 
@@ -47,12 +44,12 @@ const CartAndTransactionItems = (props) => {
 
   const sellerList = sellersArray.map(({ sellerUsername, items: listItem }) => (
     <SC.SingleSeller key={sellerUsername}>
-      <div className="seller">
+      <PlainText size="3" display="block">
         <span>seller </span>
         <Link to={`/user/${sellerUsername}?p=1`} data-test="user-link">
           <GreenText>{sellerUsername}</GreenText>
         </Link>
-      </div>
+      </PlainText>
       {type === itemTypes.CART
         ? listItem.map((item) => (
             // eslint-disable-next-line react/jsx-indent

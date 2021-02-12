@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../store/actions/indexActions';
 import { modalTypes } from '../shared/constants';
 import MyIcon from './UI/MyIcon';
-import { ReactComponent as LinkedinIcon } from '../images/SVG/linkedin.svg';
-import { ReactComponent as EmailIcon } from '../images/SVG/email.svg';
+import PlainText from './UI/PlainText';
+import FlexWrapper from './UI/FlexWrapper';
+import { ReactComponent as LinkedinIcon } from '../images/icons/linkedin.svg';
+import { ReactComponent as EmailIcon } from '../images/icons/email.svg';
 
 const SC = {};
 SC.Wrapper = styled.footer`
@@ -13,29 +15,9 @@ SC.Wrapper = styled.footer`
   padding: ${({ theme }) => theme.spacings.level3} ${({ theme }) => theme.spacings.level2};
   text-align: center;
 
-  & .copyright {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-  }
-
-  & .socials {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin: ${({ theme }) => theme.spacings.level2} 0;
-
-    & > *:not(:last-child) {
-      margin-right: ${({ theme }) => theme.spacings.level3};
-    }
-  }
-
   & .social-link {
     align-items: center;
     display: flex;
-  }
-
-  & .email {
-    font-size: ${({ theme }) => theme.fontSizes.level1};
-    margin-left: ${({ theme }) => theme.spacings.level1};
   }
 
   & .terms-of-use {
@@ -45,12 +27,6 @@ SC.Wrapper = styled.footer`
 
     &:hover {
       color: #000;
-    }
-  }
-
-  @media only screen and (max-width: 37.5em) {
-    & .socials {
-      margin: calc(1.5 * ${({ theme }) => theme.spacings.level2}) 0;
     }
   }
 `;
@@ -64,8 +40,8 @@ const Footer = () => {
 
   return (
     <SC.Wrapper>
-      <span className="copyright">&copy; 2020 Radosław Mikrut. All rights reserved</span>
-      <div className="socials">
+      <PlainText size="2">&copy; 2020 Radosław Mikrut. All rights reserved</PlainText>
+      <FlexWrapper align="center" justify="center" mgBottom="2" mgTop="2" spacing="3">
         <a
           href="https://www.linkedin.com/in/rados%C5%82aw-mikrut-a8600b198/"
           rel="noopener noreferrer"
@@ -80,9 +56,11 @@ const Footer = () => {
           <MyIcon size="medium">
             <EmailIcon />
           </MyIcon>
-          <span className="email">radoslawmikrut@wp.pl</span>
+          <PlainText size="1" mgLeft="1">
+            radoslawmikrut@wp.pl
+          </PlainText>
         </a>
-      </div>
+      </FlexWrapper>
       <span
         className="terms-of-use"
         onClick={() => onSetModal(true, modalTypes.ABOUT_WEBSITE)}

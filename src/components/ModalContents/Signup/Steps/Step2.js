@@ -5,6 +5,7 @@ import * as SC from '../Signup.sc';
 import Input from '../../../UI/Input/Input';
 import Button from '../../../UI/Button/Button';
 import SideBySide from '../../../UI/SideBySide';
+import PlainText from '../../../UI/PlainText';
 import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds, listOfAreaCodes } from '../../../../shared/constants';
 
@@ -37,7 +38,6 @@ const Step2 = (props) => {
     <AnimatePresence>
       {currentStep === 2 && (
         <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
-          <div className="help-info-box">These data allow you to place orders.</div>
           <Input
             kind={inputKinds.INPUT}
             config={{
@@ -46,6 +46,7 @@ const Step2 = (props) => {
               id: 'firstName',
               placeholder: 'Your first name (up to 60 characters)',
               autoComplete: 'given-name',
+              autoFocus: true,
               onInput: setFieldTouched.bind(this, 'firstName', true, true),
             }}
             label="First name"
@@ -94,7 +95,6 @@ const Step2 = (props) => {
               label="Phone number"
               isValid={!errors.phoneNumber}
               isTouched={touched.phoneNumber}
-              captionText="You can hide phone number, but this may make it difficult for the courier to contact you"
             />
           </SideBySide>
           <Input
@@ -106,6 +106,19 @@ const Step2 = (props) => {
             }}
             label="Hide my phone number from others"
           />
+          <PlainText
+            size="1"
+            mgTop="2"
+            extraMgTop="0.4rem"
+            minusMgTop
+            mgBottom="3"
+            textAlign="justify"
+            display="block"
+          >
+            Phone number is visible to everyone by default. You can hide it from others (it will
+            still be visible to user who will place order with you and to user you will place order
+            with)
+          </PlainText>
           <SC.Buttons buttonsNumber={2}>
             <Button onClick={goToPrevStep}>Previous</Button>
             <Button filled onClick={goToNextStep} disabled={btnDisabled}>

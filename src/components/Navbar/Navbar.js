@@ -13,7 +13,7 @@ const Navbar = (props) => {
   const { userProfile } = props;
 
   const authNav = userProfile ? (
-    <LoggedInLinks username={userProfile.username} />
+    <LoggedInLinks username={userProfile.username} status={userProfile.status} />
   ) : (
     <LoggedOutLinks />
   );

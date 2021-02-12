@@ -62,7 +62,7 @@ const Signup = () => {
         }}
       >
         {({ errors, touched, setFieldTouched, setFieldValue, values }) => (
-          <Form height={41}>
+          <Form height={46}>
             <Step1
               goToNextStep={goToNextStep}
               errors={errors}

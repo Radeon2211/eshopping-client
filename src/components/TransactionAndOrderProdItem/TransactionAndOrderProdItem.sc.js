@@ -31,14 +31,6 @@ export const NameAndPrice = styled.div`
     }
   }
 
-  & .overall-price {
-    font-size: ${({ theme }) => theme.fontSizes.level4};
-  }
-
-  & .price-per-piece {
-    font-size: ${({ theme }) => theme.fontSizes.level2};
-  }
-
   @media only screen and (max-width: 56.25em) {
     align-items: start;
     flex-direction: column;

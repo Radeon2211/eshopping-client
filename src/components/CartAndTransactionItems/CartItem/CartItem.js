@@ -7,9 +7,9 @@ import * as SC from './CartItem.sc';
 import ChooseQuantity from '../../UI/ChooseQuantity';
 import { updateCartActions } from '../../../shared/constants';
 import { formatPrice } from '../../../shared/utility';
-import { GrayText } from '../../../styled/components';
 import MyIcon from '../../UI/MyIcon';
-import { ReactComponent as TrashIcon } from '../../../images/SVG/trash.svg';
+import PlainText from '../../UI/PlainText';
+import { ReactComponent as TrashIcon } from '../../../images/icons/trash.svg';
 import theme from '../../../styled/theme';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
@@ -85,7 +85,7 @@ const CartItem = (props) => {
     <SC.Wrapper>
       <div className="photo-and-name">
         <Link to={`/product/${productId}`} data-test="product-link">
-          <ProductThumbnail photo={photo} alt={name} productId={productId} width={7} height={7} />
+          <ProductThumbnail photo={photo} alt={name} productId={productId} width="7" height="7" />
         </Link>
         <span className="name">
           <Link to={`/product/${productId}`} data-test="product-link">
@@ -105,12 +105,16 @@ const CartItem = (props) => {
             blured={inputBlurHandle}
             focused={() => setIsInputFocused(true)}
           />
-          <span className="quantity-number">{`of ${productQuantity}`}</span>
+          <PlainText size="2" mgLeft="1" data-test="quantity">{`of ${productQuantity}`}</PlainText>
         </div>
         <div className="price-box">
-          <span className="overall-price">{formatPrice(price * quantity)}</span>
+          <PlainText size="5" data-test="overall-price">
+            {formatPrice(price * quantity)}
+          </PlainText>
           {quantity > 1 && (
-            <GrayText className="price-per-piece">{`per piece ${formatPrice(price)}`}</GrayText>
+            <PlainText size="2" textAlign="right" data-test="price-per-piece">
+              {`per piece ${formatPrice(price)}`}
+            </PlainText>
           )}
         </div>
       </div>

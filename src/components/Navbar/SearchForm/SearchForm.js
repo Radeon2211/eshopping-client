@@ -5,7 +5,7 @@ import { useWindowWidth } from '@react-hook/window-size';
 import * as SC from './SearchForm.sc';
 import Button from '../../UI/Button/Button';
 import MyIcon from '../../UI/MyIcon';
-import { ReactComponent as SearchIcon } from '../../../images/SVG/search.svg';
+import { ReactComponent as SearchIcon } from '../../../images/icons/search.svg';
 import { DEFAULT_PATH } from '../../../shared/constants';
 
 const SearchForm = () => {

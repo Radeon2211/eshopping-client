@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import { messageBoxVariants } from '../../../shared/framer';
 import MyIcon from '../MyIcon';
-import { ReactComponent as PlusIcon } from '../../../images/SVG/plus.svg';
+import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
 
 export const SC = {};
 SC.Wrapper = styled(motion.div)`
@@ -30,6 +30,7 @@ SC.Message = styled(motion.div)`
   font-size: ${({ theme }) => theme.fontSizes.level2};
   justify-content: space-between;
   margin: 0 ${({ theme }) => theme.spacings.level2};
+  text-align: justify;
   padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   width: 100%;
   word-break: break-all;

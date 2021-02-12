@@ -5,7 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import * as SC from './Form.sc';
 import Button from '../Button/Button';
+import FlexWrapper from '../FlexWrapper';
+import PlainText from '../PlainText';
 import Heading from '../Heading/Heading';
+import theme from '../../../styled/theme';
 
 const Form = (props) => {
   const { headingText, btnText, isValid, cancellable, children, height, btnColor } = props;
@@ -18,7 +21,11 @@ const Form = (props) => {
     dispatch,
   ]);
 
-  const error = formError ? <span className="error">{formError}</span> : null;
+  const error = formError ? (
+    <PlainText size="3" mgTop="3" color={theme.colors.red} data-test="error">
+      {formError}
+    </PlainText>
+  ) : null;
 
   let heading = null;
   if (headingText) {
@@ -28,16 +35,16 @@ const Form = (props) => {
   let cancelButton = null;
   if (cancellable) {
     cancelButton = (
-      <div className="cancel-button-box">
+      <PlainText display="block" mgRight="3" data-test="cancel-btn-wrapper">
         <Button clicked={() => onSetModal(false)}>cancel</Button>
-      </div>
+      </PlainText>
     );
   }
 
   let buttonsBox = null;
   if (btnText) {
     buttonsBox = (
-      <div className="buttons-box">
+      <FlexWrapper align="center" justify="flex-end" spacing="3" data-test="buttons-wrapper">
         {cancelButton}
         <Button
           filled
@@ -48,7 +55,7 @@ const Form = (props) => {
         >
           {btnText}
         </Button>
-      </div>
+      </FlexWrapper>
     );
   }
 

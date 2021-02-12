@@ -49,6 +49,7 @@ const EditProduct = () => {
               id: 'name',
               placeholder: 'Name of the product (up to 150 characters)',
               autoComplete: 'off',
+              autoFocus: true,
               onInput: setFieldTouched.bind(this, 'name', true, true),
             }}
             label="Name"

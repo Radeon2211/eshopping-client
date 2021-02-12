@@ -58,17 +58,17 @@ describe('<TransactionAndOrderProdItem />', () => {
       expect(wrapper.find('.name')).toHaveLength(1);
       expect(wrapper.find('.name').text()).toEqual('productName');
       expect(wrapper.find(SC.Price)).toHaveLength(1);
-      expect(wrapper.find('.price-per-piece').length).toBeGreaterThan(1);
-      expect(wrapper.find('.price-per-piece').first().text()).toEqual('2 x $9.90');
-      expect(wrapper.find('.overall-price')).toHaveLength(1);
-      expect(wrapper.find('.overall-price').text()).toEqual('$19.80');
+      expect(wrapper.find('[data-test="price-per-piece"]').length).toBeGreaterThan(0);
+      expect(wrapper.find('[data-test="price-per-piece"]').at(0).text()).toEqual('2 x $9.90');
+      expect(wrapper.find('[data-test="overall-price"]').length).toBeGreaterThan(0);
+      expect(wrapper.find('[data-test="overall-price"]').at(0).text()).toEqual('$19.80');
     });
 
     it('Should render 1 x price per piece', () => {
       const data = createTransactionAndOrderProdItem('user1', 'p1', 1, 9.9, 'productName', false);
       const wrapper = setUp(data);
-      expect(wrapper.find('.price-per-piece').first().text()).toEqual('1 x $9.90');
-      expect(wrapper.find('.overall-price').text()).toEqual('$9.90');
+      expect(wrapper.find('[data-test="price-per-piece"]').at(0).text()).toEqual('1 x $9.90');
+      expect(wrapper.find('[data-test="overall-price"]').at(0).text()).toEqual('$9.90');
     });
   });
 });
