@@ -12,16 +12,50 @@ export const Wrapper = styled.div`
         flex-direction: row;
 
         & > label {
+          cursor: pointer;
+          display: inline-block;
+          font-size: ${theme.fontSizes.level2};
+          line-height: ${theme.lineHeights.level6};
           order: 1;
-          line-height: ${theme.lineHeights.level1};
-          padding: 0 0 0 ${theme.spacings.level1};
+          padding: 0 0 0 calc(${theme.spacings.level3} + ${theme.spacings.level1});
+          position: relative;
+
+          &::before {
+            align-items: center;
+            border-radius: 5px;
+            border: 2px solid ${theme.colors.blue};
+            color: ${theme.colors.blue};
+            content: '';
+            cursor: pointer;
+            display: flex;
+            height: ${theme.spacings.level3};
+            font-size: ${theme.fontSizes.level4};
+            font-weight: 700;
+            justify-content: center;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: ${theme.spacings.level3};
+          }
         }
 
         & > input {
-          height: 1.8rem;
+          height: 0;
+          opacity: 0;
           margin: 0;
-          padding: 0;
-          width: 1.8rem;
+          width: 0;
+        }
+      `;
+    }
+    return ``;
+  }}
+
+  ${({ checked }) => {
+    if (checked) {
+      return `
+        & > label::before {
+          content: '✗';
         }
       `;
     }
@@ -106,27 +140,71 @@ export const RadioWrapper = styled.div`
   align-items: center;
   display: flex;
 
-  & > label {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    order: 1;
-    line-height: ${({ theme }) => theme.lineHeights.level1};
-    padding: 0 0 0 ${({ theme }) => theme.spacings.level1};
-  }
-
-  & > input {
-    height: 1.8rem;
-    margin: 0;
-    padding: 0;
-    width: 1.8rem;
+  &:first-of-type {
+    margin-top: calc(${({ theme }) => theme.spacings.level1} / 2);
   }
 
   &:not(:last-child) {
-    margin-bottom: ${({ theme }) => theme.spacings.level1};
+    margin-bottom: ${({ theme }) => theme.spacings.level2};
   }
 
-  @media only screen and (max-width: 37.5em) {
-    &:not(:last-child) {
-      margin-bottom: ${({ theme }) => theme.spacings.level2};
+  & > label {
+    cursor: pointer;
+    display: inline-block;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
+    line-height: ${({ theme }) => theme.lineHeights.level6};
+    order: 1;
+    padding: 0 0 0
+      calc(${({ theme }) => theme.spacings.level3} + ${({ theme }) => theme.spacings.level1});
+    position: relative;
+
+    &::before {
+      align-items: center;
+      border-radius: 50%;
+      border: 2px solid ${({ theme }) => theme.colors.blue};
+      color: ${({ theme }) => theme.colors.blue};
+      content: '';
+      display: flex;
+      height: ${({ theme }) => theme.spacings.level3};
+      font-size: ${({ theme }) => theme.fontSizes.level6};
+      font-weight: 700;
+      justify-content: center;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: ${({ theme }) => theme.spacings.level3};
     }
+
+    &::after {
+      border-radius: 50%;
+      background-color: ${({ theme }) => theme.colors.blue};
+      content: '';
+      display: flex;
+      height: ${({ theme }) => theme.spacings.level2};
+      left: ${({ theme }) => theme.spacings.level2};
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: ${({ theme }) => theme.spacings.level2};
+
+      ${({ checked }) => {
+        if (checked) {
+          return `
+              opacity: 1;
+            }
+          `;
+        }
+        return ``;
+      }}
+    }
+  }
+
+  & > input {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    width: 0;
   }
 `;

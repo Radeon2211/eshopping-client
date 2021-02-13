@@ -66,6 +66,7 @@ const Signup = () => {
             <Step1
               goToNextStep={goToNextStep}
               errors={errors}
+              values={values}
               touched={touched}
               currentStep={currentStep}
               setFieldTouched={setFieldTouched}
@@ -74,6 +75,7 @@ const Signup = () => {
               goToPrevStep={goToPrevStep}
               goToNextStep={goToNextStep}
               errors={errors}
+              values={values}
               touched={touched}
               currentStep={currentStep}
               setFieldTouched={setFieldTouched}

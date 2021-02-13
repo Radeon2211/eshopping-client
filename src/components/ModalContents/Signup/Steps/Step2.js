@@ -15,6 +15,7 @@ const Step2 = (props) => {
     goToNextStep,
     goToPrevStep,
     errors,
+    values,
     touched,
     setFieldTouched,
     setFieldValue,
@@ -103,6 +104,7 @@ const Step2 = (props) => {
               type: 'checkbox',
               name: 'hidePhone',
               id: 'hidePhone',
+              checked: values.hidePhone,
             }}
             label="Hide my phone number from others"
           />

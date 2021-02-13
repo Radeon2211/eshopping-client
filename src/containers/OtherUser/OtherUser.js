@@ -88,7 +88,7 @@ const OtherUser = (props) => {
 
     content = (
       <>
-        <Heading variant="h3" mgBottom="3" data-test="username">
+        <Heading variant="h3" data-test="username">
           {username}
         </Heading>
         {contactData}

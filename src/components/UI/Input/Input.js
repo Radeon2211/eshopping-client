@@ -51,7 +51,7 @@ const Input = (props) => {
         <Field name={config.name}>
           {({ field }) =>
             config.options.map((option) => (
-              <SC.RadioWrapper key={option.value}>
+              <SC.RadioWrapper key={option.value} checked={option.checked}>
                 <SC.Input {...field} {...option} type="radio" />
                 <label htmlFor={option.id}>{option.label}</label>
               </SC.RadioWrapper>
@@ -67,7 +67,7 @@ const Input = (props) => {
   }
 
   return (
-    <SC.Wrapper className={valid} type={config.type}>
+    <SC.Wrapper className={valid} type={config.type} checked={config.checked}>
       <SC.Label htmlFor={config.id}>{label}</SC.Label>
       {input}
     </SC.Wrapper>

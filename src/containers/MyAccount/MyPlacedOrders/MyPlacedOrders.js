@@ -10,9 +10,7 @@ const MyPlacedOrders = () => {
 
   return (
     <SC.OrdersWrapper>
-      <Heading variant="h3" mgBottom="3">
-        My placed orders
-      </Heading>
+      <Heading variant="h3">My placed orders</Heading>
       <Orders orders={placedOrders} type={orderTypes.PLACED_ORDERS} />
     </SC.OrdersWrapper>
   );

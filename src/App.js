@@ -6,8 +6,8 @@ import axios from './axios';
 import * as actions from './store/actions/indexActions';
 import { DEFAULT_PATH } from './shared/constants';
 import theme from './styled/theme';
+import ServerConnectionError from './components/UI/ServerConnectionError';
 
-import Heading from './components/UI/Heading/Heading';
 import Modal from './components/UI/Modal/Modal';
 import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
@@ -65,11 +65,7 @@ const App = () => {
 
   if (userProfile === null) {
     if (!axios.defaults.headers.post['X-CSRF-Token']) {
-      routes = (
-        <Heading variant="h3" align="center" mgTop="3">
-          Server connection error. Try again later
-        </Heading>
-      );
+      routes = <ServerConnectionError />;
     } else {
       routes = (
         <>

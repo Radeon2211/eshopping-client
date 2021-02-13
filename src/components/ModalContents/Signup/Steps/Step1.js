@@ -9,7 +9,7 @@ import { stepFormVariants } from '../../../../shared/framer';
 import { inputKinds } from '../../../../shared/constants';
 
 const Step1 = (props) => {
-  const { currentStep, goToNextStep, errors, touched, setFieldTouched } = props;
+  const { currentStep, goToNextStep, errors, values, touched, setFieldTouched } = props;
 
   let btnDisabled = false;
   if (
@@ -60,6 +60,7 @@ const Step1 = (props) => {
               type: 'checkbox',
               name: 'hideEmail',
               id: 'hideEmail',
+              checked: values.hideEmail,
             }}
             label="Hide my email address from others"
           />

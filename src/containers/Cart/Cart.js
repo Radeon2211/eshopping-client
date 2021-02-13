@@ -51,7 +51,13 @@ const Cart = () => {
   let content = <Loader align="center" />;
   if (cart === null) {
     content = (
-      <Heading variant="h3" align="center" lineHeight="4" data-test="cart-error-heading">
+      <Heading
+        variant="h3"
+        mgBottom="h3"
+        align="center"
+        lineHeight="4"
+        data-test="cart-error-heading"
+      >
         There is a problem to get your shopping cart
       </Heading>
     );

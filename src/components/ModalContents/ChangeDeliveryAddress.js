@@ -217,6 +217,7 @@ const ChangeDeliveryAddress = () => {
                 type: 'checkbox',
                 name: 'onlyTheseOrders',
                 id: 'onlyTheseOrders',
+                checked: values.onlyTheseOrders,
               }}
               label="Apply changes only to these orders"
             />

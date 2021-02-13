@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
-  margin-top: ${({ mgTop, theme }) => (mgTop ? theme.spacings[`level${mgTop}`] : '0')};
-  margin-bottom: ${({ mgBottom, theme }) => (mgBottom ? theme.spacings[`level${mgBottom}`] : '0')};
-  text-align: ${({ align }) => align};
-
   ${({ variant, theme }) => {
     switch (variant) {
       case 'h1':
@@ -40,6 +36,19 @@ const StyledHeading = styled.h1`
       default:
         return ``;
     }
+  }}
+
+  margin-top: ${({ mgTop, theme }) => (mgTop ? theme.spacings[`level${mgTop}`] : '0')};
+  text-align: ${({ align }) => align};
+
+  ${({ mgBottom, theme }) => {
+    if (mgBottom) {
+      const level = `level${mgBottom}`;
+      return `
+        margin-bottom: ${theme.spacings[level]};
+      `;
+    }
+    return ``;
   }}
 
   ${({ lineHeight, theme }) => {

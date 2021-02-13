@@ -10,9 +10,7 @@ const MySellHistory = () => {
 
   return (
     <SC.OrdersWrapper>
-      <Heading variant="h3" mgBottom="3">
-        My sell history
-      </Heading>
+      <Heading variant="h3">My sell history</Heading>
       <Orders orders={sellHistory} type={orderTypes.SELL_HISTORY} />
     </SC.OrdersWrapper>
   );
