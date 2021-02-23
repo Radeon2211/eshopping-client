@@ -1,0 +1,132 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import queryString from 'query-string';
+import { useLastLocation } from 'react-router-last-location';
+import { useHistory, Link } from 'react-router-dom';
+import * as SC from './InputPagination.sc';
+import MyIcon from '../../UI/MyIcon';
+import PlainText from '../../UI/PlainText';
+import NumberInput from '../../UI/NumberInput';
+import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
+import { historyActions } from '../../../shared/constants';
+import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
+
+const InputPagination = (props) => {
+  const { itemQuantity, quantityPerPage } = props;
+
+  const history = useHistory();
+  const { search, pathname } = history.location;
+
+  const lastLocation = useLastLocation();
+
+  const [inputValue, setInputValue] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const changePage = useCallback(
+    (pageNumber, action) => {
+      const updatedQueryParams = updateQueryParams(search, pageNumber);
+
+      const previousPath = `${lastLocation?.pathname}${lastLocation?.search}`;
+      const currentPath = `${pathname}${search}`;
+      const nextPath = `${pathname}?${updatedQueryParams}`;
+
+      if ((previousPath === currentPath || previousPath === nextPath) && history.length > 2) {
+        history.goBack();
+      } else if (action === historyActions.PUSH && nextPath !== currentPath) {
+        history.push(nextPath);
+      } else if (action === historyActions.REPLACE) {
+        history.replace(nextPath);
+      }
+    },
+    [history, search, pathname, lastLocation],
+  );
+
+  useEffect(() => {
+    const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
+    const parsedQueryParams = queryString.parse(search);
+    const { p: urlPage } = parsedQueryParams;
+    const urlPageNumber = +urlPage;
+    let correctPageNumber = 1;
+
+    if (!Number.isNaN(urlPageNumber)) {
+      if (urlPageNumber > numberOfPages) {
+        correctPageNumber = numberOfPages;
+        changePage(correctPageNumber, historyActions.REPLACE);
+      } else if (urlPageNumber < 1) {
+        correctPageNumber = 1;
+        changePage(correctPageNumber, historyActions.REPLACE);
+      } else {
+        correctPageNumber = urlPageNumber;
+      }
+    } else {
+      changePage(1, historyActions.REPLACE);
+    }
+
+    setInputValue(correctPageNumber);
+    setCurrentPage(correctPageNumber);
+  }, [itemQuantity, history, search, setInputValue, changePage, quantityPerPage]);
+
+  const inputChangeHandle = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const formSubmitHandle = (e) => {
+    e.preventDefault();
+    const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
+    if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
+    const updatedQueryParams = updateQueryParams(search, inputValue);
+    history.push(`${pathname}?${updatedQueryParams}`);
+  };
+
+  let pagination = null;
+  if (itemQuantity) {
+    const queryParamsPrevious = updateQueryParams(search, currentPage - 1);
+    const queryParamsNext = updateQueryParams(search, currentPage + 1);
+    const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
+
+    pagination = (
+      <SC.Wrapper>
+        <Link
+          to={`${pathname}?${queryParamsPrevious}`}
+          className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
+          data-test="leftArrow"
+        >
+          <MyIcon size="small" rotation={180}>
+            <ArrowIcon />
+          </MyIcon>
+        </Link>
+        <form onSubmit={formSubmitHandle} className="form-number">
+          <NumberInput name="page" size="small" changed={inputChangeHandle} value={inputValue} />
+        </form>
+        <PlainText size="3" mgLeft="1" mgRight="1">
+          of
+        </PlainText>
+        <PlainText size="3" mgLeft="1" mgRight="1">
+          {numberOfPages}
+        </PlainText>
+        <Link
+          to={`${pathname}?${queryParamsNext}`}
+          className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
+          data-test="rightArrow"
+        >
+          <MyIcon size="small">
+            <ArrowIcon />
+          </MyIcon>
+        </Link>
+      </SC.Wrapper>
+    );
+  }
+
+  return pagination;
+};
+
+InputPagination.propTypes = {
+  itemQuantity: undefined,
+};
+
+InputPagination.propTypes = {
+  itemQuantity: PropTypes.number,
+  quantityPerPage: PropTypes.number.isRequired,
+};
+
+export default InputPagination;

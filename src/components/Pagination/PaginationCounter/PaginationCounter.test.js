@@ -1,0 +1,70 @@
+import React from 'react';
+import { mount } from 'enzyme';
+import { Router } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../../styled/theme';
+import PaginationCounter from './PaginationCounter';
+import PlainText from '../../UI/PlainText';
+import { checkProps, historyPageNum } from '../../../shared/testUtility';
+import { listItemTypes } from '../../../shared/constants';
+
+const setUp = (props = {}, history) => {
+  return mount(
+    <Router history={history}>
+      <ThemeProvider theme={theme}>
+        <PaginationCounter {...props} />
+      </ThemeProvider>
+    </Router>,
+  );
+};
+
+const createProps = (itemQuantity, quantityPerPage) => ({
+  itemQuantity,
+  itemsType: listItemTypes.PRODUCT,
+  quantityPerPage,
+});
+
+describe('<PaginationCounter />', () => {
+  describe('Check prop types', () => {
+    const props = createProps(5, 2);
+    it('Should NOT throw a warning', () => {
+      expect(checkProps(PaginationCounter, props)).toBeUndefined();
+    });
+    it('Should throw a warning', () => {
+      expect(checkProps(PaginationCounter, {})).not.toBe(null);
+    });
+  });
+
+  describe('Check if correct text render', () => {
+    it('Should be 1 - 2, 5', () => {
+      const props = createProps(5, 2);
+      const history = historyPageNum(1);
+      const wrapper = setUp(props, history);
+      expect(wrapper.find(PlainText).text()).toEqual('1 - 2 of 5 products');
+    });
+    it('Should be 3 - 4, 5', () => {
+      const props = createProps(5, 2);
+      const history = historyPageNum(2);
+      const wrapper = setUp(props, history);
+      expect(wrapper.find(PlainText).text()).toEqual('3 - 4 of 5 products');
+    });
+    it('Should be 5 - 7, 7', () => {
+      const props = createProps(7, 4);
+      const history = historyPageNum(2);
+      const wrapper = setUp(props, history);
+      expect(wrapper.find(PlainText).text()).toEqual('5 - 7 of 7 products');
+    });
+    it('Should be 1 - 1, 10', () => {
+      const props = createProps(10, 1);
+      const history = historyPageNum(1);
+      const wrapper = setUp(props, history);
+      expect(wrapper.find(PlainText).text()).toEqual('1 - 1 of 10 products');
+    });
+    it('Should be 1 - 1, 10', () => {
+      const props = createProps(10, 1);
+      const history = historyPageNum(10);
+      const wrapper = setUp(props, history);
+      expect(wrapper.find(PlainText).text()).toEqual('10 - 10 of 10 products');
+    });
+  });
+});
