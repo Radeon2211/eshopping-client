@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/eshopping-client/precache-manifest.20aef289589f614973ee85815767cd9f.js"
+  "/eshopping-client/precache-manifest.d7fe8c5bf93d60876d581a015aed71b2.js"
 );
 
 self.addEventListener('message', (event) => {

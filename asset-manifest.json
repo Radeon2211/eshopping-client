@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.6f4a5638.chunk.js",
-    "runtime-main.js": "/eshopping-client/static/js/runtime-main.b9a95fb3.js",
-    "static/js/2.8e8368e7.chunk.js": "/eshopping-client/static/js/2.8e8368e7.chunk.js",
-    "static/js/3.62017160.chunk.js": "/eshopping-client/static/js/3.62017160.chunk.js",
-    "static/js/4.1c078fbe.chunk.js": "/eshopping-client/static/js/4.1c078fbe.chunk.js",
-    "static/js/5.98715a55.chunk.js": "/eshopping-client/static/js/5.98715a55.chunk.js",
-    "static/js/6.c5b6f1b6.chunk.js": "/eshopping-client/static/js/6.c5b6f1b6.chunk.js",
-    "static/js/7.8e8772f0.chunk.js": "/eshopping-client/static/js/7.8e8772f0.chunk.js",
-    "static/js/8.77815e8d.chunk.js": "/eshopping-client/static/js/8.77815e8d.chunk.js",
+    "main.js": "/eshopping-client/static/js/main.432da6d5.chunk.js",
+    "runtime-main.js": "/eshopping-client/static/js/runtime-main.f9fd4623.js",
+    "static/js/2.4ecdeb7b.chunk.js": "/eshopping-client/static/js/2.4ecdeb7b.chunk.js",
+    "static/js/3.da9642c2.chunk.js": "/eshopping-client/static/js/3.da9642c2.chunk.js",
+    "static/js/4.c8363cf5.chunk.js": "/eshopping-client/static/js/4.c8363cf5.chunk.js",
+    "static/js/5.a982ef14.chunk.js": "/eshopping-client/static/js/5.a982ef14.chunk.js",
+    "static/js/6.55bb72e3.chunk.js": "/eshopping-client/static/js/6.55bb72e3.chunk.js",
+    "static/js/7.37de7d35.chunk.js": "/eshopping-client/static/js/7.37de7d35.chunk.js",
+    "static/js/8.213f32ea.chunk.js": "/eshopping-client/static/js/8.213f32ea.chunk.js",
     "index.html": "/eshopping-client/index.html",
-    "precache-manifest.20aef289589f614973ee85815767cd9f.js": "/eshopping-client/precache-manifest.20aef289589f614973ee85815767cd9f.js",
+    "precache-manifest.d7fe8c5bf93d60876d581a015aed71b2.js": "/eshopping-client/precache-manifest.d7fe8c5bf93d60876d581a015aed71b2.js",
     "service-worker.js": "/eshopping-client/service-worker.js",
-    "static/js/2.8e8368e7.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.8e8368e7.chunk.js.LICENSE.txt",
+    "static/js/2.4ecdeb7b.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.4ecdeb7b.chunk.js.LICENSE.txt",
     "static/media/add-product.db646eb5.svg": "/eshopping-client/static/media/add-product.db646eb5.svg",
     "static/media/arrow.svg": "/eshopping-client/static/media/arrow.cd8c1b41.svg",
     "static/media/cart.ff000235.svg": "/eshopping-client/static/media/cart.ff000235.svg",
@@ -34,8 +34,8 @@
     "static/media/trash.6375717a.svg": "/eshopping-client/static/media/trash.6375717a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b9a95fb3.js",
-    "static/js/2.8e8368e7.chunk.js",
-    "static/js/main.6f4a5638.chunk.js"
+    "static/js/runtime-main.f9fd4623.js",
+    "static/js/2.4ecdeb7b.chunk.js",
+    "static/js/main.432da6d5.chunk.js"
   ]
 }
