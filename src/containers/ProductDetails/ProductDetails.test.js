@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
 import Loader from '../../components/UI/Loader';
-import { checkProps } from '../../shared/testUtility';
+import { checkProps, defaultUserProfile } from '../../shared/testUtility';
 import theme from '../../styled/theme';
 import SideBySide from '../../components/UI/SideBySide';
 
@@ -30,13 +30,11 @@ const defaultProductDetails = {
   buyerQuantity: 0,
 };
 
-const defaultProfile = { username: 'user1' };
-
 const defaultCart = [{ _id: '123', product: 'productId', quantity: 1 }];
 
 const defaultStore = {
   ui: { isDataLoading: false },
-  auth: { profile: defaultProfile, cart: defaultCart },
+  auth: { profile: { ...defaultUserProfile, username: 'user1' }, cart: defaultCart },
   product: {
     productDetails: defaultProductDetails,
   },
@@ -173,7 +171,9 @@ describe('<ProductDetails />', () => {
       });
 
       it('Should render delete and edit button when user is admin and owner', () => {
-        const wrapper = setUp({ auth: { profile: { ...defaultProfile, isAdmin: true } } });
+        const wrapper = setUp({
+          auth: { profile: { ...defaultUserProfile, username: 'user1', isAdmin: true } },
+        });
         expect(wrapper.find('[data-test="edit-button"]').length).toBeGreaterThan(0);
         expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
       });
@@ -181,7 +181,7 @@ describe('<ProductDetails />', () => {
       it('Should render delete button when user is admin', () => {
         const wrapper = setUp({
           auth: {
-            profile: { ...defaultProfile, username: 'user2', isAdmin: true },
+            profile: { ...defaultUserProfile, username: 'user2', isAdmin: true },
             cart: defaultCart,
           },
         });
@@ -190,7 +190,7 @@ describe('<ProductDetails />', () => {
 
       it('Should NOT render edit and delete button when user is not admin and not owner', () => {
         const wrapper = setUp({
-          auth: { profile: { ...defaultProfile, username: 'user2' }, cart: defaultCart },
+          auth: { profile: { ...defaultUserProfile, username: 'user2' }, cart: defaultCart },
         });
         expect(wrapper.find('[data-test="edit-button"]')).toHaveLength(0);
         expect(wrapper.find('[data-test="delete-button"]')).toHaveLength(0);

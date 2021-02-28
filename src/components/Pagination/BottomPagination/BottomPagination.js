@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import NumberPagination from '../NumberPagination/NumberPagination';
 import PaginationCounter from '../PaginationCounter/PaginationCounter';
+import { listItemTypes } from '../../../shared/constants';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -34,7 +35,7 @@ const BottomPagination = (props) => {
 
 BottomPagination.propTypes = {
   itemQuantity: PropTypes.number.isRequired,
-  itemsType: PropTypes.string.isRequired,
+  itemsType: PropTypes.oneOf([listItemTypes.PRODUCT, listItemTypes.ORDER]).isRequired,
   quantityPerPage: PropTypes.number.isRequired,
 };
 

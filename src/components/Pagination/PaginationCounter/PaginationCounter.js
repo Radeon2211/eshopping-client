@@ -50,7 +50,7 @@ const PaginationCounter = (props) => {
 
 PaginationCounter.propTyeps = {
   itemQuantity: PropTypes.number.isRequired,
-  itemsType: PropTypes.string.isRequired,
+  itemsType: PropTypes.oneOf([listItemTypes.PRODUCT, listItemTypes.ORDER]).isRequired,
   quantityPerPage: PropTypes.number.isRequired,
 };
 

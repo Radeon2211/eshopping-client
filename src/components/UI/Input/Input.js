@@ -77,18 +77,28 @@ const Input = (props) => {
 Input.defaultProps = {
   isValid: undefined,
   isTouched: undefined,
-  captionText: '',
 };
 
 Input.propTypes = {
   kind: PropTypes.string.isRequired,
   config: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    type: PropTypes.string,
+    checked: PropTypes.bool,
+    autoComplete: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    placeholder: PropTypes.string,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    step: PropTypes.string,
+    onInput: PropTypes.func,
+    setFieldValue: PropTypes.func,
+    setFieldTouched: PropTypes.func,
   }).isRequired,
   label: PropTypes.string.isRequired,
   isValid: PropTypes.bool,
   isTouched: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  captionText: PropTypes.string,
 };
 
 export default Input;

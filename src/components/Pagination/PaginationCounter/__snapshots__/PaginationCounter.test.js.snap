@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1 order 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm cEHHBq"
+    color="#777"
+    display="inline-block"
+    overflow="visible"
+    size="1"
+    spacing="0px"
+    transform=""
+  >
+    1 - 1 of 1 order
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1 products 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm cEHHBq"
+    color="#777"
+    display="inline-block"
+    overflow="visible"
+    size="1"
+    spacing="0px"
+    transform=""
+  >
+    1 - 1 of 1 product
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 10 orders 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm cEHHBq"
+    color="#777"
+    display="inline-block"
+    overflow="visible"
+    size="1"
+    spacing="0px"
+    transform=""
+  >
+    1 - 1 of 10 orders
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<PaginationCounter /> Check if correct text render Should be 1 - 2 of 5 products 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm cEHHBq"
+    color="#777"
+    display="inline-block"
+    overflow="visible"
+    size="1"
+    spacing="0px"
+    transform=""
+  >
+    1 - 2 of 5 products
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<PaginationCounter /> Check if correct text render Should be 3 - 4 of 5 products 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm cEHHBq"
+    color="#777"
+    display="inline-block"
+    overflow="visible"
+    size="1"
+    spacing="0px"
+    transform=""
+  >
+    3 - 4 of 5 products
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<PaginationCounter /> Check if correct text render Should be 5 - 7 of 7 orders 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm cEHHBq"
+    color="#777"
+    display="inline-block"
+    overflow="visible"
+    size="1"
+    spacing="0px"
+    transform=""
+  >
+    5 - 7 of 7 orders
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<PaginationCounter /> Check if correct text render Should be 10 - 10 of 10 orders 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm cEHHBq"
+    color="#777"
+    display="inline-block"
+    overflow="visible"
+    size="1"
+    spacing="0px"
+    transform=""
+  >
+    10 - 10 of 10 orders
+  </span>
+</DocumentFragment>
+`;

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import theme from '../../../styled/theme';
 
 export const Wrapper = styled.div`
   text-align: left;
 
   & .progress-bar-box {
-    padding: 0 ${({ theme }) => theme.spacings.level3};
+    padding: 0 ${theme.spacings.level3};
   }
 `;
 
@@ -30,3 +31,13 @@ export const Buttons = styled.div`
     `;
   }}
 `;
+
+export const stepFormVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: theme.durations.level1, delay: theme.durations.level1 },
+  },
+};

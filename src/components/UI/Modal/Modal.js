@@ -2,13 +2,13 @@ import React, { useCallback, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import * as SC from './Modal.sc';
 import MyIcon from '../MyIcon';
 import LoadingOverlay from '../LoadingOverlay';
 import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
-import { backdropVariants, modalVariants } from '../../../shared/framer';
 import AboutWebsite from '../../ModalContents/AboutWebsite';
 import AddProduct from '../../ModalContents/AddProduct';
 import AddAdmin from '../../ModalContents/AddAdmin';
@@ -31,6 +31,30 @@ import ResetPassword from '../../ModalContents/ResetPassword';
 import PendingUserInfo from '../../ModalContents/PendingUserInfo';
 import Signup from '../../ModalContents/Signup/Signup';
 import SendVerificationLink from '../../ModalContents/SendVerificationLink';
+
+export const backdropVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'initial',
+    transition: { duration: theme.durations.level3 },
+  },
+};
+
+export const modalVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: theme.durations.level2 },
+    pointerEvents: 'initial',
+  },
+};
 
 const Modal = () => {
   const history = useHistory();

@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
+import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
-import { messageBoxVariants } from '../../../shared/framer';
 import MyIcon from '../MyIcon';
 import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
 
@@ -14,38 +14,50 @@ SC.Wrapper = styled(motion.div)`
   left: 50%;
   transform: translateX(-50%);
   max-width: 100%;
-  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
+  padding: ${theme.spacings.level1} ${theme.spacings.level2};
   position: fixed;
-  top: ${({ theme }) => theme.spacings.level2};
+  top: ${theme.spacings.level2};
   width: 60rem;
-  z-index: ${({ theme }) => theme.zIndexes.level5};
+  z-index: ${theme.zIndexes.level5};
 `;
 
 SC.Message = styled(motion.div)`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.blue};
-  box-shadow: ${({ theme }) => theme.shadows.level4};
+  background-color: ${theme.colors.blue};
+  box-shadow: ${theme.shadows.level4};
   color: #fff;
   display: flex;
-  font-size: ${({ theme }) => theme.fontSizes.level2};
+  font-size: ${theme.fontSizes.level2};
   justify-content: space-between;
-  margin: 0 ${({ theme }) => theme.spacings.level2};
+  margin: 0 ${theme.spacings.level2};
   text-align: justify;
-  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
+  padding: ${theme.spacings.level1} ${theme.spacings.level2};
   width: 100%;
   word-break: break-word;
 
   & .close-icon {
     cursor: pointer;
-    margin-left: ${({ theme }) => theme.spacings.level1};
+    margin-left: ${theme.spacings.level1};
     transform: rotate(45deg);
   }
 
   @media only screen and (max-width: 37.5em) {
-    font-size: ${({ theme }) => theme.fontSizes.level3};
-    padding: ${({ theme }) => theme.spacings.level2};
+    font-size: ${theme.fontSizes.level3};
+    padding: ${theme.spacings.level2};
   }
 `;
+
+export const messageBoxVariants = {
+  hidden: {
+    pointerEvents: 'none',
+    y: '-200%',
+  },
+  visible: {
+    transition: { type: 'spring', duration: theme.durations.level2, stiffness: 110 },
+    pointerEvents: 'initial',
+    y: 0,
+  },
+};
 
 const MessageBox = () => {
   const message = useSelector((state) => state.ui.message);
@@ -63,7 +75,7 @@ const MessageBox = () => {
             animate="visible"
             exit="hidden"
           >
-            {message}
+            <span data-testid="message-text">{message}</span>
             <MyIcon
               size="small"
               color="#fff"

@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoggedInLinks /> Check how everything renders Should render version for user with status active 1`] = `
+<styled.nav>
+  <CartLink />
+  <styled.div
+    id="user"
+    onClick={[Function]}
+  >
+    <PlainText
+      alignSelf=""
+      color=""
+      data-test="username"
+      display="inline-block"
+      extraMgTop="0rem"
+      fStyle="normal"
+      lineHeight="level3"
+      maxWidth="15rem"
+      mgBottom=""
+      mgLeft=""
+      mgRight="1"
+      mgTop=""
+      minusMgTop={false}
+      overflow="hidden"
+      size="3"
+      spacing="0px"
+      textAlign="right"
+      textOverflow="ellipsis"
+      transform=""
+      weight="normal"
+      whiteSpace="nowrap"
+      wordBreak=""
+    >
+      username
+    </PlainText>
+    <MyIcon
+      color=""
+      disabled={false}
+      rotation={90}
+      size="small"
+    >
+      <ForwardRef(SvgArrow) />
+    </MyIcon>
+    <Dropdown
+      closed={[Function]}
+      isVisible={false}
+    />
+  </styled.div>
+</styled.nav>
+`;
+
+exports[`<LoggedInLinks /> Check how everything renders Should render version for user with status pending 1`] = `
+<styled.nav>
+  <Link
+    data-test="my-account-link"
+    to="/my-account/data"
+  >
+    <styled.div
+      id="user"
+    >
+      <PlainText
+        alignSelf=""
+        color=""
+        data-test="username"
+        display="inline-block"
+        extraMgTop="0rem"
+        fStyle="normal"
+        lineHeight="level3"
+        maxWidth="15rem"
+        mgBottom=""
+        mgLeft=""
+        mgRight="1"
+        mgTop=""
+        minusMgTop={false}
+        overflow="hidden"
+        size="3"
+        spacing="0px"
+        textAlign="right"
+        textOverflow="ellipsis"
+        transform=""
+        weight="normal"
+        whiteSpace="nowrap"
+        wordBreak=""
+      >
+        username
+      </PlainText>
+      <MyIcon
+        color=""
+        disabled={false}
+        rotation={0}
+        size="small"
+      >
+        <ForwardRef(SvgSettings) />
+      </MyIcon>
+    </styled.div>
+  </Link>
+</styled.nav>
+`;

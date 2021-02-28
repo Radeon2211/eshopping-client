@@ -1,0 +1,317 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NumberPagination /> Check how everything render Should render all correctly (without hide-arrow class on arrows) 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm eyLdyf"
+  >
+    <a
+      class="arrow"
+      data-testid="left-arrow"
+    >
+      <div
+        class="sc-AxirZ bLdFLx"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+    <a
+      class="number-link"
+      data-testid="page1"
+    >
+      1
+    </a>
+    <a
+      class="number-link active"
+      data-testid="page2"
+    >
+      2
+    </a>
+    <a
+      class="number-link"
+      data-testid="page3"
+    >
+      3
+    </a>
+    <span
+      class="of"
+    >
+      of
+    </span>
+    <span
+      class="of"
+    >
+      3
+    </span>
+    <a
+      class="arrow"
+      data-testid="right-arrow"
+    >
+      <div
+        class="sc-AxirZ csXoMP"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<NumberPagination /> Check how everything render Should render ellipsis and six number links and page 8 has active class if p is 8, quantity is 20, per page is 2 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm eyLdyf"
+  >
+    <a
+      class="arrow"
+      data-testid="left-arrow"
+    >
+      <div
+        class="sc-AxirZ bLdFLx"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+    <a
+      class="number-link"
+      data-testid="page1"
+    >
+      1
+    </a>
+    <span
+      class="ellipsis"
+    >
+      ...
+    </span>
+    <a
+      class="number-link"
+      data-testid="page6"
+    >
+      6
+    </a>
+    <a
+      class="number-link"
+      data-testid="page7"
+    >
+      7
+    </a>
+    <a
+      class="number-link active"
+      data-testid="page8"
+    >
+      8
+    </a>
+    <a
+      class="number-link"
+      data-testid="page9"
+    >
+      9
+    </a>
+    <a
+      class="number-link"
+      data-testid="page10"
+    >
+      10
+    </a>
+    <span
+      class="of"
+    >
+      of
+    </span>
+    <span
+      class="of"
+    >
+      10
+    </span>
+    <a
+      class="arrow"
+      data-testid="right-arrow"
+    >
+      <div
+        class="sc-AxirZ csXoMP"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<NumberPagination /> Check how everything render Should render ellipsis and six number links and page 10 has active class if p is 10, quantity is 20, per page is 2 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm eyLdyf"
+  >
+    <a
+      class="arrow"
+      data-testid="left-arrow"
+    >
+      <div
+        class="sc-AxirZ bLdFLx"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+    <a
+      class="number-link"
+      data-testid="page1"
+    >
+      1
+    </a>
+    <span
+      class="ellipsis"
+    >
+      ...
+    </span>
+    <a
+      class="number-link"
+      data-testid="page6"
+    >
+      6
+    </a>
+    <a
+      class="number-link"
+      data-testid="page7"
+    >
+      7
+    </a>
+    <a
+      class="number-link"
+      data-testid="page8"
+    >
+      8
+    </a>
+    <a
+      class="number-link"
+      data-testid="page9"
+    >
+      9
+    </a>
+    <a
+      class="number-link active"
+      data-testid="page10"
+    >
+      10
+    </a>
+    <span
+      class="of"
+    >
+      of
+    </span>
+    <span
+      class="of"
+    >
+      10
+    </span>
+    <a
+      class="arrow hide-arrow"
+      data-testid="right-arrow"
+    >
+      <div
+        class="sc-AxirZ csXoMP"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<NumberPagination /> Check how everything render Should render six number links if p is 1 and page 1 has active class, quantity is 20, per page is 2 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm eyLdyf"
+  >
+    <a
+      class="arrow hide-arrow"
+      data-testid="left-arrow"
+    >
+      <div
+        class="sc-AxirZ bLdFLx"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+    <a
+      class="number-link active"
+      data-testid="page1"
+    >
+      1
+    </a>
+    <a
+      class="number-link"
+      data-testid="page2"
+    >
+      2
+    </a>
+    <a
+      class="number-link"
+      data-testid="page3"
+    >
+      3
+    </a>
+    <a
+      class="number-link"
+      data-testid="page4"
+    >
+      4
+    </a>
+    <a
+      class="number-link"
+      data-testid="page5"
+    >
+      5
+    </a>
+    <a
+      class="number-link"
+      data-testid="page6"
+    >
+      6
+    </a>
+    <span
+      class="of"
+    >
+      of
+    </span>
+    <span
+      class="of"
+    >
+      10
+    </span>
+    <a
+      class="arrow"
+      data-testid="right-arrow"
+    >
+      <div
+        class="sc-AxirZ csXoMP"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;

@@ -12,6 +12,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   html {
     font-size: 62.5%;
     background-color: ${({ theme }) => theme.colors.light2};

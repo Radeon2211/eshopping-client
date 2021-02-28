@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> Should render h1 with correct text 1`] = `
+<h1
+  className="sc-AxjAm goONGE"
+>
+  h1 heading
+</h1>
+`;
+
+exports[`<Heading /> Should render h2 with correct text 1`] = `
+<h2
+  className="sc-AxjAm bjmzDH"
+>
+  h2 heading
+</h2>
+`;
+
+exports[`<Heading /> Should render h3 with correct text 1`] = `
+<h3
+  className="sc-AxjAm hRHFqs"
+>
+  h3 heading
+</h3>
+`;
+
+exports[`<Heading /> Should render h4 with correct text 1`] = `
+<h4
+  className="sc-AxjAm giRmiT"
+>
+  h4 heading
+</h4>
+`;
+
+exports[`<Heading /> Should render h5 with correct text 1`] = `
+<h5
+  className="sc-AxjAm ljofNN"
+>
+  h5 heading
+</h5>
+`;
+
+exports[`<Heading /> Should render h6 with correct text 1`] = `
+<h6
+  className="sc-AxjAm ljofNN"
+>
+  h6 heading
+</h6>
+`;

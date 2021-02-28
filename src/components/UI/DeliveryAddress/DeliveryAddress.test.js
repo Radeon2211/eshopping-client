@@ -1,18 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { ThemeProvider } from 'styled-components';
+import { shallow } from 'enzyme';
 import DeliveryAddress from './DeliveryAddress';
-import theme from '../../../styled/theme';
-import PlainText from '../PlainText';
 import { checkProps, defaultDeliveryAddress } from '../../../shared/testUtility';
 
 const setUp = (data) => {
-  const props = { data };
-  return mount(
-    <ThemeProvider theme={theme}>
-      <DeliveryAddress {...props} />
-    </ThemeProvider>,
-  );
+  return shallow(<DeliveryAddress data={data} />);
 };
 
 describe('<DeliveryAddress />', () => {
@@ -39,16 +31,8 @@ describe('<DeliveryAddress />', () => {
     });
   });
 
-  describe('Check how <PlainText /> render', () => {
-    it('Should render five <PlainText /> with correct values', () => {
-      const wrapper = setUp(defaultDeliveryAddress);
-
-      expect(wrapper.find(PlainText)).toHaveLength(5);
-      expect(wrapper.find(PlainText).at(0).text()).toEqual('firstName lastName');
-      expect(wrapper.find(PlainText).at(1).text()).toEqual('street');
-      expect(wrapper.find(PlainText).at(2).text()).toEqual('zipCode city');
-      expect(wrapper.find(PlainText).at(3).text()).toEqual('country');
-      expect(wrapper.find(PlainText).at(4).text()).toEqual('phone');
-    });
+  it('Should render five <PlainText /> with correct values', () => {
+    const wrapper = setUp(defaultDeliveryAddress);
+    expect(wrapper).toMatchSnapshot();
   });
 });

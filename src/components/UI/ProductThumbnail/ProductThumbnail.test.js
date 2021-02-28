@@ -1,10 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
+import { shallow } from 'enzyme';
 import ProductThumbnail from './ProductThumbnail';
 import { checkProps } from '../../../shared/testUtility';
-import noPhoto from '../../../images/no-photo.png';
 
 const setUp = (photo = false, orderId = '') => {
   const props = {
@@ -15,11 +12,7 @@ const setUp = (photo = false, orderId = '') => {
     height: '5',
     alt: 'testAlt',
   };
-  return mount(
-    <ThemeProvider theme={theme}>
-      <ProductThumbnail {...props} />
-    </ThemeProvider>,
-  );
+  return shallow(<ProductThumbnail {...props} />);
 };
 
 describe('<ProductThumbnail />', () => {
@@ -39,29 +32,20 @@ describe('<ProductThumbnail />', () => {
     });
   });
 
-  describe('Check what src and alt in img is', () => {
-    it('Should src be link to product photo in order collection', () => {
+  describe('Check how everything render', () => {
+    it('Should src be a link to product photo in order collection', () => {
       const wrapper = setUp(true, 'o1');
-      expect(wrapper.find('img').prop('src')).toEqual(
-        `${process.env.REACT_APP_API_URL}/orders/o1/p1/photo`,
-      );
+      expect(wrapper).toMatchSnapshot();
     });
 
-    it('Should src be link to product photo in product collection', () => {
+    it('Should src be a link to product photo in product collection', () => {
       const wrapper = setUp(true);
-      expect(wrapper.find('img').prop('src')).toEqual(
-        `${process.env.REACT_APP_API_URL}/products/p1/photo`,
-      );
+      expect(wrapper).toMatchSnapshot();
     });
 
-    it('Should src be noPhoto', () => {
+    it('Should src be a noPhoto', () => {
       const wrapper = setUp(false);
-      expect(wrapper.find('img').prop('src')).toEqual(noPhoto);
-    });
-
-    it('Should alt be testAlt', () => {
-      const wrapper = setUp();
-      expect(wrapper.find('img').prop('alt')).toEqual('testAlt');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

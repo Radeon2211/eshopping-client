@@ -5,7 +5,7 @@ import * as SC from '../Signup.sc';
 import Input from '../../../UI/Input/Input';
 import Button from '../../../UI/Button/Button';
 import PlainText from '../../../UI/PlainText';
-import { stepFormVariants } from '../../../../shared/framer';
+import { stepFormVariants } from '../Signup.sc';
 import { inputKinds } from '../../../../shared/constants';
 
 const Step1 = (props) => {

@@ -12,6 +12,7 @@ const SC = {};
 SC.Wrapper = styled.div`
   min-height: 4rem;
   position: relative;
+  width: 100%;
 `;
 
 const ProductList = (props) => {

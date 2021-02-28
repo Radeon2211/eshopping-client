@@ -8,7 +8,7 @@ export const Wrapper = styled(FlexWrapper)`
   transition: background-color ${({ theme }) => theme.durations.level1}s;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.07);
+    background-color: rgba(0, 0, 0, 0.05);
     cursor: pointer;
   }
 

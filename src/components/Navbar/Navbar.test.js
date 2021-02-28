@@ -1,8 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Navbar from './Navbar';
-import LoggedInLinks from './LoggedInLinks/LoggedInLinks';
-import LoggedOutLinks from './LoggedOutLinks/LoggedOutLinks';
 import { defaultUserProfile } from '../../shared/testUtility';
 
 const setUp = (props = {}) => {
@@ -10,20 +8,16 @@ const setUp = (props = {}) => {
 };
 
 describe('<Navbar />', () => {
-  describe('User is logged in', () => {
+  it('Should render <LoggedInLinks /> if user is logged in', () => {
     const props = {
       userProfile: defaultUserProfile,
     };
-    const navbar = setUp(props);
-    it('Should render one <LoggedInLinks />', () => {
-      expect(navbar.find(LoggedInLinks)).toHaveLength(1);
-    });
+    const wrapper = setUp(props);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  describe('User is logged out', () => {
-    const navbar = setUp();
-    it('Should render one <LoggedOutLinks />', () => {
-      expect(navbar.find(LoggedOutLinks)).toHaveLength(1);
-    });
+  it('Should render <LoggedOutLinks /> if user is logged out', () => {
+    const wrapper = setUp();
+    expect(wrapper).toMatchSnapshot();
   });
 });

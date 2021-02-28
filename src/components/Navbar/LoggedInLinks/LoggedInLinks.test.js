@@ -1,24 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import thunk from 'redux-thunk';
-import LoggedInLinks, { SC } from './LoggedInLinks';
-import CartLink from './CartLink/CartLink';
-import Dropdown from './Dropdown/Dropdown';
-import MyIcon from '../../UI/MyIcon';
-import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
-import { ReactComponent as SettingsIcon } from '../../../images/icons/settings.svg';
-import theme from '../../../styled/theme';
+import { shallow } from 'enzyme';
+import LoggedInLinks from './LoggedInLinks';
 import { checkProps } from '../../../shared/testUtility';
-
-const mockStore = configureMockStore([thunk]);
-
-const defaultStore = mockStore({
-  auth: { cart: [] },
-});
 
 const setUp = (username, status) => {
   const props = {
@@ -26,15 +9,7 @@ const setUp = (username, status) => {
     status,
   };
 
-  return mount(
-    <Provider store={defaultStore}>
-      <Router>
-        <ThemeProvider theme={theme}>
-          <LoggedInLinks {...props} />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  return shallow(<LoggedInLinks {...props} />);
 };
 
 describe('<LoggedInLinks />', () => {
@@ -71,33 +46,12 @@ describe('<LoggedInLinks />', () => {
   describe('Check how everything renders', () => {
     it('Should render version for user with status active', () => {
       const wrapper = setUp('username', 'active');
-
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-      expect(wrapper.find('[data-test="my-account-link"]')).toHaveLength(0);
-      expect(wrapper.find(CartLink)).toHaveLength(1);
-      expect(wrapper.find(SC.User)).toHaveLength(1);
-      expect(wrapper.find(SC.User).prop('onClick')).toBeDefined();
-      expect(wrapper.find('[data-test="username"]').at(0).text()).toEqual('username');
-      expect(wrapper.find(MyIcon).find(ArrowIcon)).toHaveLength(1);
-      expect(wrapper.find(MyIcon).find(SettingsIcon)).toHaveLength(0);
-      expect(wrapper.find(Dropdown)).toHaveLength(1);
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('Should render version for user with status pending', () => {
       const wrapper = setUp('username', 'pending');
-
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-      expect(wrapper.find('[data-test="my-account-link"]').length).toBeGreaterThan(0);
-      expect(wrapper.find('[data-test="my-account-link"]').at(0).prop('to')).toEqual(
-        '/my-account/data',
-      );
-      expect(wrapper.find(CartLink)).toHaveLength(0);
-      expect(wrapper.find(SC.User)).toHaveLength(1);
-      expect(wrapper.find(SC.User).prop('onClick')).not.toBeDefined();
-      expect(wrapper.find('[data-test="username"]').at(0).text()).toEqual('username');
-      expect(wrapper.find(MyIcon).find(ArrowIcon)).toHaveLength(0);
-      expect(wrapper.find(MyIcon).find(SettingsIcon)).toHaveLength(1);
-      expect(wrapper.find(Dropdown)).toHaveLength(0);
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

@@ -27,6 +27,7 @@ const NumberPagination = (props) => {
         to={`${pathname}?${updateQueryParams(search, pageNumber)}`}
         key={pageNumber}
         className={`number-link${pageNumber === currentPage ? ' active' : ''}`}
+        data-testid={`page${pageNumber}`}
       >
         {pageNumber}
       </Link>
@@ -38,7 +39,6 @@ const NumberPagination = (props) => {
     const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
     const previousPagePath = `${pathname}?${updateQueryParams(search, currentPage - 1)}`;
     const nextPagePath = `${pathname}?${updateQueryParams(search, currentPage + 1)}`;
-    const firstPagePath = `${pathname}?${updateQueryParams(search, 1)}`;
 
     const paginationNumbers = [];
     if (numberOfPages <= 6 || (currentPage <= 4 && numberOfPages > 6)) {
@@ -47,10 +47,8 @@ const NumberPagination = (props) => {
         paginationNumbers.push(createLinkNode(i));
       }
     } else {
+      paginationNumbers.push(createLinkNode(1));
       paginationNumbers.push(
-        <Link to={firstPagePath} key={1} className="number-link">
-          1
-        </Link>,
         <span key={2} className="ellipsis">
           ...
         </span>,
@@ -73,7 +71,7 @@ const NumberPagination = (props) => {
         <Link
           to={previousPagePath}
           className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
-          data-test="leftArrow"
+          data-testid="left-arrow"
         >
           <MyIcon size="small" rotation={180}>
             <ArrowIcon />
@@ -85,7 +83,7 @@ const NumberPagination = (props) => {
         <Link
           to={nextPagePath}
           className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
-          data-test="rightArrow"
+          data-testid="right-arrow"
         >
           <MyIcon size="small">
             <ArrowIcon />

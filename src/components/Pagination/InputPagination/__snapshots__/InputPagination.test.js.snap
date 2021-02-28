@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NumberPagination /> Check how everything render Should render all correctly (without hide-arrow class on arrows) 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm ioFhGq"
+  >
+    <a
+      class="arrow"
+      data-testid="left-arrow"
+    >
+      <div
+        class="sc-AxirZ bLdFLx"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+    <form
+      class="form-number"
+    >
+      <input
+        class="sc-AxhCb feWMBA"
+        focusable="true"
+        name="page"
+        type="number"
+        value="2"
+      />
+    </form>
+    <span
+      class="sc-AxiKw bBQmoP"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="3"
+      spacing="0px"
+      transform=""
+    >
+      of
+    </span>
+    <span
+      class="sc-AxiKw bBQmoP"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="3"
+      spacing="0px"
+      transform=""
+    >
+      3
+    </span>
+    <a
+      class="arrow"
+      data-testid="right-arrow"
+    >
+      <div
+        class="sc-AxirZ csXoMP"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;

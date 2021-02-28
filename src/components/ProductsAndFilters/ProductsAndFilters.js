@@ -10,7 +10,6 @@ import PlainPanel from '../UI/Panels/PlainPanel';
 import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import ProductsPerPageController from '../Pagination/ProductsPerPageController';
-import FlexWrapper from '../UI/FlexWrapper';
 import { TopPagination } from '../../styled/components';
 import { listItemTypes } from '../../shared/constants';
 
@@ -62,12 +61,10 @@ const ProductsAndFilters = (props) => {
   }
 
   return (
-    <FlexWrapper direction="column" spacing="3">
-      <SideBySide proportion="1/3" makeVerticalWhen={1200}>
-        {filters}
-        {productListSection}
-      </SideBySide>
-    </FlexWrapper>
+    <SideBySide proportion="1/3" makeVerticalWhen={1200}>
+      {filters}
+      {productListSection}
+    </SideBySide>
   );
 };
 

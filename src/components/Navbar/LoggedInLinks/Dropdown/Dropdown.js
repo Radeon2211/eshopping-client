@@ -7,7 +7,6 @@ import { AnimatePresence } from 'framer-motion';
 import * as actions from '../../../../store/actions/indexActions';
 import { modalTypes } from '../../../../shared/constants';
 import * as SC from './Dropdown.sc';
-import { dropdownVariants } from '../../../../shared/framer';
 import MyIcon from '../../../UI/MyIcon';
 import { ReactComponent as AddProductIcon } from '../../../../images/icons/add-product.svg';
 import { ReactComponent as MyAccountIcon } from '../../../../images/icons/my-account.svg';
@@ -15,6 +14,19 @@ import { ReactComponent as MyOffersIcon } from '../../../../images/icons/my-offe
 import { ReactComponent as PlacedOrdersIcon } from '../../../../images/icons/placed-orders.svg';
 import { ReactComponent as SellHistoryIcon } from '../../../../images/icons/sell-history.svg';
 import { ReactComponent as LogOutIcon } from '../../../../images/icons/log-out.svg';
+
+export const dropdownVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+    y: '-10%',
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'initial',
+    y: '0',
+  },
+};
 
 const Dropdown = (props) => {
   const { isVisible, closed } = props;

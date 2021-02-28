@@ -89,7 +89,7 @@ const InputPagination = (props) => {
         <Link
           to={`${pathname}?${queryParamsPrevious}`}
           className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
-          data-test="leftArrow"
+          data-testid="left-arrow"
         >
           <MyIcon size="small" rotation={180}>
             <ArrowIcon />
@@ -107,7 +107,7 @@ const InputPagination = (props) => {
         <Link
           to={`${pathname}?${queryParamsNext}`}
           className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
-          data-test="rightArrow"
+          data-testid="right-arrow"
         >
           <MyIcon size="small">
             <ArrowIcon />
