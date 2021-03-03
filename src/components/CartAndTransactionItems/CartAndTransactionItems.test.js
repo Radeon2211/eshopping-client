@@ -1,13 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import CartAndTransactionItems, { SC } from './CartAndTransactionItems';
-import CartItem from './CartItem/CartItem';
-import TransactionAndOrderProdItem from '../TransactionAndOrderProdItem/TransactionAndOrderProdItem';
+import CartAndTransactionItems from './CartAndTransactionItems';
 import theme from '../../styled/theme';
 import {
   checkProps,
@@ -18,34 +17,32 @@ import { itemTypes } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/cart' },
-};
-
 const defaultStore = mockStore({});
 
-const setUp = (items, type, isCartLoading = false) => {
-  const props = {
-    items,
-    type,
-    isCartLoading,
+const setUp = (items, type, pushFn = jest.fn()) => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/cart' },
+    push: pushFn,
   };
-  return mount(
-    <Router history={defaultHistory}>
+
+  return render(
+    <Router history={history}>
       <Provider store={defaultStore}>
         <ThemeProvider theme={theme}>
-          <CartAndTransactionItems {...props} />
+          <CartAndTransactionItems items={items} type={type} isCartLoading={false} />
         </ThemeProvider>
       </Provider>
     </Router>,
   );
 };
 
+afterEach(cleanup);
+
 describe('<CartAndTransactionItems />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('Should NOT throw a warning if type is CART', () => {
       const props = {
         items: [{ _id: 'i1' }],
         type: itemTypes.CART,
@@ -54,59 +51,52 @@ describe('<CartAndTransactionItems />', () => {
       expect(checkProps(CartAndTransactionItems, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('Should NOT throw a warning if type is TRANSACTION', () => {
+      const props = {
+        items: [{ _id: 'i1' }],
+        type: itemTypes.TRANSACTION,
+        isCartLoading: false,
+      };
+      expect(checkProps(CartAndTransactionItems, props)).toBeUndefined();
+    });
+
+    it('Should throw a warning if type is ORDER', () => {
+      const props = {
+        items: [{ _id: 'i1' }],
+        type: itemTypes.ORDER,
+        isCartLoading: false,
+      };
+      expect(checkProps(CartAndTransactionItems, props)).not.toBe(null);
+    });
+
+    it('Should throw a warning if props are empty', () => {
       expect(checkProps(CartAndTransactionItems, {})).not.toBe(null);
     });
   });
 
-  describe('Check how render - CART ITEMS', () => {
-    it('Should render one <SC.SingleSeller /> with correct data and two <CartItem />', () => {
-      const items = [createCartItem('user1'), createCartItem('user1')];
-      const wrapper = setUp(items, itemTypes.CART);
-      expect(wrapper.find(SC.SingleSeller)).toHaveLength(1);
-      expect(wrapper.find('[data-test="user-link"]').first().prop('to')).toEqual('/user/user1?p=1');
-      expect(wrapper.find('[data-test="user-link"]').first().text()).toEqual('user1');
-      expect(wrapper.find(CartItem)).toHaveLength(2);
+  describe('Check how renders', () => {
+    it('Should render everything with one seller and one cart item', () => {
+      const { asFragment } = setUp([createCartItem('user1')], itemTypes.CART);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render three <SC.SingleSeller /> and five <CartItem />', () => {
-      const items = [
-        createCartItem('user1'),
-        createCartItem('user1'),
-        createCartItem('user2'),
-        createCartItem('user3'),
-        createCartItem('user3'),
-      ];
-      const wrapper = setUp(items, itemTypes.CART);
-      expect(wrapper.find(SC.SingleSeller)).toHaveLength(3);
-      expect(wrapper.find(CartItem)).toHaveLength(5);
-    });
-  });
-
-  describe('Check how render - TRANSACTION ITEMS', () => {
-    it('Should render one <SC.SingleSeller /> with correct data and two <TransactionAndOrderProdItem />', () => {
-      const items = [
-        createTransactionAndOrderProdItem('user1'),
-        createTransactionAndOrderProdItem('user1'),
-      ];
-      const wrapper = setUp(items, itemTypes.TRANSACTION);
-      expect(wrapper.find(SC.SingleSeller)).toHaveLength(1);
-      expect(wrapper.find('[data-test="user-link"]').first().prop('to')).toEqual('/user/user1?p=1');
-      expect(wrapper.find('[data-test="user-link"]').first().text()).toEqual('user1');
-      expect(wrapper.find(TransactionAndOrderProdItem)).toHaveLength(2);
+    it('Should render everything with two sellers, each with one transaction item', () => {
+      const { asFragment } = setUp(
+        [
+          createTransactionAndOrderProdItem('p1', 'user1'),
+          createTransactionAndOrderProdItem('p2', 'user2'),
+        ],
+        itemTypes.TRANSACTION,
+      );
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render three <SC.SingleSeller /> and five <TransactionAndOrderProdItem />', () => {
-      const items = [
-        createTransactionAndOrderProdItem('user1'),
-        createTransactionAndOrderProdItem('user1'),
-        createTransactionAndOrderProdItem('user2'),
-        createTransactionAndOrderProdItem('user3'),
-        createTransactionAndOrderProdItem('user3'),
-      ];
-      const wrapper = setUp(items, itemTypes.TRANSACTION);
-      expect(wrapper.find(SC.SingleSeller)).toHaveLength(3);
-      expect(wrapper.find(TransactionAndOrderProdItem)).toHaveLength(5);
+    it('Should call push with correct path after click on user link', () => {
+      const pushFn = jest.fn();
+      setUp([createCartItem('user1')], itemTypes.CART, pushFn);
+      fireEvent.click(screen.getByTestId('cart-and-transaction-seller-link'));
+      expect(pushFn).toHaveBeenCalledTimes(1);
+      expect(pushFn).toHaveBeenCalledWith('/user/user1?p=1');
     });
   });
 });

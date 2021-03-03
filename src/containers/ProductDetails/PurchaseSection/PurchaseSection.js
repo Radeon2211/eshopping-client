@@ -92,7 +92,7 @@ const PurchaseSection = (props) => {
   let purchaseSection = (
     <>
       <PlainText size="2">{`Quantity: ${productQuantity}`}</PlainText>
-      <Heading variant="h4" mgTop="3" data-test="info-to-seller">
+      <Heading variant="h4" mgTop="3">
         You are the seller of this product
       </Heading>
     </>
@@ -105,12 +105,17 @@ const PurchaseSection = (props) => {
     }
     let addToCartBtn = (
       <Button filled stretch clicked={addToCartClickHandle} isLoading={isCartLoading}>
-        Add to cart
+        add to cart
       </Button>
     );
     if (givenProductInCart?.quantity >= productQuantity) {
       addToCartBtn = (
-        <Heading variant="h4" align="center" mgBottom="2" data-test="not-able-to-add">
+        <Heading
+          variant="h4"
+          align="center"
+          mgBottom="2"
+          data-testid="purchase-section-not-able-to-add"
+        >
           You have added all pieces to&nbsp;
           <Link to="/cart">
             <GreenText>cart</GreenText>
@@ -121,7 +126,11 @@ const PurchaseSection = (props) => {
 
     purchaseSection = (
       <>
-        <FlexWrapper align="center" mgBottom="3" data-test="choose-quantity-wrapper">
+        <FlexWrapper
+          align="center"
+          mgBottom="3"
+          data-testid="purchase-section-choose-quantity-wrapper"
+        >
           <ChooseQuantity
             name="quantity"
             maxQuantity={productQuantity}
@@ -131,11 +140,15 @@ const PurchaseSection = (props) => {
             changed={inputChangeHandle}
             blured={inputBlurHandle}
           />
-          <PlainText size="2" mgLeft="1" data-test="quantity">
+          <PlainText size="2" mgLeft="1" data-testid="purchase-section-product-quantity">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
             {givenProductInCart && (
-              <PlainText color={theme.colors.light4}>
-                {` (${givenProductInCart.quantity} in cart)`}
+              <PlainText
+                color={theme.colors.light4}
+                data-testid="purchase-section-quantity-in-cart"
+              >
+                &nbsp;
+                {`(${givenProductInCart.quantity} in cart)`}
               </PlainText>
             )}
           </PlainText>

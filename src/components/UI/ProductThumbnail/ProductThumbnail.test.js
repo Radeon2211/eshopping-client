@@ -32,7 +32,7 @@ describe('<ProductThumbnail />', () => {
     });
   });
 
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should src be a link to product photo in order collection', () => {
       const wrapper = setUp(true, 'o1');
       expect(wrapper).toMatchSnapshot();

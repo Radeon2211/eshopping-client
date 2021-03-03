@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> Should NOT render anything if isModalOpen is false 1`] = `<DocumentFragment />`;
+
+exports[`<Modal /> Should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm eiugOR"
+  >
+    <div
+      aria-label="Close modal"
+      class="sc-AxirZ cjYtTm"
+      role="button"
+      style="opacity: 0; pointer-events: none;"
+      tabindex="0"
+    />
+    <div
+      class="sc-AxiKw iUbsym"
+      style="opacity: 0; pointer-events: none;"
+    >
+      <div
+        class="sc-AxhCb gntFId close-icon"
+        color=""
+      >
+        <svg>
+          plus.svg
+        </svg>
+      </div>
+      <h3
+        class="sc-AxmLO kQufLH"
+      >
+        About website
+      </h3>
+      <span
+        class="sc-AxheI jQrIyP"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        This website is not used to buy and sell products. Offers on this website are not real and orders will not be realized. Data that you specify in forms do not need to be real. However they are not processed in any way except of storing in database and displaying them on this website.
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

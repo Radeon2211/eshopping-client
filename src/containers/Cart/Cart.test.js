@@ -1,33 +1,33 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import Cart from './Cart';
-import * as SC from './Cart.sc';
-import SideBySide from '../../components/UI/SideBySide';
 import theme from '../../styled/theme';
 import { createCartItem } from '../../shared/testUtility';
-import LoadingOverlay from '../../components/UI/LoadingOverlay';
-import ToPayInfo from '../../components/UI/ToPayInfo';
+import { DEFAULT_PATH } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/cart' },
-};
+const setUp = (cart, isCartLoading = false, pushFn = jest.fn()) => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/cart' },
+    push: pushFn,
+  };
 
-const setUp = (cart, isCartLoading = false) => {
   const store = mockStore({
     auth: { cart },
     ui: { isCartLoading },
   });
-  return mount(
-    <Router history={defaultHistory}>
+
+  return render(
+    <Router history={history}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <Cart />
@@ -41,22 +41,40 @@ window.IntersectionObserver = jest.fn(() => ({
   observe: jest.fn(),
 }));
 
+afterEach(cleanup);
+
 describe('<Cart />', () => {
-  it('Should render <SideBySide /> and <LoadingOverlay /> and correct price if cart items length is more than 0 and isCartLoading is true', () => {
-    const wrapper = setUp([createCartItem('user1', 5, 'p1', 499.97)], true);
-    expect(wrapper.find(SideBySide).length).toBeGreaterThan(0);
-    expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
-    expect(wrapper.find(ToPayInfo).text()).toEqual('To pay$2,499.85');
+  it('Should render everything correctly with one cart item', () => {
+    const { asFragment } = setUp([createCartItem('user1', 5, 'p1', 499.97)]);
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render <SC.EmptyCart /> if cart is empty and NOT render <LoadingOverlay />', () => {
-    const wrapper = setUp([]);
-    expect(wrapper.find(SC.EmptyCart)).toHaveLength(1);
-    expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
+  it('Should render empty cart', () => {
+    const { asFragment } = setUp([]);
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render cart error <Heading /> if cart is null', () => {
-    const wrapper = setUp(null);
-    expect(wrapper.find('[data-test="cart-error-heading"]').length).toBeGreaterThan(0);
+  it('Should render only <Loader />', () => {
+    const { asFragment } = setUp(undefined, true);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('Should render that there is a problem to fetch cart', () => {
+    const { asFragment } = setUp(null);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('Should render <LoadingOverlay /> and go to summary button should be disabled', () => {
+    setUp([createCartItem('user1', 5, 'p1', 499.97)], true);
+    expect(screen.getByTestId('loading-overlay')).toBeInTheDocument();
+    expect(screen.getByText('go to summary')).toBeDisabled();
+  });
+
+  it('Should trigger push with DEFAULT_PATH after click on link in empty cart', () => {
+    const pushFn = jest.fn();
+    setUp([], false, pushFn);
+    fireEvent.click(screen.getByTestId('default-path-link'));
+    expect(pushFn).toHaveBeenCalledTimes(1);
+    expect(pushFn).toHaveBeenCalledWith(DEFAULT_PATH);
   });
 });

@@ -6,7 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
 import MyIcon from '../../UI/MyIcon';
 import PlainText from '../../UI/PlainText';
-import NumberInput from '../../UI/NumberInput';
+import NumberInput from '../../UI/NumberInput/NumberInput';
 import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
 import { historyActions } from '../../../shared/constants';
 import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';

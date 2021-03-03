@@ -1,15 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import OrderDetails from './OrderDetails';
-import PlainPanel from '../../components/UI/Panels/PlainPanel';
-import * as SC from './OrderDetails.sc';
-import Loader from '../../components/UI/Loader';
-import TransactionAndOrderProdItem from '../../components/TransactionAndOrderProdItem/TransactionAndOrderProdItem';
 import {
   checkProps,
   createOrder,
@@ -22,24 +19,34 @@ const mockStore = configureMockStore([thunk]);
 
 const defaultProps = {
   match: {
-    params: { id: '123' },
+    params: { id: 'o1' },
   },
 };
 
-const setUp = (orderDetails, props = defaultProps) => {
+const setUp = (orderDetails, pushFn = jest.fn()) => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/order/o1' },
+    push: pushFn,
+  };
+
   const store = mockStore({
     auth: { orderDetails },
   });
-  return mount(
+
+  return render(
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <ThemeProvider theme={theme}>
-          <OrderDetails {...props} />
+          <OrderDetails {...defaultProps} />
         </ThemeProvider>
       </Router>
     </Provider>,
   );
 };
+
+beforeEach(cleanup);
 
 describe('<OrderDetails />', () => {
   describe('Check prop types', () => {
@@ -52,119 +59,87 @@ describe('<OrderDetails />', () => {
     });
   });
 
-  describe('Check how everything render', () => {
-    it('Should render <Loader /> if orderDetails is undefined', () => {
-      const wrapper = setUp(undefined);
-      expect(wrapper.find(Loader)).toHaveLength(1);
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
-      expect(wrapper.find('[data-test="not-found"]')).toHaveLength(0);
+  describe('Check how renders', () => {
+    it('Should render only <Loader /> if orderDetails is undefined', () => {
+      const { asFragment } = setUp(undefined);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render not-found <Heading /> if orderDetails is null', () => {
-      const wrapper = setUp(null);
-      expect(wrapper.find(Loader)).toHaveLength(0);
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(0);
-      expect(wrapper.find('[data-test="not-found"]').length).toBeGreaterThan(0);
+    it('Should render only info that there is a problem to fetch order details', () => {
+      const { asFragment } = setUp(null);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    describe('Buyer and seller are defined', () => {
-      it('Should render correctly with two <TransactionAndOrderProdItem />', () => {
-        const products = [createTransactionAndOrderProdItem(), createTransactionAndOrderProdItem()];
-        const orderDetails = createOrder(
-          products,
-          'o1',
-          'sellerUser',
-          'buyerUser',
-          111.1,
-          '2021-01-11T12:32:51.008Z',
-          'sellerEmail',
-          '123',
-        );
+    it('Should render everything correctly with two <TransactionAndOrderProdItem />', () => {
+      const products = [createTransactionAndOrderProdItem(), createTransactionAndOrderProdItem()];
+      const orderDetails = createOrder(
+        products,
+        'o1',
+        'sellerUser',
+        'buyerUser',
+        111.1,
+        '2021-01-11T12:32:51.008Z',
+        'sellerEmail',
+        '123',
+      );
 
-        const wrapper = setUp({
+      const { asFragment } = setUp({
+        ...orderDetails,
+        deliveryAddress: defaultDeliveryAddress,
+      });
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('Should render that buyer and seller are deleted', () => {
+      const products = [createTransactionAndOrderProdItem()];
+      const orderDetails = createOrder(
+        products,
+        'o1',
+        null,
+        null,
+        111.1,
+        '2021-01-11T12:32:51.008Z',
+      );
+
+      setUp({
+        ...orderDetails,
+        deliveryAddress: defaultDeliveryAddress,
+      });
+
+      expect(screen.getByTestId('order-details-buyer-deleted')).toBeInTheDocument();
+      expect(screen.getByTestId('order-details-seller-deleted')).toBeInTheDocument();
+      expect(screen.queryByTestId('order-details-buyer-link')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('order-details-seller-info')).not.toBeInTheDocument();
+    });
+
+    it('Should call push with correct paths after clicking on links', () => {
+      const products = [createTransactionAndOrderProdItem()];
+      const orderDetails = createOrder(
+        products,
+        'o1',
+        'sellerUser',
+        'buyerUser',
+        111.1,
+        '2021-01-11T12:32:51.008Z',
+        'sellerEmail',
+        '123',
+      );
+
+      const pushFn = jest.fn();
+
+      setUp(
+        {
           ...orderDetails,
           deliveryAddress: defaultDeliveryAddress,
-        });
+        },
+        pushFn,
+      );
 
-        expect(wrapper.find(Loader)).toHaveLength(0);
-        expect(wrapper.find('[data-test="not-found"]')).toHaveLength(0);
-
-        expect(wrapper.find('[data-test="general-info-section"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="delivery-address-section"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="info-about-seller-section"]').length).toBeGreaterThan(0);
-
-        expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-        expect(wrapper.find(PlainPanel)).toHaveLength(1);
-
-        expect(wrapper.find('[data-test="order-id"]').at(0).text()).toEqual('o1');
-        expect(wrapper.find('[data-test="transaction-date"]').at(0).text()).toEqual(
-          '11 Jan 2021, 13:32',
-        );
-        expect(wrapper.find('[data-test="buyer-username"]').at(0).text()).toEqual('buyerUser');
-        expect(wrapper.find('[data-test="buyer-link"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="buyer-link"]').at(0).prop('to')).toEqual(
-          `/user/buyerUser?p=1`,
-        );
-
-        expect(wrapper.find('[data-test="seller-info"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="seller-username"]').at(0).text()).toEqual('sellerUser');
-        expect(wrapper.find('[data-test="seller-link"]').at(0).prop('to')).toEqual(
-          `/user/sellerUser?p=1`,
-        );
-        expect(wrapper.find('[data-test="seller-email"]').at(0).text()).toEqual('sellerEmail');
-        expect(wrapper.find('[data-test="seller-phone"]').at(0).text()).toEqual('123');
-
-        expect(wrapper.find(TransactionAndOrderProdItem)).toHaveLength(2);
-        expect(wrapper.find('[data-test="overall-order-price"]').at(0).text()).toEqual('$111.10');
-      });
-    });
-
-    describe('Buyer and seller are defined', () => {
-      it(`Should render info that seller's account has been deleted`, () => {
-        const products = [createTransactionAndOrderProdItem()];
-        const orderDetails = createOrder(
-          products,
-          'o1',
-          null,
-          null,
-          111.1,
-          '2021-01-11T12:32:51.008Z',
-        );
-
-        const wrapper = setUp({
-          ...orderDetails,
-          deliveryAddress: defaultDeliveryAddress,
-        });
-
-        expect(wrapper.find(Loader)).toHaveLength(0);
-        expect(wrapper.find('[data-test="not-found"]')).toHaveLength(0);
-
-        expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-        expect(wrapper.find(PlainPanel)).toHaveLength(1);
-
-        expect(wrapper.find('[data-test="general-info-section"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="delivery-address-section"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="info-about-seller-section"]').length).toBeGreaterThan(0);
-
-        expect(wrapper.find('[data-test="order-id"]').at(0).text()).toEqual('o1');
-        expect(wrapper.find('[data-test="transaction-date"]').at(0).text()).toEqual(
-          '11 Jan 2021, 13:32',
-        );
-        expect(wrapper.find('[data-test="buyer-username"]').at(0).text()).toEqual(
-          '(account has been deleted)',
-        );
-        expect(wrapper.find('[data-test="buyer-link"]')).toHaveLength(0);
-
-        expect(wrapper.find('[data-test="seller-info"]')).toHaveLength(0);
-        expect(wrapper.find('[data-test="seller-username"]')).toHaveLength(0);
-        expect(wrapper.find('[data-test="seller-link"]')).toHaveLength(0);
-        expect(wrapper.find('[data-test="seller-email"]')).toHaveLength(0);
-        expect(wrapper.find('[data-test="seller-phone"]')).toHaveLength(0);
-
-        expect(wrapper.find('[data-test="seller-deleted"]').at(0).text()).toEqual(
-          '(account has been deleted)',
-        );
-      });
+      fireEvent.click(screen.getByTestId('order-details-buyer-link'));
+      expect(pushFn).toHaveBeenCalledWith('/user/buyerUser?p=1');
+      fireEvent.click(screen.getByTestId('order-details-seller-link'));
+      expect(pushFn).toHaveBeenLastCalledWith('/user/sellerUser?p=1');
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
   });
 });

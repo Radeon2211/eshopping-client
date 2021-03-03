@@ -44,7 +44,7 @@ describe('<TransactionAndOrderProdItem />', () => {
 
   describe('Checks how everything render', () => {
     it('Should render correctly with full data', () => {
-      const data = createTransactionAndOrderProdItem('user1', 'p1', 2, 9.9, 'productName', true);
+      const data = createTransactionAndOrderProdItem('p1', 'user1', 2, 9.9, 'productName', true);
       const wrapper = setUp(data);
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
       expect(wrapper.find('[data-test="product-link"]').length).toBeGreaterThan(1);
@@ -65,7 +65,7 @@ describe('<TransactionAndOrderProdItem />', () => {
     });
 
     it('Should render 1 x price per piece', () => {
-      const data = createTransactionAndOrderProdItem('user1', 'p1', 1, 9.9, 'productName', false);
+      const data = createTransactionAndOrderProdItem('p1', 'user1', 1, 9.9, 'productName', false);
       const wrapper = setUp(data);
       expect(wrapper.find('[data-test="price-per-piece"]').at(0).text()).toEqual('1 x $9.90');
       expect(wrapper.find('[data-test="overall-price"]').at(0).text()).toEqual('$9.90');

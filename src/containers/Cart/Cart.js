@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import * as SC from './Cart.sc';
@@ -19,8 +19,6 @@ import { GreenText, AlignCenter } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 
 const Cart = () => {
-  const summaryRef = useRef(null);
-
   const history = useHistory();
 
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
@@ -38,26 +36,13 @@ const Cart = () => {
   );
 
   useEffect(() => {
-    if (summaryRef.current) {
-      const observer = new IntersectionObserver(
-        ([e]) => e.target.classList.toggle('is-sticky', e.intersectionRatio < 1),
-        { threshold: [1] },
-      );
-      observer.observe(summaryRef.current);
-    }
     onFetchCart();
   }, [onFetchCart]);
 
   let content = <Loader align="center" />;
   if (cart === null) {
     content = (
-      <Heading
-        variant="h3"
-        mgBottom="h3"
-        align="center"
-        lineHeight="4"
-        data-test="cart-error-heading"
-      >
+      <Heading variant="h3" mgBottom="h3" align="center" lineHeight="4">
         There is a problem to get your shopping cart
       </Heading>
     );
@@ -96,7 +81,7 @@ const Cart = () => {
                   go to summary
                 </Button>
               </FlexWrapper>
-              {isCartLoading && <LoadingOverlay />}
+              {isCartLoading && <LoadingOverlay data-testid="loading-overlay" />}
             </StickyPanel>
           </SideBySide>
         </>
@@ -104,25 +89,13 @@ const Cart = () => {
     } else {
       content = (
         <SC.EmptyCart>
-          <Heading
-            variant="h3"
-            mgBottom="3"
-            align="center"
-            lineHeight="4"
-            data-test="cart-empty-heading"
-          >
+          <Heading variant="h3" mgBottom="3" align="center" lineHeight="4">
             Your shopping cart is empty. Check out the latest&nbsp;
-            <Link to={DEFAULT_PATH}>
+            <Link to={DEFAULT_PATH} data-testid="default-path-link">
               <GreenText>offers</GreenText>
             </Link>
           </Heading>
-          <Heading
-            variant="h4"
-            align="center"
-            data-test="cart-info-heading"
-            lineHeight="4"
-            mgBottom="3"
-          >
+          <Heading variant="h4" align="center" lineHeight="4" mgBottom="3">
             You can have up to 50 products in the cart
           </Heading>
           <EmptyCart className="empty-cart-image" />

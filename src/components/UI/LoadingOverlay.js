@@ -42,7 +42,7 @@ const LoadingOverlay = (props) => {
   }
 
   return (
-    <SC.Wrapper alignLoader={alignLoader}>
+    <SC.Wrapper alignLoader={alignLoader} data-testid="loading-overlay">
       <Loader size={loaderSize} />
       {info}
     </SC.Wrapper>

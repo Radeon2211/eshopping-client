@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -12,29 +13,28 @@ import noPhoto from '../../../images/no-photo.png';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/cart' },
-};
-
 const defaultStore = mockStore({});
 
-const setUp = (data, isCartLoading = false) => {
-  const props = {
-    data,
-    isCartLoading,
+const setUp = (data, isCartLoading = false, pushFn = jest.fn()) => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/cart' },
+    push: pushFn,
   };
-  return mount(
-    <Router history={defaultHistory}>
+
+  return render(
+    <Router history={history}>
       <Provider store={defaultStore}>
         <ThemeProvider theme={theme}>
-          <CartItem {...props} />
+          <CartItem data={data} isCartLoading={isCartLoading} />
         </ThemeProvider>
       </Provider>
     </Router>,
   );
 };
+
+afterEach(cleanup);
 
 describe('<CartItem />', () => {
   describe('Check prop types', () => {
@@ -51,31 +51,31 @@ describe('<CartItem />', () => {
     });
   });
 
-  describe('Checks how everything render', () => {
-    it('Should render correctly with full data', () => {
-      const data = createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true);
-      const wrapper = setUp(data);
-      expect(
-        wrapper.find('[data-test="product-link"]').every((link) => {
-          return link.prop('to') === '/product/p1';
-        }),
+  describe('Checks how renders', () => {
+    it('Should render everything correctly', () => {
+      const { asFragment } = setUp(
+        createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true),
       );
-      expect(wrapper.find('img').prop('src')).toEqual(
-        `${process.env.REACT_APP_API_URL}/products/p1/photo`,
-      );
-      expect(wrapper.find('.name').text()).toEqual('productName');
-      expect(wrapper.find('[data-test="quantity"]').at(0).text()).toEqual('of 6');
-      expect(wrapper.find('[data-test="overall-price"]').at(0).text()).toEqual('$1,499.90');
-      expect(wrapper.find('[data-test="price-per-piece"]').at(0).text()).toEqual(
-        'per piece $299.98',
-      );
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should NOT render price per piece and should render default photo', () => {
+    it('Should NOT render price per piece and should render default photo if photo is empty and available quantity is 1', () => {
       const data = createCartItem();
-      const wrapper = setUp(data);
-      expect(wrapper.find('img').prop('src')).toBe(noPhoto);
-      expect(wrapper.find('[data-test="price-per-piece"]')).toHaveLength(0);
+      setUp(data);
+      expect(screen.queryByTestId('cart-item-price-per-piece')).not.toBeInTheDocument();
+      expect(screen.getByAltText(data.product.name)).toHaveAttribute('src', noPhoto);
+    });
+
+    it('Should call push with correct paths after clicking links', () => {
+      const pushFn = jest.fn();
+      const data = createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true);
+      setUp(data, false, pushFn);
+
+      fireEvent.click(screen.getByTestId('cart-item-product-link-photo'));
+      expect(pushFn).toHaveBeenCalledWith(`/product/${data.product._id}`);
+      fireEvent.click(screen.getByTestId('cart-item-product-link-name'));
+      expect(pushFn).toHaveBeenLastCalledWith(`/product/${data.product._id}`);
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
   });
 });

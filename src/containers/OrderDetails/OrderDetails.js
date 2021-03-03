@@ -37,7 +37,7 @@ const OrderDetails = (props) => {
   let content = <Loader align="center" />;
   if (orderDetails === null) {
     content = (
-      <Heading variant="h4" align="center" lineHeight="4" data-test="not-found">
+      <Heading variant="h4" align="center" lineHeight="4">
         There is a problem to fetch order details or given order does not exist
       </Heading>
     );
@@ -45,32 +45,28 @@ const OrderDetails = (props) => {
     const { _id, seller, buyer, deliveryAddress, products, overallPrice, createdAt } = orderDetails;
 
     const generalInfoSection = (
-      <div data-test="general-info-section">
+      <div data-testid="order-details-general-info-section">
         <Heading variant="h4" mgBottom="2">
           General info
         </Heading>
         <FlexWrapper direction="column" spacing="1">
           <div>
             <PlainText weight="700">Order number:&nbsp;</PlainText>
-            <PlainText size="3" data-test="order-id">
-              {_id}
-            </PlainText>
+            <PlainText size="3">{_id}</PlainText>
           </div>
           <div>
             <PlainText weight="700">Transaction date:&nbsp;</PlainText>
-            <PlainText size="3" data-test="transaction-date">
-              {formatOrderDate(createdAt)}
-            </PlainText>
+            <PlainText size="3">{formatOrderDate(createdAt)}</PlainText>
           </div>
           <div>
             <PlainText weight="700">Buyer:&nbsp;</PlainText>
-            <PlainText size="3" data-test="buyer-username">
+            <PlainText size="3">
               {buyer ? (
-                <Link to={`/user/${buyer.username}?p=1`} data-test="buyer-link">
+                <Link to={`/user/${buyer.username}?p=1`} data-testid="order-details-buyer-link">
                   <GreenText>{buyer.username}</GreenText>
                 </Link>
               ) : (
-                <i>(account has been deleted)</i>
+                <i data-testid="order-details-buyer-deleted">(account has been deleted)</i>
               )}
             </PlainText>
           </div>
@@ -79,41 +75,37 @@ const OrderDetails = (props) => {
     );
 
     const infoAboutSellerSection = (
-      <div data-test="info-about-seller-section">
+      <div data-testid="order-details-info-about-seller">
         <Heading variant="h4" mgBottom="2">
           Info about seller
         </Heading>
         {seller ? (
-          <FlexWrapper direction="column" spacing="1" data-test="seller-info">
+          <FlexWrapper direction="column" spacing="1" data-test="order-details-seller-info">
             <div>
               <PlainText weight="700">Username:&nbsp;</PlainText>
-              <PlainText size="3" data-test="seller-username">
-                <Link to={`/user/${seller.username}?p=1`} data-test="seller-link">
+              <PlainText size="3">
+                <Link to={`/user/${seller.username}?p=1`} data-testid="order-details-seller-link">
                   <GreenText>{seller.username}</GreenText>
                 </Link>
               </PlainText>
             </div>
             <div>
               <PlainText weight="700">Email:&nbsp;</PlainText>
-              <PlainText size="3" data-test="seller-email">
-                {seller.email}
-              </PlainText>
+              <PlainText size="3">{seller.email}</PlainText>
             </div>
             <div>
               <PlainText weight="700">Phone:&nbsp;</PlainText>
-              <PlainText size="3" data-test="seller-phone">
-                {seller.phone}
-              </PlainText>
+              <PlainText size="3">{seller.phone}</PlainText>
             </div>
           </FlexWrapper>
         ) : (
-          <i data-test="seller-deleted">(account has been deleted)</i>
+          <i data-testid="order-details-seller-deleted">(account has been deleted)</i>
         )}
       </div>
     );
 
     const deliveryAddressSection = (
-      <div data-test="delivery-address-section">
+      <div data-testid="order-details-delivery-address-section">
         <Heading variant="h4" mgBottom="2">
           Delivery address
         </Heading>
@@ -133,9 +125,7 @@ const OrderDetails = (props) => {
           <PlainText color={theme.colors.light4} spacing="1px" mgRight="1">
             TOTAL
           </PlainText>
-          <PlainText size="5" data-test="overall-order-price">
-            {formatPrice(overallPrice)}
-          </PlainText>
+          <PlainText size="5">{formatPrice(overallPrice)}</PlainText>
         </PlainText>
       </>
     );

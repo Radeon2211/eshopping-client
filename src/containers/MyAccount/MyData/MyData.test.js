@@ -26,7 +26,7 @@ const setUp = (profile) => {
 };
 
 describe('<MyData />', () => {
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render 6 <SingleInfo />', () => {
       const wrapper = setUp(defaultUserProfile);
 

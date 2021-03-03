@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PurchaseSection /> Check how renders Snapshots Should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm iMrUaH"
+  >
+    <div
+      class="sc-fznyAO ezldyp"
+      data-testid="purchase-section-choose-quantity-wrapper"
+      direction="row"
+      spacing=""
+      width="100%"
+      wrap="nowrap"
+    >
+      <div
+        class="sc-AxmLO ktArlj"
+      >
+        <button
+          class="button minus"
+          data-testid="choose-quantity-minus"
+          disabled=""
+          type="button"
+        >
+          <div
+            class="sc-Axmtr aVNdd"
+            color="#DADFE1"
+          >
+            <svg>
+              minus.svg
+            </svg>
+          </div>
+        </button>
+        <input
+          class="sc-AxheI bUjaWZ"
+          name="quantity"
+          type="number"
+          value="1"
+        />
+        <button
+          class="button plus"
+          data-testid="choose-quantity-plus"
+          type="button"
+        >
+          <div
+            class="sc-Axmtr gGKTmR"
+            color=""
+          >
+            <svg>
+              plus.svg
+            </svg>
+          </div>
+        </button>
+      </div>
+      <span
+        class="sc-AxhUy gHFdsf"
+        color=""
+        data-testid="purchase-section-product-quantity"
+        display="inline-block"
+        overflow="visible"
+        size="2"
+        spacing="0px"
+        transform=""
+      >
+        of 5 pieces
+        <span
+          class="sc-AxhUy bYQHbo"
+          color="#777"
+          data-testid="purchase-section-quantity-in-cart"
+          display="inline-block"
+          overflow="visible"
+          spacing="0px"
+          transform=""
+        >
+           (3 in cart)
+        </span>
+      </span>
+    </div>
+    <button
+      class="sc-AxirZ kNedGU"
+      color="blue"
+      type="button"
+    >
+      add to cart
+    </button>
+    <button
+      class="sc-AxirZ kNedGU"
+      color="blue"
+      type="button"
+    >
+      buy now
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<PurchaseSection /> Check how renders Snapshots Should render info that user is a seller 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm iMrUaH"
+  >
+    <span
+      class="sc-AxhUy teUWX"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="2"
+      spacing="0px"
+      transform=""
+    >
+      Quantity: 5
+    </span>
+    <h4
+      class="sc-fzplWN fjWuqj"
+    >
+      You are the seller of this product
+    </h4>
+  </div>
+</DocumentFragment>
+`;

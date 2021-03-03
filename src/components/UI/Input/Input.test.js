@@ -52,7 +52,7 @@ describe('<Input />', () => {
     });
   });
 
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render <SC.Input /> with default props', () => {
       const wrapper = setUp(inputKinds.INPUT);
 

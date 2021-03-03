@@ -35,7 +35,7 @@ describe('<NumberPagination />', () => {
     });
   });
 
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render all correctly (without hide-arrow class on arrows)', () => {
       const history = createHistoryPageNumber(2);
       const { asFragment } = setUp(defaultProps, history);
@@ -108,8 +108,8 @@ describe('<NumberPagination />', () => {
       const history = createHistoryPageNumber(1, pushFn);
 
       const { container } = setUp(defaultProps, history);
+      const input = screen.getByRole('spinbutton');
 
-      const input = container.querySelector('input');
       fireEvent.input(input, { target: { value: 2 } });
       expect(input.value).toEqual('2');
       fireEvent.submit(container.querySelector('form'));
@@ -121,14 +121,30 @@ describe('<NumberPagination />', () => {
       const pushFn = jest.fn();
       const history = createHistoryPageNumber(1, pushFn);
 
-      const { container } = setUp(defaultProps, history);
+      setUp(defaultProps, history);
+      const input = screen.getByRole('spinbutton');
 
-      const input = container.querySelector('input');
       fireEvent.input(input, { target: { value: 2 } });
       expect(input.value).toEqual('2');
       fireEvent.submit(input);
       expect(pushFn).toHaveBeenCalledTimes(1);
       expect(pushFn).toHaveBeenCalledWith('/products?p=2');
+    });
+
+    it('Should NOT change value to `e E - .`', () => {
+      const history = createHistoryPageNumber(1);
+
+      setUp(defaultProps, history);
+      const input = screen.getByRole('spinbutton');
+
+      fireEvent.input(input, { target: { value: 'e' } });
+      expect(input.value).toEqual('');
+      fireEvent.input(input, { target: { value: 'E' } });
+      expect(input.value).toEqual('');
+      fireEvent.input(input, { target: { value: '-' } });
+      expect(input.value).toEqual('');
+      fireEvent.input(input, { target: { value: '.' } });
+      expect(input.value).toEqual('');
     });
   });
 });

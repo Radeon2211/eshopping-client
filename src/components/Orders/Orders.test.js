@@ -64,7 +64,7 @@ describe('<ProductItem />', () => {
     });
   });
 
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render <Loader />', () => {
       const wrapper = setUp(undefined, undefined);
       expect(wrapper.find(Loader)).toHaveLength(1);

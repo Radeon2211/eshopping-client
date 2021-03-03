@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductDetails /> Check how renders Snapshots Should render everything correctly if user is a product's owner 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-AxhCb jHabve"
+  >
+    <div
+      class="sc-AxjAm eieusV"
+    >
+      <div
+        class="sc-AxheI leQcsr"
+      >
+        <section
+          class="photo-section"
+        >
+          <img
+            alt="testName"
+            class="photo"
+            src="http://192.168.1.109:4000/products/123/photo"
+          />
+        </section>
+        <section
+          class="data-section"
+        >
+          <h4
+            class="sc-AxgMl gWUhlH"
+          >
+            testName
+          </h4>
+          <span
+            class="sc-AxhUy kLZiuf"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            <span
+              class="sc-AxhUy bYQHbo"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              spacing="0px"
+              transform=""
+            >
+              from 
+            </span>
+            <a
+              data-testid="product-details-seller-link"
+            >
+              <span
+                class="sc-fznyAO hvCXvo"
+              >
+                user1
+              </span>
+            </a>
+          </span>
+          <span
+            class="sc-AxhUy teUWX"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            <span
+              class="sc-AxhUy bYQHbo"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              spacing="0px"
+              transform=""
+            >
+              Condition:
+            </span>
+             Not applicable
+          </span>
+          <span
+            class="sc-AxhUy eBBpnb"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="6"
+            spacing="1px"
+            transform=""
+          >
+            $2.50
+          </span>
+          <span
+            class="sc-AxhUy fGeCoJ"
+            color="#777"
+            data-testid="product-details-quantity-sold"
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            1 person bought 1 unit
+          </span>
+          <div
+            class="sc-Axmtr kDEdJa"
+          >
+            <span
+              class="sc-AxhUy teUWX"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="2"
+              spacing="0px"
+              transform=""
+            >
+              Quantity: 5
+            </span>
+            <h4
+              class="sc-AxgMl frYAvl"
+            >
+              You are the seller of this product
+            </h4>
+          </div>
+        </section>
+      </div>
+      <section
+        data-testid="product-details-full-description"
+      >
+        <h4
+          class="sc-AxgMl kyJMsD"
+        >
+          Description
+        </h4>
+        <span
+          class="sc-AxhUy iXAVwZ"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          testDescription
+        </span>
+      </section>
+      <div
+        class="sc-fzokOt iahXvc"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <button
+          class="sc-AxmLO bBjfec"
+          color="blue"
+          data-testid="product-details-edit-button"
+          type="button"
+        >
+          Edit offer
+        </button>
+        <button
+          class="sc-AxmLO jUDcyI"
+          color="red"
+          data-testid="product-details-delete-button"
+          type="button"
+        >
+          Delete offer
+        </button>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`<ProductDetails /> Check how renders Snapshots Should render only <Loader /> if productDetails is undefined 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxirZ hMMCnG"
+    data-testid="loader-wrapper"
+  >
+    <div
+      class="sc-AxiKw flMCzO"
+      data-testid="loader"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductDetails /> Check how renders Snapshots Should render only info that there is a problem to fetch product details 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-AxgMl dgQsLO"
+  >
+    Such product does not exist or has already been sold
+  </h4>
+</DocumentFragment>
+`;

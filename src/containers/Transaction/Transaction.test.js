@@ -51,11 +51,11 @@ window.IntersectionObserver = jest.fn(() => ({
 }));
 
 describe('<Transaction />', () => {
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render content with correct pay value', () => {
       const transaction = [
-        createTransactionAndOrderProdItem('user1', 'p1', 4, 10.6, 'product1'),
-        createTransactionAndOrderProdItem('user1', 'p2', 6, 299.98, 'product2'),
+        createTransactionAndOrderProdItem('p1', 'user1', 4, 10.6, 'product1'),
+        createTransactionAndOrderProdItem('p2', 'user1', 6, 299.98, 'product2'),
       ];
       const wrapper = setUp(transaction);
       expect(wrapper.find(ToPayInfo).prop('value')).toEqual(1842.28);

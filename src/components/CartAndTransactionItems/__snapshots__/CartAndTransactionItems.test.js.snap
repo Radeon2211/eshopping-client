@@ -1,0 +1,348 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartAndTransactionItems /> Check how renders Should render everything with one seller and one cart item 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fznyAO bWDIdF"
+  >
+    <span
+      class="sc-AxgMl lfjKbc"
+      color=""
+      display="block"
+      overflow="visible"
+      size="3"
+      spacing="0px"
+      transform=""
+    >
+      <span>
+        seller 
+      </span>
+      <a
+        data-testid="cart-and-transaction-seller-link"
+      >
+        <span
+          class="sc-fzoLsD gjqBRJ"
+        >
+          user1
+        </span>
+      </a>
+    </span>
+    <div
+      class="sc-AxheI ifuDAj"
+      data-testid="cart-item"
+    >
+      <div
+        class="photo-and-name"
+      >
+        <a
+          data-testid="cart-item-product-link-photo"
+        >
+          <div
+            class="sc-AxjAm iouDCp sc-AxhUy ipxzMv"
+            direction="row"
+            height="7"
+            spacing=""
+            width="7"
+            wrap="nowrap"
+          >
+            <img
+              alt="product name"
+              src="no-photo.png"
+            />
+          </div>
+        </a>
+        <span
+          class="name"
+        >
+          <a
+            data-testid="cart-item-product-link-name"
+          >
+            product name
+          </a>
+        </span>
+      </div>
+      <div
+        class="mobile-lower-row"
+      >
+        <div
+          class="choose-quantity-box"
+        >
+          <div
+            class="sc-fzozJi ewkcne"
+          >
+            <button
+              class="button minus"
+              data-testid="choose-quantity-minus"
+              disabled=""
+              type="button"
+            >
+              <div
+                class="sc-AxmLO gDJjzg"
+                color="#DADFE1"
+              >
+                <svg>
+                  minus.svg
+                </svg>
+              </div>
+            </button>
+            <input
+              class="sc-Axmtr eCxCYu"
+              name="quantity"
+              type="number"
+              value="1"
+            />
+            <button
+              class="button plus"
+              data-testid="choose-quantity-plus"
+              type="button"
+            >
+              <div
+                class="sc-AxmLO ctLnPk"
+                color=""
+              >
+                <svg>
+                  plus.svg
+                </svg>
+              </div>
+            </button>
+          </div>
+          <span
+            class="sc-AxgMl hWFvnR"
+            color=""
+            data-testid="cart-item-available-quantity"
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            of 2
+          </span>
+        </div>
+        <div
+          class="price-box"
+        >
+          <span
+            class="sc-AxgMl cxfznc"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="5"
+            spacing="0px"
+            transform=""
+          >
+            $2
+          </span>
+        </div>
+      </div>
+      <div
+        class="sc-AxmLO ldkyjx remove-icon"
+        color="#F22613"
+      >
+        <svg>
+          trash.svg
+        </svg>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<CartAndTransactionItems /> Check how renders Should render everything with two sellers, each with one transaction item 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fznyAO bWDIdF"
+  >
+    <span
+      class="sc-AxgMl lfjKbc"
+      color=""
+      display="block"
+      overflow="visible"
+      size="3"
+      spacing="0px"
+      transform=""
+    >
+      <span>
+        seller 
+      </span>
+      <a
+        data-testid="cart-and-transaction-seller-link"
+      >
+        <span
+          class="sc-fzoLsD gjqBRJ"
+        >
+          user1
+        </span>
+      </a>
+    </span>
+    <div
+      class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
+      data-test="transaction-and-order-prod-item"
+      direction="row"
+      spacing="2"
+      width="100%"
+      wrap="nowrap"
+    >
+      <a
+        data-test="product-link"
+      >
+        <div
+          class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+          direction="row"
+          height="5"
+          spacing=""
+          width="5"
+          wrap="nowrap"
+        >
+          <img
+            alt="product name"
+            src="no-photo.png"
+          />
+        </div>
+      </a>
+      <div
+        class="sc-AxiKw lklcrl"
+      >
+        <span
+          class="name"
+        >
+          <a
+            data-test="product-link"
+          >
+            product name
+          </a>
+        </span>
+        <div
+          class="sc-AxjAm fiXHDx sc-AxhCb cTDcp"
+          direction="row"
+          spacing=""
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxgMl eeevil"
+            color="#777"
+            data-test="price-per-piece"
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            1 x $2
+          </span>
+          <span
+            class="sc-AxgMl idOXky"
+            color=""
+            data-test="overall-price"
+            display="inline-block"
+            overflow="visible"
+            size="4"
+            spacing="0px"
+            transform=""
+          >
+            $2
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-fznyAO bWDIdF"
+  >
+    <span
+      class="sc-AxgMl lfjKbc"
+      color=""
+      display="block"
+      overflow="visible"
+      size="3"
+      spacing="0px"
+      transform=""
+    >
+      <span>
+        seller 
+      </span>
+      <a
+        data-testid="cart-and-transaction-seller-link"
+      >
+        <span
+          class="sc-fzoLsD gjqBRJ"
+        >
+          user2
+        </span>
+      </a>
+    </span>
+    <div
+      class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
+      data-test="transaction-and-order-prod-item"
+      direction="row"
+      spacing="2"
+      width="100%"
+      wrap="nowrap"
+    >
+      <a
+        data-test="product-link"
+      >
+        <div
+          class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+          direction="row"
+          height="5"
+          spacing=""
+          width="5"
+          wrap="nowrap"
+        >
+          <img
+            alt="product name"
+            src="no-photo.png"
+          />
+        </div>
+      </a>
+      <div
+        class="sc-AxiKw lklcrl"
+      >
+        <span
+          class="name"
+        >
+          <a
+            data-test="product-link"
+          >
+            product name
+          </a>
+        </span>
+        <div
+          class="sc-AxjAm fiXHDx sc-AxhCb cTDcp"
+          direction="row"
+          spacing=""
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxgMl eeevil"
+            color="#777"
+            data-test="price-per-piece"
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            1 x $2
+          </span>
+          <span
+            class="sc-AxgMl idOXky"
+            color=""
+            data-test="overall-price"
+            display="inline-block"
+            overflow="visible"
+            size="4"
+            spacing="0px"
+            transform=""
+          >
+            $2
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

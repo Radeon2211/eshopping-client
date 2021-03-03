@@ -46,7 +46,7 @@ const CartAndTransactionItems = (props) => {
     <SC.SingleSeller key={sellerUsername}>
       <PlainText size="3" display="block">
         <span>seller </span>
-        <Link to={`/user/${sellerUsername}?p=1`} data-test="user-link">
+        <Link to={`/user/${sellerUsername}?p=1`} data-testid="cart-and-transaction-seller-link">
           <GreenText>{sellerUsername}</GreenText>
         </Link>
       </PlainText>
@@ -68,7 +68,7 @@ CartAndTransactionItems.defaultProps = {
 
 CartAndTransactionItems.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf([itemTypes.TRANSACTION, itemTypes.CART]).isRequired,
   isCartLoading: PropTypes.bool,
 };
 

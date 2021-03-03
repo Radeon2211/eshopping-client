@@ -1,15 +1,15 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
-import Loader from '../../components/UI/Loader';
 import { checkProps, defaultUserProfile } from '../../shared/testUtility';
+import noPhoto from '../../images/no-photo.png';
 import theme from '../../styled/theme';
-import SideBySide from '../../components/UI/SideBySide';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -20,10 +20,12 @@ const defaultProps = {
 };
 
 const defaultProductDetails = {
-  _id: '1234',
+  _id: '123',
   seller: { username: 'user1' },
   condition: 'not_applicable',
+  photo: true,
   price: 2.5,
+  description: '',
   quantity: 5,
   name: 'testName',
   quantitySold: 0,
@@ -40,23 +42,33 @@ const defaultStore = {
   },
 };
 
-const setUp = (store, props = defaultProps) => {
+const setUp = (store, pushFn = jest.fn()) => {
   const finalStore = store
     ? mockStore({
         ...defaultStore,
         ...store,
       })
     : mockStore(defaultStore);
-  return mount(
+
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/cart' },
+    push: pushFn,
+  };
+
+  return render(
     <Provider store={finalStore}>
-      <Router>
+      <Router history={history}>
         <ThemeProvider theme={theme}>
-          <ProductDetails {...props} />
+          <ProductDetails {...defaultProps} />
         </ThemeProvider>
       </Router>
     </Provider>,
   );
 };
+
+afterEach(cleanup);
 
 describe('<ProductDetails />', () => {
   describe('Check prop types', () => {
@@ -69,137 +81,122 @@ describe('<ProductDetails />', () => {
     });
   });
 
-  describe('Check how everything renders', () => {
-    describe('Check what renders if productDetails are and not', () => {
-      it('Should render <Loader/> and NOT render <SideBySide />', () => {
+  describe('Check how renders', () => {
+    describe('Snapshots', () => {
+      it('Should render only <Loader /> if productDetails is undefined', () => {
         const store = { product: { productDetails: undefined } };
-        const wrapper = setUp(store);
-        expect(wrapper.find(Loader)).toHaveLength(1);
-        expect(wrapper.find(SideBySide)).toHaveLength(0);
+        const { asFragment } = setUp(store);
+        expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should render not found <Heading /> and NOT render <SideBySide />', () => {
+      it('Should render only info that there is a problem to fetch product details', () => {
         const store = { product: { productDetails: null } };
-        const wrapper = setUp(store);
-        expect(wrapper.find('[data-test="not-found"]').length).toBeGreaterThan(0);
-        expect(wrapper.find(SideBySide)).toHaveLength(0);
+        const { asFragment } = setUp(store);
+        expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should NOT render not found <Heading /> and should render <SideBySide />', () => {
-        const wrapper = setUp();
-        expect(wrapper.find('[data-test="not-found"]')).toHaveLength(0);
-        expect(wrapper.find(SideBySide)).toHaveLength(1);
-      });
-    });
-
-    describe('Check how description renders', () => {
-      it('Should NOT render no description <Heading /> and should render description content', () => {
+      it(`Should render everything correctly if user is a product's owner`, () => {
         const store = {
-          product: { productDetails: { ...defaultProductDetails, description: 'testDescription' } },
+          product: {
+            productDetails: {
+              ...defaultProductDetails,
+              description: 'testDescription',
+              quantitySold: 1,
+              buyerQuantity: 1,
+            },
+          },
         };
-        const wrapper = setUp(store);
-        expect(wrapper.find('[data-test="no-description"]')).toHaveLength(0);
-        expect(wrapper.find('[data-test="description-section"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="description-content"]').at(0).text()).toEqual(
-          'testDescription',
-        );
-      });
-
-      it('Should render correct name, seller username, condition, price, no description <Heading /> and NOT render description content', () => {
-        const wrapper = setUp();
-        expect(wrapper.find('[data-test="name"]').at(0).text()).toEqual(defaultProductDetails.name);
-        expect(wrapper.find('[data-test="seller-username"]').at(0).text()).toEqual(
-          defaultProductDetails.seller.username,
-        );
-        expect(wrapper.find('[data-test="condition"]').at(0).text()).toEqual(
-          'Condition: Not applicable',
-        );
-        expect(wrapper.find('[data-test="price"]').at(0).text()).toEqual('$2.50');
-        expect(wrapper.find('[data-test="no-description"]').length).toBeGreaterThan(1);
-        expect(wrapper.find('[data-test="description-section"]')).toHaveLength(0);
+        const { asFragment } = setUp(store);
+        expect(asFragment()).toMatchSnapshot();
       });
     });
 
-    describe('Check how quantity sold node renders', () => {
+    describe('Check single items', () => {
       it('Should render quantity sold node - "2 people bought 3 units"', () => {
         const store = {
           product: {
-            productDetails: { ...defaultProductDetails, buyerQuantity: 2, quantitySold: 3 },
+            productDetails: {
+              ...defaultProductDetails,
+              quantitySold: 3,
+              buyerQuantity: 2,
+            },
           },
         };
-        const wrapper = setUp(store);
-        expect(wrapper.find('[data-test="quantity-sold"]').at(0).text()).toEqual(
+        setUp(store);
+        expect(screen.getByTestId('product-details-quantity-sold')).toHaveTextContent(
           '2 people bought 3 units',
         );
       });
 
-      it('Should render quantity sold node - "1 person bought 1 unit"', () => {
+      it('Should render quantity sold node - "1 person bought 4 units"', () => {
         const store = {
           product: {
-            productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 1 },
+            productDetails: {
+              ...defaultProductDetails,
+              quantitySold: 4,
+              buyerQuantity: 1,
+            },
           },
         };
-        const wrapper = setUp(store);
-        expect(wrapper.find('[data-test="quantity-sold"]').at(0).text()).toEqual(
-          '1 person bought 1 unit',
+        setUp(store);
+        expect(screen.getByTestId('product-details-quantity-sold')).toHaveTextContent(
+          '1 person bought 4 units',
         );
       });
 
-      it('Should render quantity sold node - "1 person bought 5 units"', () => {
+      it('Should render no description if it is empty and NOT render quantity sold node if quantitySold is 0', () => {
+        setUp();
+        expect(screen.getByTestId('product-details-no-description')).toBeInTheDocument();
+        expect(screen.queryByTestId('product-details-full-description')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('product-details-quantity-sold')).not.toBeInTheDocument();
+      });
+
+      it('Should render default photo', () => {
         const store = {
           product: {
-            productDetails: { ...defaultProductDetails, buyerQuantity: 1, quantitySold: 5 },
+            productDetails: {
+              ...defaultProductDetails,
+              photo: false,
+            },
           },
         };
-        const wrapper = setUp(store);
-        expect(wrapper.find('[data-test="quantity-sold"]').at(0).text()).toEqual(
-          '1 person bought 5 units',
-        );
+        setUp(store);
+        expect(screen.getByAltText(defaultProductDetails.name)).toHaveAttribute('src', noPhoto);
       });
 
-      it('Should NOT render quantity sold node', () => {
-        const wrapper = setUp();
-        expect(wrapper.find('[data-test="quantity-sold"]')).toHaveLength(0);
-      });
-    });
-
-    describe('Check how buttons render', () => {
-      it('Should render delete and edit button when user is owner', () => {
-        const wrapper = setUp();
-        expect(wrapper.find('[data-test="edit-button"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
-      });
-
-      it('Should render delete and edit button when user is admin and owner', () => {
-        const wrapper = setUp({
-          auth: { profile: { ...defaultUserProfile, username: 'user1', isAdmin: true } },
-        });
-        expect(wrapper.find('[data-test="edit-button"]').length).toBeGreaterThan(0);
-        expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
+      it(`Should NOT render edit and delete buttons if user is not admin and not a product's owner`, () => {
+        const store = {
+          product: {
+            productDetails: {
+              ...defaultProductDetails,
+              seller: { username: 'user2' },
+            },
+          },
+        };
+        setUp(store);
+        expect(screen.queryByTestId('product-details-edit-button')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('product-details-delete-button')).not.toBeInTheDocument();
       });
 
-      it('Should render delete button when user is admin', () => {
-        const wrapper = setUp({
+      it(`Should NOT render edit button and should render delete button if user not a product's owner but is an admin`, () => {
+        const store = {
           auth: {
             profile: { ...defaultUserProfile, username: 'user2', isAdmin: true },
             cart: defaultCart,
           },
-        });
-        expect(wrapper.find('[data-test="delete-button"]').length).toBeGreaterThan(0);
+        };
+        setUp(store);
+        expect(screen.queryByTestId('product-details-edit-button')).not.toBeInTheDocument();
+        expect(screen.getByTestId('product-details-delete-button')).toBeInTheDocument();
       });
 
-      it('Should NOT render edit and delete button when user is not admin and not owner', () => {
-        const wrapper = setUp({
-          auth: { profile: { ...defaultUserProfile, username: 'user2' }, cart: defaultCart },
-        });
-        expect(wrapper.find('[data-test="edit-button"]')).toHaveLength(0);
-        expect(wrapper.find('[data-test="delete-button"]')).toHaveLength(0);
-      });
+      it('Should call push with correct path after clicking on seller link', () => {
+        const pushFn = jest.fn();
+        setUp(defaultStore, pushFn);
 
-      it('Should NOT render edit and delete button when user is logged out', () => {
-        const wrapper = setUp({ auth: { profile: undefined, cart: defaultCart } });
-        expect(wrapper.find('[data-test="edit-button"]')).toHaveLength(0);
-        expect(wrapper.find('[data-test="delete-button"]')).toHaveLength(0);
+        fireEvent.click(screen.getByTestId('product-details-seller-link'));
+        expect(pushFn).toHaveBeenCalledWith(`/user/${defaultProductDetails.seller.username}?p=1`);
+        expect(pushFn).toHaveBeenCalledTimes(1);
       });
     });
   });

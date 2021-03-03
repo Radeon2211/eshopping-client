@@ -44,8 +44,8 @@ export const createCartItem = (
 });
 
 export const createTransactionAndOrderProdItem = (
-  sellerUsername = 'username',
   productId,
+  sellerUsername = 'username',
   quantity = 1,
   price = 2,
   name = 'product name',

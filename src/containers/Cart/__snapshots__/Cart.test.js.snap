@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart /> Should render empty cart 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm grLPWW"
+  >
+    <h3
+      class="sc-AxirZ clDrHN"
+    >
+      Your shopping cart is empty. Check out the latest 
+      <a
+        data-testid="default-path-link"
+      >
+        <span
+          class="sc-fzoyAV ldrLGk"
+        >
+          offers
+        </span>
+      </a>
+    </h3>
+    <h4
+      class="sc-AxirZ eBUIGK"
+    >
+      You can have up to 50 products in the cart
+    </h4>
+    <svg
+      class="empty-cart-image"
+    >
+      empty-cart.svg
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxirZ eKJXWv"
+  >
+    Your shopping cart
+  </h3>
+  <div
+    class="sc-AxiKw drRYDt"
+  >
+    <section
+      class="sc-AxhCb jHabve"
+    >
+      <div
+        class="sc-fzoLag gUUOZk"
+      >
+        <button
+          class="sc-AxgMl bClvsY"
+          color="red"
+          type="button"
+        >
+          clear the cart
+        </button>
+      </div>
+      <div
+        class="sc-fzpjYC fafTno"
+      >
+        <span
+          class="sc-AxmLO ibqgFs"
+          color=""
+          display="block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          <span>
+            seller 
+          </span>
+          <a
+            data-testid="cart-and-transaction-seller-link"
+          >
+            <span
+              class="sc-fzoyAV ldrLGk"
+            >
+              user1
+            </span>
+          </a>
+        </span>
+        <div
+          class="sc-fznZeY dSYcLK"
+          data-testid="cart-item"
+        >
+          <div
+            class="photo-and-name"
+          >
+            <a
+              data-testid="cart-item-product-link-photo"
+            >
+              <div
+                class="sc-fzoLsD jfsTZS sc-fznKkj hmQtey"
+                direction="row"
+                height="7"
+                spacing=""
+                width="7"
+                wrap="nowrap"
+              >
+                <img
+                  alt="product name"
+                  src="no-photo.png"
+                />
+              </div>
+            </a>
+            <span
+              class="name"
+            >
+              <a
+                data-testid="cart-item-product-link-name"
+              >
+                product name
+              </a>
+            </span>
+          </div>
+          <div
+            class="mobile-lower-row"
+          >
+            <div
+              class="choose-quantity-box"
+            >
+              <div
+                class="sc-fzqNJr dJerfL"
+              >
+                <button
+                  class="button minus"
+                  data-testid="choose-quantity-minus"
+                  type="button"
+                >
+                  <div
+                    class="sc-fzqBZW hlkCkt"
+                    color=""
+                  >
+                    <svg>
+                      minus.svg
+                    </svg>
+                  </div>
+                </button>
+                <input
+                  class="sc-fzokOt gbYxBH"
+                  name="quantity"
+                  type="number"
+                  value="5"
+                />
+                <button
+                  class="button plus"
+                  data-testid="choose-quantity-plus"
+                  disabled=""
+                  type="button"
+                >
+                  <div
+                    class="sc-fzqBZW gMPwLB"
+                    color="#DADFE1"
+                  >
+                    <svg>
+                      plus.svg
+                    </svg>
+                  </div>
+                </button>
+              </div>
+              <span
+                class="sc-AxmLO cPswUF"
+                color=""
+                data-testid="cart-item-available-quantity"
+                display="inline-block"
+                overflow="visible"
+                size="2"
+                spacing="0px"
+                transform=""
+              >
+                of 2
+              </span>
+            </div>
+            <div
+              class="price-box"
+            >
+              <span
+                class="sc-AxmLO kIoOIw"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="5"
+                spacing="0px"
+                transform=""
+              >
+                $2,499.85
+              </span>
+              <span
+                class="sc-AxmLO hvIreh"
+                color=""
+                data-testid="cart-item-price-per-piece"
+                display="inline-block"
+                overflow="visible"
+                size="2"
+                spacing="0px"
+                transform=""
+              >
+                per piece $499.97
+              </span>
+            </div>
+          </div>
+          <div
+            class="sc-fzqBZW bGOOMg remove-icon"
+            color="#F22613"
+          >
+            <svg>
+              trash.svg
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="sc-AxhUy phhPK"
+    >
+      <section
+        class="sc-AxhCb jHabve"
+      >
+        <div
+          class="sc-fzoLsD ffDTUa"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <div
+            class="sc-fzoLsD bJdzTc"
+            direction="row"
+            spacing="1"
+            width="100%"
+            wrap="wrap"
+          >
+            <span
+              class="sc-AxmLO eZCDgW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="4"
+              spacing="0px"
+              transform=""
+            >
+              To pay
+            </span>
+            <span
+              class="sc-AxmLO jsdXgt"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="6"
+              spacing="1px"
+              transform=""
+            >
+              $2,499.85
+            </span>
+          </div>
+          <button
+            class="sc-AxgMl dUvqmj"
+            color="blue"
+            type="button"
+          >
+            go to summary
+          </button>
+        </div>
+      </section>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Cart /> Should render only <Loader /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxheI gWSSdL"
+    data-testid="loader-wrapper"
+  >
+    <div
+      class="sc-Axmtr irYhNg"
+      data-testid="loader"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Cart /> Should render that there is a problem to fetch cart 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxirZ dpNmUR"
+  >
+    There is a problem to get your shopping cart
+  </h3>
+</DocumentFragment>
+`;

@@ -46,7 +46,7 @@ const setUp = (otherUser, currentUserUsername = 'testUser', replaceFn = jest.fn(
 };
 
 describe('<OtherUser />', () => {
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render <Loader /> if other user is undefined', () => {
       const wrapper = setUp(undefined);
       expect(wrapper.find(Loader)).toHaveLength(1);

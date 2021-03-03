@@ -43,7 +43,7 @@ describe('<LoggedInLinks />', () => {
     });
   });
 
-  describe('Check how everything renders', () => {
+  describe('Check how renders', () => {
     it('Should render version for user with status active', () => {
       const wrapper = setUp('username', 'active');
       expect(wrapper).toMatchSnapshot();

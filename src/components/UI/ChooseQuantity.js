@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import NumberInput from './NumberInput';
+import NumberInput from './NumberInput/NumberInput';
 import MyIcon from './MyIcon';
 import { ReactComponent as MinusIcon } from '../../images/icons/minus.svg';
 import { ReactComponent as PlusIcon } from '../../images/icons/plus.svg';
@@ -39,7 +39,13 @@ const ChooseQuantity = (props) => {
 
   return (
     <SC.Wrapper>
-      <button type="button" className="button minus" disabled={value <= 1} onClick={decremented}>
+      <button
+        type="button"
+        className="button minus"
+        disabled={value <= 1}
+        onClick={decremented}
+        data-testid="choose-quantity-minus"
+      >
         <MyIcon size="small" color={value <= 1 ? themeStyles.colors.light2 : ''}>
           <MinusIcon />
         </MyIcon>
@@ -51,13 +57,13 @@ const ChooseQuantity = (props) => {
         changed={changed}
         blured={blured}
         focused={focused}
-        focusable={false}
       />
       <button
         type="button"
         className="button plus"
         disabled={value >= maxQuantity}
         onClick={incremented}
+        data-testid="choose-quantity-plus"
       >
         <MyIcon size="small" color={value >= maxQuantity ? themeStyles.colors.light2 : ''}>
           <PlusIcon />

@@ -29,31 +29,19 @@ SC.NumberInput = styled.input`
     margin: 0;
     -webkit-appearance: none;
   }
-
-  ${({ focusable, theme }) => {
-    if (focusable) {
-      return `
-        margin: 1px;
-
-        &:focus {
-          border: 2px solid ${theme.colors.light4};
-          margin: 0;
-        }
-      `;
-    }
-    return ``;
-  }}
 `;
 
 const NumberInput = (props) => {
-  const { name, value, changed, blured, focused, floating, size, focusable } = props;
+  const { name, value, changed, blured, focused, floating, size } = props;
 
   const inputKeyDownHandle = (e) => {
-    if (floating) {
-      if (e.key === 'e' || e.key === 'E' || e.key === '-' || e.key === '.') {
-        e.preventDefault();
-      }
-    } else if (e.key === 'e' || e.key === 'E' || e.key === '-' || e.key === '.' || e.key === ',') {
+    if (
+      e.key === 'e' ||
+      e.key === 'E' ||
+      e.key === '-' ||
+      e.key === '.' ||
+      (!floating && e.key === ',')
+    ) {
       e.preventDefault();
     }
   };
@@ -75,15 +63,14 @@ const NumberInput = (props) => {
       onBlur={blured}
       onKeyDown={inputKeyDownHandle}
       onFocus={focused}
-      focusable={focusable}
     />
   );
 };
 
 NumberInput.defaultProps = {
   value: '',
+  size: 'big',
   floating: false,
-  focusable: true,
   blured: () => {},
   focused: () => {},
 };
@@ -95,7 +82,7 @@ NumberInput.propTypes = {
   blured: PropTypes.func,
   focused: PropTypes.func,
   floating: PropTypes.bool,
-  focusable: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'big']),
 };
 
 export default NumberInput;

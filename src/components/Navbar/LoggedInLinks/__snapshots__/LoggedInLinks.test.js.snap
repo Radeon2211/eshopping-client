@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoggedInLinks /> Check how everything renders Should render version for user with status active 1`] = `
+exports[`<LoggedInLinks /> Check how renders Should render version for user with status active 1`] = `
 <styled.nav>
   <CartLink />
   <styled.div
@@ -49,7 +49,7 @@ exports[`<LoggedInLinks /> Check how everything renders Should render version fo
 </styled.nav>
 `;
 
-exports[`<LoggedInLinks /> Check how everything renders Should render version for user with status pending 1`] = `
+exports[`<LoggedInLinks /> Check how renders Should render version for user with status pending 1`] = `
 <styled.nav>
   <Link
     data-test="my-account-link"

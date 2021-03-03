@@ -14,7 +14,7 @@ const TransactionAndOrderProdItem = (props) => {
   const roundedOverallPrice = roundOverallPrice(price * quantity);
 
   return (
-    <SC.Wrapper spacing="2">
+    <SC.Wrapper spacing="2" data-test="transaction-and-order-prod-item">
       <Link to={`/product/${productId}`} data-test="product-link">
         <ProductThumbnail
           photo={photo}

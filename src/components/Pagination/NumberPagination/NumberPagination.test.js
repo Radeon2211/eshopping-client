@@ -35,7 +35,7 @@ describe('<NumberPagination />', () => {
     });
   });
 
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render all correctly (without hide-arrow class on arrows)', () => {
       const history = createHistoryPageNumber(2);
       const { asFragment } = setUp(defaultProps, history);

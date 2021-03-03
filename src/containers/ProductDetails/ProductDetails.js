@@ -49,7 +49,7 @@ const ProductDetails = (props) => {
   let details = <Loader align="center" />;
   if (productDetails === null) {
     details = (
-      <Heading variant="h4" align="center" lineHeight="4" data-test="not-found">
+      <Heading variant="h4" align="center" lineHeight="4">
         Such product does not exist or has already been sold
       </Heading>
     );
@@ -67,12 +67,15 @@ const ProductDetails = (props) => {
       _id,
     } = productDetails;
 
-    const conditionText = condition !== 'not_applicable' ? condition : 'not applicable';
-
     let quantitySoldNode = null;
     if (quantitySold >= 1) {
       quantitySoldNode = (
-        <PlainText size="2" mgBottom="3" color={theme.colors.light4} data-test="quantity-sold">
+        <PlainText
+          size="2"
+          mgBottom="3"
+          color={theme.colors.light4}
+          data-testid="product-details-quantity-sold"
+        >
           {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought {quantitySold}{' '}
           {quantitySold === 1 ? 'unit' : 'units'}
         </PlainText>
@@ -80,17 +83,17 @@ const ProductDetails = (props) => {
     }
 
     let descriptionSection = (
-      <Heading variant="h4" mgTop="3" data-test="no-description">
+      <Heading variant="h4" mgTop="3" data-testid="product-details-no-description">
         This product has no description
       </Heading>
     );
     if (description) {
       descriptionSection = (
-        <section data-test="description-section">
+        <section data-testid="product-details-full-description">
           <Heading variant="h4" mgBottom="2" mgTop="3">
             Description
           </Heading>
-          <PlainText size="3" lineHeight="5" data-test="description-content">
+          <PlainText size="3" lineHeight="5">
             {description}
           </PlainText>
         </section>
@@ -106,7 +109,7 @@ const ProductDetails = (props) => {
         <Button
           color="blue"
           clicked={() => onSetModal(true, modalTypes.EDIT_PRODUCT)}
-          data-test="edit-button"
+          data-testid="product-details-edit-button"
         >
           Edit offer
         </Button>
@@ -117,7 +120,7 @@ const ProductDetails = (props) => {
         <Button
           color="red"
           clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}
-          data-test="delete-button"
+          data-testid="product-details-delete-button"
         >
           Delete offer
         </Button>
@@ -134,6 +137,8 @@ const ProductDetails = (props) => {
       );
     }
 
+    const conditionText = condition !== 'not_applicable' ? condition : 'not applicable';
+
     details = (
       <PlainPanel>
         <SC.Wrapper>
@@ -141,25 +146,23 @@ const ProductDetails = (props) => {
             <section className="photo-section">
               <img
                 src={photo ? `${process.env.REACT_APP_API_URL}/products/${_id}/photo` : noPhoto}
-                alt="product"
+                alt={name}
                 className="photo"
               />
             </section>
             <section className="data-section">
-              <Heading variant="h4" data-test="name">
-                {name}
-              </Heading>
+              <Heading variant="h4">{name}</Heading>
               <PlainText size="2" mgTop="2" mgBottom="2">
                 <PlainText color={theme.colors.light4}>from&nbsp;</PlainText>
-                <Link to={`/user/${seller.username}?p=1`}>
-                  <GreenText data-test="seller-username">{seller.username}</GreenText>
+                <Link to={`/user/${seller.username}?p=1`} data-testid="product-details-seller-link">
+                  <GreenText>{seller.username}</GreenText>
                 </Link>
               </PlainText>
-              <PlainText size="2" data-test="condition">
+              <PlainText size="2">
                 <PlainText color={theme.colors.light4}>Condition:</PlainText>
                 {` ${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
               </PlainText>
-              <PlainText size="6" spacing="1px" mgTop="3" mgBottom="3" data-test="price">
+              <PlainText size="6" spacing="1px" mgTop="3" mgBottom="3">
                 {formatPrice(price)}
               </PlainText>
               {quantitySoldNode}

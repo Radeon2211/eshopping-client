@@ -41,7 +41,7 @@ const setUp = (cart = defaultCart, product = defaultProduct, isLoading = false) 
 };
 
 describe('<CartItemAdded />', () => {
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     it('Should render <Loader /> and NOT render product-preview', () => {
       const wrapper = setUp(undefined, undefined, true);
       expect(wrapper.find(Loader)).toHaveLength(1);

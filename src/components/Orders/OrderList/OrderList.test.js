@@ -59,7 +59,7 @@ describe('<OrderList />', () => {
     });
   });
 
-  describe('Check how everything render', () => {
+  describe('Check how renders', () => {
     describe('Buyer and seller field are defined', () => {
       it('Should render one <SC.SingleOrder /> with correct data and two <TransactionAndOrderProdItem /> when type is PLACED_ORDERS and should NOT render <LoadingOverlay />', () => {
         const products = [createTransactionAndOrderProdItem(), createTransactionAndOrderProdItem()];

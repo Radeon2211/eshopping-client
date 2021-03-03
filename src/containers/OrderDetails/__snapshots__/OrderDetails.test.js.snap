@@ -1,0 +1,489 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OrderDetails /> Check how renders Should render everything correctly with two <TransactionAndOrderProdItem /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm dXLJYt"
+  >
+    <section
+      class="sc-AxirZ bvslzS"
+    >
+      <div
+        class="sc-AxheI cDXAje"
+        direction="column"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <div
+          data-testid="order-details-general-info-section"
+        >
+          <h4
+            class="sc-AxiKw eLpjbq"
+          >
+            General info
+          </h4>
+          <div
+            class="sc-AxheI gsYccU"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <div>
+              <span
+                class="sc-AxgMl ieMMQu"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Order number: 
+              </span>
+              <span
+                class="sc-AxgMl jNcyKI"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="3"
+                spacing="0px"
+                transform=""
+              >
+                o1
+              </span>
+            </div>
+            <div>
+              <span
+                class="sc-AxgMl ieMMQu"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Transaction date: 
+              </span>
+              <span
+                class="sc-AxgMl jNcyKI"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="3"
+                spacing="0px"
+                transform=""
+              >
+                11 Jan 2021, 13:32
+              </span>
+            </div>
+            <div>
+              <span
+                class="sc-AxgMl ieMMQu"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Buyer: 
+              </span>
+              <span
+                class="sc-AxgMl jNcyKI"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="3"
+                spacing="0px"
+                transform=""
+              >
+                <a
+                  data-testid="order-details-buyer-link"
+                >
+                  <span
+                    class="sc-fzpans jwMGGx"
+                  >
+                    buyerUser
+                  </span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid="order-details-info-about-seller"
+        >
+          <h4
+            class="sc-AxiKw eLpjbq"
+          >
+            Info about seller
+          </h4>
+          <div
+            class="sc-AxheI gsYccU"
+            data-test="order-details-seller-info"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <div>
+              <span
+                class="sc-AxgMl ieMMQu"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Username: 
+              </span>
+              <span
+                class="sc-AxgMl jNcyKI"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="3"
+                spacing="0px"
+                transform=""
+              >
+                <a
+                  data-testid="order-details-seller-link"
+                >
+                  <span
+                    class="sc-fzpans jwMGGx"
+                  >
+                    sellerUser
+                  </span>
+                </a>
+              </span>
+            </div>
+            <div>
+              <span
+                class="sc-AxgMl ieMMQu"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Email: 
+              </span>
+              <span
+                class="sc-AxgMl jNcyKI"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="3"
+                spacing="0px"
+                transform=""
+              >
+                sellerEmail
+              </span>
+            </div>
+            <div>
+              <span
+                class="sc-AxgMl ieMMQu"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Phone: 
+              </span>
+              <span
+                class="sc-AxgMl jNcyKI"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="3"
+                spacing="0px"
+                transform=""
+              >
+                123
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid="order-details-delivery-address-section"
+        >
+          <h4
+            class="sc-AxiKw eLpjbq"
+          >
+            Delivery address
+          </h4>
+          <div
+            class="sc-AxheI gsYccU"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxgMl iMpujO"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              firstName lastName
+            </span>
+            <span
+              class="sc-AxgMl iMpujO"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              street
+            </span>
+            <span
+              class="sc-AxgMl iMpujO"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              zipCode city
+            </span>
+            <span
+              class="sc-AxgMl iMpujO"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              country
+            </span>
+            <span
+              class="sc-AxgMl iMpujO"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              phone
+            </span>
+          </div>
+        </div>
+      </div>
+      <h4
+        class="sc-AxiKw fQNhlW"
+      >
+        Products
+      </h4>
+      <div
+        class="sc-AxheI iMBohI sc-Axmtr fPcoBS"
+        data-test="transaction-and-order-prod-item"
+        direction="row"
+        spacing="2"
+        width="100%"
+        wrap="nowrap"
+      >
+        <a
+          data-test="product-link"
+        >
+          <div
+            class="sc-AxheI gctott sc-fzoLsD kxcbCk"
+            direction="row"
+            height="5"
+            spacing=""
+            width="5"
+            wrap="nowrap"
+          >
+            <img
+              alt="product name"
+              src="no-photo.png"
+            />
+          </div>
+        </a>
+        <div
+          class="sc-AxmLO fWKIWK"
+        >
+          <span
+            class="name"
+          >
+            <a
+              data-test="product-link"
+            >
+              product name
+            </a>
+          </span>
+          <div
+            class="sc-AxheI bmYDhn sc-fzozJi gjbuzP"
+            direction="row"
+            spacing=""
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxgMl eeevil"
+              color="#777"
+              data-test="price-per-piece"
+              display="inline-block"
+              overflow="visible"
+              size="2"
+              spacing="0px"
+              transform=""
+            >
+              1 x $2
+            </span>
+            <span
+              class="sc-AxgMl idOXky"
+              color=""
+              data-test="overall-price"
+              display="inline-block"
+              overflow="visible"
+              size="4"
+              spacing="0px"
+              transform=""
+            >
+              $2
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxheI iMBohI sc-Axmtr fPcoBS"
+        data-test="transaction-and-order-prod-item"
+        direction="row"
+        spacing="2"
+        width="100%"
+        wrap="nowrap"
+      >
+        <a
+          data-test="product-link"
+        >
+          <div
+            class="sc-AxheI gctott sc-fzoLsD kxcbCk"
+            direction="row"
+            height="5"
+            spacing=""
+            width="5"
+            wrap="nowrap"
+          >
+            <img
+              alt="product name"
+              src="no-photo.png"
+            />
+          </div>
+        </a>
+        <div
+          class="sc-AxmLO fWKIWK"
+        >
+          <span
+            class="name"
+          >
+            <a
+              data-test="product-link"
+            >
+              product name
+            </a>
+          </span>
+          <div
+            class="sc-AxheI bmYDhn sc-fzozJi gjbuzP"
+            direction="row"
+            spacing=""
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxgMl eeevil"
+              color="#777"
+              data-test="price-per-piece"
+              display="inline-block"
+              overflow="visible"
+              size="2"
+              spacing="0px"
+              transform=""
+            >
+              1 x $2
+            </span>
+            <span
+              class="sc-AxgMl idOXky"
+              color=""
+              data-test="overall-price"
+              display="inline-block"
+              overflow="visible"
+              size="4"
+              spacing="0px"
+              transform=""
+            >
+              $2
+            </span>
+          </div>
+        </div>
+      </div>
+      <span
+        class="sc-AxgMl fjxqgU"
+        color=""
+        display="block"
+        overflow="visible"
+        spacing="0px"
+        transform=""
+      >
+        <span
+          class="sc-AxgMl kTgyhr"
+          color="#777"
+          display="inline-block"
+          overflow="visible"
+          spacing="1px"
+          transform=""
+        >
+          TOTAL
+        </span>
+        <span
+          class="sc-AxgMl cxfznc"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="5"
+          spacing="0px"
+          transform=""
+        >
+          $111.10
+        </span>
+      </span>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<OrderDetails /> Check how renders Should render only <Loader /> if orderDetails is undefined 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb NcldG"
+    data-testid="loader-wrapper"
+  >
+    <div
+      class="sc-AxhUy exkrCn"
+      data-testid="loader"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<OrderDetails /> Check how renders Should render only info that there is a problem to fetch order details 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-AxiKw hUUUaF"
+  >
+    There is a problem to fetch order details or given order does not exist
+  </h4>
+</DocumentFragment>
+`;
