@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3dc38ce7567ad31e3fbd392c881cb1b3",
+    "revision": "64995008472f8eda02b5d97ff85d36b0",
     "url": "/eshopping-client/index.html"
   },
   {
@@ -12,36 +12,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/eshopping-client/static/js/2.4ecdeb7b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "478adb949b4a1c445933",
-    "url": "/eshopping-client/static/js/3.da9642c2.chunk.js"
+    "revision": "2454d1c7b03997ddf3a9",
+    "url": "/eshopping-client/static/js/3.647b93ec.chunk.js"
   },
   {
-    "revision": "ee6746698ae0fcefcff2",
-    "url": "/eshopping-client/static/js/4.c8363cf5.chunk.js"
+    "revision": "7f917b03b05afd2a7c51",
+    "url": "/eshopping-client/static/js/4.4bb477dc.chunk.js"
   },
   {
-    "revision": "547d4b4a7fdd35e7b034",
-    "url": "/eshopping-client/static/js/5.a982ef14.chunk.js"
+    "revision": "d60867b3957ddadedd3c",
+    "url": "/eshopping-client/static/js/5.cafc6ded.chunk.js"
   },
   {
-    "revision": "074f80a7202b2e90480b",
-    "url": "/eshopping-client/static/js/6.55bb72e3.chunk.js"
+    "revision": "85f0e892df48a3ba97c6",
+    "url": "/eshopping-client/static/js/6.1d257bda.chunk.js"
   },
   {
-    "revision": "afe5fac87a68bfae368c",
-    "url": "/eshopping-client/static/js/7.37de7d35.chunk.js"
+    "revision": "93dc00f150b703539307",
+    "url": "/eshopping-client/static/js/7.e04638c1.chunk.js"
   },
   {
     "revision": "b76453575185b130c804",
     "url": "/eshopping-client/static/js/8.213f32ea.chunk.js"
   },
   {
-    "revision": "f023204cd0108d7d89ae",
-    "url": "/eshopping-client/static/js/main.432da6d5.chunk.js"
+    "revision": "549f455fc033d5cc970e",
+    "url": "/eshopping-client/static/js/main.e16c3266.chunk.js"
   },
   {
-    "revision": "e4fe1d5fe42c67254942",
-    "url": "/eshopping-client/static/js/runtime-main.f9fd4623.js"
+    "revision": "3cc67f72d66cf2443a72",
+    "url": "/eshopping-client/static/js/runtime-main.22e23a3f.js"
   },
   {
     "revision": "db646eb5c58ea1936b92346615a89a11",
