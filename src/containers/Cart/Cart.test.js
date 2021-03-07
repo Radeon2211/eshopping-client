@@ -66,14 +66,14 @@ describe('<Cart />', () => {
 
   it('Should render <LoadingOverlay /> and go to summary button should be disabled', () => {
     setUp([createCartItem('user1', 5, 'p1', 499.97)], true);
-    expect(screen.getByTestId('loading-overlay')).toBeInTheDocument();
+    expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     expect(screen.getByText('go to summary')).toBeDisabled();
   });
 
   it('Should trigger push with DEFAULT_PATH after click on link in empty cart', () => {
     const pushFn = jest.fn();
     setUp([], false, pushFn);
-    fireEvent.click(screen.getByTestId('default-path-link'));
+    fireEvent.click(screen.getByTestId('Cart-default-path-link'));
     expect(pushFn).toHaveBeenCalledTimes(1);
     expect(pushFn).toHaveBeenCalledWith(DEFAULT_PATH);
   });

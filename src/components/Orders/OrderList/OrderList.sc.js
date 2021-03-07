@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const List = styled.div`
+export const Wrapper = styled.div`
   position: relative;
 `;
 

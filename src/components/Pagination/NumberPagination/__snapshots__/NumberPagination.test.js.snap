@@ -4,10 +4,11 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
 <DocumentFragment>
   <div
     class="sc-AxjAm eyLdyf"
+    data-testid="NumberPagination"
   >
     <a
       class="arrow"
-      data-testid="left-arrow"
+      data-testid="NumberPagination-left-arrow"
     >
       <div
         class="sc-AxirZ bLdFLx"
@@ -20,19 +21,19 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
     </a>
     <a
       class="number-link"
-      data-testid="page1"
+      data-testid="NumberPagination-page1"
     >
       1
     </a>
     <a
       class="number-link active"
-      data-testid="page2"
+      data-testid="NumberPagination-page2"
     >
       2
     </a>
     <a
       class="number-link"
-      data-testid="page3"
+      data-testid="NumberPagination-page3"
     >
       3
     </a>
@@ -48,7 +49,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
     </span>
     <a
       class="arrow"
-      data-testid="right-arrow"
+      data-testid="NumberPagination-right-arrow"
     >
       <div
         class="sc-AxirZ csXoMP"
@@ -67,10 +68,11 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
 <DocumentFragment>
   <div
     class="sc-AxjAm eyLdyf"
+    data-testid="NumberPagination"
   >
     <a
       class="arrow"
-      data-testid="left-arrow"
+      data-testid="NumberPagination-left-arrow"
     >
       <div
         class="sc-AxirZ bLdFLx"
@@ -83,7 +85,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
     </a>
     <a
       class="number-link"
-      data-testid="page1"
+      data-testid="NumberPagination-page1"
     >
       1
     </a>
@@ -94,31 +96,31 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
     </span>
     <a
       class="number-link"
-      data-testid="page6"
+      data-testid="NumberPagination-page6"
     >
       6
     </a>
     <a
       class="number-link"
-      data-testid="page7"
+      data-testid="NumberPagination-page7"
     >
       7
     </a>
     <a
       class="number-link active"
-      data-testid="page8"
+      data-testid="NumberPagination-page8"
     >
       8
     </a>
     <a
       class="number-link"
-      data-testid="page9"
+      data-testid="NumberPagination-page9"
     >
       9
     </a>
     <a
       class="number-link"
-      data-testid="page10"
+      data-testid="NumberPagination-page10"
     >
       10
     </a>
@@ -134,7 +136,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
     </span>
     <a
       class="arrow"
-      data-testid="right-arrow"
+      data-testid="NumberPagination-right-arrow"
     >
       <div
         class="sc-AxirZ csXoMP"
@@ -153,10 +155,11 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
 <DocumentFragment>
   <div
     class="sc-AxjAm eyLdyf"
+    data-testid="NumberPagination"
   >
     <a
       class="arrow"
-      data-testid="left-arrow"
+      data-testid="NumberPagination-left-arrow"
     >
       <div
         class="sc-AxirZ bLdFLx"
@@ -169,7 +172,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
     </a>
     <a
       class="number-link"
-      data-testid="page1"
+      data-testid="NumberPagination-page1"
     >
       1
     </a>
@@ -180,31 +183,31 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
     </span>
     <a
       class="number-link"
-      data-testid="page6"
+      data-testid="NumberPagination-page6"
     >
       6
     </a>
     <a
       class="number-link"
-      data-testid="page7"
+      data-testid="NumberPagination-page7"
     >
       7
     </a>
     <a
       class="number-link"
-      data-testid="page8"
+      data-testid="NumberPagination-page8"
     >
       8
     </a>
     <a
       class="number-link"
-      data-testid="page9"
+      data-testid="NumberPagination-page9"
     >
       9
     </a>
     <a
       class="number-link active"
-      data-testid="page10"
+      data-testid="NumberPagination-page10"
     >
       10
     </a>
@@ -220,7 +223,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
     </span>
     <a
       class="arrow hide-arrow"
-      data-testid="right-arrow"
+      data-testid="NumberPagination-right-arrow"
     >
       <div
         class="sc-AxirZ csXoMP"
@@ -239,10 +242,11 @@ exports[`<NumberPagination /> Check how renders Should render six number links i
 <DocumentFragment>
   <div
     class="sc-AxjAm eyLdyf"
+    data-testid="NumberPagination"
   >
     <a
       class="arrow hide-arrow"
-      data-testid="left-arrow"
+      data-testid="NumberPagination-left-arrow"
     >
       <div
         class="sc-AxirZ bLdFLx"
@@ -255,37 +259,37 @@ exports[`<NumberPagination /> Check how renders Should render six number links i
     </a>
     <a
       class="number-link active"
-      data-testid="page1"
+      data-testid="NumberPagination-page1"
     >
       1
     </a>
     <a
       class="number-link"
-      data-testid="page2"
+      data-testid="NumberPagination-page2"
     >
       2
     </a>
     <a
       class="number-link"
-      data-testid="page3"
+      data-testid="NumberPagination-page3"
     >
       3
     </a>
     <a
       class="number-link"
-      data-testid="page4"
+      data-testid="NumberPagination-page4"
     >
       4
     </a>
     <a
       class="number-link"
-      data-testid="page5"
+      data-testid="NumberPagination-page5"
     >
       5
     </a>
     <a
       class="number-link"
-      data-testid="page6"
+      data-testid="NumberPagination-page6"
     >
       6
     </a>
@@ -301,7 +305,7 @@ exports[`<NumberPagination /> Check how renders Should render six number links i
     </span>
     <a
       class="arrow"
-      data-testid="right-arrow"
+      data-testid="NumberPagination-right-arrow"
     >
       <div
         class="sc-AxirZ csXoMP"

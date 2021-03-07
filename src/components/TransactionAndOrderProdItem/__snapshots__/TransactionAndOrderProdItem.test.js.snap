@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TransactionAndOrderProdItem /> Checks how renders and behaviour Should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
+    data-testid="TransactionAndOrderProdItem"
+    direction="row"
+    spacing="2"
+    width="100%"
+    wrap="nowrap"
+  >
+    <a
+      data-testid="TransactionAndOrderProdItem-product-link-photo"
+    >
+      <div
+        class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+        data-testid="ProductThumbnail"
+        direction="row"
+        height="5"
+        spacing=""
+        width="5"
+        wrap="nowrap"
+      >
+        <img
+          alt="productName"
+          data-testid="ProductThumbnail-img"
+          src="http://192.168.1.109:4000/products/p1/photo"
+        />
+      </div>
+    </a>
+    <div
+      class="sc-AxiKw lklcrl"
+    >
+      <span
+        class="name"
+      >
+        <a
+          data-testid="TransactionAndOrderProdItem-product-link-name"
+        >
+          productName
+        </a>
+      </span>
+      <div
+        class="sc-AxjAm fiXHDx sc-AxhCb cTDcp"
+        direction="row"
+        spacing=""
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-AxgMl eeevil"
+          color="#777"
+          display="inline-block"
+          overflow="visible"
+          size="2"
+          spacing="0px"
+          transform=""
+        >
+          2 x $9.90
+        </span>
+        <span
+          class="sc-AxgMl idOXky"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="4"
+          spacing="0px"
+          transform=""
+        >
+          $19.80
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,10 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../store/actions/indexActions';
-import Heading from '../components/UI/Heading/Heading';
-import ProductsAndFilters from '../components/ProductsAndFilters/ProductsAndFilters';
-import { pages } from '../shared/constants';
-import { getParamsWithoutPollution } from '../shared/utility';
+import * as actions from '../../store/actions/indexActions';
+import Heading from '../../components/UI/Heading/Heading';
+import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
+import { pages } from '../../shared/constants';
+import { getParamsWithoutPollution } from '../../shared/utility';
 
 const Products = (props) => {
   const {
@@ -33,7 +33,9 @@ const Products = (props) => {
 
   return (
     <>
-      <Heading variant="h3">{headingText}</Heading>
+      <Heading variant="h3" data-testid="Products-heading">
+        {headingText}
+      </Heading>
       <ProductsAndFilters page={pages.ALL_PRODUCTS} />
     </>
   );

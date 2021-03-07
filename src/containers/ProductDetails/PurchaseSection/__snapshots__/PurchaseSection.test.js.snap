@@ -7,7 +7,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
   >
     <div
       class="sc-fznyAO ezldyp"
-      data-testid="purchase-section-choose-quantity-wrapper"
+      data-testid="PurchaseSection-choose-quantity-wrapper"
       direction="row"
       spacing=""
       width="100%"
@@ -18,7 +18,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
       >
         <button
           class="button minus"
-          data-testid="choose-quantity-minus"
+          data-testid="ChooseQuantity-minus"
           disabled=""
           type="button"
         >
@@ -33,13 +33,14 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
         </button>
         <input
           class="sc-AxheI bUjaWZ"
+          data-testid="NumberInput-quantity"
           name="quantity"
           type="number"
           value="1"
         />
         <button
           class="button plus"
-          data-testid="choose-quantity-plus"
+          data-testid="ChooseQuantity-plus"
           type="button"
         >
           <div
@@ -55,7 +56,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
       <span
         class="sc-AxhUy gHFdsf"
         color=""
-        data-testid="purchase-section-product-quantity"
+        data-testid="PurchaseSection-product-quantity"
         display="inline-block"
         overflow="visible"
         size="2"
@@ -66,7 +67,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
         <span
           class="sc-AxhUy bYQHbo"
           color="#777"
-          data-testid="purchase-section-quantity-in-cart"
+          data-testid="PurchaseSection-quantity-in-cart"
           display="inline-block"
           overflow="visible"
           spacing="0px"

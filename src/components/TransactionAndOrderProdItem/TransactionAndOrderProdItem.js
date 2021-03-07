@@ -14,8 +14,11 @@ const TransactionAndOrderProdItem = (props) => {
   const roundedOverallPrice = roundOverallPrice(price * quantity);
 
   return (
-    <SC.Wrapper spacing="2" data-test="transaction-and-order-prod-item">
-      <Link to={`/product/${productId}`} data-test="product-link">
+    <SC.Wrapper spacing="2" data-testid="TransactionAndOrderProdItem">
+      <Link
+        to={`/product/${productId}`}
+        data-testid="TransactionAndOrderProdItem-product-link-photo"
+      >
         <ProductThumbnail
           photo={photo}
           alt={name}
@@ -27,17 +30,18 @@ const TransactionAndOrderProdItem = (props) => {
       </Link>
       <SC.NameAndPrice>
         <span className="name">
-          <Link to={`/product/${productId}`} data-test="product-link">
+          <Link
+            to={`/product/${productId}`}
+            data-testid="TransactionAndOrderProdItem-product-link-name"
+          >
             {name}
           </Link>
         </span>
         <SC.Price justify="space-between" align="center" flex="1">
-          <PlainText size="2" color={theme.colors.light4} data-test="price-per-piece">
+          <PlainText size="2" color={theme.colors.light4}>
             {`${quantity} x ${formatPrice(price)}`}
           </PlainText>
-          <PlainText size="4" data-test="overall-price">
-            {formatPrice(roundedOverallPrice)}
-          </PlainText>
+          <PlainText size="4">{formatPrice(roundedOverallPrice)}</PlainText>
         </SC.Price>
       </SC.NameAndPrice>
     </SC.Wrapper>

@@ -63,6 +63,7 @@ const NumberInput = (props) => {
       onBlur={blured}
       onKeyDown={inputKeyDownHandle}
       onFocus={focused}
+      data-testid={`NumberInput-${name}`}
     />
   );
 };

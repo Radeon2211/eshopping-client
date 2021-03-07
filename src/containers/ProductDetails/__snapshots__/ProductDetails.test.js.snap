@@ -9,7 +9,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
       class="sc-AxjAm eieusV"
     >
       <div
-        class="sc-AxheI leQcsr"
+        class="sc-AxheI cLDMfu"
       >
         <section
           class="photo-section"
@@ -48,7 +48,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
               from 
             </span>
             <a
-              data-testid="product-details-seller-link"
+              data-testid="ProductDetails-seller-link"
             >
               <span
                 class="sc-fznyAO hvCXvo"
@@ -92,7 +92,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
           <span
             class="sc-AxhUy fGeCoJ"
             color="#777"
-            data-testid="product-details-quantity-sold"
+            data-testid="ProductDetails-quantity-sold"
             display="inline-block"
             overflow="visible"
             size="2"
@@ -124,7 +124,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
         </section>
       </div>
       <section
-        data-testid="product-details-full-description"
+        data-testid="ProductDetails-full-description"
       >
         <h4
           class="sc-AxgMl kyJMsD"
@@ -153,7 +153,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
         <button
           class="sc-AxmLO bBjfec"
           color="blue"
-          data-testid="product-details-edit-button"
+          data-testid="ProductDetails-edit-button"
           type="button"
         >
           Edit offer
@@ -161,7 +161,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
         <button
           class="sc-AxmLO jUDcyI"
           color="red"
-          data-testid="product-details-delete-button"
+          data-testid="ProductDetails-delete-button"
           type="button"
         >
           Delete offer
@@ -176,11 +176,11 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render only <Load
 <DocumentFragment>
   <div
     class="sc-AxirZ hMMCnG"
-    data-testid="loader-wrapper"
+    data-testid="LoaderWrapper"
   >
     <div
       class="sc-AxiKw flMCzO"
-      data-testid="loader"
+      data-testid="Loader"
     >
       <div />
       <div />

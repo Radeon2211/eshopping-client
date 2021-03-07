@@ -17,7 +17,7 @@ const ProductItem = (props) => {
   let conditionNode = null;
   if (condition !== 'not_applicable') {
     conditionNode = (
-      <PlainText size="1" mgTop="1" data-test="condition">
+      <PlainText size="1" mgTop="1" data-testid="ProductItem-condition">
         <PlainText color={theme.colors.light4}>Condition:</PlainText>
         {` ${condition.slice(0, 1).toUpperCase()}${condition.slice(1)}`}
       </PlainText>
@@ -27,7 +27,7 @@ const ProductItem = (props) => {
   let buyerQuantityNode = null;
   if (buyerQuantity >= 1) {
     buyerQuantityNode = (
-      <div className="buyer-quantity-box">
+      <div className="buyer-quantity-box" data-testid="ProductItem-buyer-quantity">
         <PlainText size="1" color={theme.colors.light4} alignSelf="flex-end">
           {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought
         </PlainText>
@@ -36,15 +36,13 @@ const ProductItem = (props) => {
   }
 
   return (
-    <Link to={`/product/${_id}`}>
+    <Link to={`/product/${_id}`} data-testid="ProductItem">
       <SC.Wrapper spacing="3">
         <ProductThumbnail photo={photo} alt={name} productId={_id} width="13" height="15" />
         <FlexWrapper direction="column">
-          <PlainText size="3" data-test="name">
-            {name}
-          </PlainText>
+          <PlainText size="3">{name}</PlainText>
           {conditionNode}
-          <PlainText size="5" mgTop="2" data-test="price">
+          <PlainText size="5" mgTop="2" data-testid="ProductItem-price">
             {formatPrice(price)}
           </PlainText>
           {buyerQuantityNode}

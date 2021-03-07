@@ -76,7 +76,7 @@ const ProductsPerPageController = (props) => {
 
   return (
     <SC.Wrapper>
-      <label htmlFor="option" className="label">
+      <label htmlFor="perPageQuantity" className="label">
         Per page
       </label>
       <Select
@@ -85,6 +85,7 @@ const ProductsPerPageController = (props) => {
         onChange={optionChangeHandle}
         isSearchable={false}
         styles={customStyles}
+        id="perPageQuantity"
         className="select"
       />
     </SC.Wrapper>

@@ -24,12 +24,12 @@ const SingleInfo = (props) => {
     contentNode = (
       <FlexWrapper direction="column" spacing="1">
         <PlainText size="3" wordBreak="break-all">
-          Email:
-          {content.email ? ' visible' : ' hidden'}
+          Email:&nbsp;
+          {content.email ? 'visible' : 'hidden'}
         </PlainText>
         <PlainText size="3" wordBreak="break-all">
-          Phone number:
-          {content.phone ? ' visible' : ' hidden'}
+          Phone number:&nbsp;
+          {content.phone ? 'visible' : 'hidden'}
         </PlainText>
       </FlexWrapper>
     );
@@ -48,9 +48,7 @@ const SingleInfo = (props) => {
 
   return (
     <FlexWrapper direction="column" spacing="2" align="start">
-      <Heading variant="h4" data-test="name">
-        {name}
-      </Heading>
+      <Heading variant="h4">{name}</Heading>
       {contentNode}
       {button}
     </FlexWrapper>
@@ -63,7 +61,14 @@ SingleInfo.defaultProps = {
 
 SingleInfo.propTypes = {
   name: PropTypes.string.isRequired,
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]).isRequired,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      email: PropTypes.bool.isRequired,
+      phone: PropTypes.bool.isRequired,
+    }),
+    PropTypes.arrayOf(PropTypes.string),
+  ]).isRequired,
   clickHandler: PropTypes.func,
 };
 

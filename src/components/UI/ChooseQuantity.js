@@ -44,7 +44,7 @@ const ChooseQuantity = (props) => {
         className="button minus"
         disabled={value <= 1}
         onClick={decremented}
-        data-testid="choose-quantity-minus"
+        data-testid="ChooseQuantity-minus"
       >
         <MyIcon size="small" color={value <= 1 ? themeStyles.colors.light2 : ''}>
           <MinusIcon />
@@ -63,7 +63,7 @@ const ChooseQuantity = (props) => {
         className="button plus"
         disabled={value >= maxQuantity}
         onClick={incremented}
-        data-testid="choose-quantity-plus"
+        data-testid="ChooseQuantity-plus"
       >
         <MyIcon size="small" color={value >= maxQuantity ? themeStyles.colors.light2 : ''}>
           <PlusIcon />

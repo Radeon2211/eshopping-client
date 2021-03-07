@@ -114,7 +114,7 @@ const PurchaseSection = (props) => {
           variant="h4"
           align="center"
           mgBottom="2"
-          data-testid="purchase-section-not-able-to-add"
+          data-testid="PurchaseSection-not-able-to-add"
         >
           You have added all pieces to&nbsp;
           <Link to="/cart">
@@ -129,7 +129,7 @@ const PurchaseSection = (props) => {
         <FlexWrapper
           align="center"
           mgBottom="3"
-          data-testid="purchase-section-choose-quantity-wrapper"
+          data-testid="PurchaseSection-choose-quantity-wrapper"
         >
           <ChooseQuantity
             name="quantity"
@@ -140,13 +140,10 @@ const PurchaseSection = (props) => {
             changed={inputChangeHandle}
             blured={inputBlurHandle}
           />
-          <PlainText size="2" mgLeft="1" data-testid="purchase-section-product-quantity">
+          <PlainText size="2" mgLeft="1" data-testid="PurchaseSection-product-quantity">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
             {givenProductInCart && (
-              <PlainText
-                color={theme.colors.light4}
-                data-testid="purchase-section-quantity-in-cart"
-              >
+              <PlainText color={theme.colors.light4} data-testid="PurchaseSection-quantity-in-cart">
                 &nbsp;
                 {`(${givenProductInCart.quantity} in cart)`}
               </PlainText>

@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
 import queryString from 'query-string';
 import { sortOrdersOptions } from '../../../shared/constants';
+import { getParamsWithoutPollution } from '../../../shared/utility';
 
 export const SC = {};
 SC.Wrapper = styled.div`
@@ -45,7 +46,7 @@ const SortOrders = () => {
   const optionChangeHandle = (change) => {
     if (change.value === option.value) return;
     setOption(change);
-    const parsedQueryParams = queryString.parse(search);
+    const parsedQueryParams = getParamsWithoutPollution(search);
     parsedQueryParams.sortBy = change.value;
     const updatedQueryParams = queryString.stringify(parsedQueryParams);
     history.replace(`${pathname}?${updatedQueryParams}`);
@@ -53,7 +54,7 @@ const SortOrders = () => {
 
   return (
     <SC.Wrapper>
-      <label htmlFor="option" className="label">
+      <label htmlFor="sortOption" className="label">
         Sort
       </label>
       <Select
@@ -62,6 +63,7 @@ const SortOrders = () => {
         onChange={optionChangeHandle}
         isSearchable={false}
         styles={customStyles}
+        id="sortOption"
         className="select"
       />
     </SC.Wrapper>

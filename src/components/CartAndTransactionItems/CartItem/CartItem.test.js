@@ -62,7 +62,7 @@ describe('<CartItem />', () => {
     it('Should NOT render price per piece and should render default photo if photo is empty and available quantity is 1', () => {
       const data = createCartItem();
       setUp(data);
-      expect(screen.queryByTestId('cart-item-price-per-piece')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('CartItem-price-per-piece')).not.toBeInTheDocument();
       expect(screen.getByAltText(data.product.name)).toHaveAttribute('src', noPhoto);
     });
 
@@ -71,9 +71,9 @@ describe('<CartItem />', () => {
       const data = createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true);
       setUp(data, false, pushFn);
 
-      fireEvent.click(screen.getByTestId('cart-item-product-link-photo'));
+      fireEvent.click(screen.getByTestId('CartItem-product-link-photo'));
       expect(pushFn).toHaveBeenCalledWith(`/product/${data.product._id}`);
-      fireEvent.click(screen.getByTestId('cart-item-product-link-name'));
+      fireEvent.click(screen.getByTestId('CartItem-product-link-name'));
       expect(pushFn).toHaveBeenLastCalledWith(`/product/${data.product._id}`);
       expect(pushFn).toHaveBeenCalledTimes(2);
     });

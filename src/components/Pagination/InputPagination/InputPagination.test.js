@@ -45,23 +45,35 @@ describe('<NumberPagination />', () => {
     it('Should only left arrow has hide-arrow class', () => {
       const history = createHistoryPageNumber(1);
       setUp(defaultProps, history);
-      expect(screen.getByTestId('left-arrow').className.includes('hide-arrow')).toEqual(true);
-      expect(screen.getByTestId('right-arrow').className.includes('hide-arrow')).toEqual(false);
+      expect(
+        screen.getByTestId('InputPagination-left-arrow').className.includes('hide-arrow'),
+      ).toEqual(true);
+      expect(
+        screen.getByTestId('InputPagination-right-arrow').className.includes('hide-arrow'),
+      ).toEqual(false);
     });
 
     it('Should only right arrow has hide-arrow class', () => {
       const history = createHistoryPageNumber(3);
       setUp(defaultProps, history);
-      expect(screen.getByTestId('left-arrow').className.includes('hide-arrow')).toEqual(false);
-      expect(screen.getByTestId('right-arrow').className.includes('hide-arrow')).toEqual(true);
+      expect(
+        screen.getByTestId('InputPagination-left-arrow').className.includes('hide-arrow'),
+      ).toEqual(false);
+      expect(
+        screen.getByTestId('InputPagination-right-arrow').className.includes('hide-arrow'),
+      ).toEqual(true);
     });
 
     it('Should both arrows have hide-arrow class', () => {
       const history = createHistoryPageNumber(1);
       const props = createPaginationProps(2);
       setUp(props, history);
-      expect(screen.getByTestId('left-arrow').className.includes('hide-arrow')).toEqual(true);
-      expect(screen.getByTestId('right-arrow').className.includes('hide-arrow')).toEqual(true);
+      expect(
+        screen.getByTestId('InputPagination-left-arrow').className.includes('hide-arrow'),
+      ).toEqual(true);
+      expect(
+        screen.getByTestId('InputPagination-right-arrow').className.includes('hide-arrow'),
+      ).toEqual(true);
     });
   });
 
@@ -72,7 +84,7 @@ describe('<NumberPagination />', () => {
 
       const { getByTestId } = setUp(defaultProps, history);
 
-      fireEvent.click(getByTestId('right-arrow'));
+      fireEvent.click(getByTestId('InputPagination-right-arrow'));
       expect(pushFn).toHaveBeenCalledTimes(1);
       expect(pushFn).toHaveBeenCalledWith('/products?p=2');
     });
@@ -83,7 +95,7 @@ describe('<NumberPagination />', () => {
 
       const { getByTestId } = setUp(defaultProps, history);
 
-      fireEvent.click(getByTestId('left-arrow'));
+      fireEvent.click(getByTestId('InputPagination-left-arrow'));
       expect(pushFn).toHaveBeenCalledTimes(1);
       expect(pushFn).toHaveBeenCalledWith('/products?p=2');
     });
@@ -94,9 +106,9 @@ describe('<NumberPagination />', () => {
 
       const { getByTestId } = setUp(defaultProps, history);
 
-      fireEvent.click(getByTestId('left-arrow'));
+      fireEvent.click(getByTestId('InputPagination-left-arrow'));
       expect(pushFn).toHaveBeenCalledWith('/products?p=1');
-      fireEvent.click(getByTestId('right-arrow'));
+      fireEvent.click(getByTestId('InputPagination-right-arrow'));
       expect(pushFn).toHaveBeenLastCalledWith('/products?p=3');
       expect(pushFn).toHaveBeenCalledTimes(2);
     });

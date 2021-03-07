@@ -1,28 +1,32 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import MyAccount from './MyAccount';
-import * as SC from './MyAccount.sc';
-import MyData from './MyData/MyData';
-import MyPlacedOrders from './MyPlacedOrders/MyPlacedOrders';
-import MySellHistory from './MySellHistory/MySellHistory';
 import theme from '../../styled/theme';
 import { defaultUserProfile } from '../../shared/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (userProfile) => {
+const setUp = (userProfile, pushFn = jest.fn()) => {
   const store = mockStore({
     auth: { profile: userProfile },
   });
 
-  return mount(
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/my-account/data' },
+    push: pushFn,
+  };
+
+  return render(
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <ThemeProvider theme={theme}>
           <MyAccount />
         </ThemeProvider>
@@ -31,48 +35,42 @@ const setUp = (userProfile) => {
   );
 };
 
+afterEach(cleanup);
+
 describe('<MyAccount />', () => {
-  it('Should render all routes and nav if user has status active', () => {
-    const wrapper = setUp(defaultUserProfile);
-    expect(wrapper.find('.nav')).toHaveLength(1);
-    expect(wrapper.find('.nav-list')).toHaveLength(1);
-
-    const listItems = wrapper.find('li');
-    expect(listItems).toHaveLength(4);
-    expect(listItems.at(0).find(NavLink).prop('to')).toEqual('/my-account/data');
-    expect(listItems.at(0).text()).toEqual('Data');
-    expect(listItems.at(1).find(NavLink).prop('to')).toEqual('/my-account/products?p=1');
-    expect(listItems.at(1).text()).toEqual('Products');
-    expect(listItems.at(2).find(NavLink).prop('to')).toEqual('/my-account/sell-history?p=1');
-    expect(listItems.at(2).text()).toEqual('Sell history');
-    expect(listItems.at(3).find(NavLink).prop('to')).toEqual('/my-account/placed-orders?p=1');
-    expect(listItems.at(3).text()).toEqual('Placed orders');
-
-    const routes = wrapper.find(Route);
-    expect(routes).toHaveLength(4);
-    expect(routes.at(0).prop('path')).toEqual('/my-account/data');
-    expect(routes.at(0).prop('component')).toEqual(MyData);
-    expect(routes.at(1).prop('path')).toEqual('/my-account/products');
-    expect(routes.at(1).prop('component')).not.toBeDefined();
-    expect(routes.at(1).prop('render')).toBeDefined();
-    expect(routes.at(2).prop('path')).toEqual('/my-account/sell-history');
-    expect(routes.at(2).prop('component')).toEqual(MySellHistory);
-    expect(routes.at(3).prop('path')).toEqual('/my-account/placed-orders');
-    expect(routes.at(3).prop('component')).toEqual(MyPlacedOrders);
-
-    expect(wrapper.find(SC.Routes).prop('extraMargin')).toEqual(true);
+  it('Should render navigation and all routes', () => {
+    setUp(defaultUserProfile);
+    expect(screen.getByTestId('MyAccount-navigation')).toBeInTheDocument();
+    expect(screen.queryByTestId('MyAccount-pending-user-routes')).not.toBeInTheDocument();
+    expect(screen.getByTestId('MyAccount-active-user-routes')).toBeInTheDocument();
   });
 
-  it('Should render only MyData route and NOT render nav if user has status pending', () => {
-    const userProfile = { ...defaultUserProfile, status: 'pending' };
-    const wrapper = setUp(userProfile);
-    expect(wrapper.find('.nav')).toHaveLength(0);
+  it('Should NOT render navigation and render only one route if user has status pending', () => {
+    setUp({ ...defaultUserProfile, status: 'pending' });
+    expect(screen.queryByTestId('MyAccount-navigation')).not.toBeInTheDocument();
+    expect(screen.getByTestId('MyAccount-pending-user-routes')).toBeInTheDocument();
+    expect(screen.queryByTestId('MyAccount-active-user-routes')).not.toBeInTheDocument();
+  });
 
-    const routes = wrapper.find(Route);
-    expect(routes).toHaveLength(1);
-    expect(routes.at(0).prop('path')).toEqual('/my-account/data');
-    expect(routes.at(0).prop('component')).toEqual(MyData);
+  it('Should call push with correct paths after clicking on links', () => {
+    const pushFn = jest.fn();
+    setUp(defaultUserProfile, pushFn);
 
-    expect(wrapper.find(SC.Routes).prop('extraMargin')).toEqual(false);
+    fireEvent.click(screen.getByText('Data'));
+    expect(pushFn.mock.calls[0][0].pathname).toEqual('/my-account/data');
+
+    fireEvent.click(screen.getByText('Products'));
+    expect(pushFn.mock.calls[1][0].pathname).toEqual(`/my-account/products`);
+    expect(pushFn.mock.calls[1][0].search).toEqual('?p=1');
+
+    fireEvent.click(screen.getByText('Sell history'));
+    expect(pushFn.mock.calls[2][0].pathname).toEqual('/my-account/sell-history');
+    expect(pushFn.mock.calls[2][0].search).toEqual('?p=1');
+
+    fireEvent.click(screen.getByText('Placed orders'));
+    expect(pushFn.mock.calls[3][0].pathname).toEqual('/my-account/placed-orders');
+    expect(pushFn.mock.calls[3][0].search).toEqual('?p=1');
+
+    expect(pushFn).toHaveBeenCalledTimes(4);
   });
 });

@@ -24,13 +24,16 @@ const Transaction = () => {
     (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
     [dispatch],
   );
+  const onSetTransaction = useCallback((items) => dispatch(actions.setTransaction(items)), [
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (!transaction || transaction?.length <= 0) {
-      if (history.length > 2) history.goBack();
-      else history.replace('/cart');
+      history.replace('/cart');
     }
-  }, [history, transaction]);
+    return () => onSetTransaction(undefined);
+  }, [history, transaction, onSetTransaction]);
 
   let content = null;
   if (transaction?.length > 0) {
@@ -44,7 +47,7 @@ const Transaction = () => {
         <Heading variant="h3">Transaction</Heading>
         <SideBySide proportion="3/1" makeVerticalWhen={1200}>
           <FlexWrapper direction="column" align="stretch" spacing="3">
-            <DeliveryAddressSection />
+            <DeliveryAddressSection onSetModal={onSetModal} />
             <PlainPanel>
               <Heading variant="h4">Products</Heading>
               <CartAndTransactionItems items={transaction} type={itemTypes.TRANSACTION} />

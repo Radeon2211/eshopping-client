@@ -14,8 +14,8 @@ import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader';
 import Main from './components/UI/Main';
 import Footer from './components/Footer';
-import Products from './containers/Products';
-import Logout from './containers/Logout';
+import Products from './containers/Products/Products';
+import Logout from './containers/Logout/Logout';
 
 const OrderDetails = lazy(() => import('./containers/OrderDetails/OrderDetails'));
 const ProductDetails = lazy(() => import('./containers/ProductDetails/ProductDetails'));

@@ -123,7 +123,7 @@ describe('<ProductDetails />', () => {
           },
         };
         setUp(store);
-        expect(screen.getByTestId('product-details-quantity-sold')).toHaveTextContent(
+        expect(screen.getByTestId('ProductDetails-quantity-sold')).toHaveTextContent(
           '2 people bought 3 units',
         );
       });
@@ -139,16 +139,16 @@ describe('<ProductDetails />', () => {
           },
         };
         setUp(store);
-        expect(screen.getByTestId('product-details-quantity-sold')).toHaveTextContent(
+        expect(screen.getByTestId('ProductDetails-quantity-sold')).toHaveTextContent(
           '1 person bought 4 units',
         );
       });
 
       it('Should render no description if it is empty and NOT render quantity sold node if quantitySold is 0', () => {
         setUp();
-        expect(screen.getByTestId('product-details-no-description')).toBeInTheDocument();
-        expect(screen.queryByTestId('product-details-full-description')).not.toBeInTheDocument();
-        expect(screen.queryByTestId('product-details-quantity-sold')).not.toBeInTheDocument();
+        expect(screen.getByTestId('ProductDetails-no-description')).toBeInTheDocument();
+        expect(screen.queryByTestId('ProductDetails-full-description')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('ProductDetails-quantity-sold')).not.toBeInTheDocument();
       });
 
       it('Should render default photo', () => {
@@ -174,8 +174,8 @@ describe('<ProductDetails />', () => {
           },
         };
         setUp(store);
-        expect(screen.queryByTestId('product-details-edit-button')).not.toBeInTheDocument();
-        expect(screen.queryByTestId('product-details-delete-button')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('ProductDetails-edit-button')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('ProductDetails-delete-button')).not.toBeInTheDocument();
       });
 
       it(`Should NOT render edit button and should render delete button if user not a product's owner but is an admin`, () => {
@@ -186,15 +186,15 @@ describe('<ProductDetails />', () => {
           },
         };
         setUp(store);
-        expect(screen.queryByTestId('product-details-edit-button')).not.toBeInTheDocument();
-        expect(screen.getByTestId('product-details-delete-button')).toBeInTheDocument();
+        expect(screen.queryByTestId('ProductDetails-edit-button')).not.toBeInTheDocument();
+        expect(screen.getByTestId('ProductDetails-delete-button')).toBeInTheDocument();
       });
 
       it('Should call push with correct path after clicking on seller link', () => {
         const pushFn = jest.fn();
         setUp(defaultStore, pushFn);
 
-        fireEvent.click(screen.getByTestId('product-details-seller-link'));
+        fireEvent.click(screen.getByTestId('ProductDetails-seller-link'));
         expect(pushFn).toHaveBeenCalledWith(`/user/${defaultProductDetails.seller.username}?p=1`);
         expect(pushFn).toHaveBeenCalledTimes(1);
       });

@@ -4,10 +4,11 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
 <DocumentFragment>
   <div
     class="sc-AxjAm ioFhGq"
+    data-testid="InputPagination"
   >
     <a
       class="arrow"
-      data-testid="left-arrow"
+      data-testid="InputPagination-left-arrow"
     >
       <div
         class="sc-AxirZ bLdFLx"
@@ -23,6 +24,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
     >
       <input
         class="sc-AxhCb bBWDsg"
+        data-testid="NumberInput-page"
         name="page"
         type="number"
         value="2"
@@ -52,7 +54,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
     </span>
     <a
       class="arrow"
-      data-testid="right-arrow"
+      data-testid="InputPagination-right-arrow"
     >
       <div
         class="sc-AxirZ csXoMP"

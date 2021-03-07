@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import queryString from 'query-string';
 import SideBySide from '../UI/SideBySide';
 import Filters from '../Filters/Filters';
 import ProductList from '../ProductList/ProductList';
@@ -12,6 +11,7 @@ import InputPagination from '../Pagination/InputPagination/InputPagination';
 import ProductsPerPageController from '../Pagination/ProductsPerPageController';
 import { TopPagination } from '../../styled/components';
 import { listItemTypes } from '../../shared/constants';
+import { getParamsWithoutPollution } from '../../shared/utility';
 
 const ProductsAndFilters = (props) => {
   const { page } = props;
@@ -28,9 +28,9 @@ const ProductsAndFilters = (props) => {
 
   let filters = null;
   if (products || productCount > 0) {
-    const queryParams = queryString.parse(search);
-    if (queryParams.p) delete queryParams.p;
-    const queryParamsKeys = Object.keys(queryParams);
+    const correctQueryParams = getParamsWithoutPollution(search);
+    if (correctQueryParams.p) delete correctQueryParams.p;
+    const queryParamsKeys = Object.keys(correctQueryParams);
     if (
       products?.length > 0 ||
       queryParamsKeys.length >= 2 ||
@@ -45,7 +45,7 @@ const ProductsAndFilters = (props) => {
   );
   if (products && productCount > 0) {
     productListSection = (
-      <PlainPanel>
+      <PlainPanel data-testid="ProductsAndFilters-product-list-section">
         <TopPagination>
           <ProductsPerPageController quantityPerPage={productsPerPage} />
           <InputPagination itemQuantity={productCount} quantityPerPage={productsPerPage} />

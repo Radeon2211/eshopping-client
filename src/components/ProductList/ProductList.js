@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import queryString from 'query-string';
 import ProductItem from './ProductItem/ProductItem';
 import LoadingOverlay from '../UI/LoadingOverlay';
 import Heading from '../UI/Heading/Heading';
 import { pages } from '../../shared/constants';
+import { getParamsWithoutPollution } from '../../shared/utility';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -29,10 +29,12 @@ const ProductList = (props) => {
   if (products) {
     if (products.length <= 0) {
       let headingText = '';
-      const queryStringKeys = Object.keys(queryString.parse(search));
+      const correctQueryParams = getParamsWithoutPollution(search);
+      if (correctQueryParams.p) delete correctQueryParams.p;
+      const queryStringKeys = Object.keys(correctQueryParams);
       if (
-        queryStringKeys.length >= 3 ||
-        (!queryStringKeys.includes('name') && queryStringKeys.length === 2)
+        queryStringKeys.length >= 2 ||
+        (!queryStringKeys.includes('name') && queryStringKeys.length === 1)
       ) {
         switch (page) {
           case pages.ALL_PRODUCTS:
@@ -48,7 +50,7 @@ const ProductList = (props) => {
       } else {
         switch (page) {
           case pages.ALL_PRODUCTS:
-            headingText = `We didn't find any matching results. Try search something else`;
+            headingText = `We didn't find any matching results. Try to search something else`;
             break;
           case pages.MY_PRODUCTS:
             headingText = `You don't have any offers published yet`;
@@ -77,7 +79,7 @@ const ProductList = (props) => {
   }
 
   return (
-    <SC.Wrapper>
+    <SC.Wrapper data-testid="ProductList">
       {loadingOverlay}
       {productList}
     </SC.Wrapper>

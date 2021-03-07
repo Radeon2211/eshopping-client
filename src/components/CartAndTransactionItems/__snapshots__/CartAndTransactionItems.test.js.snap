@@ -18,7 +18,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         seller 
       </span>
       <a
-        data-testid="cart-and-transaction-seller-link"
+        data-testid="CartAndTransactionItems-seller-link"
       >
         <span
           class="sc-fzoLsD gjqBRJ"
@@ -29,16 +29,17 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
     </span>
     <div
       class="sc-AxheI ifuDAj"
-      data-testid="cart-item"
+      data-testid="CartItem"
     >
       <div
         class="photo-and-name"
       >
         <a
-          data-testid="cart-item-product-link-photo"
+          data-testid="CartItem-product-link-photo"
         >
           <div
             class="sc-AxjAm iouDCp sc-AxhUy ipxzMv"
+            data-testid="ProductThumbnail"
             direction="row"
             height="7"
             spacing=""
@@ -47,6 +48,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           >
             <img
               alt="product name"
+              data-testid="ProductThumbnail-img"
               src="no-photo.png"
             />
           </div>
@@ -55,7 +57,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           class="name"
         >
           <a
-            data-testid="cart-item-product-link-name"
+            data-testid="CartItem-product-link-name"
           >
             product name
           </a>
@@ -72,7 +74,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           >
             <button
               class="button minus"
-              data-testid="choose-quantity-minus"
+              data-testid="ChooseQuantity-minus"
               disabled=""
               type="button"
             >
@@ -87,13 +89,14 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
             </button>
             <input
               class="sc-Axmtr eCxCYu"
+              data-testid="NumberInput-quantity"
               name="quantity"
               type="number"
               value="1"
             />
             <button
               class="button plus"
-              data-testid="choose-quantity-plus"
+              data-testid="ChooseQuantity-plus"
               type="button"
             >
               <div
@@ -109,7 +112,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           <span
             class="sc-AxgMl hWFvnR"
             color=""
-            data-testid="cart-item-available-quantity"
+            data-testid="CartItem-available-quantity"
             display="inline-block"
             overflow="visible"
             size="2"
@@ -166,7 +169,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         seller 
       </span>
       <a
-        data-testid="cart-and-transaction-seller-link"
+        data-testid="CartAndTransactionItems-seller-link"
       >
         <span
           class="sc-fzoLsD gjqBRJ"
@@ -177,17 +180,18 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
     </span>
     <div
       class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
-      data-test="transaction-and-order-prod-item"
+      data-testid="TransactionAndOrderProdItem"
       direction="row"
       spacing="2"
       width="100%"
       wrap="nowrap"
     >
       <a
-        data-test="product-link"
+        data-testid="TransactionAndOrderProdItem-product-link-photo"
       >
         <div
           class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+          data-testid="ProductThumbnail"
           direction="row"
           height="5"
           spacing=""
@@ -196,6 +200,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         >
           <img
             alt="product name"
+            data-testid="ProductThumbnail-img"
             src="no-photo.png"
           />
         </div>
@@ -207,7 +212,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           class="name"
         >
           <a
-            data-test="product-link"
+            data-testid="TransactionAndOrderProdItem-product-link-name"
           >
             product name
           </a>
@@ -222,7 +227,6 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           <span
             class="sc-AxgMl eeevil"
             color="#777"
-            data-test="price-per-piece"
             display="inline-block"
             overflow="visible"
             size="2"
@@ -234,7 +238,6 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           <span
             class="sc-AxgMl idOXky"
             color=""
-            data-test="overall-price"
             display="inline-block"
             overflow="visible"
             size="4"
@@ -263,7 +266,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         seller 
       </span>
       <a
-        data-testid="cart-and-transaction-seller-link"
+        data-testid="CartAndTransactionItems-seller-link"
       >
         <span
           class="sc-fzoLsD gjqBRJ"
@@ -274,17 +277,18 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
     </span>
     <div
       class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
-      data-test="transaction-and-order-prod-item"
+      data-testid="TransactionAndOrderProdItem"
       direction="row"
       spacing="2"
       width="100%"
       wrap="nowrap"
     >
       <a
-        data-test="product-link"
+        data-testid="TransactionAndOrderProdItem-product-link-photo"
       >
         <div
           class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+          data-testid="ProductThumbnail"
           direction="row"
           height="5"
           spacing=""
@@ -293,6 +297,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         >
           <img
             alt="product name"
+            data-testid="ProductThumbnail-img"
             src="no-photo.png"
           />
         </div>
@@ -304,7 +309,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           class="name"
         >
           <a
-            data-test="product-link"
+            data-testid="TransactionAndOrderProdItem-product-link-name"
           >
             product name
           </a>
@@ -319,7 +324,6 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           <span
             class="sc-AxgMl eeevil"
             color="#777"
-            data-test="price-per-piece"
             display="inline-block"
             overflow="visible"
             size="2"
@@ -331,7 +335,6 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           <span
             class="sc-AxgMl idOXky"
             color=""
-            data-test="overall-price"
             display="inline-block"
             overflow="visible"
             size="4"

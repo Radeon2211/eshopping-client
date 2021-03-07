@@ -3,7 +3,7 @@ import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { orderTypes } from '../../shared/constants';
-import { getErrorMessage } from '../../shared/utility';
+import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility';
 
 export const setPlacedOrders = (placedOrders, orderCount = undefined) => ({
   type: actionTypes.SET_PLACED_ORDERS,
@@ -22,11 +22,11 @@ export const setOrderDetails = (orderDetails) => ({
   orderDetails,
 });
 
-export const fetchOrders = (queryStrings, type) => {
+export const fetchOrders = (search, type) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.dataStart());
-      const parsedQueryParams = queryString.parse(queryStrings);
+      const parsedQueryParams = getParamsWithoutPollution(search);
       const { p: pageNumber } = parsedQueryParams;
 
       if (!pageNumber || pageNumber < 1) parsedQueryParams.p = 1;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
 import { useLastLocation } from 'react-router-last-location';
 import { useHistory, Link } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
@@ -9,7 +8,11 @@ import PlainText from '../../UI/PlainText';
 import NumberInput from '../../UI/NumberInput/NumberInput';
 import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
 import { historyActions } from '../../../shared/constants';
-import { updateQueryParams, calculateNumberOfPages } from '../../../shared/utility';
+import {
+  updateQueryParams,
+  calculateNumberOfPages,
+  getParamsWithoutPollution,
+} from '../../../shared/utility';
 
 const InputPagination = (props) => {
   const { itemQuantity, quantityPerPage } = props;
@@ -43,7 +46,7 @@ const InputPagination = (props) => {
 
   useEffect(() => {
     const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
-    const parsedQueryParams = queryString.parse(search);
+    const parsedQueryParams = getParamsWithoutPollution(search);
     const { p: urlPage } = parsedQueryParams;
     const urlPageNumber = +urlPage;
     let correctPageNumber = 1;
@@ -85,11 +88,11 @@ const InputPagination = (props) => {
     const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
 
     pagination = (
-      <SC.Wrapper>
+      <SC.Wrapper data-testid="InputPagination">
         <Link
           to={`${pathname}?${queryParamsPrevious}`}
           className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
-          data-testid="left-arrow"
+          data-testid="InputPagination-left-arrow"
         >
           <MyIcon size="small" rotation={180}>
             <ArrowIcon />
@@ -107,7 +110,7 @@ const InputPagination = (props) => {
         <Link
           to={`${pathname}?${queryParamsNext}`}
           className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
-          data-testid="right-arrow"
+          data-testid="InputPagination-right-arrow"
         >
           <MyIcon size="small">
             <ArrowIcon />

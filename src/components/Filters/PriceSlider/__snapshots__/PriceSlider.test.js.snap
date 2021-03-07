@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PriceSlider /> Check how renders Should render everything correctly with default values 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm iFRHBp"
+  >
+    <div
+      class="sc-AxirZ cGSJER"
+    >
+      <span
+        class="sc-AxhUy eKEkiW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        Price ($)
+      </span>
+      <div
+        class="inputs"
+      >
+        <input
+          class="sc-AxhCb hkYbfm"
+          data-testid="NumberInput-minPrice"
+          name="minPrice"
+          type="number"
+          value="10"
+        />
+        <span
+          class="inputs-gap"
+        >
+          —
+        </span>
+        <input
+          class="sc-AxhCb hkYbfm"
+          data-testid="NumberInput-maxPrice"
+          name="maxPrice"
+          type="number"
+          value="100"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-AxiKw gOljnE"
+    >
+      <input
+        class="input min"
+        data-testid="PriceSlider-price-range-min"
+        max="100"
+        min="10"
+        name="minPrice"
+        step="0.1"
+        type="range"
+        value="10"
+      />
+      <input
+        class="input max"
+        data-testid="PriceSlider-price-range-max"
+        max="100"
+        min="10"
+        name="maxPrice"
+        step="0.1"
+        type="range"
+        value="100"
+      />
+      <div
+        class="track"
+      />
+      <div
+        class="range"
+      />
+      <div
+        class="thumb left"
+      />
+      <div
+        class="thumb right"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

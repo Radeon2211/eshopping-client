@@ -1,6 +1,7 @@
-/* eslint-disable no-console */
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent, wait } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
@@ -9,7 +10,7 @@ import thunk from 'redux-thunk';
 import PriceSlider from './PriceSlider';
 import { checkProps } from '../../../shared/testUtility';
 import theme from '../../../styled/theme';
-import { DEFAULT_PATH, sliderPositionsActions } from '../../../shared/constants';
+import { DEFAULT_PATH, sliderPositionsActions, filtersActions } from '../../../shared/constants';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
 const mockStore = configureMockStore([thunk]);
@@ -21,32 +22,31 @@ const defaultStore = mockStore({
   },
 });
 
-const defaultProps = {
-  dispatchFilters: jest.fn(),
-};
-
-const setUp = (search = '', replace = jest.fn()) => {
+const setUp = (search = '?p=1', replace = jest.fn(), dispatchFilters = jest.fn()) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search },
     replace,
   };
-  return mount(
+
+  return render(
     <Router history={history}>
       <Provider store={defaultStore}>
         <ThemeProvider theme={theme}>
-          <PriceSlider {...defaultProps} />
+          <PriceSlider dispatchFilters={dispatchFilters} />
         </ThemeProvider>
       </Provider>
     </Router>,
   );
 };
 
+afterEach(cleanup);
+
 describe('<PriceSlider />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
-      expect(checkProps(PriceSlider, defaultProps)).toBeUndefined();
+      expect(checkProps(PriceSlider, { dispatchFilters: jest.fn() })).toBeUndefined();
     });
 
     it('Should throw a warning', () => {
@@ -54,27 +54,71 @@ describe('<PriceSlider />', () => {
     });
   });
 
-  describe(`Check if inputs' values are correct`, () => {
-    it('Should min inputs have 10 and max inputs 100 by default', () => {
-      const wrapper = setUp();
-      expect(wrapper.find('[data-test="min-price-input"]').prop('value')).toEqual(10);
-      expect(wrapper.find('[data-test="min-price-range"]').prop('value')).toEqual(10);
-      expect(wrapper.find('[data-test="max-price-input"]').prop('value')).toEqual(100);
-      expect(wrapper.find('[data-test="max-price-range"]').prop('value')).toEqual(100);
+  describe('Check how renders', () => {
+    it('Should render everything correctly with default values', () => {
+      const { asFragment } = setUp();
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should min inputs have 20 and max inputs 80 when these are set in url', () => {
-      const wrapper = setUp('?minPrice=20&maxPrice=80');
-      expect(wrapper.find('[data-test="min-price-input"]').prop('value')).toEqual(20);
-      expect(wrapper.find('[data-test="min-price-range"]').prop('value')).toEqual(20);
-      expect(wrapper.find('[data-test="max-price-input"]').prop('value')).toEqual(80);
-      expect(wrapper.find('[data-test="max-price-range"]').prop('value')).toEqual(80);
+    it('Should inputs have 20 and 80 values', () => {
+      setUp('?p=1&minPrice=20&maxPrice=80');
+      expect(screen.getByTestId('NumberInput-minPrice')).toHaveValue(20);
+      expect(screen.getByTestId('PriceSlider-price-range-min')).toHaveValue('20');
+      expect(screen.getByTestId('NumberInput-maxPrice')).toHaveValue(80);
+      expect(screen.getByTestId('PriceSlider-price-range-max')).toHaveValue('80');
     });
+  });
 
-    it('Should call history.replace() when lower and higher than default are set in url', () => {
+  describe('Check general behaviour', () => {
+    it('Should call replace if min value is lower than in store', () => {
       const replaceFn = jest.fn();
-      setUp('?p=1&minPrice=5&maxPrice=120', replaceFn);
+      setUp('?p=1&minPrice=5', replaceFn);
       expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
+      expect(replaceFn).toHaveBeenCalledTimes(1);
+    });
+
+    it('Should call replace if max value is greater than in store', () => {
+      const replaceFn = jest.fn();
+      setUp('?p=1&maxPrice=120', replaceFn);
+      expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
+      expect(replaceFn).toHaveBeenCalledTimes(1);
+    });
+
+    it('Should call dispatchFilters twice with correct values', () => {
+      const dispatchFiltersFn = jest.fn();
+      setUp('?p=1&minPrice=20&maxPrice=80', jest.fn(), dispatchFiltersFn);
+      expect(dispatchFiltersFn).toHaveBeenNthCalledWith(1, {
+        minPrice: 20,
+        type: filtersActions.SET_MIN_PRICE,
+      });
+      expect(dispatchFiltersFn).toHaveBeenNthCalledWith(2, {
+        maxPrice: 80,
+        type: filtersActions.SET_MAX_PRICE,
+      });
+      expect(dispatchFiltersFn).toHaveBeenCalledTimes(2);
+    });
+
+    it('Should change range input values with correct values and call dispatchFilters (2 calls are by default in useEffect())', () => {
+      const dispatchFiltersFn = jest.fn();
+      setUp('?p=1', jest.fn(), dispatchFiltersFn);
+
+      fireEvent.change(screen.getByTestId('PriceSlider-price-range-min'), {
+        target: { value: 30 },
+      });
+      expect(dispatchFiltersFn).toHaveBeenNthCalledWith(3, {
+        minPrice: 30,
+        type: filtersActions.SET_MIN_PRICE,
+      });
+
+      fireEvent.change(screen.getByTestId('PriceSlider-price-range-max'), {
+        target: { value: 70 },
+      });
+      expect(dispatchFiltersFn).toHaveBeenNthCalledWith(4, {
+        maxPrice: 70,
+        type: filtersActions.SET_MAX_PRICE,
+      });
+
+      expect(dispatchFiltersFn).toHaveBeenCalledTimes(4);
     });
   });
 

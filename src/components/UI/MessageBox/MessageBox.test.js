@@ -29,7 +29,7 @@ describe('<MessageBox />', () => {
     const wrapper = setUp(message);
     expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
     expect(wrapper.find(SC.Message)).toHaveLength(1);
-    expect(wrapper.find('[data-testid="message-text"]').at(0).text()).toEqual(message);
+    expect(wrapper.find('[data-testid="MessageBox-message-text"]').at(0).text()).toEqual(message);
     expect(wrapper.find(MyIcon).text()).toEqual('plus.svg');
   });
 

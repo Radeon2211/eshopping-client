@@ -154,12 +154,12 @@ export const sortOrdersOptions = [
 ];
 
 export const singleInfoNames = {
+  USERNAME: 'Username',
   NAME: 'Name',
   EMAIL: 'Email',
   PHONE_NUMBER: 'Phone number',
   ADDRESS: 'Address',
   CONTACTS: 'Contacts',
-  USERNAME: 'Username',
 };
 
 export const updateCartActions = {

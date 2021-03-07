@@ -85,12 +85,12 @@ describe('<PurchaseSection />', () => {
           productQuantity: 3,
         };
         setUp(props);
-        expect(screen.getByTestId('purchase-section-not-able-to-add')).toBeInTheDocument();
+        expect(screen.getByTestId('PurchaseSection-not-able-to-add')).toBeInTheDocument();
       });
 
       it('Should NOT render info about quantity in cart if given product is not in cart', () => {
         setUp(defaultProps, []);
-        expect(screen.queryByTestId('purchase-section-quantity-in-cart')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('PurchaseSection-quantity-in-cart')).not.toBeInTheDocument();
       });
 
       it('Should render quantity info - "of 1 piece (1 in cart)"', () => {
@@ -99,7 +99,7 @@ describe('<PurchaseSection />', () => {
         };
         const cart = [{ quantity: 1, product: { _id: '123' } }];
         setUp(props, cart);
-        expect(screen.getByTestId('purchase-section-product-quantity')).toHaveTextContent(
+        expect(screen.getByTestId('PurchaseSection-product-quantity')).toHaveTextContent(
           'of 1 piece (1 in cart)',
         );
       });
@@ -176,16 +176,16 @@ describe('<PurchaseSection />', () => {
     it('Should increment value to 2 after clicking plus button and decrement to 1 after clicking minus button', () => {
       setUp();
       const input = screen.getByRole('spinbutton');
-      fireEvent.click(screen.getByTestId('choose-quantity-plus'));
+      fireEvent.click(screen.getByTestId('ChooseQuantity-plus'));
       expect(input).toHaveAttribute('value', '2');
-      fireEvent.click(screen.getByTestId('choose-quantity-minus'));
+      fireEvent.click(screen.getByTestId('ChooseQuantity-minus'));
       expect(input).toHaveAttribute('value', '1');
     });
 
     it('Should NOT decrement value to 0 after clicking minus button', () => {
       setUp();
       const input = screen.getByRole('spinbutton');
-      fireEvent.click(screen.getByTestId('choose-quantity-minus'));
+      fireEvent.click(screen.getByTestId('ChooseQuantity-minus'));
       expect(input).toHaveAttribute('value', '1');
     });
 
@@ -193,7 +193,7 @@ describe('<PurchaseSection />', () => {
       setUp();
       const input = screen.getByRole('spinbutton');
       for (let i = 0; i < 5; i += 1) {
-        fireEvent.click(screen.getByTestId('choose-quantity-plus'));
+        fireEvent.click(screen.getByTestId('ChooseQuantity-plus'));
       }
       expect(input).toHaveAttribute('value', '5');
     });

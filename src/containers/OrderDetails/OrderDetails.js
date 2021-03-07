@@ -45,7 +45,7 @@ const OrderDetails = (props) => {
     const { _id, seller, buyer, deliveryAddress, products, overallPrice, createdAt } = orderDetails;
 
     const generalInfoSection = (
-      <div data-testid="order-details-general-info-section">
+      <div data-testid="OrderDetails-general-info-section">
         <Heading variant="h4" mgBottom="2">
           General info
         </Heading>
@@ -62,11 +62,11 @@ const OrderDetails = (props) => {
             <PlainText weight="700">Buyer:&nbsp;</PlainText>
             <PlainText size="3">
               {buyer ? (
-                <Link to={`/user/${buyer.username}?p=1`} data-testid="order-details-buyer-link">
+                <Link to={`/user/${buyer.username}?p=1`} data-testid="OrderDetails-buyer-link">
                   <GreenText>{buyer.username}</GreenText>
                 </Link>
               ) : (
-                <i data-testid="order-details-buyer-deleted">(account has been deleted)</i>
+                <i data-testid="OrderDetails-buyer-deleted">(account has been deleted)</i>
               )}
             </PlainText>
           </div>
@@ -75,16 +75,16 @@ const OrderDetails = (props) => {
     );
 
     const infoAboutSellerSection = (
-      <div data-testid="order-details-info-about-seller">
+      <div data-testid="OrderDetails-info-about-seller">
         <Heading variant="h4" mgBottom="2">
           Info about seller
         </Heading>
         {seller ? (
-          <FlexWrapper direction="column" spacing="1" data-test="order-details-seller-info">
+          <FlexWrapper direction="column" spacing="1" data-test="OrderDetails-seller-info">
             <div>
               <PlainText weight="700">Username:&nbsp;</PlainText>
               <PlainText size="3">
-                <Link to={`/user/${seller.username}?p=1`} data-testid="order-details-seller-link">
+                <Link to={`/user/${seller.username}?p=1`} data-testid="OrderDetails-seller-link">
                   <GreenText>{seller.username}</GreenText>
                 </Link>
               </PlainText>
@@ -99,13 +99,13 @@ const OrderDetails = (props) => {
             </div>
           </FlexWrapper>
         ) : (
-          <i data-testid="order-details-seller-deleted">(account has been deleted)</i>
+          <i data-testid="OrderDetails-seller-deleted">(account has been deleted)</i>
         )}
       </div>
     );
 
     const deliveryAddressSection = (
-      <div data-testid="order-details-delivery-address-section">
+      <div data-testid="OrderDetails-delivery-address-section">
         <Heading variant="h4" mgBottom="2">
           Delivery address
         </Heading>

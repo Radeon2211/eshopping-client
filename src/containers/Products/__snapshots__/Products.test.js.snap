@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Products /> Check how renders Should render everything correctly with default params and two products 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxjAm hRHFqs"
+    data-testid="Products-heading"
+  >
+    All products
+  </h3>
+  <div
+    class="sc-AxirZ kFwBuJ"
+  >
+    <div
+      class="sc-AxhCb ieXCwr"
+      data-testid="Filters-toggler"
+    >
+      <div
+        class="sc-fzokOt bWqgkY"
+        color=""
+      >
+        <svg>
+          filters.svg
+        </svg>
+      </div>
+      <span
+        class="label"
+      >
+        Filters
+      </span>
+      <div
+        class="sc-fzokOt bCDdaW"
+        color=""
+      >
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      class="sc-fzoLag kIAqZD"
+      data-testid="ProductList"
+    >
+      <a
+        data-testid="ProductItem"
+      >
+        <div
+          class="sc-fzqBZW kNJoDq sc-fzqNJr dvqICk"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <div
+            class="sc-fzqBZW liNGHt sc-fzoyAV elIpDu"
+            data-testid="ProductThumbnail"
+            direction="row"
+            height="15"
+            spacing=""
+            width="13"
+            wrap="nowrap"
+          >
+            <img
+              alt="product1"
+              data-testid="ProductThumbnail-img"
+              src="no-photo.png"
+            />
+          </div>
+          <div
+            class="sc-fzqBZW jhIDJz"
+            direction="column"
+            spacing=""
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-Axmtr jbaLxd"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              product1
+            </span>
+            <span
+              class="sc-Axmtr fcULHn"
+              color=""
+              data-testid="ProductItem-condition"
+              display="inline-block"
+              overflow="visible"
+              size="1"
+              spacing="0px"
+              transform=""
+            >
+              <span
+                class="sc-Axmtr jqNBEv"
+                color="#777"
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Condition:
+              </span>
+               New
+            </span>
+            <span
+              class="sc-Axmtr bOZcxS"
+              color=""
+              data-testid="ProductItem-price"
+              display="inline-block"
+              overflow="visible"
+              size="5"
+              spacing="0px"
+              transform=""
+            >
+              $10.60
+            </span>
+          </div>
+        </div>
+      </a>
+      <a
+        data-testid="ProductItem"
+      >
+        <div
+          class="sc-fzqBZW kNJoDq sc-fzqNJr dvqICk"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <div
+            class="sc-fzqBZW liNGHt sc-fzoyAV elIpDu"
+            data-testid="ProductThumbnail"
+            direction="row"
+            height="15"
+            spacing=""
+            width="13"
+            wrap="nowrap"
+          >
+            <img
+              alt="product2"
+              data-testid="ProductThumbnail-img"
+              src="no-photo.png"
+            />
+          </div>
+          <div
+            class="sc-fzqBZW jhIDJz"
+            direction="column"
+            spacing=""
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-Axmtr jbaLxd"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              product2
+            </span>
+            <span
+              class="sc-Axmtr fcULHn"
+              color=""
+              data-testid="ProductItem-condition"
+              display="inline-block"
+              overflow="visible"
+              size="1"
+              spacing="0px"
+              transform=""
+            >
+              <span
+                class="sc-Axmtr jqNBEv"
+                color="#777"
+                display="inline-block"
+                overflow="visible"
+                spacing="0px"
+                transform=""
+              >
+                Condition:
+              </span>
+               New
+            </span>
+            <span
+              class="sc-Axmtr bOZcxS"
+              color=""
+              data-testid="ProductItem-price"
+              display="inline-block"
+              overflow="visible"
+              size="5"
+              spacing="0px"
+              transform=""
+            >
+              $299.98
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;

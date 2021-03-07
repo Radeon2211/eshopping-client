@@ -1,0 +1,345 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Transaction /> Check how renders Should render everything correctly with two items from one user 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxhUy dbeXoy"
+  >
+    Transaction
+  </h3>
+  <div
+    class="sc-AxjAm esRcJO"
+  >
+    <div
+      class="sc-AxirZ bCmXQD"
+      direction="column"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <section
+        class="sc-AxiKw bXlsUm"
+        data-testid="DeliveryAddressSection"
+      >
+        <div
+          class="sc-AxirZ SZYQs"
+          direction="column"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Delivery address
+          </h4>
+          <div
+            class="sc-AxirZ jvwvgR"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              firstName lastName
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              street
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              zipCode city
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              country
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              phone
+            </span>
+          </div>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change address
+          </button>
+        </div>
+      </section>
+      <section
+        class="sc-AxiKw bXlsUm"
+      >
+        <h4
+          class="sc-AxhUy imrlMN"
+        >
+          Products
+        </h4>
+        <div
+          class="sc-fzoXzr rohMv"
+        >
+          <span
+            class="sc-AxmLO ibqgFs"
+            color=""
+            display="block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            <span>
+              seller 
+            </span>
+            <a
+              data-testid="CartAndTransactionItems-seller-link"
+            >
+              <span
+                class="sc-fzqNJr jQHNTO"
+              >
+                user1
+              </span>
+            </a>
+          </span>
+          <div
+            class="sc-AxirZ ktsNtF sc-fzoLsD cNVZOI"
+            data-testid="TransactionAndOrderProdItem"
+            direction="row"
+            spacing="2"
+            width="100%"
+            wrap="nowrap"
+          >
+            <a
+              data-testid="TransactionAndOrderProdItem-product-link-photo"
+            >
+              <div
+                class="sc-AxirZ iUXOsI sc-fznyAO MAZvZ"
+                data-testid="ProductThumbnail"
+                direction="row"
+                height="5"
+                spacing=""
+                width="5"
+                wrap="nowrap"
+              >
+                <img
+                  alt="product1"
+                  data-testid="ProductThumbnail-img"
+                  src="no-photo.png"
+                />
+              </div>
+            </a>
+            <div
+              class="sc-fzpans ksGBQR"
+            >
+              <span
+                class="name"
+              >
+                <a
+                  data-testid="TransactionAndOrderProdItem-product-link-name"
+                >
+                  product1
+                </a>
+              </span>
+              <div
+                class="sc-AxirZ fMPrda sc-fzplWN cSzcAg"
+                direction="row"
+                spacing=""
+                width="100%"
+                wrap="nowrap"
+              >
+                <span
+                  class="sc-AxmLO bIfinp"
+                  color="#777"
+                  display="inline-block"
+                  overflow="visible"
+                  size="2"
+                  spacing="0px"
+                  transform=""
+                >
+                  4 x $10.60
+                </span>
+                <span
+                  class="sc-AxmLO eZCDgW"
+                  color=""
+                  display="inline-block"
+                  overflow="visible"
+                  size="4"
+                  spacing="0px"
+                  transform=""
+                >
+                  $42.40
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-AxirZ ktsNtF sc-fzoLsD cNVZOI"
+            data-testid="TransactionAndOrderProdItem"
+            direction="row"
+            spacing="2"
+            width="100%"
+            wrap="nowrap"
+          >
+            <a
+              data-testid="TransactionAndOrderProdItem-product-link-photo"
+            >
+              <div
+                class="sc-AxirZ iUXOsI sc-fznyAO MAZvZ"
+                data-testid="ProductThumbnail"
+                direction="row"
+                height="5"
+                spacing=""
+                width="5"
+                wrap="nowrap"
+              >
+                <img
+                  alt="product2"
+                  data-testid="ProductThumbnail-img"
+                  src="no-photo.png"
+                />
+              </div>
+            </a>
+            <div
+              class="sc-fzpans ksGBQR"
+            >
+              <span
+                class="name"
+              >
+                <a
+                  data-testid="TransactionAndOrderProdItem-product-link-name"
+                >
+                  product2
+                </a>
+              </span>
+              <div
+                class="sc-AxirZ fMPrda sc-fzplWN cSzcAg"
+                direction="row"
+                spacing=""
+                width="100%"
+                wrap="nowrap"
+              >
+                <span
+                  class="sc-AxmLO bIfinp"
+                  color="#777"
+                  display="inline-block"
+                  overflow="visible"
+                  size="2"
+                  spacing="0px"
+                  transform=""
+                >
+                  6 x $299.98
+                </span>
+                <span
+                  class="sc-AxmLO eZCDgW"
+                  color=""
+                  display="inline-block"
+                  overflow="visible"
+                  size="4"
+                  spacing="0px"
+                  transform=""
+                >
+                  $1,799.88
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section
+      class="sc-AxhCb lkWjKL"
+    >
+      <section
+        class="sc-AxiKw bXlsUm"
+      >
+        <div
+          class="sc-AxirZ lgXlNC"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <div
+            class="sc-AxirZ eULVdA"
+            direction="row"
+            spacing="1"
+            width="100%"
+            wrap="wrap"
+          >
+            <span
+              class="sc-AxmLO eZCDgW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="4"
+              spacing="0px"
+              transform=""
+            >
+              To pay
+            </span>
+            <span
+              class="sc-AxmLO jsdXgt"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="6"
+              spacing="1px"
+              transform=""
+            >
+              $1,842.28
+            </span>
+          </div>
+          <button
+            class="sc-AxgMl cmoYOQ"
+            color="blue"
+            type="button"
+          >
+            I buy and pay
+          </button>
+        </div>
+      </section>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Transaction /> Check how renders Should render nothing if transaction is empty 1`] = `<DocumentFragment />`;
+
+exports[`<Transaction /> Check how renders Should render nothing if transaction is falsy 1`] = `<DocumentFragment />`;

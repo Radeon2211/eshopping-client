@@ -2,7 +2,7 @@ import queryString from 'query-string';
 import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
-import { getErrorMessage } from '../../shared/utility';
+import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility';
 
 export const setProducts = (
   products = undefined,
@@ -101,14 +101,14 @@ export const editProduct = (productData, productId) => {
   };
 };
 
-export const fetchProducts = (queryStrings, page, sellerUsername) => {
+export const fetchProducts = (search, page, sellerUsername) => {
   return async (dispatch, getState) => {
     try {
       dispatch(uiActions.dataStart());
       let minPriceOuter = 0;
       let maxPriceOuter = 0;
 
-      const parsedQueryParams = queryString.parse(queryStrings);
+      const parsedQueryParams = getParamsWithoutPollution(search);
       const { seller, p: pageNumber } = parsedQueryParams;
 
       const { productsPerPage } = getState().ui;

@@ -1,0 +1,851 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MyData /> Check how renders Snapshots Should render everything correctly for admin user 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxhUy dbeXoy"
+  >
+    My data
+  </h3>
+  <div
+    class="sc-AxhCb kJAhLH"
+    direction="column"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <section
+      class="sc-AxiKw bXlsUm"
+    >
+      <div
+        class="sc-AxjAm eVmnPq"
+      >
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Username
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            username
+          </span>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Name
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            firstName lastName
+          </span>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Email
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            email
+          </span>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Address
+          </h4>
+          <div
+            class="sc-AxhCb gKpAYt"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              street
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              zipCode city
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              country
+            </span>
+          </div>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Contacts
+          </h4>
+          <div
+            class="sc-AxhCb gKpAYt"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              Email: visible
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              Phone number: visible
+            </span>
+          </div>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Phone number
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            phone
+          </span>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb koTJBb actions"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            data-testid="MyData-change-password-btn"
+            type="button"
+          >
+            Change password
+          </button>
+          <button
+            class="sc-AxgMl bClvsY"
+            color="red"
+            type="button"
+          >
+            Delete account
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb koTJBb actions"
+          data-testid="MyData-admin-content"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Add admin
+          </button>
+          <button
+            class="sc-AxgMl bClvsY"
+            color="red"
+            type="button"
+          >
+            Remove admin
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<MyData /> Check how renders Snapshots Should render everything correctly for non admin user with status active 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxhUy dbeXoy"
+  >
+    My data
+  </h3>
+  <div
+    class="sc-AxhCb kJAhLH"
+    direction="column"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <section
+      class="sc-AxiKw bXlsUm"
+    >
+      <div
+        class="sc-AxjAm eVmnPq"
+      >
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Username
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            username
+          </span>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Name
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            firstName lastName
+          </span>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Email
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            email
+          </span>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Address
+          </h4>
+          <div
+            class="sc-AxhCb gKpAYt"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              street
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              zipCode city
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              country
+            </span>
+          </div>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Contacts
+          </h4>
+          <div
+            class="sc-AxhCb gKpAYt"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              Email: visible
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              Phone number: visible
+            </span>
+          </div>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Phone number
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            phone
+          </span>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Change
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb koTJBb actions"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            data-testid="MyData-change-password-btn"
+            type="button"
+          >
+            Change password
+          </button>
+          <button
+            class="sc-AxgMl bClvsY"
+            color="red"
+            type="button"
+          >
+            Delete account
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<MyData /> Check how renders Snapshots Should render everything correctly for non admin user with status pending 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxhUy dbeXoy"
+  >
+    My data
+  </h3>
+  <div
+    class="sc-AxhCb kJAhLH"
+    direction="column"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <section
+      class="sc-AxiKw bXlsUm"
+      data-testid="MyData-pending-user-content"
+    >
+      <span
+        class="sc-AxmLO cuzwxf"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        You need to activate your account to unlock all app functionalities. Verification link is active for 10 minutes. You can resend it below. If you do not activate your account within 1 hour, account will be deleted permanently.
+      </span>
+    </section>
+    <section
+      class="sc-AxiKw bXlsUm"
+    >
+      <div
+        class="sc-AxjAm eVmnPq"
+      >
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Username
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            username
+          </span>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Name
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            firstName lastName
+          </span>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Email
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            email
+          </span>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Address
+          </h4>
+          <div
+            class="sc-AxhCb gKpAYt"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              street
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              zipCode city
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              country
+            </span>
+          </div>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Contacts
+          </h4>
+          <div
+            class="sc-AxhCb gKpAYt"
+            direction="column"
+            spacing="1"
+            width="100%"
+            wrap="nowrap"
+          >
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              Email: visible
+            </span>
+            <span
+              class="sc-AxmLO cXwNPW"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="0px"
+              transform=""
+            >
+              Phone number: visible
+            </span>
+          </div>
+        </div>
+        <div
+          class="sc-AxhCb jIZMJB"
+          direction="column"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <h4
+            class="sc-AxhUy imrlMN"
+          >
+            Phone number
+          </h4>
+          <span
+            class="sc-AxmLO cXwNPW"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            phone
+          </span>
+        </div>
+        <div
+          class="sc-AxhCb koTJBb actions"
+          data-testid="MyData-pending-user-actions"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Send verification link
+          </button>
+          <button
+            class="sc-AxgMl dHjngI"
+            color="blue"
+            type="button"
+          >
+            Logout
+          </button>
+        </div>
+        <div
+          class="sc-AxhCb koTJBb actions"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <button
+            class="sc-AxgMl bClvsY"
+            color="red"
+            type="button"
+          >
+            Delete account
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductItem /> Check how renders Should NOT render buyer quantity, condition and should render default photo, price without decimals 1`] = `
+<DocumentFragment>
+  <a
+    data-testid="ProductItem"
+  >
+    <div
+      class="sc-AxjAm hpqWvf sc-AxirZ cOAhtn"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <div
+        class="sc-AxjAm iQOQLw sc-AxhCb jZHUjX"
+        data-testid="ProductThumbnail"
+        direction="row"
+        height="15"
+        spacing=""
+        width="13"
+        wrap="nowrap"
+      >
+        <img
+          alt="product1"
+          data-testid="ProductThumbnail-img"
+          src="no-photo.png"
+        />
+      </div>
+      <div
+        class="sc-AxjAm hskKxm"
+        direction="column"
+        spacing=""
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-AxiKw fuKISr"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          product1
+        </span>
+        <span
+          class="sc-AxiKw dwbljI"
+          color=""
+          data-testid="ProductItem-price"
+          display="inline-block"
+          overflow="visible"
+          size="5"
+          spacing="0px"
+          transform=""
+        >
+          $10
+        </span>
+      </div>
+    </div>
+  </a>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render everything correctly 1`] = `
+<DocumentFragment>
+  <a
+    data-testid="ProductItem"
+  >
+    <div
+      class="sc-AxjAm hpqWvf sc-AxirZ cOAhtn"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <div
+        class="sc-AxjAm iQOQLw sc-AxhCb jZHUjX"
+        data-testid="ProductThumbnail"
+        direction="row"
+        height="15"
+        spacing=""
+        width="13"
+        wrap="nowrap"
+      >
+        <img
+          alt="product1"
+          data-testid="ProductThumbnail-img"
+          src="http://192.168.1.109:4000/products/p1/photo"
+        />
+      </div>
+      <div
+        class="sc-AxjAm hskKxm"
+        direction="column"
+        spacing=""
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-AxiKw fuKISr"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          product1
+        </span>
+        <span
+          class="sc-AxiKw fTPzht"
+          color=""
+          data-testid="ProductItem-condition"
+          display="inline-block"
+          overflow="visible"
+          size="1"
+          spacing="0px"
+          transform=""
+        >
+          <span
+            class="sc-AxiKw GgiOJ"
+            color="#777"
+            display="inline-block"
+            overflow="visible"
+            spacing="0px"
+            transform=""
+          >
+            Condition:
+          </span>
+           New
+        </span>
+        <span
+          class="sc-AxiKw dwbljI"
+          color=""
+          data-testid="ProductItem-price"
+          display="inline-block"
+          overflow="visible"
+          size="5"
+          spacing="0px"
+          transform=""
+        >
+          $10.60
+        </span>
+        <div
+          class="buyer-quantity-box"
+          data-testid="ProductItem-buyer-quantity"
+        >
+          <span
+            class="sc-AxiKw csHLlB"
+            color="#777"
+            display="inline-block"
+            overflow="visible"
+            size="1"
+            spacing="0px"
+            transform=""
+          >
+            2 people bought
+          </span>
+        </div>
+      </div>
+    </div>
+  </a>
+</DocumentFragment>
+`;

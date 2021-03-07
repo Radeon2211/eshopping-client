@@ -16,7 +16,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
         wrap="nowrap"
       >
         <div
-          data-testid="order-details-general-info-section"
+          data-testid="OrderDetails-general-info-section"
         >
           <h4
             class="sc-AxiKw eLpjbq"
@@ -97,7 +97,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 transform=""
               >
                 <a
-                  data-testid="order-details-buyer-link"
+                  data-testid="OrderDetails-buyer-link"
                 >
                   <span
                     class="sc-fzpans jwMGGx"
@@ -110,7 +110,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           </div>
         </div>
         <div
-          data-testid="order-details-info-about-seller"
+          data-testid="OrderDetails-info-about-seller"
         >
           <h4
             class="sc-AxiKw eLpjbq"
@@ -119,7 +119,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           </h4>
           <div
             class="sc-AxheI gsYccU"
-            data-test="order-details-seller-info"
+            data-test="OrderDetails-seller-info"
             direction="column"
             spacing="1"
             width="100%"
@@ -146,7 +146,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 transform=""
               >
                 <a
-                  data-testid="order-details-seller-link"
+                  data-testid="OrderDetails-seller-link"
                 >
                   <span
                     class="sc-fzpans jwMGGx"
@@ -205,7 +205,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           </div>
         </div>
         <div
-          data-testid="order-details-delivery-address-section"
+          data-testid="OrderDetails-delivery-address-section"
         >
           <h4
             class="sc-AxiKw eLpjbq"
@@ -284,17 +284,18 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
       </h4>
       <div
         class="sc-AxheI iMBohI sc-Axmtr fPcoBS"
-        data-test="transaction-and-order-prod-item"
+        data-testid="TransactionAndOrderProdItem"
         direction="row"
         spacing="2"
         width="100%"
         wrap="nowrap"
       >
         <a
-          data-test="product-link"
+          data-testid="TransactionAndOrderProdItem-product-link-photo"
         >
           <div
             class="sc-AxheI gctott sc-fzoLsD kxcbCk"
+            data-testid="ProductThumbnail"
             direction="row"
             height="5"
             spacing=""
@@ -303,6 +304,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           >
             <img
               alt="product name"
+              data-testid="ProductThumbnail-img"
               src="no-photo.png"
             />
           </div>
@@ -314,7 +316,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             class="name"
           >
             <a
-              data-test="product-link"
+              data-testid="TransactionAndOrderProdItem-product-link-name"
             >
               product name
             </a>
@@ -329,7 +331,6 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             <span
               class="sc-AxgMl eeevil"
               color="#777"
-              data-test="price-per-piece"
               display="inline-block"
               overflow="visible"
               size="2"
@@ -341,7 +342,6 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             <span
               class="sc-AxgMl idOXky"
               color=""
-              data-test="overall-price"
               display="inline-block"
               overflow="visible"
               size="4"
@@ -355,17 +355,18 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
       </div>
       <div
         class="sc-AxheI iMBohI sc-Axmtr fPcoBS"
-        data-test="transaction-and-order-prod-item"
+        data-testid="TransactionAndOrderProdItem"
         direction="row"
         spacing="2"
         width="100%"
         wrap="nowrap"
       >
         <a
-          data-test="product-link"
+          data-testid="TransactionAndOrderProdItem-product-link-photo"
         >
           <div
             class="sc-AxheI gctott sc-fzoLsD kxcbCk"
+            data-testid="ProductThumbnail"
             direction="row"
             height="5"
             spacing=""
@@ -374,6 +375,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           >
             <img
               alt="product name"
+              data-testid="ProductThumbnail-img"
               src="no-photo.png"
             />
           </div>
@@ -385,7 +387,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             class="name"
           >
             <a
-              data-test="product-link"
+              data-testid="TransactionAndOrderProdItem-product-link-name"
             >
               product name
             </a>
@@ -400,7 +402,6 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             <span
               class="sc-AxgMl eeevil"
               color="#777"
-              data-test="price-per-piece"
               display="inline-block"
               overflow="visible"
               size="2"
@@ -412,7 +413,6 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             <span
               class="sc-AxgMl idOXky"
               color=""
-              data-test="overall-price"
               display="inline-block"
               overflow="visible"
               size="4"
@@ -463,11 +463,11 @@ exports[`<OrderDetails /> Check how renders Should render only <Loader /> if ord
 <DocumentFragment>
   <div
     class="sc-AxhCb NcldG"
-    data-testid="loader-wrapper"
+    data-testid="LoaderWrapper"
   >
     <div
       class="sc-AxhUy exkrCn"
-      data-testid="loader"
+      data-testid="Loader"
     >
       <div />
       <div />

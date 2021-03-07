@@ -1,22 +1,24 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../styled/theme';
 import ProductList from './ProductList';
-import ProductItem from './ProductItem/ProductItem';
-import Heading from '../UI/Heading/Heading';
-import { checkProps } from '../../shared/testUtility';
+import { checkProps, createProductListItem } from '../../shared/testUtility';
 import { pages } from '../../shared/constants';
-import LoadingOverlay from '../UI/LoadingOverlay';
 
-const createHistory = (search = '') => ({
+const createHistory = (search = '?p=1') => ({
   listen: jest.fn(),
   createHref: jest.fn(),
-  location: { search },
+  location: { pathname: '/products', search },
 });
 
 const defaultHistory = createHistory();
+
+const defaultProducts = [
+  createProductListItem('p1', 'user1', 4, 10.6, 'product1'),
+  createProductListItem('p2', 'user1', 6, 299.98, 'product2'),
+];
 
 const createProps = (isDataLoading, products, page = pages.ALL_PRODUCTS) => ({
   isDataLoading,
@@ -25,7 +27,7 @@ const createProps = (isDataLoading, products, page = pages.ALL_PRODUCTS) => ({
 });
 
 const setUp = (props, history = defaultHistory) => {
-  return mount(
+  return render(
     <Router history={history}>
       <ThemeProvider theme={theme}>
         <ProductList {...props} />
@@ -33,6 +35,8 @@ const setUp = (props, history = defaultHistory) => {
     </Router>,
   );
 };
+
+afterEach(cleanup);
 
 describe('<ProductItem />', () => {
   describe('Check prop types', () => {
@@ -46,50 +50,65 @@ describe('<ProductItem />', () => {
     });
   });
 
-  describe('Check if renders correctly', () => {
-    it('Should render <LoadingOverlay />', () => {
-      const props = createProps(true, null);
-      const wrapper = setUp(props);
-      expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
+  describe('Check how renders', () => {
+    it('Should render only <LoadingOverlay />', () => {
+      const props = createProps(true);
+      const { asFragment } = setUp(props);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should NOT render <LoadingOverlay />', () => {
-      const props = createProps(false, null);
-      const wrapper = setUp(props);
-      expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
+    it('Should render list with two items', () => {
+      const props = createProps(false, defaultProducts);
+      const { asFragment } = setUp(props);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render one <ProductItem />', () => {
-      const props = createProps(false, [
-        { _id: '123', name: 'testName', price: 2, photo: false, condition: 'new' },
-      ]);
-      const wrapper = setUp(props);
-      expect(wrapper.find(ProductItem)).toHaveLength(1);
+    it('Should render list with one item', () => {
+      const props = createProps(false, [defaultProducts[0]]);
+      const { asFragment } = setUp(props);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render <Heading /> and NOT render <ProductItem />', () => {
-      const props = createProps(false, []);
-      const wrapper = setUp(props);
-      expect(wrapper.find(ProductItem)).toHaveLength(0);
-      expect(wrapper.find(Heading)).toHaveLength(1);
+    it('Should render correct info for ALL_PRODUCTS with filters', () => {
+      const props = createProps(false, [], pages.ALL_PRODUCTS);
+      const history = createHistory('?p=1&minPrice=100');
+      const { asFragment } = setUp(props, history);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render info about changing results', () => {
-      const props = createProps(false, []);
-      const history = createHistory('?p=1&name=testName&condition=new');
-      const wrapper = setUp(props, history);
-      expect(wrapper.find(Heading).text()).toEqual(
-        `We didn't find any matching results. Try to search something else or change filters`,
-      );
+    it('Should render correct info for MY_PRODUCTS with filters', () => {
+      const props = createProps(false, [], pages.MY_PRODUCTS);
+      const history = createHistory('?p=1&condition=new');
+      const { asFragment } = setUp(props, history);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render info about trying something else', () => {
-      const props = createProps(false, []);
-      const history = createHistory();
-      const wrapper = setUp(props, history);
-      expect(wrapper.find(Heading).text()).toEqual(
-        `We didn't find any matching results. Try search something else`,
-      );
+    it('Should render correct info for USER_PRODUCTS with filters', () => {
+      const props = createProps(false, [], pages.USER_PRODUCTS);
+      const history = createHistory('?p=1&maxPrice=100');
+      const { asFragment } = setUp(props, history);
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('Should render correct info for ALL_PRODUCTS without filters other than name', () => {
+      const props = createProps(false, [], pages.ALL_PRODUCTS);
+      const history = createHistory('?p=1&name=testName');
+      const { asFragment } = setUp(props, history);
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('Should render correct info for MY_PRODUCTS without filters other than name', () => {
+      const props = createProps(false, [], pages.MY_PRODUCTS);
+      const history = createHistory('?p=1&name=testName');
+      const { asFragment } = setUp(props, history);
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('Should render correct info for USER_PRODUCTS without filters other than name', () => {
+      const props = createProps(false, [], pages.USER_PRODUCTS);
+      const history = createHistory('?p=1&name=testName');
+      const { asFragment } = setUp(props, history);
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 });

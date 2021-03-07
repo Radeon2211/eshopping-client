@@ -14,7 +14,7 @@ const MyAccount = () => {
   let navigation = null;
   if (userProfile.status === 'active') {
     navigation = (
-      <nav className="nav">
+      <nav className="nav" data-testid="MyAccount-navigation">
         <ul className="nav-list">
           <li>
             <NavLink to="/my-account/data" className="nav-link" activeClassName="nav-link-active">
@@ -53,31 +53,36 @@ const MyAccount = () => {
     );
   }
 
-  let routes = <Route path="/my-account/data" exact component={MyData} />;
+  let routes = (
+    <SC.Routes extraMargin={false} data-testid="MyAccount-pending-user-routes">
+      <Switch>
+        <Route path="/my-account/data" exact component={MyData} />
+        <Redirect to="/my-account/data" />
+      </Switch>
+    </SC.Routes>
+  );
   if (userProfile.status === 'active') {
     routes = (
-      <>
-        <Route path="/my-account/data" exact component={MyData} />
-        <Route
-          path="/my-account/products"
-          exact
-          render={(props) => <MyProducts userProfile={userProfile} {...props} />}
-        />
-        <Route path="/my-account/sell-history" exact component={MySellHistory} />
-        <Route path="/my-account/placed-orders" exact component={MyPlacedOrders} />
-      </>
+      <SC.Routes extraMargin data-testid="MyAccount-active-user-routes">
+        <Switch>
+          <Route path="/my-account/data" exact component={MyData} />
+          <Route
+            path="/my-account/products"
+            exact
+            render={(props) => <MyProducts userProfile={userProfile} {...props} />}
+          />
+          <Route path="/my-account/sell-history" exact component={MySellHistory} />
+          <Route path="/my-account/placed-orders" exact component={MyPlacedOrders} />
+          <Redirect to="/my-account/data" />
+        </Switch>
+      </SC.Routes>
     );
   }
 
   return (
     <SC.Wrapper>
       {navigation}
-      <SC.Routes extraMargin={userProfile.status === 'active'}>
-        <Switch>
-          {routes}
-          <Redirect to="/my-account/data" />
-        </Switch>
-      </SC.Routes>
+      {routes}
     </SC.Wrapper>
   );
 };

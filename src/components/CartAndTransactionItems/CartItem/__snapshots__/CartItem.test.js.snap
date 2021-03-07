@@ -4,16 +4,17 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
 <DocumentFragment>
   <div
     class="sc-AxjAm hmigcB"
-    data-testid="cart-item"
+    data-testid="CartItem"
   >
     <div
       class="photo-and-name"
     >
       <a
-        data-testid="cart-item-product-link-photo"
+        data-testid="CartItem-product-link-photo"
       >
         <div
           class="sc-AxgMl gDuugx sc-AxheI gCtqRH"
+          data-testid="ProductThumbnail"
           direction="row"
           height="7"
           spacing=""
@@ -22,6 +23,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         >
           <img
             alt="productName"
+            data-testid="ProductThumbnail-img"
             src="http://192.168.1.109:4000/products/p1/photo"
           />
         </div>
@@ -30,7 +32,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         class="name"
       >
         <a
-          data-testid="cart-item-product-link-name"
+          data-testid="CartItem-product-link-name"
         >
           productName
         </a>
@@ -47,7 +49,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         >
           <button
             class="button minus"
-            data-testid="choose-quantity-minus"
+            data-testid="ChooseQuantity-minus"
             type="button"
           >
             <div
@@ -61,13 +63,14 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
           </button>
           <input
             class="sc-AxirZ diCymM"
+            data-testid="NumberInput-quantity"
             name="quantity"
             type="number"
             value="5"
           />
           <button
             class="button plus"
-            data-testid="choose-quantity-plus"
+            data-testid="ChooseQuantity-plus"
             type="button"
           >
             <div
@@ -83,7 +86,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         <span
           class="sc-AxhUy gHFdsf"
           color=""
-          data-testid="cart-item-available-quantity"
+          data-testid="CartItem-available-quantity"
           display="inline-block"
           overflow="visible"
           size="2"
@@ -110,7 +113,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         <span
           class="sc-AxhUy jOqCzz"
           color=""
-          data-testid="cart-item-price-per-piece"
+          data-testid="CartItem-price-per-piece"
           display="inline-block"
           overflow="visible"
           size="2"

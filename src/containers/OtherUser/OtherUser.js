@@ -55,7 +55,7 @@ const OtherUser = (props) => {
   let content = <Loader align="center" />;
   if (otherUser === null) {
     content = (
-      <Heading variant="h4" align="center" lineHeight="4" data-test="not-found">
+      <Heading variant="h4" align="center" lineHeight="4">
         Such user does not exist or problem during fetching occurred
       </Heading>
     );
@@ -63,7 +63,7 @@ const OtherUser = (props) => {
     const { username, email, phone } = otherUser;
 
     let contactData = (
-      <Heading variant="h4" mgBottom="3" data-test="private-data">
+      <Heading variant="h4" mgBottom="3" data-testid="OtherUser-data-private">
         This user has his contact data set to private
       </Heading>
     );
@@ -71,15 +71,15 @@ const OtherUser = (props) => {
       contactData = (
         <FlexWrapper wrap="wrap" mgBottom="3" spacing="3">
           {email && (
-            <PlainText size="4" data-test="email-wrapper">
+            <PlainText size="4" data-testid="OtherUser-email-wrapper">
               <PlainText weight="700">Email:&nbsp;</PlainText>
-              <span data-test="email-value">{email}</span>
+              {email}
             </PlainText>
           )}
           {phone && (
-            <PlainText size="4" data-test="phone-wrapper">
+            <PlainText size="4" data-testid="OtherUser-phone-wrapper">
               <PlainText weight="700">Phone number:&nbsp;</PlainText>
-              <span data-test="phone-value">{phone}</span>
+              {phone}
             </PlainText>
           )}
         </FlexWrapper>
@@ -88,9 +88,7 @@ const OtherUser = (props) => {
 
     content = (
       <>
-        <Heading variant="h3" data-test="username">
-          {username}
-        </Heading>
+        <Heading variant="h3">{username}</Heading>
         {contactData}
         <ProductsAndFilters page={pages.USER_PRODUCTS} />
       </>

@@ -1,25 +1,21 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import SingleInfo from './SingleInfo';
 import { checkProps } from '../../../../shared/testUtility';
 import { singleInfoNames } from '../../../../shared/constants';
 import theme from '../../../../styled/theme';
-import Button from '../../../../components/UI/Button/Button';
-import PlainText from '../../../../components/UI/PlainText';
 
 const setUp = (name, content, clickHandler) => {
-  const props = {
-    name,
-    content,
-    clickHandler,
-  };
-  return mount(
+  return render(
     <ThemeProvider theme={theme}>
-      <SingleInfo {...props} />
+      <SingleInfo name={name} content={content} clickHandler={clickHandler} />
     </ThemeProvider>,
   );
 };
+
+afterEach(cleanup);
 
 describe('<SingleInfo />', () => {
   describe('Check prop types', () => {
@@ -27,7 +23,7 @@ describe('<SingleInfo />', () => {
       const props = {
         name: singleInfoNames.NAME,
         content: 'test name',
-        clickHandler: () => {},
+        clickHandler: jest.fn(),
       };
       expect(checkProps(SingleInfo, props)).toBeUndefined();
     });
@@ -37,42 +33,38 @@ describe('<SingleInfo />', () => {
     });
   });
 
-  describe(`Check if renders correctly`, () => {
-    it('Should render name, one content and <Button /> and fire off a clickHandler when <Button /> is clicked', () => {
-      const clickHandlerFn = jest.fn();
-      const wrapper = setUp(singleInfoNames.NAME, 'test name', clickHandlerFn);
-      expect(wrapper.find('[data-test="name"]').first().text()).toEqual(singleInfoNames.NAME);
-      expect(wrapper.find(PlainText)).toHaveLength(1);
-      expect(wrapper.find(PlainText).text()).toEqual('test name');
-      const button = wrapper.find(Button);
-      expect(button).toHaveLength(1);
-      button.simulate('click');
-      expect(clickHandlerFn).toBeCalled();
+  describe('Check how renders', () => {
+    it('Should render correctly for name and with button', () => {
+      const { asFragment } = setUp(singleInfoNames.NAME, 'Ludwig von Mises', jest.fn());
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should NOT render a <Button /> if no clickHandler is given', () => {
-      const wrapper = setUp(singleInfoNames.NAME, 'test name');
-      expect(wrapper.find(Button)).toHaveLength(0);
-    });
-
-    it('Should render address', () => {
+    it('Should render correctly for address and with button', () => {
       const address = ['Street 1', '00-000 City', 'Poland'];
-      const wrapper = setUp(singleInfoNames.ADDRESS, address);
-      expect(wrapper.find(PlainText).at(0).text()).toEqual(address[0]);
-      expect(wrapper.find(PlainText).at(1).text()).toEqual(address[1]);
-      expect(wrapper.find(PlainText).at(2).text()).toEqual(address[2]);
+      const { asFragment } = setUp(singleInfoNames.ADDRESS, address, jest.fn());
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render contacts with all visible', () => {
-      const wrapper = setUp(singleInfoNames.CONTACTS, { email: true, phone: true });
-      expect(wrapper.find(PlainText).at(0).text()).toEqual('Email: visible');
-      expect(wrapper.find(PlainText).at(1).text()).toEqual('Phone number: visible');
+    it('Should render correctly for contacts (both visible) and with button', () => {
+      const { asFragment } = setUp(
+        singleInfoNames.CONTACTS,
+        { email: true, phone: true },
+        jest.fn(),
+      );
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render contacts with all hidden', () => {
-      const wrapper = setUp(singleInfoNames.CONTACTS, { email: false, phone: false });
-      expect(wrapper.find(PlainText).at(0).text()).toEqual('Email: hidden');
-      expect(wrapper.find(PlainText).at(1).text()).toEqual('Phone number: hidden');
+    it('Should render correctly for contacts (both hidden) and without button', () => {
+      const { asFragment } = setUp(singleInfoNames.CONTACTS, { email: false, phone: false });
+      expect(asFragment()).toMatchSnapshot();
     });
+  });
+
+  it('Should call clickHandler after clicking on button', () => {
+    const clickHandler = jest.fn();
+    setUp(singleInfoNames.NAME, 'Ludwig von Mises', clickHandler);
+
+    fireEvent.click(screen.getByText('Change'));
+    expect(clickHandler).toHaveBeenCalledTimes(1);
   });
 });

@@ -94,7 +94,7 @@ describe('<CartAndTransactionItems />', () => {
     it('Should call push with correct path after click on user link', () => {
       const pushFn = jest.fn();
       setUp([createCartItem('user1')], itemTypes.CART, pushFn);
-      fireEvent.click(screen.getByTestId('cart-and-transaction-seller-link'));
+      fireEvent.click(screen.getByTestId('CartAndTransactionItems-seller-link'));
       expect(pushFn).toHaveBeenCalledTimes(1);
       expect(pushFn).toHaveBeenCalledWith('/user/user1?p=1');
     });

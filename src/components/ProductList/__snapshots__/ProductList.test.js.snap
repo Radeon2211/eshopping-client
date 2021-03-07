@@ -1,0 +1,375 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductItem /> Check how renders Should render correct info for ALL_PRODUCTS with filters 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <h4
+      class="sc-Axmtr cNhSpe"
+    >
+      We didn't find any matching results. Try to search something else or change filters
+    </h4>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info for ALL_PRODUCTS without filters other than name 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <h4
+      class="sc-Axmtr cNhSpe"
+    >
+      We didn't find any matching results. Try to search something else
+    </h4>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info for MY_PRODUCTS with filters 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <h4
+      class="sc-Axmtr cNhSpe"
+    >
+      We didn't find any matching results. Try to change filters
+    </h4>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info for MY_PRODUCTS without filters other than name 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <h4
+      class="sc-Axmtr cNhSpe"
+    >
+      You don't have any offers published yet
+    </h4>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info for USER_PRODUCTS with filters 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <h4
+      class="sc-Axmtr cNhSpe"
+    >
+      We didn't find any matching results. Try to change filters
+    </h4>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info for USER_PRODUCTS without filters other than name 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <h4
+      class="sc-Axmtr cNhSpe"
+    >
+      This user doesn't have any offers published yet
+    </h4>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render list with one item 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <a
+      data-testid="ProductItem"
+    >
+      <div
+        class="sc-AxjAm hpqWvf sc-AxirZ cOAhtn"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <div
+          class="sc-AxjAm iQOQLw sc-AxhCb jZHUjX"
+          data-testid="ProductThumbnail"
+          direction="row"
+          height="15"
+          spacing=""
+          width="13"
+          wrap="nowrap"
+        >
+          <img
+            alt="product1"
+            data-testid="ProductThumbnail-img"
+            src="no-photo.png"
+          />
+        </div>
+        <div
+          class="sc-AxjAm hskKxm"
+          direction="column"
+          spacing=""
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxiKw fuKISr"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            product1
+          </span>
+          <span
+            class="sc-AxiKw fTPzht"
+            color=""
+            data-testid="ProductItem-condition"
+            display="inline-block"
+            overflow="visible"
+            size="1"
+            spacing="0px"
+            transform=""
+          >
+            <span
+              class="sc-AxiKw GgiOJ"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              spacing="0px"
+              transform=""
+            >
+              Condition:
+            </span>
+             New
+          </span>
+          <span
+            class="sc-AxiKw dwbljI"
+            color=""
+            data-testid="ProductItem-price"
+            display="inline-block"
+            overflow="visible"
+            size="5"
+            spacing="0px"
+            transform=""
+          >
+            $10.60
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render list with two items 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <a
+      data-testid="ProductItem"
+    >
+      <div
+        class="sc-AxjAm hpqWvf sc-AxirZ cOAhtn"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <div
+          class="sc-AxjAm iQOQLw sc-AxhCb jZHUjX"
+          data-testid="ProductThumbnail"
+          direction="row"
+          height="15"
+          spacing=""
+          width="13"
+          wrap="nowrap"
+        >
+          <img
+            alt="product1"
+            data-testid="ProductThumbnail-img"
+            src="no-photo.png"
+          />
+        </div>
+        <div
+          class="sc-AxjAm hskKxm"
+          direction="column"
+          spacing=""
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxiKw fuKISr"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            product1
+          </span>
+          <span
+            class="sc-AxiKw fTPzht"
+            color=""
+            data-testid="ProductItem-condition"
+            display="inline-block"
+            overflow="visible"
+            size="1"
+            spacing="0px"
+            transform=""
+          >
+            <span
+              class="sc-AxiKw GgiOJ"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              spacing="0px"
+              transform=""
+            >
+              Condition:
+            </span>
+             New
+          </span>
+          <span
+            class="sc-AxiKw dwbljI"
+            color=""
+            data-testid="ProductItem-price"
+            display="inline-block"
+            overflow="visible"
+            size="5"
+            spacing="0px"
+            transform=""
+          >
+            $10.60
+          </span>
+        </div>
+      </div>
+    </a>
+    <a
+      data-testid="ProductItem"
+    >
+      <div
+        class="sc-AxjAm hpqWvf sc-AxirZ cOAhtn"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <div
+          class="sc-AxjAm iQOQLw sc-AxhCb jZHUjX"
+          data-testid="ProductThumbnail"
+          direction="row"
+          height="15"
+          spacing=""
+          width="13"
+          wrap="nowrap"
+        >
+          <img
+            alt="product2"
+            data-testid="ProductThumbnail-img"
+            src="no-photo.png"
+          />
+        </div>
+        <div
+          class="sc-AxjAm hskKxm"
+          direction="column"
+          spacing=""
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxiKw fuKISr"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            product2
+          </span>
+          <span
+            class="sc-AxiKw fTPzht"
+            color=""
+            data-testid="ProductItem-condition"
+            display="inline-block"
+            overflow="visible"
+            size="1"
+            spacing="0px"
+            transform=""
+          >
+            <span
+              class="sc-AxiKw GgiOJ"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              spacing="0px"
+              transform=""
+            >
+              Condition:
+            </span>
+             New
+          </span>
+          <span
+            class="sc-AxiKw dwbljI"
+            color=""
+            data-testid="ProductItem-price"
+            display="inline-block"
+            overflow="visible"
+            size="5"
+            spacing="0px"
+            transform=""
+          >
+            $299.98
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render only <LoadingOverlay /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO eGQlZl"
+    data-testid="ProductList"
+  >
+    <div
+      class="sc-AxheI kXeudK"
+      data-testid="LoadingOverlay"
+    >
+      <div
+        class="sc-AxgMl BAjrl"
+        data-testid="Loader"
+      >
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

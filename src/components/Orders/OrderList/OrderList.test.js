@@ -1,13 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import OrderList from './OrderList';
-import * as SC from './OrderList.sc';
-import TransactionAndOrderProdItem from '../../TransactionAndOrderProdItem/TransactionAndOrderProdItem';
 import theme from '../../../styled/theme';
 import {
   checkProps,
@@ -15,40 +14,39 @@ import {
   createOrder,
 } from '../../../shared/testUtility';
 import { orderTypes } from '../../../shared/constants';
-import LoadingOverlay from '../../UI/LoadingOverlay';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/cart' },
-};
-
-const setUp = (orders, orderType, isDataLoading = false) => {
-  const props = {
-    orders,
-    orderType,
+const setUp = (orders, orderType, isDataLoading = false, pushFn) => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/my-account/placed-orders', search: '?p=1' },
+    push: pushFn,
   };
+
   const store = mockStore({
     ui: { isDataLoading },
   });
-  return mount(
-    <Router history={defaultHistory}>
+
+  return render(
+    <Router history={history}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <OrderList {...props} />
+          <OrderList orders={orders} orderType={orderType} />
         </ThemeProvider>
       </Provider>
     </Router>,
   );
 };
 
+afterEach(cleanup);
+
 describe('<OrderList />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
       const props = {
-        orders: [{ _id: 'i1' }],
+        orders: [createOrder()],
         orderType: orderTypes.PLACED_ORDERS,
       };
       expect(checkProps(OrderList, props)).toBeUndefined();
@@ -60,112 +58,95 @@ describe('<OrderList />', () => {
   });
 
   describe('Check how renders', () => {
-    describe('Buyer and seller field are defined', () => {
-      it('Should render one <SC.SingleOrder /> with correct data and two <TransactionAndOrderProdItem /> when type is PLACED_ORDERS and should NOT render <LoadingOverlay />', () => {
-        const products = [createTransactionAndOrderProdItem(), createTransactionAndOrderProdItem()];
-        const orders = [
-          createOrder(products, 'o1', 'sellerUser', 'buyerUser', 50.49, '2021-01-08T11:08:51.008Z'),
-        ];
-        const wrapper = setUp(orders, orderTypes.PLACED_ORDERS);
+    it('Should render everything correctly with two items and type PLACED_ORDERS', () => {
+      const products = [
+        createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
+        createTransactionAndOrderProdItem('p2', 'sellerUser', 2, 6.4, 'product2'),
+      ];
+      const orders = [
+        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 28.8, '2021-01-08T11:08:51.008Z'),
+      ];
+      const { asFragment } = setUp(orders, orderTypes.PLACED_ORDERS);
+      expect(asFragment()).toMatchSnapshot();
+    });
 
-        expect(wrapper.find(SC.SingleOrder)).toHaveLength(1);
-        expect(wrapper.find(LoadingOverlay)).toHaveLength(0);
-        const firstOrder = wrapper.find(SC.SingleOrder);
+    it('Should render everything correctly with one item and type SELL_HISTORY', () => {
+      const products = [
+        createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
+      ];
+      const orders = [
+        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 12.8, '2021-02-17T01:53:45.008Z'),
+      ];
+      const { asFragment } = setUp(orders, orderTypes.SELL_HISTORY);
+      expect(asFragment()).toMatchSnapshot();
+    });
 
-        expect(firstOrder.find('[data-test="user-link"]').at(0).prop('to')).toEqual(
-          '/user/sellerUser?p=1',
-        );
-        expect(firstOrder.find('[data-test="user-link"]').at(0).text()).toEqual('sellerUser');
-        expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual('seller sellerUser');
-        expect(firstOrder.find('[data-test="date"]').at(0).text()).toEqual('8 Jan 2021, 12:08');
-        expect(firstOrder.find('[data-test="details-link"]').at(0).prop('to')).toEqual('/order/o1');
-        expect(firstOrder.find('[data-test="overall-order-price"]').at(0).text()).toEqual('$50.49');
-        expect(firstOrder.find(TransactionAndOrderProdItem)).toHaveLength(2);
-      });
+    it('Should render account deleted - type PLACED_ORDERS', () => {
+      const products = [createTransactionAndOrderProdItem('p1', null, 2, 6.4, 'product1', true)];
+      const orders = [
+        createOrder(products, 'o1', null, 'buyerUser', 12.8, '2021-02-28T21:13:05.008Z'),
+      ];
+      setUp(orders, orderTypes.PLACED_ORDERS);
 
-      it('Should render two <SC.SingleOrder /> with correct data and one <TransactionAndOrderProdItem /> in each <SC.SingleOrder /> when type is SELL_HISTORY', () => {
-        const products1 = [createTransactionAndOrderProdItem()];
-        const products2 = [createTransactionAndOrderProdItem()];
-        const orders = [
-          createOrder(
-            products1,
-            'o1',
-            'sellerUser1',
-            'buyerUser1',
-            111.1,
-            '2021-01-07T23:08:51.008Z',
-          ),
-          createOrder(products2, 'o2', 'sellerUser2', 'buyerUser2', 40, '2021-01-09T02:08:51.008Z'),
-        ];
-        const wrapper = setUp(orders, orderTypes.SELL_HISTORY);
+      expect(screen.getByTestId('OrderList-account-deleted')).toBeInTheDocument();
+      expect(screen.queryByTestId('OrderList-user-link')).not.toBeInTheDocument();
+    });
 
-        expect(wrapper.find(SC.SingleOrder)).toHaveLength(2);
-        const firstOrder = wrapper.find(SC.SingleOrder).at(0);
-        const secondOrder = wrapper.find(SC.SingleOrder).at(1);
+    it('Should render account deleted - type SELL_HISTORY', () => {
+      const products = [
+        createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
+      ];
+      const orders = [
+        createOrder(products, 'o1', 'sellerUser', null, 12.8, '2021-02-28T21:13:05.008Z'),
+      ];
+      setUp(orders, orderTypes.SELL_HISTORY);
 
-        expect(firstOrder.find('[data-test="user-link"]').at(0).prop('to')).toEqual(
-          '/user/buyerUser1?p=1',
-        );
-        expect(firstOrder.find('[data-test="user-link"]').at(0).text()).toEqual('buyerUser1');
-        expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual('buyer buyerUser1');
-        expect(firstOrder.find('[data-test="date"]').at(0).text()).toEqual('8 Jan 2021, 00:08');
-        expect(firstOrder.find('[data-test="details-link"]').at(0).prop('to')).toEqual('/order/o1');
-        expect(firstOrder.find('[data-test="overall-order-price"]').at(0).text()).toEqual(
-          '$111.10',
-        );
-        expect(firstOrder.find(TransactionAndOrderProdItem)).toHaveLength(1);
-
-        expect(secondOrder.find('[data-test="user-link"]').first().prop('to')).toEqual(
-          '/user/buyerUser2?p=1',
-        );
-        expect(secondOrder.find('[data-test="user-link"]').at(0).text()).toEqual('buyerUser2');
-        expect(secondOrder.find('[data-test="username"]').at(0).text()).toEqual('buyer buyerUser2');
-        expect(secondOrder.find('[data-test="date"]').at(0).text()).toEqual('9 Jan 2021, 03:08');
-        expect(secondOrder.find('[data-test="details-link"]').at(0).prop('to')).toEqual(
-          '/order/o2',
-        );
-        expect(secondOrder.find('[data-test="overall-order-price"]').at(0).text()).toEqual('$40');
-        expect(secondOrder.find(TransactionAndOrderProdItem)).toHaveLength(1);
-      });
+      expect(screen.getByTestId('OrderList-account-deleted')).toBeInTheDocument();
+      expect(screen.queryByTestId('OrderList-user-link')).not.toBeInTheDocument();
     });
 
     it('Should render <LoadingOverlay />', () => {
-      const wrapper = setUp([], orderTypes.PLACED_ORDERS, true);
-      expect(wrapper.find(LoadingOverlay)).toHaveLength(1);
+      const products = [
+        createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
+      ];
+      const orders = [
+        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 12.8, '2021-02-28T21:13:05.008Z'),
+      ];
+      setUp(orders, orderTypes.PLACED_ORDERS, true);
+
+      expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     });
   });
 
-  describe('Buyer and seller fields are not defined', () => {
-    it(`Should render info that seller's account has been deleted if type is PLACED_ORDERS`, () => {
+  describe('Check behaviour after clicking links', () => {
+    it('Should call push with correct path after clicking links - type PLACED_ORDERS', () => {
       const products = [createTransactionAndOrderProdItem()];
-      const orders = [
-        createOrder(products, 'o1', null, 'buyerUser', 50.49, '2021-01-08T11:08:51.008Z'),
-      ];
-      const wrapper = setUp(orders, orderTypes.PLACED_ORDERS);
+      const orders = [createOrder(products, 'o1', 'sellerUser', 'buyerUser')];
+      const pushFn = jest.fn();
+      setUp(orders, orderTypes.PLACED_ORDERS, false, pushFn);
 
-      expect(wrapper.find(SC.SingleOrder)).toHaveLength(1);
-      const firstOrder = wrapper.find(SC.SingleOrder);
+      fireEvent.click(screen.getByTestId('OrderList-user-link'));
+      expect(pushFn).toHaveBeenCalledWith('/user/sellerUser?p=1');
 
-      expect(firstOrder.find('[data-test="user-link"]')).toHaveLength(0);
-      expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual(
-        'seller (account has been deleted)',
-      );
+      fireEvent.click(screen.getByTestId('OrderList-order-details-link'));
+      expect(pushFn).toHaveBeenLastCalledWith('/order/o1');
+
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
 
-    it(`Should render info that buyer's account has been deleted if type is SELL_HISTORY`, () => {
+    it('Should call push with correct path after clicking links - type SELL_HISTORY', () => {
       const products = [createTransactionAndOrderProdItem()];
-      const orders = [
-        createOrder(products, 'o1', 'sellerUser', null, 50.49, '2021-01-08T11:08:51.008Z'),
-      ];
-      const wrapper = setUp(orders, orderTypes.SELL_HISTORY);
+      const orders = [createOrder(products, 'o1', 'sellerUser', 'buyerUser')];
+      const pushFn = jest.fn();
+      setUp(orders, orderTypes.SELL_HISTORY, false, pushFn);
 
-      expect(wrapper.find(SC.SingleOrder)).toHaveLength(1);
-      const firstOrder = wrapper.find(SC.SingleOrder);
+      fireEvent.click(screen.getByTestId('OrderList-user-link'));
+      expect(pushFn).toHaveBeenCalledWith('/user/buyerUser?p=1');
 
-      expect(firstOrder.find('[data-test="user-link"]')).toHaveLength(0);
-      expect(firstOrder.find('[data-test="username"]').at(0).text()).toEqual(
-        'buyer (account has been deleted)',
-      );
+      fireEvent.click(screen.getByTestId('OrderList-order-details-link'));
+      expect(pushFn).toHaveBeenLastCalledWith('/order/o1');
+
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
   });
 });

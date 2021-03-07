@@ -7,11 +7,11 @@ import * as SC from './SearchForm.sc';
 import theme from '../../../styled/theme';
 import { DEFAULT_PATH } from '../../../shared/constants';
 
-const setUp = (push = jest.fn(), search = 'p=1') => {
+const setUp = (push = jest.fn(), search = '?p=1') => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
-    location: { pathname: '/products?', search },
+    location: { pathname: '/products', search },
     push,
   };
   return mount(
@@ -37,7 +37,7 @@ describe('<SearchForm />', () => {
 
     it('Should push DEFAULT_PATH if in url is name', () => {
       const pushFn = jest.fn();
-      const wrapper = setUp(pushFn, 'p=1&name=test-name');
+      const wrapper = setUp(pushFn, '?p=1&name=test-name');
       const form = wrapper.find(SC.SearchForm);
       const nameInput = wrapper.find('.name-input');
       nameInput.simulate('change', { target: { value: '' } });
@@ -55,7 +55,7 @@ describe('<SearchForm />', () => {
 
     it('Should NOT call push if in url is name and input is not edited', () => {
       const pushFn = jest.fn();
-      const wrapper = setUp(pushFn, 'p=1&name=test-name');
+      const wrapper = setUp(pushFn, '?p=1&name=test-name');
       const form = wrapper.find(SC.SearchForm);
       form.simulate('submit');
       expect(pushFn).not.toBeCalled();

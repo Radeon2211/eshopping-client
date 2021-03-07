@@ -82,13 +82,13 @@ const CartItem = (props) => {
   };
 
   return (
-    <SC.Wrapper data-testid="cart-item">
+    <SC.Wrapper data-testid="CartItem">
       <div className="photo-and-name">
-        <Link to={`/product/${productId}`} data-testid="cart-item-product-link-photo">
+        <Link to={`/product/${productId}`} data-testid="CartItem-product-link-photo">
           <ProductThumbnail photo={photo} alt={name} productId={productId} width="7" height="7" />
         </Link>
         <span className="name">
-          <Link to={`/product/${productId}`} data-testid="cart-item-product-link-name">
+          <Link to={`/product/${productId}`} data-testid="CartItem-product-link-name">
             {name}
           </Link>
         </span>
@@ -105,14 +105,14 @@ const CartItem = (props) => {
             blured={inputBlurHandle}
             focused={() => setIsInputFocused(true)}
           />
-          <PlainText size="2" mgLeft="1" data-testid="cart-item-available-quantity">
+          <PlainText size="2" mgLeft="1" data-testid="CartItem-available-quantity">
             {`of ${productQuantity}`}
           </PlainText>
         </div>
         <div className="price-box">
           <PlainText size="5">{formatPrice(price * quantity)}</PlainText>
           {quantity > 1 && (
-            <PlainText size="2" textAlign="right" data-testid="cart-item-price-per-piece">
+            <PlainText size="2" textAlign="right" data-testid="CartItem-price-per-piece">
               {`per piece ${formatPrice(price)}`}
             </PlainText>
           )}

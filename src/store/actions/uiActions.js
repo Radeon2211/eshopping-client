@@ -1,5 +1,6 @@
 import queryString from 'query-string';
 import * as actionTypes from './actionTypes';
+import { getParamsWithoutPollution } from '../../shared/utility';
 
 export const formStart = () => ({
   type: actionTypes.FORM_START,
@@ -74,7 +75,7 @@ export const writeChangeCartInfo = (condition) => {
 export const changeProductsPerPage = (quantity, history) => {
   return async (dispatch) => {
     dispatch(setProductsPerPage(quantity));
-    const parsedQueryParams = queryString.parse(history.location.search);
+    const parsedQueryParams = getParamsWithoutPollution(history.location.search);
     if (+parsedQueryParams.p !== 1) {
       const correctQueryParams = {
         ...parsedQueryParams,

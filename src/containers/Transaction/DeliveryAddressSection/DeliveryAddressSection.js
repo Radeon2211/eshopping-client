@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../../store/actions/indexActions';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { modalTypes } from '../../../shared/constants';
 import PlainPanel from '../../../components/UI/Panels/PlainPanel';
 import Heading from '../../../components/UI/Heading/Heading';
@@ -8,17 +8,13 @@ import Button from '../../../components/UI/Button/Button';
 import DeliveryAddress from '../../../components/UI/DeliveryAddress/DeliveryAddress';
 import FlexWrapper from '../../../components/UI/FlexWrapper';
 
-const DeliveryAddressSection = () => {
+const DeliveryAddressSection = (props) => {
+  const { onSetModal } = props;
+
   const deliveryAddress = useSelector((state) => state.auth.deliveryAddress);
 
-  const dispatch = useDispatch();
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
-
   return (
-    <PlainPanel>
+    <PlainPanel data-testid="DeliveryAddressSection">
       <FlexWrapper direction="column" align="start" spacing="3">
         <Heading variant="h4">Delivery address</Heading>
         <DeliveryAddress data={deliveryAddress} />
@@ -28,6 +24,10 @@ const DeliveryAddressSection = () => {
       </FlexWrapper>
     </PlainPanel>
   );
+};
+
+DeliveryAddressSection.propTypes = {
+  onSetModal: PropTypes.func.isRequired,
 };
 
 export default DeliveryAddressSection;

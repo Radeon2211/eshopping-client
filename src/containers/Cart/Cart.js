@@ -81,7 +81,7 @@ const Cart = () => {
                   go to summary
                 </Button>
               </FlexWrapper>
-              {isCartLoading && <LoadingOverlay data-testid="loading-overlay" />}
+              {isCartLoading && <LoadingOverlay />}
             </StickyPanel>
           </SideBySide>
         </>
@@ -91,7 +91,7 @@ const Cart = () => {
         <SC.EmptyCart>
           <Heading variant="h3" mgBottom="3" align="center" lineHeight="4">
             Your shopping cart is empty. Check out the latest&nbsp;
-            <Link to={DEFAULT_PATH} data-testid="default-path-link">
+            <Link to={DEFAULT_PATH} data-testid="Cart-default-path-link">
               <GreenText>offers</GreenText>
             </Link>
           </Heading>

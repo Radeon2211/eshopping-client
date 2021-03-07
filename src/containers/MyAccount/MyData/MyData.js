@@ -44,7 +44,12 @@ const MyData = (props) => {
     let adminContent = null;
     if (isAdmin) {
       adminContent = (
-        <FlexWrapper spacing="3" className="actions" justify="center" data-test="admin-content">
+        <FlexWrapper
+          spacing="3"
+          className="actions"
+          justify="center"
+          data-testid="MyData-admin-content"
+        >
           <Button clicked={() => onSetModal(true, modalTypes.ADD_ADMIN)}>Add admin</Button>
           <Button color="red" clicked={() => onSetModal(true, modalTypes.REMOVE_ADMIN)}>
             Remove admin
@@ -60,7 +65,7 @@ const MyData = (props) => {
           spacing="3"
           justify="center"
           className="actions"
-          data-test="pending-user-actions"
+          data-testid="MyData-pending-user-actions"
         >
           <Button clicked={() => onSetModal(true, modalTypes.SEND_VERIFICATION_LINK)}>
             Send verification link
@@ -105,7 +110,7 @@ const MyData = (props) => {
           {isAccountActive && (
             <Button
               clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}
-              data-test="change-password-btn"
+              data-testid="MyData-change-password-btn"
             >
               Change password
             </Button>
@@ -120,7 +125,7 @@ const MyData = (props) => {
 
     if (!isAccountActive) {
       pendingUserContent = (
-        <PlainPanel data-test="pending-user-content">
+        <PlainPanel data-testid="MyData-pending-user-content">
           <PlainText size="3" lineHeight="5">
             You need to activate your account to unlock all app functionalities. Verification link
             is active for 10 minutes. You can resend it below. If you do not activate your account

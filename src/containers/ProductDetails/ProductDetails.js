@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useCallback, useEffect } from 'react';
-import { useWindowWidth } from '@react-hook/window-size';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalTypes } from '../../shared/constants';
@@ -17,6 +16,7 @@ import noPhoto from '../../images/no-photo.png';
 import { GreenText } from '../../styled/components';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import { formatPrice } from '../../shared/utility';
+import useWindowSize from '../../shared/useWindowSize';
 import theme from '../../styled/theme';
 
 const ProductDetails = (props) => {
@@ -26,7 +26,7 @@ const ProductDetails = (props) => {
     },
   } = props;
 
-  const windowWidth = useWindowWidth();
+  const windowSize = useWindowSize();
 
   const userProfile = useSelector((state) => state.auth.profile);
   const productDetails = useSelector((state) => state.product.productDetails);
@@ -74,7 +74,7 @@ const ProductDetails = (props) => {
           size="2"
           mgBottom="3"
           color={theme.colors.light4}
-          data-testid="product-details-quantity-sold"
+          data-testid="ProductDetails-quantity-sold"
         >
           {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought {quantitySold}{' '}
           {quantitySold === 1 ? 'unit' : 'units'}
@@ -83,13 +83,13 @@ const ProductDetails = (props) => {
     }
 
     let descriptionSection = (
-      <Heading variant="h4" mgTop="3" data-testid="product-details-no-description">
+      <Heading variant="h4" mgTop="3" data-testid="ProductDetails-no-description">
         This product has no description
       </Heading>
     );
     if (description) {
       descriptionSection = (
-        <section data-testid="product-details-full-description">
+        <section data-testid="ProductDetails-full-description">
           <Heading variant="h4" mgBottom="2" mgTop="3">
             Description
           </Heading>
@@ -109,7 +109,7 @@ const ProductDetails = (props) => {
         <Button
           color="blue"
           clicked={() => onSetModal(true, modalTypes.EDIT_PRODUCT)}
-          data-testid="product-details-edit-button"
+          data-testid="ProductDetails-edit-button"
         >
           Edit offer
         </Button>
@@ -120,7 +120,7 @@ const ProductDetails = (props) => {
         <Button
           color="red"
           clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}
-          data-testid="product-details-delete-button"
+          data-testid="ProductDetails-delete-button"
         >
           Delete offer
         </Button>
@@ -142,7 +142,7 @@ const ProductDetails = (props) => {
     details = (
       <PlainPanel>
         <SC.Wrapper>
-          <SideBySide proportion={windowWidth <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
+          <SideBySide proportion={windowSize.width <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
             <section className="photo-section">
               <img
                 src={photo ? `${process.env.REACT_APP_API_URL}/products/${_id}/photo` : noPhoto}
@@ -154,7 +154,7 @@ const ProductDetails = (props) => {
               <Heading variant="h4">{name}</Heading>
               <PlainText size="2" mgTop="2" mgBottom="2">
                 <PlainText color={theme.colors.light4}>from&nbsp;</PlainText>
-                <Link to={`/user/${seller.username}?p=1`} data-testid="product-details-seller-link">
+                <Link to={`/user/${seller.username}?p=1`} data-testid="ProductDetails-seller-link">
                   <GreenText>{seller.username}</GreenText>
                 </Link>
               </PlainText>

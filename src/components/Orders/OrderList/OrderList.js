@@ -22,37 +22,36 @@ const OrderList = (props) => {
     const username =
       orderType === orderTypes.PLACED_ORDERS ? order.seller?.username : order.buyer?.username;
     const userType = orderType === orderTypes.PLACED_ORDERS ? 'seller ' : 'buyer ';
+
     return (
       <SC.SingleOrder key={order._id}>
         <FlexWrapper justify="space-between" align="flex-end" spacing="3">
-          <PlainText size="3" data-test="username">
+          <PlainText size="3">
             <span>{userType}</span>
             {username ? (
-              <Link to={`/user/${username}?p=1`} data-test="user-link">
+              <Link to={`/user/${username}?p=1`} data-testid="OrderList-user-link">
                 <GreenText>{username}</GreenText>
               </Link>
             ) : (
-              <PlainText fStyle="italic">(account has been deleted)</PlainText>
+              <PlainText fStyle="italic" data-testid="OrderList-account-deleted">
+                (account has been deleted)
+              </PlainText>
             )}
           </PlainText>
-          <PlainText size="2" data-test="date">
-            {formatOrderDate(order.createdAt)}
-          </PlainText>
+          <PlainText size="2">{formatOrderDate(order.createdAt)}</PlainText>
         </FlexWrapper>
         {order.products.map((product) => (
           <TransactionAndOrderProdItem key={product._id} data={product} orderId={order._id} />
         ))}
         <FlexWrapper mgTop="3" justify="space-between" align="center" spacing="3">
-          <Link to={`/order/${order._id}`} data-test="details-link">
+          <Link to={`/order/${order._id}`} data-testid="OrderList-order-details-link">
             <Button>details</Button>
           </Link>
           <div>
             <PlainText size="3" mgRight="1" spacing="1px" color={theme.colors.light4}>
               TOTAL
             </PlainText>
-            <PlainText size="5" data-test="overall-order-price">
-              {formatPrice(order.overallPrice)}
-            </PlainText>
+            <PlainText size="5">{formatPrice(order.overallPrice)}</PlainText>
           </div>
         </FlexWrapper>
       </SC.SingleOrder>
@@ -62,10 +61,10 @@ const OrderList = (props) => {
   const loadingOverlay = isDataLoading ? <LoadingOverlay /> : null;
 
   return (
-    <SC.List>
+    <SC.Wrapper>
       {orderList}
       {loadingOverlay}
-    </SC.List>
+    </SC.Wrapper>
   );
 };
 

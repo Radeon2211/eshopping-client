@@ -27,8 +27,14 @@ const ProductThumbnail = (props) => {
   const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
 
   return (
-    <SC.Wrapper align="center" justify="center" width={width} height={height}>
-      <img src={photo ? validPhotoURL : noPhoto} alt={alt} />
+    <SC.Wrapper
+      align="center"
+      justify="center"
+      width={width}
+      height={height}
+      data-testid="ProductThumbnail"
+    >
+      <img src={photo ? validPhotoURL : noPhoto} alt={alt} data-testid="ProductThumbnail-img" />
     </SC.Wrapper>
   );
 };

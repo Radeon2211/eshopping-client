@@ -12,6 +12,7 @@ import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPos
 
 const PriceSlider = (props) => {
   const { dispatchFilters } = props;
+
   const history = useHistory();
   const {
     location: { search },
@@ -108,6 +109,7 @@ const PriceSlider = (props) => {
 
   const validateInputValue = (e) => {
     e.persist();
+    console.log('name', e.target.name);
 
     let value = Number.parseFloat((+e.target.value).toFixed(2));
 
@@ -207,7 +209,6 @@ const PriceSlider = (props) => {
             changed={inputChangeHandle}
             blured={validateInputValue}
             floating
-            data-test="min-price-input"
           />
           <span className="inputs-gap">&mdash;</span>
           <NumberInput
@@ -217,7 +218,6 @@ const PriceSlider = (props) => {
             changed={inputChangeHandle}
             blured={validateInputValue}
             floating
-            data-test="max-price-input"
           />
         </div>
       </SC.LabelAndInputs>
@@ -231,7 +231,7 @@ const PriceSlider = (props) => {
           value={rangeValues.minPrice}
           onChange={rangeChangeHandle}
           className="input min"
-          data-test="min-price-range"
+          data-testid="PriceSlider-price-range-min"
         />
         <input
           type="range"
@@ -242,7 +242,7 @@ const PriceSlider = (props) => {
           value={rangeValues.maxPrice}
           onChange={rangeChangeHandle}
           className="input max"
-          data-test="max-price-range"
+          data-testid="PriceSlider-price-range-max"
         />
         <div className="track" />
         <div className="range" />

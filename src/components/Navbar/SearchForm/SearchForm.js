@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useWindowWidth } from '@react-hook/window-size';
 import * as SC from './SearchForm.sc';
 import Button from '../../UI/Button/Button';
 import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as SearchIcon } from '../../../images/icons/search.svg';
 import { DEFAULT_PATH } from '../../../shared/constants';
 import { getParamsWithoutPollution } from '../../../shared/utility';
+import useWindowSize from '../../../shared/useWindowSize';
 
 const SearchForm = () => {
   const [productName, setProductName] = useState('');
   const history = useHistory();
 
-  const windowWidth = useWindowWidth();
+  const windowSize = useWindowSize();
 
   const checkQueryParams = useCallback(
     (queryParams) => {
@@ -43,7 +43,7 @@ const SearchForm = () => {
   };
 
   let buttonContent = 'search';
-  if (windowWidth < 900) {
+  if (windowSize.width < 900) {
     buttonContent = (
       <MyIcon size="small" color="#fff">
         <SearchIcon />

@@ -61,8 +61,34 @@ export const createTransactionAndOrderProdItem = (
   },
 });
 
+export const createProductListItem = (
+  productId,
+  sellerUsername = 'username',
+  quantity = 1,
+  price = 2,
+  name = 'product name',
+  photo = false,
+  quantitySold = 0,
+  buyerQuantity = 0,
+  description = '',
+  condition = 'new',
+) => ({
+  _id: productId || uuidv4(),
+  name,
+  price,
+  quantity,
+  quantitySold,
+  buyerQuantity,
+  description,
+  condition,
+  photo,
+  seller: {
+    username: sellerUsername,
+  },
+});
+
 export const createOrder = (
-  products,
+  products = [createTransactionAndOrderProdItem()],
   orderId = uuidv4(),
   sellerUsername,
   buyerUsername,

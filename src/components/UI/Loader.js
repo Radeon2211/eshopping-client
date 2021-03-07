@@ -84,7 +84,7 @@ const Loader = (props) => {
   const { size, align } = props;
 
   const loader = (
-    <SC.Loader size={size} data-testid="loader">
+    <SC.Loader size={size} data-testid="Loader">
       <div />
       <div />
       <div />
@@ -95,7 +95,7 @@ const Loader = (props) => {
   let wrapper = null;
   if (align) {
     wrapper = (
-      <SC.Wrapper align={align} data-testid="loader-wrapper">
+      <SC.Wrapper align={align} data-testid="LoaderWrapper">
         {loader}
       </SC.Wrapper>
     );

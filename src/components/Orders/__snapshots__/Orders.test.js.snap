@@ -1,0 +1,943 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductItem /> Check how renders Should everything correctly with one order and type PLACED_ORDERS 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-AxjAm bIFXlR"
+  >
+    <div
+      class="sc-fzpans dYbXbk"
+    >
+      <div
+        class="sc-fzoXzr krWZnV"
+      >
+        <label
+          class="label"
+          for="sortOption"
+        >
+          Sort
+        </label>
+        <div
+          class="select css-2b097c-container"
+          id="sortOption"
+        >
+          <div
+            class=" css-l640om-control"
+          >
+            <div
+              class=" css-g1d714-ValueContainer"
+            >
+              <div
+                class=" css-1uccc91-singleValue"
+              >
+                Date - from newest
+              </div>
+              <input
+                aria-autocomplete="list"
+                class="css-62g3xt-dummyInput"
+                id="react-select-2-input"
+                readonly=""
+                tabindex="0"
+                value=""
+              />
+            </div>
+            <div
+              class=" css-1hb7zxy-IndicatorsContainer"
+            >
+              <span
+                class=" css-1okebmr-indicatorSeparator"
+              />
+              <div
+                aria-hidden="true"
+                class=" css-ml9fjp-indicatorContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-6q0nyr-Svg"
+                  focusable="false"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  width="20"
+                >
+                  <path
+                    d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxirZ hDIVVR"
+        data-testid="InputPagination"
+      >
+        <a
+          class="arrow hide-arrow"
+          data-testid="InputPagination-left-arrow"
+        >
+          <div
+            class="sc-AxiKw ccxLhd"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+        <form
+          class="form-number"
+        >
+          <input
+            class="sc-AxhUy ecUJtN"
+            data-testid="NumberInput-page"
+            name="page"
+            type="number"
+            value="1"
+          />
+        </form>
+        <span
+          class="sc-AxhCb gOmlaT"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          of
+        </span>
+        <span
+          class="sc-AxhCb gOmlaT"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          1
+        </span>
+        <a
+          class="arrow hide-arrow"
+          data-testid="InputPagination-right-arrow"
+        >
+          <div
+            class="sc-AxiKw eIjmdz"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div
+      class="sc-Axmtr dXgRrs"
+    >
+      <div
+        class="sc-AxmLO bJtSnQ"
+      >
+        <div
+          class="sc-fzplWN hcQUOw"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxhCb hHAZtX"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            <span>
+              seller 
+            </span>
+            <a
+              data-testid="OrderList-user-link"
+            >
+              <span
+                class="sc-fzozJi iGEsuD"
+              >
+                sellerUser
+              </span>
+            </a>
+          </span>
+          <span
+            class="sc-AxhCb bbptha"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            8 Jan 2021, 12:08
+          </span>
+        </div>
+        <div
+          class="sc-fzplWN gqIwUs sc-fznyAO eEELFd"
+          data-testid="TransactionAndOrderProdItem"
+          direction="row"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <a
+            data-testid="TransactionAndOrderProdItem-product-link-photo"
+          >
+            <div
+              class="sc-fzplWN bHzUoZ sc-fzokOt hrvMoP"
+              data-testid="ProductThumbnail"
+              direction="row"
+              height="5"
+              spacing=""
+              width="5"
+              wrap="nowrap"
+            >
+              <img
+                alt="product1"
+                data-testid="ProductThumbnail-img"
+                src="http://192.168.1.109:4000/orders/o1/p1/photo"
+              />
+            </div>
+          </a>
+          <div
+            class="sc-fznKkj iggZXh"
+          >
+            <span
+              class="name"
+            >
+              <a
+                data-testid="TransactionAndOrderProdItem-product-link-name"
+              >
+                product1
+              </a>
+            </span>
+            <div
+              class="sc-fzplWN bGBpmn sc-fznZeY jsQdud"
+              direction="row"
+              spacing=""
+              width="100%"
+              wrap="nowrap"
+            >
+              <span
+                class="sc-AxhCb iFqVtO"
+                color="#777"
+                display="inline-block"
+                overflow="visible"
+                size="2"
+                spacing="0px"
+                transform=""
+              >
+                4 x $4
+              </span>
+              <span
+                class="sc-AxhCb blPqsx"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="4"
+                spacing="0px"
+                transform=""
+              >
+                $16
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-fzplWN iRhzAs"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <a
+            data-testid="OrderList-order-details-link"
+          >
+            <button
+              class="sc-fzqBZW gKVVTd"
+              color="blue"
+              type="button"
+            >
+              details
+            </button>
+          </a>
+          <div>
+            <span
+              class="sc-AxhCb fLBjyO"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="1px"
+              transform=""
+            >
+              TOTAL
+            </span>
+            <span
+              class="sc-AxhCb iMqYaz"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="5"
+              spacing="0px"
+              transform=""
+            >
+              $16
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-AxheI itlqnd"
+    >
+      <span
+        class="sc-AxhCb juwqNN"
+        color="#777"
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        1 - 1 of 1 order
+      </span>
+      <div
+        class="sc-AxgMl bYPvJP"
+        data-testid="NumberPagination"
+      >
+        <a
+          class="arrow hide-arrow"
+          data-testid="NumberPagination-left-arrow"
+        >
+          <div
+            class="sc-AxiKw ccxLhd"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+        <a
+          class="number-link active"
+          data-testid="NumberPagination-page1"
+        >
+          1
+        </a>
+        <span
+          class="of"
+        >
+          of
+        </span>
+        <span
+          class="of"
+        >
+          1
+        </span>
+        <a
+          class="arrow hide-arrow"
+          data-testid="NumberPagination-right-arrow"
+        >
+          <div
+            class="sc-AxiKw eIjmdz"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should everything correctly with two orders and type SELL_HISTORY 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-AxjAm bIFXlR"
+  >
+    <div
+      class="sc-fzpans dYbXbk"
+    >
+      <div
+        class="sc-fzoXzr krWZnV"
+      >
+        <label
+          class="label"
+          for="sortOption"
+        >
+          Sort
+        </label>
+        <div
+          class="select css-2b097c-container"
+          id="sortOption"
+        >
+          <div
+            class=" css-l640om-control"
+          >
+            <div
+              class=" css-g1d714-ValueContainer"
+            >
+              <div
+                class=" css-1uccc91-singleValue"
+              >
+                Date - from newest
+              </div>
+              <input
+                aria-autocomplete="list"
+                class="css-62g3xt-dummyInput"
+                id="react-select-3-input"
+                readonly=""
+                tabindex="0"
+                value=""
+              />
+            </div>
+            <div
+              class=" css-1hb7zxy-IndicatorsContainer"
+            >
+              <span
+                class=" css-1okebmr-indicatorSeparator"
+              />
+              <div
+                aria-hidden="true"
+                class=" css-ml9fjp-indicatorContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-6q0nyr-Svg"
+                  focusable="false"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  width="20"
+                >
+                  <path
+                    d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxirZ hDIVVR"
+        data-testid="InputPagination"
+      >
+        <a
+          class="arrow hide-arrow"
+          data-testid="InputPagination-left-arrow"
+        >
+          <div
+            class="sc-AxiKw ccxLhd"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+        <form
+          class="form-number"
+        >
+          <input
+            class="sc-AxhUy ecUJtN"
+            data-testid="NumberInput-page"
+            name="page"
+            type="number"
+            value="1"
+          />
+        </form>
+        <span
+          class="sc-AxhCb gOmlaT"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          of
+        </span>
+        <span
+          class="sc-AxhCb gOmlaT"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          1
+        </span>
+        <a
+          class="arrow hide-arrow"
+          data-testid="InputPagination-right-arrow"
+        >
+          <div
+            class="sc-AxiKw eIjmdz"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div
+      class="sc-Axmtr dXgRrs"
+    >
+      <div
+        class="sc-AxmLO bJtSnQ"
+      >
+        <div
+          class="sc-fzplWN hcQUOw"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxhCb hHAZtX"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            <span>
+              buyer 
+            </span>
+            <a
+              data-testid="OrderList-user-link"
+            >
+              <span
+                class="sc-fzozJi iGEsuD"
+              >
+                buyerUser
+              </span>
+            </a>
+          </span>
+          <span
+            class="sc-AxhCb bbptha"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            8 Jan 2021, 12:08
+          </span>
+        </div>
+        <div
+          class="sc-fzplWN gqIwUs sc-fznyAO eEELFd"
+          data-testid="TransactionAndOrderProdItem"
+          direction="row"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <a
+            data-testid="TransactionAndOrderProdItem-product-link-photo"
+          >
+            <div
+              class="sc-fzplWN bHzUoZ sc-fzokOt hrvMoP"
+              data-testid="ProductThumbnail"
+              direction="row"
+              height="5"
+              spacing=""
+              width="5"
+              wrap="nowrap"
+            >
+              <img
+                alt="product1"
+                data-testid="ProductThumbnail-img"
+                src="http://192.168.1.109:4000/orders/o1/p1/photo"
+              />
+            </div>
+          </a>
+          <div
+            class="sc-fznKkj iggZXh"
+          >
+            <span
+              class="name"
+            >
+              <a
+                data-testid="TransactionAndOrderProdItem-product-link-name"
+              >
+                product1
+              </a>
+            </span>
+            <div
+              class="sc-fzplWN bGBpmn sc-fznZeY jsQdud"
+              direction="row"
+              spacing=""
+              width="100%"
+              wrap="nowrap"
+            >
+              <span
+                class="sc-AxhCb iFqVtO"
+                color="#777"
+                display="inline-block"
+                overflow="visible"
+                size="2"
+                spacing="0px"
+                transform=""
+              >
+                4 x $4
+              </span>
+              <span
+                class="sc-AxhCb blPqsx"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="4"
+                spacing="0px"
+                transform=""
+              >
+                $16
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-fzplWN iRhzAs"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <a
+            data-testid="OrderList-order-details-link"
+          >
+            <button
+              class="sc-fzqBZW gKVVTd"
+              color="blue"
+              type="button"
+            >
+              details
+            </button>
+          </a>
+          <div>
+            <span
+              class="sc-AxhCb fLBjyO"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="1px"
+              transform=""
+            >
+              TOTAL
+            </span>
+            <span
+              class="sc-AxhCb iMqYaz"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="5"
+              spacing="0px"
+              transform=""
+            >
+              $16
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxmLO bJtSnQ"
+      >
+        <div
+          class="sc-fzplWN hcQUOw"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <span
+            class="sc-AxhCb hHAZtX"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            <span>
+              buyer 
+            </span>
+            <a
+              data-testid="OrderList-user-link"
+            >
+              <span
+                class="sc-fzozJi iGEsuD"
+              >
+                buyerUser
+              </span>
+            </a>
+          </span>
+          <span
+            class="sc-AxhCb bbptha"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="2"
+            spacing="0px"
+            transform=""
+          >
+            18 Feb 2021, 22:12
+          </span>
+        </div>
+        <div
+          class="sc-fzplWN gqIwUs sc-fznyAO eEELFd"
+          data-testid="TransactionAndOrderProdItem"
+          direction="row"
+          spacing="2"
+          width="100%"
+          wrap="nowrap"
+        >
+          <a
+            data-testid="TransactionAndOrderProdItem-product-link-photo"
+          >
+            <div
+              class="sc-fzplWN bHzUoZ sc-fzokOt hrvMoP"
+              data-testid="ProductThumbnail"
+              direction="row"
+              height="5"
+              spacing=""
+              width="5"
+              wrap="nowrap"
+            >
+              <img
+                alt="product2"
+                data-testid="ProductThumbnail-img"
+                src="no-photo.png"
+              />
+            </div>
+          </a>
+          <div
+            class="sc-fznKkj iggZXh"
+          >
+            <span
+              class="name"
+            >
+              <a
+                data-testid="TransactionAndOrderProdItem-product-link-name"
+              >
+                product2
+              </a>
+            </span>
+            <div
+              class="sc-fzplWN bGBpmn sc-fznZeY jsQdud"
+              direction="row"
+              spacing=""
+              width="100%"
+              wrap="nowrap"
+            >
+              <span
+                class="sc-AxhCb iFqVtO"
+                color="#777"
+                display="inline-block"
+                overflow="visible"
+                size="2"
+                spacing="0px"
+                transform=""
+              >
+                2 x $6.40
+              </span>
+              <span
+                class="sc-AxhCb blPqsx"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="4"
+                spacing="0px"
+                transform=""
+              >
+                $12.80
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-fzplWN iRhzAs"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <a
+            data-testid="OrderList-order-details-link"
+          >
+            <button
+              class="sc-fzqBZW gKVVTd"
+              color="blue"
+              type="button"
+            >
+              details
+            </button>
+          </a>
+          <div>
+            <span
+              class="sc-AxhCb fLBjyO"
+              color="#777"
+              display="inline-block"
+              overflow="visible"
+              size="3"
+              spacing="1px"
+              transform=""
+            >
+              TOTAL
+            </span>
+            <span
+              class="sc-AxhCb iMqYaz"
+              color=""
+              display="inline-block"
+              overflow="visible"
+              size="5"
+              spacing="0px"
+              transform=""
+            >
+              $12.80
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-AxheI itlqnd"
+    >
+      <span
+        class="sc-AxhCb juwqNN"
+        color="#777"
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        1 - 2 of 2 orders
+      </span>
+      <div
+        class="sc-AxgMl bYPvJP"
+        data-testid="NumberPagination"
+      >
+        <a
+          class="arrow hide-arrow"
+          data-testid="NumberPagination-left-arrow"
+        >
+          <div
+            class="sc-AxiKw ccxLhd"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+        <a
+          class="number-link active"
+          data-testid="NumberPagination-page1"
+        >
+          1
+        </a>
+        <span
+          class="of"
+        >
+          of
+        </span>
+        <span
+          class="of"
+        >
+          1
+        </span>
+        <a
+          class="arrow hide-arrow"
+          data-testid="NumberPagination-right-arrow"
+        >
+          <div
+            class="sc-AxiKw eIjmdz"
+            color=""
+          >
+            <svg>
+              arrow.svg
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info if orders are empty array and type PLACED_ORDERS 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-fzpjYC jsyDWo"
+  >
+    You don't have any placed orders yet
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info if orders are empty array and type SELL_HISTORY 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-fzpjYC jsyDWo"
+  >
+    Your sell history is empty
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info if orders are null and type PLACED_ORDERS 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-fzpjYC jsyDWo"
+  >
+    There is a problem to fetch your placed orders
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render correct info if orders are null and type SELL_HISTORY 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-fzpjYC jsyDWo"
+  >
+    There is a problem to fetch your sell history
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`<ProductItem /> Check how renders Should render only <Loader /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fzqNJr lKoCx"
+    data-testid="LoaderWrapper"
+  >
+    <div
+      class="sc-fzoyAV bBbFbP"
+      data-testid="Loader"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;

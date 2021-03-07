@@ -46,7 +46,7 @@ const setUp = (orderDetails, pushFn = jest.fn()) => {
   );
 };
 
-beforeEach(cleanup);
+afterEach(cleanup);
 
 describe('<OrderDetails />', () => {
   describe('Check prop types', () => {
@@ -106,10 +106,10 @@ describe('<OrderDetails />', () => {
         deliveryAddress: defaultDeliveryAddress,
       });
 
-      expect(screen.getByTestId('order-details-buyer-deleted')).toBeInTheDocument();
-      expect(screen.getByTestId('order-details-seller-deleted')).toBeInTheDocument();
-      expect(screen.queryByTestId('order-details-buyer-link')).not.toBeInTheDocument();
-      expect(screen.queryByTestId('order-details-seller-info')).not.toBeInTheDocument();
+      expect(screen.getByTestId('OrderDetails-buyer-deleted')).toBeInTheDocument();
+      expect(screen.getByTestId('OrderDetails-seller-deleted')).toBeInTheDocument();
+      expect(screen.queryByTestId('OrderDetails-buyer-link')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('OrderDetails-seller-info')).not.toBeInTheDocument();
     });
 
     it('Should call push with correct paths after clicking on links', () => {
@@ -135,9 +135,9 @@ describe('<OrderDetails />', () => {
         pushFn,
       );
 
-      fireEvent.click(screen.getByTestId('order-details-buyer-link'));
+      fireEvent.click(screen.getByTestId('OrderDetails-buyer-link'));
       expect(pushFn).toHaveBeenCalledWith('/user/buyerUser?p=1');
-      fireEvent.click(screen.getByTestId('order-details-seller-link'));
+      fireEvent.click(screen.getByTestId('OrderDetails-seller-link'));
       expect(pushFn).toHaveBeenLastCalledWith('/user/sellerUser?p=1');
       expect(pushFn).toHaveBeenCalledTimes(2);
     });

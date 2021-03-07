@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import * as actions from '../store/actions/indexActions';
+import * as actions from '../../store/actions/indexActions';
 
 const Logout = (props) => {
   const { history } = props;

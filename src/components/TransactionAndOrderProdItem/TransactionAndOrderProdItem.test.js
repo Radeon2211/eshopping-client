@@ -1,40 +1,37 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import TransactionAndOrderProdItem from './TransactionAndOrderProdItem';
-import ProductThumbnail from '../UI/ProductThumbnail/ProductThumbnail';
-import * as SC from './TransactionAndOrderProdItem.sc';
 import theme from '../../styled/theme';
 import { checkProps, createTransactionAndOrderProdItem } from '../../shared/testUtility';
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/cart' },
-};
-
-const setUp = (data, orderId = '') => {
-  const props = {
-    data,
-    orderId,
+const setUp = (data, orderId = '', pushFn = jest.fn()) => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/transaction' },
+    push: pushFn,
   };
-  return mount(
-    <Router history={defaultHistory}>
+
+  return render(
+    <Router history={history}>
       <ThemeProvider theme={theme}>
-        <TransactionAndOrderProdItem {...props} />
+        <TransactionAndOrderProdItem data={data} orderId={orderId} />
       </ThemeProvider>
     </Router>,
   );
 };
 
+afterEach(cleanup);
+
 describe('<TransactionAndOrderProdItem />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
-      const props = {
-        data: { _id: 'i1' },
-      };
-      expect(checkProps(TransactionAndOrderProdItem, props)).toBeUndefined();
+      expect(
+        checkProps(TransactionAndOrderProdItem, { data: createTransactionAndOrderProdItem() }),
+      ).toBeUndefined();
     });
 
     it('Should throw a warning', () => {
@@ -42,33 +39,32 @@ describe('<TransactionAndOrderProdItem />', () => {
     });
   });
 
-  describe('Checks how everything render', () => {
-    it('Should render correctly with full data', () => {
+  describe('Checks how renders and behaviour', () => {
+    it('Should render everything correctly', () => {
       const data = createTransactionAndOrderProdItem('p1', 'user1', 2, 9.9, 'productName', true);
-      const wrapper = setUp(data);
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-      expect(wrapper.find('[data-test="product-link"]').length).toBeGreaterThan(1);
-      expect(
-        wrapper.find('[data-test="product-link"]').every((link) => {
-          return link.prop('to') === '/product/p1';
-        }),
-      );
-      expect(wrapper.find(ProductThumbnail)).toHaveLength(1);
-      expect(wrapper.find(SC.NameAndPrice)).toHaveLength(1);
-      expect(wrapper.find('.name')).toHaveLength(1);
-      expect(wrapper.find('.name').text()).toEqual('productName');
-      expect(wrapper.find(SC.Price)).toHaveLength(1);
-      expect(wrapper.find('[data-test="price-per-piece"]').length).toBeGreaterThan(0);
-      expect(wrapper.find('[data-test="price-per-piece"]').at(0).text()).toEqual('2 x $9.90');
-      expect(wrapper.find('[data-test="overall-price"]').length).toBeGreaterThan(0);
-      expect(wrapper.find('[data-test="overall-price"]').at(0).text()).toEqual('$19.80');
+      const { asFragment } = setUp(data);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render 1 x price per piece', () => {
-      const data = createTransactionAndOrderProdItem('p1', 'user1', 1, 9.9, 'productName', false);
-      const wrapper = setUp(data);
-      expect(wrapper.find('[data-test="price-per-piece"]').at(0).text()).toEqual('1 x $9.90');
-      expect(wrapper.find('[data-test="overall-price"]').at(0).text()).toEqual('$9.90');
+    it('Should render image src from orders collection', () => {
+      const data = createTransactionAndOrderProdItem('p1', 'user1', 2, 5, 'productName', true);
+      setUp(data, 'o1');
+      expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute(
+        'src',
+        `${process.env.REACT_APP_API_URL}/orders/o1/p1/photo`,
+      );
+    });
+
+    it('Should call push with correct paths after clicking product links', () => {
+      const pushFn = jest.fn();
+      const data = createTransactionAndOrderProdItem('p1');
+      setUp(data, '', pushFn);
+
+      fireEvent.click(screen.getByTestId('TransactionAndOrderProdItem-product-link-photo'));
+      expect(pushFn).toHaveBeenCalledWith('/product/p1');
+      fireEvent.click(screen.getByTestId('TransactionAndOrderProdItem-product-link-name'));
+      expect(pushFn).toHaveBeenLastCalledWith('/product/p1');
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
   });
 });

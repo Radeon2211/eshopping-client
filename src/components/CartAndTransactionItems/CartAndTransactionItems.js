@@ -46,7 +46,7 @@ const CartAndTransactionItems = (props) => {
     <SC.SingleSeller key={sellerUsername}>
       <PlainText size="3" display="block">
         <span>seller </span>
-        <Link to={`/user/${sellerUsername}?p=1`} data-testid="cart-and-transaction-seller-link">
+        <Link to={`/user/${sellerUsername}?p=1`} data-testid="CartAndTransactionItems-seller-link">
           <GreenText>{sellerUsername}</GreenText>
         </Link>
       </PlainText>

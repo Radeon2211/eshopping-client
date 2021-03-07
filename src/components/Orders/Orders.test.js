@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -7,13 +8,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import theme from '../../styled/theme';
 import Orders from './Orders';
-import Loader from '../UI/Loader';
-import PlainPanel from '../UI/Panels/PlainPanel';
-import { TopPagination } from '../../styled/components';
-import SortOrders from './SortOrders/SortOrders';
-import InputPagination from '../Pagination/InputPagination/InputPagination';
-import OrderList from './OrderList/OrderList';
-import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
 import {
   checkProps,
   createOrder,
@@ -30,30 +24,29 @@ const defaultHistory = {
 };
 
 const setUp = (orders, orderCount, type = orderTypes.PLACED_ORDERS) => {
-  const props = {
-    orders,
-    type,
-  };
   const store = mockStore({
     auth: { orderCount },
     ui: { isDataLoading: false },
   });
-  return mount(
+
+  return render(
     <Router history={defaultHistory}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <Orders {...props} />
+          <Orders orders={orders} type={type} />
         </ThemeProvider>
       </Provider>
     </Router>,
   );
 };
 
+afterEach(cleanup);
+
 describe('<ProductItem />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
       const expectedProps = {
-        orders: [createOrder([{ _id: 'p1' }])],
+        orders: [createOrder([createTransactionAndOrderProdItem()])],
         type: orderTypes.PLACED_ORDERS,
       };
       expect(checkProps(Orders, expectedProps)).toBeUndefined();
@@ -65,47 +58,53 @@ describe('<ProductItem />', () => {
   });
 
   describe('Check how renders', () => {
-    it('Should render <Loader />', () => {
-      const wrapper = setUp(undefined, undefined);
-      expect(wrapper.find(Loader)).toHaveLength(1);
+    it('Should render only <Loader />', () => {
+      const { asFragment } = setUp(undefined, undefined);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render problem with fetching when type is PLACED_ORDERS', () => {
-      const wrapper = setUp(null, undefined, orderTypes.PLACED_ORDERS);
-      expect(wrapper.find('[data-test="info-heading"]').first().text()).toEqual(
-        'There is a problem to fetch your placed orders',
-      );
+    it('Should everything correctly with one order and type PLACED_ORDERS', () => {
+      const products = [
+        createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
+      ];
+      const orders = [
+        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 16, '2021-01-08T11:08:51.008Z'),
+      ];
+      const { asFragment } = setUp(orders, 1, orderTypes.PLACED_ORDERS);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render problem with fetching when type is SELL_HISTORY', () => {
-      const wrapper = setUp(null, undefined, orderTypes.SELL_HISTORY);
-      expect(wrapper.find('[data-test="info-heading"]').first().text()).toEqual(
-        'There is a problem to fetch your sell history',
-      );
+    it('Should everything correctly with two orders and type SELL_HISTORY', () => {
+      const products1 = [
+        createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
+      ];
+      const products2 = [createTransactionAndOrderProdItem('p2', 'sellerUser', 2, 6.4, 'product2')];
+      const orders = [
+        createOrder(products1, 'o1', 'sellerUser', 'buyerUser', 16, '2021-01-08T11:08:51.008Z'),
+        createOrder(products2, 'o2', 'sellerUser', 'buyerUser', 12.8, '2021-02-18T21:12:35.008Z'),
+      ];
+      const { asFragment } = setUp(orders, 2, orderTypes.SELL_HISTORY);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render info that there is no orders when type is PLACED_ORDERS', () => {
-      const wrapper = setUp([], 0, orderTypes.PLACED_ORDERS);
-      expect(wrapper.find('[data-test="info-heading"]').first().text()).toEqual(
-        `You don't have any placed orders yet`,
-      );
+    it('Should render correct info if orders are null and type PLACED_ORDERS', () => {
+      const { asFragment } = setUp(null, undefined, orderTypes.PLACED_ORDERS);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render info that there is no orders when type is SELL_HISTORY', () => {
-      const wrapper = setUp([], 0, orderTypes.SELL_HISTORY);
-      expect(wrapper.find('[data-test="info-heading"]').first().text()).toEqual(
-        `Your sell history is empty`,
-      );
+    it('Should render correct info if orders are empty array and type PLACED_ORDERS', () => {
+      const { asFragment } = setUp([], undefined, orderTypes.PLACED_ORDERS);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render full content', () => {
-      const wrapper = setUp([createOrder([createTransactionAndOrderProdItem()])], 1);
-      expect(wrapper.find(PlainPanel)).toHaveLength(1);
-      expect(wrapper.find(TopPagination)).toHaveLength(1);
-      expect(wrapper.find(SortOrders)).toHaveLength(1);
-      expect(wrapper.find(InputPagination)).toHaveLength(1);
-      expect(wrapper.find(OrderList)).toHaveLength(1);
-      expect(wrapper.find(BottomPagination)).toHaveLength(1);
+    it('Should render correct info if orders are null and type SELL_HISTORY', () => {
+      const { asFragment } = setUp(null, undefined, orderTypes.SELL_HISTORY);
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('Should render correct info if orders are empty array and type SELL_HISTORY', () => {
+      const { asFragment } = setUp([], undefined, orderTypes.SELL_HISTORY);
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 });

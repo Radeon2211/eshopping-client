@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleInfo /> Check how renders Should render correctly for address and with button 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxheI lcctvM"
+    direction="column"
+    spacing="2"
+    width="100%"
+    wrap="nowrap"
+  >
+    <h4
+      class="sc-AxgMl gWUhlH"
+    >
+      Address
+    </h4>
+    <div
+      class="sc-AxheI gsYccU"
+      direction="column"
+      spacing="1"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-AxhCb fVKeCd"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        Street 1
+      </span>
+      <span
+        class="sc-AxhCb fVKeCd"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        00-000 City
+      </span>
+      <span
+        class="sc-AxhCb fVKeCd"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        Poland
+      </span>
+    </div>
+    <button
+      class="sc-AxjAm LxSyk"
+      color="blue"
+      type="button"
+    >
+      Change
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<SingleInfo /> Check how renders Should render correctly for contacts (both hidden) and without button 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxheI lcctvM"
+    direction="column"
+    spacing="2"
+    width="100%"
+    wrap="nowrap"
+  >
+    <h4
+      class="sc-AxgMl gWUhlH"
+    >
+      Contacts
+    </h4>
+    <div
+      class="sc-AxheI gsYccU"
+      direction="column"
+      spacing="1"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-AxhCb fVKeCd"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        Email: hidden
+      </span>
+      <span
+        class="sc-AxhCb fVKeCd"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        Phone number: hidden
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<SingleInfo /> Check how renders Should render correctly for contacts (both visible) and with button 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxheI lcctvM"
+    direction="column"
+    spacing="2"
+    width="100%"
+    wrap="nowrap"
+  >
+    <h4
+      class="sc-AxgMl gWUhlH"
+    >
+      Contacts
+    </h4>
+    <div
+      class="sc-AxheI gsYccU"
+      direction="column"
+      spacing="1"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-AxhCb fVKeCd"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        Email: visible
+      </span>
+      <span
+        class="sc-AxhCb fVKeCd"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        Phone number: visible
+      </span>
+    </div>
+    <button
+      class="sc-AxjAm LxSyk"
+      color="blue"
+      type="button"
+    >
+      Change
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<SingleInfo /> Check how renders Should render correctly for name and with button 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxheI lcctvM"
+    direction="column"
+    spacing="2"
+    width="100%"
+    wrap="nowrap"
+  >
+    <h4
+      class="sc-AxgMl gWUhlH"
+    >
+      Name
+    </h4>
+    <span
+      class="sc-AxhCb fVKeCd"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="3"
+      spacing="0px"
+      transform=""
+    >
+      Ludwig von Mises
+    </span>
+    <button
+      class="sc-AxjAm LxSyk"
+      color="blue"
+      type="button"
+    >
+      Change
+    </button>
+  </div>
+</DocumentFragment>
+`;

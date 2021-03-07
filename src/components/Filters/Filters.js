@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useWindowWidth } from '@react-hook/window-size';
 import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import Select from 'react-select';
@@ -15,6 +14,7 @@ import MyIcon from '../UI/MyIcon';
 import { ReactComponent as FiltersIcon } from '../../images/icons/filters.svg';
 import { ReactComponent as ArrowIcon } from '../../images/icons/arrow.svg';
 import { getParamsWithoutPollution } from '../../shared/utility';
+import useWindowSize from '../../shared/useWindowSize';
 
 const Filters = (props) => {
   const { isDataLoading } = props;
@@ -27,7 +27,7 @@ const Filters = (props) => {
   const [filters, dispatchFilters] = useReducer(filtersReducer, filtersInitialState);
   const [isVisible, setIsVisible] = useState(false);
 
-  const windowWidth = useWindowWidth();
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     const correctQueryParams = getParamsWithoutPollution(search);
@@ -62,7 +62,7 @@ const Filters = (props) => {
         .filter(([, value]) => value)
         .map(([key]) => key)
         .join(',') || undefined;
-    const currentQueryParams = queryString.parse(search);
+    const currentQueryParams = getParamsWithoutPollution(search);
     const newQueryParams = {
       ...currentQueryParams,
       ...filtersQueryParams,
@@ -82,9 +82,12 @@ const Filters = (props) => {
   };
 
   let filtersToggler = null;
-  if (windowWidth <= 1200) {
+  if (windowSize.width <= 1200) {
     filtersToggler = (
-      <SC.Toggler onClick={() => setIsVisible((prevState) => !prevState)}>
+      <SC.Toggler
+        onClick={() => setIsVisible((prevState) => !prevState)}
+        data-testid="Filters-toggler"
+      >
         <MyIcon size="small">
           <FiltersIcon />
         </MyIcon>
@@ -119,6 +122,7 @@ const Filters = (props) => {
             id="new"
             checked={filters.condition.new}
             onChange={checkboxChangeHandle}
+            data-testid="Filters-checkbox-new"
           />
           <label htmlFor="new">new</label>
         </SC.CheckboxBox>
@@ -129,6 +133,7 @@ const Filters = (props) => {
             id="used"
             checked={filters.condition.used}
             onChange={checkboxChangeHandle}
+            data-testid="Filters-checkbox-used"
           />
           <label htmlFor="used">used</label>
         </SC.CheckboxBox>
@@ -139,6 +144,7 @@ const Filters = (props) => {
             id="not_applicable"
             checked={filters.condition.not_applicable}
             onChange={checkboxChangeHandle}
+            data-testid="Filters-checkbox-not-applicable"
           />
           <label htmlFor="not_applicable">not applicable</label>
         </SC.CheckboxBox>
@@ -147,7 +153,7 @@ const Filters = (props) => {
         filled
         clicked={btnClickHandle}
         isLoading={isDataLoading}
-        data-test="filters-submit-btn"
+        data-testid="Filters-submit-btn"
       >
         Filter
       </Button>
@@ -155,8 +161,8 @@ const Filters = (props) => {
   );
 
   let filtersPanel = null;
-  if (isVisible || windowWidth >= 1200) {
-    filtersPanel = <PlainPanel>{filtersWrapper}</PlainPanel>;
+  if (isVisible || windowSize.width >= 1200) {
+    filtersPanel = <PlainPanel data-testid="Filters">{filtersWrapper}</PlainPanel>;
   }
 
   return (

@@ -1,12 +1,15 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import selectEvent from 'react-select-event';
+import matchMediaPolyfill from 'mq-polyfill';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
+import { act } from 'react-dom/test-utils';
 import Filters from './Filters';
-import * as SC from './Filters.sc';
 import { checkProps } from '../../shared/testUtility';
 import theme from '../../styled/theme';
 import { sortProductsOptions, filtersActions } from '../../shared/constants';
@@ -21,29 +24,40 @@ const defaultStore = mockStore({
   },
 });
 
-const simulateTogglerClick = (wrapper) => {
-  const toggler = wrapper.find(SC.Toggler);
-  toggler.simulate('click');
-};
-
-const setUp = (isDataLoading = false, search = '', push = jest.fn()) => {
-  const props = { isDataLoading };
+const setUp = (isDataLoading = false, search = '?p=1', push = jest.fn()) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search },
     push,
   };
-  return mount(
+
+  return render(
     <Router history={history}>
       <Provider store={defaultStore}>
         <ThemeProvider theme={theme}>
-          <Filters {...props} />
+          <Filters isDataLoading={isDataLoading} />
         </ThemeProvider>
       </Provider>
     </Router>,
   );
 };
+
+beforeAll(() => {
+  matchMediaPolyfill(window);
+  window.resizeTo = function resizeTo(width, height) {
+    Object.assign(this, {
+      innerWidth: width,
+      innerHeight: height,
+    }).dispatchEvent(new this.Event('resize'));
+  };
+});
+
+beforeEach(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+});
+
+afterEach(cleanup);
 
 describe('<Filters />', () => {
   describe('Check prop types', () => {
@@ -56,64 +70,101 @@ describe('<Filters />', () => {
     });
   });
 
-  describe(`Check if renders correctly`, () => {
-    it('Should render <SC.Wrapper /> and submit button should NOT be loading', () => {
-      const wrapper = setUp();
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toEqual(
-        false,
-      );
+  describe('Check how renders', () => {
+    it('Should render everything correctly', () => {
+      const { asFragment } = setUp();
+      act(() => {
+        fireEvent.click(screen.getByTestId('Filters-toggler'));
+      });
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('Should render filters panel and NOT render toggler', () => {
+      act(() => {
+        window.resizeTo(1920, 1080);
+      });
+      setUp();
+      expect(screen.getByTestId('Filters')).toBeInTheDocument();
+      expect(screen.queryByTestId('Filters-toggler')).not.toBeInTheDocument();
+    });
+
+    it('Should render all sorting options', async () => {
+      act(() => {
+        window.resizeTo(1920, 1080);
+      });
+      setUp();
+      await selectEvent.openMenu(screen.getByText('Default sorting'));
+      expect(screen.getByText(sortProductsOptions[1].label)).toBeInTheDocument();
+      expect(screen.getByText(sortProductsOptions[2].label)).toBeInTheDocument();
+      expect(screen.getByText(sortProductsOptions[3].label)).toBeInTheDocument();
+      expect(screen.getByText(sortProductsOptions[4].label)).toBeInTheDocument();
     });
 
     it('Should submit button be disabled', () => {
-      const wrapper = setUp(true);
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('[data-test="filters-submit-btn"]').first().prop('isLoading')).toEqual(
-        true,
-      );
+      setUp(true);
+      expect(screen.getByTestId('Filters-submit-btn')).toBeDisabled();
     });
   });
 
-  describe(`Check if controls' values are correct`, () => {
+  describe('Check behaviour of controls', () => {
     it('Should condition checkboxes be checked', () => {
-      const wrapper = setUp(true, '?p=1&condition=new,used,not_applicable');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('#new').prop('checked')).toEqual(true);
-      expect(wrapper.find('#used').prop('checked')).toEqual(true);
-      expect(wrapper.find('#not_applicable').prop('checked')).toEqual(true);
+      setUp(false, '?p=1&condition=new,used,not_applicable');
+      expect(screen.getByTestId('Filters-checkbox-new')).toBeChecked();
+      expect(screen.getByTestId('Filters-checkbox-used')).toBeChecked();
+      expect(screen.getByTestId('Filters-checkbox-not-applicable')).toBeChecked();
     });
 
     it('Should NOT condition checkboxes be checked', () => {
-      const wrapper = setUp(true);
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('#new').prop('checked')).toEqual(false);
-      expect(wrapper.find('#used').prop('checked')).toEqual(false);
-      expect(wrapper.find('#not_applicable').prop('checked')).toEqual(false);
+      setUp();
+      expect(screen.getByTestId('Filters-checkbox-new')).not.toBeChecked();
+      expect(screen.getByTestId('Filters-checkbox-used')).not.toBeChecked();
+      expect(screen.getByTestId('Filters-checkbox-not-applicable')).not.toBeChecked();
     });
 
     it('Should sort by price ascending', () => {
-      const wrapper = setUp(true, '?p=1&sortBy=price:asc');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[1]);
+      setUp(false, '?p=1&sortBy=price:asc');
+      expect(screen.getByText(sortProductsOptions[1].label)).toBeInTheDocument();
     });
 
     it('Should sort by price descending', () => {
-      const wrapper = setUp(true, '?p=1&sortBy=price:desc');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[2]);
+      setUp(false, '?p=1&sortBy=price:desc');
+      expect(screen.getByText(sortProductsOptions[2].label)).toBeInTheDocument();
     });
 
     it('Should sort by name ascending', () => {
-      const wrapper = setUp(true, '?p=1&sortBy=name:asc');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[3]);
+      setUp(false, '?p=1&sortBy=name:asc');
+      expect(screen.getByText(sortProductsOptions[3].label)).toBeInTheDocument();
     });
 
     it('Should sort by name descending', () => {
-      const wrapper = setUp(true, '?p=1&sortBy=name:desc');
-      simulateTogglerClick(wrapper);
-      expect(wrapper.find('.select').first().prop('value')).toEqual(sortProductsOptions[4]);
+      setUp(false, '?p=1&sortBy=name:desc');
+      expect(screen.getByText(sortProductsOptions[4].label)).toBeInTheDocument();
+    });
+
+    it('Should call push with correct path and params', async () => {
+      act(() => {
+        window.resizeTo(1920, 1080);
+      });
+      const pushFn = jest.fn();
+      setUp(false, '?p=1', pushFn);
+
+      fireEvent.click(screen.getByTestId('Filters-checkbox-new'));
+      fireEvent.click(screen.getByTestId('Filters-checkbox-used'));
+      fireEvent.change(screen.getByTestId('PriceSlider-price-range-max'), {
+        target: { value: 50 },
+      });
+      fireEvent.change(screen.getByTestId('PriceSlider-price-range-min'), {
+        target: { value: 20 },
+      });
+      await selectEvent.openMenu(screen.getByText('Default sorting'));
+      fireEvent.click(screen.getByText('Price - ascending'));
+
+      fireEvent.click(screen.getByTestId('Filters-submit-btn'));
+
+      expect(pushFn).toHaveBeenCalledWith(
+        '/products?condition=new%2Cused&maxPrice=50&minPrice=20&p=1&sortBy=price%3Aasc',
+      );
+      expect(pushFn).toHaveBeenCalledTimes(1);
     });
   });
 

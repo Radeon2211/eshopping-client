@@ -59,17 +59,8 @@ export const calculateFileSize = (size) => {
   return ``;
 };
 
-export const updateQueryParams = (currentQueryParams, nextPageNumber) => {
-  const parsedQueryParams = queryString.parse(currentQueryParams);
-  const correctQueryParams = {
-    ...parsedQueryParams,
-    p: nextPageNumber,
-  };
-  return queryString.stringify(correctQueryParams);
-};
-
-export const getParamsWithoutPollution = (queryParams) => {
-  const parsedQueryParams = queryString.parse(queryParams);
+export const getParamsWithoutPollution = (search) => {
+  const parsedQueryParams = queryString.parse(search);
   const arrayQueryParams = Object.entries(parsedQueryParams).map(([key, value]) => {
     const correctValue = Array.isArray(value) ? value.slice(-1)[0] : value;
     return [key, correctValue];
@@ -79,6 +70,15 @@ export const getParamsWithoutPollution = (queryParams) => {
     return acc;
   }, {});
   return correctQueryParams;
+};
+
+export const updateQueryParams = (search, nextPageNumber) => {
+  const parsedQueryParams = getParamsWithoutPollution(search);
+  const correctQueryParams = {
+    ...parsedQueryParams,
+    p: nextPageNumber,
+  };
+  return queryString.stringify(correctQueryParams);
 };
 
 export const calculateNumberOfPages = (itemQuantity, maxQuantity) => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
 import { listItemTypes } from '../../../shared/constants';
 import theme from '../../../styled/theme';
 import PlainText from '../../UI/PlainText';
+import { getParamsWithoutPollution } from '../../../shared/utility';
 
 const PaginationCounter = (props) => {
   const { itemQuantity, itemsType, quantityPerPage } = props;
@@ -15,7 +15,7 @@ const PaginationCounter = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const { p: urlPage } = queryString.parse(search);
+    const { p: urlPage } = getParamsWithoutPollution(search);
     const urlPageNumber = +urlPage;
     setCurrentPage(urlPageNumber);
   }, [search]);
