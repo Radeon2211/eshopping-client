@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6b2c07d12b4cf90d5003e1d5561c866c",
+    "revision": "7f74791bfaf89b3f865b12bf14dba7bf",
     "url": "/eshopping-client/index.html"
   },
   {
@@ -12,36 +12,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/eshopping-client/static/js/2.1d06a009.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c476412cf40b9ca6409e",
-    "url": "/eshopping-client/static/js/3.af499094.chunk.js"
+    "revision": "d4fd19cd046160a912a1",
+    "url": "/eshopping-client/static/js/3.acf9dcba.chunk.js"
   },
   {
-    "revision": "1883e13f65b4eeb89e63",
-    "url": "/eshopping-client/static/js/4.3d522083.chunk.js"
+    "revision": "24c557265b3f1d4548ea",
+    "url": "/eshopping-client/static/js/4.59d1e9f1.chunk.js"
   },
   {
-    "revision": "675f6bf71d92a1861242",
-    "url": "/eshopping-client/static/js/5.e6eee15d.chunk.js"
+    "revision": "9f9db9efb814af0996ac",
+    "url": "/eshopping-client/static/js/5.861caf3b.chunk.js"
   },
   {
-    "revision": "1a9885280e318faf5080",
-    "url": "/eshopping-client/static/js/6.f4c1feba.chunk.js"
+    "revision": "c6d87f0c4ccb857e17d5",
+    "url": "/eshopping-client/static/js/6.0a891ed8.chunk.js"
   },
   {
-    "revision": "5fd2d2062658c72b65bd",
-    "url": "/eshopping-client/static/js/7.0a3ced58.chunk.js"
+    "revision": "edba48cbdc44664dd971",
+    "url": "/eshopping-client/static/js/7.8ac85cc6.chunk.js"
   },
   {
-    "revision": "87181ce294a437d8b194",
-    "url": "/eshopping-client/static/js/8.ab548cda.chunk.js"
+    "revision": "f482d7d1bfae0d393a7d",
+    "url": "/eshopping-client/static/js/8.3d2c6fe8.chunk.js"
   },
   {
-    "revision": "0cd500e79e0baef1a2c9",
-    "url": "/eshopping-client/static/js/main.f28bba60.chunk.js"
+    "revision": "83f966a5f705c327dcd0",
+    "url": "/eshopping-client/static/js/main.a45de611.chunk.js"
   },
   {
-    "revision": "53ef7d1de70aad74ab29",
-    "url": "/eshopping-client/static/js/runtime-main.853cfb62.js"
+    "revision": "69a9dca4a45891216375",
+    "url": "/eshopping-client/static/js/runtime-main.8e2cea91.js"
   },
   {
     "revision": "db646eb5c58ea1936b92346615a89a11",
