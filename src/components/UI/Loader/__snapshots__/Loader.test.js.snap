@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> Should render with wrapper 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm BdAPp"
+    data-testid="LoaderWrapper"
+  >
+    <div
+      class="sc-AxirZ dkLCve"
+      data-testid="Loader"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> Should render without wrapper 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxirZ dkLCve"
+    data-testid="Loader"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</DocumentFragment>
+`;

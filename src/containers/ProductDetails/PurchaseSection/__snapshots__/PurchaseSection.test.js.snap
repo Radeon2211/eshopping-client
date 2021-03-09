@@ -18,13 +18,14 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
       >
         <button
           class="button minus"
-          data-testid="ChooseQuantity-minus"
+          data-testid="ChooseQuantity-minus-btn"
           disabled=""
           type="button"
         >
           <div
             class="sc-Axmtr aVNdd"
             color="#DADFE1"
+            data-testid="ChooseQuantity-minus-icon"
           >
             <svg>
               minus.svg
@@ -40,12 +41,13 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
         />
         <button
           class="button plus"
-          data-testid="ChooseQuantity-plus"
+          data-testid="ChooseQuantity-plus-btn"
           type="button"
         >
           <div
             class="sc-Axmtr gGKTmR"
             color=""
+            data-testid="ChooseQuantity-plus-icon"
           >
             <svg>
               plus.svg

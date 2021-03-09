@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -44,7 +43,7 @@ describe('<CartAndTransactionItems />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning if type is CART', () => {
       const props = {
-        items: [{ _id: 'i1' }],
+        items: [createTransactionAndOrderProdItem()],
         type: itemTypes.CART,
         isCartLoading: false,
       };
@@ -53,7 +52,7 @@ describe('<CartAndTransactionItems />', () => {
 
     it('Should NOT throw a warning if type is TRANSACTION', () => {
       const props = {
-        items: [{ _id: 'i1' }],
+        items: [createTransactionAndOrderProdItem()],
         type: itemTypes.TRANSACTION,
         isCartLoading: false,
       };
@@ -62,7 +61,7 @@ describe('<CartAndTransactionItems />', () => {
 
     it('Should throw a warning if type is ORDER', () => {
       const props = {
-        items: [{ _id: 'i1' }],
+        items: [createTransactionAndOrderProdItem()],
         type: itemTypes.ORDER,
         isCartLoading: false,
       };
@@ -94,6 +93,7 @@ describe('<CartAndTransactionItems />', () => {
     it('Should call push with correct path after click on user link', () => {
       const pushFn = jest.fn();
       setUp([createCartItem('user1')], itemTypes.CART, pushFn);
+
       fireEvent.click(screen.getByTestId('CartAndTransactionItems-seller-link'));
       expect(pushFn).toHaveBeenCalledTimes(1);
       expect(pushFn).toHaveBeenCalledWith('/user/user1?p=1');

@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import SingleInfo from './SingleInfo';
 import { checkProps } from '../../../../shared/testUtility';

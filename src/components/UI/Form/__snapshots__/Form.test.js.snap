@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Form /> Check how renders Should NOT render heading, error and buttons 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm fKgwDr"
+  >
+    <form
+      action="#"
+      class="formik-form"
+    >
+      <div
+        data-testid="Form-children"
+      />
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Form /> Check how renders Should render everything what is possible with blue submit button 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm fKgwDr"
+  >
+    <h3
+      class="sc-Axmtr kmnqOV"
+    >
+      testHeadingText
+    </h3>
+    <form
+      action="#"
+      class="formik-form"
+    >
+      <div
+        data-testid="Form-children"
+      />
+      <div
+        class="sc-AxheI drMepa"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-AxhUy kBnmbO"
+          color=""
+          display="block"
+          overflow="visible"
+          spacing="0px"
+          transform=""
+        >
+          <button
+            class="sc-AxirZ MoZHP"
+            color="blue"
+            type="button"
+          >
+            cancel
+          </button>
+        </span>
+        <button
+          class="sc-AxirZ BxhX"
+          color="blue"
+          data-testid="Form-submit-btn"
+          type="submit"
+        >
+          submitText
+        </button>
+      </div>
+    </form>
+    <span
+      class="sc-AxhUy gXOcQt"
+      color="#F22613"
+      display="inline-block"
+      overflow="visible"
+      size="3"
+      spacing="0px"
+      transform=""
+    >
+      testError
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Form /> Check how renders Should render red submit button without cancel button 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm fKgwDr"
+  >
+    <form
+      action="#"
+      class="formik-form"
+    >
+      <div
+        data-testid="Form-children"
+      />
+      <div
+        class="sc-AxheI drMepa"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <button
+          class="sc-AxirZ dFUlZb"
+          color="red"
+          data-testid="Form-submit-btn"
+          type="submit"
+        >
+          submitText
+        </button>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

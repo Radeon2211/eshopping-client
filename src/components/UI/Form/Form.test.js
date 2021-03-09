@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -7,28 +8,30 @@ import configureMockStore from 'redux-mock-store';
 import { Formik } from 'formik';
 import theme from '../../../styled/theme';
 import Form from './Form';
-import Heading from '../Heading/Heading';
 import { checkProps } from '../../../shared/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
 const defaultProps = {
   headingText: 'testHeadingText',
-  btnText: 'testBtnText',
+  btnText: 'submitText',
   isValid: true,
   cancellable: true,
-  children: <div />,
+  children: <div data-testid="Form-children" />,
 };
 
-const defaultStore = mockStore({
-  ui: {
-    isFormLoading: true,
-    formError: 'testError',
-  },
-});
+const createStore = (isFormLoading, formError) =>
+  mockStore({
+    ui: {
+      isFormLoading,
+      formError,
+    },
+  });
+
+const defaultStore = createStore(false, 'testError');
 
 const setUp = (props, store) => {
-  return mount(
+  return render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Formik>
@@ -38,6 +41,8 @@ const setUp = (props, store) => {
     </Provider>,
   );
 };
+
+afterEach(cleanup);
 
 describe('<Form />', () => {
   describe('Check prop types', () => {
@@ -54,74 +59,54 @@ describe('<Form />', () => {
     });
   });
 
-  describe('Complete props (without btnColor) and redux values', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = setUp(defaultProps, defaultStore);
+  describe('Check how renders', () => {
+    it('Should render everything what is possible with blue submit button', () => {
+      const { asFragment } = setUp(defaultProps, defaultStore);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render heading', () => {
-      expect(wrapper.find(Heading)).toHaveLength(1);
-    });
-
-    it('Should render cancel button wrapper', () => {
-      expect(wrapper.find('[data-test="cancel-btn-wrapper"]').length).toBeGreaterThan(0);
-    });
-
-    it('Should render error', () => {
-      expect(wrapper.find('[data-test="error"]').length).toBeGreaterThan(0);
-    });
-
-    it('Should render buttons wrapper', () => {
-      expect(wrapper.find('[data-test="buttons-wrapper"]').length).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Check if submit button color is correct', () => {
-    it('Should render red submit button', () => {
+    it('Should NOT render heading, error and buttons', () => {
       const props = {
         ...defaultProps,
+        headingText: '',
+        btnText: '',
+        cancellable: false,
+      };
+      const store = createStore(false, '');
+      const { asFragment } = setUp(props, store);
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('Should render red submit button without cancel button', () => {
+      const props = {
+        ...defaultProps,
+        headingText: '',
+        cancellable: false,
         btnColor: 'red',
       };
-      const wrapper = setUp(props, defaultStore);
-      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toEqual('red');
+      const store = createStore(false, '');
+      const { asFragment } = setUp(props, store);
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render blue submit button', () => {
-      const wrapper = setUp(defaultProps, defaultStore);
-      expect(wrapper.find('[data-test="submit-btn"]').first().prop('color')).toEqual('blue');
+    it('Should submit button be disabled if isFormLoading is true', () => {
+      const store = createStore(true, '');
+      setUp(defaultProps, store);
+      expect(screen.getByTestId('Form-submit-btn')).toBeDisabled();
     });
-  });
 
-  describe('Incomplete props and redux values and btnColor = red', () => {
-    let wrapper;
-    beforeEach(() => {
+    it('Should submit button be disabled if isValid is false', () => {
       const props = {
-        children: <div />,
+        ...defaultProps,
+        isValid: false,
       };
-      const store = mockStore({
-        ui: {
-          isFormLoading: false,
-          formError: '',
-        },
-      });
-      wrapper = setUp(props, store);
+      setUp(props, defaultStore);
+      expect(screen.getByTestId('Form-submit-btn')).toBeDisabled();
     });
 
-    it('Should NOT render heading', () => {
-      expect(wrapper.find(Heading)).toHaveLength(0);
-    });
-
-    it('Should NOT render cancel button wrapper', () => {
-      expect(wrapper.find('[data-test="cancel-btn-wrapper"]')).toHaveLength(0);
-    });
-
-    it('Should NOT render error', () => {
-      expect(wrapper.find('[data-test="error"]')).toHaveLength(0);
-    });
-
-    it('Should NOT render buttons wrapper', () => {
-      expect(wrapper.find('[data-test="buttons-wrapper"]')).toHaveLength(0);
+    it('Should submit button NOT be disabled if isValid is true and isFormLoading is false', () => {
+      setUp(defaultProps, defaultStore);
+      expect(screen.getByTestId('Form-submit-btn')).not.toBeDisabled();
     });
   });
 });

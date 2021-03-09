@@ -6,7 +6,7 @@ import * as SC from './PurchaseSection.sc';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
-import ChooseQuantity from '../../../components/UI/ChooseQuantity';
+import ChooseQuantity from '../../../components/UI/ChooseQuantity/ChooseQuantity';
 import PlainText from '../../../components/UI/PlainText';
 import { GreenText } from '../../../styled/components';
 import Heading from '../../../components/UI/Heading/Heading';

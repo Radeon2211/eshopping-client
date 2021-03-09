@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductItem from './ProductItem/ProductItem';
-import LoadingOverlay from '../UI/LoadingOverlay';
+import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
 import Heading from '../UI/Heading/Heading';
 import { pages } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility';

@@ -22,7 +22,7 @@ const Form = (props) => {
   ]);
 
   const error = formError ? (
-    <PlainText size="3" mgTop="3" color={theme.colors.red} data-test="error">
+    <PlainText size="3" mgTop="3" color={theme.colors.red}>
       {formError}
     </PlainText>
   ) : null;
@@ -35,7 +35,7 @@ const Form = (props) => {
   let cancelButton = null;
   if (cancellable) {
     cancelButton = (
-      <PlainText display="block" mgRight="3" data-test="cancel-btn-wrapper">
+      <PlainText display="block" mgRight="3">
         <Button clicked={() => onSetModal(false)}>cancel</Button>
       </PlainText>
     );
@@ -44,14 +44,14 @@ const Form = (props) => {
   let buttonsBox = null;
   if (btnText) {
     buttonsBox = (
-      <FlexWrapper align="center" justify="flex-end" spacing="3" data-test="buttons-wrapper">
+      <FlexWrapper align="center" justify="flex-end" spacing="3">
         {cancelButton}
         <Button
           filled
           type="submit"
           color={btnColor}
           disabled={!isValid || isFormLoading}
-          data-test="submit-btn"
+          data-testid="Form-submit-btn"
         >
           {btnText}
         </Button>

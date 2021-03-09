@@ -1,0 +1,367 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressBar /> Check how renders Should render everything correctly for currentStep 1 and stepsNumber 3 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm dajwIr"
+  >
+    <div
+      class="step-box active"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-checkmark-hidden"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-number-visible"
+        >
+          1
+        </div>
+      </span>
+    </div>
+    <div
+      class="step-line"
+    >
+      <div
+        class="step-line-fill"
+      />
+    </div>
+    <div
+      class="step-box"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-checkmark-hidden"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-number-visible"
+        >
+          2
+        </div>
+      </span>
+    </div>
+    <div
+      class="step-line"
+    >
+      <div
+        class="step-line-fill"
+      />
+    </div>
+    <div
+      class="step-box"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-checkmark-hidden"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-number-visible"
+        >
+          3
+        </div>
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProgressBar /> Check how renders Should render everything correctly for currentStep 2 and stepsNumber 3 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm dajwIr"
+  >
+    <div
+      class="step-box active"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-checkmark-visible"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-number-hidden"
+        >
+          1
+        </div>
+      </span>
+    </div>
+    <div
+      class="step-line"
+    >
+      <div
+        class="step-line-fill active"
+      />
+    </div>
+    <div
+      class="step-box active"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-checkmark-hidden"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-number-visible"
+        >
+          2
+        </div>
+      </span>
+    </div>
+    <div
+      class="step-line"
+    >
+      <div
+        class="step-line-fill"
+      />
+    </div>
+    <div
+      class="step-box"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-checkmark-hidden"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-number-visible"
+        >
+          3
+        </div>
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ProgressBar /> Check how renders Should render everything correctly for currentStep 3 and stepsNumber 3 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm dajwIr"
+  >
+    <div
+      class="step-box active"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-checkmark-visible"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-number-hidden"
+        >
+          1
+        </div>
+      </span>
+    </div>
+    <div
+      class="step-line"
+    >
+      <div
+        class="step-line-fill active"
+      />
+    </div>
+    <div
+      class="step-box active"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-checkmark-visible"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-number-hidden"
+        >
+          2
+        </div>
+      </span>
+    </div>
+    <div
+      class="step-line"
+    >
+      <div
+        class="step-line-fill active"
+      />
+    </div>
+    <div
+      class="step-box active"
+    >
+      <span
+        class="sc-AxhCb kzUQtW"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <div
+          class="sc-AxirZ iIbXid"
+          data-testid="ProgressBar-step-box-checkmark-hidden"
+        >
+          <div
+            class="sc-AxiKw hlSoFg"
+            color="#000"
+          >
+            <svg>
+              check-mark.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ jMoMmI"
+          data-testid="ProgressBar-step-box-number-visible"
+        >
+          3
+        </div>
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

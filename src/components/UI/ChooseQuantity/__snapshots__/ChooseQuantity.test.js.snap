@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChooseQuantity /> Check how renders Should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxiKw llMUIM"
+  >
+    <button
+      class="button minus"
+      data-testid="ChooseQuantity-minus-btn"
+      disabled=""
+      type="button"
+    >
+      <div
+        class="sc-AxirZ hLmnqv"
+        color="#DADFE1"
+        data-testid="ChooseQuantity-minus-icon"
+      >
+        <svg>
+          minus.svg
+        </svg>
+      </div>
+    </button>
+    <input
+      class="sc-AxjAm gofkAj"
+      data-testid="NumberInput-quantity"
+      name="quantity"
+      type="number"
+      value="1"
+    />
+    <button
+      class="button plus"
+      data-testid="ChooseQuantity-plus-btn"
+      type="button"
+    >
+      <div
+        class="sc-AxirZ csXoMP"
+        color=""
+        data-testid="ChooseQuantity-plus-icon"
+      >
+        <svg>
+          plus.svg
+        </svg>
+      </div>
+    </button>
+  </div>
+</DocumentFragment>
+`;

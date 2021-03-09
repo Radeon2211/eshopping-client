@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import NumberInput from './NumberInput/NumberInput';
-import MyIcon from './MyIcon';
-import { ReactComponent as MinusIcon } from '../../images/icons/minus.svg';
-import { ReactComponent as PlusIcon } from '../../images/icons/plus.svg';
-import themeStyles from '../../styled/theme';
+import NumberInput from '../NumberInput/NumberInput';
+import MyIcon from '../MyIcon';
+import { ReactComponent as MinusIcon } from '../../../images/icons/minus.svg';
+import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
+import themeStyles from '../../../styled/theme';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -44,9 +44,13 @@ const ChooseQuantity = (props) => {
         className="button minus"
         disabled={value <= 1}
         onClick={decremented}
-        data-testid="ChooseQuantity-minus"
+        data-testid="ChooseQuantity-minus-btn"
       >
-        <MyIcon size="small" color={value <= 1 ? themeStyles.colors.light2 : ''}>
+        <MyIcon
+          size="small"
+          color={value <= 1 ? themeStyles.colors.light2 : ''}
+          data-testid="ChooseQuantity-minus-icon"
+        >
           <MinusIcon />
         </MyIcon>
       </button>
@@ -63,9 +67,13 @@ const ChooseQuantity = (props) => {
         className="button plus"
         disabled={value >= maxQuantity}
         onClick={incremented}
-        data-testid="ChooseQuantity-plus"
+        data-testid="ChooseQuantity-plus-btn"
       >
-        <MyIcon size="small" color={value >= maxQuantity ? themeStyles.colors.light2 : ''}>
+        <MyIcon
+          size="small"
+          color={value >= maxQuantity ? themeStyles.colors.light2 : ''}
+          data-testid="ChooseQuantity-plus-icon"
+        >
           <PlusIcon />
         </MyIcon>
       </button>

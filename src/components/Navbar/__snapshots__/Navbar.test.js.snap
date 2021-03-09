@@ -1,64 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
-<styled.header>
-  <Link
-    to="/products?p=1"
+<DocumentFragment>
+  <header
+    class="sc-AxjAm jfZaFQ"
   >
-    <header
-      className="header"
+    <a
+      data-testid="Navbar-header-link"
     >
-      <img
-        alt="E-Shopping"
-        className="logo"
-        src="logo.png"
-      />
-      <Heading
-        align="left"
-        className="heading"
-        lineHeight=""
-        mgBottom=""
-        mgTop=""
-        variant="h1"
+      <header
+        class="header"
       >
-        shopping
-      </Heading>
-    </header>
-  </Link>
-  <SearchForm />
-  <LoggedInLinks
-    status="active"
-    username="username"
-  />
-</styled.header>
+        <img
+          alt="E-Shopping"
+          class="logo"
+          src="logo.png"
+        />
+        <h1
+          class="sc-AxirZ jcTfnv heading"
+        >
+          shopping
+        </h1>
+      </header>
+    </a>
+    <form
+      class="sc-AxiKw VbOrM"
+    >
+      <input
+        autocomplete="off"
+        class="name-input"
+        maxlength="150"
+        name="product"
+        spellcheck="false"
+        type="text"
+        value=""
+      />
+      <button
+        class="sc-AxhCb etZkID"
+        color="blue"
+        type="submit"
+      >
+        search
+      </button>
+    </form>
+    <nav
+      class="sc-fznyAO jIOtQF"
+    >
+      <a
+        class="sc-fzpans jRCOFi"
+        data-testid="CartLink"
+      >
+        <div
+          class="sc-AxmLO glBZKU"
+          color=""
+        >
+          <svg>
+            cart.svg
+          </svg>
+        </div>
+      </a>
+      <div
+        class="sc-fznKkj cnJFPp"
+        data-testid="LoggedInLinks-user-box"
+        id="user"
+      >
+        <span
+          class="sc-AxheI jnidFf"
+          color=""
+          display="inline-block"
+          overflow="hidden"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          username
+        </span>
+        <div
+          class="sc-AxmLO hawYJy"
+          color=""
+        >
+          <svg>
+            arrow.svg
+          </svg>
+        </div>
+        <div />
+      </div>
+    </nav>
+  </header>
+</DocumentFragment>
 `;
 
 exports[`<Navbar /> Should render <LoggedOutLinks /> if user is logged out 1`] = `
-<styled.header>
-  <Link
-    to="/products?p=1"
+<DocumentFragment>
+  <header
+    class="sc-AxjAm jfZaFQ"
   >
-    <header
-      className="header"
+    <a
+      data-testid="Navbar-header-link"
     >
-      <img
-        alt="E-Shopping"
-        className="logo"
-        src="logo.png"
-      />
-      <Heading
-        align="left"
-        className="heading"
-        lineHeight=""
-        mgBottom=""
-        mgTop=""
-        variant="h1"
+      <header
+        class="header"
       >
-        shopping
-      </Heading>
-    </header>
-  </Link>
-  <SearchForm />
-  <SignedOutLinks />
-</styled.header>
+        <img
+          alt="E-Shopping"
+          class="logo"
+          src="logo.png"
+        />
+        <h1
+          class="sc-AxirZ jcTfnv heading"
+        >
+          shopping
+        </h1>
+      </header>
+    </a>
+    <form
+      class="sc-AxiKw VbOrM"
+    >
+      <input
+        autocomplete="off"
+        class="name-input"
+        maxlength="150"
+        name="product"
+        spellcheck="false"
+        type="text"
+        value=""
+      />
+      <button
+        class="sc-AxhCb etZkID"
+        color="blue"
+        type="submit"
+      >
+        search
+      </button>
+    </form>
+    <div
+      class="sc-fzozJi iZHtsp"
+      direction="row"
+      spacing="3"
+      width="auto"
+      wrap="nowrap"
+    >
+      <button
+        class="sc-AxhCb hDFIJP"
+        color="blue"
+        type="button"
+      >
+        login
+      </button>
+      <button
+        class="sc-AxhCb etZkID"
+        color="blue"
+        type="button"
+      >
+        signup
+      </button>
+    </div>
+  </header>
+</DocumentFragment>
 `;

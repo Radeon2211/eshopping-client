@@ -7,7 +7,7 @@ import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
 import * as SC from './Modal.sc';
 import MyIcon from '../MyIcon';
-import LoadingOverlay from '../LoadingOverlay';
+import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
 import AboutWebsite from '../../ModalContents/AboutWebsite';
 import AddProduct from '../../ModalContents/AddProduct';

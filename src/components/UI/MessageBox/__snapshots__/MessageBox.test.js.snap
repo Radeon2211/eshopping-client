@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MessageBox /> Should NOT render anything 1`] = `<DocumentFragment />`;
+
+exports[`<MessageBox /> Should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxirZ BOWRp"
+  >
+    <div
+      class="sc-AxiKw GqsvX"
+      style="pointer-events: none; transform: none;"
+    >
+      <span>
+        test message
+      </span>
+      <div
+        class="sc-AxjAm hALeHd close-icon"
+        color="#fff"
+      >
+        <svg>
+          plus.svg
+        </svg>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

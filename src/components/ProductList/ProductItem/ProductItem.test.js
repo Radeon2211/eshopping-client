@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../../styled/theme';

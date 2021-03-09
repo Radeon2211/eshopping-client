@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './Button.sc';
-import LoadingOverlay from '../LoadingOverlay';
+import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 
 const Button = (props) => {
   const { clicked, isLoading, disabled, children } = props;
@@ -9,7 +9,7 @@ const Button = (props) => {
   const loadingOverlay = isLoading ? <LoadingOverlay loaderSize="small" disableText /> : null;
 
   return (
-    <SC.Button onClick={clicked} {...props} disabled={disabled || isLoading}>
+    <SC.Button {...props} onClick={clicked} disabled={disabled || isLoading}>
       {children}
       {loadingOverlay}
     </SC.Button>

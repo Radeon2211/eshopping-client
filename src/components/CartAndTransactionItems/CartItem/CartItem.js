@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import * as SC from './CartItem.sc';
-import ChooseQuantity from '../../UI/ChooseQuantity';
+import ChooseQuantity from '../../UI/ChooseQuantity/ChooseQuantity';
 import { updateCartActions } from '../../../shared/constants';
 import { formatPrice } from '../../../shared/utility';
 import MyIcon from '../../UI/MyIcon';

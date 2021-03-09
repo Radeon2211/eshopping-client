@@ -150,10 +150,10 @@ describe('<PurchaseSection />', () => {
     });
   });
 
-  describe('Check behaviour of <ChooseQuantity /> (min - 0, max - 5)', () => {
+  describe('Check behaviour of <ChooseQuantity /> (min - 1, max - 5)', () => {
     it('Should change value to 5', () => {
       setUp();
-      const input = screen.getByRole('spinbutton');
+      const input = screen.getByTestId('NumberInput-quantity');
       expect(input).toHaveAttribute('value', '1');
       fireEvent.input(input, { target: { value: 5 } });
       expect(input).toHaveAttribute('value', '5');
@@ -161,39 +161,39 @@ describe('<PurchaseSection />', () => {
 
     it('Should NOT change value to -1 and stay at 1', () => {
       setUp();
-      const input = screen.getByRole('spinbutton');
+      const input = screen.getByTestId('NumberInput-quantity');
       fireEvent.input(input, { target: { value: '-1' } });
       expect(input).toHaveAttribute('value', '1');
     });
 
     it('Should NOT change value to 6 (more than product quantity) and stay at 1', () => {
       setUp();
-      const input = screen.getByRole('spinbutton');
+      const input = screen.getByTestId('NumberInput-quantity');
       fireEvent.input(input, { target: { value: 6 } });
       expect(input).toHaveAttribute('value', '1');
     });
 
     it('Should increment value to 2 after clicking plus button and decrement to 1 after clicking minus button', () => {
       setUp();
-      const input = screen.getByRole('spinbutton');
-      fireEvent.click(screen.getByTestId('ChooseQuantity-plus'));
+      const input = screen.getByTestId('NumberInput-quantity');
+      fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
       expect(input).toHaveAttribute('value', '2');
-      fireEvent.click(screen.getByTestId('ChooseQuantity-minus'));
+      fireEvent.click(screen.getByTestId('ChooseQuantity-minus-btn'));
       expect(input).toHaveAttribute('value', '1');
     });
 
     it('Should NOT decrement value to 0 after clicking minus button', () => {
       setUp();
-      const input = screen.getByRole('spinbutton');
-      fireEvent.click(screen.getByTestId('ChooseQuantity-minus'));
+      const input = screen.getByTestId('NumberInput-quantity');
+      fireEvent.click(screen.getByTestId('ChooseQuantity-minus-btn'));
       expect(input).toHaveAttribute('value', '1');
     });
 
     it('Should increment value to 5 instead of 6 after clicking plus button five times', () => {
       setUp();
-      const input = screen.getByRole('spinbutton');
+      const input = screen.getByTestId('NumberInput-quantity');
       for (let i = 0; i < 5; i += 1) {
-        fireEvent.click(screen.getByTestId('ChooseQuantity-plus'));
+        fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
       }
       expect(input).toHaveAttribute('value', '5');
     });

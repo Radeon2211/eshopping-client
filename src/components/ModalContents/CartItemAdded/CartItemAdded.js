@@ -6,7 +6,7 @@ import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 import PlainText from '../../UI/PlainText';
-import Loader from '../../UI/Loader';
+import Loader from '../../UI/Loader/Loader';
 import { formatPrice } from '../../../shared/utility';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
@@ -20,7 +20,7 @@ const CartItemAdded = () => {
     dispatch,
   ]);
 
-  const addedProductInCart = cart.find((item) => item.product._id === productDetails?._id);
+  const addedProductInCart = cart.find((item) => item?.product?._id === productDetails?._id);
 
   let content = <Loader />;
   if (!isCartLoading && addedProductInCart) {
@@ -36,16 +36,16 @@ const CartItemAdded = () => {
         <Heading variant="h3" align="center" mgBottom="3">
           Product added to cart
         </Heading>
-        <FlexWrapper spacing="3" data-test="product-preview">
+        <FlexWrapper spacing="3">
           <ProductThumbnail photo={photo} alt={name} productId={productId} width="8" height="8" />
           <FlexWrapper direction="column" align="start" spacing="1">
-            <PlainText size="5" data-test="price">
+            <PlainText size="5">
               {formatPrice(price * quantity)}
               <PlainText size="2">
                 {` (total in the cart ${quantity} x ${formattedPrice})`}
               </PlainText>
             </PlainText>
-            <PlainText size="3" data-test="name">
+            <PlainText size="3">
               <PlainText size="2">{`${quantity} x `}</PlainText>
               {name}
             </PlainText>
@@ -55,7 +55,7 @@ const CartItemAdded = () => {
           <Button color="blue" clicked={() => onSetModal(false)}>
             Continue shopping
           </Button>
-          <Link to="/cart">
+          <Link to="/cart" data-testid="CartItemAdded-cart-link">
             <Button color="blue" filled clicked={() => onSetModal(false)}>
               Go to cart
             </Button>

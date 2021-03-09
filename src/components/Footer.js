@@ -20,7 +20,7 @@ SC.Wrapper = styled.footer`
     display: flex;
   }
 
-  & .terms-of-use {
+  & .about-website {
     color: ${({ theme }) => theme.colors.light4};
     cursor: pointer;
     font-size: ${({ theme }) => theme.fontSizes.level1};
@@ -63,7 +63,7 @@ const Footer = () => {
         </a>
       </FlexWrapper>
       <span
-        className="terms-of-use"
+        className="about-website"
         onClick={() => onSetModal(true, modalTypes.ABOUT_WEBSITE)}
         role="button"
         tabIndex={0}

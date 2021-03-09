@@ -14,12 +14,20 @@ const ProgressBar = (props) => {
       <React.Fragment key={i}>
         <div className={`step-box${currentStep >= i ? ' active' : ''}`}>
           <PlainText size="3" lineHeight="1">
-            <SC.StepBoxContent visible={currentStep > i} data-test="icon">
+            <SC.StepBoxContent
+              visible={currentStep > i}
+              data-testid={`ProgressBar-step-box-checkmark-${
+                currentStep > i ? 'visible' : 'hidden'
+              }`}
+            >
               <MyIcon size="small" color="#000">
                 <CheckMarkIcon />
               </MyIcon>
             </SC.StepBoxContent>
-            <SC.StepBoxContent visible={currentStep <= i} data-test="number">
+            <SC.StepBoxContent
+              visible={currentStep <= i}
+              data-testid={`ProgressBar-step-box-number-${currentStep <= i ? 'visible' : 'hidden'}`}
+            >
               {i}
             </SC.StepBoxContent>
           </PlainText>

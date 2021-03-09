@@ -47,7 +47,13 @@ const Dropdown = (props) => {
     >
       <AnimatePresence exitBeforeEnter>
         {isVisible && (
-          <SC.Wrapper variants={dropdownVariants} initial="hidden" animate="visible" exit="hidden">
+          <SC.Wrapper
+            variants={dropdownVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            data-testid="Dropdown"
+          >
             <ul className="list">
               <li className="item">
                 <div
@@ -64,7 +70,11 @@ const Dropdown = (props) => {
                 </div>
               </li>
               <li className="item">
-                <Link to="/my-account/data" className="link">
+                <Link
+                  to="/my-account/data"
+                  className="link"
+                  data-testid="Dropdown-my-account-data-link"
+                >
                   <MyIcon size="small">
                     <MyAccountIcon />
                   </MyIcon>
@@ -72,7 +82,11 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link to="/my-account/products" className="link">
+                <Link
+                  to="/my-account/products?p=1"
+                  className="link"
+                  data-testid="Dropdown-my-account-products-link"
+                >
                   <MyIcon size="small">
                     <MyOffersIcon />
                   </MyIcon>
@@ -80,7 +94,11 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link to="/my-account/sell-history" className="link">
+                <Link
+                  to="/my-account/sell-history?p=1"
+                  className="link"
+                  data-testid="Dropdown-my-account-sell-history-link"
+                >
                   <MyIcon size="small">
                     <SellHistoryIcon />
                   </MyIcon>
@@ -88,7 +106,11 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link to="/my-account/placed-orders" className="link">
+                <Link
+                  to="/my-account/placed-orders?p=1"
+                  className="link"
+                  data-testid="Dropdown-my-account-placed-orders-link"
+                >
                   <MyIcon size="small">
                     <PlacedOrdersIcon />
                   </MyIcon>
@@ -96,7 +118,7 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link to="/logout" className="link">
+                <Link to="/logout" className="link" data-testid="Dropdown-logout-link">
                   <MyIcon size="small">
                     <LogOutIcon />
                   </MyIcon>

@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
-import Loader from '../../components/UI/Loader';
+import Loader from '../../components/UI/Loader/Loader';
 import PlainText from '../../components/UI/PlainText';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { pages } from '../../shared/constants';

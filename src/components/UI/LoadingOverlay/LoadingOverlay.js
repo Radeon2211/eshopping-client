@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Loader from './Loader';
-import PlainText from './PlainText';
+import Loader from '../Loader/Loader';
+import PlainText from '../PlainText';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -35,7 +35,7 @@ const LoadingOverlay = (props) => {
   let info = false;
   if (isInfoVisible && !disableText) {
     info = (
-      <PlainText size="2" mgTop="2">
+      <PlainText size="2" mgTop="2" data-testid="LoadingOverlay-info">
         Just a second
       </PlainText>
     );

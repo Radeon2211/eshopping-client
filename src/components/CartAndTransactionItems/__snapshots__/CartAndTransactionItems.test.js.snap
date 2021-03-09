@@ -74,13 +74,14 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           >
             <button
               class="button minus"
-              data-testid="ChooseQuantity-minus"
+              data-testid="ChooseQuantity-minus-btn"
               disabled=""
               type="button"
             >
               <div
                 class="sc-AxmLO gDJjzg"
                 color="#DADFE1"
+                data-testid="ChooseQuantity-minus-icon"
               >
                 <svg>
                   minus.svg
@@ -96,12 +97,13 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
             />
             <button
               class="button plus"
-              data-testid="ChooseQuantity-plus"
+              data-testid="ChooseQuantity-plus-btn"
               type="button"
             >
               <div
                 class="sc-AxmLO ctLnPk"
                 color=""
+                data-testid="ChooseQuantity-plus-icon"
               >
                 <svg>
                   plus.svg

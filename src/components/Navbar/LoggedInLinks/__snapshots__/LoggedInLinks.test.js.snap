@@ -1,98 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LoggedInLinks /> Check how renders Should render version for user with status active 1`] = `
-<styled.nav>
-  <CartLink />
-  <styled.div
-    id="user"
-    onClick={[Function]}
+<DocumentFragment>
+  <nav
+    class="sc-AxgMl hNnkGn"
   >
-    <PlainText
-      alignSelf=""
-      color=""
-      data-test="username"
-      display="inline-block"
-      extraMgTop="0rem"
-      fStyle="normal"
-      lineHeight="level3"
-      maxWidth="15rem"
-      mgBottom=""
-      mgLeft=""
-      mgRight="1"
-      mgTop=""
-      minusMgTop={false}
-      overflow="hidden"
-      size="3"
-      spacing="0px"
-      textAlign="right"
-      textOverflow="ellipsis"
-      transform=""
-      weight="normal"
-      whiteSpace="nowrap"
-      wordBreak=""
+    <a
+      class="sc-AxiKw lkoKWO"
+      data-testid="CartLink"
     >
-      username
-    </PlainText>
-    <MyIcon
-      color=""
-      disabled={false}
-      rotation={90}
-      size="small"
-    >
-      <ForwardRef(SvgArrow) />
-    </MyIcon>
-    <Dropdown
-      closed={[Function]}
-      isVisible={false}
-    />
-  </styled.div>
-</styled.nav>
-`;
-
-exports[`<LoggedInLinks /> Check how renders Should render version for user with status pending 1`] = `
-<styled.nav>
-  <Link
-    data-test="my-account-link"
-    to="/my-account/data"
-  >
-    <styled.div
+      <div
+        class="sc-AxjAm caUblA"
+        color=""
+      >
+        <svg>
+          cart.svg
+        </svg>
+      </div>
+    </a>
+    <div
+      class="sc-AxheI tBqCM"
+      data-testid="LoggedInLinks-user-box"
       id="user"
     >
-      <PlainText
-        alignSelf=""
+      <span
+        class="sc-AxhUy cIjsLD"
         color=""
-        data-test="username"
         display="inline-block"
-        extraMgTop="0rem"
-        fStyle="normal"
-        lineHeight="level3"
-        maxWidth="15rem"
-        mgBottom=""
-        mgLeft=""
-        mgRight="1"
-        mgTop=""
-        minusMgTop={false}
         overflow="hidden"
         size="3"
         spacing="0px"
-        textAlign="right"
-        textOverflow="ellipsis"
         transform=""
-        weight="normal"
-        whiteSpace="nowrap"
-        wordBreak=""
       >
         username
-      </PlainText>
-      <MyIcon
+      </span>
+      <div
+        class="sc-AxjAm hoAOPi"
         color=""
-        disabled={false}
-        rotation={0}
-        size="small"
       >
-        <ForwardRef(SvgSettings) />
-      </MyIcon>
-    </styled.div>
-  </Link>
-</styled.nav>
+        <svg>
+          arrow.svg
+        </svg>
+      </div>
+      <div />
+    </div>
+  </nav>
+</DocumentFragment>
+`;
+
+exports[`<LoggedInLinks /> Check how renders Should render version for user with status pending 1`] = `
+<DocumentFragment>
+  <nav
+    class="sc-AxgMl hNnkGn"
+  >
+    <a
+      data-testid="LoggedInLinks-my-account-link"
+    >
+      <div
+        class="sc-AxheI tBqCM"
+        id="user"
+      >
+        <span
+          class="sc-AxhUy cIjsLD"
+          color=""
+          display="inline-block"
+          overflow="hidden"
+          size="3"
+          spacing="0px"
+          transform=""
+        >
+          username
+        </span>
+        <div
+          class="sc-AxjAm gdfHmM"
+          color=""
+        >
+          <svg>
+            settings.svg
+          </svg>
+        </div>
+      </div>
+    </a>
+  </nav>
+</DocumentFragment>
 `;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import NumberInput from './NumberInput';

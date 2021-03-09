@@ -129,12 +129,13 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
               >
                 <button
                   class="button minus"
-                  data-testid="ChooseQuantity-minus"
+                  data-testid="ChooseQuantity-minus-btn"
                   type="button"
                 >
                   <div
                     class="sc-fzqBZW hlkCkt"
                     color=""
+                    data-testid="ChooseQuantity-minus-icon"
                   >
                     <svg>
                       minus.svg
@@ -150,13 +151,14 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
                 />
                 <button
                   class="button plus"
-                  data-testid="ChooseQuantity-plus"
+                  data-testid="ChooseQuantity-plus-btn"
                   disabled=""
                   type="button"
                 >
                   <div
                     class="sc-fzqBZW gMPwLB"
                     color="#DADFE1"
+                    data-testid="ChooseQuantity-plus-icon"
                   >
                     <svg>
                       plus.svg

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { modalTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 import * as SC from './ProductDetails.sc';
-import Loader from '../../components/UI/Loader';
+import Loader from '../../components/UI/Loader/Loader';
 import PlainPanel from '../../components/UI/Panels/PlainPanel';
 import PlainText from '../../components/UI/PlainText';
 import Heading from '../../components/UI/Heading/Heading';

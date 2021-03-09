@@ -19,13 +19,8 @@ const Panel = (props) => {
   return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
 };
 
-Panel.defaultProps = {
-  'data-testid': undefined,
-};
-
 Panel.propTypes = {
   children: PropTypes.node.isRequired,
-  'data-testid': PropTypes.string,
 };
 
 export default Panel;

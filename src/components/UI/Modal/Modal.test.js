@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { render, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -59,6 +58,7 @@ describe('<Modal />', () => {
     const store = mockStore({
       ui: { isModalOpen: false },
     });
+
     const { asFragment } = render(
       <Provider store={store}>
         <Router history={defaultHistory}>

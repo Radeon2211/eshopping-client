@@ -11,7 +11,7 @@ import ServerConnectionError from './components/UI/ServerConnectionError';
 import Modal from './components/UI/Modal/Modal';
 import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
-import Loader from './components/UI/Loader';
+import Loader from './components/UI/Loader/Loader';
 import Main from './components/UI/Main';
 import Footer from './components/Footer';
 import Products from './containers/Products/Products';

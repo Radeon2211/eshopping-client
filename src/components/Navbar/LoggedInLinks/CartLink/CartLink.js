@@ -27,11 +27,11 @@ const CartLink = () => {
 
   let quantity = null;
   if (cart && cart?.length > 0) {
-    quantity = <SC.Quantity>{cart.length}</SC.Quantity>;
+    quantity = <SC.Quantity data-testid="CartLink-quantity">{cart.length}</SC.Quantity>;
   }
 
   return (
-    <SC.Link to="/cart">
+    <SC.Link to="/cart" data-testid="CartLink">
       {quantity}
       <MyIcon size="big">
         <CartIcon />

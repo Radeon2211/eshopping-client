@@ -75,7 +75,7 @@ const MessageBox = () => {
             animate="visible"
             exit="hidden"
           >
-            <span data-testid="MessageBox-message-text">{message}</span>
+            <span>{message}</span>
             <MyIcon
               size="small"
               color="#fff"

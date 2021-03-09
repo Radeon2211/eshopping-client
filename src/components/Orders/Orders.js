@@ -9,7 +9,7 @@ import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
 import OrderList from './OrderList/OrderList';
 import SortOrders from './SortOrders/SortOrders';
 import Heading from '../UI/Heading/Heading';
-import Loader from '../UI/Loader';
+import Loader from '../UI/Loader/Loader';
 import { listItemTypes, orderTypes, ORDERS_PER_PAGE } from '../../shared/constants';
 import { TopPagination } from '../../styled/components';
 

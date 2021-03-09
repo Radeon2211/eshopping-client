@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartItemAdded /> Check how renders Should render everything correctly if isCartLoading is false 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-AxgMl bUbdLj"
+  >
+    Product added to cart
+  </h3>
+  <div
+    class="sc-AxheI cenWgt"
+    direction="row"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <div
+      class="sc-AxheI kPYctM sc-Axmtr caqtcL"
+      data-testid="ProductThumbnail"
+      direction="row"
+      height="8"
+      spacing=""
+      width="8"
+      wrap="nowrap"
+    >
+      <img
+        alt="product1"
+        data-testid="ProductThumbnail-img"
+        src="http://192.168.1.109:4000/products/p1/photo"
+      />
+    </div>
+    <div
+      class="sc-AxheI eljZjn"
+      direction="column"
+      spacing="1"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-AxhCb iMqYaz"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="5"
+        spacing="0px"
+        transform=""
+      >
+        $1,501.80
+        <span
+          class="sc-AxhCb bbptha"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="2"
+          spacing="0px"
+          transform=""
+        >
+           (total in the cart 3 x $500.60)
+        </span>
+      </span>
+      <span
+        class="sc-AxhCb hHAZtX"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="3"
+        spacing="0px"
+        transform=""
+      >
+        <span
+          class="sc-AxhCb bbptha"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="2"
+          spacing="0px"
+          transform=""
+        >
+          3 x 
+        </span>
+        product1
+      </span>
+    </div>
+  </div>
+  <div
+    class="sc-AxheI cxuVhg"
+    direction="row"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <button
+      class="sc-AxjAm LxSyk"
+      color="blue"
+      type="button"
+    >
+      Continue shopping
+    </button>
+    <a
+      data-testid="CartItemAdded-cart-link"
+    >
+      <button
+        class="sc-AxjAm bXCXxU"
+        color="blue"
+        type="button"
+      >
+        Go to cart
+      </button>
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if given product is not in cart 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxiKw flMCzO"
+    data-testid="Loader"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if isCartLoading is true 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxiKw flMCzO"
+    data-testid="Loader"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</DocumentFragment>
+`;

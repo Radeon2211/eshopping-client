@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartLink /> Should NOT render quantity if cart is null 1`] = `
+<DocumentFragment>
+  <a
+    class="sc-AxirZ gpWHsK"
+    data-testid="CartLink"
+  >
+    <div
+      class="sc-AxjAm caUblA"
+      color=""
+    >
+      <svg>
+        cart.svg
+      </svg>
+    </div>
+  </a>
+</DocumentFragment>
+`;
+
+exports[`<CartLink /> Should NOT render quantity if cart length is 0 1`] = `
+<DocumentFragment>
+  <a
+    class="sc-AxirZ gpWHsK"
+    data-testid="CartLink"
+  >
+    <div
+      class="sc-AxjAm caUblA"
+      color=""
+    >
+      <svg>
+        cart.svg
+      </svg>
+    </div>
+  </a>
+</DocumentFragment>
+`;
+
+exports[`<CartLink /> Should render everything correctly with quantity 1 1`] = `
+<DocumentFragment>
+  <a
+    class="sc-AxirZ gpWHsK"
+    data-testid="CartLink"
+  >
+    <div
+      class="sc-AxiKw eeGtf"
+      data-testid="CartLink-quantity"
+    >
+      1
+    </div>
+    <div
+      class="sc-AxjAm caUblA"
+      color=""
+    >
+      <svg>
+        cart.svg
+      </svg>
+    </div>
+  </a>
+</DocumentFragment>
+`;

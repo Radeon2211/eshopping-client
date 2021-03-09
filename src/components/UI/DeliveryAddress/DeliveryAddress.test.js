@@ -1,29 +1,33 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../../styled/theme';
 import DeliveryAddress from './DeliveryAddress';
 import { checkProps, defaultDeliveryAddress } from '../../../shared/testUtility';
 
 const setUp = (data) => {
-  return shallow(<DeliveryAddress data={data} />);
+  return render(
+    <ThemeProvider theme={theme}>
+      <DeliveryAddress data={data} />
+    </ThemeProvider>,
+  );
 };
+
+afterEach(cleanup);
 
 describe('<DeliveryAddress />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
-      const expectedProps = {
-        data: defaultDeliveryAddress,
-      };
-      expect(checkProps(DeliveryAddress, expectedProps)).toBeUndefined();
+      expect(checkProps(DeliveryAddress, { data: defaultDeliveryAddress })).toBeUndefined();
     });
 
     it('Should throw a warning if data is uncomplete', () => {
-      const expectedProps = {
-        data: {
+      expect(
+        checkProps(DeliveryAddress, {
           ...defaultDeliveryAddress,
           phone: undefined,
-        },
-      };
-      expect(checkProps(DeliveryAddress, expectedProps)).not.toBe(null);
+        }),
+      ).not.toBe(null);
     });
 
     it('Should throw a warning if data is empty', () => {
@@ -32,7 +36,7 @@ describe('<DeliveryAddress />', () => {
   });
 
   it('Should render five <PlainText /> with correct values', () => {
-    const wrapper = setUp(defaultDeliveryAddress);
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = setUp(defaultDeliveryAddress);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
@@ -66,35 +66,23 @@ describe('<NumberPagination />', () => {
     it('Should only left arrow has hide-arrow class', () => {
       const history = createHistoryPageNumber(1);
       setUp(defaultProps, history);
-      expect(
-        screen.getByTestId('NumberPagination-left-arrow').className.includes('hide-arrow'),
-      ).toEqual(true);
-      expect(
-        screen.getByTestId('NumberPagination-right-arrow').className.includes('hide-arrow'),
-      ).toEqual(false);
+      expect(screen.getByTestId('NumberPagination-left-arrow')).toHaveClass('hide-arrow');
+      expect(screen.getByTestId('NumberPagination-right-arrow')).not.toHaveClass('hide-arrow');
     });
 
     it('Should only right arrow has hide-arrow class', () => {
       const history = createHistoryPageNumber(3);
       setUp(defaultProps, history);
-      expect(
-        screen.getByTestId('NumberPagination-left-arrow').className.includes('hide-arrow'),
-      ).toEqual(false);
-      expect(
-        screen.getByTestId('NumberPagination-right-arrow').className.includes('hide-arrow'),
-      ).toEqual(true);
+      expect(screen.getByTestId('NumberPagination-left-arrow')).not.toHaveClass('hide-arrow');
+      expect(screen.getByTestId('NumberPagination-right-arrow')).toHaveClass('hide-arrow');
     });
 
     it('Should both arrows have hide-arrow class', () => {
       const history = createHistoryPageNumber(1);
       const props = createPaginationProps(2);
       setUp(props, history);
-      expect(
-        screen.getByTestId('NumberPagination-left-arrow').className.includes('hide-arrow'),
-      ).toEqual(true);
-      expect(
-        screen.getByTestId('NumberPagination-right-arrow').className.includes('hide-arrow'),
-      ).toEqual(true);
+      expect(screen.getByTestId('NumberPagination-left-arrow')).toHaveClass('hide-arrow');
+      expect(screen.getByTestId('NumberPagination-right-arrow')).toHaveClass('hide-arrow');
     });
   });
 

@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dropdown /> Check how renders Should NOT render anything 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`<Dropdown /> Check how renders Should render everything correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="sc-AxjAm kYQdbK"
+      data-testid="Dropdown"
+      style="opacity: 0; pointer-events: none; transform: none;"
+    >
+      <ul
+        class="list"
+      >
+        <li
+          class="item"
+        >
+          <div
+            class="link"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="sc-AxirZ csXoMP"
+              color=""
+            >
+              <svg>
+                add-product.svg
+              </svg>
+            </div>
+            <span>
+              Add product
+            </span>
+          </div>
+        </li>
+        <li
+          class="item"
+        >
+          <a
+            class="link"
+            data-testid="Dropdown-my-account-data-link"
+          >
+            <div
+              class="sc-AxirZ csXoMP"
+              color=""
+            >
+              <svg>
+                my-account.svg
+              </svg>
+            </div>
+            <span>
+              My account
+            </span>
+          </a>
+        </li>
+        <li
+          class="item"
+        >
+          <a
+            class="link"
+            data-testid="Dropdown-my-account-products-link"
+          >
+            <div
+              class="sc-AxirZ csXoMP"
+              color=""
+            >
+              <svg>
+                my-offers.svg
+              </svg>
+            </div>
+            <span>
+              My offers
+            </span>
+          </a>
+        </li>
+        <li
+          class="item"
+        >
+          <a
+            class="link"
+            data-testid="Dropdown-my-account-sell-history-link"
+          >
+            <div
+              class="sc-AxirZ csXoMP"
+              color=""
+            >
+              <svg>
+                sell-history.svg
+              </svg>
+            </div>
+            <span>
+              My sell history
+            </span>
+          </a>
+        </li>
+        <li
+          class="item"
+        >
+          <a
+            class="link"
+            data-testid="Dropdown-my-account-placed-orders-link"
+          >
+            <div
+              class="sc-AxirZ csXoMP"
+              color=""
+            >
+              <svg>
+                placed-orders.svg
+              </svg>
+            </div>
+            <span>
+              Placed orders
+            </span>
+          </a>
+        </li>
+        <li
+          class="item"
+        >
+          <a
+            class="link"
+            data-testid="Dropdown-logout-link"
+          >
+            <div
+              class="sc-AxirZ csXoMP"
+              color=""
+            >
+              <svg>
+                log-out.svg
+              </svg>
+            </div>
+            <span>
+              Log out
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</DocumentFragment>
+`;

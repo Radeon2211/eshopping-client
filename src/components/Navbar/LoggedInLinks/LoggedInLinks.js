@@ -55,7 +55,6 @@ const LoggedInLinks = (props) => {
         textOverflow="ellipsis"
         whiteSpace="nowrap"
         textAlign="right"
-        data-test="username"
       >
         {name}
       </PlainText>
@@ -66,7 +65,7 @@ const LoggedInLinks = (props) => {
     status === 'active' ? (
       <SC.Wrapper>
         <CartLink />
-        <SC.User id="user" onClick={userClickHandle}>
+        <SC.User id="user" onClick={userClickHandle} data-testid="LoggedInLinks-user-box">
           {showUsername(username)}
           <MyIcon size="small" rotation={dropdownIsVisible ? -90 : 90}>
             <ArrowIcon />
@@ -76,7 +75,7 @@ const LoggedInLinks = (props) => {
       </SC.Wrapper>
     ) : (
       <SC.Wrapper>
-        <Link to="/my-account/data" data-test="my-account-link">
+        <Link to="/my-account/data" data-testid="LoggedInLinks-my-account-link">
           <SC.User id="user">
             {showUsername(username)}
             <MyIcon size="small">

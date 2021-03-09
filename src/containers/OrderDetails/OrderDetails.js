@@ -5,7 +5,7 @@ import * as actions from '../../store/actions/indexActions';
 import * as SC from './OrderDetails.sc';
 import PlainPanel from '../../components/UI/Panels/PlainPanel';
 import Heading from '../../components/UI/Heading/Heading';
-import Loader from '../../components/UI/Loader';
+import Loader from '../../components/UI/Loader/Loader';
 import PlainText from '../../components/UI/PlainText';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import TransactionAndOrderProdItem from '../../components/TransactionAndOrderProdItem/TransactionAndOrderProdItem';
