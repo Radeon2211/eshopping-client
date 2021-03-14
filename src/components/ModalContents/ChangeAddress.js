@@ -7,7 +7,7 @@ import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import SideBySide from '../UI/SideBySide';
 import { inputKinds, userRules, listOfCountries } from '../../shared/constants';
-import { getChangedValues } from '../../shared/utility';
+import { getChangedValues } from '../../shared/utility/utility';
 
 const validationSchema = Yup.object({
   street: userRules.street,

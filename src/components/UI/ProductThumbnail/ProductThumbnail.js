@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FlexWrapper from '../FlexWrapper';
-import { validateURL } from '../../../shared/utility';
+import { validateURL } from '../../../shared/utility/utility';
 import noPhoto from '../../../images/no-photo.png';
 
 const SC = {};

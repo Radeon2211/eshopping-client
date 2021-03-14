@@ -12,7 +12,7 @@ import ToPayInfo from '../../components/UI/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import Button from '../../components/UI/Button/Button';
 import { itemTypes, modalTypes } from '../../shared/constants';
-import { roundOverallPrice } from '../../shared/utility';
+import { roundOverallPrice } from '../../shared/utility/utility';
 
 const Transaction = () => {
   const history = useHistory();

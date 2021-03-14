@@ -13,7 +13,7 @@ export {
   removeAdmin,
   sendAccountVerificationLink,
   resetPassword,
-} from './authActions';
+} from './authActions/authActions';
 
 export {
   fetchCart,

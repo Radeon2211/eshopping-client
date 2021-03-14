@@ -8,14 +8,14 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Products from './Products';
 import theme from '../../styled/theme';
-import { defaultUserProfile, createProductListItem } from '../../shared/testUtility';
+import { defaultUserProfile, createProductItem } from '../../shared/testUtility';
 import { PRODUCTS_PER_PAGE } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
 const defaultProducts = [
-  createProductListItem('p1', 'user1', 4, 10.6, 'product1'),
-  createProductListItem('p2', 'user1', 6, 299.98, 'product2'),
+  createProductItem('p1', 'user1', 4, 10.6, 'product1'),
+  createProductItem('p2', 'user1', 6, 299.98, 'product2'),
 ];
 
 const setUp = (search = '?p=1') => {

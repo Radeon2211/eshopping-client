@@ -110,7 +110,7 @@ const Step3 = (props) => {
             activate your account within 1 hour, account will be deleted permanently
           </PlainText>
           <SC.Buttons buttonsNumber={2}>
-            <Button onClick={goToPrevStep}>Previous</Button>
+            <Button clicked={goToPrevStep}>Previous</Button>
             <Button type="submit" filled disabled={btnDisabled || isFormLoading}>
               Finish
             </Button>

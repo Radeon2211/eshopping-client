@@ -26,7 +26,7 @@ const OtherUser = (props) => {
   const onFetchOtherUser = useCallback((username) => dispatch(actions.fetchOtherUser(username)), [
     dispatch,
   ]);
-  const onSetOtherUser = useCallback(() => dispatch(actions.setOtherUser()), [dispatch]);
+  const onSetOtherUser = useCallback((user) => dispatch(actions.setOtherUser(user)), [dispatch]);
   const onFetchProducts = useCallback(
     (queryParams, pageType, username) =>
       dispatch(actions.fetchProducts(queryParams, pageType, username)),

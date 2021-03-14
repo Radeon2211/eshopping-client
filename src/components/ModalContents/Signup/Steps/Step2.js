@@ -145,8 +145,8 @@ const Step2 = (props) => {
             with)
           </PlainText>
           <SC.Buttons buttonsNumber={2}>
-            <Button onClick={goToPrevStep}>Previous</Button>
-            <Button filled onClick={goToNextStep} disabled={btnDisabled}>
+            <Button clicked={goToPrevStep}>Previous</Button>
+            <Button filled clicked={goToNextStep} disabled={btnDisabled}>
               Next
             </Button>
           </SC.Buttons>

@@ -11,7 +11,7 @@ import InputPagination from '../Pagination/InputPagination/InputPagination';
 import ProductsPerPageController from '../Pagination/ProductsPerPageController';
 import { TopPagination } from '../../styled/components';
 import { listItemTypes } from '../../shared/constants';
-import { getParamsWithoutPollution } from '../../shared/utility';
+import { getParamsWithoutPollution } from '../../shared/utility/utility';
 
 const ProductsAndFilters = (props) => {
   const { page } = props;

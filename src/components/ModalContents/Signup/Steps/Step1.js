@@ -116,7 +116,7 @@ const Step1 = (props) => {
             isTouched={touched.password}
           />
           <SC.Buttons buttonsNumber={1}>
-            <Button filled onClick={goToNextStep} disabled={btnDisabled}>
+            <Button filled clicked={goToNextStep} disabled={btnDisabled}>
               Next
             </Button>
           </SC.Buttons>

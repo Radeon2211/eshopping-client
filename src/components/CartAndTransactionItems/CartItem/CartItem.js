@@ -6,7 +6,7 @@ import * as actions from '../../../store/actions/indexActions';
 import * as SC from './CartItem.sc';
 import ChooseQuantity from '../../UI/ChooseQuantity/ChooseQuantity';
 import { updateCartActions } from '../../../shared/constants';
-import { formatPrice } from '../../../shared/utility';
+import { formatPrice } from '../../../shared/utility/utility';
 import MyIcon from '../../UI/MyIcon';
 import PlainText from '../../UI/PlainText';
 import { ReactComponent as TrashIcon } from '../../../images/icons/trash.svg';

@@ -5,7 +5,7 @@ import Button from '../../UI/Button/Button';
 import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as SearchIcon } from '../../../images/icons/search.svg';
 import { DEFAULT_PATH } from '../../../shared/constants';
-import { getParamsWithoutPollution } from '../../../shared/utility';
+import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 import useWindowSize from '../../../shared/useWindowSize';
 
 const SearchForm = () => {

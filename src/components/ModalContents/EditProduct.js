@@ -8,7 +8,7 @@ import Input from '../UI/Input/Input';
 import UploadPhoto from '../UploadPhoto/UploadPhoto';
 import SideBySide from '../UI/SideBySide';
 import { inputKinds, productRules } from '../../shared/constants';
-import { getChangedValues } from '../../shared/utility';
+import { getChangedValues } from '../../shared/utility/utility';
 
 const validationSchema = Yup.object(productRules);
 

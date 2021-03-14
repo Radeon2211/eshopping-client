@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 import * as actionTypes from './actionTypes';
-import { getParamsWithoutPollution } from '../../shared/utility';
+import { getParamsWithoutPollution } from '../../shared/utility/utility';
 
 export const formStart = () => ({
   type: actionTypes.FORM_START,
@@ -65,7 +65,7 @@ export const writeChangeCartInfo = (condition) => {
     if (condition) {
       dispatch(
         setAndDeleteMessage(
-          'Some product in cart does not exist any more or their quantity has been changed',
+          'Some product in cart does not exist any more or its quantity has been changed',
         ),
       );
     }

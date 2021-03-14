@@ -1,6 +1,32 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from '../store/reducers/rootReducer';
+
+export const defaultDeliveryAddress = {
+  firstName: 'firstName',
+  lastName: 'lastName',
+  street: 'street',
+  zipCode: 'zipCode',
+  city: 'city',
+  country: 'country',
+  phone: 'phone',
+};
+
+export const defaultUserProfile = {
+  ...defaultDeliveryAddress,
+  _id: 'userId',
+  username: 'username',
+  email: 'email@domain.com',
+  status: 'active',
+  contacts: {
+    email: true,
+    phone: true,
+  },
+  createdAt: '2021-02-10T19:10:38.872Z',
+};
 
 export const checkProps = (component, expectedProps) => {
   // eslint-disable-next-line react/forbid-foreign-prop-types
@@ -20,48 +46,7 @@ export const createPaginationProps = (itemQuantity = 5) => ({
   quantityPerPage: 2,
 });
 
-export const createCartItem = (
-  sellerUsername = 'username',
-  quantity = 1,
-  productId,
-  price = 2,
-  name = 'product name',
-  productQuantity = 2,
-  photo = false,
-) => ({
-  _id: uuidv4(),
-  product: {
-    _id: productId || uuidv4(),
-    name,
-    photo,
-    price,
-    quantity: productQuantity,
-    seller: {
-      username: sellerUsername,
-    },
-  },
-  quantity,
-});
-
-export const createTransactionAndOrderProdItem = (
-  productId,
-  sellerUsername = 'username',
-  quantity = 1,
-  price = 2,
-  name = 'product name',
-  photo = false,
-) => ({
-  _id: productId || uuidv4(),
-  name,
-  photo,
-  price,
-  quantity,
-  seller: {
-    username: sellerUsername,
-  },
-});
-
-export const createProductListItem = (
+export const createProductItem = (
   productId,
   sellerUsername = 'username',
   quantity = 1,
@@ -82,6 +67,52 @@ export const createProductListItem = (
   description,
   condition,
   photo,
+  seller: {
+    username: sellerUsername,
+  },
+  __v: 0,
+  createdAt: '2021-02-10T19:10:38.872Z',
+  updatedAt: '2021-02-10T19:10:38.872Z',
+});
+
+export const createCartItem = (
+  sellerUsername = 'username',
+  quantity = 1,
+  productId,
+  price = 2,
+  name = 'product name',
+  productQuantity = 2,
+  photo = false,
+) => {
+  const product = createProductItem(
+    productId || uuidv4(),
+    sellerUsername,
+    productQuantity,
+    price,
+    name,
+    photo,
+  );
+
+  return {
+    _id: uuidv4(),
+    quantity,
+    product,
+  };
+};
+
+export const createTransactionAndOrderProdItem = (
+  productId,
+  sellerUsername = 'username',
+  quantity = 1,
+  price = 2,
+  name = 'product name',
+  photo = false,
+) => ({
+  _id: productId || uuidv4(),
+  name,
+  photo,
+  price,
+  quantity,
   seller: {
     username: sellerUsername,
   },
@@ -117,29 +148,64 @@ export const createOrder = (
     buyer,
     products,
     overallPrice,
+    deliveryAddress: defaultDeliveryAddress,
     createdAt,
+    updatedAt: createdAt,
+    __v: 0,
   };
 };
 
-export const defaultDeliveryAddress = {
-  firstName: 'firstName',
-  lastName: 'lastName',
-  street: 'street',
-  zipCode: 'zipCode',
-  city: 'city',
-  country: 'country',
-  phone: 'phone',
+export const testStore = (initialAuth = {}, initialProduct = {}, initialUI = {}) => {
+  const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+  const defaultState = createStoreWithMiddleware(rootReducer).getState();
+
+  const finalState = {
+    auth: {
+      ...defaultState.auth,
+      ...initialAuth,
+    },
+    product: {
+      ...defaultState.product,
+      ...initialProduct,
+    },
+    ui: {
+      ...defaultState.ui,
+      ...initialUI,
+    },
+  };
+  const finalStore = createStoreWithMiddleware(rootReducer, finalState);
+
+  return {
+    store: finalStore,
+    initialState: finalStore.getState(),
+  };
 };
 
-export const defaultUserProfile = {
-  ...defaultDeliveryAddress,
-  _id: 'id',
-  username: 'username',
-  email: 'email',
-  status: 'active',
-  contacts: {
-    email: true,
-    phone: true,
-  },
-  createdAt: 'createdAt',
+export const checkReqMethodAndURL = (moxiosInstance, method, url) => {
+  const lastRequest = moxiosInstance.requests.mostRecent();
+  return method === lastRequest.config.method && url === lastRequest.config.url;
+};
+
+export const createExpectedState = (
+  initialState,
+  expectedAuth = {},
+  expectedProduct = {},
+  expectedUI = {},
+) => {
+  const newState = {
+    auth: {
+      ...initialState.auth,
+      ...expectedAuth,
+    },
+    product: {
+      ...initialState.product,
+      ...expectedProduct,
+    },
+    ui: {
+      ...initialState.ui,
+      ...expectedUI,
+    },
+  };
+
+  return newState;
 };

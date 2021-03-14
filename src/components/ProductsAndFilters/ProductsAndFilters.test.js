@@ -8,7 +8,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
-import { checkProps, createProductListItem } from '../../shared/testUtility';
+import { checkProps, createProductItem } from '../../shared/testUtility';
 import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
 import theme from '../../styled/theme';
 
@@ -29,8 +29,8 @@ const createStore = (products, productCount, minPrice, maxPrice) =>
   });
 
 const defaultProducts = [
-  createProductListItem('p1', 'user1', 4, 10.6, 'product1'),
-  createProductListItem('p2', 'user1', 6, 299.98, 'product2'),
+  createProductItem('p1', 'user1', 4, 10.6, 'product1'),
+  createProductItem('p2', 'user1', 6, 299.98, 'product2'),
 ];
 
 const setUp = (store, search = '?p=1') => {

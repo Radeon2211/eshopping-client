@@ -7,7 +7,7 @@ import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import SideBySide from '../UI/SideBySide';
 import { inputKinds, userRules, listOfCountries, listOfAreaCodes } from '../../shared/constants';
-import { getPhonePrefixAndNumber, getChangedValues } from '../../shared/utility';
+import { getPhonePrefixAndNumber, getChangedValues } from '../../shared/utility/utility';
 
 const validationSchema = Yup.object({
   firstName: userRules.firstName,

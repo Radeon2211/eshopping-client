@@ -2,7 +2,7 @@ import queryString from 'query-string';
 import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
-import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility';
+import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility/utility';
 
 export const setProducts = (
   products = undefined,

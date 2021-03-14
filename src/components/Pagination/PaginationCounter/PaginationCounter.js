@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { listItemTypes } from '../../../shared/constants';
 import theme from '../../../styled/theme';
 import PlainText from '../../UI/PlainText';
-import { getParamsWithoutPollution } from '../../../shared/utility';
+import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 
 const PaginationCounter = (props) => {
   const { itemQuantity, itemsType, quantityPerPage } = props;

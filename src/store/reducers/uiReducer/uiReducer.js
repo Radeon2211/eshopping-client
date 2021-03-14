@@ -1,5 +1,5 @@
 import * as actionTypes from '../../actions/actionTypes';
-import { updateObject } from '../../../shared/utility';
+import { updateObject } from '../../../shared/utility/utility';
 import { PRODUCTS_PER_PAGE } from '../../../shared/constants';
 
 export const initialState = {

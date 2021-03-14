@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../styled/theme';
 import ProductList from './ProductList';
-import { checkProps, createProductListItem } from '../../shared/testUtility';
+import { checkProps, createProductItem } from '../../shared/testUtility';
 import { pages } from '../../shared/constants';
 
 const createHistory = (search = '?p=1') => ({
@@ -16,8 +16,8 @@ const createHistory = (search = '?p=1') => ({
 const defaultHistory = createHistory();
 
 const defaultProducts = [
-  createProductListItem('p1', 'user1', 4, 10.6, 'product1'),
-  createProductListItem('p2', 'user1', 6, 299.98, 'product2'),
+  createProductItem('p1', 'user1', 4, 10.6, 'product1'),
+  createProductItem('p2', 'user1', 6, 299.98, 'product2'),
 ];
 
 const createProps = (isDataLoading, products, page = pages.ALL_PRODUCTS) => ({

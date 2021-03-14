@@ -7,7 +7,7 @@ import * as SC from './PriceSlider.sc';
 import NumberInput from '../../UI/NumberInput/NumberInput';
 import PlainText from '../../UI/PlainText';
 import { filtersActions, sliderPositionsActions } from '../../../shared/constants';
-import { getParamsWithoutPollution } from '../../../shared/utility';
+import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
 const PriceSlider = (props) => {
@@ -109,7 +109,6 @@ const PriceSlider = (props) => {
 
   const validateInputValue = (e) => {
     e.persist();
-    console.log('name', e.target.name);
 
     let value = Number.parseFloat((+e.target.value).toFixed(2));
 

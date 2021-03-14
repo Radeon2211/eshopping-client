@@ -14,7 +14,7 @@ import ToPayInfo from '../../components/UI/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import { itemTypes, DEFAULT_PATH, modalTypes } from '../../shared/constants';
-import { roundOverallPrice } from '../../shared/utility';
+import { roundOverallPrice } from '../../shared/utility/utility';
 import { GreenText, AlignCenter } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 

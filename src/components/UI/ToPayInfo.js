@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FlexWrapper from './FlexWrapper';
 import PlainText from './PlainText';
-import { formatPrice } from '../../shared/utility';
+import { formatPrice } from '../../shared/utility/utility';
 
 const ToPayInfo = (props) => {
   const { value } = props;

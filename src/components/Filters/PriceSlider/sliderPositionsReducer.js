@@ -1,4 +1,4 @@
-import { updateObject } from '../../../shared/utility';
+import { updateObject } from '../../../shared/utility/utility';
 import { sliderPositionsActions } from '../../../shared/constants';
 
 export const sliderPositionsInitialState = {

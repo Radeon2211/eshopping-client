@@ -5,10 +5,10 @@ import * as SC from './NumberPagination.sc';
 import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
 import {
-  updateQueryParams,
+  stringifyParamsWithOtherPage,
   calculateNumberOfPages,
   getParamsWithoutPollution,
-} from '../../../shared/utility';
+} from '../../../shared/utility/utility';
 
 const NumberPagination = (props) => {
   const { itemQuantity, quantityPerPage } = props;
@@ -27,7 +27,7 @@ const NumberPagination = (props) => {
   const createLinkNode = (pageNumber) => {
     return (
       <Link
-        to={`${pathname}?${updateQueryParams(search, pageNumber)}`}
+        to={`${pathname}?${stringifyParamsWithOtherPage(search, pageNumber)}`}
         key={pageNumber}
         className={`number-link${pageNumber === currentPage ? ' active' : ''}`}
         data-testid={`NumberPagination-page${pageNumber}`}
@@ -40,8 +40,8 @@ const NumberPagination = (props) => {
   let pagination = null;
   if (itemQuantity) {
     const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
-    const previousPagePath = `${pathname}?${updateQueryParams(search, currentPage - 1)}`;
-    const nextPagePath = `${pathname}?${updateQueryParams(search, currentPage + 1)}`;
+    const previousPagePath = `${pathname}?${stringifyParamsWithOtherPage(search, currentPage - 1)}`;
+    const nextPagePath = `${pathname}?${stringifyParamsWithOtherPage(search, currentPage + 1)}`;
 
     const paginationNumbers = [];
     if (numberOfPages <= 6 || (currentPage <= 4 && numberOfPages > 6)) {

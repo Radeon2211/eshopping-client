@@ -9,10 +9,10 @@ import NumberInput from '../../UI/NumberInput/NumberInput';
 import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
 import { historyActions } from '../../../shared/constants';
 import {
-  updateQueryParams,
+  stringifyParamsWithOtherPage,
   calculateNumberOfPages,
   getParamsWithoutPollution,
-} from '../../../shared/utility';
+} from '../../../shared/utility/utility';
 
 const InputPagination = (props) => {
   const { itemQuantity, quantityPerPage } = props;
@@ -27,7 +27,7 @@ const InputPagination = (props) => {
 
   const changePage = useCallback(
     (pageNumber, action) => {
-      const updatedQueryParams = updateQueryParams(search, pageNumber);
+      const updatedQueryParams = stringifyParamsWithOtherPage(search, pageNumber);
 
       const previousPath = `${lastLocation?.pathname}${lastLocation?.search}`;
       const currentPath = `${pathname}${search}`;
@@ -77,14 +77,14 @@ const InputPagination = (props) => {
     e.preventDefault();
     const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
     if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
-    const updatedQueryParams = updateQueryParams(search, inputValue);
+    const updatedQueryParams = stringifyParamsWithOtherPage(search, inputValue);
     history.push(`${pathname}?${updatedQueryParams}`);
   };
 
   let pagination = null;
   if (itemQuantity) {
-    const queryParamsPrevious = updateQueryParams(search, currentPage - 1);
-    const queryParamsNext = updateQueryParams(search, currentPage + 1);
+    const queryParamsPrevious = stringifyParamsWithOtherPage(search, currentPage - 1);
+    const queryParamsNext = stringifyParamsWithOtherPage(search, currentPage + 1);
     const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
 
     pagination = (

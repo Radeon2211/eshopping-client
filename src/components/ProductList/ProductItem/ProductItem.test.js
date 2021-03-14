@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../../styled/theme';
 import ProductItem from './ProductItem';
-import { checkProps, createProductListItem } from '../../../shared/testUtility';
+import { checkProps, createProductItem } from '../../../shared/testUtility';
 
 const setUp = (data, pushFn = jest.fn()) => {
   const history = {
@@ -28,7 +28,7 @@ afterEach(cleanup);
 describe('<ProductItem />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
-      expect(checkProps(ProductItem, { data: createProductListItem() })).toBeUndefined();
+      expect(checkProps(ProductItem, { data: createProductItem() })).toBeUndefined();
     });
     it('Should throw a warning', () => {
       const expectedProps = {};
@@ -38,7 +38,7 @@ describe('<ProductItem />', () => {
 
   describe('Check how renders', () => {
     it('Should render everything correctly', () => {
-      const data = createProductListItem(
+      const data = createProductItem(
         'p1',
         'user1',
         4,
@@ -55,7 +55,7 @@ describe('<ProductItem />', () => {
     });
 
     it('Should NOT render buyer quantity, condition and should render default photo, price without decimals', () => {
-      const data = createProductListItem(
+      const data = createProductItem(
         'p1',
         'user1',
         4,
@@ -74,7 +74,7 @@ describe('<ProductItem />', () => {
 
   it('Should push correct path after clicking at wrapper', () => {
     const pushFn = jest.fn();
-    const data = createProductListItem('p1');
+    const data = createProductItem('p1');
     setUp(data, pushFn);
 
     fireEvent.click(screen.getByTestId('ProductItem'));

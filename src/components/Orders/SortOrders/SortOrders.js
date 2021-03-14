@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
 import queryString from 'query-string';
 import { sortOrdersOptions } from '../../../shared/constants';
-import { getParamsWithoutPollution } from '../../../shared/utility';
+import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 
 export const SC = {};
 SC.Wrapper = styled.div`

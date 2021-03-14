@@ -13,7 +13,7 @@ import { filtersActions, sortProductsOptions } from '../../shared/constants';
 import MyIcon from '../UI/MyIcon';
 import { ReactComponent as FiltersIcon } from '../../images/icons/filters.svg';
 import { ReactComponent as ArrowIcon } from '../../images/icons/arrow.svg';
-import { getParamsWithoutPollution } from '../../shared/utility';
+import { getParamsWithoutPollution } from '../../shared/utility/utility';
 import useWindowSize from '../../shared/useWindowSize';
 
 const Filters = (props) => {

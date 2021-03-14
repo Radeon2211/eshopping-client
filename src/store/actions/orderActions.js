@@ -3,7 +3,7 @@ import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 import * as uiActions from './uiActions';
 import { orderTypes } from '../../shared/constants';
-import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility';
+import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility/utility';
 
 export const setPlacedOrders = (placedOrders, orderCount = undefined) => ({
   type: actionTypes.SET_PLACED_ORDERS,

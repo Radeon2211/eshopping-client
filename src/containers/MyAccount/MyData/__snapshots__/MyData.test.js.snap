@@ -96,7 +96,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             spacing="0px"
             transform=""
           >
-            email
+            email@domain.com
           </span>
           <button
             class="sc-AxgMl dHjngI"
@@ -396,7 +396,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             spacing="0px"
             transform=""
           >
-            email
+            email@domain.com
           </span>
           <button
             class="sc-AxgMl dHjngI"
@@ -682,7 +682,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             spacing="0px"
             transform=""
           >
-            email
+            email@domain.com
           </span>
         </div>
         <div

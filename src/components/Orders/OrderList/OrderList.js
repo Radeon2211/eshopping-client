@@ -11,7 +11,7 @@ import PlainText from '../../UI/PlainText';
 import FlexWrapper from '../../UI/FlexWrapper';
 import Button from '../../UI/Button/Button';
 import LoadingOverlay from '../../UI/LoadingOverlay/LoadingOverlay';
-import { formatPrice, formatOrderDate } from '../../../shared/utility';
+import { formatPrice, formatOrderDate } from '../../../shared/utility/utility';
 
 const OrderList = (props) => {
   const { orders, orderType } = props;

@@ -8,17 +8,28 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import OtherUser from './OtherUser';
 import theme from '../../styled/theme';
-import { PRODUCTS_PER_PAGE } from '../../shared/constants';
-import { createProductListItem } from '../../shared/testUtility';
+import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
+import { createProductItem } from '../../shared/testUtility';
+import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
 const defaultOtherUser = { _id: 'u1', username: 'user1' };
 
 const defaultProducts = [
-  createProductListItem('p1', 'user1', 4, 10.6, 'product1'),
-  createProductListItem('p2', 'user1', 6, 299.98, 'product2'),
+  createProductItem('p1', 'user1', 4, 10.6, 'product1'),
+  createProductItem('p2', 'user1', 6, 299.98, 'product2'),
 ];
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  fetchOtherUser: jest.fn().mockImplementation((username) => username),
+  fetchProducts: jest.fn().mockImplementation((queryParams, pageType, username) => ({
+    queryParams,
+    pageType,
+    username,
+  })),
+  setOtherUser: jest.fn().mockImplementation((user) => user),
+}));
 
 const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) => {
   const props = {
@@ -41,16 +52,20 @@ const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) 
       products: defaultProducts,
     },
   });
+  store.dispatch = jest.fn();
 
-  return render(
-    <Provider store={store}>
-      <Router>
-        <ThemeProvider theme={theme}>
-          <OtherUser {...props} />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router>
+          <ThemeProvider theme={theme}>
+            <OtherUser {...props} />
+          </ThemeProvider>
+        </Router>
+      </Provider>,
+    ),
+    store,
+  };
 };
 
 afterEach(cleanup);
@@ -96,18 +111,36 @@ describe('<OtherUser />', () => {
     });
   });
 
-  describe('Check how history behaves', () => {
-    it('Should call replace if otherUser is the same as current user', () => {
+  describe('Check useEffect()', () => {
+    it('Should call only replace if otherUser is the same as current user', () => {
       const replaceFn = jest.fn();
-      setUp(defaultOtherUser, 'user1', replaceFn);
+      const { store } = setUp(defaultOtherUser, 'user1', replaceFn);
+
       expect(replaceFn).toHaveBeenCalledTimes(1);
       expect(replaceFn).toHaveBeenCalledWith('/my-account/data');
+      expect(store.dispatch).not.toHaveBeenCalled();
     });
 
-    it('Should NOT call replace if otherUser is not the same as current user', () => {
+    it('Should call fetchOtherUser() and fetchProducts() if otherUser is different from current user', () => {
       const replaceFn = jest.fn();
-      setUp(defaultOtherUser, 'differentUser', replaceFn);
+      const { store } = setUp(defaultOtherUser, 'differentUser', replaceFn);
+
       expect(replaceFn).toHaveBeenCalledTimes(0);
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchOtherUser('user1'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        2,
+        actions.fetchProducts('?p=1', pages.USER_PRODUCTS, 'user1'),
+      );
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
+    });
+
+    it('Should call setOtherUser() after unmounting component', () => {
+      const { store, unmount } = setUp(defaultOtherUser, 'user1');
+
+      expect(store.dispatch).not.toHaveBeenCalled();
+      unmount();
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setOtherUser(undefined));
+      expect(store.dispatch).toHaveBeenCalledTimes(1);
     });
   });
 });

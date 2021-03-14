@@ -1,6 +1,7 @@
 import queryString from 'query-string';
 import moment from 'moment';
-import { listOfAreaCodes } from './constants';
+import roundTo from 'round-to';
+import { listOfAreaCodes } from '../constants';
 
 export const getPhonePrefixAndNumber = (phone) => {
   const currentPhonePrefix = phone.split(' ')[0].split('+')[1];
@@ -51,10 +52,18 @@ export const calculateFileSize = (size) => {
     return `${size} bytes`;
   }
   if (size >= 1024 && size < 1048576) {
-    return `${(size / 1024).toFixed(1)}KB`;
+    let calculatedSize = `${(size / 1024).toFixed(1)}`;
+    if (calculatedSize.endsWith('.0')) {
+      calculatedSize = calculatedSize.slice(0, -2);
+    }
+    return `${calculatedSize}KB`;
   }
   if (size >= 1048576) {
-    return `${(size / 1048576).toFixed(1)}MB`;
+    let calculatedSize = `${(size / 1048576).toFixed(1)}`;
+    if (calculatedSize.endsWith('.0')) {
+      calculatedSize = calculatedSize.slice(0, -2);
+    }
+    return `${calculatedSize}MB`;
   }
   return ``;
 };
@@ -72,7 +81,7 @@ export const getParamsWithoutPollution = (search) => {
   return correctQueryParams;
 };
 
-export const updateQueryParams = (search, nextPageNumber) => {
+export const stringifyParamsWithOtherPage = (search, nextPageNumber) => {
   const parsedQueryParams = getParamsWithoutPollution(search);
   const correctQueryParams = {
     ...parsedQueryParams,
@@ -81,8 +90,8 @@ export const updateQueryParams = (search, nextPageNumber) => {
   return queryString.stringify(correctQueryParams);
 };
 
-export const calculateNumberOfPages = (itemQuantity, maxQuantity) => {
-  return Math.ceil(itemQuantity / maxQuantity);
+export const calculateNumberOfPages = (itemQuantity, maxQuantityPerPage) => {
+  return Math.ceil(itemQuantity / maxQuantityPerPage);
 };
 
 export const formatPrice = (value) => {
@@ -97,7 +106,7 @@ export const formatPrice = (value) => {
 };
 
 export const roundOverallPrice = (value) => {
-  return Math.round((value + Number.EPSILON) * 100) / 100;
+  return roundTo.up(value, 2);
 };
 
 export const formatOrderDate = (date) => {

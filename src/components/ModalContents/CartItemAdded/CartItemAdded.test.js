@@ -7,7 +7,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CartItemAdded from './CartItemAdded';
 import theme from '../../../styled/theme';
-import { createProductListItem } from '../../../shared/testUtility';
+import { createProductItem } from '../../../shared/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -18,7 +18,7 @@ const createStore = (cart, productDetails, isCartLoading) =>
     ui: { isCartLoading },
   });
 
-const defaultProduct = createProductListItem('p1', 'user1', 4, 500.6, 'product1', true);
+const defaultProduct = createProductItem('p1', 'user1', 4, 500.6, 'product1', true);
 
 const defaultCart = [{ _id: 'item1', quantity: 3, product: defaultProduct }];
 

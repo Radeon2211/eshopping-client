@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
-import { isValidFileType, calculateFileSize } from '../../shared/utility';
+import { isValidFileType, calculateFileSize } from '../../shared/utility/utility';
 import Button from '../UI/Button/Button';
 import FlexWrapper from '../UI/FlexWrapper';
 import PlainText from '../UI/PlainText';

@@ -6,7 +6,7 @@ import theme from '../../../styled/theme';
 import * as SC from './ProductItem.sc';
 import PlainText from '../../UI/PlainText';
 import FlexWrapper from '../../UI/FlexWrapper';
-import { formatPrice } from '../../../shared/utility';
+import { formatPrice } from '../../../shared/utility/utility';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
 const ProductItem = (props) => {

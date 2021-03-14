@@ -5,7 +5,7 @@ import * as SC from './TransactionAndOrderProdItem.sc';
 import theme from '../../styled/theme';
 import ProductThumbnail from '../UI/ProductThumbnail/ProductThumbnail';
 import PlainText from '../UI/PlainText';
-import { formatPrice, roundOverallPrice } from '../../shared/utility';
+import { formatPrice, roundOverallPrice } from '../../shared/utility/utility';
 
 const TransactionAndOrderProdItem = (props) => {
   const { data, orderId } = props;

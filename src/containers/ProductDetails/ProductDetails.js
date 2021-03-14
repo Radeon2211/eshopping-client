@@ -15,7 +15,7 @@ import Button from '../../components/UI/Button/Button';
 import noPhoto from '../../images/no-photo.png';
 import { GreenText } from '../../styled/components';
 import FlexWrapper from '../../components/UI/FlexWrapper';
-import { formatPrice } from '../../shared/utility';
+import { formatPrice } from '../../shared/utility/utility';
 import useWindowSize from '../../shared/useWindowSize';
 import theme from '../../styled/theme';
 

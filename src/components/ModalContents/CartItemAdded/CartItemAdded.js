@@ -7,7 +7,7 @@ import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 import PlainText from '../../UI/PlainText';
 import Loader from '../../UI/Loader/Loader';
-import { formatPrice } from '../../../shared/utility';
+import { formatPrice } from '../../../shared/utility/utility';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
 const CartItemAdded = () => {

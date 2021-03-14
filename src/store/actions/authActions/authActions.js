@@ -1,8 +1,8 @@
-import axios from '../../axios';
-import * as actionTypes from './actionTypes';
-import * as uiActions from './uiActions';
-import { getErrorMessage } from '../../shared/utility';
-import { DEFAULT_PATH } from '../../shared/constants';
+import axios from '../../../axios';
+import * as actionTypes from '../actionTypes';
+import * as uiActions from '../uiActions';
+import { getErrorMessage } from '../../../shared/utility/utility';
+import { DEFAULT_PATH } from '../../../shared/constants';
 
 export const setProfile = (profile) => ({
   type: actionTypes.SET_PROFILE,
@@ -44,7 +44,7 @@ export const registerUser = (creds) => {
       delete correctCreds.phoneNumber;
       delete correctCreds.phonePrefix;
 
-      const { data } = await axios.post('/users', { ...correctCreds, isAdmin: true });
+      const { data } = await axios.post('/users', correctCreds);
 
       dispatch(setProfile(data.user));
       dispatch(
@@ -91,7 +91,7 @@ export const logoutUser = () => {
   return async (dispatch) => {
     try {
       await axios.post('/users/logout');
-      dispatch(setProfile(null));
+      dispatch(logout());
     } catch (error) {
       dispatch(uiActions.setAndDeleteMessage('Unable to logout. Something went wrong'));
     }
