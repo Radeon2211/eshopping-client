@@ -3,11 +3,11 @@
 exports[`<CartLink /> Should NOT render quantity if cart is null 1`] = `
 <DocumentFragment>
   <a
-    class="sc-AxirZ gpWHsK"
+    class="sc-gsTCUz khJLZs"
     data-testid="CartLink"
   >
     <div
-      class="sc-AxjAm caUblA"
+      class="sc-bdfBwQ gtikZV"
       color=""
     >
       <svg>
@@ -21,11 +21,11 @@ exports[`<CartLink /> Should NOT render quantity if cart is null 1`] = `
 exports[`<CartLink /> Should NOT render quantity if cart length is 0 1`] = `
 <DocumentFragment>
   <a
-    class="sc-AxirZ gpWHsK"
+    class="sc-gsTCUz khJLZs"
     data-testid="CartLink"
   >
     <div
-      class="sc-AxjAm caUblA"
+      class="sc-bdfBwQ gtikZV"
       color=""
     >
       <svg>
@@ -39,17 +39,17 @@ exports[`<CartLink /> Should NOT render quantity if cart length is 0 1`] = `
 exports[`<CartLink /> Should render everything correctly with quantity 1 1`] = `
 <DocumentFragment>
   <a
-    class="sc-AxirZ gpWHsK"
+    class="sc-gsTCUz khJLZs"
     data-testid="CartLink"
   >
     <div
-      class="sc-AxiKw eeGtf"
+      class="sc-dlfnbm eeDlHq"
       data-testid="CartLink-quantity"
     >
       1
     </div>
     <div
-      class="sc-AxjAm caUblA"
+      class="sc-bdfBwQ gtikZV"
       color=""
     >
       <svg>

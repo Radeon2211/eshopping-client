@@ -3,24 +3,24 @@
 exports[`<Cart /> Should render empty cart 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm grLPWW"
+    class="sc-bdfBwQ kpYzKn"
   >
     <h3
-      class="sc-AxirZ clDrHN"
+      class="sc-gsTCUz ezAATf"
     >
       Your shopping cart is empty. Check out the latest 
       <a
         data-testid="Cart-default-path-link"
       >
         <span
-          class="sc-fzoyAV ldrLGk"
+          class="sc-fFubgz cjsnwZ"
         >
           offers
         </span>
       </a>
     </h3>
     <h4
-      class="sc-AxirZ eBUIGK"
+      class="sc-gsTCUz cuzwDI"
     >
       You can have up to 50 products in the cart
     </h4>
@@ -36,21 +36,21 @@ exports[`<Cart /> Should render empty cart 1`] = `
 exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxirZ eKJXWv"
+    class="sc-gsTCUz iHHWjZ"
   >
     Your shopping cart
   </h3>
   <div
-    class="sc-AxiKw drRYDt"
+    class="sc-dlfnbm cQBmyc"
   >
     <section
-      class="sc-AxhCb jHabve"
+      class="sc-hKgILt jLFCGR"
     >
       <div
-        class="sc-fzoLag gUUOZk"
+        class="sc-bkzZxe dfEgGD"
       >
         <button
-          class="sc-AxgMl bClvsY"
+          class="sc-jSgupP icHxze"
           color="red"
           type="button"
         >
@@ -58,10 +58,10 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
         </button>
       </div>
       <div
-        class="sc-fzpjYC fafTno"
+        class="sc-dIUggk FIMqB"
       >
         <span
-          class="sc-AxmLO ibqgFs"
+          class="sc-fubCfw jalAIu"
           color=""
           display="block"
           overflow="visible"
@@ -76,14 +76,14 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
             data-testid="CartAndTransactionItems-seller-link"
           >
             <span
-              class="sc-fzoyAV ldrLGk"
+              class="sc-fFubgz cjsnwZ"
             >
               user1
             </span>
           </a>
         </span>
         <div
-          class="sc-fznZeY dSYcLK"
+          class="sc-bqyKva JQCJG"
           data-testid="CartItem"
         >
           <div
@@ -93,7 +93,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
               data-testid="CartItem-product-link-photo"
             >
               <div
-                class="sc-fzoLsD jfsTZS sc-fznKkj hmQtey"
+                class="sc-jrAGrp bGCJbw sc-dQppl bEkWdt"
                 data-testid="ProductThumbnail"
                 direction="row"
                 height="7"
@@ -125,7 +125,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
               class="choose-quantity-box"
             >
               <div
-                class="sc-fzqNJr dJerfL"
+                class="sc-fodVxV dsjgGH"
               >
                 <button
                   class="button minus"
@@ -133,7 +133,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
                   type="button"
                 >
                   <div
-                    class="sc-fzqBZW hlkCkt"
+                    class="sc-hBEYos ejZCVz"
                     color=""
                     data-testid="ChooseQuantity-minus-icon"
                   >
@@ -143,7 +143,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
                   </div>
                 </button>
                 <input
-                  class="sc-fzokOt gbYxBH"
+                  class="sc-kstrdz ceqwqy"
                   data-testid="NumberInput-quantity"
                   name="quantity"
                   type="number"
@@ -156,7 +156,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
                   type="button"
                 >
                   <div
-                    class="sc-fzqBZW gMPwLB"
+                    class="sc-hBEYos dKYZQj"
                     color="#DADFE1"
                     data-testid="ChooseQuantity-plus-icon"
                   >
@@ -167,7 +167,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
                 </button>
               </div>
               <span
-                class="sc-AxmLO cPswUF"
+                class="sc-fubCfw bfbrJj"
                 color=""
                 data-testid="CartItem-available-quantity"
                 display="inline-block"
@@ -183,7 +183,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
               class="price-box"
             >
               <span
-                class="sc-AxmLO kIoOIw"
+                class="sc-fubCfw ekxLGm"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -194,7 +194,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
                 $2,499.85
               </span>
               <span
-                class="sc-AxmLO hvIreh"
+                class="sc-fubCfw mDKSv"
                 color=""
                 data-testid="CartItem-price-per-piece"
                 display="inline-block"
@@ -208,7 +208,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
             </div>
           </div>
           <div
-            class="sc-fzqBZW bGOOMg remove-icon"
+            class="sc-hBEYos hrBfGW remove-icon"
             color="#F22613"
           >
             <svg>
@@ -219,27 +219,27 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
       </div>
     </section>
     <section
-      class="sc-AxhUy phhPK"
+      class="sc-eCssSg bNvwyr"
     >
       <section
-        class="sc-AxhCb jHabve"
+        class="sc-hKgILt jLFCGR"
       >
         <div
-          class="sc-fzoLsD ffDTUa"
+          class="sc-jrAGrp kdUhfw"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <div
-            class="sc-fzoLsD bJdzTc"
+            class="sc-jrAGrp jvClWK"
             direction="row"
             spacing="1"
             width="100%"
             wrap="wrap"
           >
             <span
-              class="sc-AxmLO eZCDgW"
+              class="sc-fubCfw bvkSGA"
               color=""
               display="inline-block"
               overflow="visible"
@@ -250,7 +250,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
               To pay
             </span>
             <span
-              class="sc-AxmLO jsdXgt"
+              class="sc-fubCfw cQoALv"
               color=""
               display="inline-block"
               overflow="visible"
@@ -262,7 +262,7 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
             </span>
           </div>
           <button
-            class="sc-AxgMl dUvqmj"
+            class="sc-jSgupP fYrlGR"
             color="blue"
             type="button"
           >
@@ -278,11 +278,11 @@ exports[`<Cart /> Should render everything correctly with one cart item 1`] = `
 exports[`<Cart /> Should render only <Loader /> 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxheI gWSSdL"
+    class="sc-gKsewC QQywS"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-Axmtr irYhNg"
+      class="sc-iBPRYJ iftXuC"
       data-testid="Loader"
     >
       <div />
@@ -297,7 +297,7 @@ exports[`<Cart /> Should render only <Loader /> 1`] = `
 exports[`<Cart /> Should render that there is a problem to fetch cart 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxirZ dpNmUR"
+    class="sc-gsTCUz gYothf"
   >
     There is a problem to get your shopping cart
   </h3>

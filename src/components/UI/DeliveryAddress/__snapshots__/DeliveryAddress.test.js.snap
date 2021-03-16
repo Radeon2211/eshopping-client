@@ -3,14 +3,14 @@
 exports[`<DeliveryAddress /> Should render five <PlainText /> with correct values 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm kNtUCK"
+    class="sc-bdfBwQ BWACj"
     direction="column"
     spacing="1"
     width="100%"
     wrap="nowrap"
   >
     <span
-      class="sc-AxirZ cDpZAJ"
+      class="sc-gsTCUz ehKhIH"
       color=""
       display="inline-block"
       overflow="visible"
@@ -21,7 +21,7 @@ exports[`<DeliveryAddress /> Should render five <PlainText /> with correct value
       firstName lastName
     </span>
     <span
-      class="sc-AxirZ cDpZAJ"
+      class="sc-gsTCUz ehKhIH"
       color=""
       display="inline-block"
       overflow="visible"
@@ -32,7 +32,7 @@ exports[`<DeliveryAddress /> Should render five <PlainText /> with correct value
       street
     </span>
     <span
-      class="sc-AxirZ cDpZAJ"
+      class="sc-gsTCUz ehKhIH"
       color=""
       display="inline-block"
       overflow="visible"
@@ -43,7 +43,7 @@ exports[`<DeliveryAddress /> Should render five <PlainText /> with correct value
       zipCode city
     </span>
     <span
-      class="sc-AxirZ cDpZAJ"
+      class="sc-gsTCUz ehKhIH"
       color=""
       display="inline-block"
       overflow="visible"
@@ -54,7 +54,7 @@ exports[`<DeliveryAddress /> Should render five <PlainText /> with correct value
       country
     </span>
     <span
-      class="sc-AxirZ cDpZAJ"
+      class="sc-gsTCUz ehKhIH"
       color=""
       display="inline-block"
       overflow="visible"

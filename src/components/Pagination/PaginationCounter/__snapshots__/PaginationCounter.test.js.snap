@@ -3,7 +3,7 @@
 exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1 order 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm cEHHBq"
+    class="sc-bdfBwQ cPtBJf"
     color="#777"
     display="inline-block"
     overflow="visible"
@@ -19,7 +19,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1
 exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1 products 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm cEHHBq"
+    class="sc-bdfBwQ cPtBJf"
     color="#777"
     display="inline-block"
     overflow="visible"
@@ -35,7 +35,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1
 exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 10 orders 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm cEHHBq"
+    class="sc-bdfBwQ cPtBJf"
     color="#777"
     display="inline-block"
     overflow="visible"
@@ -51,7 +51,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1
 exports[`<PaginationCounter /> Check if correct text render Should be 1 - 2 of 5 products 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm cEHHBq"
+    class="sc-bdfBwQ cPtBJf"
     color="#777"
     display="inline-block"
     overflow="visible"
@@ -67,7 +67,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 2 of 5
 exports[`<PaginationCounter /> Check if correct text render Should be 3 - 4 of 5 products 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm cEHHBq"
+    class="sc-bdfBwQ cPtBJf"
     color="#777"
     display="inline-block"
     overflow="visible"
@@ -83,7 +83,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 3 - 4 of 5
 exports[`<PaginationCounter /> Check if correct text render Should be 5 - 7 of 7 orders 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm cEHHBq"
+    class="sc-bdfBwQ cPtBJf"
     color="#777"
     display="inline-block"
     overflow="visible"
@@ -99,7 +99,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 5 - 7 of 7
 exports[`<PaginationCounter /> Check if correct text render Should be 10 - 10 of 10 orders 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm cEHHBq"
+    class="sc-bdfBwQ cPtBJf"
     color="#777"
     display="inline-block"
     overflow="visible"

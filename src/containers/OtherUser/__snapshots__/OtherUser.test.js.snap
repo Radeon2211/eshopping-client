@@ -3,11 +3,11 @@
 exports[`<OtherUser /> Check how renders Snapshots Should render <Loader /> if other user is undefined 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxirZ hMMCnG"
+    class="sc-gsTCUz hXYaBQ"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-AxiKw flMCzO"
+      class="sc-dlfnbm hmovIr"
       data-testid="Loader"
     >
       <div />
@@ -22,19 +22,19 @@ exports[`<OtherUser /> Check how renders Snapshots Should render <Loader /> if o
 exports[`<OtherUser /> Check how renders Snapshots Should render everything correctly 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxjAm hRHFqs"
+    class="sc-bdfBwQ hSpIvR"
   >
     user1
   </h3>
   <div
-    class="sc-fzqBZW hwfuDZ"
+    class="sc-hBEYos faZPQr"
     direction="row"
     spacing="3"
     width="100%"
     wrap="wrap"
   >
     <span
-      class="sc-AxhCb blPqsx"
+      class="sc-hKgILt dKfWou"
       color=""
       data-testid="OtherUser-email-wrapper"
       display="inline-block"
@@ -44,7 +44,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
       transform=""
     >
       <span
-        class="sc-AxhCb jcKGmJ"
+        class="sc-hKgILt kThUsy"
         color=""
         display="inline-block"
         overflow="visible"
@@ -56,7 +56,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
       test@email.com
     </span>
     <span
-      class="sc-AxhCb blPqsx"
+      class="sc-hKgILt dKfWou"
       color=""
       data-testid="OtherUser-phone-wrapper"
       display="inline-block"
@@ -66,7 +66,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
       transform=""
     >
       <span
-        class="sc-AxhCb jcKGmJ"
+        class="sc-hKgILt kThUsy"
         color=""
         display="inline-block"
         overflow="visible"
@@ -79,14 +79,14 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
     </span>
   </div>
   <div
-    class="sc-AxhUy giCDpk"
+    class="sc-eCssSg covMuV"
   >
     <div
-      class="sc-AxheI drMcRi"
+      class="sc-gKsewC jeimXn"
       data-testid="Filters-toggler"
     >
       <div
-        class="sc-fzokOt bWqgkY"
+        class="sc-kstrdz dfYKpJ"
         color=""
       >
         <svg>
@@ -99,7 +99,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
         Filters
       </span>
       <div
-        class="sc-fzokOt bCDdaW"
+        class="sc-kstrdz esXNNz"
         color=""
       >
         <svg>
@@ -108,7 +108,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
       </div>
     </div>
     <div
-      class="sc-fzoLag kIAqZD"
+      class="sc-bkzZxe fwDVgA"
       data-testid="ProductList"
     >
       <a
@@ -116,14 +116,14 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
         href="#/product/p1"
       >
         <div
-          class="sc-fzqBZW kNJoDq sc-fzqNJr dvqICk"
+          class="sc-hBEYos jltyQI sc-fodVxV iia-DsQ"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <div
-            class="sc-fzqBZW liNGHt sc-fzoyAV elIpDu"
+            class="sc-hBEYos ezBczf sc-fFubgz kUYmUr"
             data-testid="ProductThumbnail"
             direction="row"
             height="15"
@@ -138,14 +138,14 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
             />
           </div>
           <div
-            class="sc-fzqBZW jhIDJz"
+            class="sc-hBEYos fRCKMd"
             direction="column"
             spacing=""
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxhCb hHAZtX"
+              class="sc-hKgILt fttxOE"
               color=""
               display="inline-block"
               overflow="visible"
@@ -156,7 +156,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
               product1
             </span>
             <span
-              class="sc-AxhCb hcMagB"
+              class="sc-hKgILt ndpqq"
               color=""
               data-testid="ProductItem-condition"
               display="inline-block"
@@ -166,7 +166,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
               transform=""
             >
               <span
-                class="sc-AxhCb eXWROp"
+                class="sc-hKgILt dCmyJW"
                 color="#777"
                 display="inline-block"
                 overflow="visible"
@@ -178,7 +178,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
                New
             </span>
             <span
-              class="sc-AxhCb bLhECQ"
+              class="sc-hKgILt iNTSPv"
               color=""
               data-testid="ProductItem-price"
               display="inline-block"
@@ -197,14 +197,14 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
         href="#/product/p2"
       >
         <div
-          class="sc-fzqBZW kNJoDq sc-fzqNJr dvqICk"
+          class="sc-hBEYos jltyQI sc-fodVxV iia-DsQ"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <div
-            class="sc-fzqBZW liNGHt sc-fzoyAV elIpDu"
+            class="sc-hBEYos ezBczf sc-fFubgz kUYmUr"
             data-testid="ProductThumbnail"
             direction="row"
             height="15"
@@ -219,14 +219,14 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
             />
           </div>
           <div
-            class="sc-fzqBZW jhIDJz"
+            class="sc-hBEYos fRCKMd"
             direction="column"
             spacing=""
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxhCb hHAZtX"
+              class="sc-hKgILt fttxOE"
               color=""
               display="inline-block"
               overflow="visible"
@@ -237,7 +237,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
               product2
             </span>
             <span
-              class="sc-AxhCb hcMagB"
+              class="sc-hKgILt ndpqq"
               color=""
               data-testid="ProductItem-condition"
               display="inline-block"
@@ -247,7 +247,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
               transform=""
             >
               <span
-                class="sc-AxhCb eXWROp"
+                class="sc-hKgILt dCmyJW"
                 color="#777"
                 display="inline-block"
                 overflow="visible"
@@ -259,7 +259,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
                New
             </span>
             <span
-              class="sc-AxhCb bLhECQ"
+              class="sc-hKgILt iNTSPv"
               color=""
               data-testid="ProductItem-price"
               display="inline-block"
@@ -281,7 +281,7 @@ exports[`<OtherUser /> Check how renders Snapshots Should render everything corr
 exports[`<OtherUser /> Check how renders Snapshots Should render info about problem with fetching if other user is null 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-AxjAm cssrxq"
+    class="sc-bdfBwQ zzbxL"
   >
     Such user does not exist or problem during fetching occurred
   </h4>

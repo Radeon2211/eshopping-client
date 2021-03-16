@@ -3,26 +3,26 @@
 exports[`<SingleInfo /> Check how renders Should render correctly for address and with button 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxheI lcctvM"
+    class="sc-gKsewC eqhPHB"
     direction="column"
     spacing="2"
     width="100%"
     wrap="nowrap"
   >
     <h4
-      class="sc-AxgMl gWUhlH"
+      class="sc-jSgupP pLLjl"
     >
       Address
     </h4>
     <div
-      class="sc-AxheI gsYccU"
+      class="sc-gKsewC eAJIKJ"
       direction="column"
       spacing="1"
       width="100%"
       wrap="nowrap"
     >
       <span
-        class="sc-AxhCb fVKeCd"
+        class="sc-hKgILt kbgQqa"
         color=""
         display="inline-block"
         overflow="visible"
@@ -33,7 +33,7 @@ exports[`<SingleInfo /> Check how renders Should render correctly for address an
         Street 1
       </span>
       <span
-        class="sc-AxhCb fVKeCd"
+        class="sc-hKgILt kbgQqa"
         color=""
         display="inline-block"
         overflow="visible"
@@ -44,7 +44,7 @@ exports[`<SingleInfo /> Check how renders Should render correctly for address an
         00-000 City
       </span>
       <span
-        class="sc-AxhCb fVKeCd"
+        class="sc-hKgILt kbgQqa"
         color=""
         display="inline-block"
         overflow="visible"
@@ -56,7 +56,7 @@ exports[`<SingleInfo /> Check how renders Should render correctly for address an
       </span>
     </div>
     <button
-      class="sc-AxjAm LxSyk"
+      class="sc-bdfBwQ eqGxsp"
       color="blue"
       type="button"
     >
@@ -69,26 +69,26 @@ exports[`<SingleInfo /> Check how renders Should render correctly for address an
 exports[`<SingleInfo /> Check how renders Should render correctly for contacts (both hidden) and without button 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxheI lcctvM"
+    class="sc-gKsewC eqhPHB"
     direction="column"
     spacing="2"
     width="100%"
     wrap="nowrap"
   >
     <h4
-      class="sc-AxgMl gWUhlH"
+      class="sc-jSgupP pLLjl"
     >
       Contacts
     </h4>
     <div
-      class="sc-AxheI gsYccU"
+      class="sc-gKsewC eAJIKJ"
       direction="column"
       spacing="1"
       width="100%"
       wrap="nowrap"
     >
       <span
-        class="sc-AxhCb fVKeCd"
+        class="sc-hKgILt kbgQqa"
         color=""
         display="inline-block"
         overflow="visible"
@@ -99,7 +99,7 @@ exports[`<SingleInfo /> Check how renders Should render correctly for contacts (
         Email: hidden
       </span>
       <span
-        class="sc-AxhCb fVKeCd"
+        class="sc-hKgILt kbgQqa"
         color=""
         display="inline-block"
         overflow="visible"
@@ -117,26 +117,26 @@ exports[`<SingleInfo /> Check how renders Should render correctly for contacts (
 exports[`<SingleInfo /> Check how renders Should render correctly for contacts (both visible) and with button 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxheI lcctvM"
+    class="sc-gKsewC eqhPHB"
     direction="column"
     spacing="2"
     width="100%"
     wrap="nowrap"
   >
     <h4
-      class="sc-AxgMl gWUhlH"
+      class="sc-jSgupP pLLjl"
     >
       Contacts
     </h4>
     <div
-      class="sc-AxheI gsYccU"
+      class="sc-gKsewC eAJIKJ"
       direction="column"
       spacing="1"
       width="100%"
       wrap="nowrap"
     >
       <span
-        class="sc-AxhCb fVKeCd"
+        class="sc-hKgILt kbgQqa"
         color=""
         display="inline-block"
         overflow="visible"
@@ -147,7 +147,7 @@ exports[`<SingleInfo /> Check how renders Should render correctly for contacts (
         Email: visible
       </span>
       <span
-        class="sc-AxhCb fVKeCd"
+        class="sc-hKgILt kbgQqa"
         color=""
         display="inline-block"
         overflow="visible"
@@ -159,7 +159,7 @@ exports[`<SingleInfo /> Check how renders Should render correctly for contacts (
       </span>
     </div>
     <button
-      class="sc-AxjAm LxSyk"
+      class="sc-bdfBwQ eqGxsp"
       color="blue"
       type="button"
     >
@@ -172,19 +172,19 @@ exports[`<SingleInfo /> Check how renders Should render correctly for contacts (
 exports[`<SingleInfo /> Check how renders Should render correctly for name and with button 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxheI lcctvM"
+    class="sc-gKsewC eqhPHB"
     direction="column"
     spacing="2"
     width="100%"
     wrap="nowrap"
   >
     <h4
-      class="sc-AxgMl gWUhlH"
+      class="sc-jSgupP pLLjl"
     >
       Name
     </h4>
     <span
-      class="sc-AxhCb fVKeCd"
+      class="sc-hKgILt kbgQqa"
       color=""
       display="inline-block"
       overflow="visible"
@@ -195,7 +195,7 @@ exports[`<SingleInfo /> Check how renders Should render correctly for name and w
       Ludwig von Mises
     </span>
     <button
-      class="sc-AxjAm LxSyk"
+      class="sc-bdfBwQ eqGxsp"
       color="blue"
       type="button"
     >

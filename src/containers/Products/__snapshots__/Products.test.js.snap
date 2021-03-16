@@ -3,78 +3,89 @@
 exports[`<Products /> Check how renders Should render everything correctly with default params and two products 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxjAm hRHFqs"
+    class="sc-bdfBwQ hSpIvR"
     data-testid="Products-heading"
   >
     All products
   </h3>
   <div
-    class="sc-AxirZ kFwBuJ"
+    class="sc-gsTCUz iakHmb"
   >
-    <div
-      class="sc-AxhCb ieXCwr"
-      data-testid="Filters-toggler"
+    <section
+      class="sc-gKsewC hOOrhu"
+      data-testid="Filters"
     >
       <div
-        class="sc-fzokOt bWqgkY"
-        color=""
-      >
-        <svg>
-          filters.svg
-        </svg>
-      </div>
-      <span
-        class="label"
-      >
-        Filters
-      </span>
-      <div
-        class="sc-fzokOt bCDdaW"
-        color=""
-      >
-        <svg>
-          arrow.svg
-        </svg>
-      </div>
-    </div>
-    <div
-      class="sc-fzoLag kIAqZD"
-      data-testid="ProductList"
-    >
-      <a
-        data-testid="ProductItem"
+        class="sc-dlfnbm hnHwOk"
       >
         <div
-          class="sc-fzqBZW kNJoDq sc-fzqNJr dvqICk"
-          direction="row"
-          spacing="3"
-          width="100%"
-          wrap="nowrap"
+          class="select css-2b097c-container"
+        >
+          <span
+            aria-atomic="false"
+            aria-live="polite"
+            aria-relevant="additions text"
+            class="css-1f43avz-a11yText-A11yText"
+          />
+          <div
+            class=" css-yk16xz-control"
+          >
+            <div
+              class=" css-g1d714-ValueContainer"
+            >
+              <div
+                class=" css-1uccc91-singleValue"
+              >
+                Default sorting
+              </div>
+              <input
+                aria-autocomplete="list"
+                class="css-wmatm6-dummyInput-DummyInput"
+                id="react-select-3-input"
+                readonly=""
+                tabindex="0"
+                value=""
+              />
+            </div>
+            <div
+              class=" css-1hb7zxy-IndicatorsContainer"
+            >
+              <span
+                class=" css-1okebmr-indicatorSeparator"
+              />
+              <div
+                aria-hidden="true"
+                class=" css-tlfecz-indicatorContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-tj5bde-Svg"
+                  focusable="false"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  width="20"
+                >
+                  <path
+                    d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <input
+            name="sortBy"
+            type="hidden"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-iqHYGH cgHQme"
         >
           <div
-            class="sc-fzqBZW liNGHt sc-fzoyAV elIpDu"
-            data-testid="ProductThumbnail"
-            direction="row"
-            height="15"
-            spacing=""
-            width="13"
-            wrap="nowrap"
-          >
-            <img
-              alt="product1"
-              data-testid="ProductThumbnail-img"
-              src="no-photo.png"
-            />
-          </div>
-          <div
-            class="sc-fzqBZW jhIDJz"
-            direction="column"
-            spacing=""
-            width="100%"
-            wrap="nowrap"
+            class="sc-crrsfI vUjlw"
           >
             <span
-              class="sc-Axmtr jbaLxd"
+              class="sc-iBPRYJ kYvbgz"
               color=""
               display="inline-block"
               overflow="visible"
@@ -82,126 +93,505 @@ exports[`<Products /> Check how renders Should render everything correctly with 
               spacing="0px"
               transform=""
             >
-              product1
+              Price ($)
             </span>
-            <span
-              class="sc-Axmtr fcULHn"
-              color=""
-              data-testid="ProductItem-condition"
-              display="inline-block"
-              overflow="visible"
-              size="1"
-              spacing="0px"
-              transform=""
+            <div
+              class="inputs"
             >
+              <input
+                class="sc-bqyKva frbvYy"
+                data-testid="NumberInput-minPrice"
+                name="minPrice"
+                type="number"
+                value="10.6"
+              />
               <span
-                class="sc-Axmtr jqNBEv"
-                color="#777"
-                display="inline-block"
-                overflow="visible"
-                spacing="0px"
-                transform=""
+                class="inputs-gap"
               >
-                Condition:
+                —
               </span>
-               New
-            </span>
-            <span
-              class="sc-Axmtr bOZcxS"
-              color=""
-              data-testid="ProductItem-price"
-              display="inline-block"
-              overflow="visible"
-              size="5"
-              spacing="0px"
-              transform=""
-            >
-              $10.60
-            </span>
+              <input
+                class="sc-bqyKva frbvYy"
+                data-testid="NumberInput-maxPrice"
+                name="maxPrice"
+                type="number"
+                value="299.98"
+              />
+            </div>
           </div>
-        </div>
-      </a>
-      <a
-        data-testid="ProductItem"
-      >
-        <div
-          class="sc-fzqBZW kNJoDq sc-fzqNJr dvqICk"
-          direction="row"
-          spacing="3"
-          width="100%"
-          wrap="nowrap"
-        >
           <div
-            class="sc-fzqBZW liNGHt sc-fzoyAV elIpDu"
-            data-testid="ProductThumbnail"
-            direction="row"
-            height="15"
-            spacing=""
-            width="13"
-            wrap="nowrap"
+            class="sc-dQppl eA-dttf"
           >
-            <img
-              alt="product2"
-              data-testid="ProductThumbnail-img"
-              src="no-photo.png"
+            <input
+              class="input min"
+              data-testid="PriceSlider-price-range-min"
+              max="299.98"
+              min="10.6"
+              name="minPrice"
+              step="0.29998"
+              type="range"
+              value="10.6"
+            />
+            <input
+              class="input max"
+              data-testid="PriceSlider-price-range-max"
+              max="299.98"
+              min="10.6"
+              name="maxPrice"
+              step="0.29998"
+              type="range"
+              value="299.98"
+            />
+            <div
+              class="track"
+            />
+            <div
+              class="range"
+            />
+            <div
+              class="thumb left"
+            />
+            <div
+              class="thumb right"
             />
           </div>
+        </div>
+        <div
+          class="sc-eCssSg fEdOcl"
+        >
+          <span
+            class="sc-iBPRYJ kYvbgz"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            Condition
+          </span>
           <div
-            class="sc-fzqBZW jhIDJz"
-            direction="column"
-            spacing=""
+            class="sc-jSgupP gZkkyh"
+          >
+            <input
+              data-testid="Filters-checkbox-new"
+              id="new"
+              name="new"
+              type="checkbox"
+            />
+            <label
+              for="new"
+            >
+              new
+            </label>
+          </div>
+          <div
+            class="sc-jSgupP gZkkyh"
+          >
+            <input
+              data-testid="Filters-checkbox-used"
+              id="used"
+              name="used"
+              type="checkbox"
+            />
+            <label
+              for="used"
+            >
+              used
+            </label>
+          </div>
+          <div
+            class="sc-jSgupP gZkkyh"
+          >
+            <input
+              data-testid="Filters-checkbox-not-applicable"
+              id="not_applicable"
+              name="not_applicable"
+              type="checkbox"
+            />
+            <label
+              for="not_applicable"
+            >
+              not applicable
+            </label>
+          </div>
+        </div>
+        <button
+          class="sc-fubCfw dqKGwi"
+          color="blue"
+          data-testid="Filters-submit-btn"
+          type="button"
+        >
+          Filter
+        </button>
+      </div>
+    </section>
+    <section
+      class="sc-gKsewC hOOrhu"
+      data-testid="ProductsAndFilters-product-list-section"
+    >
+      <div
+        class="sc-bBXqnf iuKUPv"
+      >
+        <div
+          class="sc-dmlrTW fHfiAZ"
+        >
+          <label
+            class="label"
+            for="perPageQuantity"
+          >
+            Per page
+          </label>
+          <div
+            class="select css-2b097c-container"
+            id="perPageQuantity"
+          >
+            <span
+              aria-atomic="false"
+              aria-live="polite"
+              aria-relevant="additions text"
+              class="css-1f43avz-a11yText-A11yText"
+            />
+            <div
+              class=" css-l640om-control"
+            >
+              <div
+                class=" css-3cb03z-ValueContainer"
+              >
+                <div
+                  class=" css-rrw4q2-SingleValue"
+                >
+                  10
+                </div>
+                <input
+                  aria-autocomplete="list"
+                  class="css-wmatm6-dummyInput-DummyInput"
+                  id="react-select-2-input"
+                  readonly=""
+                  tabindex="0"
+                  value=""
+                />
+              </div>
+              <div
+                class=" css-1hb7zxy-IndicatorsContainer"
+              >
+                <span
+                  class=" css-1okebmr-indicatorSeparator"
+                />
+                <div
+                  aria-hidden="true"
+                  class=" css-ml9fjp-indicatorContainer"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-tj5bde-Svg"
+                    focusable="false"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    width="20"
+                  >
+                    <path
+                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-hHftDr fbtuLP"
+          data-testid="InputPagination"
+        >
+          <a
+            class="arrow hide-arrow"
+            data-testid="InputPagination-left-arrow"
+          >
+            <div
+              class="sc-kstrdz lgDWlP"
+              color=""
+            >
+              <svg>
+                arrow.svg
+              </svg>
+            </div>
+          </a>
+          <form
+            class="form-number"
+          >
+            <input
+              class="sc-bqyKva jja-dMM"
+              data-testid="NumberInput-page"
+              name="page"
+              type="number"
+              value="1"
+            />
+          </form>
+          <span
+            class="sc-iBPRYJ jlwgZf"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            of
+          </span>
+          <span
+            class="sc-iBPRYJ jlwgZf"
+            color=""
+            display="inline-block"
+            overflow="visible"
+            size="3"
+            spacing="0px"
+            transform=""
+          >
+            1
+          </span>
+          <a
+            class="arrow hide-arrow"
+            data-testid="InputPagination-right-arrow"
+          >
+            <div
+              class="sc-kstrdz dfYKpJ"
+              color=""
+            >
+              <svg>
+                arrow.svg
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="sc-bkzZxe fwDVgA"
+        data-testid="ProductList"
+      >
+        <a
+          data-testid="ProductItem"
+        >
+          <div
+            class="sc-hBEYos jltyQI sc-fodVxV iia-DsQ"
+            direction="row"
+            spacing="3"
             width="100%"
             wrap="nowrap"
           >
-            <span
-              class="sc-Axmtr jbaLxd"
-              color=""
-              display="inline-block"
-              overflow="visible"
-              size="3"
-              spacing="0px"
-              transform=""
+            <div
+              class="sc-hBEYos ezBczf sc-fFubgz kUYmUr"
+              data-testid="ProductThumbnail"
+              direction="row"
+              height="15"
+              spacing=""
+              width="13"
+              wrap="nowrap"
             >
-              product2
-            </span>
-            <span
-              class="sc-Axmtr fcULHn"
-              color=""
-              data-testid="ProductItem-condition"
-              display="inline-block"
-              overflow="visible"
-              size="1"
-              spacing="0px"
-              transform=""
+              <img
+                alt="product1"
+                data-testid="ProductThumbnail-img"
+                src="no-photo.png"
+              />
+            </div>
+            <div
+              class="sc-hBEYos fRCKMd"
+              direction="column"
+              spacing=""
+              width="100%"
+              wrap="nowrap"
             >
               <span
-                class="sc-Axmtr jqNBEv"
-                color="#777"
+                class="sc-iBPRYJ kYvbgz"
+                color=""
                 display="inline-block"
                 overflow="visible"
+                size="3"
                 spacing="0px"
                 transform=""
               >
-                Condition:
+                product1
               </span>
-               New
-            </span>
-            <span
-              class="sc-Axmtr bOZcxS"
-              color=""
-              data-testid="ProductItem-price"
-              display="inline-block"
-              overflow="visible"
-              size="5"
-              spacing="0px"
-              transform=""
-            >
-              $299.98
-            </span>
+              <span
+                class="sc-iBPRYJ BBDCp"
+                color=""
+                data-testid="ProductItem-condition"
+                display="inline-block"
+                overflow="visible"
+                size="1"
+                spacing="0px"
+                transform=""
+              >
+                <span
+                  class="sc-iBPRYJ NtwOd"
+                  color="#777"
+                  display="inline-block"
+                  overflow="visible"
+                  spacing="0px"
+                  transform=""
+                >
+                  Condition:
+                </span>
+                 New
+              </span>
+              <span
+                class="sc-iBPRYJ jtiZdA"
+                color=""
+                data-testid="ProductItem-price"
+                display="inline-block"
+                overflow="visible"
+                size="5"
+                spacing="0px"
+                transform=""
+              >
+                $10.60
+              </span>
+            </div>
           </div>
+        </a>
+        <a
+          data-testid="ProductItem"
+        >
+          <div
+            class="sc-hBEYos jltyQI sc-fodVxV iia-DsQ"
+            direction="row"
+            spacing="3"
+            width="100%"
+            wrap="nowrap"
+          >
+            <div
+              class="sc-hBEYos ezBczf sc-fFubgz kUYmUr"
+              data-testid="ProductThumbnail"
+              direction="row"
+              height="15"
+              spacing=""
+              width="13"
+              wrap="nowrap"
+            >
+              <img
+                alt="product2"
+                data-testid="ProductThumbnail-img"
+                src="no-photo.png"
+              />
+            </div>
+            <div
+              class="sc-hBEYos fRCKMd"
+              direction="column"
+              spacing=""
+              width="100%"
+              wrap="nowrap"
+            >
+              <span
+                class="sc-iBPRYJ kYvbgz"
+                color=""
+                display="inline-block"
+                overflow="visible"
+                size="3"
+                spacing="0px"
+                transform=""
+              >
+                product2
+              </span>
+              <span
+                class="sc-iBPRYJ BBDCp"
+                color=""
+                data-testid="ProductItem-condition"
+                display="inline-block"
+                overflow="visible"
+                size="1"
+                spacing="0px"
+                transform=""
+              >
+                <span
+                  class="sc-iBPRYJ NtwOd"
+                  color="#777"
+                  display="inline-block"
+                  overflow="visible"
+                  spacing="0px"
+                  transform=""
+                >
+                  Condition:
+                </span>
+                 New
+              </span>
+              <span
+                class="sc-iBPRYJ jtiZdA"
+                color=""
+                data-testid="ProductItem-price"
+                display="inline-block"
+                overflow="visible"
+                size="5"
+                spacing="0px"
+                transform=""
+              >
+                $299.98
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        class="sc-dIUggk gVtHox"
+      >
+        <span
+          class="sc-iBPRYJ inTSQh"
+          color="#777"
+          display="inline-block"
+          overflow="visible"
+          size="1"
+          spacing="0px"
+          transform=""
+        >
+          1 - 2 of 2 products
+        </span>
+        <div
+          class="sc-idOhPF gwyQBe"
+          data-testid="NumberPagination"
+        >
+          <a
+            class="arrow hide-arrow"
+            data-testid="NumberPagination-left-arrow"
+          >
+            <div
+              class="sc-kstrdz lgDWlP"
+              color=""
+            >
+              <svg>
+                arrow.svg
+              </svg>
+            </div>
+          </a>
+          <a
+            class="number-link active"
+            data-testid="NumberPagination-page1"
+          >
+            1
+          </a>
+          <span
+            class="of"
+          >
+            of
+          </span>
+          <span
+            class="of"
+          >
+            1
+          </span>
+          <a
+            class="arrow hide-arrow"
+            data-testid="NumberPagination-right-arrow"
+          >
+            <div
+              class="sc-kstrdz dfYKpJ"
+              color=""
+            >
+              <svg>
+                arrow.svg
+              </svg>
+            </div>
+          </a>
         </div>
-      </a>
-    </div>
+      </div>
+    </section>
   </div>
 </DocumentFragment>
 `;

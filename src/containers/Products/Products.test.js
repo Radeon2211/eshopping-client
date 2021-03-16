@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import matchMediaPolyfill from 'mq-polyfill';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -35,6 +36,9 @@ const setUp = (search = '?p=1') => {
     },
     product: {
       products: defaultProducts,
+      productCount: defaultProducts.length,
+      minPrice: 10.6,
+      maxPrice: 299.98,
     },
     ui: {
       productsPerPage: PRODUCTS_PER_PAGE,
@@ -53,11 +57,22 @@ const setUp = (search = '?p=1') => {
   );
 };
 
+beforeAll(() => {
+  matchMediaPolyfill(window);
+  window.resizeTo = function resizeTo(width, height) {
+    Object.assign(this, {
+      innerWidth: width,
+      innerHeight: height,
+    }).dispatchEvent(new this.Event('resize'));
+  };
+});
+
 afterEach(cleanup);
 
 describe('<Products />', () => {
   describe('Check how renders', () => {
     it('Should render everything correctly with default params and two products', () => {
+      window.resizeTo(1920, 1080);
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });

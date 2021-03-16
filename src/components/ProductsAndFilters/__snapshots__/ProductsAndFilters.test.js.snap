@@ -3,18 +3,24 @@
 exports[`<ProductsAndFilters /> Check how renders Should render everything correctly with two products 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm dpYiwS"
+    class="sc-bdfBwQ eOpHEH"
   >
     <section
-      class="sc-AxgMl iyPvJl"
+      class="sc-jSgupP ikrxvH"
       data-testid="Filters"
     >
       <div
-        class="sc-AxirZ fKfpV"
+        class="sc-gsTCUz giqxPL"
       >
         <div
           class="select css-2b097c-container"
         >
+          <span
+            aria-atomic="false"
+            aria-live="polite"
+            aria-relevant="additions text"
+            class="css-1f43avz-a11yText-A11yText"
+          />
           <div
             class=" css-yk16xz-control"
           >
@@ -28,7 +34,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
               </div>
               <input
                 aria-autocomplete="list"
-                class="css-62g3xt-dummyInput"
+                class="css-wmatm6-dummyInput-DummyInput"
                 id="react-select-3-input"
                 readonly=""
                 tabindex="0"
@@ -47,7 +53,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
               >
                 <svg
                   aria-hidden="true"
-                  class="css-6q0nyr-Svg"
+                  class="css-tj5bde-Svg"
                   focusable="false"
                   height="20"
                   viewBox="0 0 20 20"
@@ -67,13 +73,13 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
           />
         </div>
         <div
-          class="sc-fzpans jRCOFi"
+          class="sc-kEjbxe dWwZfv"
         >
           <div
-            class="sc-fzplWN mylUk"
+            class="sc-iqHYGH efDrOl"
           >
             <span
-              class="sc-AxheI kRauQO"
+              class="sc-gKsewC ISnTb"
               color=""
               display="inline-block"
               overflow="visible"
@@ -87,7 +93,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
               class="inputs"
             >
               <input
-                class="sc-fznKkj gIXUWO"
+                class="sc-dQppl coboiF"
                 data-testid="NumberInput-minPrice"
                 name="minPrice"
                 type="number"
@@ -99,7 +105,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                 —
               </span>
               <input
-                class="sc-fznKkj gIXUWO"
+                class="sc-dQppl coboiF"
                 data-testid="NumberInput-maxPrice"
                 name="maxPrice"
                 type="number"
@@ -108,7 +114,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             </div>
           </div>
           <div
-            class="sc-fznyAO gdzmMJ"
+            class="sc-crrsfI cERfvJ"
           >
             <input
               class="input min"
@@ -145,10 +151,10 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
           </div>
         </div>
         <div
-          class="sc-AxhCb nXOKx"
+          class="sc-hKgILt ifwnTa"
         >
           <span
-            class="sc-AxheI kRauQO"
+            class="sc-gKsewC ISnTb"
             color=""
             display="inline-block"
             overflow="visible"
@@ -159,7 +165,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             Condition
           </span>
           <div
-            class="sc-AxhUy iQPAMp"
+            class="sc-eCssSg euCWRc"
           >
             <input
               data-testid="Filters-checkbox-new"
@@ -174,7 +180,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             </label>
           </div>
           <div
-            class="sc-AxhUy iQPAMp"
+            class="sc-eCssSg euCWRc"
           >
             <input
               data-testid="Filters-checkbox-used"
@@ -189,7 +195,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             </label>
           </div>
           <div
-            class="sc-AxhUy iQPAMp"
+            class="sc-eCssSg euCWRc"
           >
             <input
               data-testid="Filters-checkbox-not-applicable"
@@ -205,7 +211,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
           </div>
         </div>
         <button
-          class="sc-Axmtr gnRIll"
+          class="sc-iBPRYJ fDMRnL"
           color="blue"
           data-testid="Filters-submit-btn"
           type="button"
@@ -215,14 +221,14 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
       </div>
     </section>
     <section
-      class="sc-AxgMl iyPvJl"
+      class="sc-jSgupP ikrxvH"
       data-testid="ProductsAndFilters-product-list-section"
     >
       <div
-        class="sc-fzqARJ gRlVks"
+        class="sc-bBXqnf iuKUPv"
       >
         <div
-          class="sc-fznJRM fgoWrk"
+          class="sc-dmlrTW fHfiAZ"
         >
           <label
             class="label"
@@ -234,6 +240,12 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             class="select css-2b097c-container"
             id="perPageQuantity"
           >
+            <span
+              aria-atomic="false"
+              aria-live="polite"
+              aria-relevant="additions text"
+              class="css-1f43avz-a11yText-A11yText"
+            />
             <div
               class=" css-l640om-control"
             >
@@ -247,7 +259,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                 </div>
                 <input
                   aria-autocomplete="list"
-                  class="css-62g3xt-dummyInput"
+                  class="css-wmatm6-dummyInput-DummyInput"
                   id="react-select-2-input"
                   readonly=""
                   tabindex="0"
@@ -266,7 +278,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-6q0nyr-Svg"
+                    class="css-tj5bde-Svg"
                     focusable="false"
                     height="20"
                     viewBox="0 0 20 20"
@@ -282,7 +294,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
           </div>
         </div>
         <div
-          class="sc-fznxsB kcbRee"
+          class="sc-hHftDr fbtuLP"
           data-testid="InputPagination"
         >
           <a
@@ -290,7 +302,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             data-testid="InputPagination-left-arrow"
           >
             <div
-              class="sc-fznZeY gcAmqN"
+              class="sc-bqyKva kNsZJh"
               color=""
             >
               <svg>
@@ -302,7 +314,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             class="form-number"
           >
             <input
-              class="sc-fznKkj jNRlvI"
+              class="sc-dQppl bJsXeH"
               data-testid="NumberInput-page"
               name="page"
               type="number"
@@ -310,7 +322,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             />
           </form>
           <span
-            class="sc-AxheI jyWpXS"
+            class="sc-gKsewC hpFlQD"
             color=""
             display="inline-block"
             overflow="visible"
@@ -321,7 +333,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             of
           </span>
           <span
-            class="sc-AxheI jyWpXS"
+            class="sc-gKsewC hpFlQD"
             color=""
             display="inline-block"
             overflow="visible"
@@ -336,7 +348,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             data-testid="InputPagination-right-arrow"
           >
             <div
-              class="sc-fznZeY etTWzz"
+              class="sc-bqyKva fuAYNn"
               color=""
             >
               <svg>
@@ -347,21 +359,21 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
         </div>
       </div>
       <div
-        class="sc-fzoLag kIAqZD"
+        class="sc-bkzZxe fwDVgA"
         data-testid="ProductList"
       >
         <a
           data-testid="ProductItem"
         >
           <div
-            class="sc-fzokOt ifCiYn sc-fzqBZW fZjwgR"
+            class="sc-kstrdz cJSdfS sc-hBEYos cBfiMf"
             direction="row"
             spacing="3"
             width="100%"
             wrap="nowrap"
           >
             <div
-              class="sc-fzokOt fipopA sc-fzqNJr gMEOHA"
+              class="sc-kstrdz bnACqZ sc-fodVxV XQHig"
               data-testid="ProductThumbnail"
               direction="row"
               height="15"
@@ -376,14 +388,14 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
               />
             </div>
             <div
-              class="sc-fzokOt rHEye"
+              class="sc-kstrdz buzgIP"
               direction="column"
               spacing=""
               width="100%"
               wrap="nowrap"
             >
               <span
-                class="sc-AxheI kRauQO"
+                class="sc-gKsewC ISnTb"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -394,7 +406,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                 product1
               </span>
               <span
-                class="sc-AxheI iCVhhc"
+                class="sc-gKsewC oZHlp"
                 color=""
                 data-testid="ProductItem-condition"
                 display="inline-block"
@@ -404,7 +416,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                 transform=""
               >
                 <span
-                  class="sc-AxheI ImmhM"
+                  class="sc-gKsewC bhnoUF"
                   color="#777"
                   display="inline-block"
                   overflow="visible"
@@ -416,7 +428,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                  New
               </span>
               <span
-                class="sc-AxheI cPJQVl"
+                class="sc-gKsewC kOxGPE"
                 color=""
                 data-testid="ProductItem-price"
                 display="inline-block"
@@ -434,14 +446,14 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
           data-testid="ProductItem"
         >
           <div
-            class="sc-fzokOt ifCiYn sc-fzqBZW fZjwgR"
+            class="sc-kstrdz cJSdfS sc-hBEYos cBfiMf"
             direction="row"
             spacing="3"
             width="100%"
             wrap="nowrap"
           >
             <div
-              class="sc-fzokOt fipopA sc-fzqNJr gMEOHA"
+              class="sc-kstrdz bnACqZ sc-fodVxV XQHig"
               data-testid="ProductThumbnail"
               direction="row"
               height="15"
@@ -456,14 +468,14 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
               />
             </div>
             <div
-              class="sc-fzokOt rHEye"
+              class="sc-kstrdz buzgIP"
               direction="column"
               spacing=""
               width="100%"
               wrap="nowrap"
             >
               <span
-                class="sc-AxheI kRauQO"
+                class="sc-gKsewC ISnTb"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -474,7 +486,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                 product2
               </span>
               <span
-                class="sc-AxheI iCVhhc"
+                class="sc-gKsewC oZHlp"
                 color=""
                 data-testid="ProductItem-condition"
                 display="inline-block"
@@ -484,7 +496,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                 transform=""
               >
                 <span
-                  class="sc-AxheI ImmhM"
+                  class="sc-gKsewC bhnoUF"
                   color="#777"
                   display="inline-block"
                   overflow="visible"
@@ -496,7 +508,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
                  New
               </span>
               <span
-                class="sc-AxheI cPJQVl"
+                class="sc-gKsewC kOxGPE"
                 color=""
                 data-testid="ProductItem-price"
                 display="inline-block"
@@ -512,10 +524,10 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
         </a>
       </div>
       <div
-        class="sc-fzpjYC gBYMrs"
+        class="sc-dIUggk gVtHox"
       >
         <span
-          class="sc-AxheI fMSXnQ"
+          class="sc-gKsewC rBmjh"
           color="#777"
           display="inline-block"
           overflow="visible"
@@ -526,7 +538,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
           1 - 2 of 2 products
         </span>
         <div
-          class="sc-fzoXzr gxFVaz"
+          class="sc-idOhPF gwyQBe"
           data-testid="NumberPagination"
         >
           <a
@@ -534,7 +546,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             data-testid="NumberPagination-left-arrow"
           >
             <div
-              class="sc-fznZeY gcAmqN"
+              class="sc-bqyKva kNsZJh"
               color=""
             >
               <svg>
@@ -563,7 +575,7 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
             data-testid="NumberPagination-right-arrow"
           >
             <div
-              class="sc-fznZeY etTWzz"
+              class="sc-bqyKva fuAYNn"
               color=""
             >
               <svg>
@@ -581,14 +593,14 @@ exports[`<ProductsAndFilters /> Check how renders Should render everything corre
 exports[`<ProductsAndFilters /> Check how renders Should render only <ProductList /> 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm dpYiwS"
+    class="sc-bdfBwQ eOpHEH"
   >
     <div
-      class="sc-fzoLag kIAqZD"
+      class="sc-bkzZxe fwDVgA"
       data-testid="ProductList"
     >
       <h4
-        class="sc-fzoyAV iwCcKV"
+        class="sc-fFubgz kDCMhs"
       >
         We didn't find any matching results. Try to search something else
       </h4>

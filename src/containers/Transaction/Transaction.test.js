@@ -42,10 +42,6 @@ const setUp = (transaction, history = defaultHistory) => {
   );
 };
 
-window.IntersectionObserver = jest.fn(() => ({
-  observe: jest.fn(),
-}));
-
 afterEach(cleanup);
 
 describe('<Transaction />', () => {

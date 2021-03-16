@@ -6,14 +6,14 @@ exports[`<ProductItem /> Check how renders Should NOT render buyer quantity, con
     data-testid="ProductItem"
   >
     <div
-      class="sc-AxjAm hpqWvf sc-AxirZ cOAhtn"
+      class="sc-bdfBwQ dXFlzG sc-gsTCUz vzdrx"
       direction="row"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <div
-        class="sc-AxjAm iQOQLw sc-AxhCb jZHUjX"
+        class="sc-bdfBwQ gEWXUp sc-hKgILt iGwkBA"
         data-testid="ProductThumbnail"
         direction="row"
         height="15"
@@ -28,14 +28,14 @@ exports[`<ProductItem /> Check how renders Should NOT render buyer quantity, con
         />
       </div>
       <div
-        class="sc-AxjAm hskKxm"
+        class="sc-bdfBwQ jPnCyv"
         direction="column"
         spacing=""
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-AxiKw fuKISr"
+          class="sc-dlfnbm LDMTW"
           color=""
           display="inline-block"
           overflow="visible"
@@ -46,7 +46,7 @@ exports[`<ProductItem /> Check how renders Should NOT render buyer quantity, con
           product1
         </span>
         <span
-          class="sc-AxiKw dwbljI"
+          class="sc-dlfnbm cQEZxx"
           color=""
           data-testid="ProductItem-price"
           display="inline-block"
@@ -69,14 +69,14 @@ exports[`<ProductItem /> Check how renders Should render everything correctly 1`
     data-testid="ProductItem"
   >
     <div
-      class="sc-AxjAm hpqWvf sc-AxirZ cOAhtn"
+      class="sc-bdfBwQ dXFlzG sc-gsTCUz vzdrx"
       direction="row"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <div
-        class="sc-AxjAm iQOQLw sc-AxhCb jZHUjX"
+        class="sc-bdfBwQ gEWXUp sc-hKgILt iGwkBA"
         data-testid="ProductThumbnail"
         direction="row"
         height="15"
@@ -91,14 +91,14 @@ exports[`<ProductItem /> Check how renders Should render everything correctly 1`
         />
       </div>
       <div
-        class="sc-AxjAm hskKxm"
+        class="sc-bdfBwQ jPnCyv"
         direction="column"
         spacing=""
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-AxiKw fuKISr"
+          class="sc-dlfnbm LDMTW"
           color=""
           display="inline-block"
           overflow="visible"
@@ -109,7 +109,7 @@ exports[`<ProductItem /> Check how renders Should render everything correctly 1`
           product1
         </span>
         <span
-          class="sc-AxiKw fTPzht"
+          class="sc-dlfnbm iDQpJo"
           color=""
           data-testid="ProductItem-condition"
           display="inline-block"
@@ -119,7 +119,7 @@ exports[`<ProductItem /> Check how renders Should render everything correctly 1`
           transform=""
         >
           <span
-            class="sc-AxiKw GgiOJ"
+            class="sc-dlfnbm fMxJtk"
             color="#777"
             display="inline-block"
             overflow="visible"
@@ -131,7 +131,7 @@ exports[`<ProductItem /> Check how renders Should render everything correctly 1`
            New
         </span>
         <span
-          class="sc-AxiKw dwbljI"
+          class="sc-dlfnbm cQEZxx"
           color=""
           data-testid="ProductItem-price"
           display="inline-block"
@@ -147,7 +147,7 @@ exports[`<ProductItem /> Check how renders Should render everything correctly 1`
           data-testid="ProductItem-buyer-quantity"
         >
           <span
-            class="sc-AxiKw csHLlB"
+            class="sc-dlfnbm dCFNwQ"
             color="#777"
             display="inline-block"
             overflow="visible"

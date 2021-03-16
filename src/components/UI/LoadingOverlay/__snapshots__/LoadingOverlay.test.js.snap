@@ -3,11 +3,11 @@
 exports[`<LoadingOverlay /> Should render correctly without info 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxhCb gckTXc"
+    class="sc-hKgILt kaHYlz"
     data-testid="LoadingOverlay"
   >
     <div
-      class="sc-AxirZ dkLCve"
+      class="sc-gsTCUz Ckrks"
       data-testid="Loader"
     >
       <div />

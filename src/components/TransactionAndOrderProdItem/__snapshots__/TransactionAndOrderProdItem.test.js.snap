@@ -3,7 +3,7 @@
 exports[`<TransactionAndOrderProdItem /> Checks how renders and behaviour Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
+    class="sc-bdfBwQ ZqsAz sc-gsTCUz inazTm"
     data-testid="TransactionAndOrderProdItem"
     direction="row"
     spacing="2"
@@ -14,7 +14,7 @@ exports[`<TransactionAndOrderProdItem /> Checks how renders and behaviour Should
       data-testid="TransactionAndOrderProdItem-product-link-photo"
     >
       <div
-        class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+        class="sc-bdfBwQ igmTYO sc-eCssSg eawKUo"
         data-testid="ProductThumbnail"
         direction="row"
         height="5"
@@ -30,7 +30,7 @@ exports[`<TransactionAndOrderProdItem /> Checks how renders and behaviour Should
       </div>
     </a>
     <div
-      class="sc-AxiKw lklcrl"
+      class="sc-dlfnbm cjrVjg"
     >
       <span
         class="name"
@@ -42,14 +42,14 @@ exports[`<TransactionAndOrderProdItem /> Checks how renders and behaviour Should
         </a>
       </span>
       <div
-        class="sc-AxjAm fiXHDx sc-AxhCb cTDcp"
+        class="sc-bdfBwQ lgjdug sc-hKgILt huHHva"
         direction="row"
         spacing=""
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-AxgMl eeevil"
+          class="sc-jSgupP jUhfHv"
           color="#777"
           display="inline-block"
           overflow="visible"
@@ -60,7 +60,7 @@ exports[`<TransactionAndOrderProdItem /> Checks how renders and behaviour Should
           2 x $9.90
         </span>
         <span
-          class="sc-AxgMl idOXky"
+          class="sc-jSgupP jiAuFg"
           color=""
           display="inline-block"
           overflow="visible"

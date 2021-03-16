@@ -3,7 +3,7 @@
 exports[`<Form /> Check how renders Should NOT render heading, error and buttons 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fKgwDr"
+    class="sc-bdfBwQ hYjfqi"
   >
     <form
       action="#"
@@ -20,10 +20,10 @@ exports[`<Form /> Check how renders Should NOT render heading, error and buttons
 exports[`<Form /> Check how renders Should render everything what is possible with blue submit button 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fKgwDr"
+    class="sc-bdfBwQ hYjfqi"
   >
     <h3
-      class="sc-Axmtr kmnqOV"
+      class="sc-iBPRYJ kqmSLn"
     >
       testHeadingText
     </h3>
@@ -35,14 +35,14 @@ exports[`<Form /> Check how renders Should render everything what is possible wi
         data-testid="Form-children"
       />
       <div
-        class="sc-AxheI drMepa"
+        class="sc-gKsewC dLOeOj"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-AxhUy kBnmbO"
+          class="sc-eCssSg gABWUT"
           color=""
           display="block"
           overflow="visible"
@@ -50,7 +50,7 @@ exports[`<Form /> Check how renders Should render everything what is possible wi
           transform=""
         >
           <button
-            class="sc-AxirZ MoZHP"
+            class="sc-gsTCUz cpcmUx"
             color="blue"
             type="button"
           >
@@ -58,7 +58,7 @@ exports[`<Form /> Check how renders Should render everything what is possible wi
           </button>
         </span>
         <button
-          class="sc-AxirZ BxhX"
+          class="sc-gsTCUz fUKWKF"
           color="blue"
           data-testid="Form-submit-btn"
           type="submit"
@@ -68,7 +68,7 @@ exports[`<Form /> Check how renders Should render everything what is possible wi
       </div>
     </form>
     <span
-      class="sc-AxhUy gXOcQt"
+      class="sc-eCssSg hNFRhM"
       color="#F22613"
       display="inline-block"
       overflow="visible"
@@ -85,7 +85,7 @@ exports[`<Form /> Check how renders Should render everything what is possible wi
 exports[`<Form /> Check how renders Should render red submit button without cancel button 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fKgwDr"
+    class="sc-bdfBwQ hYjfqi"
   >
     <form
       action="#"
@@ -95,14 +95,14 @@ exports[`<Form /> Check how renders Should render red submit button without canc
         data-testid="Form-children"
       />
       <div
-        class="sc-AxheI drMepa"
+        class="sc-gKsewC dLOeOj"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <button
-          class="sc-AxirZ dFUlZb"
+          class="sc-gsTCUz ZzwIN"
           color="red"
           data-testid="Form-submit-btn"
           type="submit"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, wait, act } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
@@ -91,7 +91,7 @@ describe('<LoggedInLinks />', () => {
       act(() => {
         userEvent.click(document.body);
       });
-      await wait(() => {
+      await waitFor(() => {
         expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
       });
     });

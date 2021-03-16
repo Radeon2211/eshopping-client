@@ -3,37 +3,37 @@
 exports[`<MyData /> Check how renders Snapshots Should render everything correctly for admin user 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxhUy dbeXoy"
+    class="sc-eCssSg ceYvmz"
   >
     My data
   </h3>
   <div
-    class="sc-AxhCb kJAhLH"
+    class="sc-hKgILt eboeig"
     direction="column"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <section
-      class="sc-AxiKw bXlsUm"
+      class="sc-dlfnbm ctISJv"
     >
       <div
-        class="sc-AxjAm eVmnPq"
+        class="sc-bdfBwQ iLceJD"
       >
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Username
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -45,19 +45,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </span>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Name
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -68,7 +68,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             firstName lastName
           </span>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -76,19 +76,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Email
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -99,7 +99,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             email@domain.com
           </span>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -107,26 +107,26 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Address
           </h4>
           <div
-            class="sc-AxhCb gKpAYt"
+            class="sc-hKgILt cUIkdS"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -137,7 +137,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               street
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -148,7 +148,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               zipCode city
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -160,7 +160,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             </span>
           </div>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -168,26 +168,26 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Contacts
           </h4>
           <div
-            class="sc-AxhCb gKpAYt"
+            class="sc-hKgILt cUIkdS"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -198,7 +198,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               Email: visible
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -210,7 +210,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             </span>
           </div>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -218,19 +218,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Phone number
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -241,7 +241,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             phone
           </span>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -249,14 +249,14 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb koTJBb actions"
+          class="sc-hKgILt kWUthc actions"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             data-testid="MyData-change-password-btn"
             type="button"
@@ -264,7 +264,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             Change password
           </button>
           <button
-            class="sc-AxgMl bClvsY"
+            class="sc-jSgupP icHxze"
             color="red"
             type="button"
           >
@@ -272,7 +272,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb koTJBb actions"
+          class="sc-hKgILt kWUthc actions"
           data-testid="MyData-admin-content"
           direction="row"
           spacing="3"
@@ -280,14 +280,14 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           wrap="nowrap"
         >
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
             Add admin
           </button>
           <button
-            class="sc-AxgMl bClvsY"
+            class="sc-jSgupP icHxze"
             color="red"
             type="button"
           >
@@ -303,37 +303,37 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
 exports[`<MyData /> Check how renders Snapshots Should render everything correctly for non admin user with status active 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxhUy dbeXoy"
+    class="sc-eCssSg ceYvmz"
   >
     My data
   </h3>
   <div
-    class="sc-AxhCb kJAhLH"
+    class="sc-hKgILt eboeig"
     direction="column"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <section
-      class="sc-AxiKw bXlsUm"
+      class="sc-dlfnbm ctISJv"
     >
       <div
-        class="sc-AxjAm eVmnPq"
+        class="sc-bdfBwQ iLceJD"
       >
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Username
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -345,19 +345,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </span>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Name
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -368,7 +368,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             firstName lastName
           </span>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -376,19 +376,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Email
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -399,7 +399,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             email@domain.com
           </span>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -407,26 +407,26 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Address
           </h4>
           <div
-            class="sc-AxhCb gKpAYt"
+            class="sc-hKgILt cUIkdS"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -437,7 +437,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               street
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -448,7 +448,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               zipCode city
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -460,7 +460,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             </span>
           </div>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -468,26 +468,26 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Contacts
           </h4>
           <div
-            class="sc-AxhCb gKpAYt"
+            class="sc-hKgILt cUIkdS"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -498,7 +498,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               Email: visible
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -510,7 +510,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             </span>
           </div>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -518,19 +518,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Phone number
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -541,7 +541,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             phone
           </span>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -549,14 +549,14 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb koTJBb actions"
+          class="sc-hKgILt kWUthc actions"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             data-testid="MyData-change-password-btn"
             type="button"
@@ -564,7 +564,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
             Change password
           </button>
           <button
-            class="sc-AxgMl bClvsY"
+            class="sc-jSgupP icHxze"
             color="red"
             type="button"
           >
@@ -580,23 +580,23 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
 exports[`<MyData /> Check how renders Snapshots Should render everything correctly for non admin user with status pending 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxhUy dbeXoy"
+    class="sc-eCssSg ceYvmz"
   >
     My data
   </h3>
   <div
-    class="sc-AxhCb kJAhLH"
+    class="sc-hKgILt eboeig"
     direction="column"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <section
-      class="sc-AxiKw bXlsUm"
+      class="sc-dlfnbm ctISJv"
       data-testid="MyData-pending-user-content"
     >
       <span
-        class="sc-AxmLO cuzwxf"
+        class="sc-fubCfw hUhCPF"
         color=""
         display="inline-block"
         overflow="visible"
@@ -608,25 +608,25 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
       </span>
     </section>
     <section
-      class="sc-AxiKw bXlsUm"
+      class="sc-dlfnbm ctISJv"
     >
       <div
-        class="sc-AxjAm eVmnPq"
+        class="sc-bdfBwQ iLceJD"
       >
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Username
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -638,19 +638,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </span>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Name
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -662,19 +662,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </span>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Email
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -686,26 +686,26 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </span>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Address
           </h4>
           <div
-            class="sc-AxhCb gKpAYt"
+            class="sc-hKgILt cUIkdS"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -716,7 +716,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               street
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -727,7 +727,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               zipCode city
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -740,26 +740,26 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </div>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Contacts
           </h4>
           <div
-            class="sc-AxhCb gKpAYt"
+            class="sc-hKgILt cUIkdS"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -770,7 +770,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
               Email: visible
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -783,19 +783,19 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </div>
         </div>
         <div
-          class="sc-AxhCb jIZMJB"
+          class="sc-hKgILt gmWsbW"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Phone number
           </h4>
           <span
-            class="sc-AxmLO cXwNPW"
+            class="sc-fubCfw osNBQ"
             color=""
             display="inline-block"
             overflow="visible"
@@ -807,7 +807,7 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </span>
         </div>
         <div
-          class="sc-AxhCb koTJBb actions"
+          class="sc-hKgILt kWUthc actions"
           data-testid="MyData-pending-user-actions"
           direction="row"
           spacing="3"
@@ -815,14 +815,14 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           wrap="nowrap"
         >
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
             Send verification link
           </button>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -830,14 +830,14 @@ exports[`<MyData /> Check how renders Snapshots Should render everything correct
           </button>
         </div>
         <div
-          class="sc-AxhCb koTJBb actions"
+          class="sc-hKgILt kWUthc actions"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <button
-            class="sc-AxgMl bClvsY"
+            class="sc-jSgupP icHxze"
             color="red"
             type="button"
           >

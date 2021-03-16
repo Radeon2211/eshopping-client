@@ -5,17 +5,17 @@ exports[`<MessageBox /> Should NOT render anything 1`] = `<DocumentFragment />`;
 exports[`<MessageBox /> Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxirZ BOWRp"
+    class="sc-gsTCUz bCTrL"
   >
     <div
-      class="sc-AxiKw GqsvX"
-      style="pointer-events: none; transform: none;"
+      class="sc-dlfnbm jxlYsy"
+      style="pointer-events: none; transform: translateY(-200%) translateZ(0);"
     >
       <span>
         test message
       </span>
       <div
-        class="sc-AxjAm hALeHd close-icon"
+        class="sc-bdfBwQ kEdXJo close-icon"
         color="#fff"
       >
         <svg>

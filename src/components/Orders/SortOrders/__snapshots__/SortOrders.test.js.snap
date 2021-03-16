@@ -3,7 +3,7 @@
 exports[`<SortOrders /> Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm deGWNZ"
+    class="sc-bdfBwQ kknihg"
   >
     <label
       class="label"
@@ -15,6 +15,12 @@ exports[`<SortOrders /> Should render everything correctly 1`] = `
       class="select css-2b097c-container"
       id="sortOption"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-l640om-control"
       >
@@ -28,7 +34,7 @@ exports[`<SortOrders /> Should render everything correctly 1`] = `
           </div>
           <input
             aria-autocomplete="list"
-            class="css-62g3xt-dummyInput"
+            class="css-wmatm6-dummyInput-DummyInput"
             id="react-select-2-input"
             readonly=""
             tabindex="0"
@@ -47,7 +53,7 @@ exports[`<SortOrders /> Should render everything correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-6q0nyr-Svg"
+              class="css-tj5bde-Svg"
               focusable="false"
               height="20"
               viewBox="0 0 20 20"

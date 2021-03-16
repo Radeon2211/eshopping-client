@@ -37,10 +37,6 @@ const setUp = (cart, isCartLoading = false, pushFn = jest.fn()) => {
   );
 };
 
-window.IntersectionObserver = jest.fn(() => ({
-  observe: jest.fn(),
-}));
-
 afterEach(cleanup);
 
 describe('<Cart />', () => {

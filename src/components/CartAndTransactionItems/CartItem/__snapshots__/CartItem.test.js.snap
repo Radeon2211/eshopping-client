@@ -3,7 +3,7 @@
 exports[`<CartItem /> Checks how renders Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm hmigcB"
+    class="sc-bdfBwQ SZA-Dk"
     data-testid="CartItem"
   >
     <div
@@ -13,7 +13,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         data-testid="CartItem-product-link-photo"
       >
         <div
-          class="sc-AxgMl gDuugx sc-AxheI gCtqRH"
+          class="sc-jSgupP iTeoXz sc-gKsewC jmxKKO"
           data-testid="ProductThumbnail"
           direction="row"
           height="7"
@@ -45,7 +45,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         class="choose-quantity-box"
       >
         <div
-          class="sc-AxhCb diZuY"
+          class="sc-hKgILt dhKALD"
         >
           <button
             class="button minus"
@@ -53,7 +53,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
             type="button"
           >
             <div
-              class="sc-AxiKw eIjmdz"
+              class="sc-dlfnbm lebiLC"
               color=""
               data-testid="ChooseQuantity-minus-icon"
             >
@@ -63,7 +63,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
             </div>
           </button>
           <input
-            class="sc-AxirZ diCymM"
+            class="sc-gsTCUz gxcxjW"
             data-testid="NumberInput-quantity"
             name="quantity"
             type="number"
@@ -75,7 +75,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
             type="button"
           >
             <div
-              class="sc-AxiKw eIjmdz"
+              class="sc-dlfnbm lebiLC"
               color=""
               data-testid="ChooseQuantity-plus-icon"
             >
@@ -86,7 +86,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
           </button>
         </div>
         <span
-          class="sc-AxhUy gHFdsf"
+          class="sc-eCssSg csvHNO"
           color=""
           data-testid="CartItem-available-quantity"
           display="inline-block"
@@ -102,7 +102,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
         class="price-box"
       >
         <span
-          class="sc-AxhUy giucPa"
+          class="sc-eCssSg csGgAf"
           color=""
           display="inline-block"
           overflow="visible"
@@ -113,7 +113,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
           $1,499.90
         </span>
         <span
-          class="sc-AxhUy jOqCzz"
+          class="sc-eCssSg eAuHqK"
           color=""
           data-testid="CartItem-price-per-piece"
           display="inline-block"
@@ -127,7 +127,7 @@ exports[`<CartItem /> Checks how renders Should render everything correctly 1`] 
       </div>
     </div>
     <div
-      class="sc-AxiKw cAfjrm remove-icon"
+      class="sc-dlfnbm cGwLef remove-icon"
       color="#F22613"
     >
       <svg>

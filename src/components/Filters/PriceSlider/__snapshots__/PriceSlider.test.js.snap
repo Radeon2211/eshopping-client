@@ -3,13 +3,13 @@
 exports[`<PriceSlider /> Check how renders Should render everything correctly with default values 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm iFRHBp"
+    class="sc-bdfBwQ VfWiw"
   >
     <div
-      class="sc-AxirZ cGSJER"
+      class="sc-gsTCUz iALxgP"
     >
       <span
-        class="sc-AxhUy eKEkiW"
+        class="sc-eCssSg cMdSJn"
         color=""
         display="inline-block"
         overflow="visible"
@@ -23,7 +23,7 @@ exports[`<PriceSlider /> Check how renders Should render everything correctly wi
         class="inputs"
       >
         <input
-          class="sc-AxhCb hkYbfm"
+          class="sc-hKgILt guYBTF"
           data-testid="NumberInput-minPrice"
           name="minPrice"
           type="number"
@@ -35,7 +35,7 @@ exports[`<PriceSlider /> Check how renders Should render everything correctly wi
           —
         </span>
         <input
-          class="sc-AxhCb hkYbfm"
+          class="sc-hKgILt guYBTF"
           data-testid="NumberInput-maxPrice"
           name="maxPrice"
           type="number"
@@ -44,7 +44,7 @@ exports[`<PriceSlider /> Check how renders Should render everything correctly wi
       </div>
     </div>
     <div
-      class="sc-AxiKw gOljnE"
+      class="sc-dlfnbm hDMmQF"
     >
       <input
         class="input min"

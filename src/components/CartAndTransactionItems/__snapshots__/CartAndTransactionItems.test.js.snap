@@ -3,10 +3,10 @@
 exports[`<CartAndTransactionItems /> Check how renders Should render everything with one seller and one cart item 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fznyAO bWDIdF"
+    class="sc-crrsfI fvpbQF"
   >
     <span
-      class="sc-AxgMl lfjKbc"
+      class="sc-jSgupP dapyFi"
       color=""
       display="block"
       overflow="visible"
@@ -21,14 +21,14 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         data-testid="CartAndTransactionItems-seller-link"
       >
         <span
-          class="sc-fzoLsD gjqBRJ"
+          class="sc-jrAGrp cfzRYv"
         >
           user1
         </span>
       </a>
     </span>
     <div
-      class="sc-AxheI ifuDAj"
+      class="sc-gKsewC kNJdCK"
       data-testid="CartItem"
     >
       <div
@@ -38,7 +38,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           data-testid="CartItem-product-link-photo"
         >
           <div
-            class="sc-AxjAm iouDCp sc-AxhUy ipxzMv"
+            class="sc-bdfBwQ cSJPGs sc-eCssSg gJTqye"
             data-testid="ProductThumbnail"
             direction="row"
             height="7"
@@ -70,7 +70,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           class="choose-quantity-box"
         >
           <div
-            class="sc-fzozJi ewkcne"
+            class="sc-pFZIQ hgBHyW"
           >
             <button
               class="button minus"
@@ -79,7 +79,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
               type="button"
             >
               <div
-                class="sc-AxmLO gDJjzg"
+                class="sc-fubCfw iuWfXe"
                 color="#DADFE1"
                 data-testid="ChooseQuantity-minus-icon"
               >
@@ -89,7 +89,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
               </div>
             </button>
             <input
-              class="sc-Axmtr eCxCYu"
+              class="sc-iBPRYJ eTbKPo"
               data-testid="NumberInput-quantity"
               name="quantity"
               type="number"
@@ -101,7 +101,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
               type="button"
             >
               <div
-                class="sc-AxmLO ctLnPk"
+                class="sc-fubCfw irUaNG"
                 color=""
                 data-testid="ChooseQuantity-plus-icon"
               >
@@ -112,7 +112,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
             </button>
           </div>
           <span
-            class="sc-AxgMl hWFvnR"
+            class="sc-jSgupP jgbVDP"
             color=""
             data-testid="CartItem-available-quantity"
             display="inline-block"
@@ -128,7 +128,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           class="price-box"
         >
           <span
-            class="sc-AxgMl cxfznc"
+            class="sc-jSgupP esalpy"
             color=""
             display="inline-block"
             overflow="visible"
@@ -141,7 +141,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         </div>
       </div>
       <div
-        class="sc-AxmLO ldkyjx remove-icon"
+        class="sc-fubCfw eICEUr remove-icon"
         color="#F22613"
       >
         <svg>
@@ -156,10 +156,10 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
 exports[`<CartAndTransactionItems /> Check how renders Should render everything with two sellers, each with one transaction item 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fznyAO bWDIdF"
+    class="sc-crrsfI fvpbQF"
   >
     <span
-      class="sc-AxgMl lfjKbc"
+      class="sc-jSgupP dapyFi"
       color=""
       display="block"
       overflow="visible"
@@ -174,14 +174,14 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         data-testid="CartAndTransactionItems-seller-link"
       >
         <span
-          class="sc-fzoLsD gjqBRJ"
+          class="sc-jrAGrp cfzRYv"
         >
           user1
         </span>
       </a>
     </span>
     <div
-      class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
+      class="sc-bdfBwQ ZqsAz sc-gsTCUz inazTm"
       data-testid="TransactionAndOrderProdItem"
       direction="row"
       spacing="2"
@@ -192,7 +192,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         data-testid="TransactionAndOrderProdItem-product-link-photo"
       >
         <div
-          class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+          class="sc-bdfBwQ igmTYO sc-eCssSg eawKUo"
           data-testid="ProductThumbnail"
           direction="row"
           height="5"
@@ -208,7 +208,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         </div>
       </a>
       <div
-        class="sc-AxiKw lklcrl"
+        class="sc-dlfnbm cjrVjg"
       >
         <span
           class="name"
@@ -220,14 +220,14 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           </a>
         </span>
         <div
-          class="sc-AxjAm fiXHDx sc-AxhCb cTDcp"
+          class="sc-bdfBwQ lgjdug sc-hKgILt huHHva"
           direction="row"
           spacing=""
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-AxgMl eeevil"
+            class="sc-jSgupP jUhfHv"
             color="#777"
             display="inline-block"
             overflow="visible"
@@ -238,7 +238,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
             1 x $2
           </span>
           <span
-            class="sc-AxgMl idOXky"
+            class="sc-jSgupP jiAuFg"
             color=""
             display="inline-block"
             overflow="visible"
@@ -253,10 +253,10 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
     </div>
   </div>
   <div
-    class="sc-fznyAO bWDIdF"
+    class="sc-crrsfI fvpbQF"
   >
     <span
-      class="sc-AxgMl lfjKbc"
+      class="sc-jSgupP dapyFi"
       color=""
       display="block"
       overflow="visible"
@@ -271,14 +271,14 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         data-testid="CartAndTransactionItems-seller-link"
       >
         <span
-          class="sc-fzoLsD gjqBRJ"
+          class="sc-jrAGrp cfzRYv"
         >
           user2
         </span>
       </a>
     </span>
     <div
-      class="sc-AxjAm dMyFZG sc-AxirZ fWrtaY"
+      class="sc-bdfBwQ ZqsAz sc-gsTCUz inazTm"
       data-testid="TransactionAndOrderProdItem"
       direction="row"
       spacing="2"
@@ -289,7 +289,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         data-testid="TransactionAndOrderProdItem-product-link-photo"
       >
         <div
-          class="sc-AxjAm cdvXFX sc-AxhUy ddFcxt"
+          class="sc-bdfBwQ igmTYO sc-eCssSg eawKUo"
           data-testid="ProductThumbnail"
           direction="row"
           height="5"
@@ -305,7 +305,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
         </div>
       </a>
       <div
-        class="sc-AxiKw lklcrl"
+        class="sc-dlfnbm cjrVjg"
       >
         <span
           class="name"
@@ -317,14 +317,14 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
           </a>
         </span>
         <div
-          class="sc-AxjAm fiXHDx sc-AxhCb cTDcp"
+          class="sc-bdfBwQ lgjdug sc-hKgILt huHHva"
           direction="row"
           spacing=""
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-AxgMl eeevil"
+            class="sc-jSgupP jUhfHv"
             color="#777"
             display="inline-block"
             overflow="visible"
@@ -335,7 +335,7 @@ exports[`<CartAndTransactionItems /> Check how renders Should render everything 
             1 x $2
           </span>
           <span
-            class="sc-AxgMl idOXky"
+            class="sc-jSgupP jiAuFg"
             color=""
             display="inline-block"
             overflow="visible"

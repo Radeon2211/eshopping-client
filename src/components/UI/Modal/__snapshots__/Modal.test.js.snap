@@ -5,21 +5,21 @@ exports[`<Modal /> Should NOT render anything if isModalOpen is false 1`] = `<Do
 exports[`<Modal /> Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm eiugOR"
+    class="sc-bdfBwQ HlrnY"
   >
     <div
       aria-label="Close modal"
-      class="sc-AxirZ cjYtTm"
+      class="sc-gsTCUz esKygk"
       role="button"
       style="opacity: 0; pointer-events: none;"
       tabindex="0"
     />
     <div
-      class="sc-AxiKw iUbsym"
+      class="sc-dlfnbm ewrkMb"
       style="opacity: 0; pointer-events: none;"
     >
       <div
-        class="sc-AxhCb gntFId close-icon"
+        class="sc-hKgILt jAwInK close-icon"
         color=""
       >
         <svg>
@@ -27,12 +27,12 @@ exports[`<Modal /> Should render everything correctly 1`] = `
         </svg>
       </div>
       <h3
-        class="sc-AxmLO kQufLH"
+        class="sc-fubCfw kgZdXZ"
       >
         About website
       </h3>
       <span
-        class="sc-AxheI jQrIyP"
+        class="sc-gKsewC jYTWRq"
         color=""
         display="inline-block"
         overflow="visible"

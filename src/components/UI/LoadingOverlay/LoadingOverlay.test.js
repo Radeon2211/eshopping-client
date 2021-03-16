@@ -17,7 +17,7 @@ afterEach(cleanup);
 
 describe('<LoadingOverlay />', () => {
   beforeAll(() => {
-    jest.useFakeTimers();
+    jest.useFakeTimers('modern');
   });
 
   afterAll(() => {

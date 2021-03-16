@@ -3,45 +3,45 @@
 exports[`<Transaction /> Check how renders Should render everything correctly with two items from one user 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxhUy dbeXoy"
+    class="sc-eCssSg ceYvmz"
   >
     Transaction
   </h3>
   <div
-    class="sc-AxjAm esRcJO"
+    class="sc-bdfBwQ gbtjgb"
   >
     <div
-      class="sc-AxirZ bCmXQD"
+      class="sc-gsTCUz bwlxQF"
       direction="column"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <section
-        class="sc-AxiKw bXlsUm"
+        class="sc-dlfnbm ctISJv"
         data-testid="DeliveryAddressSection"
       >
         <div
-          class="sc-AxirZ SZYQs"
+          class="sc-gsTCUz evuYyy"
           direction="column"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-AxhUy imrlMN"
+            class="sc-eCssSg gLASfs"
           >
             Delivery address
           </h4>
           <div
-            class="sc-AxirZ jvwvgR"
+            class="sc-gsTCUz iVaLBf"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -52,7 +52,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               firstName lastName
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -63,7 +63,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               street
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -74,7 +74,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               zipCode city
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -85,7 +85,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               country
             </span>
             <span
-              class="sc-AxmLO cXwNPW"
+              class="sc-fubCfw osNBQ"
               color=""
               display="inline-block"
               overflow="visible"
@@ -97,7 +97,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
             </span>
           </div>
           <button
-            class="sc-AxgMl dHjngI"
+            class="sc-jSgupP kPCWJS"
             color="blue"
             type="button"
           >
@@ -106,18 +106,18 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
         </div>
       </section>
       <section
-        class="sc-AxiKw bXlsUm"
+        class="sc-dlfnbm ctISJv"
       >
         <h4
-          class="sc-AxhUy imrlMN"
+          class="sc-eCssSg gLASfs"
         >
           Products
         </h4>
         <div
-          class="sc-fzoXzr rohMv"
+          class="sc-idOhPF ikxypi"
         >
           <span
-            class="sc-AxmLO ibqgFs"
+            class="sc-fubCfw jalAIu"
             color=""
             display="block"
             overflow="visible"
@@ -132,14 +132,14 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               data-testid="CartAndTransactionItems-seller-link"
             >
               <span
-                class="sc-fzqNJr jQHNTO"
+                class="sc-fodVxV fCxCGe"
               >
                 user1
               </span>
             </a>
           </span>
           <div
-            class="sc-AxirZ ktsNtF sc-fzoLsD cNVZOI"
+            class="sc-gsTCUz dMhtIX sc-jrAGrp jjgxPm"
             data-testid="TransactionAndOrderProdItem"
             direction="row"
             spacing="2"
@@ -150,7 +150,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               data-testid="TransactionAndOrderProdItem-product-link-photo"
             >
               <div
-                class="sc-AxirZ iUXOsI sc-fznyAO MAZvZ"
+                class="sc-gsTCUz cTtigW sc-crrsfI eexKSB"
                 data-testid="ProductThumbnail"
                 direction="row"
                 height="5"
@@ -166,7 +166,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               </div>
             </a>
             <div
-              class="sc-fzpans ksGBQR"
+              class="sc-kEjbxe gFzfnQ"
             >
               <span
                 class="name"
@@ -178,14 +178,14 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
                 </a>
               </span>
               <div
-                class="sc-AxirZ fMPrda sc-fzplWN cSzcAg"
+                class="sc-gsTCUz erbZJc sc-iqHYGH bCSkmx"
                 direction="row"
                 spacing=""
                 width="100%"
                 wrap="nowrap"
               >
                 <span
-                  class="sc-AxmLO bIfinp"
+                  class="sc-fubCfw eLnxgP"
                   color="#777"
                   display="inline-block"
                   overflow="visible"
@@ -196,7 +196,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
                   4 x $10.60
                 </span>
                 <span
-                  class="sc-AxmLO eZCDgW"
+                  class="sc-fubCfw bvkSGA"
                   color=""
                   display="inline-block"
                   overflow="visible"
@@ -210,7 +210,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
             </div>
           </div>
           <div
-            class="sc-AxirZ ktsNtF sc-fzoLsD cNVZOI"
+            class="sc-gsTCUz dMhtIX sc-jrAGrp jjgxPm"
             data-testid="TransactionAndOrderProdItem"
             direction="row"
             spacing="2"
@@ -221,7 +221,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               data-testid="TransactionAndOrderProdItem-product-link-photo"
             >
               <div
-                class="sc-AxirZ iUXOsI sc-fznyAO MAZvZ"
+                class="sc-gsTCUz cTtigW sc-crrsfI eexKSB"
                 data-testid="ProductThumbnail"
                 direction="row"
                 height="5"
@@ -237,7 +237,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               </div>
             </a>
             <div
-              class="sc-fzpans ksGBQR"
+              class="sc-kEjbxe gFzfnQ"
             >
               <span
                 class="name"
@@ -249,14 +249,14 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
                 </a>
               </span>
               <div
-                class="sc-AxirZ fMPrda sc-fzplWN cSzcAg"
+                class="sc-gsTCUz erbZJc sc-iqHYGH bCSkmx"
                 direction="row"
                 spacing=""
                 width="100%"
                 wrap="nowrap"
               >
                 <span
-                  class="sc-AxmLO bIfinp"
+                  class="sc-fubCfw eLnxgP"
                   color="#777"
                   display="inline-block"
                   overflow="visible"
@@ -267,7 +267,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
                   6 x $299.98
                 </span>
                 <span
-                  class="sc-AxmLO eZCDgW"
+                  class="sc-fubCfw bvkSGA"
                   color=""
                   display="inline-block"
                   overflow="visible"
@@ -284,27 +284,27 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
       </section>
     </div>
     <section
-      class="sc-AxhCb lkWjKL"
+      class="sc-hKgILt ciIrWM"
     >
       <section
-        class="sc-AxiKw bXlsUm"
+        class="sc-dlfnbm ctISJv"
       >
         <div
-          class="sc-AxirZ lgXlNC"
+          class="sc-gsTCUz ewxwoI"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <div
-            class="sc-AxirZ eULVdA"
+            class="sc-gsTCUz dYcWSu"
             direction="row"
             spacing="1"
             width="100%"
             wrap="wrap"
           >
             <span
-              class="sc-AxmLO eZCDgW"
+              class="sc-fubCfw bvkSGA"
               color=""
               display="inline-block"
               overflow="visible"
@@ -315,7 +315,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
               To pay
             </span>
             <span
-              class="sc-AxmLO jsdXgt"
+              class="sc-fubCfw cQoALv"
               color=""
               display="inline-block"
               overflow="visible"
@@ -327,7 +327,7 @@ exports[`<Transaction /> Check how renders Should render everything correctly wi
             </span>
           </div>
           <button
-            class="sc-AxgMl cmoYOQ"
+            class="sc-jSgupP jrAVxS"
             color="blue"
             type="button"
           >

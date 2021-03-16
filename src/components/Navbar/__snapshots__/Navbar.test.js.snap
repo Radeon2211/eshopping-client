@@ -3,7 +3,7 @@
 exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
 <DocumentFragment>
   <header
-    class="sc-AxjAm jfZaFQ"
+    class="sc-bdfBwQ btxKQt"
   >
     <a
       data-testid="Navbar-header-link"
@@ -17,14 +17,14 @@ exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
           src="logo.png"
         />
         <h1
-          class="sc-AxirZ jcTfnv heading"
+          class="sc-gsTCUz gJcZNp heading"
         >
           shopping
         </h1>
       </header>
     </a>
     <form
-      class="sc-AxiKw VbOrM"
+      class="sc-dlfnbm cjBYFJ"
     >
       <input
         autocomplete="off"
@@ -36,7 +36,7 @@ exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
         value=""
       />
       <button
-        class="sc-AxhCb etZkID"
+        class="sc-hKgILt fbPnWM"
         color="blue"
         type="submit"
       >
@@ -44,14 +44,14 @@ exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
       </button>
     </form>
     <nav
-      class="sc-fznyAO jIOtQF"
+      class="sc-crrsfI btxiNp"
     >
       <a
-        class="sc-fzpans jRCOFi"
+        class="sc-kEjbxe dWwZfv"
         data-testid="CartLink"
       >
         <div
-          class="sc-AxmLO glBZKU"
+          class="sc-fubCfw bzVjbi"
           color=""
         >
           <svg>
@@ -60,12 +60,12 @@ exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
         </div>
       </a>
       <div
-        class="sc-fznKkj cnJFPp"
+        class="sc-dQppl ggLoGe"
         data-testid="LoggedInLinks-user-box"
         id="user"
       >
         <span
-          class="sc-AxheI jnidFf"
+          class="sc-gKsewC kqhhoC"
           color=""
           display="inline-block"
           overflow="hidden"
@@ -76,7 +76,7 @@ exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
           username
         </span>
         <div
-          class="sc-AxmLO hawYJy"
+          class="sc-fubCfw koNpdQ"
           color=""
         >
           <svg>
@@ -93,7 +93,7 @@ exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
 exports[`<Navbar /> Should render <LoggedOutLinks /> if user is logged out 1`] = `
 <DocumentFragment>
   <header
-    class="sc-AxjAm jfZaFQ"
+    class="sc-bdfBwQ btxKQt"
   >
     <a
       data-testid="Navbar-header-link"
@@ -107,14 +107,14 @@ exports[`<Navbar /> Should render <LoggedOutLinks /> if user is logged out 1`] =
           src="logo.png"
         />
         <h1
-          class="sc-AxirZ jcTfnv heading"
+          class="sc-gsTCUz gJcZNp heading"
         >
           shopping
         </h1>
       </header>
     </a>
     <form
-      class="sc-AxiKw VbOrM"
+      class="sc-dlfnbm cjBYFJ"
     >
       <input
         autocomplete="off"
@@ -126,7 +126,7 @@ exports[`<Navbar /> Should render <LoggedOutLinks /> if user is logged out 1`] =
         value=""
       />
       <button
-        class="sc-AxhCb etZkID"
+        class="sc-hKgILt fbPnWM"
         color="blue"
         type="submit"
       >
@@ -134,21 +134,21 @@ exports[`<Navbar /> Should render <LoggedOutLinks /> if user is logged out 1`] =
       </button>
     </form>
     <div
-      class="sc-fzozJi iZHtsp"
+      class="sc-pFZIQ iLRtPl"
       direction="row"
       spacing="3"
       width="auto"
       wrap="nowrap"
     >
       <button
-        class="sc-AxhCb hDFIJP"
+        class="sc-hKgILt dNINNA"
         color="blue"
         type="button"
       >
         login
       </button>
       <button
-        class="sc-AxhCb etZkID"
+        class="sc-hKgILt fbPnWM"
         color="blue"
         type="button"
       >

@@ -3,13 +3,13 @@
 exports[`<OrderDetails /> Check how renders Should render everything correctly with two <TransactionAndOrderProdItem /> 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm dXLJYt"
+    class="sc-bdfBwQ hSaYLI"
   >
     <section
-      class="sc-AxirZ bvslzS"
+      class="sc-gsTCUz hDsSxM"
     >
       <div
-        class="sc-AxheI cDXAje"
+        class="sc-gKsewC hzQUwf"
         direction="column"
         spacing="3"
         width="100%"
@@ -19,12 +19,12 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           data-testid="OrderDetails-general-info-section"
         >
           <h4
-            class="sc-AxiKw eLpjbq"
+            class="sc-dlfnbm bhzmgj"
           >
             General info
           </h4>
           <div
-            class="sc-AxheI gsYccU"
+            class="sc-gKsewC eAJIKJ"
             direction="column"
             spacing="1"
             width="100%"
@@ -32,7 +32,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           >
             <div>
               <span
-                class="sc-AxgMl ieMMQu"
+                class="sc-jSgupP ehBahY"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -42,7 +42,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 Order number: 
               </span>
               <span
-                class="sc-AxgMl jNcyKI"
+                class="sc-jSgupP hYzbrm"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -55,7 +55,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-AxgMl ieMMQu"
+                class="sc-jSgupP ehBahY"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -65,7 +65,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 Transaction date: 
               </span>
               <span
-                class="sc-AxgMl jNcyKI"
+                class="sc-jSgupP hYzbrm"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -78,7 +78,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-AxgMl ieMMQu"
+                class="sc-jSgupP ehBahY"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -88,7 +88,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 Buyer: 
               </span>
               <span
-                class="sc-AxgMl jNcyKI"
+                class="sc-jSgupP hYzbrm"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -100,7 +100,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                   data-testid="OrderDetails-buyer-link"
                 >
                   <span
-                    class="sc-fzpans jwMGGx"
+                    class="sc-kEjbxe ktswaQ"
                   >
                     buyerUser
                   </span>
@@ -113,12 +113,12 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           data-testid="OrderDetails-info-about-seller"
         >
           <h4
-            class="sc-AxiKw eLpjbq"
+            class="sc-dlfnbm bhzmgj"
           >
             Info about seller
           </h4>
           <div
-            class="sc-AxheI gsYccU"
+            class="sc-gKsewC eAJIKJ"
             data-test="OrderDetails-seller-info"
             direction="column"
             spacing="1"
@@ -127,7 +127,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           >
             <div>
               <span
-                class="sc-AxgMl ieMMQu"
+                class="sc-jSgupP ehBahY"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -137,7 +137,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 Username: 
               </span>
               <span
-                class="sc-AxgMl jNcyKI"
+                class="sc-jSgupP hYzbrm"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -149,7 +149,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                   data-testid="OrderDetails-seller-link"
                 >
                   <span
-                    class="sc-fzpans jwMGGx"
+                    class="sc-kEjbxe ktswaQ"
                   >
                     sellerUser
                   </span>
@@ -158,7 +158,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-AxgMl ieMMQu"
+                class="sc-jSgupP ehBahY"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -168,7 +168,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 Email: 
               </span>
               <span
-                class="sc-AxgMl jNcyKI"
+                class="sc-jSgupP hYzbrm"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -181,7 +181,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-AxgMl ieMMQu"
+                class="sc-jSgupP ehBahY"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -191,7 +191,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
                 Phone: 
               </span>
               <span
-                class="sc-AxgMl jNcyKI"
+                class="sc-jSgupP hYzbrm"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -208,19 +208,19 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           data-testid="OrderDetails-delivery-address-section"
         >
           <h4
-            class="sc-AxiKw eLpjbq"
+            class="sc-dlfnbm bhzmgj"
           >
             Delivery address
           </h4>
           <div
-            class="sc-AxheI gsYccU"
+            class="sc-gKsewC eAJIKJ"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxgMl iMpujO"
+              class="sc-jSgupP hmeBsg"
               color=""
               display="inline-block"
               overflow="visible"
@@ -231,7 +231,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
               firstName lastName
             </span>
             <span
-              class="sc-AxgMl iMpujO"
+              class="sc-jSgupP hmeBsg"
               color=""
               display="inline-block"
               overflow="visible"
@@ -242,7 +242,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
               street
             </span>
             <span
-              class="sc-AxgMl iMpujO"
+              class="sc-jSgupP hmeBsg"
               color=""
               display="inline-block"
               overflow="visible"
@@ -253,7 +253,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
               zipCode city
             </span>
             <span
-              class="sc-AxgMl iMpujO"
+              class="sc-jSgupP hmeBsg"
               color=""
               display="inline-block"
               overflow="visible"
@@ -264,7 +264,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
               country
             </span>
             <span
-              class="sc-AxgMl iMpujO"
+              class="sc-jSgupP hmeBsg"
               color=""
               display="inline-block"
               overflow="visible"
@@ -278,12 +278,12 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
         </div>
       </div>
       <h4
-        class="sc-AxiKw fQNhlW"
+        class="sc-dlfnbm fLiikH"
       >
         Products
       </h4>
       <div
-        class="sc-AxheI iMBohI sc-Axmtr fPcoBS"
+        class="sc-gKsewC eChul sc-iBPRYJ zrgPI"
         data-testid="TransactionAndOrderProdItem"
         direction="row"
         spacing="2"
@@ -294,7 +294,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           data-testid="TransactionAndOrderProdItem-product-link-photo"
         >
           <div
-            class="sc-AxheI gctott sc-fzoLsD kxcbCk"
+            class="sc-gKsewC hunsTM sc-jrAGrp fpwiDe"
             data-testid="ProductThumbnail"
             direction="row"
             height="5"
@@ -310,7 +310,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           </div>
         </a>
         <div
-          class="sc-AxmLO fWKIWK"
+          class="sc-fubCfw hqkNjI"
         >
           <span
             class="name"
@@ -322,14 +322,14 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             </a>
           </span>
           <div
-            class="sc-AxheI bmYDhn sc-fzozJi gjbuzP"
+            class="sc-gKsewC foOdGC sc-pFZIQ hXfKqv"
             direction="row"
             spacing=""
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxgMl eeevil"
+              class="sc-jSgupP jUhfHv"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -340,7 +340,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
               1 x $2
             </span>
             <span
-              class="sc-AxgMl idOXky"
+              class="sc-jSgupP jiAuFg"
               color=""
               display="inline-block"
               overflow="visible"
@@ -354,7 +354,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
         </div>
       </div>
       <div
-        class="sc-AxheI iMBohI sc-Axmtr fPcoBS"
+        class="sc-gKsewC eChul sc-iBPRYJ zrgPI"
         data-testid="TransactionAndOrderProdItem"
         direction="row"
         spacing="2"
@@ -365,7 +365,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           data-testid="TransactionAndOrderProdItem-product-link-photo"
         >
           <div
-            class="sc-AxheI gctott sc-fzoLsD kxcbCk"
+            class="sc-gKsewC hunsTM sc-jrAGrp fpwiDe"
             data-testid="ProductThumbnail"
             direction="row"
             height="5"
@@ -381,7 +381,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           </div>
         </a>
         <div
-          class="sc-AxmLO fWKIWK"
+          class="sc-fubCfw hqkNjI"
         >
           <span
             class="name"
@@ -393,14 +393,14 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
             </a>
           </span>
           <div
-            class="sc-AxheI bmYDhn sc-fzozJi gjbuzP"
+            class="sc-gKsewC foOdGC sc-pFZIQ hXfKqv"
             direction="row"
             spacing=""
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-AxgMl eeevil"
+              class="sc-jSgupP jUhfHv"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -411,7 +411,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
               1 x $2
             </span>
             <span
-              class="sc-AxgMl idOXky"
+              class="sc-jSgupP jiAuFg"
               color=""
               display="inline-block"
               overflow="visible"
@@ -425,7 +425,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
         </div>
       </div>
       <span
-        class="sc-AxgMl fjxqgU"
+        class="sc-jSgupP kEFlwC"
         color=""
         display="block"
         overflow="visible"
@@ -433,7 +433,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
         transform=""
       >
         <span
-          class="sc-AxgMl kTgyhr"
+          class="sc-jSgupP kpsuzl"
           color="#777"
           display="inline-block"
           overflow="visible"
@@ -443,7 +443,7 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
           TOTAL
         </span>
         <span
-          class="sc-AxgMl cxfznc"
+          class="sc-jSgupP esalpy"
           color=""
           display="inline-block"
           overflow="visible"
@@ -462,11 +462,11 @@ exports[`<OrderDetails /> Check how renders Should render everything correctly w
 exports[`<OrderDetails /> Check how renders Should render only <Loader /> if orderDetails is undefined 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxhCb NcldG"
+    class="sc-hKgILt dfaweV"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-AxhUy exkrCn"
+      class="sc-eCssSg kpOnna"
       data-testid="Loader"
     >
       <div />
@@ -481,7 +481,7 @@ exports[`<OrderDetails /> Check how renders Should render only <Loader /> if ord
 exports[`<OrderDetails /> Check how renders Should render only info that there is a problem to fetch order details 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-AxiKw hUUUaF"
+    class="sc-dlfnbm iFVlIY"
   >
     There is a problem to fetch order details or given order does not exist
   </h4>

@@ -3,13 +3,13 @@
 exports[`<ProductDetails /> Check how renders Snapshots Should render everything correctly if user is a product's owner 1`] = `
 <DocumentFragment>
   <section
-    class="sc-AxhCb jHabve"
+    class="sc-hKgILt jLFCGR"
   >
     <div
-      class="sc-AxjAm eieusV"
+      class="sc-bdfBwQ gCcBPw"
     >
       <div
-        class="sc-AxheI cLDMfu"
+        class="sc-gKsewC grchUv"
       >
         <section
           class="photo-section"
@@ -24,12 +24,12 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
           class="data-section"
         >
           <h4
-            class="sc-AxgMl gWUhlH"
+            class="sc-jSgupP pLLjl"
           >
             testName
           </h4>
           <span
-            class="sc-AxhUy kLZiuf"
+            class="sc-eCssSg fQZWAK"
             color=""
             display="inline-block"
             overflow="visible"
@@ -38,7 +38,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
             transform=""
           >
             <span
-              class="sc-AxhUy bYQHbo"
+              class="sc-eCssSg htYuXx"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -51,14 +51,14 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
               data-testid="ProductDetails-seller-link"
             >
               <span
-                class="sc-fznyAO hvCXvo"
+                class="sc-crrsfI raIio"
               >
                 user1
               </span>
             </a>
           </span>
           <span
-            class="sc-AxhUy teUWX"
+            class="sc-eCssSg hvnVVm"
             color=""
             display="inline-block"
             overflow="visible"
@@ -67,7 +67,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
             transform=""
           >
             <span
-              class="sc-AxhUy bYQHbo"
+              class="sc-eCssSg htYuXx"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -79,7 +79,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
              Not applicable
           </span>
           <span
-            class="sc-AxhUy eBBpnb"
+            class="sc-eCssSg dhXeim"
             color=""
             display="inline-block"
             overflow="visible"
@@ -90,7 +90,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
             $2.50
           </span>
           <span
-            class="sc-AxhUy fGeCoJ"
+            class="sc-eCssSg kdypsQ"
             color="#777"
             data-testid="ProductDetails-quantity-sold"
             display="inline-block"
@@ -102,10 +102,10 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
             1 person bought 1 unit
           </span>
           <div
-            class="sc-Axmtr kDEdJa"
+            class="sc-iBPRYJ bSwQKI"
           >
             <span
-              class="sc-AxhUy teUWX"
+              class="sc-eCssSg hvnVVm"
               color=""
               display="inline-block"
               overflow="visible"
@@ -116,7 +116,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
               Quantity: 5
             </span>
             <h4
-              class="sc-AxgMl frYAvl"
+              class="sc-jSgupP cFPCfj"
             >
               You are the seller of this product
             </h4>
@@ -127,12 +127,12 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
         data-testid="ProductDetails-full-description"
       >
         <h4
-          class="sc-AxgMl kyJMsD"
+          class="sc-jSgupP eqENSN"
         >
           Description
         </h4>
         <span
-          class="sc-AxhUy iXAVwZ"
+          class="sc-eCssSg fwWRxg"
           color=""
           display="inline-block"
           overflow="visible"
@@ -144,14 +144,14 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
         </span>
       </section>
       <div
-        class="sc-fzokOt iahXvc"
+        class="sc-kstrdz bCsoJN"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <button
-          class="sc-AxmLO bBjfec"
+          class="sc-fubCfw fLCAlK"
           color="blue"
           data-testid="ProductDetails-edit-button"
           type="button"
@@ -159,7 +159,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
           Edit offer
         </button>
         <button
-          class="sc-AxmLO jUDcyI"
+          class="sc-fubCfw hFQaUO"
           color="red"
           data-testid="ProductDetails-delete-button"
           type="button"
@@ -175,11 +175,11 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render everything
 exports[`<ProductDetails /> Check how renders Snapshots Should render only <Loader /> if productDetails is undefined 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxirZ hMMCnG"
+    class="sc-gsTCUz hXYaBQ"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-AxiKw flMCzO"
+      class="sc-dlfnbm hmovIr"
       data-testid="Loader"
     >
       <div />
@@ -194,7 +194,7 @@ exports[`<ProductDetails /> Check how renders Snapshots Should render only <Load
 exports[`<ProductDetails /> Check how renders Snapshots Should render only info that there is a problem to fetch product details 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-AxgMl dgQsLO"
+    class="sc-jSgupP jizxOE"
   >
     Such product does not exist or has already been sold
   </h4>

@@ -3,7 +3,7 @@
 exports[`<ChooseQuantity /> Check how renders Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxiKw llMUIM"
+    class="sc-dlfnbm leiqkt"
   >
     <button
       class="button minus"
@@ -12,7 +12,7 @@ exports[`<ChooseQuantity /> Check how renders Should render everything correctly
       type="button"
     >
       <div
-        class="sc-AxirZ hLmnqv"
+        class="sc-gsTCUz clalRB"
         color="#DADFE1"
         data-testid="ChooseQuantity-minus-icon"
       >
@@ -22,7 +22,7 @@ exports[`<ChooseQuantity /> Check how renders Should render everything correctly
       </div>
     </button>
     <input
-      class="sc-AxjAm gofkAj"
+      class="sc-bdfBwQ doIofy"
       data-testid="NumberInput-quantity"
       name="quantity"
       type="number"
@@ -34,7 +34,7 @@ exports[`<ChooseQuantity /> Check how renders Should render everything correctly
       type="button"
     >
       <div
-        class="sc-AxirZ csXoMP"
+        class="sc-gsTCUz cephmd"
         color=""
         data-testid="ChooseQuantity-plus-icon"
       >

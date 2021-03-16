@@ -3,30 +3,30 @@
 exports[`<DeliveryAddressSection /> Should render everything correctly with default delivery address 1`] = `
 <DocumentFragment>
   <section
-    class="sc-AxjAm bIFXlR"
+    class="sc-bdfBwQ dIpFeA"
     data-testid="DeliveryAddressSection"
   >
     <div
-      class="sc-Axmtr bQXLxu"
+      class="sc-iBPRYJ eqhcQM"
       direction="column"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <h4
-        class="sc-AxirZ hJHcXw"
+        class="sc-gsTCUz bOFEQG"
       >
         Delivery address
       </h4>
       <div
-        class="sc-Axmtr ddVDcH"
+        class="sc-iBPRYJ buxrix"
         direction="column"
         spacing="1"
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-AxgMl iMpujO"
+          class="sc-jSgupP hmeBsg"
           color=""
           display="inline-block"
           overflow="visible"
@@ -37,7 +37,7 @@ exports[`<DeliveryAddressSection /> Should render everything correctly with defa
           firstName lastName
         </span>
         <span
-          class="sc-AxgMl iMpujO"
+          class="sc-jSgupP hmeBsg"
           color=""
           display="inline-block"
           overflow="visible"
@@ -48,7 +48,7 @@ exports[`<DeliveryAddressSection /> Should render everything correctly with defa
           street
         </span>
         <span
-          class="sc-AxgMl iMpujO"
+          class="sc-jSgupP hmeBsg"
           color=""
           display="inline-block"
           overflow="visible"
@@ -59,7 +59,7 @@ exports[`<DeliveryAddressSection /> Should render everything correctly with defa
           zipCode city
         </span>
         <span
-          class="sc-AxgMl iMpujO"
+          class="sc-jSgupP hmeBsg"
           color=""
           display="inline-block"
           overflow="visible"
@@ -70,7 +70,7 @@ exports[`<DeliveryAddressSection /> Should render everything correctly with defa
           country
         </span>
         <span
-          class="sc-AxgMl iMpujO"
+          class="sc-jSgupP hmeBsg"
           color=""
           display="inline-block"
           overflow="visible"
@@ -82,7 +82,7 @@ exports[`<DeliveryAddressSection /> Should render everything correctly with defa
         </span>
       </div>
       <button
-        class="sc-AxiKw eGrrKz"
+        class="sc-dlfnbm jWXPSS"
         color="blue"
         type="button"
       >

@@ -3,14 +3,14 @@
 exports[`<LoggedInLinks /> Check how renders Should render version for user with status active 1`] = `
 <DocumentFragment>
   <nav
-    class="sc-AxgMl hNnkGn"
+    class="sc-jSgupP TeqAh"
   >
     <a
-      class="sc-AxiKw lkoKWO"
+      class="sc-dlfnbm laaXGn"
       data-testid="CartLink"
     >
       <div
-        class="sc-AxjAm caUblA"
+        class="sc-bdfBwQ gtikZV"
         color=""
       >
         <svg>
@@ -19,12 +19,12 @@ exports[`<LoggedInLinks /> Check how renders Should render version for user with
       </div>
     </a>
     <div
-      class="sc-AxheI tBqCM"
+      class="sc-gKsewC jVIvkB"
       data-testid="LoggedInLinks-user-box"
       id="user"
     >
       <span
-        class="sc-AxhUy cIjsLD"
+        class="sc-eCssSg eQzqiy"
         color=""
         display="inline-block"
         overflow="hidden"
@@ -35,7 +35,7 @@ exports[`<LoggedInLinks /> Check how renders Should render version for user with
         username
       </span>
       <div
-        class="sc-AxjAm hoAOPi"
+        class="sc-bdfBwQ kWqztf"
         color=""
       >
         <svg>
@@ -51,17 +51,17 @@ exports[`<LoggedInLinks /> Check how renders Should render version for user with
 exports[`<LoggedInLinks /> Check how renders Should render version for user with status pending 1`] = `
 <DocumentFragment>
   <nav
-    class="sc-AxgMl hNnkGn"
+    class="sc-jSgupP TeqAh"
   >
     <a
       data-testid="LoggedInLinks-my-account-link"
     >
       <div
-        class="sc-AxheI tBqCM"
+        class="sc-gKsewC jVIvkB"
         id="user"
       >
         <span
-          class="sc-AxhUy cIjsLD"
+          class="sc-eCssSg eQzqiy"
           color=""
           display="inline-block"
           overflow="hidden"
@@ -72,7 +72,7 @@ exports[`<LoggedInLinks /> Check how renders Should render version for user with
           username
         </span>
         <div
-          class="sc-AxjAm gdfHmM"
+          class="sc-bdfBwQ krVsOR"
           color=""
         >
           <svg>

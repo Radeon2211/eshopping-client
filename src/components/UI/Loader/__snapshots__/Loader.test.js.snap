@@ -3,11 +3,11 @@
 exports[`<Loader /> Should render with wrapper 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm BdAPp"
+    class="sc-bdfBwQ hRzcCE"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-AxirZ dkLCve"
+      class="sc-gsTCUz Ckrks"
       data-testid="Loader"
     >
       <div />
@@ -22,7 +22,7 @@ exports[`<Loader /> Should render with wrapper 1`] = `
 exports[`<Loader /> Should render without wrapper 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxirZ dkLCve"
+    class="sc-gsTCUz Ckrks"
     data-testid="Loader"
   >
     <div />

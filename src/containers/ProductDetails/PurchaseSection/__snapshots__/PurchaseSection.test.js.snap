@@ -3,10 +3,10 @@
 exports[`<PurchaseSection /> Check how renders Snapshots Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm iMrUaH"
+    class="sc-bdfBwQ jLAphW"
   >
     <div
-      class="sc-fznyAO ezldyp"
+      class="sc-crrsfI kVcTlN"
       data-testid="PurchaseSection-choose-quantity-wrapper"
       direction="row"
       spacing=""
@@ -14,7 +14,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
       wrap="nowrap"
     >
       <div
-        class="sc-AxmLO ktArlj"
+        class="sc-fubCfw bLlOpR"
       >
         <button
           class="button minus"
@@ -23,7 +23,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
           type="button"
         >
           <div
-            class="sc-Axmtr aVNdd"
+            class="sc-iBPRYJ bwYaRv"
             color="#DADFE1"
             data-testid="ChooseQuantity-minus-icon"
           >
@@ -33,7 +33,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
           </div>
         </button>
         <input
-          class="sc-AxheI bUjaWZ"
+          class="sc-gKsewC hNWjI"
           data-testid="NumberInput-quantity"
           name="quantity"
           type="number"
@@ -45,7 +45,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
           type="button"
         >
           <div
-            class="sc-Axmtr gGKTmR"
+            class="sc-iBPRYJ ftEqkT"
             color=""
             data-testid="ChooseQuantity-plus-icon"
           >
@@ -56,7 +56,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
         </button>
       </div>
       <span
-        class="sc-AxhUy gHFdsf"
+        class="sc-eCssSg csvHNO"
         color=""
         data-testid="PurchaseSection-product-quantity"
         display="inline-block"
@@ -67,7 +67,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
       >
         of 5 pieces
         <span
-          class="sc-AxhUy bYQHbo"
+          class="sc-eCssSg htYuXx"
           color="#777"
           data-testid="PurchaseSection-quantity-in-cart"
           display="inline-block"
@@ -80,14 +80,14 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
       </span>
     </div>
     <button
-      class="sc-AxirZ kNedGU"
+      class="sc-gsTCUz jyQmMe"
       color="blue"
       type="button"
     >
       add to cart
     </button>
     <button
-      class="sc-AxirZ kNedGU"
+      class="sc-gsTCUz jyQmMe"
       color="blue"
       type="button"
     >
@@ -100,10 +100,10 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
 exports[`<PurchaseSection /> Check how renders Snapshots Should render info that user is a seller 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm iMrUaH"
+    class="sc-bdfBwQ jLAphW"
   >
     <span
-      class="sc-AxhUy teUWX"
+      class="sc-eCssSg hvnVVm"
       color=""
       display="inline-block"
       overflow="visible"
@@ -114,7 +114,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render info that
       Quantity: 5
     </span>
     <h4
-      class="sc-fzplWN fjWuqj"
+      class="sc-iqHYGH dmdouW"
     >
       You are the seller of this product
     </h4>

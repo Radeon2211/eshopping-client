@@ -226,7 +226,15 @@ describe('getErrorMessage()', () => {
 
   it('Should reload page if statement in third if statement passed', () => {
     const reloadFn = jest.fn();
-    window.location.reload = reloadFn;
+    const originalWindow = { ...window };
+    const windowSpy = jest.spyOn(global, 'window', 'get');
+    windowSpy.mockImplementation(() => ({
+      ...originalWindow,
+      location: {
+        ...originalWindow.location,
+        reload: reloadFn,
+      },
+    }));
 
     expect(reloadFn).toHaveBeenCalledTimes(0);
     utility.getErrorMessage({

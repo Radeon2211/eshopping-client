@@ -3,11 +3,11 @@
 exports[`<Filters /> Check how renders Should render everything correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxirZ krnbar"
+    class="sc-gsTCUz drXtAl"
     data-testid="Filters-toggler"
   >
     <div
-      class="sc-fznKkj hkfsKr"
+      class="sc-dQppl hTXijc"
       color=""
     >
       <svg>
@@ -20,7 +20,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
       Filters
     </span>
     <div
-      class="sc-fznKkj fKvUmM"
+      class="sc-dQppl juhMHn"
       color=""
     >
       <svg>
@@ -29,15 +29,21 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
     </div>
   </div>
   <section
-    class="sc-AxhUy esGvX"
+    class="sc-eCssSg cuFRxW"
     data-testid="Filters"
   >
     <div
-      class="sc-AxjAm hgGmOS"
+      class="sc-bdfBwQ XTQGb"
     >
       <div
         class="select css-2b097c-container"
       >
+        <span
+          aria-atomic="false"
+          aria-live="polite"
+          aria-relevant="additions text"
+          class="css-1f43avz-a11yText-A11yText"
+        />
         <div
           class=" css-yk16xz-control"
         >
@@ -51,7 +57,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
             </div>
             <input
               aria-autocomplete="list"
-              class="css-62g3xt-dummyInput"
+              class="css-wmatm6-dummyInput-DummyInput"
               id="react-select-2-input"
               readonly=""
               tabindex="0"
@@ -70,7 +76,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
             >
               <svg
                 aria-hidden="true"
-                class="css-6q0nyr-Svg"
+                class="css-tj5bde-Svg"
                 focusable="false"
                 height="20"
                 viewBox="0 0 20 20"
@@ -90,13 +96,13 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
         />
       </div>
       <div
-        class="sc-fzoLsD egJkZq"
+        class="sc-jrAGrp fPUvfA"
       >
         <div
-          class="sc-fzpans ftgUkt"
+          class="sc-kEjbxe kHvlHc"
         >
           <span
-            class="sc-AxgMl jNcyKI"
+            class="sc-jSgupP hYzbrm"
             color=""
             display="inline-block"
             overflow="visible"
@@ -110,7 +116,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
             class="inputs"
           >
             <input
-              class="sc-fznyAO jHVNjr"
+              class="sc-crrsfI dYUtiP"
               data-testid="NumberInput-minPrice"
               name="minPrice"
               type="number"
@@ -122,7 +128,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
               —
             </span>
             <input
-              class="sc-fznyAO jHVNjr"
+              class="sc-crrsfI dYUtiP"
               data-testid="NumberInput-maxPrice"
               name="maxPrice"
               type="number"
@@ -131,7 +137,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
           </div>
         </div>
         <div
-          class="sc-fzplWN gFNBvt"
+          class="sc-iqHYGH cknxsw"
         >
           <input
             class="input min"
@@ -168,10 +174,10 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
         </div>
       </div>
       <div
-        class="sc-AxiKw kpHvYd"
+        class="sc-dlfnbm jDofXQ"
       >
         <span
-          class="sc-AxgMl jNcyKI"
+          class="sc-jSgupP hYzbrm"
           color=""
           display="inline-block"
           overflow="visible"
@@ -182,7 +188,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
           Condition
         </span>
         <div
-          class="sc-AxhCb fxHvSQ"
+          class="sc-hKgILt jUSMYX"
         >
           <input
             data-testid="Filters-checkbox-new"
@@ -197,7 +203,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
           </label>
         </div>
         <div
-          class="sc-AxhCb fxHvSQ"
+          class="sc-hKgILt jUSMYX"
         >
           <input
             data-testid="Filters-checkbox-used"
@@ -212,7 +218,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
           </label>
         </div>
         <div
-          class="sc-AxhCb fxHvSQ"
+          class="sc-hKgILt jUSMYX"
         >
           <input
             data-testid="Filters-checkbox-not-applicable"
@@ -228,7 +234,7 @@ exports[`<Filters /> Check how renders Should render everything correctly 1`] = 
         </div>
       </div>
       <button
-        class="sc-AxheI bbjaGO"
+        class="sc-gKsewC gFbfGD"
         color="blue"
         data-testid="Filters-submit-btn"
         type="button"

@@ -3,19 +3,19 @@
 exports[`<CartItemAdded /> Check how renders Should render everything correctly if isCartLoading is false 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-AxgMl bUbdLj"
+    class="sc-jSgupP kGSaxZ"
   >
     Product added to cart
   </h3>
   <div
-    class="sc-AxheI cenWgt"
+    class="sc-gKsewC RnYls"
     direction="row"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <div
-      class="sc-AxheI kPYctM sc-Axmtr caqtcL"
+      class="sc-gKsewC iAXZwF sc-iBPRYJ jkvqlN"
       data-testid="ProductThumbnail"
       direction="row"
       height="8"
@@ -30,14 +30,14 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
       />
     </div>
     <div
-      class="sc-AxheI eljZjn"
+      class="sc-gKsewC hyRCRy"
       direction="column"
       spacing="1"
       width="100%"
       wrap="nowrap"
     >
       <span
-        class="sc-AxhCb iMqYaz"
+        class="sc-hKgILt kRfSFE"
         color=""
         display="inline-block"
         overflow="visible"
@@ -47,7 +47,7 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
       >
         $1,501.80
         <span
-          class="sc-AxhCb bbptha"
+          class="sc-hKgILt cTDtWF"
           color=""
           display="inline-block"
           overflow="visible"
@@ -59,7 +59,7 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
         </span>
       </span>
       <span
-        class="sc-AxhCb hHAZtX"
+        class="sc-hKgILt fttxOE"
         color=""
         display="inline-block"
         overflow="visible"
@@ -68,7 +68,7 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
         transform=""
       >
         <span
-          class="sc-AxhCb bbptha"
+          class="sc-hKgILt cTDtWF"
           color=""
           display="inline-block"
           overflow="visible"
@@ -83,14 +83,14 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
     </div>
   </div>
   <div
-    class="sc-AxheI cxuVhg"
+    class="sc-gKsewC gQOALd"
     direction="row"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <button
-      class="sc-AxjAm LxSyk"
+      class="sc-bdfBwQ eqGxsp"
       color="blue"
       type="button"
     >
@@ -100,7 +100,7 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
       data-testid="CartItemAdded-cart-link"
     >
       <button
-        class="sc-AxjAm bXCXxU"
+        class="sc-bdfBwQ ejJsLd"
         color="blue"
         type="button"
       >
@@ -114,7 +114,7 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
 exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if given product is not in cart 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxiKw flMCzO"
+    class="sc-dlfnbm hmovIr"
     data-testid="Loader"
   >
     <div />
@@ -128,7 +128,7 @@ exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if gi
 exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if isCartLoading is true 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxiKw flMCzO"
+    class="sc-dlfnbm hmovIr"
     data-testid="Loader"
   >
     <div />

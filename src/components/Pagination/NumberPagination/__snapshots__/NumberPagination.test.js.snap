@@ -3,7 +3,7 @@
 exports[`<NumberPagination /> Check how renders Should render all correctly (without hide-arrow class on arrows) 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm eyLdyf"
+    class="sc-bdfBwQ cvyney"
     data-testid="NumberPagination"
   >
     <a
@@ -11,7 +11,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
       data-testid="NumberPagination-left-arrow"
     >
       <div
-        class="sc-AxirZ bLdFLx"
+        class="sc-gsTCUz goBSlT"
         color=""
       >
         <svg>
@@ -52,7 +52,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
       data-testid="NumberPagination-right-arrow"
     >
       <div
-        class="sc-AxirZ csXoMP"
+        class="sc-gsTCUz cephmd"
         color=""
       >
         <svg>
@@ -67,7 +67,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
 exports[`<NumberPagination /> Check how renders Should render ellipsis and six number links and page 8 has active class if p is 8, quantity is 20, per page is 2 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm eyLdyf"
+    class="sc-bdfBwQ cvyney"
     data-testid="NumberPagination"
   >
     <a
@@ -75,7 +75,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
       data-testid="NumberPagination-left-arrow"
     >
       <div
-        class="sc-AxirZ bLdFLx"
+        class="sc-gsTCUz goBSlT"
         color=""
       >
         <svg>
@@ -139,7 +139,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
       data-testid="NumberPagination-right-arrow"
     >
       <div
-        class="sc-AxirZ csXoMP"
+        class="sc-gsTCUz cephmd"
         color=""
       >
         <svg>
@@ -154,7 +154,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
 exports[`<NumberPagination /> Check how renders Should render ellipsis and six number links and page 10 has active class if p is 10, quantity is 20, per page is 2 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm eyLdyf"
+    class="sc-bdfBwQ cvyney"
     data-testid="NumberPagination"
   >
     <a
@@ -162,7 +162,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
       data-testid="NumberPagination-left-arrow"
     >
       <div
-        class="sc-AxirZ bLdFLx"
+        class="sc-gsTCUz goBSlT"
         color=""
       >
         <svg>
@@ -226,7 +226,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
       data-testid="NumberPagination-right-arrow"
     >
       <div
-        class="sc-AxirZ csXoMP"
+        class="sc-gsTCUz cephmd"
         color=""
       >
         <svg>
@@ -241,7 +241,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
 exports[`<NumberPagination /> Check how renders Should render six number links if p is 1 and page 1 has active class, quantity is 20, per page is 2 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm eyLdyf"
+    class="sc-bdfBwQ cvyney"
     data-testid="NumberPagination"
   >
     <a
@@ -249,7 +249,7 @@ exports[`<NumberPagination /> Check how renders Should render six number links i
       data-testid="NumberPagination-left-arrow"
     >
       <div
-        class="sc-AxirZ bLdFLx"
+        class="sc-gsTCUz goBSlT"
         color=""
       >
         <svg>
@@ -308,7 +308,7 @@ exports[`<NumberPagination /> Check how renders Should render six number links i
       data-testid="NumberPagination-right-arrow"
     >
       <div
-        class="sc-AxirZ csXoMP"
+        class="sc-gsTCUz cephmd"
         color=""
       >
         <svg>

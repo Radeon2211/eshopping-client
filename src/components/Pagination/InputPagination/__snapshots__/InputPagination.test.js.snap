@@ -3,7 +3,7 @@
 exports[`<NumberPagination /> Check how renders Should render all correctly (without hide-arrow class on arrows) 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm ioFhGq"
+    class="sc-bdfBwQ gVUglX"
     data-testid="InputPagination"
   >
     <a
@@ -11,7 +11,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
       data-testid="InputPagination-left-arrow"
     >
       <div
-        class="sc-AxirZ bLdFLx"
+        class="sc-gsTCUz goBSlT"
         color=""
       >
         <svg>
@@ -23,7 +23,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
       class="form-number"
     >
       <input
-        class="sc-AxhCb bBWDsg"
+        class="sc-hKgILt JOuNb"
         data-testid="NumberInput-page"
         name="page"
         type="number"
@@ -31,7 +31,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
       />
     </form>
     <span
-      class="sc-AxiKw bBQmoP"
+      class="sc-dlfnbm bVPrHq"
       color=""
       display="inline-block"
       overflow="visible"
@@ -42,7 +42,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
       of
     </span>
     <span
-      class="sc-AxiKw bBQmoP"
+      class="sc-dlfnbm bVPrHq"
       color=""
       display="inline-block"
       overflow="visible"
@@ -57,7 +57,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
       data-testid="InputPagination-right-arrow"
     >
       <div
-        class="sc-AxirZ csXoMP"
+        class="sc-gsTCUz cephmd"
         color=""
       >
         <svg>

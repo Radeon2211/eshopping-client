@@ -3,13 +3,13 @@
 exports[`<ProgressBar /> Check how renders Should render everything correctly for currentStep 1 and stepsNumber 3 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm dajwIr"
+    class="sc-bdfBwQ bNVJGe"
   >
     <div
       class="step-box active"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -18,11 +18,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-checkmark-hidden"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -31,7 +31,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-number-visible"
         >
           1
@@ -49,7 +49,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
       class="step-box"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -58,11 +58,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-checkmark-hidden"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -71,7 +71,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-number-visible"
         >
           2
@@ -89,7 +89,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
       class="step-box"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -98,11 +98,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-checkmark-hidden"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -111,7 +111,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-number-visible"
         >
           3
@@ -125,13 +125,13 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
 exports[`<ProgressBar /> Check how renders Should render everything correctly for currentStep 2 and stepsNumber 3 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm dajwIr"
+    class="sc-bdfBwQ bNVJGe"
   >
     <div
       class="step-box active"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -140,11 +140,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-checkmark-visible"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -153,7 +153,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-number-hidden"
         >
           1
@@ -171,7 +171,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
       class="step-box active"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -180,11 +180,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-checkmark-hidden"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -193,7 +193,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-number-visible"
         >
           2
@@ -211,7 +211,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
       class="step-box"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -220,11 +220,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-checkmark-hidden"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -233,7 +233,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-number-visible"
         >
           3
@@ -247,13 +247,13 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
 exports[`<ProgressBar /> Check how renders Should render everything correctly for currentStep 3 and stepsNumber 3 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm dajwIr"
+    class="sc-bdfBwQ bNVJGe"
   >
     <div
       class="step-box active"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -262,11 +262,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-checkmark-visible"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -275,7 +275,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-number-hidden"
         >
           1
@@ -293,7 +293,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
       class="step-box active"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -302,11 +302,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-checkmark-visible"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -315,7 +315,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-number-hidden"
         >
           2
@@ -333,7 +333,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
       class="step-box active"
     >
       <span
-        class="sc-AxhCb kzUQtW"
+        class="sc-hKgILt PAkZJ"
         color=""
         display="inline-block"
         overflow="visible"
@@ -342,11 +342,11 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
         transform=""
       >
         <div
-          class="sc-AxirZ iIbXid"
+          class="sc-gsTCUz hZJlLD"
           data-testid="ProgressBar-step-box-checkmark-hidden"
         >
           <div
-            class="sc-AxiKw hlSoFg"
+            class="sc-dlfnbm iObWpB"
             color="#000"
           >
             <svg>
@@ -355,7 +355,7 @@ exports[`<ProgressBar /> Check how renders Should render everything correctly fo
           </div>
         </div>
         <div
-          class="sc-AxirZ jMoMmI"
+          class="sc-gsTCUz ClOiW"
           data-testid="ProgressBar-step-box-number-visible"
         >
           3
