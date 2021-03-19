@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
 import PlainPanel from '../UI/Panels/PlainPanel';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
@@ -16,10 +16,7 @@ import { TopPagination } from '../../styled/components';
 const Orders = (props) => {
   const { orders, type } = props;
 
-  const history = useHistory();
-  const {
-    location: { search },
-  } = history;
+  const { search } = useLocation();
 
   const orderCount = useSelector((state) => state.auth.orderCount);
 

@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useCallback, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
@@ -19,12 +18,8 @@ import { formatPrice } from '../../shared/utility/utility';
 import useWindowSize from '../../shared/useWindowSize';
 import theme from '../../styled/theme';
 
-const ProductDetails = (props) => {
-  const {
-    match: {
-      params: { id: productId },
-    },
-  } = props;
+const ProductDetails = () => {
+  const { id: productId } = useParams();
 
   const windowSize = useWindowSize();
 

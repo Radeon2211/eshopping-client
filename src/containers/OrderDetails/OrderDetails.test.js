@@ -8,7 +8,6 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import OrderDetails from './OrderDetails';
 import {
-  checkProps,
   createOrder,
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
@@ -17,17 +16,13 @@ import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultProps = {
-  match: {
-    params: { id: 'o1' },
-  },
-};
+const defaultOrderId = 'o1';
 
 const setUp = (orderDetails, pushFn = jest.fn()) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
-    location: { pathname: '/order/o1' },
+    location: { pathname: `/order/${defaultOrderId}` },
     push: pushFn,
   };
 
@@ -39,26 +34,23 @@ const setUp = (orderDetails, pushFn = jest.fn()) => {
     <Provider store={store}>
       <Router history={history}>
         <ThemeProvider theme={theme}>
-          <OrderDetails {...defaultProps} />
+          <OrderDetails />
         </ThemeProvider>
       </Router>
     </Provider>,
   );
 };
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
+    id: defaultOrderId,
+  }),
+}));
+
 afterEach(cleanup);
 
 describe('<OrderDetails />', () => {
-  describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
-      expect(checkProps(OrderDetails, defaultProps)).toBeUndefined();
-    });
-
-    it('Should throw a warning', () => {
-      expect(checkProps(OrderDetails, {})).not.toBe(null);
-    });
-  });
-
   describe('Check how renders', () => {
     it('Should render only <Loader /> if orderDetails is undefined', () => {
       const { asFragment } = setUp(undefined);

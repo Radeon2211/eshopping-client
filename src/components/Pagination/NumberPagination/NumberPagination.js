@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory, Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import * as SC from './NumberPagination.sc';
 import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
@@ -13,8 +13,7 @@ import {
 const NumberPagination = (props) => {
   const { itemQuantity, quantityPerPage } = props;
 
-  const history = useHistory();
-  const { search, pathname } = history.location;
+  const { search, pathname } = useLocation();
 
   const [currentPage, setCurrentPage] = useState(1);
 

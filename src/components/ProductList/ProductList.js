@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductItem from './ProductItem/ProductItem';
 import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
@@ -18,9 +18,7 @@ SC.Wrapper = styled.div`
 const ProductList = (props) => {
   const { products, isDataLoading, page } = props;
 
-  const {
-    location: { search },
-  } = useHistory();
+  const { search } = useLocation();
 
   let loadingOverlay = null;
   if (isDataLoading) loadingOverlay = <LoadingOverlay alignLoader="start" />;

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -19,7 +19,7 @@ const validationSchema = Yup.object({
 });
 
 const AddProduct = () => {
-  const history = useHistory();
+  const location = useLocation();
 
   const dispatch = useDispatch();
   const onAddProduct = useCallback(
@@ -39,7 +39,7 @@ const AddProduct = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onAddProduct(data, history.location.pathname);
+        onAddProduct(data, location.pathname);
       }}
     >
       {({ errors, touched, dirty, isValid, setFieldTouched, setFieldValue, values }) => (

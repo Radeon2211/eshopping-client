@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
 import * as SC from './OrderDetails.sc';
 import PlainPanel from '../../components/UI/Panels/PlainPanel';
@@ -14,12 +14,8 @@ import { formatOrderDate, formatPrice } from '../../shared/utility/utility';
 import { GreenText } from '../../styled/components';
 import theme from '../../styled/theme';
 
-const OrderDetails = (props) => {
-  const {
-    match: {
-      params: { id: orderId },
-    },
-  } = props;
+const OrderDetails = () => {
+  const { id: orderId } = useParams();
 
   const orderDetails = useSelector((state) => state.auth.orderDetails);
 

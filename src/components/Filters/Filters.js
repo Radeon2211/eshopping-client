@@ -20,9 +20,7 @@ const Filters = (props) => {
   const { isDataLoading } = props;
 
   const history = useHistory();
-  const {
-    location: { search, pathname },
-  } = history;
+  const { search, pathname } = history.location;
 
   const [filters, dispatchFilters] = useReducer(filtersReducer, filtersInitialState);
   const [isVisible, setIsVisible] = useState(false);

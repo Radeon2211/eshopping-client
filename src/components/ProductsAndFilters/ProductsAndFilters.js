@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SideBySide from '../UI/SideBySide';
 import Filters from '../Filters/Filters';
@@ -16,10 +16,7 @@ import { getParamsWithoutPollution } from '../../shared/utility/utility';
 const ProductsAndFilters = (props) => {
   const { page } = props;
 
-  const history = useHistory();
-  const {
-    location: { search },
-  } = history;
+  const { search } = useLocation();
 
   const products = useSelector((state) => state.product.products);
   const productCount = useSelector((state) => state.product.productCount);

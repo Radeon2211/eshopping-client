@@ -7,20 +7,16 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
-import { checkProps, defaultUserProfile } from '../../shared/testUtility';
+import { defaultUserProfile } from '../../shared/testUtility';
 import noPhoto from '../../images/no-photo.png';
 import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultProps = {
-  match: {
-    params: { id: '123' },
-  },
-};
+const defaultProductId = '123';
 
 const defaultProductDetails = {
-  _id: '123',
+  _id: defaultProductId,
   seller: { username: 'user1' },
   condition: 'not_applicable',
   photo: true,
@@ -53,7 +49,7 @@ const setUp = (store, pushFn = jest.fn()) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
-    location: { pathname: '/cart' },
+    location: { pathname: `/product/${defaultProductId}` },
     push: pushFn,
   };
 
@@ -61,26 +57,23 @@ const setUp = (store, pushFn = jest.fn()) => {
     <Provider store={finalStore}>
       <Router history={history}>
         <ThemeProvider theme={theme}>
-          <ProductDetails {...defaultProps} />
+          <ProductDetails />
         </ThemeProvider>
       </Router>
     </Provider>,
   );
 };
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
+    id: defaultProductId,
+  }),
+}));
+
 afterEach(cleanup);
 
 describe('<ProductDetails />', () => {
-  describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
-      expect(checkProps(ProductDetails, defaultProps)).toBeUndefined();
-    });
-
-    it('Should throw a warning', () => {
-      expect(checkProps(ProductDetails, {})).not.toBe(null);
-    });
-  });
-
   describe('Check how renders', () => {
     describe('Snapshots', () => {
       it('Should render only <Loader /> if productDetails is undefined', () => {
