@@ -10,7 +10,7 @@ export const formSuccess = () => ({
   type: actionTypes.FORM_SUCCESS,
 });
 
-export const formFail = (error) => ({
+export const formFail = (error = '') => ({
   type: actionTypes.FORM_FAIL,
   error,
 });
@@ -31,7 +31,7 @@ export const tradeEnd = () => ({
   type: actionTypes.TRADE_END,
 });
 
-export const setMessage = (message) => ({
+export const setMessage = (message = '') => ({
   type: actionTypes.SET_MESSAGE,
   message,
 });

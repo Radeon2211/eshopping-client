@@ -1,5 +1,6 @@
 import moxios from 'moxios';
 import axios from '../../../axios';
+import { DEFAULT_PATH } from '../../../shared/constants';
 import {
   defaultUserProfile,
   testStore,
@@ -13,6 +14,24 @@ import * as authActions from './authActions';
 
 describe('Async functions', () => {
   const defaultErrorMessage = 'Something went wrong';
+
+  const setUpStoreWithDefaultProfile = (auth = {}, product = {}, ui = {}) => {
+    return testStore(
+      {
+        profile: defaultUserProfile,
+        deliveryAddress: defaultDeliveryAddress,
+        cart: [],
+        transaction: [],
+        placedOrders: [],
+        sellHistory: [],
+        orderDetails: null,
+        orderCount: 0,
+        ...auth,
+      },
+      product,
+      ui,
+    );
+  };
 
   beforeEach(() => {
     moxios.install(axios);
@@ -475,16 +494,7 @@ describe('Async functions', () => {
           status: 200,
         });
 
-        const { store, initialState } = testStore({
-          profile: defaultUserProfile,
-          deliveryAddress: defaultDeliveryAddress,
-          cart: [],
-          transaction: [],
-          placedOrders: [],
-          sellHistory: [],
-          orderDetails: null,
-          orderCount: 0,
-        });
+        const { store, initialState } = setUpStoreWithDefaultProfile();
         await store.dispatch(actions.logoutUser());
 
         expect(store.getState()).toEqual(
@@ -507,27 +517,13 @@ describe('Async functions', () => {
           status: 500,
         });
 
-        const initialAuth = {
-          profile: defaultUserProfile,
-          deliveryAddress: defaultDeliveryAddress,
-          cart: [],
-          transaction: [],
-          placedOrders: [],
-          sellHistory: [],
-          orderDetails: null,
-          orderCount: 0,
-        };
-        const { store, initialState } = testStore({
-          ...initialAuth,
-        });
+        const { store, initialState } = setUpStoreWithDefaultProfile();
         await store.dispatch(actions.logoutUser());
 
         expect(store.getState()).toEqual(
           createExpectedState(
             initialState,
-            {
-              ...initialAuth,
-            },
+            {},
             {},
             {
               message: 'Unable to logout. Something went wrong',
@@ -588,6 +584,7 @@ describe('Async functions', () => {
     const expectedUser = {
       ...defaultUser,
       ...credentials,
+      cart: [],
     };
 
     describe('Store', () => {
@@ -599,11 +596,7 @@ describe('Async functions', () => {
           },
         });
 
-        const { store, initialState } = testStore({
-          profile: defaultUserProfile,
-          deliveryAddress: defaultDeliveryAddress,
-          cart: [],
-        });
+        const { store, initialState } = setUpStoreWithDefaultProfile();
         await store.dispatch(actions.updateUser(credentials, message));
 
         expect(store.getState()).toEqual(
@@ -635,11 +628,7 @@ describe('Async functions', () => {
           status: 500,
         });
 
-        const { store, initialState } = testStore({
-          profile: defaultUserProfile,
-          deliveryAddress: defaultDeliveryAddress,
-          cart: [],
-        });
+        const { store, initialState } = setUpStoreWithDefaultProfile();
         await store.dispatch(actions.updateUser(credentials, message));
 
         expect(store.getState()).toEqual(
@@ -708,11 +697,7 @@ describe('Async functions', () => {
           status: 200,
         });
 
-        const { store, initialState } = testStore({
-          profile: defaultUserProfile,
-          deliveryAddress: defaultDeliveryAddress,
-          cart: [],
-        });
+        const { store, initialState } = setUpStoreWithDefaultProfile();
         await store.dispatch(actions.changeEmail(credentials));
 
         expect(store.getState()).toEqual(
@@ -735,11 +720,7 @@ describe('Async functions', () => {
           status: 500,
         });
 
-        const { store, initialState } = testStore({
-          profile: defaultUserProfile,
-          deliveryAddress: defaultDeliveryAddress,
-          cart: [],
-        });
+        const { store, initialState } = setUpStoreWithDefaultProfile();
         await store.dispatch(actions.changeEmail(credentials));
 
         expect(store.getState()).toEqual(
@@ -790,6 +771,478 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
         expect(innerDispatchFn).toHaveBeenCalledTimes(2);
+      });
+    });
+  });
+
+  describe('deleteAccount()', () => {
+    const credentials = {
+      currentPassword: 'Pa$$w0rd',
+    };
+
+    const createHistory = (replaceFn = jest.fn()) => ({
+      replace: replaceFn,
+    });
+
+    describe('Store', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 200,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.deleteAccount(credentials, createHistory()));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {
+              profile: null,
+              deliveryAddress: undefined,
+              cart: undefined,
+              transaction: undefined,
+              placedOrders: undefined,
+              sellHistory: undefined,
+              orderDetails: undefined,
+              orderCount: undefined,
+            },
+            {},
+            {
+              message: `Your account has been deleted. Goodbye ${defaultUserProfile.username}!`,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'delete', '/users/me')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.deleteAccount(credentials, createHistory()));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              formError: defaultErrorMessage,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'delete', '/users/me')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+      });
+    });
+
+    describe('Inner dispatch', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 200,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        const replaceFn = jest.fn();
+        const { store } = setUpStoreWithDefaultProfile();
+        await actions.deleteAccount(credentials, createHistory(replaceFn))(
+          innerDispatchFn,
+          store.getState,
+        );
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.logout());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
+          `Your account has been deleted. Goodbye ${defaultUserProfile.username}!`,
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.formSuccess());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(4);
+        expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 500,
+        });
+
+        const innerDispatchFn = jest.fn();
+        await actions.deleteAccount(credentials)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
+        expect(innerDispatchFn).toHaveBeenCalledTimes(2);
+      });
+    });
+  });
+
+  describe('changeDeliveryAddress()', () => {
+    const credentials = {
+      firstName: 'Jan',
+      lastName: 'Nowak',
+      street: 'Nowakowska 11',
+      zipCode: '12-345',
+      city: 'Grunwald',
+      country: 'Poland',
+      phone: '+48 123456789',
+    };
+
+    const expectedUser = {
+      ...defaultUserProfile,
+      ...credentials,
+      cart: [],
+    };
+
+    describe('Store', () => {
+      it('Is successful and onlyCurrentOrders is true', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 200,
+          response: {
+            user: expectedUser,
+          },
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(
+          actions.changeDeliveryAddress({
+            ...credentials,
+            onlyCurrentOrders: true,
+          }),
+        );
+
+        expect(store.getState()).toEqual(
+          createExpectedState(initialState, {
+            deliveryAddress: credentials,
+          }),
+        );
+
+        expect(moxios.requests.mostRecent()).toBeUndefined();
+      });
+
+      it('Is successful and onlyCurrentOrders is false', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 200,
+          response: {
+            user: expectedUser,
+          },
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(
+          actions.changeDeliveryAddress({
+            ...credentials,
+            onlyCurrentOrders: false,
+          }),
+        );
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {
+              profile: {
+                ...expectedUser,
+                cart: undefined,
+              },
+              deliveryAddress: credentials,
+            },
+            {},
+            {
+              message: 'Delivery address has been saved in your profile',
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'patch', '/users/me')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+      });
+
+      it('Is failed if onlyCurrentOrders is false', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(
+          actions.changeDeliveryAddress({
+            ...credentials,
+            onlyCurrentOrders: false,
+          }),
+        );
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              formError: defaultErrorMessage,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'patch', '/users/me')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+      });
+    });
+
+    describe('Inner dispatch', () => {
+      it('Is successful and onlyCurrentOrders is false', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 200,
+          response: {
+            user: expectedUser,
+          },
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.changeDeliveryAddress({
+          ...credentials,
+          onlyCurrentOrders: false,
+        })(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.setProfile(expectedUser));
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
+          'Delivery address has been saved in your profile',
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.formSuccess());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(4);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+
+      it('Is successful and onlyCurrentOrders is true', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 200,
+          response: {
+            user: expectedUser,
+          },
+        });
+
+        const innerDispatchFn = jest.fn();
+        await actions.changeDeliveryAddress({
+          ...credentials,
+          onlyCurrentOrders: true,
+        })(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(
+          2,
+          authActions.setDeliveryAddress(credentials),
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+      });
+
+      it('Is failed if onlyCurrentOrders is false', async () => {
+        moxios.stubRequest('/users/me', {
+          status: 500,
+        });
+
+        const innerDispatchFn = jest.fn();
+        await actions.changeDeliveryAddress({
+          ...credentials,
+          onlyCurrentOrders: false,
+        })(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
+        expect(innerDispatchFn).toHaveBeenCalledTimes(2);
+      });
+    });
+  });
+
+  describe('fetchOtherUser()', () => {
+    const otherUserUsername = 'otheruser';
+    const expectedProfile = {
+      username: otherUserUsername,
+    };
+
+    describe('Store', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest(`/users/${otherUserUsername}`, {
+          status: 200,
+          response: {
+            profile: expectedProfile,
+          },
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.fetchOtherUser(otherUserUsername));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(initialState, {
+            otherUser: expectedProfile,
+          }),
+        );
+
+        expect(checkReqMethodAndURL(moxios, 'get', `/users/${otherUserUsername}`)).toEqual(true);
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest(`/users/${otherUserUsername}`, {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.fetchOtherUser(otherUserUsername));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {
+              otherUser: null,
+            },
+            {},
+            {
+              message: defaultErrorMessage,
+            },
+          ),
+        );
+
+        expect(checkReqMethodAndURL(moxios, 'get', `/users/${otherUserUsername}`)).toEqual(true);
+      });
+    });
+
+    describe('Inner dispatch', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest(`/users/${otherUserUsername}`, {
+          status: 200,
+          response: {
+            profile: expectedProfile,
+          },
+        });
+
+        const innerDispatchFn = jest.fn();
+        await actions.fetchOtherUser(otherUserUsername)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(
+          2,
+          authActions.setOtherUser(expectedProfile),
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.dataEnd());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest(`/users/${otherUserUsername}`, {
+          status: 500,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.fetchOtherUser(otherUserUsername)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, authActions.setOtherUser(null));
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.dataEnd());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(4);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+    });
+  });
+
+  describe('addAdmin()', () => {
+    const userEmail = 'user@domain.com';
+
+    describe('Store', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/add-admin', {
+          status: 200,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.addAdmin(userEmail));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: `"${userEmail}" has been made an admin successfully`,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'patch', '/users/add-admin')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/add-admin', {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.addAdmin(userEmail));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: defaultErrorMessage,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'patch', '/users/add-admin')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+      });
+    });
+
+    describe('Inner dispatch', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/add-admin', {
+          status: 200,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.addAdmin(userEmail)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
+          `"${userEmail}" has been made an admin successfully`,
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/add-admin', {
+          status: 500,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.addAdmin(userEmail)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formFail());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
     });
   });

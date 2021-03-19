@@ -18,7 +18,7 @@ const validationSchema = Yup.object({
   country: userRules.country,
   phonePrefix: userRules.phonePrefix,
   phoneNumber: userRules.phoneNumber,
-  onlyTheseOrders: Yup.bool(),
+  onlyCurrentOrders: Yup.bool(),
 });
 
 const ChangeDeliveryAddress = () => {
@@ -43,7 +43,7 @@ const ChangeDeliveryAddress = () => {
     country: defaultCountry,
     phonePrefix,
     phoneNumber,
-    onlyTheseOrders: false,
+    onlyCurrentOrders: false,
   };
 
   return (
@@ -63,7 +63,7 @@ const ChangeDeliveryAddress = () => {
 
         onChangeDeliveryAddress({
           ...changedValues,
-          onlyTheseOrders: data.onlyTheseOrders,
+          onlyCurrentOrders: data.onlyCurrentOrders,
         });
       }}
     >
@@ -85,7 +85,7 @@ const ChangeDeliveryAddress = () => {
           .filter(Boolean);
         const isReallyChanged =
           changedKeys.length > 1 ||
-          (changedKeys.length === 1 && !changedKeys.includes('onlyTheseOrders'));
+          (changedKeys.length === 1 && !changedKeys.includes('onlyCurrentOrders'));
 
         return (
           <Form
@@ -215,9 +215,9 @@ const ChangeDeliveryAddress = () => {
               kind={inputKinds.INPUT}
               config={{
                 type: 'checkbox',
-                name: 'onlyTheseOrders',
-                id: 'onlyTheseOrders',
-                checked: values.onlyTheseOrders,
+                name: 'onlyCurrentOrders',
+                id: 'onlyCurrentOrders',
+                checked: values.onlyCurrentOrders,
               }}
               label="Apply changes only to these orders"
             />

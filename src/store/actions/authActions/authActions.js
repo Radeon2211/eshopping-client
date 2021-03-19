@@ -137,7 +137,7 @@ export const deleteAccount = (creds, history) => {
       dispatch(uiActions.formStart());
       const { username } = getState().auth.profile;
       await axios.delete('/users/me', { data: creds });
-      dispatch(setProfile(null));
+      dispatch(logout());
       dispatch(
         uiActions.setAndDeleteMessage(`Your account has been deleted. Goodbye ${username}!`),
       );
@@ -154,11 +154,11 @@ export const changeDeliveryAddress = (creds) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
-      const { onlyTheseOrders } = creds;
+      const { onlyCurrentOrders } = creds;
       // eslint-disable-next-line no-param-reassign
-      delete creds.onlyTheseOrders;
+      delete creds.onlyCurrentOrders;
 
-      if (onlyTheseOrders) {
+      if (onlyCurrentOrders) {
         dispatch(setDeliveryAddress(creds));
       } else {
         const { data } = await axios.patch('/users/me', creds);
@@ -194,8 +194,8 @@ export const addAdmin = (email) => {
     try {
       dispatch(uiActions.formStart());
       await axios.patch('/users/add-admin', { email });
-      dispatch(uiActions.formSuccess());
       dispatch(uiActions.setAndDeleteMessage(`"${email}" has been made an admin successfully`));
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
