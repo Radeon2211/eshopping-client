@@ -11,7 +11,7 @@ import {
   createOrder,
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
-} from '../../shared/testUtility';
+} from '../../shared/testUtility/testUtility';
 import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);

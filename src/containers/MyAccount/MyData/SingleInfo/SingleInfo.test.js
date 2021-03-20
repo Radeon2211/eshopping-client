@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import SingleInfo from './SingleInfo';
-import { checkProps } from '../../../../shared/testUtility';
+import { checkProps } from '../../../../shared/testUtility/testUtility';
 import { singleInfoNames } from '../../../../shared/constants';
 import theme from '../../../../styled/theme';
 

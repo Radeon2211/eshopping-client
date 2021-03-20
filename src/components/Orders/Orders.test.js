@@ -11,7 +11,7 @@ import {
   checkProps,
   createOrder,
   createTransactionAndOrderProdItem,
-} from '../../shared/testUtility';
+} from '../../shared/testUtility/testUtility';
 import { orderTypes } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
@@ -45,7 +45,7 @@ describe('<ProductItem />', () => {
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
       const expectedProps = {
-        orders: [createOrder([createTransactionAndOrderProdItem()])],
+        orders: [createOrder()],
         type: orderTypes.PLACED_ORDERS,
       };
       expect(checkProps(Orders, expectedProps)).toBeUndefined();

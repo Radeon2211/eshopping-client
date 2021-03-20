@@ -3,7 +3,7 @@ import checkPropTypes from 'check-prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from '../store/reducers/rootReducer';
+import rootReducer from '../../store/reducers/rootReducer';
 
 export const defaultDeliveryAddress = {
   firstName: 'firstName',

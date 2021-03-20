@@ -8,7 +8,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CartItem from './CartItem';
 import theme from '../../../styled/theme';
-import { checkProps, createCartItem } from '../../../shared/testUtility';
+import { checkProps, createCartItem } from '../../../shared/testUtility/testUtility';
 import noPhoto from '../../../images/no-photo.png';
 
 const mockStore = configureMockStore([thunk]);

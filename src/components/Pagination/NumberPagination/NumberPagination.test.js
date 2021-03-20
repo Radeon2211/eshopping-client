@@ -9,7 +9,7 @@ import {
   checkProps,
   createHistoryPageNumber,
   createPaginationProps,
-} from '../../../shared/testUtility';
+} from '../../../shared/testUtility/testUtility';
 
 const setUp = (props = {}, history) => {
   return render(

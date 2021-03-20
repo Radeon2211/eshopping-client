@@ -8,7 +8,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import PriceSlider from './PriceSlider';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 import theme from '../../../styled/theme';
 import { DEFAULT_PATH, sliderPositionsActions, filtersActions } from '../../../shared/constants';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';

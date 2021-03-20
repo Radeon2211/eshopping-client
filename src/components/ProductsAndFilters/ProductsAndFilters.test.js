@@ -8,7 +8,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
-import { checkProps, createProductItem } from '../../shared/testUtility';
+import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
 import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
 import theme from '../../styled/theme';
 

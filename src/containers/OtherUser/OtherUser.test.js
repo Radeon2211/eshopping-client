@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import OtherUser from './OtherUser';
 import theme from '../../styled/theme';
 import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
-import { createProductItem } from '../../shared/testUtility';
+import { createProductItem } from '../../shared/testUtility/testUtility';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);

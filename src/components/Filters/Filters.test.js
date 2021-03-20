@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import { act } from 'react-dom/test-utils';
 import Filters from './Filters';
-import { checkProps } from '../../shared/testUtility';
+import { checkProps } from '../../shared/testUtility/testUtility';
 import theme from '../../styled/theme';
 import { sortProductsOptions, filtersActions } from '../../shared/constants';
 import { filtersReducer, filtersInitialState } from './filtersReducer';

@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../styled/theme';
 import ProductList from './ProductList';
-import { checkProps, createProductItem } from '../../shared/testUtility';
+import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
 import { pages } from '../../shared/constants';
 
 const createHistory = (search = '?p=1') => ({

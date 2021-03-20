@@ -1,6 +1,9 @@
 import * as actionTypes from '../../actions/actionTypes';
 import authReducer, { initialState } from './authReducer';
-import { defaultDeliveryAddress, defaultUserProfile } from '../../../shared/testUtility';
+import {
+  defaultDeliveryAddress,
+  defaultUserProfile,
+} from '../../../shared/testUtility/testUtility';
 
 describe('Auth reducer', () => {
   it('Should return default state', () => {

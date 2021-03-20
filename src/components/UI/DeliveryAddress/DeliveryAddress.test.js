@@ -3,7 +3,7 @@ import { render, cleanup } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import DeliveryAddress from './DeliveryAddress';
-import { checkProps, defaultDeliveryAddress } from '../../../shared/testUtility';
+import { checkProps, defaultDeliveryAddress } from '../../../shared/testUtility/testUtility';
 
 const setUp = (data) => {
   return render(

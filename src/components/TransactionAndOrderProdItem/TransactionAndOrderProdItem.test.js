@@ -5,7 +5,10 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import TransactionAndOrderProdItem from './TransactionAndOrderProdItem';
 import theme from '../../styled/theme';
-import { checkProps, createTransactionAndOrderProdItem } from '../../shared/testUtility';
+import {
+  checkProps,
+  createTransactionAndOrderProdItem,
+} from '../../shared/testUtility/testUtility';
 
 const setUp = (data, orderId = '', pushFn = jest.fn()) => {
   const history = {

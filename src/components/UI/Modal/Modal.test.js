@@ -9,7 +9,10 @@ import { Router } from 'react-router-dom';
 import Modal from './Modal';
 import theme from '../../../styled/theme';
 import { modalTypes } from '../../../shared/constants';
-import { defaultUserProfile, defaultDeliveryAddress } from '../../../shared/testUtility';
+import {
+  defaultUserProfile,
+  defaultDeliveryAddress,
+} from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 

@@ -10,7 +10,7 @@ import theme from '../../styled/theme';
 import {
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
-} from '../../shared/testUtility';
+} from '../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 

@@ -6,7 +6,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import DeliveryAddressSection from './DeliveryAddressSection';
 import theme from '../../../styled/theme';
-import { defaultDeliveryAddress, checkProps } from '../../../shared/testUtility';
+import { defaultDeliveryAddress, checkProps } from '../../../shared/testUtility/testUtility';
 import { modalTypes } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);

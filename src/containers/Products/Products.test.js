@@ -9,7 +9,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Products from './Products';
 import theme from '../../styled/theme';
-import { defaultUserProfile, createProductItem } from '../../shared/testUtility';
+import { defaultUserProfile, createProductItem } from '../../shared/testUtility/testUtility';
 import { PRODUCTS_PER_PAGE } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);

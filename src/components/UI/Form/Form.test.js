@@ -8,7 +8,7 @@ import configureMockStore from 'redux-mock-store';
 import { Formik } from 'formik';
 import theme from '../../../styled/theme';
 import Form from './Form';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 

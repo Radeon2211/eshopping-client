@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import Button from './Button';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const setUp = (props = {}) => {
   return render(

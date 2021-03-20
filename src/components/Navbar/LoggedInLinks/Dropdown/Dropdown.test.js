@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import userEvent from '@testing-library/user-event';
 import theme from '../../../../styled/theme';
 import Dropdown from './Dropdown';
-import { checkProps } from '../../../../shared/testUtility';
+import { checkProps } from '../../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 const defaultStore = mockStore({});

@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import MyAccount from './MyAccount';
 import theme from '../../styled/theme';
-import { defaultUserProfile } from '../../shared/testUtility';
+import { defaultUserProfile } from '../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 

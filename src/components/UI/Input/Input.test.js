@@ -5,7 +5,7 @@ import { Formik, Field } from 'formik';
 import Textarea from 'react-textarea-autosize';
 import Select from 'react-select';
 import theme from '../../../styled/theme';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 import { inputKinds, listOfCountries } from '../../../shared/constants';
 import Input from './Input';
 import * as SC from './Input.sc';

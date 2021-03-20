@@ -3,7 +3,7 @@ import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import ChooseQuantity from './ChooseQuantity';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 import theme from '../../../styled/theme';
 
 const defaultProps = {

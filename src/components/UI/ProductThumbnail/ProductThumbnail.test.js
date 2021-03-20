@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ProductThumbnail from './ProductThumbnail';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const setUp = (photo = false, orderId = '') => {
   const props = {

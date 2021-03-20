@@ -8,7 +8,7 @@ import {
   createExpectedState,
   defaultDeliveryAddress,
   setUpStoreWithDefaultProfile,
-} from '../../../shared/testUtility';
+} from '../../../shared/testUtility/testUtility';
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions';
 import * as authActions from './authActions';

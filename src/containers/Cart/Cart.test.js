@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import Cart from './Cart';
 import theme from '../../styled/theme';
-import { createCartItem } from '../../shared/testUtility';
+import { createCartItem } from '../../shared/testUtility/testUtility';
 import { DEFAULT_PATH } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);

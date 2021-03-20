@@ -11,7 +11,7 @@ import {
   checkProps,
   createCartItem,
   createTransactionAndOrderProdItem,
-} from '../../shared/testUtility';
+} from '../../shared/testUtility/testUtility';
 import { itemTypes } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);

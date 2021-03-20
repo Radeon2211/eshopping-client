@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import BottomPagination from './BottomPagination';
-import { checkProps, createHistoryPageNumber } from '../../../shared/testUtility';
+import { checkProps, createHistoryPageNumber } from '../../../shared/testUtility/testUtility';
 import { listItemTypes } from '../../../shared/constants';
 
 const createProps = (itemQuantity, itemsType, quantityPerPage) => ({

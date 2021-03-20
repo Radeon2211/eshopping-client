@@ -6,7 +6,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import MyData from './MyData';
 import theme from '../../../styled/theme';
-import { defaultUserProfile } from '../../../shared/testUtility';
+import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 

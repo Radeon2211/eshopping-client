@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../../styled/theme';
 import ProductItem from './ProductItem';
-import { checkProps, createProductItem } from '../../../shared/testUtility';
+import { checkProps, createProductItem } from '../../../shared/testUtility/testUtility';
 
 const setUp = (data, pushFn = jest.fn()) => {
   const history = {

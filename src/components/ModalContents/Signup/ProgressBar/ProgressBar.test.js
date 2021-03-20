@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import ProgressBar from './ProgressBar';
-import { checkProps } from '../../../../shared/testUtility';
+import { checkProps } from '../../../../shared/testUtility/testUtility';
 import theme from '../../../../styled/theme';
 
 const setUp = (currentStep = 1, stepsNumber = 3) => {

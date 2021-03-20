@@ -9,7 +9,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import theme from '../../../styled/theme';
 import LoggedInLinks from './LoggedInLinks';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 

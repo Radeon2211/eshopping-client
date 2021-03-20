@@ -12,7 +12,7 @@ import {
   checkProps,
   createTransactionAndOrderProdItem,
   createOrder,
-} from '../../../shared/testUtility';
+} from '../../../shared/testUtility/testUtility';
 import { orderTypes } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);

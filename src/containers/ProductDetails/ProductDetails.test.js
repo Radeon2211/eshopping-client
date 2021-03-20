@@ -7,7 +7,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
-import { defaultUserProfile } from '../../shared/testUtility';
+import { defaultUserProfile } from '../../shared/testUtility/testUtility';
 import noPhoto from '../../images/no-photo.png';
 import theme from '../../styled/theme';
 

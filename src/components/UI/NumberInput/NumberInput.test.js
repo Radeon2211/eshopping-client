@@ -3,7 +3,7 @@ import { render, cleanup, fireEvent, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import NumberInput from './NumberInput';
-import { checkProps } from '../../../shared/testUtility';
+import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const defaultProps = {
   name: 'testName',

@@ -7,7 +7,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CartItemAdded from './CartItemAdded';
 import theme from '../../../styled/theme';
-import { createProductItem } from '../../../shared/testUtility';
+import { createProductItem } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
