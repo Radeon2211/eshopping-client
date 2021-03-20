@@ -37,4 +37,4 @@ export {
   deleteProduct,
 } from './productActions';
 
-export { fetchOrders, fetchOrderDetails, setOrderDetails } from './orderActions';
+export { fetchOrders, fetchOrderDetails, setOrderDetails } from './orderActions/orderActions';

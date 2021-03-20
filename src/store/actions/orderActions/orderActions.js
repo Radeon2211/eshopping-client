@@ -1,9 +1,9 @@
 import queryString from 'query-string';
-import axios from '../../axios';
-import * as actionTypes from './actionTypes';
-import * as uiActions from './uiActions';
-import { orderTypes } from '../../shared/constants';
-import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility/utility';
+import axios from '../../../axios';
+import * as actionTypes from '../actionTypes';
+import * as uiActions from '../uiActions';
+import { orderTypes } from '../../../shared/constants';
+import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
 
 export const setPlacedOrders = (placedOrders, orderCount = undefined) => ({
   type: actionTypes.SET_PLACED_ORDERS,
@@ -22,22 +22,21 @@ export const setOrderDetails = (orderDetails) => ({
   orderDetails,
 });
 
-export const fetchOrders = (search, type) => {
+export const fetchOrders = (search, orderType) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.dataStart());
+
       const parsedQueryParams = getParamsWithoutPollution(search);
       const { p: pageNumber } = parsedQueryParams;
-
       if (!pageNumber || pageNumber < 1) parsedQueryParams.p = 1;
-
       const updatedQueryParams = queryString.stringify(parsedQueryParams);
 
       const {
         data: { orders, orderCount },
-      } = await axios.get(`/orders?type=${type}&${updatedQueryParams}`);
+      } = await axios.get(`/orders?type=${orderType}&${updatedQueryParams}`);
 
-      if (type === orderTypes.PLACED_ORDERS) {
+      if (orderType === orderTypes.PLACED_ORDERS) {
         dispatch(setPlacedOrders(orders, orderCount));
       } else {
         dispatch(setSellHistory(orders, orderCount));
@@ -47,7 +46,11 @@ export const fetchOrders = (search, type) => {
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
-      dispatch(setPlacedOrders(null, undefined));
+      if (orderType === orderTypes.PLACED_ORDERS) {
+        dispatch(setPlacedOrders(null, undefined));
+      } else {
+        dispatch(setSellHistory(null, undefined));
+      }
       dispatch(uiActions.dataEnd());
     }
   };
