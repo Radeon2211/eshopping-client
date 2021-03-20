@@ -6,7 +6,7 @@ import Textarea from 'react-textarea-autosize';
 import Select from 'react-select';
 import theme from '../../../styled/theme';
 import { checkProps } from '../../../shared/testUtility/testUtility';
-import { inputKinds, listOfCountries } from '../../../shared/constants';
+import { inputKinds, listOfCountries, productConditions } from '../../../shared/constants';
 import Input from './Input';
 import * as SC from './Input.sc';
 
@@ -211,14 +211,24 @@ describe('<Input />', () => {
     });
 
     it('Should render <SC.RadioWrapper /> with full props', () => {
-      const value = 'new';
+      const value = productConditions.NEW;
       const options = [
-        { value: 'new', id: 'new', checked: value === 'new', label: 'new' },
-        { value: 'used', id: 'used', checked: value === 'used', label: 'used' },
         {
-          value: 'not_applicable',
-          id: 'not_applicable',
-          checked: value === 'not_applicable',
+          value: productConditions.NEW,
+          id: productConditions.NEW,
+          checked: value === productConditions.NEW,
+          label: productConditions.NEW,
+        },
+        {
+          value: productConditions.USED,
+          id: productConditions.USED,
+          checked: value === productConditions.USED,
+          label: productConditions.USED,
+        },
+        {
+          value: productConditions.NOT_APPLICABLE,
+          id: productConditions.NOT_APPLICABLE,
+          checked: value === productConditions.NOT_APPLICABLE,
           label: 'not applicable',
         },
       ];
@@ -244,7 +254,7 @@ describe('<Input />', () => {
       expect(firstInput.prop('id')).toEqual(options[0].id);
       expect(firstInput.prop('checked')).toEqual(options[0].checked);
       expect(firstInput.prop('type')).toEqual('radio');
-      expect(firstInput.prop('label')).toEqual('new');
+      expect(firstInput.prop('label')).toEqual(productConditions.NEW);
       const firstLabel = radioWrappers.at(0).find('label');
       expect(firstLabel.prop('htmlFor')).toEqual(options[0].id);
       expect(firstLabel.text()).toEqual(options[0].label);
@@ -254,7 +264,7 @@ describe('<Input />', () => {
       expect(secondInput.prop('id')).toEqual(options[1].id);
       expect(secondInput.prop('checked')).toEqual(options[1].checked);
       expect(secondInput.prop('type')).toEqual('radio');
-      expect(secondInput.prop('label')).toEqual('used');
+      expect(secondInput.prop('label')).toEqual(productConditions.USED);
       const secondLabel = radioWrappers.at(1).find('label');
       expect(secondLabel.prop('htmlFor')).toEqual(options[1].id);
       expect(secondLabel.text()).toEqual(options[1].label);

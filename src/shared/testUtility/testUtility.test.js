@@ -1,6 +1,6 @@
 import validateUUID from 'uuid-validate';
 import * as testUtility from './testUtility';
-import { modalTypes } from '../constants';
+import { modalTypes, productConditions } from '../constants';
 
 describe('createHistoryPageNumber()', () => {
   it('should create history with default values', () => {
@@ -55,7 +55,7 @@ describe('createProductItem()', () => {
       quantitySold: 0,
       buyerQuantity: 0,
       description: '',
-      condition: 'new',
+      condition: productConditions.NEW,
       seller: {
         username: 'username',
       },
@@ -77,7 +77,7 @@ describe('createProductItem()', () => {
       10,
       5,
       'Cool wellingtons',
-      'not_applicable',
+      productConditions.NOT_APPLICABLE,
     );
     expect(productItem).toEqual({
       _id: 'p1',
@@ -88,7 +88,7 @@ describe('createProductItem()', () => {
       quantitySold: 10,
       buyerQuantity: 5,
       description: 'Cool wellingtons',
-      condition: 'not_applicable',
+      condition: productConditions.NOT_APPLICABLE,
       seller: {
         username: 'johnsmith',
       },
@@ -114,7 +114,7 @@ describe('createCartItem()', () => {
         quantitySold: 0,
         buyerQuantity: 0,
         description: '',
-        condition: 'new',
+        condition: productConditions.NEW,
         seller: {
           username: 'username',
         },
@@ -149,7 +149,7 @@ describe('createCartItem()', () => {
         quantitySold: 0,
         buyerQuantity: 0,
         description: '',
-        condition: 'new',
+        condition: productConditions.NEW,
         seller: {
           username: 'johnsmith',
         },

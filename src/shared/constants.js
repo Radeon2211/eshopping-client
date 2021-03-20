@@ -70,6 +70,12 @@ export const itemTypes = {
   TRANSACTION: 'TRANSACTION',
 };
 
+export const productConditions = {
+  NEW: 'new',
+  USED: 'used',
+  NOT_APPLICABLE: 'not_applicable',
+};
+
 export const listItemTypes = {
   PRODUCT: 'PRODUCT',
   ORDER: 'ORDER',

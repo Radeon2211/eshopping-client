@@ -8,7 +8,7 @@ import Form from '../UI/Form/Form';
 import Input from '../UI/Input/Input';
 import UploadPhoto from '../UploadPhoto/UploadPhoto';
 import SideBySide from '../UI/SideBySide';
-import { inputKinds, productRules } from '../../shared/constants';
+import { inputKinds, productRules, productConditions } from '../../shared/constants';
 
 const validationSchema = Yup.object({
   name: productRules.name,
@@ -33,7 +33,7 @@ const AddProduct = () => {
         name: '',
         price: 0,
         quantity: 1,
-        condition: 'not_applicable',
+        condition: productConditions.NOT_APPLICABLE,
         description: '',
         photo: null,
       }}
@@ -102,14 +102,24 @@ const AddProduct = () => {
             kind={inputKinds.RADIO}
             config={{
               name: 'condition',
-              value: 'not_applicable',
+              value: productConditions.NOT_APPLICABLE,
               options: [
-                { value: 'new', id: 'new', checked: values.condition === 'new', label: 'new' },
-                { value: 'used', id: 'used', checked: values.condition === 'used', label: 'used' },
                 {
-                  value: 'not_applicable',
-                  id: 'not_applicable',
-                  checked: values.condition === 'not_applicable',
+                  value: productConditions.NEW,
+                  id: productConditions.NEW,
+                  checked: values.condition === productConditions.NEW,
+                  label: productConditions.NEW,
+                },
+                {
+                  value: productConditions.USED,
+                  id: productConditions.USED,
+                  checked: values.condition === productConditions.USED,
+                  label: productConditions.USED,
+                },
+                {
+                  value: productConditions.NOT_APPLICABLE,
+                  id: productConditions.NOT_APPLICABLE,
+                  checked: values.condition === productConditions.NOT_APPLICABLE,
                   label: 'not applicable',
                 },
               ],

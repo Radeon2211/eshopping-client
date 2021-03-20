@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../../store/reducers/rootReducer';
+import { productConditions } from '../constants';
 
 export const defaultDeliveryAddress = {
   firstName: 'firstName',
@@ -56,7 +57,7 @@ export const createProductItem = (
   quantitySold = 0,
   buyerQuantity = 0,
   description = '',
-  condition = 'new',
+  condition = productConditions.NEW,
 ) => ({
   _id: productId || uuidv4(),
   name,

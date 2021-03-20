@@ -5,6 +5,7 @@ import { Router } from 'react-router-dom';
 import theme from '../../../styled/theme';
 import ProductItem from './ProductItem';
 import { checkProps, createProductItem } from '../../../shared/testUtility/testUtility';
+import { productConditions } from '../../../shared/constants';
 
 const setUp = (data, pushFn = jest.fn()) => {
   const history = {
@@ -48,7 +49,7 @@ describe('<ProductItem />', () => {
         5,
         2,
         'description',
-        'new',
+        productConditions.NEW,
       );
       const { asFragment } = setUp(data);
       expect(asFragment()).toMatchSnapshot();
@@ -65,7 +66,7 @@ describe('<ProductItem />', () => {
         0,
         0,
         'description',
-        'not_applicable',
+        productConditions.NOT_APPLICABLE,
       );
       const { asFragment } = setUp(data);
       expect(asFragment()).toMatchSnapshot();

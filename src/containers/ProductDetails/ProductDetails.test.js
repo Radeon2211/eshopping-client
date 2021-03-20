@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
 import { defaultUserProfile } from '../../shared/testUtility/testUtility';
+import { productConditions } from '../../shared/constants';
 import noPhoto from '../../images/no-photo.png';
 import theme from '../../styled/theme';
 
@@ -18,7 +19,7 @@ const defaultProductId = '123';
 const defaultProductDetails = {
   _id: defaultProductId,
   seller: { username: 'user1' },
-  condition: 'not_applicable',
+  condition: productConditions.NOT_APPLICABLE,
   photo: true,
   price: 2.5,
   description: '',

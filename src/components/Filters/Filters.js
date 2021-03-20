@@ -9,10 +9,10 @@ import PlainPanel from '../UI/Panels/PlainPanel';
 import PlainText from '../UI/PlainText';
 import Button from '../UI/Button/Button';
 import PriceSlider from './PriceSlider/PriceSlider';
-import { filtersActions, sortProductsOptions } from '../../shared/constants';
 import MyIcon from '../UI/MyIcon';
 import { ReactComponent as FiltersIcon } from '../../images/icons/filters.svg';
 import { ReactComponent as ArrowIcon } from '../../images/icons/arrow.svg';
+import { filtersActions, sortProductsOptions, productConditions } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 import useWindowSize from '../../shared/useWindowSize';
 
@@ -42,9 +42,9 @@ const Filters = (props) => {
         minPrice: correctQueryParams.minPrice,
         maxPrice: correctQueryParams.maxPrice,
         condition: {
-          new: conditionParam.includes('new'),
-          used: conditionParam.includes('used'),
-          not_applicable: conditionParam.includes('not_applicable'),
+          new: conditionParam.includes(productConditions.NEW),
+          used: conditionParam.includes(productConditions.USED),
+          not_applicable: conditionParam.includes(productConditions.NOT_APPLICABLE),
         },
       },
     });

@@ -7,6 +7,7 @@ import * as SC from './ProductItem.sc';
 import PlainText from '../../UI/PlainText';
 import FlexWrapper from '../../UI/FlexWrapper';
 import { formatPrice } from '../../../shared/utility/utility';
+import { productConditions } from '../../../shared/constants';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
 const ProductItem = (props) => {
@@ -15,7 +16,7 @@ const ProductItem = (props) => {
   } = props;
 
   let conditionNode = null;
-  if (condition !== 'not_applicable') {
+  if (condition !== productConditions.NOT_APPLICABLE) {
     conditionNode = (
       <PlainText size="1" mgTop="1" data-testid="ProductItem-condition">
         <PlainText color={theme.colors.light4}>Condition:</PlainText>

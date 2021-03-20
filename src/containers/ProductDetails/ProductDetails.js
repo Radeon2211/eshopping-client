@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { modalTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 import * as SC from './ProductDetails.sc';
 import Loader from '../../components/UI/Loader/Loader';
@@ -14,9 +13,10 @@ import Button from '../../components/UI/Button/Button';
 import noPhoto from '../../images/no-photo.png';
 import { GreenText } from '../../styled/components';
 import FlexWrapper from '../../components/UI/FlexWrapper';
-import { formatPrice } from '../../shared/utility/utility';
-import useWindowSize from '../../shared/useWindowSize';
 import theme from '../../styled/theme';
+import { formatPrice } from '../../shared/utility/utility';
+import { modalTypes, productConditions } from '../../shared/constants';
+import useWindowSize from '../../shared/useWindowSize';
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -132,7 +132,8 @@ const ProductDetails = () => {
       );
     }
 
-    const conditionText = condition !== 'not_applicable' ? condition : 'not applicable';
+    const conditionText =
+      condition !== productConditions.NOT_APPLICABLE ? condition : 'not applicable';
 
     details = (
       <PlainPanel>
