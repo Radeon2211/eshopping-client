@@ -12,6 +12,50 @@ import {
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions';
 import * as authActions from './authActions';
+import * as actionTypes from '../actionTypes';
+
+describe('Action creators', () => {
+  it('tests setProfile()', () => {
+    const profile = {
+      ...defaultUserProfile,
+      cart: [],
+    };
+    const expectedAction = {
+      type: actionTypes.SET_PROFILE,
+      profile,
+    };
+    expect(authActions.setProfile(profile)).toEqual(expectedAction);
+  });
+
+  it('tests logout()', () => {
+    const expectedAction = {
+      type: actionTypes.LOGOUT_USER,
+    };
+    expect(authActions.logout()).toEqual(expectedAction);
+  });
+
+  it('tests setDeliveryAddress()', () => {
+    const deliveryAddress = defaultDeliveryAddress;
+    const expectedAction = {
+      type: actionTypes.SET_DELIVERY_ADDRESS,
+      deliveryAddress,
+    };
+    expect(authActions.setDeliveryAddress(deliveryAddress)).toEqual(expectedAction);
+  });
+
+  it('tests setOtherUser()', () => {
+    const otherUser = {
+      username: 'otheruser',
+      email: 'otheruser@domain.com',
+      phone: '+48 123987456',
+    };
+    const expectedAction = {
+      type: actionTypes.SET_OTHER_USER,
+      otherUser,
+    };
+    expect(authActions.setOtherUser(otherUser)).toEqual(expectedAction);
+  });
+});
 
 describe('Async functions', () => {
   beforeEach(() => {
