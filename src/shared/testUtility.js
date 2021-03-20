@@ -209,3 +209,16 @@ export const createExpectedState = (
 
   return newState;
 };
+
+export const setUpStoreWithDefaultProfile = (auth = {}, product = {}, ui = {}) => {
+  return testStore(
+    {
+      profile: defaultUserProfile,
+      deliveryAddress: defaultDeliveryAddress,
+      cart: [],
+      ...auth,
+    },
+    product,
+    ui,
+  );
+};

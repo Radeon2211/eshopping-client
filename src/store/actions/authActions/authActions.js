@@ -209,12 +209,12 @@ export const removeAdmin = (email) => {
     try {
       dispatch(uiActions.formStart());
       await axios.patch('/users/remove-admin', { email });
-      dispatch(uiActions.formSuccess());
       dispatch(
         uiActions.setAndDeleteMessage(
           `Admin privileges have been revoked from "${email}" successfully`,
         ),
       );
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -228,10 +228,10 @@ export const sendAccountVerificationLink = () => {
     try {
       dispatch(uiActions.formStart());
       await axios.post('/users/send-account-verification-email');
-      dispatch(uiActions.formSuccess());
       dispatch(
         uiActions.setAndDeleteMessage('Email has been sent successfully! Check out your inbox'),
       );
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
@@ -245,12 +245,12 @@ export const resetPassword = (email) => {
     try {
       dispatch(uiActions.formStart());
       await axios.post('/users/request-for-reset-password', { email });
-      dispatch(uiActions.formSuccess());
       dispatch(
         uiActions.setAndDeleteMessage(
           'Verification email has been sent to you! Check out your inbox',
         ),
       );
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));

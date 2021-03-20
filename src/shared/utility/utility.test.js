@@ -1,3 +1,4 @@
+import { defaultErrorMessage } from '../constants';
 import * as utility from './utility';
 
 describe('getPhonePrefixAndNumber()', () => {
@@ -166,7 +167,7 @@ describe('updateObject()', () => {
 describe('getErrorMessage()', () => {
   it('Should get default message if neither statement passed', () => {
     const errorMessage = utility.getErrorMessage({});
-    expect(errorMessage).toEqual('Something went wrong');
+    expect(errorMessage).toEqual(defaultErrorMessage);
   });
 
   it('Should get message in first if statement', () => {
@@ -221,7 +222,7 @@ describe('getErrorMessage()', () => {
         },
       },
     });
-    expect(errorMessage).toEqual('Something went wrong');
+    expect(errorMessage).toEqual(defaultErrorMessage);
   });
 
   it('Should reload page if statement in third if statement passed', () => {

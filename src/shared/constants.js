@@ -167,3 +167,5 @@ export const updateCartActions = {
   DECREMENT: 'DECREMENT',
   NUMBER: 'NUMBER',
 };
+
+export const defaultErrorMessage = 'Something went wrong';

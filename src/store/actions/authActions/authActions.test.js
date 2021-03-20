@@ -1,38 +1,19 @@
 import moxios from 'moxios';
 import axios from '../../../axios';
-import { DEFAULT_PATH } from '../../../shared/constants';
+import { DEFAULT_PATH, defaultErrorMessage } from '../../../shared/constants';
 import {
   defaultUserProfile,
   testStore,
   checkReqMethodAndURL,
   createExpectedState,
   defaultDeliveryAddress,
+  setUpStoreWithDefaultProfile,
 } from '../../../shared/testUtility';
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions';
 import * as authActions from './authActions';
 
 describe('Async functions', () => {
-  const defaultErrorMessage = 'Something went wrong';
-
-  const setUpStoreWithDefaultProfile = (auth = {}, product = {}, ui = {}) => {
-    return testStore(
-      {
-        profile: defaultUserProfile,
-        deliveryAddress: defaultDeliveryAddress,
-        cart: [],
-        transaction: [],
-        placedOrders: [],
-        sellHistory: [],
-        orderDetails: null,
-        orderCount: 0,
-        ...auth,
-      },
-      product,
-      ui,
-    );
-  };
-
   beforeEach(() => {
     moxios.install(axios);
   });
@@ -487,14 +468,19 @@ describe('Async functions', () => {
     });
   });
 
-  describe('logout()', () => {
+  describe('logoutUser()', () => {
     describe('Store', () => {
       it('Is successful', async () => {
         moxios.stubRequest('/users/logout', {
           status: 200,
         });
 
-        const { store, initialState } = setUpStoreWithDefaultProfile();
+        const { store, initialState } = setUpStoreWithDefaultProfile({
+          placedOrders: [],
+          sellHistory: [],
+          orderDetails: null,
+          orderCount: 0,
+        });
         await store.dispatch(actions.logoutUser());
 
         expect(store.getState()).toEqual(
@@ -502,7 +488,6 @@ describe('Async functions', () => {
             profile: null,
             deliveryAddress: undefined,
             cart: undefined,
-            transaction: undefined,
             placedOrders: undefined,
             sellHistory: undefined,
             orderDetails: undefined,
@@ -790,7 +775,11 @@ describe('Async functions', () => {
           status: 200,
         });
 
-        const { store, initialState } = setUpStoreWithDefaultProfile();
+        const { store, initialState } = setUpStoreWithDefaultProfile({
+          placedOrders: [],
+          sellHistory: [],
+          orderCount: 0,
+        });
         await store.dispatch(actions.deleteAccount(credentials, createHistory()));
 
         expect(store.getState()).toEqual(
@@ -1236,6 +1225,288 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
         await actions.addAdmin(userEmail)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formFail());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+    });
+  });
+
+  describe('removeAdmin()', () => {
+    const userEmail = 'user@domain.com';
+
+    describe('Store', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/remove-admin', {
+          status: 200,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.removeAdmin(userEmail));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: `Admin privileges have been revoked from "${userEmail}" successfully`,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'patch', '/users/remove-admin')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/remove-admin', {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.removeAdmin(userEmail));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: defaultErrorMessage,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'patch', '/users/remove-admin')).toEqual(true);
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+      });
+    });
+
+    describe('Inner dispatch', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/remove-admin', {
+          status: 200,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.removeAdmin(userEmail)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
+          `Admin privileges have been revoked from "${userEmail}" successfully`,
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/remove-admin', {
+          status: 500,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.removeAdmin(userEmail)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formFail());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+    });
+  });
+
+  describe('sendAccountVerificationLink()', () => {
+    describe('Store', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/send-account-verification-email', {
+          status: 200,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.sendAccountVerificationLink());
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: 'Email has been sent successfully! Check out your inbox',
+            },
+          ),
+        );
+        expect(
+          checkReqMethodAndURL(moxios, 'post', '/users/send-account-verification-email'),
+        ).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/send-account-verification-email', {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.sendAccountVerificationLink());
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: defaultErrorMessage,
+            },
+          ),
+        );
+        expect(
+          checkReqMethodAndURL(moxios, 'post', '/users/send-account-verification-email'),
+        ).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+      });
+    });
+
+    describe('Inner dispatch', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/send-account-verification-email', {
+          status: 200,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.sendAccountVerificationLink()(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
+          'Email has been sent successfully! Check out your inbox',
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/send-account-verification-email', {
+          status: 500,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.sendAccountVerificationLink()(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formFail());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+    });
+  });
+
+  describe('resetPassword()', () => {
+    const userEmail = 'user@domain.com';
+
+    describe('Store', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/request-for-reset-password', {
+          status: 200,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.resetPassword(userEmail));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: 'Verification email has been sent to you! Check out your inbox',
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'post', '/users/request-for-reset-password')).toEqual(
+          true,
+        );
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/request-for-reset-password', {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(actions.resetPassword(userEmail));
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              message: defaultErrorMessage,
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'post', '/users/request-for-reset-password')).toEqual(
+          true,
+        );
+        expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+      });
+    });
+
+    describe('Inner dispatch', () => {
+      it('Is successful', async () => {
+        moxios.stubRequest('/users/request-for-reset-password', {
+          status: 200,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.resetPassword(userEmail)(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
+          'Verification email has been sent to you! Check out your inbox',
+        );
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
+        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
+
+        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+      });
+
+      it('Is failed', async () => {
+        moxios.stubRequest('/users/request-for-reset-password', {
+          status: 500,
+        });
+
+        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
+
+        uiActions.setAndDeleteMessage = jest.fn();
+        const innerDispatchFn = jest.fn();
+        await actions.resetPassword(userEmail)(innerDispatchFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);

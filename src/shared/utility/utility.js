@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import moment from 'moment';
 import roundTo from 'round-to';
-import { listOfAreaCodes } from '../constants';
+import { listOfAreaCodes, defaultErrorMessage } from '../constants';
 
 export const getPhonePrefixAndNumber = (phone) => {
   const currentPhonePrefix = phone.split(' ')[0].split('+')[1];
@@ -30,7 +30,7 @@ export const updateObject = (oldObject, updatedProps) => ({
 });
 
 export const getErrorMessage = (error) => {
-  let errorMessage = 'Something went wrong';
+  let errorMessage = defaultErrorMessage;
   if (error?.response?.data?.errors) {
     errorMessage = Object.values(error.response.data.errors)[0].properties.message;
   } else if (error?.response?.data?.message) {
