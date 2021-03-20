@@ -31,25 +31,25 @@ afterEach(cleanup);
 
 describe('<TransactionAndOrderProdItem />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(
         checkProps(TransactionAndOrderProdItem, { data: createTransactionAndOrderProdItem() }),
       ).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(TransactionAndOrderProdItem, {})).not.toBe(null);
     });
   });
 
   describe('Checks how renders and behaviour', () => {
-    it('Should render everything correctly', () => {
+    it('should render everything correctly', () => {
       const data = createTransactionAndOrderProdItem('p1', 'user1', 2, 9.9, 'productName', true);
       const { asFragment } = setUp(data);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render image src from orders collection', () => {
+    it('should render image src from orders collection', () => {
       const data = createTransactionAndOrderProdItem('p1', 'user1', 2, 5, 'productName', true);
       setUp(data, 'o1');
       expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute(
@@ -58,7 +58,7 @@ describe('<TransactionAndOrderProdItem />', () => {
       );
     });
 
-    it('Should call push with correct paths after clicking product links', () => {
+    it('should call push with correct paths after clicking product links', () => {
       const pushFn = jest.fn();
       const data = createTransactionAndOrderProdItem('p1');
       setUp(data, '', pushFn);

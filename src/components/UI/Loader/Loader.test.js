@@ -15,12 +15,12 @@ const setUp = (align = '') => {
 afterEach(cleanup);
 
 describe('<Loader />', () => {
-  it('Should render with wrapper', () => {
+  it('should render with wrapper', () => {
     const { asFragment } = setUp('center');
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render without wrapper', () => {
+  it('should render without wrapper', () => {
     const { asFragment } = setUp();
     expect(asFragment()).toMatchSnapshot();
   });

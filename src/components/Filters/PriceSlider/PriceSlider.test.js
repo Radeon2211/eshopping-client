@@ -45,22 +45,22 @@ afterEach(cleanup);
 
 describe('<PriceSlider />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(PriceSlider, { dispatchFilters: jest.fn() })).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(PriceSlider, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly with default values', () => {
+    it('should render everything correctly with default values', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should inputs have 20 and 80 values', () => {
+    it('should inputs have 20 and 80 values', () => {
       setUp('?p=1&minPrice=20&maxPrice=80');
       expect(screen.getByTestId('NumberInput-minPrice')).toHaveValue(20);
       expect(screen.getByTestId('PriceSlider-price-range-min')).toHaveValue('20');
@@ -70,21 +70,21 @@ describe('<PriceSlider />', () => {
   });
 
   describe('Check general behaviour', () => {
-    it('Should call replace if min value is lower than in store', () => {
+    it('should call replace if min value is lower than in store', () => {
       const replaceFn = jest.fn();
       setUp('?p=1&minPrice=5', replaceFn);
       expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
       expect(replaceFn).toHaveBeenCalledTimes(1);
     });
 
-    it('Should call replace if max value is greater than in store', () => {
+    it('should call replace if max value is greater than in store', () => {
       const replaceFn = jest.fn();
       setUp('?p=1&maxPrice=120', replaceFn);
       expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
       expect(replaceFn).toHaveBeenCalledTimes(1);
     });
 
-    it('Should call dispatchFilters twice with correct values', () => {
+    it('should call dispatchFilters twice with correct values', () => {
       const dispatchFiltersFn = jest.fn();
       setUp('?p=1&minPrice=20&maxPrice=80', jest.fn(), dispatchFiltersFn);
       expect(dispatchFiltersFn).toHaveBeenNthCalledWith(1, {
@@ -98,7 +98,7 @@ describe('<PriceSlider />', () => {
       expect(dispatchFiltersFn).toHaveBeenCalledTimes(2);
     });
 
-    it('Should change range input values with correct values and call dispatchFilters (2 calls are by default in useEffect())', () => {
+    it('should change range input values with correct values and call dispatchFilters (2 calls are by default in useEffect())', () => {
       const dispatchFiltersFn = jest.fn();
       setUp('?p=1', jest.fn(), dispatchFiltersFn);
 
@@ -123,11 +123,11 @@ describe('<PriceSlider />', () => {
   });
 
   describe('Check sliderPositionsReducer', () => {
-    it('Should return default state', () => {
+    it('should return default state', () => {
       expect(sliderPositionsReducer(undefined, {})).toEqual(sliderPositionsInitialState);
     });
 
-    it('Should return new state after SET_BOTH', () => {
+    it('should return new state after SET_BOTH', () => {
       const payload = {
         left: 10,
         right: 20,
@@ -140,7 +140,7 @@ describe('<PriceSlider />', () => {
       ).toEqual(payload);
     });
 
-    it('Should return new state after SET_LEFT', () => {
+    it('should return new state after SET_LEFT', () => {
       expect(
         sliderPositionsReducer(undefined, {
           type: sliderPositionsActions.SET_LEFT,
@@ -152,7 +152,7 @@ describe('<PriceSlider />', () => {
       });
     });
 
-    it('Should return new state after SET_RIGHT', () => {
+    it('should return new state after SET_RIGHT', () => {
       expect(
         sliderPositionsReducer(undefined, {
           type: sliderPositionsActions.SET_RIGHT,

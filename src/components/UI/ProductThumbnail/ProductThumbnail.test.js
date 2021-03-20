@@ -24,26 +24,26 @@ describe('<ProductThumbnail />', () => {
       height: '5',
       alt: 'alt',
     };
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(ProductThumbnail, props)).toBeUndefined();
     });
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(ProductThumbnail, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should src be a link to product photo in order collection', () => {
+    it('should src be a link to product photo in order collection', () => {
       const wrapper = setUp(true, 'o1');
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('Should src be a link to product photo in product collection', () => {
+    it('should src be a link to product photo in product collection', () => {
       const wrapper = setUp(true);
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('Should src be a noPhoto', () => {
+    it('should src be a noPhoto', () => {
       const wrapper = setUp(false);
       expect(wrapper).toMatchSnapshot();
     });

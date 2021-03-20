@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<OrderList /> Check how renders Should render everything correctly with one item and type SELL_HISTORY 1`] = `
+exports[`<OrderList /> Check how renders should render everything correctly with one item and type SELL_HISTORY 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ VfWiw"
@@ -168,7 +168,7 @@ exports[`<OrderList /> Check how renders Should render everything correctly with
 </DocumentFragment>
 `;
 
-exports[`<OrderList /> Check how renders Should render everything correctly with two items and type PLACED_ORDERS 1`] = `
+exports[`<OrderList /> Check how renders should render everything correctly with two items and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ VfWiw"

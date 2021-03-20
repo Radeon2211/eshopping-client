@@ -25,7 +25,7 @@ const setUp = (push = jest.fn(), search = '?p=1') => {
 
 describe('<SearchForm />', () => {
   describe(`Check if correct url is pushing to history`, () => {
-    it('Should push DEFAULT_PATH&name=test-name if there is no name in url', () => {
+    it('should push DEFAULT_PATH&name=test-name if there is no name in url', () => {
       const pushFn = jest.fn();
       const wrapper = setUp(pushFn);
       const form = wrapper.find(SC.SearchForm);
@@ -35,7 +35,7 @@ describe('<SearchForm />', () => {
       expect(pushFn).toBeCalledWith(`${DEFAULT_PATH}&name=test-name`);
     });
 
-    it('Should push DEFAULT_PATH if in url is name', () => {
+    it('should push DEFAULT_PATH if in url is name', () => {
       const pushFn = jest.fn();
       const wrapper = setUp(pushFn, '?p=1&name=test-name');
       const form = wrapper.find(SC.SearchForm);
@@ -45,7 +45,7 @@ describe('<SearchForm />', () => {
       expect(pushFn).toBeCalledWith(DEFAULT_PATH);
     });
 
-    it('Should NOT call push if in url is no name and input is empty', () => {
+    it('should NOT call push if in url is no name and input is empty', () => {
       const pushFn = jest.fn();
       const wrapper = setUp(pushFn);
       const form = wrapper.find(SC.SearchForm);
@@ -53,7 +53,7 @@ describe('<SearchForm />', () => {
       expect(pushFn).not.toBeCalled();
     });
 
-    it('Should NOT call push if in url is name and input is not edited', () => {
+    it('should NOT call push if in url is name and input is not edited', () => {
       const pushFn = jest.fn();
       const wrapper = setUp(pushFn, '?p=1&name=test-name');
       const form = wrapper.find(SC.SearchForm);

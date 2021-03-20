@@ -28,17 +28,17 @@ afterEach(cleanup);
 
 describe('<ProductItem />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(ProductItem, { data: createProductItem() })).toBeUndefined();
     });
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       const expectedProps = {};
       expect(checkProps(ProductItem, expectedProps)).not.toBeNull();
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly', () => {
+    it('should render everything correctly', () => {
       const data = createProductItem(
         'p1',
         'user1',
@@ -55,7 +55,7 @@ describe('<ProductItem />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should NOT render buyer quantity, condition and should render default photo, price without decimals', () => {
+    it('should NOT render buyer quantity, condition and should render default photo, price without decimals', () => {
       const data = createProductItem(
         'p1',
         'user1',
@@ -73,7 +73,7 @@ describe('<ProductItem />', () => {
     });
   });
 
-  it('Should push correct path after clicking at wrapper', () => {
+  it('should push correct path after clicking at wrapper', () => {
     const pushFn = jest.fn();
     const data = createProductItem('p1');
     setUp(data, pushFn);

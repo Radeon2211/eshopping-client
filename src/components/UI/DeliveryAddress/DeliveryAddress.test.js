@@ -17,11 +17,11 @@ afterEach(cleanup);
 
 describe('<DeliveryAddress />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(DeliveryAddress, { data: defaultDeliveryAddress })).toBeUndefined();
     });
 
-    it('Should throw a warning if data is uncomplete', () => {
+    it('should throw a warning if data is uncomplete', () => {
       expect(
         checkProps(DeliveryAddress, {
           ...defaultDeliveryAddress,
@@ -30,12 +30,12 @@ describe('<DeliveryAddress />', () => {
       ).not.toBe(null);
     });
 
-    it('Should throw a warning if data is empty', () => {
+    it('should throw a warning if data is empty', () => {
       expect(checkProps(DeliveryAddress, {})).not.toBe(null);
     });
   });
 
-  it('Should render five <PlainText /> with correct values', () => {
+  it('should render five <PlainText /> with correct values', () => {
     const { asFragment } = setUp(defaultDeliveryAddress);
     expect(asFragment()).toMatchSnapshot();
   });

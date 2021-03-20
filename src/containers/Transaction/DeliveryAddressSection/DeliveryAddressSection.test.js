@@ -35,24 +35,24 @@ afterEach(cleanup);
 
 describe('<DeliveryAddressSection />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const props = {
         onSetModal: jest.fn(),
       };
       expect(checkProps(DeliveryAddressSection, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(DeliveryAddressSection, {})).not.toBe(null);
     });
   });
 
-  it('Should render everything correctly with default delivery address', () => {
+  it('should render everything correctly with default delivery address', () => {
     const { asFragment } = setUp();
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should call onSetModal after clicking button', () => {
+  it('should call onSetModal after clicking button', () => {
     const onSetModalFn = jest.fn();
     setUp(onSetModalFn);
 

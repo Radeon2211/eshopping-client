@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Filters /> Check how renders Should render everything correctly 1`] = `
+exports[`<Filters /> Check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-gsTCUz drXtAl"

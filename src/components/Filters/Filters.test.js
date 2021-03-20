@@ -61,17 +61,17 @@ afterEach(cleanup);
 
 describe('<Filters />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(Filters, { isDataLoading: false })).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(Filters, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly', () => {
+    it('should render everything correctly', () => {
       const { asFragment } = setUp();
       act(() => {
         fireEvent.click(screen.getByTestId('Filters-toggler'));
@@ -79,7 +79,7 @@ describe('<Filters />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render filters panel and NOT render toggler', () => {
+    it('should render filters panel and NOT render toggler', () => {
       act(() => {
         window.resizeTo(1920, 1080);
       });
@@ -88,7 +88,7 @@ describe('<Filters />', () => {
       expect(screen.queryByTestId('Filters-toggler')).not.toBeInTheDocument();
     });
 
-    it('Should render all sorting options', async () => {
+    it('should render all sorting options', async () => {
       act(() => {
         window.resizeTo(1920, 1080);
       });
@@ -100,48 +100,48 @@ describe('<Filters />', () => {
       expect(screen.getByText(sortProductsOptions[4].label)).toBeInTheDocument();
     });
 
-    it('Should submit button be disabled', () => {
+    it('should submit button be disabled', () => {
       setUp(true);
       expect(screen.getByTestId('Filters-submit-btn')).toBeDisabled();
     });
   });
 
   describe('Check behaviour of controls', () => {
-    it('Should condition checkboxes be checked', () => {
+    it('should condition checkboxes be checked', () => {
       setUp(false, '?p=1&condition=new,used,not_applicable');
       expect(screen.getByTestId('Filters-checkbox-new')).toBeChecked();
       expect(screen.getByTestId('Filters-checkbox-used')).toBeChecked();
       expect(screen.getByTestId('Filters-checkbox-not-applicable')).toBeChecked();
     });
 
-    it('Should NOT condition checkboxes be checked', () => {
+    it('should NOT condition checkboxes be checked', () => {
       setUp();
       expect(screen.getByTestId('Filters-checkbox-new')).not.toBeChecked();
       expect(screen.getByTestId('Filters-checkbox-used')).not.toBeChecked();
       expect(screen.getByTestId('Filters-checkbox-not-applicable')).not.toBeChecked();
     });
 
-    it('Should sort by price ascending', () => {
+    it('should sort by price ascending', () => {
       setUp(false, '?p=1&sortBy=price:asc');
       expect(screen.getByText(sortProductsOptions[1].label)).toBeInTheDocument();
     });
 
-    it('Should sort by price descending', () => {
+    it('should sort by price descending', () => {
       setUp(false, '?p=1&sortBy=price:desc');
       expect(screen.getByText(sortProductsOptions[2].label)).toBeInTheDocument();
     });
 
-    it('Should sort by name ascending', () => {
+    it('should sort by name ascending', () => {
       setUp(false, '?p=1&sortBy=name:asc');
       expect(screen.getByText(sortProductsOptions[3].label)).toBeInTheDocument();
     });
 
-    it('Should sort by name descending', () => {
+    it('should sort by name descending', () => {
       setUp(false, '?p=1&sortBy=name:desc');
       expect(screen.getByText(sortProductsOptions[4].label)).toBeInTheDocument();
     });
 
-    it('Should call push with correct path and params', async () => {
+    it('should call push with correct path and params', async () => {
       act(() => {
         window.resizeTo(1920, 1080);
       });
@@ -169,11 +169,11 @@ describe('<Filters />', () => {
   });
 
   describe('Check filtersReducer', () => {
-    it('Should return default state', () => {
+    it('should return default state', () => {
       expect(filtersReducer(undefined, {})).toEqual(filtersInitialState);
     });
 
-    it('Should return new state after INIT_STATE', () => {
+    it('should return new state after INIT_STATE', () => {
       const payload = {
         sortBy: sortProductsOptions[1],
         minPrice: 10,
@@ -192,7 +192,7 @@ describe('<Filters />', () => {
       ).toEqual(payload);
     });
 
-    it('Should return new state after SET_SORT_BY', () => {
+    it('should return new state after SET_SORT_BY', () => {
       expect(
         filtersReducer(undefined, {
           type: filtersActions.SET_SORT_BY,
@@ -204,7 +204,7 @@ describe('<Filters />', () => {
       });
     });
 
-    it('Should return new state after SET_MIN_PRICE', () => {
+    it('should return new state after SET_MIN_PRICE', () => {
       expect(
         filtersReducer(undefined, {
           type: filtersActions.SET_MIN_PRICE,
@@ -216,7 +216,7 @@ describe('<Filters />', () => {
       });
     });
 
-    it('Should return new state after SET_MAX_PRICE', () => {
+    it('should return new state after SET_MAX_PRICE', () => {
       expect(
         filtersReducer(undefined, {
           type: filtersActions.SET_MAX_PRICE,
@@ -228,7 +228,7 @@ describe('<Filters />', () => {
       });
     });
 
-    it('Should return new state after SET_CONDITION', () => {
+    it('should return new state after SET_CONDITION', () => {
       expect(
         filtersReducer(undefined, {
           type: filtersActions.SET_CONDITION,

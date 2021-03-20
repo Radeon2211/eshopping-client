@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Dropdown /> Check how renders Should NOT render anything 1`] = `
+exports[`<Dropdown /> Check how renders should NOT render anything 1`] = `
 <DocumentFragment>
   <div />
 </DocumentFragment>
 `;
 
-exports[`<Dropdown /> Check how renders Should render everything correctly 1`] = `
+exports[`<Dropdown /> Check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div>
     <div

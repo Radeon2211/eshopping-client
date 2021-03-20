@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Loader /> Should render with wrapper 1`] = `
+exports[`<Loader /> should render with wrapper 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hRzcCE"
@@ -19,7 +19,7 @@ exports[`<Loader /> Should render with wrapper 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Loader /> Should render without wrapper 1`] = `
+exports[`<Loader /> should render without wrapper 1`] = `
 <DocumentFragment>
   <div
     class="sc-gsTCUz Ckrks"

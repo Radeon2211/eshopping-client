@@ -46,7 +46,7 @@ afterEach(cleanup);
 
 describe('<Transaction />', () => {
   describe('Check how renders', () => {
-    it('Should render everything correctly with two items from one user', () => {
+    it('should render everything correctly with two items from one user', () => {
       const transaction = [
         createTransactionAndOrderProdItem('p1', 'user1', 4, 10.6, 'product1'),
         createTransactionAndOrderProdItem('p2', 'user1', 6, 299.98, 'product2'),
@@ -55,19 +55,19 @@ describe('<Transaction />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render nothing if transaction is empty', () => {
+    it('should render nothing if transaction is empty', () => {
       const { asFragment } = setUp([]);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render nothing if transaction is falsy', () => {
+    it('should render nothing if transaction is falsy', () => {
       const { asFragment } = setUp(undefined);
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
   describe('Check how history behaves', () => {
-    it('Should call replace if transaction is falsy', () => {
+    it('should call replace if transaction is falsy', () => {
       const replaceFn = jest.fn();
       const history = createHistory(replaceFn);
       setUp(undefined, history);
@@ -76,7 +76,7 @@ describe('<Transaction />', () => {
       expect(replaceFn).toHaveBeenCalledWith('/cart');
     });
 
-    it('Should call replace if transaction has length 0', () => {
+    it('should call replace if transaction has length 0', () => {
       const replaceFn = jest.fn();
       const history = createHistory(replaceFn);
       setUp([], history);

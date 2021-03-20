@@ -35,23 +35,23 @@ afterEach(cleanup);
 describe('<MyData />', () => {
   describe('Check how renders', () => {
     describe('Snapshots', () => {
-      it('Should render everything correctly for non admin user with status active', () => {
+      it('should render everything correctly for non admin user with status active', () => {
         const { asFragment } = setUp(defaultUserProfile);
         expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should render everything correctly for non admin user with status pending', () => {
+      it('should render everything correctly for non admin user with status pending', () => {
         const { asFragment } = setUp({ ...defaultUserProfile, status: 'pending' });
         expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should render everything correctly for admin user', () => {
+      it('should render everything correctly for admin user', () => {
         const { asFragment } = setUp({ ...defaultUserProfile, isAdmin: true });
         expect(asFragment()).toMatchSnapshot();
       });
     });
 
-    it('Should call push after clicking on logout button', () => {
+    it('should call push after clicking on logout button', () => {
       const pushFn = jest.fn();
       setUp({ ...defaultUserProfile, status: 'pending' }, pushFn);
 

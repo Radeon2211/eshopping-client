@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NumberPagination /> Check how renders Should render all correctly (without hide-arrow class on arrows) 1`] = `
+exports[`<NumberPagination /> Check how renders should render all correctly (without hide-arrow class on arrows) 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ cvyney"
@@ -64,7 +64,7 @@ exports[`<NumberPagination /> Check how renders Should render all correctly (wit
 </DocumentFragment>
 `;
 
-exports[`<NumberPagination /> Check how renders Should render ellipsis and six number links and page 8 has active class if p is 8, quantity is 20, per page is 2 1`] = `
+exports[`<NumberPagination /> Check how renders should render ellipsis and six number links and page 8 has active class if p is 8, quantity is 20, per page is 2 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ cvyney"
@@ -151,7 +151,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
 </DocumentFragment>
 `;
 
-exports[`<NumberPagination /> Check how renders Should render ellipsis and six number links and page 10 has active class if p is 10, quantity is 20, per page is 2 1`] = `
+exports[`<NumberPagination /> Check how renders should render ellipsis and six number links and page 10 has active class if p is 10, quantity is 20, per page is 2 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ cvyney"
@@ -238,7 +238,7 @@ exports[`<NumberPagination /> Check how renders Should render ellipsis and six n
 </DocumentFragment>
 `;
 
-exports[`<NumberPagination /> Check how renders Should render six number links if p is 1 and page 1 has active class, quantity is 20, per page is 2 1`] = `
+exports[`<NumberPagination /> Check how renders should render six number links if p is 1 and page 1 has active class, quantity is 20, per page is 2 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ cvyney"

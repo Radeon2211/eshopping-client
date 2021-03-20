@@ -24,12 +24,12 @@ describe('<LoadingOverlay />', () => {
     jest.useRealTimers();
   });
 
-  it('Should render correctly without info', () => {
+  it('should render correctly without info', () => {
     const { asFragment } = setUp();
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render info after 8 seconds', () => {
+  it('should render info after 8 seconds', () => {
     setUp();
     act(() => {
       jest.advanceTimersByTime(8000);
@@ -37,7 +37,7 @@ describe('<LoadingOverlay />', () => {
     expect(screen.getByTestId('LoadingOverlay-info')).toBeInTheDocument();
   });
 
-  it('Should NOT render info after 7 seconds', () => {
+  it('should NOT render info after 7 seconds', () => {
     setUp();
     act(() => {
       jest.advanceTimersByTime(7000);
@@ -45,7 +45,7 @@ describe('<LoadingOverlay />', () => {
     expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
   });
 
-  it('Should NOT render info after 8 seconds if disableText is true', () => {
+  it('should NOT render info after 8 seconds if disableText is true', () => {
     setUp(true);
     act(() => {
       jest.advanceTimersByTime(8000);

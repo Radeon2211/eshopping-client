@@ -22,16 +22,16 @@ afterEach(cleanup);
 
 describe('<NumberPagination />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(NumberInput, defaultProps)).toBeUndefined();
     });
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(NumberInput, {})).not.toBe(null);
     });
   });
 
   describe('Check behaviour', () => {
-    it('Should fire off functions from props', () => {
+    it('should fire off functions from props', () => {
       const changedFn = jest.fn();
       const focusedFn = jest.fn();
       const bluredFn = jest.fn();

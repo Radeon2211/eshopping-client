@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductThumbnail /> Check how renders Should src be a link to product photo in order collection 1`] = `
+exports[`<ProductThumbnail /> Check how renders should src be a link to product photo in order collection 1`] = `
 <Styled(FlexWrapper)
   align="center"
   data-testid="ProductThumbnail"
@@ -16,7 +16,7 @@ exports[`<ProductThumbnail /> Check how renders Should src be a link to product 
 </Styled(FlexWrapper)>
 `;
 
-exports[`<ProductThumbnail /> Check how renders Should src be a link to product photo in product collection 1`] = `
+exports[`<ProductThumbnail /> Check how renders should src be a link to product photo in product collection 1`] = `
 <Styled(FlexWrapper)
   align="center"
   data-testid="ProductThumbnail"
@@ -32,7 +32,7 @@ exports[`<ProductThumbnail /> Check how renders Should src be a link to product 
 </Styled(FlexWrapper)>
 `;
 
-exports[`<ProductThumbnail /> Check how renders Should src be a noPhoto 1`] = `
+exports[`<ProductThumbnail /> Check how renders should src be a noPhoto 1`] = `
 <Styled(FlexWrapper)
   align="center"
   data-testid="ProductThumbnail"

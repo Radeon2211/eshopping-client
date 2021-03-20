@@ -44,7 +44,7 @@ afterEach(cleanup);
 
 describe('<OrderList />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const props = {
         orders: [createOrder()],
         orderType: orderTypes.PLACED_ORDERS,
@@ -52,13 +52,13 @@ describe('<OrderList />', () => {
       expect(checkProps(OrderList, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(OrderList, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly with two items and type PLACED_ORDERS', () => {
+    it('should render everything correctly with two items and type PLACED_ORDERS', () => {
       const products = [
         createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
         createTransactionAndOrderProdItem('p2', 'sellerUser', 2, 6.4, 'product2'),
@@ -70,7 +70,7 @@ describe('<OrderList />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render everything correctly with one item and type SELL_HISTORY', () => {
+    it('should render everything correctly with one item and type SELL_HISTORY', () => {
       const products = [
         createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
       ];
@@ -81,7 +81,7 @@ describe('<OrderList />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render account deleted - type PLACED_ORDERS', () => {
+    it('should render account deleted - type PLACED_ORDERS', () => {
       const products = [createTransactionAndOrderProdItem('p1', null, 2, 6.4, 'product1', true)];
       const orders = [
         createOrder(products, 'o1', null, 'buyerUser', 12.8, '2021-02-28T21:13:05.008Z'),
@@ -92,7 +92,7 @@ describe('<OrderList />', () => {
       expect(screen.queryByTestId('OrderList-user-link')).not.toBeInTheDocument();
     });
 
-    it('Should render account deleted - type SELL_HISTORY', () => {
+    it('should render account deleted - type SELL_HISTORY', () => {
       const products = [
         createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
       ];
@@ -105,7 +105,7 @@ describe('<OrderList />', () => {
       expect(screen.queryByTestId('OrderList-user-link')).not.toBeInTheDocument();
     });
 
-    it('Should render <LoadingOverlay />', () => {
+    it('should render <LoadingOverlay />', () => {
       const products = [
         createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
       ];
@@ -119,7 +119,7 @@ describe('<OrderList />', () => {
   });
 
   describe('Check behaviour after clicking links', () => {
-    it('Should call push with correct path after clicking links - type PLACED_ORDERS', () => {
+    it('should call push with correct path after clicking links - type PLACED_ORDERS', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orders = [createOrder(products, 'o1', 'sellerUser', 'buyerUser')];
       const pushFn = jest.fn();
@@ -134,7 +134,7 @@ describe('<OrderList />', () => {
       expect(pushFn).toHaveBeenCalledTimes(2);
     });
 
-    it('Should call push with correct path after clicking links - type SELL_HISTORY', () => {
+    it('should call push with correct path after clicking links - type SELL_HISTORY', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orders = [createOrder(products, 'o1', 'sellerUser', 'buyerUser')];
       const pushFn = jest.fn();

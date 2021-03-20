@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductItem /> Check how renders Should NOT render buyer quantity, condition and should render default photo, price without decimals 1`] = `
+exports[`<ProductItem /> Check how renders should NOT render buyer quantity, condition and should render default photo, price without decimals 1`] = `
 <DocumentFragment>
   <a
     data-testid="ProductItem"
@@ -63,7 +63,7 @@ exports[`<ProductItem /> Check how renders Should NOT render buyer quantity, con
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders Should render everything correctly 1`] = `
+exports[`<ProductItem /> Check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <a
     data-testid="ProductItem"

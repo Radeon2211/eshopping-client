@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SortOrders /> Should render everything correctly 1`] = `
+exports[`<SortOrders /> should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ kknihg"

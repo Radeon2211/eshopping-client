@@ -43,7 +43,7 @@ afterEach(cleanup);
 
 describe('<ProductItem />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const expectedProps = {
         orders: [createOrder()],
         type: orderTypes.PLACED_ORDERS,
@@ -51,18 +51,18 @@ describe('<ProductItem />', () => {
       expect(checkProps(Orders, expectedProps)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(Orders, {})).not.toBeNull();
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render only <Loader />', () => {
+    it('should render only <Loader />', () => {
       const { asFragment } = setUp(undefined, undefined);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should everything correctly with one order and type PLACED_ORDERS', () => {
+    it('should everything correctly with one order and type PLACED_ORDERS', () => {
       const products = [
         createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
       ];
@@ -73,7 +73,7 @@ describe('<ProductItem />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should everything correctly with two orders and type SELL_HISTORY', () => {
+    it('should everything correctly with two orders and type SELL_HISTORY', () => {
       const products1 = [
         createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
       ];
@@ -86,22 +86,22 @@ describe('<ProductItem />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render correct info if orders are null and type PLACED_ORDERS', () => {
+    it('should render correct info if orders are null and type PLACED_ORDERS', () => {
       const { asFragment } = setUp(null, undefined, orderTypes.PLACED_ORDERS);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render correct info if orders are empty array and type PLACED_ORDERS', () => {
+    it('should render correct info if orders are empty array and type PLACED_ORDERS', () => {
       const { asFragment } = setUp([], undefined, orderTypes.PLACED_ORDERS);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render correct info if orders are null and type SELL_HISTORY', () => {
+    it('should render correct info if orders are null and type SELL_HISTORY', () => {
       const { asFragment } = setUp(null, undefined, orderTypes.SELL_HISTORY);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render correct info if orders are empty array and type SELL_HISTORY', () => {
+    it('should render correct info if orders are empty array and type SELL_HISTORY', () => {
       const { asFragment } = setUp([], undefined, orderTypes.SELL_HISTORY);
       expect(asFragment()).toMatchSnapshot();
     });

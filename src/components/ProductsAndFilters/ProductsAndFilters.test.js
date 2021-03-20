@@ -70,47 +70,47 @@ describe('<ProductsAndFilters />', () => {
   });
 
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const props = {
         page: pages.ALL_PRODUCTS,
       };
       expect(checkProps(ProductsAndFilters, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(ProductsAndFilters, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly with two products', () => {
+    it('should render everything correctly with two products', () => {
       const store = createStore(defaultProducts, defaultProducts.length, 10.6, 299.98);
       window.resizeTo(1920, 1080);
       const { asFragment } = setUp(store);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render only <ProductList />', () => {
+    it('should render only <ProductList />', () => {
       const store = createStore([], 0);
       const { asFragment } = setUp(store);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render <Filters /> if at least two params (except p)', () => {
+    it('should render <Filters /> if at least two params (except p)', () => {
       const store = createStore([], 0);
       window.resizeTo(1920, 1080);
       setUp(store, '?p=1&name=testName&minPrice=10');
       expect(screen.getByTestId('Filters')).toBeInTheDocument();
     });
 
-    it('Should render <Filters /> if one param (except p)', () => {
+    it('should render <Filters /> if one param (except p)', () => {
       const store = createStore([], 0);
       window.resizeTo(1920, 1080);
       setUp(store, '?p=1&minPrice=10');
       expect(screen.getByTestId('Filters')).toBeInTheDocument();
     });
 
-    it('Should NOT render product list section', () => {
+    it('should NOT render product list section', () => {
       const store = createStore(undefined, 2);
       setUp(store);
       expect(

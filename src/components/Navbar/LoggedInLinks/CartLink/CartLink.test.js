@@ -36,27 +36,27 @@ const setUp = (cart, pushFn = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<CartLink />', () => {
-  it('Should render everything correctly with quantity 1', () => {
+  it('should render everything correctly with quantity 1', () => {
     const { asFragment } = setUp([{ _id: '1' }]);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should NOT render quantity if cart length is 0', () => {
+  it('should NOT render quantity if cart length is 0', () => {
     const { asFragment } = setUp([]);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should NOT render quantity if cart is null', () => {
+  it('should NOT render quantity if cart is null', () => {
     const { asFragment } = setUp(null);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render quantity 3', () => {
+  it('should render quantity 3', () => {
     setUp([{ _id: '1' }, { _id: '2' }, { _id: '3' }]);
     expect(screen.getByTestId('CartLink-quantity').textContent).toEqual('3');
   });
 
-  it('Should call push after clicking cart link', () => {
+  it('should call push after clicking cart link', () => {
     const pushFn = jest.fn();
     setUp([], pushFn);
 

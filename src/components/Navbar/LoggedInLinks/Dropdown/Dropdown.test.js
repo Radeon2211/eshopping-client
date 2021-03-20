@@ -36,7 +36,7 @@ afterEach(cleanup);
 
 describe('<Dropdown />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const props = {
         isVisible: true,
         closed: jest.fn(),
@@ -44,25 +44,25 @@ describe('<Dropdown />', () => {
       expect(checkProps(Dropdown, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(Dropdown, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly', () => {
+    it('should render everything correctly', () => {
       const { asFragment } = setUp(true);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should NOT render anything', () => {
+    it('should NOT render anything', () => {
       const { asFragment } = setUp(false);
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
   describe('Check general behaviour', () => {
-    it('Should call push with correct paths after clicking at links', () => {
+    it('should call push with correct paths after clicking at links', () => {
       const pushFn = jest.fn();
       setUp(true, jest.fn(), pushFn);
 
@@ -84,7 +84,7 @@ describe('<Dropdown />', () => {
       expect(pushFn).toHaveBeenCalledTimes(5);
     });
 
-    it('Should call closed after clicking outside if isVisible is true', () => {
+    it('should call closed after clicking outside if isVisible is true', () => {
       const closedFn = jest.fn();
       setUp(true, closedFn);
 
@@ -92,7 +92,7 @@ describe('<Dropdown />', () => {
       expect(closedFn).toHaveBeenCalledTimes(1);
     });
 
-    it('Should NOT call closed after clicking outside if isVisible is false', () => {
+    it('should NOT call closed after clicking outside if isVisible is false', () => {
       const closedFn = jest.fn();
       setUp(false, closedFn);
 
@@ -100,7 +100,7 @@ describe('<Dropdown />', () => {
       expect(closedFn).not.toHaveBeenCalled();
     });
 
-    it('Should NOT call closed after clicking at <Dropdown />', () => {
+    it('should NOT call closed after clicking at <Dropdown />', () => {
       const closedFn = jest.fn();
       setUp(true, closedFn);
 

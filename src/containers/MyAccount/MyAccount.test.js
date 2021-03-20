@@ -38,21 +38,21 @@ const setUp = (userProfile, pushFn = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<MyAccount />', () => {
-  it('Should render navigation and all routes', () => {
+  it('should render navigation and all routes', () => {
     setUp(defaultUserProfile);
     expect(screen.getByTestId('MyAccount-navigation')).toBeInTheDocument();
     expect(screen.queryByTestId('MyAccount-pending-user-routes')).not.toBeInTheDocument();
     expect(screen.getByTestId('MyAccount-active-user-routes')).toBeInTheDocument();
   });
 
-  it('Should NOT render navigation and render only one route if user has status pending', () => {
+  it('should NOT render navigation and render only one route if user has status pending', () => {
     setUp({ ...defaultUserProfile, status: 'pending' });
     expect(screen.queryByTestId('MyAccount-navigation')).not.toBeInTheDocument();
     expect(screen.getByTestId('MyAccount-pending-user-routes')).toBeInTheDocument();
     expect(screen.queryByTestId('MyAccount-active-user-routes')).not.toBeInTheDocument();
   });
 
-  it('Should call push with correct paths after clicking on links', () => {
+  it('should call push with correct paths after clicking on links', () => {
     const pushFn = jest.fn();
     setUp(defaultUserProfile, pushFn);
 

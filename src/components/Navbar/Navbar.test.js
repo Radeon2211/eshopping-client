@@ -39,7 +39,7 @@ const setUp = (props = {}, pushFn) => {
 afterEach(cleanup);
 
 describe('<Navbar />', () => {
-  it('Should render <LoggedInLinks /> if user is logged in', () => {
+  it('should render <LoggedInLinks /> if user is logged in', () => {
     const props = {
       userProfile: defaultUserProfile,
     };
@@ -47,12 +47,12 @@ describe('<Navbar />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render <LoggedOutLinks /> if user is logged out', () => {
+  it('should render <LoggedOutLinks /> if user is logged out', () => {
     const { asFragment } = setUp();
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should call push after clicking at logo', () => {
+  it('should call push after clicking at logo', () => {
     const pushFn = jest.fn();
     setUp({}, pushFn);
 

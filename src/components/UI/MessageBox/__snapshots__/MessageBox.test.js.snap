@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MessageBox /> Should NOT render anything 1`] = `<DocumentFragment />`;
+exports[`<MessageBox /> should NOT render anything 1`] = `<DocumentFragment />`;
 
-exports[`<MessageBox /> Should render everything correctly 1`] = `
+exports[`<MessageBox /> should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-gsTCUz bCTrL"

@@ -27,57 +27,57 @@ afterEach(cleanup);
 
 describe('<NumberPagination />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(NumberPagination, defaultProps)).toBeUndefined();
     });
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(NumberPagination, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render all correctly (without hide-arrow class on arrows)', () => {
+    it('should render all correctly (without hide-arrow class on arrows)', () => {
       const history = createHistoryPageNumber(2);
       const { asFragment } = setUp(defaultProps, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render six number links if p is 1 and page 1 has active class, quantity is 20, per page is 2', () => {
+    it('should render six number links if p is 1 and page 1 has active class, quantity is 20, per page is 2', () => {
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(1);
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render ellipsis and six number links and page 10 has active class if p is 10, quantity is 20, per page is 2', () => {
+    it('should render ellipsis and six number links and page 10 has active class if p is 10, quantity is 20, per page is 2', () => {
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(10);
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render ellipsis and six number links and page 8 has active class if p is 8, quantity is 20, per page is 2', () => {
+    it('should render ellipsis and six number links and page 8 has active class if p is 8, quantity is 20, per page is 2', () => {
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(8);
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should only left arrow has hide-arrow class', () => {
+    it('should only left arrow has hide-arrow class', () => {
       const history = createHistoryPageNumber(1);
       setUp(defaultProps, history);
       expect(screen.getByTestId('NumberPagination-left-arrow')).toHaveClass('hide-arrow');
       expect(screen.getByTestId('NumberPagination-right-arrow')).not.toHaveClass('hide-arrow');
     });
 
-    it('Should only right arrow has hide-arrow class', () => {
+    it('should only right arrow has hide-arrow class', () => {
       const history = createHistoryPageNumber(3);
       setUp(defaultProps, history);
       expect(screen.getByTestId('NumberPagination-left-arrow')).not.toHaveClass('hide-arrow');
       expect(screen.getByTestId('NumberPagination-right-arrow')).toHaveClass('hide-arrow');
     });
 
-    it('Should both arrows have hide-arrow class', () => {
+    it('should both arrows have hide-arrow class', () => {
       const history = createHistoryPageNumber(1);
       const props = createPaginationProps(2);
       setUp(props, history);
@@ -87,7 +87,7 @@ describe('<NumberPagination />', () => {
   });
 
   describe('Check behaviour of links', () => {
-    it('Right arrow click (p is 1, quantity is 5, per page is 2)', () => {
+    it('reacts to right arrow click (p is 1, quantity is 5, per page is 2)', () => {
       const pushFn = jest.fn();
       const history = createHistoryPageNumber(1, pushFn);
 
@@ -98,7 +98,7 @@ describe('<NumberPagination />', () => {
       expect(pushFn).toHaveBeenCalledWith('/products?p=2');
     });
 
-    it('Left arrow click (p is 3, quantity is 5, per page is 2)', () => {
+    it('reacts to left arrow click (p is 3, quantity is 5, per page is 2)', () => {
       const pushFn = jest.fn();
       const history = createHistoryPageNumber(3, pushFn);
 
@@ -109,7 +109,7 @@ describe('<NumberPagination />', () => {
       expect(pushFn).toHaveBeenCalledWith('/products?p=2');
     });
 
-    it('Both arrows clicks (p is 2, quantity is 5, per page is 2)', () => {
+    it('reacts to oth arrows clicks (p is 2, quantity is 5, per page is 2)', () => {
       const pushFn = jest.fn();
       const history = createHistoryPageNumber(2, pushFn);
 
@@ -122,7 +122,7 @@ describe('<NumberPagination />', () => {
       expect(pushFn).toHaveBeenCalledTimes(2);
     });
 
-    it('Number clicks (p is 8, quantity is 20, per page is 2)', () => {
+    it('reacts to numbers clicks (p is 8, quantity is 20, per page is 2)', () => {
       const pushFn = jest.fn();
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(8, pushFn);

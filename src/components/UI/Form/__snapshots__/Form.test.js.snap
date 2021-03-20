@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Form /> Check how renders Should NOT render heading, error and buttons 1`] = `
+exports[`<Form /> Check how renders should NOT render heading, error and buttons 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hYjfqi"
@@ -17,7 +17,7 @@ exports[`<Form /> Check how renders Should NOT render heading, error and buttons
 </DocumentFragment>
 `;
 
-exports[`<Form /> Check how renders Should render everything what is possible with blue submit button 1`] = `
+exports[`<Form /> Check how renders should render everything what is possible with blue submit button 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hYjfqi"
@@ -82,7 +82,7 @@ exports[`<Form /> Check how renders Should render everything what is possible wi
 </DocumentFragment>
 `;
 
-exports[`<Form /> Check how renders Should render red submit button without cancel button 1`] = `
+exports[`<Form /> Check how renders should render red submit button without cancel button 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hYjfqi"

@@ -38,7 +38,7 @@ afterEach(cleanup);
 
 describe('<CartItem />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const props = {
         data: { _id: 'i1' },
         isCartLoading: false,
@@ -46,27 +46,27 @@ describe('<CartItem />', () => {
       expect(checkProps(CartItem, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(CartItem, {})).not.toBe(null);
     });
   });
 
   describe('Checks how renders', () => {
-    it('Should render everything correctly', () => {
+    it('should render everything correctly', () => {
       const { asFragment } = setUp(
         createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true),
       );
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should NOT render price per piece and should render default photo if photo is empty and available quantity is 1', () => {
+    it('should NOT render price per piece and should render default photo if photo is empty and available quantity is 1', () => {
       const data = createCartItem();
       setUp(data);
       expect(screen.queryByTestId('CartItem-price-per-piece')).not.toBeInTheDocument();
       expect(screen.getByAltText(data.product.name)).toHaveAttribute('src', noPhoto);
     });
 
-    it('Should call push with correct paths after clicking links', () => {
+    it('should call push with correct paths after clicking links', () => {
       const pushFn = jest.fn();
       const data = createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true);
       setUp(data, false, pushFn);

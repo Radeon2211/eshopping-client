@@ -71,18 +71,18 @@ afterEach(cleanup);
 
 describe('<Products />', () => {
   describe('Check how renders', () => {
-    it('Should render everything correctly with default params and two products', () => {
+    it('should render everything correctly with default params and two products', () => {
       window.resizeTo(1920, 1080);
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render heading with `Results for "mushrooms"`', () => {
+    it('should render heading with `Results for "mushrooms"`', () => {
       setUp('?p=1&name=mushrooms');
       expect(screen.getByTestId('Products-heading')).toHaveTextContent('Results for "mushrooms"');
     });
 
-    it('Should render heading with `Results for "wellingtons"` if wellingtons is in last occurrence of name param', () => {
+    it('should render heading with `Results for "wellingtons"` if wellingtons is in last occurrence of name param', () => {
       setUp('?p=1&name=mushrooms&name=wellingtons');
       expect(screen.getByTestId('Products-heading')).toHaveTextContent('Results for "wellingtons"');
     });

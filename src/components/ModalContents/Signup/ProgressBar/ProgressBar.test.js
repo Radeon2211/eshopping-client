@@ -17,7 +17,7 @@ afterEach(cleanup);
 
 describe('<ProgressBar />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const props = {
         currentStep: 1,
         stepsNumber: 3,
@@ -25,23 +25,23 @@ describe('<ProgressBar />', () => {
       expect(checkProps(ProgressBar, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(ProgressBar, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly for currentStep 1 and stepsNumber 3', () => {
+    it('should render everything correctly for currentStep 1 and stepsNumber 3', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render everything correctly for currentStep 2 and stepsNumber 3', () => {
+    it('should render everything correctly for currentStep 2 and stepsNumber 3', () => {
       const { asFragment } = setUp(2);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render everything correctly for currentStep 3 and stepsNumber 3', () => {
+    it('should render everything correctly for currentStep 3 and stepsNumber 3', () => {
       const { asFragment } = setUp(3);
       expect(asFragment()).toMatchSnapshot();
     });

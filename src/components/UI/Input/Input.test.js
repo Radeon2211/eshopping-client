@@ -35,7 +35,7 @@ const setUp = (kind, extraProps = {}, extraConfig = {}) => {
 
 describe('<Input />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const expectedProps = {
         kind: 'testKind',
         config: {
@@ -46,14 +46,14 @@ describe('<Input />', () => {
       expect(checkProps(Input, expectedProps)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       const expectedProps = {};
       expect(checkProps(Input, expectedProps)).not.toBeNull();
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render <SC.Input /> with default props', () => {
+    it('should render <SC.Input /> with default props', () => {
       const wrapper = setUp(inputKinds.INPUT);
 
       const SCWrapper = wrapper.find(SC.Wrapper);
@@ -73,7 +73,7 @@ describe('<Input />', () => {
       expect(input.prop('id')).toEqual(undefined);
     });
 
-    it('Should render <SC.Input /> with full props (type text)', () => {
+    it('should render <SC.Input /> with full props (type text)', () => {
       const id = 'firstName';
       const placeholder = 'Your name';
       const autoComplete = 'given-name';
@@ -109,7 +109,7 @@ describe('<Input />', () => {
       expect(input.prop('onInput')).toEqual(onInput);
     });
 
-    it('Should render <SC.Input /> with full props (type checkbox)', () => {
+    it('should render <SC.Input /> with full props (type checkbox)', () => {
       const id = 'hideEmail';
       const type = 'checkbox';
       const checked = true;
@@ -135,17 +135,17 @@ describe('<Input />', () => {
       expect(input.prop('type')).toEqual(type);
     });
 
-    it('Should <SC.Wrapper /> has className invalid if isValid is false and isTouched true', () => {
+    it('should <SC.Wrapper /> has className invalid if isValid is false and isTouched true', () => {
       const wrapper = setUp(inputKinds.INPUT, { isValid: false, isTouched: true });
       expect(wrapper.find(SC.Wrapper).prop('className')).toEqual('invalid');
     });
 
-    it('Should <SC.Wrapper /> has className null if isValid is true and isTouched false', () => {
+    it('should <SC.Wrapper /> has className null if isValid is true and isTouched false', () => {
       const wrapper = setUp(inputKinds.INPUT, { isValid: true, isTouched: false });
       expect(wrapper.find(SC.Wrapper).prop('className')).toEqual(null);
     });
 
-    it('Should render <Textarea /> with full props', () => {
+    it('should render <Textarea /> with full props', () => {
       const id = 'description';
       const placeholder = 'Description...';
       const maxRows = 6;
@@ -176,7 +176,7 @@ describe('<Input />', () => {
       expect(textarea.prop('className')).toEqual('textarea');
     });
 
-    it('Should render <Select /> with full props', () => {
+    it('should render <Select /> with full props', () => {
       const id = 'country';
       const placeholder = 'Choose a country';
       const setFieldValue = jest.fn();
@@ -210,7 +210,7 @@ describe('<Input />', () => {
       expect(textarea.prop('onChange')).toBeInstanceOf(Function);
     });
 
-    it('Should render <SC.RadioWrapper /> with full props', () => {
+    it('should render <SC.RadioWrapper /> with full props', () => {
       const value = productConditions.NEW;
       const options = [
         {
@@ -280,7 +280,7 @@ describe('<Input />', () => {
       expect(thirdLabel.text()).toEqual(options[2].label);
     });
 
-    it('Should render <SC.Input /> if passed kind is incorrect', () => {
+    it('should render <SC.Input /> if passed kind is incorrect', () => {
       const wrapper = setUp('incorrectKind');
       expect(wrapper.find(SC.Input)).toHaveLength(1);
     });

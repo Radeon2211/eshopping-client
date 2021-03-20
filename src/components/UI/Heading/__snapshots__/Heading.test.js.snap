@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Heading /> Should render h1 with correct text 1`] = `
+exports[`<Heading /> should render h1 with correct text 1`] = `
 <h1
   className="sc-bdfBwQ lctQnF"
 >
@@ -8,7 +8,7 @@ exports[`<Heading /> Should render h1 with correct text 1`] = `
 </h1>
 `;
 
-exports[`<Heading /> Should render h2 with correct text 1`] = `
+exports[`<Heading /> should render h2 with correct text 1`] = `
 <h2
   className="sc-bdfBwQ cWdnju"
 >
@@ -16,7 +16,7 @@ exports[`<Heading /> Should render h2 with correct text 1`] = `
 </h2>
 `;
 
-exports[`<Heading /> Should render h3 with correct text 1`] = `
+exports[`<Heading /> should render h3 with correct text 1`] = `
 <h3
   className="sc-bdfBwQ hSpIvR"
 >
@@ -24,7 +24,7 @@ exports[`<Heading /> Should render h3 with correct text 1`] = `
 </h3>
 `;
 
-exports[`<Heading /> Should render h4 with correct text 1`] = `
+exports[`<Heading /> should render h4 with correct text 1`] = `
 <h4
   className="sc-bdfBwQ csIIrS"
 >
@@ -32,7 +32,7 @@ exports[`<Heading /> Should render h4 with correct text 1`] = `
 </h4>
 `;
 
-exports[`<Heading /> Should render h5 with correct text 1`] = `
+exports[`<Heading /> should render h5 with correct text 1`] = `
 <h5
   className="sc-bdfBwQ mWUio"
 >
@@ -40,7 +40,7 @@ exports[`<Heading /> Should render h5 with correct text 1`] = `
 </h5>
 `;
 
-exports[`<Heading /> Should render h6 with correct text 1`] = `
+exports[`<Heading /> should render h6 with correct text 1`] = `
 <h6
   className="sc-bdfBwQ mWUio"
 >

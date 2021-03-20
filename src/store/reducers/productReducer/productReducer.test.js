@@ -2,11 +2,11 @@ import * as actions from '../../actions/actionTypes';
 import productReducer, { initialState } from './productReducer';
 
 describe('Product reducer', () => {
-  it('Should return default state', () => {
+  it('should return default state', () => {
     expect(productReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('Should return new state after SET_PRODUCTS', () => {
+  it('should return new state after SET_PRODUCTS', () => {
     const products = [
       { _id: '1', price: 1 },
       { _id: '2', price: 2 },
@@ -28,7 +28,7 @@ describe('Product reducer', () => {
     });
   });
 
-  it('Should return new state after SET_PRODUCT_DETAILS', () => {
+  it('should return new state after SET_PRODUCT_DETAILS', () => {
     const productDetails = { _id: '1' };
     expect(
       productReducer(undefined, {
@@ -41,7 +41,7 @@ describe('Product reducer', () => {
     });
   });
 
-  it('Should return new state after DELETE_PRODUCT_FROM_LIST', () => {
+  it('should return new state after DELETE_PRODUCT_FROM_LIST', () => {
     const state = {
       ...initialState,
       products: [

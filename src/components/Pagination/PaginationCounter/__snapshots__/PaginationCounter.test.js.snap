@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1 order 1`] = `
+exports[`<PaginationCounter /> Check if correct text render should be 1 - 1 of 1 order 1`] = `
 <DocumentFragment>
   <span
     class="sc-bdfBwQ cPtBJf"
@@ -16,7 +16,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1
 </DocumentFragment>
 `;
 
-exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1 products 1`] = `
+exports[`<PaginationCounter /> Check if correct text render should be 1 - 1 of 1 products 1`] = `
 <DocumentFragment>
   <span
     class="sc-bdfBwQ cPtBJf"
@@ -32,7 +32,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1
 </DocumentFragment>
 `;
 
-exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 10 orders 1`] = `
+exports[`<PaginationCounter /> Check if correct text render should be 1 - 1 of 10 orders 1`] = `
 <DocumentFragment>
   <span
     class="sc-bdfBwQ cPtBJf"
@@ -48,7 +48,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 1 of 1
 </DocumentFragment>
 `;
 
-exports[`<PaginationCounter /> Check if correct text render Should be 1 - 2 of 5 products 1`] = `
+exports[`<PaginationCounter /> Check if correct text render should be 1 - 2 of 5 products 1`] = `
 <DocumentFragment>
   <span
     class="sc-bdfBwQ cPtBJf"
@@ -64,7 +64,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 1 - 2 of 5
 </DocumentFragment>
 `;
 
-exports[`<PaginationCounter /> Check if correct text render Should be 3 - 4 of 5 products 1`] = `
+exports[`<PaginationCounter /> Check if correct text render should be 3 - 4 of 5 products 1`] = `
 <DocumentFragment>
   <span
     class="sc-bdfBwQ cPtBJf"
@@ -80,7 +80,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 3 - 4 of 5
 </DocumentFragment>
 `;
 
-exports[`<PaginationCounter /> Check if correct text render Should be 5 - 7 of 7 orders 1`] = `
+exports[`<PaginationCounter /> Check if correct text render should be 5 - 7 of 7 orders 1`] = `
 <DocumentFragment>
   <span
     class="sc-bdfBwQ cPtBJf"
@@ -96,7 +96,7 @@ exports[`<PaginationCounter /> Check if correct text render Should be 5 - 7 of 7
 </DocumentFragment>
 `;
 
-exports[`<PaginationCounter /> Check if correct text render Should be 10 - 10 of 10 orders 1`] = `
+exports[`<PaginationCounter /> Check if correct text render should be 10 - 10 of 10 orders 1`] = `
 <DocumentFragment>
   <span
     class="sc-bdfBwQ cPtBJf"

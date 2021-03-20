@@ -28,12 +28,12 @@ const setUp = (replaceFn = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<SortOrders />', () => {
-  it('Should render everything correctly', () => {
+  it('should render everything correctly', () => {
     const { asFragment } = setUp();
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render all sorting options', async () => {
+  it('should render all sorting options', async () => {
     setUp();
     await selectEvent.openMenu(screen.getByText(sortOrdersOptions[0].label));
     const firstOptionTexts = screen.getAllByText(sortOrdersOptions[0].label);
@@ -43,7 +43,7 @@ describe('<SortOrders />', () => {
     expect(screen.getByText(sortOrdersOptions[2].label)).toBeInTheDocument();
     expect(screen.getByText(sortOrdersOptions[3].label)).toBeInTheDocument();
   });
-  it('Should call push with correct paths and params', async () => {
+  it('should call push with correct paths and params', async () => {
     const pushFn = jest.fn();
     setUp(pushFn);
 

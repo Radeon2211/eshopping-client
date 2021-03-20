@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PurchaseSection /> Check how renders Snapshots Should render everything correctly 1`] = `
+exports[`<PurchaseSection /> Check how renders Snapshots should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ jLAphW"
@@ -97,7 +97,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots Should render everythin
 </DocumentFragment>
 `;
 
-exports[`<PurchaseSection /> Check how renders Snapshots Should render info that user is a seller 1`] = `
+exports[`<PurchaseSection /> Check how renders Snapshots should render info that user is a seller 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ jLAphW"

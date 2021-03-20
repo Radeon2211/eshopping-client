@@ -26,12 +26,12 @@ const setUp = (message) => {
 afterEach(cleanup);
 
 describe('<MessageBox />', () => {
-  it('Should render everything correctly', () => {
+  it('should render everything correctly', () => {
     const { asFragment } = setUp('test message');
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should NOT render anything', () => {
+  it('should NOT render anything', () => {
     const { asFragment } = setUp('');
     expect(asFragment()).toMatchSnapshot();
   });

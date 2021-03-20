@@ -77,13 +77,13 @@ afterEach(cleanup);
 describe('<ProductDetails />', () => {
   describe('Check how renders', () => {
     describe('Snapshots', () => {
-      it('Should render only <Loader /> if productDetails is undefined', () => {
+      it('should render only <Loader /> if productDetails is undefined', () => {
         const store = { product: { productDetails: undefined } };
         const { asFragment } = setUp(store);
         expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should render only info that there is a problem to fetch product details', () => {
+      it('should render only info that there is a problem to fetch product details', () => {
         const store = { product: { productDetails: null } };
         const { asFragment } = setUp(store);
         expect(asFragment()).toMatchSnapshot();
@@ -106,7 +106,7 @@ describe('<ProductDetails />', () => {
     });
 
     describe('Check single items', () => {
-      it('Should render quantity sold node - "2 people bought 3 units"', () => {
+      it('should render quantity sold node - "2 people bought 3 units"', () => {
         const store = {
           product: {
             productDetails: {
@@ -122,7 +122,7 @@ describe('<ProductDetails />', () => {
         );
       });
 
-      it('Should render quantity sold node - "1 person bought 4 units"', () => {
+      it('should render quantity sold node - "1 person bought 4 units"', () => {
         const store = {
           product: {
             productDetails: {
@@ -138,14 +138,14 @@ describe('<ProductDetails />', () => {
         );
       });
 
-      it('Should render no description if it is empty and NOT render quantity sold node if quantitySold is 0', () => {
+      it('should render no description if it is empty and NOT render quantity sold node if quantitySold is 0', () => {
         setUp();
         expect(screen.getByTestId('ProductDetails-no-description')).toBeInTheDocument();
         expect(screen.queryByTestId('ProductDetails-full-description')).not.toBeInTheDocument();
         expect(screen.queryByTestId('ProductDetails-quantity-sold')).not.toBeInTheDocument();
       });
 
-      it('Should render default photo', () => {
+      it('should render default photo', () => {
         const store = {
           product: {
             productDetails: {
@@ -184,7 +184,7 @@ describe('<ProductDetails />', () => {
         expect(screen.getByTestId('ProductDetails-delete-button')).toBeInTheDocument();
       });
 
-      it('Should call push with correct path after clicking on seller link', () => {
+      it('should call push with correct path after clicking on seller link', () => {
         const pushFn = jest.fn();
         setUp(defaultStore, pushFn);
 

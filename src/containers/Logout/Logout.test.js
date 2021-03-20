@@ -30,7 +30,7 @@ const setUp = (goBack = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<Logout />', () => {
-  it('Should call goBack', () => {
+  it('should call goBack', () => {
     const goBackFn = jest.fn();
     setUp(goBackFn);
     expect(goBackFn).toHaveBeenCalledTimes(1);

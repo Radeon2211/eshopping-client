@@ -2,7 +2,7 @@ import { defaultErrorMessage } from '../constants';
 import * as utility from './utility';
 
 describe('getPhonePrefixAndNumber()', () => {
-  it('Should get correct data for +7 19283746', () => {
+  it('should get correct data for +7 19283746', () => {
     const { phoneNumber, phonePrefix } = utility.getPhonePrefixAndNumber('+7 19283746');
     expect(phoneNumber).toEqual('19283746');
     expect(phonePrefix).toEqual({
@@ -11,7 +11,7 @@ describe('getPhonePrefixAndNumber()', () => {
     });
   });
 
-  it('Should get correct data for +48 123456789', () => {
+  it('should get correct data for +48 123456789', () => {
     const { phoneNumber, phonePrefix } = utility.getPhonePrefixAndNumber('+48 123456789');
     expect(phoneNumber).toEqual('123456789');
     expect(phonePrefix).toEqual({
@@ -20,7 +20,7 @@ describe('getPhonePrefixAndNumber()', () => {
     });
   });
 
-  it('Should get correct data for +355 98765432112', () => {
+  it('should get correct data for +355 98765432112', () => {
     const { phoneNumber, phonePrefix } = utility.getPhonePrefixAndNumber('+355 98765432112');
     expect(phoneNumber).toEqual('98765432112');
     expect(phonePrefix).toEqual({
@@ -29,7 +29,7 @@ describe('getPhonePrefixAndNumber()', () => {
     });
   });
 
-  it('Should get correct data for +1268 1234567', () => {
+  it('should get correct data for +1268 1234567', () => {
     const { phoneNumber, phonePrefix } = utility.getPhonePrefixAndNumber('+1268 1234567');
     expect(phoneNumber).toEqual('1234567');
     expect(phonePrefix).toEqual({
@@ -40,7 +40,7 @@ describe('getPhonePrefixAndNumber()', () => {
 });
 
 describe('getChangedValues()', () => {
-  it('Should return everything expect zipCode and lastName', () => {
+  it('should return everything expect zipCode and lastName', () => {
     const initialValues = {
       firstName: 'Jan',
       lastName: 'Nowak',
@@ -93,7 +93,7 @@ describe('getChangedValues()', () => {
     });
   });
 
-  it('Should return only lastName and zipCode', () => {
+  it('should return only lastName and zipCode', () => {
     const initialValues = {
       firstName: 'Jan',
       lastName: 'Nowak',
@@ -138,7 +138,7 @@ describe('getChangedValues()', () => {
 });
 
 describe('updateObject()', () => {
-  it('Should update object correctly', () => {
+  it('should update object correctly', () => {
     const initialObject = {
       products: [{ _id: 'p1' }],
       productCount: 1,
@@ -165,12 +165,12 @@ describe('updateObject()', () => {
 });
 
 describe('getErrorMessage()', () => {
-  it('Should get default message if neither statement passed', () => {
+  it('should get default message if neither statement passed', () => {
     const errorMessage = utility.getErrorMessage({});
     expect(errorMessage).toEqual(defaultErrorMessage);
   });
 
-  it('Should get message in first if statement', () => {
+  it('should get message in first if statement', () => {
     const errorMessage = utility.getErrorMessage({
       response: {
         data: {
@@ -192,7 +192,7 @@ describe('getErrorMessage()', () => {
     expect(errorMessage).toEqual('Incorrect credentials');
   });
 
-  it('Should get message in second if statement', () => {
+  it('should get message in second if statement', () => {
     const errorMessage = utility.getErrorMessage({
       response: {
         data: {
@@ -203,7 +203,7 @@ describe('getErrorMessage()', () => {
     expect(errorMessage).toEqual('You entered wrong credentials');
   });
 
-  it('Should get message in second if statement', () => {
+  it('should get message in second if statement', () => {
     const errorMessage = utility.getErrorMessage({
       response: {
         data: {
@@ -214,7 +214,7 @@ describe('getErrorMessage()', () => {
     expect(errorMessage).toEqual('You entered wrong credentials');
   });
 
-  it('Should get default message if statement in third if statement not passed', () => {
+  it('should get default message if statement in third if statement not passed', () => {
     const errorMessage = utility.getErrorMessage({
       response: {
         data: {
@@ -225,7 +225,7 @@ describe('getErrorMessage()', () => {
     expect(errorMessage).toEqual(defaultErrorMessage);
   });
 
-  it('Should reload page if statement in third if statement passed', () => {
+  it('should reload page if statement in third if statement passed', () => {
     const reloadFn = jest.fn();
     const originalWindow = { ...window };
     const windowSpy = jest.spyOn(global, 'window', 'get');
@@ -250,12 +250,12 @@ describe('getErrorMessage()', () => {
 });
 
 describe('isValidFileType()', () => {
-  it('Should get true for jpeg and png', () => {
+  it('should get true for jpeg and png', () => {
     expect(utility.isValidFileType('image/jpeg')).toEqual(true);
     expect(utility.isValidFileType('image/png')).toEqual(true);
   });
 
-  it('Should get false for other types than jpeg and png', () => {
+  it('should get false for other types than jpeg and png', () => {
     expect(utility.isValidFileType('text/plain')).toEqual(false);
     expect(utility.isValidFileType('audio/mpeg')).toEqual(false);
     expect(utility.isValidFileType('image/tiff')).toEqual(false);
@@ -267,18 +267,18 @@ describe('isValidFileType()', () => {
 });
 
 describe('calculateFileSize()', () => {
-  it('Should return value in bytes if size is lower than 1024', () => {
+  it('should return value in bytes if size is lower than 1024', () => {
     expect(utility.calculateFileSize(1023)).toEqual('1023 bytes');
   });
 
-  it('Should return value in KB if size is between 1023 and 1048576', () => {
+  it('should return value in KB if size is between 1023 and 1048576', () => {
     expect(utility.calculateFileSize(1024)).toEqual('1KB');
     expect(utility.calculateFileSize(22222)).toEqual('21.7KB');
     expect(utility.calculateFileSize(800000)).toEqual('781.3KB');
     expect(utility.calculateFileSize(1048575)).toEqual('1024KB');
   });
 
-  it('Should return value in MB if size is at least 1048576', () => {
+  it('should return value in MB if size is at least 1048576', () => {
     expect(utility.calculateFileSize(1048576)).toEqual('1MB');
     expect(utility.calculateFileSize(2222222)).toEqual('2.1MB');
     expect(utility.calculateFileSize(5675432)).toEqual('5.4MB');
@@ -286,7 +286,7 @@ describe('calculateFileSize()', () => {
 });
 
 describe('getParamsWithoutPollution()', () => {
-  it('Should get all params which are passed', () => {
+  it('should get all params which are passed', () => {
     const correctParams = utility.getParamsWithoutPollution(
       '?p=1&name=testName&minPrice=10&maxPrice=20',
     );
@@ -298,7 +298,7 @@ describe('getParamsWithoutPollution()', () => {
     });
   });
 
-  it('Should get params without repetition', () => {
+  it('should get params without repetition', () => {
     const correctParams = utility.getParamsWithoutPollution(
       '?p=1&name=nameOne&name=nameTwo&minPrice=10&maxPrice=20&minPrice=30&maxPrice=500&p=7',
     );
@@ -312,7 +312,7 @@ describe('getParamsWithoutPollution()', () => {
 });
 
 describe('stringifyParamsWithOtherPage()', () => {
-  it('Should get updated params if passed params are without repetition', () => {
+  it('should get updated params if passed params are without repetition', () => {
     const stringifiedParams = utility.stringifyParamsWithOtherPage(
       '?p=1&name=testName&minPrice=10&maxPrice=20',
       3,
@@ -320,7 +320,7 @@ describe('stringifyParamsWithOtherPage()', () => {
     expect(stringifiedParams).toEqual('maxPrice=20&minPrice=10&name=testName&p=3');
   });
 
-  it('Should get updated params if passed params are with repetition', () => {
+  it('should get updated params if passed params are with repetition', () => {
     const stringifiedParams = utility.stringifyParamsWithOtherPage(
       '?p=1&name=nameOne&name=nameTwo&minPrice=10&maxPrice=20&minPrice=30&maxPrice=500&p=7',
       5,
@@ -330,7 +330,7 @@ describe('stringifyParamsWithOtherPage()', () => {
 });
 
 describe('calculateNumberOfPages()', () => {
-  it('Should get correct number of pages', () => {
+  it('should get correct number of pages', () => {
     expect(utility.calculateNumberOfPages(20, 10)).toEqual(2);
     expect(utility.calculateNumberOfPages(5, 2)).toEqual(3);
     expect(utility.calculateNumberOfPages(13, 4)).toEqual(4);
@@ -342,7 +342,7 @@ describe('calculateNumberOfPages()', () => {
 });
 
 describe('formatPrice()', () => {
-  it('Should get correct price', () => {
+  it('should get correct price', () => {
     expect(utility.formatPrice(10)).toEqual('$10');
     expect(utility.formatPrice(10.1)).toEqual('$10.10');
     expect(utility.formatPrice(10.1)).toEqual('$10.10');
@@ -360,7 +360,7 @@ describe('formatPrice()', () => {
 });
 
 describe('roundOverallPrice()', () => {
-  it('Should get correct price', () => {
+  it('should get correct price', () => {
     expect(utility.roundOverallPrice(10)).toEqual(10);
     expect(utility.roundOverallPrice(10.1)).toEqual(10.1);
     expect(utility.roundOverallPrice(10.11)).toEqual(10.11);
@@ -374,7 +374,7 @@ describe('roundOverallPrice()', () => {
 });
 
 describe('formatOrderDate()', () => {
-  it('Should get correctly formatted date', () => {
+  it('should get correctly formatted date', () => {
     expect(utility.formatOrderDate('2020-08-03T10:03:38.181+00:00')).toEqual('3 Aug 2020, 12:03');
     expect(utility.formatOrderDate('2021-01-31T23:03:32.217+00:00')).toEqual('1 Feb 2021, 00:03');
     expect(utility.formatOrderDate('2021-04-22T22:23:36.736+00:00')).toEqual('23 Apr 2021, 00:23');
@@ -386,7 +386,7 @@ describe('formatOrderDate()', () => {
 });
 
 describe('validateURL()', () => {
-  it('Should correctly validate url', () => {
+  it('should correctly validate url', () => {
     expect(utility.validateURL('http://192.168.1.109:4000/products')).toEqual(true);
     expect(utility.validateURL('https://radeon2211-eshopping.herokuapp.com/products')).toEqual(
       true,

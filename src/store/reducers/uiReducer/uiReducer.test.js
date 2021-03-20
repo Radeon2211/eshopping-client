@@ -3,11 +3,11 @@ import uiReducer, { initialState } from './uiReducer';
 import { modalTypes } from '../../../shared/constants';
 
 describe('UI reducer', () => {
-  it('Should return default state', () => {
+  it('should return default state', () => {
     expect(uiReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('Should return new state after FORM_START', () => {
+  it('should return new state after FORM_START', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.FORM_START,
@@ -18,7 +18,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after FORM_SUCCESS', () => {
+  it('should return new state after FORM_SUCCESS', () => {
     const state = {
       ...initialState,
       isFormLoading: true,
@@ -39,7 +39,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after FORM_FAIL', () => {
+  it('should return new state after FORM_FAIL', () => {
     const error = 'test error';
     const state = {
       ...initialState,
@@ -57,7 +57,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after DATA_START', () => {
+  it('should return new state after DATA_START', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.DATA_START,
@@ -68,7 +68,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after DATA_END', () => {
+  it('should return new state after DATA_END', () => {
     const state = {
       ...initialState,
       isDataLoading: true,
@@ -83,7 +83,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after TRADE_START', () => {
+  it('should return new state after TRADE_START', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.TRADE_START,
@@ -94,7 +94,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after TRADE_END', () => {
+  it('should return new state after TRADE_END', () => {
     const state = {
       ...initialState,
       isCartLoading: true,
@@ -109,7 +109,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after SET_MESSAGE', () => {
+  it('should return new state after SET_MESSAGE', () => {
     const message = 'test message';
     expect(
       uiReducer(undefined, {
@@ -122,7 +122,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after DELETE_MESSAGE', () => {
+  it('should return new state after DELETE_MESSAGE', () => {
     const state = {
       ...initialState,
       message: 'test message',
@@ -137,7 +137,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after SET_MODAL (set to true with login content)', () => {
+  it('should return new state after SET_MODAL (set to true with login content)', () => {
     const state = {
       ...initialState,
       formError: 'test error',
@@ -156,7 +156,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after SET_MODAL (set to false)', () => {
+  it('should return new state after SET_MODAL (set to false)', () => {
     const state = {
       ...initialState,
       isModalOpen: true,
@@ -174,7 +174,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after SET_MODAL (set to false)', () => {
+  it('should return new state after SET_MODAL (set to false)', () => {
     const state = {
       ...initialState,
       isModalOpen: true,
@@ -192,7 +192,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should NOT return new state after SET_MODAL (NOT set to false if isFormLoading: true)', () => {
+  it('should NOT return new state after SET_MODAL (NOT set to false if isFormLoading: true)', () => {
     const state = {
       ...initialState,
       isFormLoading: true,
@@ -212,7 +212,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('Should return new state after SET_PRODUCTS_PER_PAGE', () => {
+  it('should return new state after SET_PRODUCTS_PER_PAGE', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.SET_PRODUCTS_PER_PAGE,

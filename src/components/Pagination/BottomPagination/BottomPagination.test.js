@@ -27,27 +27,27 @@ const setUp = (props) => {
 
 describe('<DeliveryAddress />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning if itemsType is product', () => {
+    it('should NOT throw a warning if itemsType is product', () => {
       const expectedProps = createProps(5, listItemTypes.PRODUCT, 2);
       expect(checkProps(BottomPagination, expectedProps)).toBeUndefined();
     });
 
-    it('Should NOT throw a warning if itemsType is order', () => {
+    it('should NOT throw a warning if itemsType is order', () => {
       const expectedProps = createProps(5, listItemTypes.ORDER, 2);
       expect(checkProps(BottomPagination, expectedProps)).toBeUndefined();
     });
 
-    it('Should throw a warning if itemsType is other than product and order', () => {
+    it('should throw a warning if itemsType is other than product and order', () => {
       const expectedProps = createProps(5, 'incorrectType', 2);
       expect(checkProps(BottomPagination, expectedProps)).not.toBe(null);
     });
 
-    it('Should throw a warning if no props are passed', () => {
+    it('should throw a warning if no props are passed', () => {
       expect(checkProps(BottomPagination, {})).not.toBe(null);
     });
   });
 
-  it('Should render PaginationCounter and NumberPagination with correct props', () => {
+  it('should render PaginationCounter and NumberPagination with correct props', () => {
     const props = createProps(5, listItemTypes.PRODUCT, 2);
     const wrapper = setUp(props);
 

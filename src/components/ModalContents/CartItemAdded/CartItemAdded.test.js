@@ -45,26 +45,26 @@ afterEach(cleanup);
 
 describe('<CartItemAdded />', () => {
   describe('Check how renders', () => {
-    it('Should render everything correctly if isCartLoading is false', () => {
+    it('should render everything correctly if isCartLoading is false', () => {
       const store = createStore(defaultCart, defaultProduct);
       const { asFragment } = setUp(store);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render only <Loader /> if isCartLoading is true', () => {
+    it('should render only <Loader /> if isCartLoading is true', () => {
       const store = createStore(defaultCart, defaultProduct, true);
       const { asFragment } = setUp(store);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render only <Loader /> if given product is not in cart', () => {
+    it('should render only <Loader /> if given product is not in cart', () => {
       const store = createStore([], defaultProduct, true);
       const { asFragment } = setUp(store);
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  it('Should render everything correctly if isCartLoading is false', () => {
+  it('should render everything correctly if isCartLoading is false', () => {
     const store = createStore(defaultCart, defaultProduct);
     const pushFn = jest.fn();
     setUp(store, pushFn);

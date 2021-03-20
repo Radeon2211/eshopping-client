@@ -35,22 +35,22 @@ afterEach(cleanup);
 
 describe('<ChooseQuantity />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(ChooseQuantity, defaultProps)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(ChooseQuantity, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything correctly', () => {
+    it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should minus button be disabled but plus button NOT', () => {
+    it('should minus button be disabled but plus button NOT', () => {
       setUp();
 
       expect(screen.getByTestId('ChooseQuantity-minus-icon')).toHaveAttribute(
@@ -63,7 +63,7 @@ describe('<ChooseQuantity />', () => {
       expect(screen.getByTestId('ChooseQuantity-plus-btn')).not.toBeDisabled();
     });
 
-    it('Should minus button NOT be disabled but plus button yes', () => {
+    it('should minus button NOT be disabled but plus button yes', () => {
       const props = {
         value: 5,
       };
@@ -79,7 +79,7 @@ describe('<ChooseQuantity />', () => {
       expect(screen.getByTestId('ChooseQuantity-plus-btn')).toBeDisabled();
     });
 
-    it('Should both buttons NOT be disabled', () => {
+    it('should both buttons NOT be disabled', () => {
       const props = {
         value: 2,
       };
@@ -94,7 +94,7 @@ describe('<ChooseQuantity />', () => {
   });
 
   describe('Check behaviour', () => {
-    it('Should call changed', () => {
+    it('should call changed', () => {
       const changedFn = jest.fn();
       const props = {
         changed: changedFn,
@@ -105,7 +105,7 @@ describe('<ChooseQuantity />', () => {
       expect(changedFn).toHaveBeenCalledTimes(1);
     });
 
-    it('Should call incremented', () => {
+    it('should call incremented', () => {
       const incrementedFn = jest.fn();
       const props = {
         incremented: incrementedFn,
@@ -116,7 +116,7 @@ describe('<ChooseQuantity />', () => {
       expect(incrementedFn).toHaveBeenCalledTimes(1);
     });
 
-    it('Should NOT call incremented if plus button is disabled', () => {
+    it('should NOT call incremented if plus button is disabled', () => {
       const incrementedFn = jest.fn();
       const props = {
         value: 5,
@@ -128,7 +128,7 @@ describe('<ChooseQuantity />', () => {
       expect(incrementedFn).not.toHaveBeenCalled();
     });
 
-    it('Should call decremented', () => {
+    it('should call decremented', () => {
       const decrementedFn = jest.fn();
       const props = {
         decremented: decrementedFn,
@@ -140,7 +140,7 @@ describe('<ChooseQuantity />', () => {
       expect(decrementedFn).toHaveBeenCalledTimes(1);
     });
 
-    it('Should NOT call decremented if minus button is disabled', () => {
+    it('should NOT call decremented if minus button is disabled', () => {
       const decrementedFn = jest.fn();
       const props = {
         decremented: decrementedFn,
@@ -151,7 +151,7 @@ describe('<ChooseQuantity />', () => {
       expect(decrementedFn).not.toHaveBeenCalled();
     });
 
-    it('Should call blured and focused', () => {
+    it('should call blured and focused', () => {
       const bluredFn = jest.fn();
       const focusedFn = jest.fn();
       const props = {

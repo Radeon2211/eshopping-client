@@ -41,7 +41,7 @@ afterEach(cleanup);
 
 describe('<CartAndTransactionItems />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning if type is CART', () => {
+    it('should NOT throw a warning if type is CART', () => {
       const props = {
         items: [createTransactionAndOrderProdItem()],
         type: itemTypes.CART,
@@ -50,7 +50,7 @@ describe('<CartAndTransactionItems />', () => {
       expect(checkProps(CartAndTransactionItems, props)).toBeUndefined();
     });
 
-    it('Should NOT throw a warning if type is TRANSACTION', () => {
+    it('should NOT throw a warning if type is TRANSACTION', () => {
       const props = {
         items: [createTransactionAndOrderProdItem()],
         type: itemTypes.TRANSACTION,
@@ -59,7 +59,7 @@ describe('<CartAndTransactionItems />', () => {
       expect(checkProps(CartAndTransactionItems, props)).toBeUndefined();
     });
 
-    it('Should throw a warning if type is ORDER', () => {
+    it('should throw a warning if type is ORDER', () => {
       const props = {
         items: [createTransactionAndOrderProdItem()],
         type: itemTypes.ORDER,
@@ -68,18 +68,18 @@ describe('<CartAndTransactionItems />', () => {
       expect(checkProps(CartAndTransactionItems, props)).not.toBe(null);
     });
 
-    it('Should throw a warning if props are empty', () => {
+    it('should throw a warning if props are empty', () => {
       expect(checkProps(CartAndTransactionItems, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything with one seller and one cart item', () => {
+    it('should render everything with one seller and one cart item', () => {
       const { asFragment } = setUp([createCartItem('user1')], itemTypes.CART);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render everything with two sellers, each with one transaction item', () => {
+    it('should render everything with two sellers, each with one transaction item', () => {
       const { asFragment } = setUp(
         [
           createTransactionAndOrderProdItem('p1', 'user1'),
@@ -90,7 +90,7 @@ describe('<CartAndTransactionItems />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should call push with correct path after click on user link', () => {
+    it('should call push with correct path after click on user link', () => {
       const pushFn = jest.fn();
       setUp([createCartItem('user1')], itemTypes.CART, pushFn);
 

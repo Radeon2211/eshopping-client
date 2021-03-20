@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
+exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
 <DocumentFragment>
   <header
     class="sc-bdfBwQ btxKQt"
@@ -90,7 +90,7 @@ exports[`<Navbar /> Should render <LoggedInLinks /> if user is logged in 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Navbar /> Should render <LoggedOutLinks /> if user is logged out 1`] = `
+exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] = `
 <DocumentFragment>
   <header
     class="sc-bdfBwQ btxKQt"

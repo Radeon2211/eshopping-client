@@ -18,7 +18,7 @@ afterEach(cleanup);
 
 describe('<SingleInfo />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const props = {
         name: singleInfoNames.NAME,
         content: 'test name',
@@ -27,24 +27,24 @@ describe('<SingleInfo />', () => {
       expect(checkProps(SingleInfo, props)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(SingleInfo, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render correctly for name and with button', () => {
+    it('should render correctly for name and with button', () => {
       const { asFragment } = setUp(singleInfoNames.NAME, 'Ludwig von Mises', jest.fn());
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render correctly for address and with button', () => {
+    it('should render correctly for address and with button', () => {
       const address = ['Street 1', '00-000 City', 'Poland'];
       const { asFragment } = setUp(singleInfoNames.ADDRESS, address, jest.fn());
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render correctly for contacts (both visible) and with button', () => {
+    it('should render correctly for contacts (both visible) and with button', () => {
       const { asFragment } = setUp(
         singleInfoNames.CONTACTS,
         { email: true, phone: true },
@@ -53,13 +53,13 @@ describe('<SingleInfo />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render correctly for contacts (both hidden) and without button', () => {
+    it('should render correctly for contacts (both hidden) and without button', () => {
       const { asFragment } = setUp(singleInfoNames.CONTACTS, { email: false, phone: false });
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  it('Should call clickHandler after clicking on button', () => {
+  it('should call clickHandler after clicking on button', () => {
     const clickHandler = jest.fn();
     setUp(singleInfoNames.NAME, 'Ludwig von Mises', clickHandler);
 

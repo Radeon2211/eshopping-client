@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartItemAdded /> Check how renders Should render everything correctly if isCartLoading is false 1`] = `
+exports[`<CartItemAdded /> Check how renders should render everything correctly if isCartLoading is false 1`] = `
 <DocumentFragment>
   <h3
     class="sc-jSgupP kGSaxZ"
@@ -111,7 +111,7 @@ exports[`<CartItemAdded /> Check how renders Should render everything correctly 
 </DocumentFragment>
 `;
 
-exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if given product is not in cart 1`] = `
+exports[`<CartItemAdded /> Check how renders should render only <Loader /> if given product is not in cart 1`] = `
 <DocumentFragment>
   <div
     class="sc-dlfnbm hmovIr"
@@ -125,7 +125,7 @@ exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if gi
 </DocumentFragment>
 `;
 
-exports[`<CartItemAdded /> Check how renders Should render only <Loader /> if isCartLoading is true 1`] = `
+exports[`<CartItemAdded /> Check how renders should render only <Loader /> if isCartLoading is true 1`] = `
 <DocumentFragment>
   <div
     class="sc-dlfnbm hmovIr"

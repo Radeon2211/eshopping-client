@@ -54,18 +54,18 @@ afterEach(cleanup);
 
 describe('<PurchaseSection />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(PurchaseSection, defaultProps)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(PurchaseSection, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
     describe('Snapshots', () => {
-      it('Should render info that user is a seller', () => {
+      it('should render info that user is a seller', () => {
         const props = {
           productSellerUsername: 'user1',
         };
@@ -73,14 +73,14 @@ describe('<PurchaseSection />', () => {
         expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should render everything correctly', () => {
+      it('should render everything correctly', () => {
         const { asFragment } = setUp();
         expect(asFragment()).toMatchSnapshot();
       });
     });
 
     describe('Check single items', () => {
-      it('Should render not able to add info if quantity in cart equals to product quantity', () => {
+      it('should render not able to add info if quantity in cart equals to product quantity', () => {
         const props = {
           productQuantity: 3,
         };
@@ -88,12 +88,12 @@ describe('<PurchaseSection />', () => {
         expect(screen.getByTestId('PurchaseSection-not-able-to-add')).toBeInTheDocument();
       });
 
-      it('Should NOT render info about quantity in cart if given product is not in cart', () => {
+      it('should NOT render info about quantity in cart if given product is not in cart', () => {
         setUp(defaultProps, []);
         expect(screen.queryByTestId('PurchaseSection-quantity-in-cart')).not.toBeInTheDocument();
       });
 
-      it('Should render quantity info - "of 1 piece (1 in cart)"', () => {
+      it('should render quantity info - "of 1 piece (1 in cart)"', () => {
         const props = {
           productQuantity: 1,
         };
@@ -107,7 +107,7 @@ describe('<PurchaseSection />', () => {
   });
 
   describe('Check behaviour of onSetModal()', () => {
-    it('Should NOT call after click on "buy now" and "add to cart" if user has status active', () => {
+    it('should NOT call after click on "buy now" and "add to cart" if user has status active', () => {
       const onSetModalFn = jest.fn();
       const props = {
         onSetModal: onSetModalFn,
@@ -119,7 +119,7 @@ describe('<PurchaseSection />', () => {
       expect(onSetModalFn).not.toHaveBeenCalled();
     });
 
-    it('Should call with modalTypes.LOGIN after click on "buy now" and "add to cart" if user is unauthenticated', () => {
+    it('should call with modalTypes.LOGIN after click on "buy now" and "add to cart" if user is unauthenticated', () => {
       const onSetModalFn = jest.fn();
       const props = {
         onSetModal: onSetModalFn,
@@ -134,7 +134,7 @@ describe('<PurchaseSection />', () => {
       expect(onSetModalFn).toHaveBeenCalledTimes(2);
     });
 
-    it('Should call with modalTypes.PENDING_USER_INFO after click on "buy now" and "add to cart" if user has status pending', () => {
+    it('should call with modalTypes.PENDING_USER_INFO after click on "buy now" and "add to cart" if user has status pending', () => {
       const onSetModalFn = jest.fn();
       const props = {
         onSetModal: onSetModalFn,
@@ -151,7 +151,7 @@ describe('<PurchaseSection />', () => {
   });
 
   describe('Check behaviour of <ChooseQuantity /> (min - 1, max - 5)', () => {
-    it('Should change value to 5', () => {
+    it('should change value to 5', () => {
       setUp();
       const input = screen.getByTestId('NumberInput-quantity');
       expect(input).toHaveAttribute('value', '1');
@@ -159,21 +159,21 @@ describe('<PurchaseSection />', () => {
       expect(input).toHaveAttribute('value', '5');
     });
 
-    it('Should NOT change value to -1 and stay at 1', () => {
+    it('should NOT change value to -1 and stay at 1', () => {
       setUp();
       const input = screen.getByTestId('NumberInput-quantity');
       fireEvent.input(input, { target: { value: '-1' } });
       expect(input).toHaveAttribute('value', '1');
     });
 
-    it('Should NOT change value to 6 (more than product quantity) and stay at 1', () => {
+    it('should NOT change value to 6 (more than product quantity) and stay at 1', () => {
       setUp();
       const input = screen.getByTestId('NumberInput-quantity');
       fireEvent.input(input, { target: { value: 6 } });
       expect(input).toHaveAttribute('value', '1');
     });
 
-    it('Should increment value to 2 after clicking plus button and decrement to 1 after clicking minus button', () => {
+    it('should increment value to 2 after clicking plus button and decrement to 1 after clicking minus button', () => {
       setUp();
       const input = screen.getByTestId('NumberInput-quantity');
       fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
@@ -182,14 +182,14 @@ describe('<PurchaseSection />', () => {
       expect(input).toHaveAttribute('value', '1');
     });
 
-    it('Should NOT decrement value to 0 after clicking minus button', () => {
+    it('should NOT decrement value to 0 after clicking minus button', () => {
       setUp();
       const input = screen.getByTestId('NumberInput-quantity');
       fireEvent.click(screen.getByTestId('ChooseQuantity-minus-btn'));
       expect(input).toHaveAttribute('value', '1');
     });
 
-    it('Should increment value to 5 instead of 6 after clicking plus button five times', () => {
+    it('should increment value to 5 instead of 6 after clicking plus button five times', () => {
       setUp();
       const input = screen.getByTestId('NumberInput-quantity');
       for (let i = 0; i < 5; i += 1) {

@@ -40,33 +40,33 @@ const setUp = (cart, isCartLoading = false, pushFn = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<Cart />', () => {
-  it('Should render everything correctly with one cart item', () => {
+  it('should render everything correctly with one cart item', () => {
     const { asFragment } = setUp([createCartItem('user1', 5, 'p1', 499.97)]);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render empty cart', () => {
+  it('should render empty cart', () => {
     const { asFragment } = setUp([]);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render only <Loader />', () => {
+  it('should render only <Loader />', () => {
     const { asFragment } = setUp(undefined, true);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render that there is a problem to fetch cart', () => {
+  it('should render that there is a problem to fetch cart', () => {
     const { asFragment } = setUp(null);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should render <LoadingOverlay /> and go to summary button should be disabled', () => {
+  it('should render <LoadingOverlay /> and go to summary button should be disabled', () => {
     setUp([createCartItem('user1', 5, 'p1', 499.97)], true);
     expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     expect(screen.getByText('go to summary')).toBeDisabled();
   });
 
-  it('Should trigger push with DEFAULT_PATH after click on link in empty cart', () => {
+  it('should trigger push with DEFAULT_PATH after click on link in empty cart', () => {
     const pushFn = jest.fn();
     setUp([], false, pushFn);
     fireEvent.click(screen.getByTestId('Cart-default-path-link'));

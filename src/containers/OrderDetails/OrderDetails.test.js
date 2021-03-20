@@ -52,17 +52,17 @@ afterEach(cleanup);
 
 describe('<OrderDetails />', () => {
   describe('Check how renders', () => {
-    it('Should render only <Loader /> if orderDetails is undefined', () => {
+    it('should render only <Loader /> if orderDetails is undefined', () => {
       const { asFragment } = setUp(undefined);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render only info that there is a problem to fetch order details', () => {
+    it('should render only info that there is a problem to fetch order details', () => {
       const { asFragment } = setUp(null);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render everything correctly with two <TransactionAndOrderProdItem />', () => {
+    it('should render everything correctly with two <TransactionAndOrderProdItem />', () => {
       const products = [createTransactionAndOrderProdItem(), createTransactionAndOrderProdItem()];
       const orderDetails = createOrder(
         products,
@@ -82,7 +82,7 @@ describe('<OrderDetails />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render that buyer and seller are deleted', () => {
+    it('should render that buyer and seller are deleted', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orderDetails = createOrder(
         products,
@@ -104,7 +104,7 @@ describe('<OrderDetails />', () => {
       expect(screen.queryByTestId('OrderDetails-seller-info')).not.toBeInTheDocument();
     });
 
-    it('Should call push with correct paths after clicking on links', () => {
+    it('should call push with correct paths after clicking on links', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orderDetails = createOrder(
         products,

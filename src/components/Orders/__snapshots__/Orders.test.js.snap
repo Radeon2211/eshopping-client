@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductItem /> Check how renders Should everything correctly with one order and type PLACED_ORDERS 1`] = `
+exports[`<ProductItem /> Check how renders should everything correctly with one order and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
   <section
     class="sc-bdfBwQ dIpFeA"
@@ -368,7 +368,7 @@ exports[`<ProductItem /> Check how renders Should everything correctly with one 
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders Should everything correctly with two orders and type SELL_HISTORY 1`] = `
+exports[`<ProductItem /> Check how renders should everything correctly with two orders and type SELL_HISTORY 1`] = `
 <DocumentFragment>
   <section
     class="sc-bdfBwQ dIpFeA"
@@ -895,7 +895,7 @@ exports[`<ProductItem /> Check how renders Should everything correctly with two 
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders Should render correct info if orders are empty array and type PLACED_ORDERS 1`] = `
+exports[`<ProductItem /> Check how renders should render correct info if orders are empty array and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
   <h4
     class="sc-dIUggk qbmUV"
@@ -905,7 +905,7 @@ exports[`<ProductItem /> Check how renders Should render correct info if orders 
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders Should render correct info if orders are empty array and type SELL_HISTORY 1`] = `
+exports[`<ProductItem /> Check how renders should render correct info if orders are empty array and type SELL_HISTORY 1`] = `
 <DocumentFragment>
   <h4
     class="sc-dIUggk qbmUV"
@@ -915,7 +915,7 @@ exports[`<ProductItem /> Check how renders Should render correct info if orders 
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders Should render correct info if orders are null and type PLACED_ORDERS 1`] = `
+exports[`<ProductItem /> Check how renders should render correct info if orders are null and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
   <h4
     class="sc-dIUggk qbmUV"
@@ -925,7 +925,7 @@ exports[`<ProductItem /> Check how renders Should render correct info if orders 
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders Should render correct info if orders are null and type SELL_HISTORY 1`] = `
+exports[`<ProductItem /> Check how renders should render correct info if orders are null and type SELL_HISTORY 1`] = `
 <DocumentFragment>
   <h4
     class="sc-dIUggk qbmUV"
@@ -935,7 +935,7 @@ exports[`<ProductItem /> Check how renders Should render correct info if orders 
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders Should render only <Loader /> 1`] = `
+exports[`<ProductItem /> Check how renders should render only <Loader /> 1`] = `
 <DocumentFragment>
   <div
     class="sc-fodVxV eaPFxd"

@@ -40,7 +40,7 @@ afterEach(cleanup);
 
 describe('<LoggedInLinks />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning if status is active', () => {
+    it('should NOT throw a warning if status is active', () => {
       const props = {
         username: 'username',
         status: 'active',
@@ -48,7 +48,7 @@ describe('<LoggedInLinks />', () => {
       expect(checkProps(LoggedInLinks, props)).toBeUndefined();
     });
 
-    it('Should NOT throw a warning if status is pending', () => {
+    it('should NOT throw a warning if status is pending', () => {
       const props = {
         username: 'username',
         status: 'pending',
@@ -56,7 +56,7 @@ describe('<LoggedInLinks />', () => {
       expect(checkProps(LoggedInLinks, props)).toBeUndefined();
     });
 
-    it('Should throw a warning if invalid status is passed', () => {
+    it('should throw a warning if invalid status is passed', () => {
       const props = {
         username: 'username',
         status: 'invalid',
@@ -64,23 +64,23 @@ describe('<LoggedInLinks />', () => {
       expect(checkProps(LoggedInLinks, props)).not.toBe(null);
     });
 
-    it('Should throw a warning if no props are passed', () => {
+    it('should throw a warning if no props are passed', () => {
       expect(checkProps(LoggedInLinks, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render version for user with status active', () => {
+    it('should render version for user with status active', () => {
       const { asFragment } = setUp('username', 'active');
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render version for user with status pending', () => {
+    it('should render version for user with status pending', () => {
       const { asFragment } = setUp('username', 'pending');
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should open <Dropdown /> after clicking at user box and close after clicking outside <Dropdown />', async () => {
+    it('should open <Dropdown /> after clicking at user box and close after clicking outside <Dropdown />', async () => {
       setUp('username', 'active');
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
@@ -96,7 +96,7 @@ describe('<LoggedInLinks />', () => {
       });
     });
 
-    it('Should not close <Dropdown /> after clicking at <Dropdown />', async () => {
+    it('should not close <Dropdown /> after clicking at <Dropdown />', async () => {
       setUp('username', 'active');
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
@@ -110,7 +110,7 @@ describe('<LoggedInLinks />', () => {
     });
   });
 
-  it('Should call push after clicking at link to settings', async () => {
+  it('should call push after clicking at link to settings', async () => {
     const pushFn = jest.fn();
     setUp('username', 'pending', pushFn);
 

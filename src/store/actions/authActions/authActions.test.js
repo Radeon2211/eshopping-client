@@ -128,7 +128,7 @@ describe('Async functions', () => {
     };
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users', {
           status: 200,
           response: {
@@ -161,7 +161,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(expectedDataToPass);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users', {
           status: 400,
         });
@@ -185,7 +185,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users', {
           status: 200,
           response: {
@@ -210,7 +210,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users', {
           status: 400,
         });
@@ -237,7 +237,7 @@ describe('Async functions', () => {
     };
 
     describe('Store', () => {
-      it('Is successful and isDifferent is false', async () => {
+      it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/login', {
           status: 200,
           response: {
@@ -263,7 +263,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
       });
 
-      it('Is successful and isDifferent is true', async () => {
+      it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/users/login', {
           status: 200,
           response: {
@@ -297,7 +297,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
       });
 
-      it('Is is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/login', {
           status: 400,
         });
@@ -321,7 +321,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful and isDifferent is false', async () => {
+      it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/login', {
           status: 200,
           response: {
@@ -345,7 +345,7 @@ describe('Async functions', () => {
         uiActions.writeChangeCartInfo = originalWriteChangeCartInfo;
       });
 
-      it('Is successful and isDifferent is true', async () => {
+      it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/users/login', {
           status: 200,
           response: {
@@ -369,7 +369,7 @@ describe('Async functions', () => {
         uiActions.writeChangeCartInfo = originalWriteChangeCartInfo;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/login', {
           status: 400,
         });
@@ -391,7 +391,7 @@ describe('Async functions', () => {
     };
 
     describe('Store', () => {
-      it('Is successful and isDifferent is false', async () => {
+      it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -416,7 +416,7 @@ describe('Async functions', () => {
         expect(checkReqMethodAndURL(moxios, 'get', '/users/me')).toEqual(true);
       });
 
-      it('Is successful and isDifferent is true', async () => {
+      it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -449,7 +449,7 @@ describe('Async functions', () => {
         expect(checkReqMethodAndURL(moxios, 'get', '/users/me')).toEqual(true);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -463,7 +463,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful and isDifferent is false', async () => {
+      it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -484,7 +484,7 @@ describe('Async functions', () => {
         uiActions.writeChangeCartInfo = originalWriteChangeCartInfo;
       });
 
-      it('Is successful and isDifferent is true', async () => {
+      it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -500,7 +500,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenCalledTimes(2);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -514,7 +514,7 @@ describe('Async functions', () => {
 
   describe('logoutUser()', () => {
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/logout', {
           status: 200,
         });
@@ -541,7 +541,7 @@ describe('Async functions', () => {
         expect(checkReqMethodAndURL(moxios, 'post', '/users/logout')).toEqual(true);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/logout', {
           status: 500,
         });
@@ -564,7 +564,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/logout', {
           status: 200,
         });
@@ -576,7 +576,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenCalledTimes(1);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/logout', {
           status: 500,
         });
@@ -617,7 +617,7 @@ describe('Async functions', () => {
     };
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -652,7 +652,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -676,7 +676,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -699,7 +699,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -721,7 +721,7 @@ describe('Async functions', () => {
     };
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/me/email', {
           status: 200,
         });
@@ -744,7 +744,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me/email', {
           status: 500,
         });
@@ -768,7 +768,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/me/email', {
           status: 200,
         });
@@ -789,7 +789,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me/email', {
           status: 500,
         });
@@ -814,7 +814,7 @@ describe('Async functions', () => {
     });
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
         });
@@ -849,7 +849,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -873,7 +873,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
         });
@@ -901,7 +901,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -934,7 +934,7 @@ describe('Async functions', () => {
     };
 
     describe('Store', () => {
-      it('Is successful and onlyCurrentOrders is true', async () => {
+      it('is successful and onlyCurrentOrders is true', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -959,7 +959,7 @@ describe('Async functions', () => {
         expect(moxios.requests.mostRecent()).toBeUndefined();
       });
 
-      it('Is successful and onlyCurrentOrders is false', async () => {
+      it('is successful and onlyCurrentOrders is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -995,7 +995,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
       });
 
-      it('Is failed if onlyCurrentOrders is false', async () => {
+      it('is failed if onlyCurrentOrders is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -1024,7 +1024,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful and onlyCurrentOrders is false', async () => {
+      it('is successful and onlyCurrentOrders is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -1052,7 +1052,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is successful and onlyCurrentOrders is true', async () => {
+      it('is successful and onlyCurrentOrders is true', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
           response: {
@@ -1075,7 +1075,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenCalledTimes(3);
       });
 
-      it('Is failed if onlyCurrentOrders is false', async () => {
+      it('is failed if onlyCurrentOrders is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 500,
         });
@@ -1100,7 +1100,7 @@ describe('Async functions', () => {
     };
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest(`/users/${otherUserUsername}`, {
           status: 200,
           response: {
@@ -1120,7 +1120,7 @@ describe('Async functions', () => {
         expect(checkReqMethodAndURL(moxios, 'get', `/users/${otherUserUsername}`)).toEqual(true);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest(`/users/${otherUserUsername}`, {
           status: 500,
         });
@@ -1146,7 +1146,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest(`/users/${otherUserUsername}`, {
           status: 200,
           response: {
@@ -1166,7 +1166,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenCalledTimes(3);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest(`/users/${otherUserUsername}`, {
           status: 500,
         });
@@ -1192,7 +1192,7 @@ describe('Async functions', () => {
     const userEmail = 'user@domain.com';
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/add-admin', {
           status: 200,
         });
@@ -1214,7 +1214,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/add-admin', {
           status: 500,
         });
@@ -1238,7 +1238,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/add-admin', {
           status: 200,
         });
@@ -1259,7 +1259,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/add-admin', {
           status: 500,
         });
@@ -1284,7 +1284,7 @@ describe('Async functions', () => {
     const userEmail = 'user@domain.com';
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/remove-admin', {
           status: 200,
         });
@@ -1306,7 +1306,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/remove-admin', {
           status: 500,
         });
@@ -1330,7 +1330,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/remove-admin', {
           status: 200,
         });
@@ -1351,7 +1351,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/remove-admin', {
           status: 500,
         });
@@ -1374,7 +1374,7 @@ describe('Async functions', () => {
 
   describe('sendAccountVerificationLink()', () => {
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/send-account-verification-email', {
           status: 200,
         });
@@ -1398,7 +1398,7 @@ describe('Async functions', () => {
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/send-account-verification-email', {
           status: 500,
         });
@@ -1424,7 +1424,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/send-account-verification-email', {
           status: 200,
         });
@@ -1445,7 +1445,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/send-account-verification-email', {
           status: 500,
         });
@@ -1470,7 +1470,7 @@ describe('Async functions', () => {
     const userEmail = 'user@domain.com';
 
     describe('Store', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/request-for-reset-password', {
           status: 200,
         });
@@ -1494,7 +1494,7 @@ describe('Async functions', () => {
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/request-for-reset-password', {
           status: 500,
         });
@@ -1520,7 +1520,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest('/users/request-for-reset-password', {
           status: 200,
         });
@@ -1541,7 +1541,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest('/users/request-for-reset-password', {
           status: 500,
         });

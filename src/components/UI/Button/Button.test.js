@@ -18,17 +18,17 @@ afterEach(cleanup);
 
 describe('<Button />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       expect(checkProps(Button, { children: 'Test button' })).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       expect(checkProps(Button, {})).not.toBe(null);
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render without <LoadingOverlay />', () => {
+    it('should render without <LoadingOverlay />', () => {
       const props = {
         children: 'Test button',
       };
@@ -36,7 +36,7 @@ describe('<Button />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render with <LoadingOverlay />', () => {
+    it('should render with <LoadingOverlay />', () => {
       const props = {
         children: 'Test button',
         isLoading: true,
@@ -45,7 +45,7 @@ describe('<Button />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should button be disabled if disabled is true', () => {
+    it('should button be disabled if disabled is true', () => {
       const props = {
         children: 'Test button',
         disabled: true,
@@ -54,7 +54,7 @@ describe('<Button />', () => {
       expect(screen.getByRole('button')).toBeDisabled();
     });
 
-    it('Should button be disabled if isLoading is true', () => {
+    it('should button be disabled if isLoading is true', () => {
       const props = {
         children: 'Test button',
         isLoading: true,
@@ -64,7 +64,7 @@ describe('<Button />', () => {
     });
   });
 
-  it('Should call clicked after clicking', () => {
+  it('should call clicked after clicking', () => {
     const clickedFn = jest.fn();
     const props = {
       children: 'Test button',

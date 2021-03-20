@@ -6,11 +6,11 @@ import {
 } from '../../../shared/testUtility/testUtility';
 
 describe('Auth reducer', () => {
-  it('Should return default state', () => {
+  it('should return default state', () => {
     expect(authReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('Should return new state after SET_PROFILE', () => {
+  it('should return new state after SET_PROFILE', () => {
     expect(
       authReducer(undefined, {
         type: actionTypes.SET_PROFILE,
@@ -23,7 +23,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after LOGOUT_USER', () => {
+  it('should return new state after LOGOUT_USER', () => {
     expect(
       authReducer(undefined, {
         type: actionTypes.LOGOUT_USER,
@@ -34,7 +34,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_DELIVERY_ADDRESS - completely new', () => {
+  it('should return new state after SET_DELIVERY_ADDRESS - completely new', () => {
     expect(
       authReducer(undefined, {
         type: actionTypes.SET_DELIVERY_ADDRESS,
@@ -46,7 +46,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_DELIVERY_ADDRESS - only update', () => {
+  it('should return new state after SET_DELIVERY_ADDRESS - only update', () => {
     const state = {
       ...initialState,
       deliveryAddress: defaultDeliveryAddress,
@@ -69,7 +69,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_CART', () => {
+  it('should return new state after SET_CART', () => {
     const cart = [{ _id: '1' }];
     expect(
       authReducer(undefined, {
@@ -82,7 +82,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_TRANSACTION', () => {
+  it('should return new state after SET_TRANSACTION', () => {
     const transaction = [
       {
         seller: 'u1',
@@ -105,7 +105,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_PLACED_ORDERS', () => {
+  it('should return new state after SET_PLACED_ORDERS', () => {
     const placedOrders = [
       {
         _id: 'o1',
@@ -126,7 +126,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_SELL_HISTORY', () => {
+  it('should return new state after SET_SELL_HISTORY', () => {
     const sellHistory = [
       {
         _id: 'o1',
@@ -147,7 +147,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_ORDER_DETAILS', () => {
+  it('should return new state after SET_ORDER_DETAILS', () => {
     const orderDetails = { _id: 'o1' };
     expect(
       authReducer(undefined, {
@@ -160,7 +160,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('Should return new state after SET_OTHER_USER', () => {
+  it('should return new state after SET_OTHER_USER', () => {
     const otherUser = {
       _id: 'u1',
       username: 'user1',

@@ -46,26 +46,26 @@ afterEach(cleanup);
 
 describe('<Form />', () => {
   describe('Check prop types', () => {
-    it('Should NOT throw a warning', () => {
+    it('should NOT throw a warning', () => {
       const expectedProps = {
         children: <div />,
       };
       expect(checkProps(Form, expectedProps)).toBeUndefined();
     });
 
-    it('Should throw a warning', () => {
+    it('should throw a warning', () => {
       const expectedProps = {};
       expect(checkProps(Form, expectedProps)).not.toBeNull();
     });
   });
 
   describe('Check how renders', () => {
-    it('Should render everything what is possible with blue submit button', () => {
+    it('should render everything what is possible with blue submit button', () => {
       const { asFragment } = setUp(defaultProps, defaultStore);
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should NOT render heading, error and buttons', () => {
+    it('should NOT render heading, error and buttons', () => {
       const props = {
         ...defaultProps,
         headingText: '',
@@ -77,7 +77,7 @@ describe('<Form />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render red submit button without cancel button', () => {
+    it('should render red submit button without cancel button', () => {
       const props = {
         ...defaultProps,
         headingText: '',
@@ -89,13 +89,13 @@ describe('<Form />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should submit button be disabled if isFormLoading is true', () => {
+    it('should submit button be disabled if isFormLoading is true', () => {
       const store = createStore(true, '');
       setUp(defaultProps, store);
       expect(screen.getByTestId('Form-submit-btn')).toBeDisabled();
     });
 
-    it('Should submit button be disabled if isValid is false', () => {
+    it('should submit button be disabled if isValid is false', () => {
       const props = {
         ...defaultProps,
         isValid: false,
@@ -104,7 +104,7 @@ describe('<Form />', () => {
       expect(screen.getByTestId('Form-submit-btn')).toBeDisabled();
     });
 
-    it('Should submit button NOT be disabled if isValid is true and isFormLoading is false', () => {
+    it('should submit button NOT be disabled if isValid is true and isFormLoading is false', () => {
       setUp(defaultProps, defaultStore);
       expect(screen.getByTestId('Form-submit-btn')).not.toBeDisabled();
     });

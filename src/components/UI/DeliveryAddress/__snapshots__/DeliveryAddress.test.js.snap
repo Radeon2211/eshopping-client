@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<DeliveryAddress /> Should render five <PlainText /> with correct values 1`] = `
+exports[`<DeliveryAddress /> should render five <PlainText /> with correct values 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ BWACj"

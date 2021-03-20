@@ -159,7 +159,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful and type is PLACED_ORDERS', async () => {
+      it('is successful and type is PLACED_ORDERS', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 200,
           response: {
@@ -180,7 +180,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenCalledTimes(3);
       });
 
-      it('Is successful and type is SELL_HISTORY', async () => {
+      it('is successful and type is SELL_HISTORY', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 200,
           response: {
@@ -201,7 +201,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenCalledTimes(3);
       });
 
-      it('Is failed and type is PLACED_ORDERS', async () => {
+      it('is failed and type is PLACED_ORDERS', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 500,
         });
@@ -224,7 +224,7 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
 
-      it('Is failed and type is SELL_HISTORY', async () => {
+      it('is failed and type is SELL_HISTORY', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 500,
         });
@@ -298,7 +298,7 @@ describe('Async functions', () => {
     });
 
     describe('Inner dispatch', () => {
-      it('Is successful', async () => {
+      it('is successful', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 200,
           response: {
@@ -318,7 +318,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenCalledTimes(3);
       });
 
-      it('Is failed', async () => {
+      it('is failed', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 500,
         });

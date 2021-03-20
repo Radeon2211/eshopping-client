@@ -73,17 +73,17 @@ afterEach(cleanup);
 describe('<OtherUser />', () => {
   describe('Check how renders', () => {
     describe('Snapshots', () => {
-      it('Should render <Loader /> if other user is undefined', () => {
+      it('should render <Loader /> if other user is undefined', () => {
         const { asFragment } = setUp(undefined);
         expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should render info about problem with fetching if other user is null', () => {
+      it('should render info about problem with fetching if other user is null', () => {
         const { asFragment } = setUp(null);
         expect(asFragment()).toMatchSnapshot();
       });
 
-      it('Should render everything correctly', () => {
+      it('should render everything correctly', () => {
         const otherUser = { ...defaultOtherUser, email: 'test@email.com', phone: '123' };
         const { asFragment } = setUp(otherUser);
         expect(asFragment()).toMatchSnapshot();
@@ -91,7 +91,7 @@ describe('<OtherUser />', () => {
     });
 
     describe('Check single things', () => {
-      it('Should render only phone number if other user has only phone number set to public', () => {
+      it('should render only phone number if other user has only phone number set to public', () => {
         const otherUser = { ...defaultOtherUser, phone: '123' };
         setUp(otherUser);
         expect(screen.getByTestId('OtherUser-phone-wrapper')).toHaveTextContent(
@@ -100,7 +100,7 @@ describe('<OtherUser />', () => {
         expect(screen.queryByTestId('OtherUser-email-wrapper')).not.toBeInTheDocument();
       });
 
-      it('Should render only phone number if other user has only phone number set to public', () => {
+      it('should render only phone number if other user has only phone number set to public', () => {
         const otherUser = { ...defaultOtherUser, email: 'email@domain.com' };
         setUp(otherUser);
         expect(screen.getByTestId('OtherUser-email-wrapper')).toHaveTextContent(
@@ -112,7 +112,7 @@ describe('<OtherUser />', () => {
   });
 
   describe('Check useEffect()', () => {
-    it('Should call only replace if otherUser is the same as current user', () => {
+    it('should call only replace if otherUser is the same as current user', () => {
       const replaceFn = jest.fn();
       const { store } = setUp(defaultOtherUser, 'user1', replaceFn);
 
@@ -121,7 +121,7 @@ describe('<OtherUser />', () => {
       expect(store.dispatch).not.toHaveBeenCalled();
     });
 
-    it('Should call fetchOtherUser() and fetchProducts() if otherUser is different from current user', () => {
+    it('should call fetchOtherUser() and fetchProducts() if otherUser is different from current user', () => {
       const replaceFn = jest.fn();
       const { store } = setUp(defaultOtherUser, 'differentUser', replaceFn);
 
@@ -134,7 +134,7 @@ describe('<OtherUser />', () => {
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
 
-    it('Should call setOtherUser() after unmounting component', () => {
+    it('should call setOtherUser() after unmounting component', () => {
       const { store, unmount } = setUp(defaultOtherUser, 'user1');
 
       expect(store.dispatch).not.toHaveBeenCalled();

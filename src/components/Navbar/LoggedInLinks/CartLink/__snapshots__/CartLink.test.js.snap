@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartLink /> Should NOT render quantity if cart is null 1`] = `
+exports[`<CartLink /> should NOT render quantity if cart is null 1`] = `
 <DocumentFragment>
   <a
     class="sc-gsTCUz khJLZs"
@@ -18,7 +18,7 @@ exports[`<CartLink /> Should NOT render quantity if cart is null 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<CartLink /> Should NOT render quantity if cart length is 0 1`] = `
+exports[`<CartLink /> should NOT render quantity if cart length is 0 1`] = `
 <DocumentFragment>
   <a
     class="sc-gsTCUz khJLZs"
@@ -36,7 +36,7 @@ exports[`<CartLink /> Should NOT render quantity if cart length is 0 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<CartLink /> Should render everything correctly with quantity 1 1`] = `
+exports[`<CartLink /> should render everything correctly with quantity 1 1`] = `
 <DocumentFragment>
   <a
     class="sc-gsTCUz khJLZs"
