@@ -7,7 +7,7 @@ import {
 } from '../../../shared/testUtility/testUtility';
 
 describe('Auth reducer', () => {
-  it('should return initial state', () => {
+  it('should return initial state after passing empty object', () => {
     expect(authReducer(undefined, {})).toEqual(initialState);
   });
 

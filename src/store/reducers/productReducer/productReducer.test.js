@@ -2,11 +2,11 @@ import * as actions from '../../actions/actionTypes';
 import productReducer, { initialState } from './productReducer';
 
 describe('Product reducer', () => {
-  it('should return initial state', () => {
+  it('should return initial state after passing empty object', () => {
     expect(productReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('set new products, productCount, minPrice and maxPrice after SET_PRODUCTS', () => {
+  it('should set new products, productCount, minPrice and maxPrice after SET_PRODUCTS', () => {
     const products = [
       { _id: '1', price: 1 },
       { _id: '2', price: 2 },

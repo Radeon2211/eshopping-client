@@ -3,11 +3,11 @@ import uiReducer, { initialState } from './uiReducer';
 import { modalTypes } from '../../../shared/constants';
 
 describe('UI reducer', () => {
-  it('should return initial state', () => {
+  it('should return initial state after passing empty object', () => {
     expect(uiReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('set isFormLoading to true after FORM_START', () => {
+  it('should set isFormLoading to true after FORM_START', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.FORM_START,
