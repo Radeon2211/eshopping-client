@@ -1,40 +1,62 @@
 import * as actionTypes from '../../actions/actionTypes';
 import authReducer, { initialState } from './authReducer';
 import {
+  createOrder,
   defaultDeliveryAddress,
   defaultUserProfile,
 } from '../../../shared/testUtility/testUtility';
 
 describe('Auth reducer', () => {
-  it('should return default state', () => {
+  it('should return initial state', () => {
     expect(authReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should return new state after SET_PROFILE', () => {
+  it('should update profile after SET_PROFILE', () => {
     expect(
       authReducer(undefined, {
         type: actionTypes.SET_PROFILE,
-        profile: defaultUserProfile,
+        profile: {
+          ...defaultUserProfile,
+          cart: [],
+        },
       }),
     ).toEqual({
       ...initialState,
       profile: defaultUserProfile,
       deliveryAddress: defaultDeliveryAddress,
+      cart: [],
     });
   });
 
-  it('should return new state after LOGOUT_USER', () => {
+  it('should update almost entire state after LOGOUT_USER', () => {
+    const state = {
+      ...initialState,
+      profile: defaultUserProfile,
+      deliveryAddress: defaultDeliveryAddress,
+      cart: [],
+      transaction: [],
+      placedOrders: [],
+      sellHistory: [],
+      orderDetails: createOrder(),
+      orderCount: 1,
+      otherUser: {
+        username: 'otherUser',
+      },
+    };
     expect(
-      authReducer(undefined, {
+      authReducer(state, {
         type: actionTypes.LOGOUT_USER,
       }),
     ).toEqual({
       ...initialState,
       profile: null,
+      otherUser: {
+        username: 'otherUser',
+      },
     });
   });
 
-  it('should return new state after SET_DELIVERY_ADDRESS - completely new', () => {
+  it('should update entire deliveryAddress after SET_DELIVERY_ADDRESS', () => {
     expect(
       authReducer(undefined, {
         type: actionTypes.SET_DELIVERY_ADDRESS,
@@ -46,7 +68,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('should return new state after SET_DELIVERY_ADDRESS - only update', () => {
+  it('should update partially deliveryAddress after SET_DELIVERY_ADDRESS', () => {
     const state = {
       ...initialState,
       deliveryAddress: defaultDeliveryAddress,
@@ -69,7 +91,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('should return new state after SET_CART', () => {
+  it('should set new cart after SET_CART', () => {
     const cart = [{ _id: '1' }];
     expect(
       authReducer(undefined, {
@@ -82,7 +104,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('should return new state after SET_TRANSACTION', () => {
+  it('should set new transaction after SET_TRANSACTION', () => {
     const transaction = [
       {
         seller: 'u1',
@@ -105,7 +127,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('should return new state after SET_PLACED_ORDERS', () => {
+  it('should set new placedOrders and order count after SET_PLACED_ORDERS', () => {
     const placedOrders = [
       {
         _id: 'o1',
@@ -126,7 +148,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('should return new state after SET_SELL_HISTORY', () => {
+  it('should set new sellHistory and order counta after SET_SELL_HISTORY', () => {
     const sellHistory = [
       {
         _id: 'o1',
@@ -147,7 +169,7 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('should return new state after SET_ORDER_DETAILS', () => {
+  it('should set new orderDetails after SET_ORDER_DETAILS', () => {
     const orderDetails = { _id: 'o1' };
     expect(
       authReducer(undefined, {
@@ -160,9 +182,8 @@ describe('Auth reducer', () => {
     });
   });
 
-  it('should return new state after SET_OTHER_USER', () => {
+  it('should set new otherUser after SET_OTHER_USER', () => {
     const otherUser = {
-      _id: 'u1',
       username: 'user1',
     };
     expect(

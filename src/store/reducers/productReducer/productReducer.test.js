@@ -2,11 +2,11 @@ import * as actions from '../../actions/actionTypes';
 import productReducer, { initialState } from './productReducer';
 
 describe('Product reducer', () => {
-  it('should return default state', () => {
+  it('should return initial state', () => {
     expect(productReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should return new state after SET_PRODUCTS', () => {
+  it('set new products, productCount, minPrice and maxPrice after SET_PRODUCTS', () => {
     const products = [
       { _id: '1', price: 1 },
       { _id: '2', price: 2 },
@@ -22,13 +22,12 @@ describe('Product reducer', () => {
     ).toEqual({
       products,
       productCount: 5,
-      productDetails: undefined,
       minPrice: 1,
       maxPrice: 2,
     });
   });
 
-  it('should return new state after SET_PRODUCT_DETAILS', () => {
+  it('should set new productDetails after SET_PRODUCT_DETAILS', () => {
     const productDetails = { _id: '1' };
     expect(
       productReducer(undefined, {
@@ -41,7 +40,7 @@ describe('Product reducer', () => {
     });
   });
 
-  it('should return new state after DELETE_PRODUCT_FROM_LIST', () => {
+  it('should remove correct product from products after DELETE_PRODUCT_FROM_LIST', () => {
     const state = {
       ...initialState,
       products: [

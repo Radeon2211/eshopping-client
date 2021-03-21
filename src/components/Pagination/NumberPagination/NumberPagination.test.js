@@ -87,7 +87,7 @@ describe('<NumberPagination />', () => {
   });
 
   describe('Check behaviour of links', () => {
-    it('reacts to right arrow click (p is 1, quantity is 5, per page is 2)', () => {
+    it('should react to right arrow click (p is 1, quantity is 5, per page is 2)', () => {
       const pushFn = jest.fn();
       const history = createHistoryPageNumber(1, pushFn);
 
@@ -98,7 +98,7 @@ describe('<NumberPagination />', () => {
       expect(pushFn).toHaveBeenCalledWith('/products?p=2');
     });
 
-    it('reacts to left arrow click (p is 3, quantity is 5, per page is 2)', () => {
+    it('should react to left arrow click (p is 3, quantity is 5, per page is 2)', () => {
       const pushFn = jest.fn();
       const history = createHistoryPageNumber(3, pushFn);
 
@@ -109,7 +109,7 @@ describe('<NumberPagination />', () => {
       expect(pushFn).toHaveBeenCalledWith('/products?p=2');
     });
 
-    it('reacts to oth arrows clicks (p is 2, quantity is 5, per page is 2)', () => {
+    it('should react to oth arrows clicks (p is 2, quantity is 5, per page is 2)', () => {
       const pushFn = jest.fn();
       const history = createHistoryPageNumber(2, pushFn);
 
@@ -122,7 +122,7 @@ describe('<NumberPagination />', () => {
       expect(pushFn).toHaveBeenCalledTimes(2);
     });
 
-    it('reacts to numbers clicks (p is 8, quantity is 20, per page is 2)', () => {
+    it('should react to numbers clicks (p is 8, quantity is 20, per page is 2)', () => {
       const pushFn = jest.fn();
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(8, pushFn);

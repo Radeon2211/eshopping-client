@@ -159,6 +159,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'post', '/users')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(expectedDataToPass);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -181,6 +182,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'post', '/users')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(expectedDataToPass);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -261,6 +263,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'post', '/users/login')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is successful and isDifferent is true', async () => {
@@ -295,6 +298,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'post', '/users/login')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -317,6 +321,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'post', '/users/login')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -414,6 +419,8 @@ describe('Async functions', () => {
           }),
         );
         expect(checkReqMethodAndURL(moxios, 'get', '/users/me')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is successful and isDifferent is true', async () => {
@@ -447,6 +454,8 @@ describe('Async functions', () => {
           ),
         );
         expect(checkReqMethodAndURL(moxios, 'get', '/users/me')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -459,6 +468,8 @@ describe('Async functions', () => {
 
         expect(store.getState()).toEqual(createExpectedState(initialState, { profile: null }));
         expect(checkReqMethodAndURL(moxios, 'get', '/users/me')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -539,6 +550,8 @@ describe('Async functions', () => {
           }),
         );
         expect(checkReqMethodAndURL(moxios, 'post', '/users/logout')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -560,6 +573,8 @@ describe('Async functions', () => {
           ),
         );
         expect(checkReqMethodAndURL(moxios, 'post', '/users/logout')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -650,6 +665,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -672,6 +688,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -742,6 +759,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/me/email')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -764,6 +782,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/me/email')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -847,6 +866,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'delete', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -869,6 +889,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'delete', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -955,7 +976,6 @@ describe('Async functions', () => {
             deliveryAddress: credentials,
           }),
         );
-
         expect(moxios.requests.mostRecent()).toBeUndefined();
       });
 
@@ -993,6 +1013,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed if onlyCurrentOrders is false', async () => {
@@ -1020,6 +1041,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -1118,6 +1140,8 @@ describe('Async functions', () => {
         );
 
         expect(checkReqMethodAndURL(moxios, 'get', `/users/${otherUserUsername}`)).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -1142,6 +1166,8 @@ describe('Async functions', () => {
         );
 
         expect(checkReqMethodAndURL(moxios, 'get', `/users/${otherUserUsername}`)).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -1212,6 +1238,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/add-admin')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -1234,6 +1261,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/add-admin')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -1304,6 +1332,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/remove-admin')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -1326,6 +1355,7 @@ describe('Async functions', () => {
         );
         expect(checkReqMethodAndURL(moxios, 'patch', '/users/remove-admin')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -1396,6 +1426,7 @@ describe('Async functions', () => {
           checkReqMethodAndURL(moxios, 'post', '/users/send-account-verification-email'),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -1420,6 +1451,7 @@ describe('Async functions', () => {
           checkReqMethodAndURL(moxios, 'post', '/users/send-account-verification-email'),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -1492,6 +1524,7 @@ describe('Async functions', () => {
           true,
         );
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -1516,6 +1549,7 @@ describe('Async functions', () => {
           true,
         );
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual({ email: userEmail });
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 

@@ -78,6 +78,8 @@ describe('Async functions', () => {
           }),
         );
         expect(checkReqMethodAndURL(moxios, 'get', '/orders?type=PLACED_ORDERS&p=3')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is successful and page number is not given and sortBy is overallPrice:asc and type is SELL_HISTORY', async () => {
@@ -107,6 +109,8 @@ describe('Async functions', () => {
             '/orders?type=SELL_HISTORY&p=1&sortBy=overallPrice%3Aasc',
           ),
         ).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed and type is PLACED_ORDERS', async () => {
@@ -131,6 +135,8 @@ describe('Async functions', () => {
           ),
         );
         expect(checkReqMethodAndURL(moxios, 'get', '/orders?type=PLACED_ORDERS&p=1')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed and type is SELL_HISTORY', async () => {
@@ -155,6 +161,8 @@ describe('Async functions', () => {
           ),
         );
         expect(checkReqMethodAndURL(moxios, 'get', '/orders?type=SELL_HISTORY&p=1')).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 
@@ -271,6 +279,8 @@ describe('Async functions', () => {
           }),
         );
         expect(checkReqMethodAndURL(moxios, 'get', `/orders/${orderId}`)).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
 
       it('is failed', async () => {
@@ -294,6 +304,8 @@ describe('Async functions', () => {
           ),
         );
         expect(checkReqMethodAndURL(moxios, 'get', `/orders/${orderId}`)).toEqual(true);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(1);
       });
     });
 

@@ -3,11 +3,11 @@ import uiReducer, { initialState } from './uiReducer';
 import { modalTypes } from '../../../shared/constants';
 
 describe('UI reducer', () => {
-  it('should return default state', () => {
+  it('should return initial state', () => {
     expect(uiReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should return new state after FORM_START', () => {
+  it('set isFormLoading to true after FORM_START', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.FORM_START,
@@ -18,7 +18,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after FORM_SUCCESS', () => {
+  it('should update isFormLoading, formError, isModalOpen and modalContent after FORM_SUCCESS', () => {
     const state = {
       ...initialState,
       isFormLoading: true,
@@ -39,7 +39,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after FORM_FAIL', () => {
+  it('should update isFormLoading and formError after FORM_FAIL', () => {
     const error = 'test error';
     const state = {
       ...initialState,
@@ -57,7 +57,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after DATA_START', () => {
+  it('should set isDataLoading to true after DATA_START', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.DATA_START,
@@ -68,7 +68,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after DATA_END', () => {
+  it('should set isDataLoading to false after DATA_END', () => {
     const state = {
       ...initialState,
       isDataLoading: true,
@@ -83,7 +83,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after TRADE_START', () => {
+  it('should set isCartLoading to true after TRADE_START', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.TRADE_START,
@@ -94,7 +94,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after TRADE_END', () => {
+  it('should set isCartLoading to false after TRADE_END', () => {
     const state = {
       ...initialState,
       isCartLoading: true,
@@ -109,7 +109,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after SET_MESSAGE', () => {
+  it('should set new message  after SET_MESSAGE', () => {
     const message = 'test message';
     expect(
       uiReducer(undefined, {
@@ -122,7 +122,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after SET_MODAL (set to true with login content)', () => {
+  it('should set formError to empty string, isModalOpen to true and correct modalContent after SET_MODAL', () => {
     const state = {
       ...initialState,
       formError: 'test error',
@@ -141,11 +141,12 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after SET_MODAL (set to false)', () => {
+  it('should set formError and modalContent to empty string and isModalOpen to false after SET_MODAL', () => {
     const state = {
       ...initialState,
       isModalOpen: true,
       modalContent: modalTypes.LOGIN,
+      formError: 'test error',
     };
     expect(
       uiReducer(state, {
@@ -156,56 +157,48 @@ describe('UI reducer', () => {
       ...initialState,
       isModalOpen: false,
       modalContent: '',
+      formError: '',
     });
   });
 
-  it('should return new state after SET_MODAL (set to false)', () => {
+  it('should NOT update state after SET_MODAL if isFormLoading is true and passed isModalOpen is false', () => {
     const state = {
       ...initialState,
       isModalOpen: true,
+      isFormLoading: true,
       modalContent: modalTypes.LOGIN,
+      formError: 'test error',
     };
     expect(
       uiReducer(state, {
         type: actionTypes.SET_MODAL,
         isModalOpen: false,
       }),
-    ).toEqual({
+    ).toEqual(state);
+  });
+
+  it('should NOT update state after SET_MODAL if state.isModalOpen is false and passed isModalOpen is false', () => {
+    const state = {
       ...initialState,
       isModalOpen: false,
-      modalContent: '',
-    });
-  });
-
-  it('should NOT return new state after SET_MODAL (NOT set to false if isFormLoading: true)', () => {
-    const state = {
-      ...initialState,
-      isFormLoading: true,
-      isModalOpen: true,
-      modalContent: modalTypes.LOGIN,
     };
     expect(
       uiReducer(state, {
         type: actionTypes.SET_MODAL,
         isModalOpen: false,
       }),
-    ).toEqual({
-      ...initialState,
-      isFormLoading: true,
-      isModalOpen: true,
-      modalContent: modalTypes.LOGIN,
-    });
+    ).toEqual(state);
   });
 
-  it('should return new state after SET_PRODUCTS_PER_PAGE', () => {
+  it('should set new productsPerPage after SET_PRODUCTS_PER_PAGE', () => {
     expect(
       uiReducer(undefined, {
         type: actionTypes.SET_PRODUCTS_PER_PAGE,
-        productsPerPage: 15,
+        productsPerPage: 25,
       }),
     ).toEqual({
       ...initialState,
-      productsPerPage: 15,
+      productsPerPage: 25,
     });
   });
 });
