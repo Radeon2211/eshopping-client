@@ -12,7 +12,7 @@ import { act } from 'react-dom/test-utils';
 import Filters from './Filters';
 import { checkProps } from '../../shared/testUtility/testUtility';
 import theme from '../../styled/theme';
-import { sortProductsOptions, filtersActions } from '../../shared/constants';
+import { sortProductsOptions, filtersActions, productConditions } from '../../shared/constants';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
 
 const mockStore = configureMockStore([thunk]);
@@ -108,7 +108,10 @@ describe('<Filters />', () => {
 
   describe('Check behaviour of controls', () => {
     it('should condition checkboxes be checked', () => {
-      setUp(false, '?p=1&condition=new,used,not_applicable');
+      setUp(
+        false,
+        `?p=1&condition=${productConditions.NEW},${productConditions.USED},${productConditions.NOT_APPLICABLE}`,
+      );
       expect(screen.getByTestId('Filters-checkbox-new')).toBeChecked();
       expect(screen.getByTestId('Filters-checkbox-used')).toBeChecked();
       expect(screen.getByTestId('Filters-checkbox-not-applicable')).toBeChecked();

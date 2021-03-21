@@ -116,35 +116,35 @@ const Filters = (props) => {
         <SC.CheckboxBox>
           <input
             type="checkbox"
-            name="new"
-            id="new"
+            name={productConditions.NEW}
+            id={productConditions.NEW}
             checked={filters.condition.new}
             onChange={checkboxChangeHandle}
             data-testid="Filters-checkbox-new"
           />
-          <label htmlFor="new">new</label>
+          <label htmlFor={productConditions.NEW}>new</label>
         </SC.CheckboxBox>
         <SC.CheckboxBox>
           <input
             type="checkbox"
-            name="used"
-            id="used"
+            name={productConditions.USED}
+            id={productConditions.USED}
             checked={filters.condition.used}
             onChange={checkboxChangeHandle}
             data-testid="Filters-checkbox-used"
           />
-          <label htmlFor="used">used</label>
+          <label htmlFor={productConditions.USED}>used</label>
         </SC.CheckboxBox>
         <SC.CheckboxBox>
           <input
             type="checkbox"
-            name="not_applicable"
-            id="not_applicable"
+            name={productConditions.NOT_APPLICABLE}
+            id={productConditions.NOT_APPLICABLE}
             checked={filters.condition.not_applicable}
             onChange={checkboxChangeHandle}
             data-testid="Filters-checkbox-not-applicable"
           />
-          <label htmlFor="not_applicable">not applicable</label>
+          <label htmlFor={productConditions.NOT_APPLICABLE}>not applicable</label>
         </SC.CheckboxBox>
       </SC.Checkboxes>
       <Button
