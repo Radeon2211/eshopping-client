@@ -35,6 +35,6 @@ export {
   fetchProductDetails,
   setProductDetails,
   deleteProduct,
-} from './productActions';
+} from './productActions/productActions';
 
 export { fetchOrders, fetchOrderDetails, setOrderDetails } from './orderActions/orderActions';

@@ -349,60 +349,86 @@ describe('testStore()', () => {
 });
 
 describe('checkReqMethodAndURL()', () => {
-  it('should return true if both are correct', () => {
-    const moxiosInstance = {
+  describe('mostRecent()', () => {
+    const createMoxiosInstance = (method, url) => ({
       requests: {
         mostRecent: () => ({
           config: {
-            method: 'get',
-            url: '/users/me',
+            method,
+            url,
           },
         }),
       },
-    };
-    expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(true);
+    });
+
+    it('should return true if both are correct', () => {
+      const moxiosInstance = createMoxiosInstance('get', '/users/me');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(true);
+    });
+
+    it('should return false if method is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('delete', '/users/me');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
+    });
+
+    it('should return false if url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('get', '/users/user1');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
+    });
+
+    it('should return false if method and url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('post', '/users/login');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
+    });
   });
 
-  it('should return false if method is incorrect', () => {
-    const moxiosInstance = {
+  describe('previous request', () => {
+    const createMoxiosInstance = (method, url) => ({
       requests: {
-        mostRecent: () => ({
-          config: {
-            method: 'delete',
-            url: '/users/me',
+        __items: [
+          {
+            config: {
+              method,
+              url,
+            },
           },
-        }),
+          {
+            config: {
+              method: 'get',
+              url: '/cart',
+            },
+          },
+        ],
       },
-    };
-    expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
-  });
+    });
 
-  it('should return false if url is incorrect', () => {
-    const moxiosInstance = {
-      requests: {
-        mostRecent: () => ({
-          config: {
-            method: 'get',
-            url: '/users/user1',
-          },
-        }),
-      },
-    };
-    expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
-  });
+    it('should return true if both are correct', () => {
+      const moxiosInstance = createMoxiosInstance('get', '/users/me');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
+        true,
+      );
+    });
 
-  it('should return false if method and url is incorrect', () => {
-    const moxiosInstance = {
-      requests: {
-        mostRecent: () => ({
-          config: {
-            method: 'post',
-            url: '/users/login',
-          },
-        }),
-      },
-    };
-    expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
+    it('should return false if method is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('delete', '/users/me');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
+        false,
+      );
+    });
+
+    it('should return false if url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('get', '/users/user1');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
+        false,
+      );
+    });
+
+    it('should return false if method and url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('post', '/users/login');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
+        false,
+      );
+    });
   });
 });
 

@@ -1,8 +1,8 @@
 import queryString from 'query-string';
-import axios from '../../axios';
-import * as actionTypes from './actionTypes';
-import * as uiActions from './uiActions/uiActions';
-import { getErrorMessage, getParamsWithoutPollution } from '../../shared/utility/utility';
+import axios from '../../../axios';
+import * as actionTypes from '../actionTypes';
+import * as uiActions from '../uiActions/uiActions';
+import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
 
 export const setProducts = (
   products = undefined,
@@ -27,32 +27,33 @@ export const deleteProductFromList = (productId) => ({
   productId,
 });
 
-export const addProduct = (product, currentPath) => {
+export const addProduct = (productData, currentPath) => {
   return async (dispatch) => {
-    dispatch(uiActions.formStart());
     try {
+      dispatch(uiActions.formStart());
+
       const correctProduct = {
-        ...product,
+        ...productData,
         photo: undefined,
       };
 
       const { data } = await axios.post('/products', correctProduct);
-      if (product.photo) {
+      if (productData.photo) {
         const formData = new FormData();
-        formData.append('photo', product.photo);
+        formData.append('photo', productData.photo);
         await axios.post(`/products/${data.productId}/photo`, formData);
       }
-      dispatch(uiActions.formSuccess());
 
       if (currentPath.startsWith('/my-account/products')) {
         dispatch(
           uiActions.setAndDeleteMessage(
-            'Product has been added successfully. Refresh page to see it.',
+            'Product has been added successfully. Refresh page to see it',
           ),
         );
       } else {
         dispatch(uiActions.setAndDeleteMessage('Product has been added successfully'));
       }
+      dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));
@@ -64,23 +65,24 @@ export const editProduct = (productData, productId) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
+
       const correctProduct = {
         ...productData,
         photo: undefined,
       };
 
       let editedProduct = null;
-      const { data: firstData } = await axios.patch(`/products/${productId}`, correctProduct);
-      editedProduct = firstData.product;
+      const { data } = await axios.patch(`/products/${productId}`, correctProduct);
+      editedProduct = data.product;
 
       if (productData.photo) {
         if (productData.photo === 'DELETED') {
-          await axios.delete(`/products/${firstData.product._id}/photo`);
+          await axios.delete(`/products/${data.product._id}/photo`);
           editedProduct.photo = false;
         } else {
           const formData = new FormData();
           formData.append('photo', productData.photo);
-          await axios.post(`/products/${firstData.product._id}/photo`, formData);
+          await axios.post(`/products/${data.product._id}/photo`, formData);
           editedProduct.photo = true;
         }
       }
@@ -105,6 +107,7 @@ export const fetchProducts = (search, page, sellerUsername) => {
   return async (dispatch, getState) => {
     try {
       dispatch(uiActions.dataStart());
+
       let minPriceOuter = 0;
       let maxPriceOuter = 0;
 
@@ -136,13 +139,14 @@ export const fetchProducts = (search, page, sellerUsername) => {
         minPriceOuter = minPrice;
         maxPriceOuter = maxPrice;
       }
+
       dispatch(setProducts(data.products, data.productCount, minPriceOuter, maxPriceOuter));
       dispatch(uiActions.dataEnd());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
-      dispatch(uiActions.dataEnd());
       dispatch(setProducts(null));
+      dispatch(uiActions.dataEnd());
     }
   };
 };
@@ -155,28 +159,27 @@ export const fetchProductDetails = (productId) => {
       dispatch(setProductDetails(data.product));
       dispatch(uiActions.dataEnd());
     } catch (error) {
-      dispatch(setProductDetails(null));
       if (error?.response?.data?.kind === 'ObjectId') {
         dispatch(uiActions.setAndDeleteMessage('Product ID given in URL is not correct'));
-        dispatch(uiActions.dataEnd());
       } else {
         const errorMessage = getErrorMessage(error);
         dispatch(uiActions.setAndDeleteMessage(errorMessage));
-        dispatch(uiActions.dataEnd());
       }
+      dispatch(setProductDetails(null));
+      dispatch(uiActions.dataEnd());
     }
   };
 };
 
 export const deleteProduct = (productId, history) => {
   return async (dispatch) => {
-    dispatch(uiActions.formStart());
     try {
-      await axios.delete(`products/${productId}`);
+      dispatch(uiActions.formStart());
+      await axios.delete(`/products/${productId}`);
       dispatch(setProductDetails(undefined));
       dispatch(deleteProductFromList(productId));
-      dispatch(uiActions.formSuccess());
       dispatch(uiActions.setAndDeleteMessage('Product has been deleted successfully'));
+      dispatch(uiActions.formSuccess());
       history.goBack();
     } catch (error) {
       const errorMessage = getErrorMessage(error);
