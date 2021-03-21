@@ -50,10 +50,6 @@ const setMessage = (state, action) => {
   return updateObject(state, { message: action.message });
 };
 
-const deleteMessage = (state) => {
-  return updateObject(state, { message: '' });
-};
-
 const setModal = (state, action) => {
   if ((state.isFormLoading && !action.isModalOpen) || (!state.isModalOpen && !action.isModalOpen)) {
     return state;
@@ -87,8 +83,6 @@ const uiReducer = (state = initialState, action) => {
       return tradeEnd(state);
     case actionTypes.SET_MESSAGE:
       return setMessage(state, action);
-    case actionTypes.DELETE_MESSAGE:
-      return deleteMessage(state);
     case actionTypes.SET_MODAL:
       return setModal(state, action);
     case actionTypes.SET_PRODUCTS_PER_PAGE:

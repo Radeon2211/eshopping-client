@@ -26,7 +26,7 @@ export {
   buyProducts,
 } from './tradeActions';
 
-export { setModal, deleteMessage, changeProductsPerPage } from './uiActions';
+export { setMessage, setModal, changeProductsPerPage } from './uiActions/uiActions';
 
 export {
   addProduct,

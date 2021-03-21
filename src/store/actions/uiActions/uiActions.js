@@ -1,6 +1,6 @@
 import queryString from 'query-string';
-import * as actionTypes from './actionTypes';
-import { getParamsWithoutPollution } from '../../shared/utility/utility';
+import * as actionTypes from '../actionTypes';
+import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 
 export const formStart = () => ({
   type: actionTypes.FORM_START,
@@ -31,13 +31,9 @@ export const tradeEnd = () => ({
   type: actionTypes.TRADE_END,
 });
 
-export const setMessage = (message = '') => ({
+export const setMessage = (message) => ({
   type: actionTypes.SET_MESSAGE,
   message,
-});
-
-export const deleteMessage = () => ({
-  type: actionTypes.DELETE_MESSAGE,
 });
 
 export const setModal = (isModalOpen, modalContent = '') => ({
@@ -55,7 +51,7 @@ export const setAndDeleteMessage = (message) => {
   return (dispatch) => {
     dispatch(setMessage(message));
     setTimeout(() => {
-      dispatch(deleteMessage());
+      dispatch(setMessage(''));
     }, 5000);
   };
 };
@@ -73,7 +69,7 @@ export const writeChangeCartInfo = (condition) => {
 };
 
 export const changeProductsPerPage = (quantity, history) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(setProductsPerPage(quantity));
     const parsedQueryParams = getParamsWithoutPollution(history.location.search);
     if (+parsedQueryParams.p !== 1) {

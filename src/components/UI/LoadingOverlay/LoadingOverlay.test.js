@@ -31,16 +31,17 @@ describe('<LoadingOverlay />', () => {
 
   it('should render info after 8 seconds', () => {
     setUp();
+    expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
     act(() => {
       jest.advanceTimersByTime(8000);
     });
     expect(screen.getByTestId('LoadingOverlay-info')).toBeInTheDocument();
   });
 
-  it('should NOT render info after 7 seconds', () => {
+  it('should NOT render info after 7999ms', () => {
     setUp();
     act(() => {
-      jest.advanceTimersByTime(7000);
+      jest.advanceTimersByTime(7999);
     });
     expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
   });

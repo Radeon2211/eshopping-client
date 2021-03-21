@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import axios from '../../../axios';
 import * as actionTypes from '../actionTypes';
-import * as uiActions from '../uiActions';
+import * as uiActions from '../uiActions/uiActions';
 import { orderTypes } from '../../../shared/constants';
 import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
 

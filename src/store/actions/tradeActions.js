@@ -1,6 +1,6 @@
 import axios from '../../axios';
 import * as actionTypes from './actionTypes';
-import * as uiActions from './uiActions';
+import * as uiActions from './uiActions/uiActions';
 import { getErrorMessage } from '../../shared/utility/utility';
 import { modalTypes } from '../../shared/constants';
 

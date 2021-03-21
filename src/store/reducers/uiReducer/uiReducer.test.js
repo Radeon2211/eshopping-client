@@ -122,21 +122,6 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should return new state after DELETE_MESSAGE', () => {
-    const state = {
-      ...initialState,
-      message: 'test message',
-    };
-    expect(
-      uiReducer(state, {
-        type: actionTypes.DELETE_MESSAGE,
-      }),
-    ).toEqual({
-      ...initialState,
-      message: '',
-    });
-  });
-
   it('should return new state after SET_MODAL (set to true with login content)', () => {
     const state = {
       ...initialState,

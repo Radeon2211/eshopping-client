@@ -10,7 +10,7 @@ import {
   setUpStoreWithDefaultProfile,
 } from '../../../shared/testUtility/testUtility';
 import * as actions from '../indexActions';
-import * as uiActions from '../uiActions';
+import * as uiActions from '../uiActions/uiActions';
 import * as authActions from './authActions';
 import * as actionTypes from '../actionTypes';
 

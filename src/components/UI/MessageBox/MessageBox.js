@@ -63,7 +63,7 @@ const MessageBox = () => {
   const message = useSelector((state) => state.ui.message);
 
   const dispatch = useDispatch();
-  const onDeleteMessage = useCallback(() => dispatch(actions.deleteMessage()), [dispatch]);
+  const onSetMessage = useCallback((msg) => dispatch(actions.setMessage(msg)), [dispatch]);
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -79,7 +79,7 @@ const MessageBox = () => {
             <MyIcon
               size="small"
               color="#fff"
-              onClick={() => onDeleteMessage()}
+              onClick={() => onSetMessage('')}
               className="close-icon"
             >
               <PlusIcon />

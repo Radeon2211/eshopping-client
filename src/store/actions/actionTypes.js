@@ -18,6 +18,5 @@ export const DATA_END = 'DATA_END';
 export const TRADE_START = 'TRADE_START';
 export const TRADE_END = 'TRADE_END';
 export const SET_MESSAGE = 'SET_MESSAGE';
-export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 export const SET_MODAL = 'SET_MODAL';
 export const SET_PRODUCTS_PER_PAGE = 'SET_PRODUCTS_PER_PAGE';
