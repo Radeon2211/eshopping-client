@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from './axios';
 import * as actions from './store/actions/indexActions';
 import { DEFAULT_PATH } from './shared/constants';
-import theme from './styled/theme';
-import ServerConnectionError from './components/UI/ServerConnectionError';
+import ErrorPage from './components/UI/ErrorPage/ErrorPage';
+import FlexWrapper from './components/UI/FlexWrapper';
+import { ReactComponent as ServerErrorImage } from './images/server-connection-error.svg';
 
 import Modal from './components/UI/Modal/Modal';
 import MessageBox from './components/UI/MessageBox/MessageBox';
@@ -57,17 +58,21 @@ const App = () => {
     getCsrfToken();
   }, [onFetchProfile]);
 
-  let routes = (
-    <div style={{ textAlign: 'center', marginTop: theme.spacings.level3 }}>
+  let content = (
+    <FlexWrapper justify="center" mgTop="3">
       <Loader size="big" />
-    </div>
+    </FlexWrapper>
   );
 
   if (userProfile === null) {
     if (!axios.defaults.headers.post['X-CSRF-Token']) {
-      routes = <ServerConnectionError />;
+      content = (
+        <ErrorPage info="Oops! Server connection error. Please try again later">
+          <ServerErrorImage />
+        </ErrorPage>
+      );
     } else {
-      routes = (
+      content = (
         <>
           <Modal />
           <MessageBox />
@@ -88,7 +93,7 @@ const App = () => {
 
   if (userProfile) {
     if (userProfile.status === 'active') {
-      routes = (
+      content = (
         <>
           <Modal />
           <MessageBox />
@@ -110,7 +115,7 @@ const App = () => {
         </>
       );
     } else {
-      routes = (
+      content = (
         <>
           <Modal />
           <MessageBox />
@@ -131,7 +136,7 @@ const App = () => {
     }
   }
 
-  return routes;
+  return content;
 };
 
 export default App;

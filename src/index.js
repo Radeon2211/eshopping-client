@@ -6,6 +6,9 @@ import { HashRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorPage from './components/UI/ErrorPage/ErrorPage';
+import { ReactComponent as UnexpectedBugImage } from './images/unexpected-bug.svg';
 
 import theme from './styled/theme';
 import GlobalStyles from './styled/globalStyles';
@@ -27,7 +30,15 @@ ReactDOM.render(
         <LastLocationProvider>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <App />
+            <ErrorBoundary
+              fallback={
+                <ErrorPage info="Something went wrong. Please refresh the page">
+                  <UnexpectedBugImage />
+                </ErrorPage>
+              }
+            >
+              <App />
+            </ErrorBoundary>
           </ThemeProvider>
         </LastLocationProvider>
       </Router>
