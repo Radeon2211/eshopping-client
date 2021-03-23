@@ -382,7 +382,40 @@ describe('checkReqMethodAndURL()', () => {
     });
   });
 
-  describe('previous request', () => {
+  describe('mostRecent()', () => {
+    const createMoxiosInstance = (method, url) => ({
+      requests: {
+        mostRecent: () => ({
+          config: {
+            method,
+            url,
+          },
+        }),
+      },
+    });
+
+    it('should return true if both are correct', () => {
+      const moxiosInstance = createMoxiosInstance('get', '/users/me');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(true);
+    });
+
+    it('should return false if method is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('delete', '/users/me');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
+    });
+
+    it('should return false if url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('get', '/users/user1');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
+    });
+
+    it('should return false if method and url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('post', '/users/login');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me')).toEqual(false);
+    });
+  });
+
+  describe('first request', () => {
     const createMoxiosInstance = (method, url) => ({
       requests: {
         __items: [
@@ -404,28 +437,81 @@ describe('checkReqMethodAndURL()', () => {
 
     it('should return true if both are correct', () => {
       const moxiosInstance = createMoxiosInstance('get', '/users/me');
-      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
-        true,
-      );
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', 1)).toEqual(true);
     });
 
     it('should return false if method is incorrect', () => {
       const moxiosInstance = createMoxiosInstance('delete', '/users/me');
-      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', 1)).toEqual(
         false,
       );
     });
 
     it('should return false if url is incorrect', () => {
       const moxiosInstance = createMoxiosInstance('get', '/users/user1');
-      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', 1)).toEqual(
         false,
       );
     });
 
     it('should return false if method and url is incorrect', () => {
       const moxiosInstance = createMoxiosInstance('post', '/users/login');
-      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', true)).toEqual(
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', 1)).toEqual(
+        false,
+      );
+    });
+  });
+
+  describe('second request', () => {
+    const createMoxiosInstance = (method, url) => ({
+      requests: {
+        __items: [
+          {
+            config: {
+              method: 'post',
+              url: '/products/p1/photo',
+            },
+          },
+          {
+            config: {
+              method,
+              url,
+            },
+          },
+          {
+            config: {
+              method: 'get',
+              url: '/cart',
+            },
+          },
+        ],
+      },
+    });
+
+    it('should return true if both are correct', () => {
+      const moxiosInstance = createMoxiosInstance('delete', '/products/p1');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'delete', '/products/p1', 2)).toEqual(
+        true,
+      );
+    });
+
+    it('should return false if method is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('delete', '/products/p1');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/products/p1', 2)).toEqual(
+        false,
+      );
+    });
+
+    it('should return false if url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('delete', '/products/p1');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'delete', '/users/me', 2)).toEqual(
+        false,
+      );
+    });
+
+    it('should return false if method and url is incorrect', () => {
+      const moxiosInstance = createMoxiosInstance('delete', '/products/p1');
+      expect(testUtility.checkReqMethodAndURL(moxiosInstance, 'get', '/users/me', 2)).toEqual(
         false,
       );
     });

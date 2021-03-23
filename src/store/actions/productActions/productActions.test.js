@@ -109,7 +109,7 @@ describe('Async functions', () => {
     const expectedProductId = 'p1';
 
     describe('Store', () => {
-      it('is successful and product photo is given and path starts with /my-account/products', async () => {
+      it('is successful when product photo is given and path starts with /my-account/products', async () => {
         moxios.stubRequest('/products', {
           status: 200,
           response: {
@@ -150,7 +150,7 @@ describe('Async functions', () => {
         expect(moxios.requests.__items).toHaveLength(2);
       });
 
-      it('is successful and product photo is NOT given and path NOT start with /my-account/products', async () => {
+      it('is successful when product photo is NOT given and path NOT start with /my-account/products', async () => {
         moxios.stubRequest('/products', {
           status: 200,
           response: {
@@ -209,6 +209,9 @@ describe('Async functions', () => {
         moxios.stubRequest(`/products/${expectedProductId}/photo`, {
           status: 500,
         });
+        moxios.stubRequest(`/products/${expectedProductId}`, {
+          status: 200,
+        });
 
         const { store, initialState } = setUpStoreWithDefaultProfile();
         await store.dispatch(
@@ -231,13 +234,65 @@ describe('Async functions', () => {
             },
           ),
         );
-        expect(checkReqMethodAndURL(moxios, 'post', '/products', true)).toEqual(true);
+        expect(checkReqMethodAndURL(moxios, 'post', '/products', 1)).toEqual(true);
         expect(
-          checkReqMethodAndURL(moxios, 'post', `/products/${expectedProductId}/photo`),
+          checkReqMethodAndURL(moxios, 'post', `/products/${expectedProductId}/photo`, 2),
         ).toEqual(true);
+        expect(checkReqMethodAndURL(moxios, 'delete', `/products/${expectedProductId}`)).toEqual(
+          true,
+        );
         expect(JSON.parse(moxios.requests.__items[0].config.data)).toEqual(productToPass);
-        expect(moxios.requests.mostRecent().config.data).toEqual(photoToPass);
-        expect(moxios.requests.__items).toHaveLength(2);
+        expect(moxios.requests.__items[1].config.data).toEqual(photoToPass);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(3);
+      });
+
+      it('is failed when adding photo and deleting product', async () => {
+        moxios.stubRequest('/products', {
+          status: 200,
+          response: {
+            productId: expectedProductId,
+          },
+        });
+        moxios.stubRequest(`/products/${expectedProductId}/photo`, {
+          status: 500,
+        });
+        moxios.stubRequest(`/products/${expectedProductId}`, {
+          status: 500,
+        });
+
+        const { store, initialState } = setUpStoreWithDefaultProfile();
+        await store.dispatch(
+          actions.addProduct(
+            {
+              ...productData,
+              photo: logoImage,
+            },
+            '/products',
+          ),
+        );
+
+        expect(store.getState()).toEqual(
+          createExpectedState(
+            initialState,
+            {},
+            {},
+            {
+              formError: 'Product has been added, but problem occured during uploading photo',
+            },
+          ),
+        );
+        expect(checkReqMethodAndURL(moxios, 'post', '/products', 1)).toEqual(true);
+        expect(
+          checkReqMethodAndURL(moxios, 'post', `/products/${expectedProductId}/photo`, 2),
+        ).toEqual(true);
+        expect(checkReqMethodAndURL(moxios, 'delete', `/products/${expectedProductId}`)).toEqual(
+          true,
+        );
+        expect(JSON.parse(moxios.requests.__items[0].config.data)).toEqual(productToPass);
+        expect(moxios.requests.__items[1].config.data).toEqual(photoToPass);
+        expect(moxios.requests.mostRecent().config.data).toBeUndefined();
+        expect(moxios.requests.__items).toHaveLength(3);
       });
     });
 
@@ -318,6 +373,9 @@ describe('Async functions', () => {
         moxios.stubRequest(`/products/${expectedProductId}/photo`, {
           status: 500,
         });
+        moxios.stubRequest(`/products/${expectedProductId}`, {
+          status: 200,
+        });
 
         const innerDispatchFn = jest.fn();
         await actions.addProduct(
@@ -330,6 +388,37 @@ describe('Async functions', () => {
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
+        expect(innerDispatchFn).toHaveBeenCalledTimes(2);
+      });
+
+      it('should call inner dispatch two times correctly when adding photo and deleting product is failed', async () => {
+        moxios.stubRequest('/products', {
+          status: 200,
+          response: {
+            productId: expectedProductId,
+          },
+        });
+        moxios.stubRequest(`/products/${expectedProductId}/photo`, {
+          status: 500,
+        });
+        moxios.stubRequest(`/products/${expectedProductId}`, {
+          status: 500,
+        });
+
+        const innerDispatchFn = jest.fn();
+        await actions.addProduct(
+          {
+            ...productData,
+            photo: logoImage,
+          },
+          '/products',
+        )(innerDispatchFn);
+
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(
+          2,
+          uiActions.formFail('Product has been added, but problem occured during uploading photo'),
+        );
         expect(innerDispatchFn).toHaveBeenCalledTimes(2);
       });
     });

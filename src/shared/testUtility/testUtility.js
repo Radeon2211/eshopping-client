@@ -182,10 +182,10 @@ export const testStore = (initialAuth = {}, initialProduct = {}, initialUI = {})
   };
 };
 
-export const checkReqMethodAndURL = (moxiosInstance, method, url, checkPreviousReq = false) => {
-  if (checkPreviousReq) {
+export const checkReqMethodAndURL = (moxiosInstance, method, url, reqNumber = 0) => {
+  if (reqNumber) {
     const requests = moxiosInstance.requests.__items;
-    const prevRequest = requests[requests.length - 2];
+    const prevRequest = requests[reqNumber - 1];
     return method === prevRequest.config.method && url === prevRequest.config.url;
   }
   const lastRequest = moxiosInstance.requests.mostRecent();

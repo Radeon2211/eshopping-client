@@ -29,6 +29,7 @@ export const deleteProductFromList = (productId) => ({
 
 export const addProduct = (productData, currentPath) => {
   return async (dispatch) => {
+    let newProductId;
     try {
       dispatch(uiActions.formStart());
 
@@ -38,10 +39,11 @@ export const addProduct = (productData, currentPath) => {
       };
 
       const { data } = await axios.post('/products', correctProduct);
+      newProductId = data.productId;
       if (productData.photo) {
         const formData = new FormData();
         formData.append('photo', productData.photo);
-        await axios.post(`/products/${data.productId}/photo`, formData);
+        await axios.post(`/products/${newProductId}/photo`, formData);
       }
 
       if (currentPath.startsWith('/my-account/products')) {
@@ -55,8 +57,22 @@ export const addProduct = (productData, currentPath) => {
       }
       dispatch(uiActions.formSuccess());
     } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.formFail(errorMessage));
+      if (newProductId) {
+        try {
+          await axios.delete(`/products/${newProductId}`);
+          const errorMessage = getErrorMessage(error);
+          dispatch(uiActions.formFail(errorMessage));
+        } catch (err) {
+          dispatch(
+            uiActions.formFail(
+              'Product has been added, but problem occured during uploading photo',
+            ),
+          );
+        }
+      } else {
+        const errorMessage = getErrorMessage(error);
+        dispatch(uiActions.formFail(errorMessage));
+      }
     }
   };
 };
