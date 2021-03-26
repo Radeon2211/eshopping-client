@@ -16,8 +16,20 @@ const createHistory = (search = '?p=1') => ({
 const defaultHistory = createHistory();
 
 const defaultProducts = [
-  createProductItem('p1', 'user1', 4, 10.6, 'product1'),
-  createProductItem('p2', 'user1', 6, 299.98, 'product2'),
+  createProductItem({
+    id: 'p1',
+    sellerUsername: 'user1',
+    price: 10.6,
+    quantity: 4,
+    name: 'product1',
+  }),
+  createProductItem({
+    id: 'p2',
+    sellerUsername: 'user1',
+    price: 299.98,
+    quantity: 6,
+    name: 'product2',
+  }),
 ];
 
 const createProps = (isDataLoading, products, page = pages.ALL_PRODUCTS) => ({

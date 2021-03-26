@@ -15,8 +15,20 @@ import { PRODUCTS_PER_PAGE } from '../../shared/constants';
 const mockStore = configureMockStore([thunk]);
 
 const defaultProducts = [
-  createProductItem('p1', 'user1', 4, 10.6, 'product1'),
-  createProductItem('p2', 'user1', 6, 299.98, 'product2'),
+  createProductItem({
+    id: 'p1',
+    sellerUsername: 'user1',
+    price: 10.6,
+    quantity: 4,
+    name: 'product1',
+  }),
+  createProductItem({
+    id: 'p2',
+    sellerUsername: 'user1',
+    price: 299.98,
+    quantity: 6,
+    name: 'product2',
+  }),
 ];
 
 const setUp = (search = '?p=1') => {

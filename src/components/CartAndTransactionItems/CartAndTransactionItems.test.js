@@ -75,15 +75,28 @@ describe('<CartAndTransactionItems />', () => {
 
   describe('Check how renders', () => {
     it('should render everything with one seller and one cart item', () => {
-      const { asFragment } = setUp([createCartItem('user1')], itemTypes.CART);
+      const { asFragment } = setUp(
+        [
+          createCartItem({
+            sellerUsername: 'user1',
+          }),
+        ],
+        itemTypes.CART,
+      );
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render everything with two sellers, each with one transaction item', () => {
       const { asFragment } = setUp(
         [
-          createTransactionAndOrderProdItem('p1', 'user1'),
-          createTransactionAndOrderProdItem('p2', 'user2'),
+          createTransactionAndOrderProdItem({
+            productId: 'p1',
+            sellerUsername: 'user1',
+          }),
+          createTransactionAndOrderProdItem({
+            productId: 'p2',
+            sellerUsername: 'user2',
+          }),
         ],
         itemTypes.TRANSACTION,
       );
@@ -92,7 +105,15 @@ describe('<CartAndTransactionItems />', () => {
 
     it('should call push with correct path after click on user link', () => {
       const pushFn = jest.fn();
-      setUp([createCartItem('user1')], itemTypes.CART, pushFn);
+      setUp(
+        [
+          createCartItem({
+            sellerUsername: 'user1',
+          }),
+        ],
+        itemTypes.CART,
+        pushFn,
+      );
 
       fireEvent.click(screen.getByTestId('CartAndTransactionItems-seller-link'));
       expect(pushFn).toHaveBeenCalledTimes(1);

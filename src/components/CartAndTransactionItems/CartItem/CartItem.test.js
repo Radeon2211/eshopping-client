@@ -54,7 +54,15 @@ describe('<CartItem />', () => {
   describe('Checks how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp(
-        createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true),
+        createCartItem({
+          sellerUsername: 'user1',
+          productId: 'p1',
+          quantity: 5,
+          productQuantity: 6,
+          price: 299.98,
+          photo: true,
+          name: 'productName',
+        }),
       );
       expect(asFragment()).toMatchSnapshot();
     });
@@ -68,7 +76,14 @@ describe('<CartItem />', () => {
 
     it('should call push with correct paths after clicking links', () => {
       const pushFn = jest.fn();
-      const data = createCartItem('user1', 5, 'p1', 299.98, 'productName', 6, true);
+      const data = createCartItem({
+        sellerUsername: 'user1',
+        quantity: 5,
+        productQuantity: 6,
+        price: 299.98,
+        photo: true,
+        name: 'productName',
+      });
       setUp(data, false, pushFn);
 
       fireEvent.click(screen.getByTestId('CartItem-product-link-photo'));

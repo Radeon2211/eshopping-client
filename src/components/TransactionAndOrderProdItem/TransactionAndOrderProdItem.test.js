@@ -44,13 +44,27 @@ describe('<TransactionAndOrderProdItem />', () => {
 
   describe('Checks how renders and behaviour', () => {
     it('should render everything correctly', () => {
-      const data = createTransactionAndOrderProdItem('p1', 'user1', 2, 9.9, 'productName', true);
+      const data = createTransactionAndOrderProdItem({
+        productId: 'p1',
+        sellerUsername: 'user1',
+        price: 9.9,
+        quantity: 2,
+        name: 'productName',
+        photo: true,
+      });
       const { asFragment } = setUp(data);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render image src from orders collection', () => {
-      const data = createTransactionAndOrderProdItem('p1', 'user1', 2, 5, 'productName', true);
+      const data = createTransactionAndOrderProdItem({
+        productId: 'p1',
+        sellerUsername: 'user1',
+        price: 2,
+        quantity: 5,
+        name: 'productName',
+        photo: true,
+      });
       setUp(data, 'o1');
       expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute(
         'src',
@@ -60,7 +74,9 @@ describe('<TransactionAndOrderProdItem />', () => {
 
     it('should call push with correct paths after clicking product links', () => {
       const pushFn = jest.fn();
-      const data = createTransactionAndOrderProdItem('p1');
+      const data = createTransactionAndOrderProdItem({
+        productId: 'p1',
+      });
       setUp(data, '', pushFn);
 
       fireEvent.click(screen.getByTestId('TransactionAndOrderProdItem-product-link-photo'));

@@ -60,11 +60,31 @@ describe('<OrderList />', () => {
   describe('Check how renders', () => {
     it('should render everything correctly with two items and type PLACED_ORDERS', () => {
       const products = [
-        createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
-        createTransactionAndOrderProdItem('p2', 'sellerUser', 2, 6.4, 'product2'),
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: 'sellerUser',
+          price: 4,
+          quantity: 4,
+          name: 'product1',
+          photo: true,
+        }),
+        createTransactionAndOrderProdItem({
+          productId: 'p2',
+          sellerUsername: 'sellerUser',
+          price: 6.4,
+          quantity: 2,
+          name: 'product2',
+        }),
       ];
       const orders = [
-        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 28.8, '2021-01-08T11:08:51.008Z'),
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+          overallPrice: 28.8,
+          createdAt: '2021-01-08T11:08:51.008Z',
+        }),
       ];
       const { asFragment } = setUp(orders, orderTypes.PLACED_ORDERS);
       expect(asFragment()).toMatchSnapshot();
@@ -72,19 +92,49 @@ describe('<OrderList />', () => {
 
     it('should render everything correctly with one item and type SELL_HISTORY', () => {
       const products = [
-        createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: 'sellerUser',
+          price: 6.4,
+          quantity: 2,
+          name: 'product1',
+          photo: true,
+        }),
       ];
       const orders = [
-        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 12.8, '2021-02-17T01:53:45.008Z'),
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+          overallPrice: 12.8,
+          createdAt: '2021-02-17T01:53:45.008Z',
+        }),
       ];
       const { asFragment } = setUp(orders, orderTypes.SELL_HISTORY);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render account deleted - type PLACED_ORDERS', () => {
-      const products = [createTransactionAndOrderProdItem('p1', null, 2, 6.4, 'product1', true)];
+      const products = [
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: null,
+          price: 6.4,
+          quantity: 4,
+          name: 'product1',
+          photo: true,
+        }),
+      ];
       const orders = [
-        createOrder(products, 'o1', null, 'buyerUser', 12.8, '2021-02-28T21:13:05.008Z'),
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: null,
+          buyerUsername: 'buyerUser',
+          overallPrice: 12.8,
+          createdAt: '2021-02-28T21:13:05.008Z',
+        }),
       ];
       setUp(orders, orderTypes.PLACED_ORDERS);
 
@@ -94,10 +144,24 @@ describe('<OrderList />', () => {
 
     it('should render account deleted - type SELL_HISTORY', () => {
       const products = [
-        createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: 'sellerUser',
+          price: 6.4,
+          quantity: 2,
+          name: 'product1',
+          photo: true,
+        }),
       ];
       const orders = [
-        createOrder(products, 'o1', 'sellerUser', null, 12.8, '2021-02-28T21:13:05.008Z'),
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: null,
+          overallPrice: 12.8,
+          createdAt: '2021-02-28T21:13:05.008Z',
+        }),
       ];
       setUp(orders, orderTypes.SELL_HISTORY);
 
@@ -107,10 +171,24 @@ describe('<OrderList />', () => {
 
     it('should render <LoadingOverlay />', () => {
       const products = [
-        createTransactionAndOrderProdItem('p1', 'sellerUser', 2, 6.4, 'product1', true),
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: 'sellerUser',
+          price: 6.4,
+          quantity: 4,
+          name: 'product1',
+          photo: true,
+        }),
       ];
       const orders = [
-        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 12.8, '2021-02-28T21:13:05.008Z'),
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+          overallPrice: 12.8,
+          createdAt: '2021-02-28T21:13:05.008Z',
+        }),
       ];
       setUp(orders, orderTypes.PLACED_ORDERS, true);
 
@@ -121,7 +199,14 @@ describe('<OrderList />', () => {
   describe('Check behaviour after clicking links', () => {
     it('should call push with correct path after clicking links - type PLACED_ORDERS', () => {
       const products = [createTransactionAndOrderProdItem()];
-      const orders = [createOrder(products, 'o1', 'sellerUser', 'buyerUser')];
+      const orders = [
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+        }),
+      ];
       const pushFn = jest.fn();
       setUp(orders, orderTypes.PLACED_ORDERS, false, pushFn);
 
@@ -136,7 +221,14 @@ describe('<OrderList />', () => {
 
     it('should call push with correct path after clicking links - type SELL_HISTORY', () => {
       const products = [createTransactionAndOrderProdItem()];
-      const orders = [createOrder(products, 'o1', 'sellerUser', 'buyerUser')];
+      const orders = [
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+        }),
+      ];
       const pushFn = jest.fn();
       setUp(orders, orderTypes.SELL_HISTORY, false, pushFn);
 

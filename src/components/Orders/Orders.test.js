@@ -41,7 +41,7 @@ const setUp = (orders, orderCount, type = orderTypes.PLACED_ORDERS) => {
 
 afterEach(cleanup);
 
-describe('<ProductItem />', () => {
+describe('<Orders />', () => {
   describe('Check prop types', () => {
     it('should NOT throw a warning', () => {
       const expectedProps = {
@@ -64,10 +64,24 @@ describe('<ProductItem />', () => {
 
     it('should everything correctly with one order and type PLACED_ORDERS', () => {
       const products = [
-        createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: 'sellerUser',
+          price: 4,
+          quantity: 4,
+          name: 'product1',
+          photo: true,
+        }),
       ];
       const orders = [
-        createOrder(products, 'o1', 'sellerUser', 'buyerUser', 16, '2021-01-08T11:08:51.008Z'),
+        createOrder({
+          products,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+          overallPrice: 16,
+          createdAt: '2021-01-08T11:08:51.008Z',
+        }),
       ];
       const { asFragment } = setUp(orders, 1, orderTypes.PLACED_ORDERS);
       expect(asFragment()).toMatchSnapshot();
@@ -75,12 +89,42 @@ describe('<ProductItem />', () => {
 
     it('should everything correctly with two orders and type SELL_HISTORY', () => {
       const products1 = [
-        createTransactionAndOrderProdItem('p1', 'sellerUser', 4, 4, 'product1', true),
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: 'sellerUser',
+          price: 4,
+          quantity: 4,
+          name: 'product1',
+          photo: true,
+        }),
       ];
-      const products2 = [createTransactionAndOrderProdItem('p2', 'sellerUser', 2, 6.4, 'product2')];
+      const products2 = [
+        createTransactionAndOrderProdItem({
+          productId: 'p2',
+          sellerUsername: 'sellerUser',
+          price: 6.4,
+          quantity: 2,
+          name: 'product2',
+          photo: true,
+        }),
+      ];
       const orders = [
-        createOrder(products1, 'o1', 'sellerUser', 'buyerUser', 16, '2021-01-08T11:08:51.008Z'),
-        createOrder(products2, 'o2', 'sellerUser', 'buyerUser', 12.8, '2021-02-18T21:12:35.008Z'),
+        createOrder({
+          products: products1,
+          id: 'o1',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+          overallPrice: 16,
+          createdAt: '2021-01-08T11:08:51.008Z',
+        }),
+        createOrder({
+          products: products2,
+          id: 'o2',
+          sellerUsername: 'sellerUser',
+          buyerUsername: 'buyerUser',
+          overallPrice: 12.8,
+          createdAt: '2021-02-18T21:12:35.008Z',
+        }),
       ];
       const { asFragment } = setUp(orders, 2, orderTypes.SELL_HISTORY);
       expect(asFragment()).toMatchSnapshot();

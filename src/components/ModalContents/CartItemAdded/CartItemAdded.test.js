@@ -18,7 +18,14 @@ const createStore = (cart, productDetails, isCartLoading) =>
     ui: { isCartLoading },
   });
 
-const defaultProduct = createProductItem('p1', 'user1', 4, 500.6, 'product1', true);
+const defaultProduct = createProductItem({
+  id: 'p1',
+  sellerUsername: 'user1',
+  price: 500.6,
+  quantity: 4,
+  name: 'product1',
+  photo: true,
+});
 
 const defaultCart = [{ _id: 'item1', quantity: 3, product: defaultProduct }];
 

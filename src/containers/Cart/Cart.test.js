@@ -41,7 +41,14 @@ afterEach(cleanup);
 
 describe('<Cart />', () => {
   it('should render everything correctly with one cart item', () => {
-    const { asFragment } = setUp([createCartItem('user1', 5, 'p1', 499.97)]);
+    const { asFragment } = setUp([
+      createCartItem({
+        sellerUsername: 'user1',
+        quantity: 5,
+        productId: 'p1',
+        price: 499.97,
+      }),
+    ]);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -61,7 +68,17 @@ describe('<Cart />', () => {
   });
 
   it('should render <LoadingOverlay /> and go to summary button should be disabled', () => {
-    setUp([createCartItem('user1', 5, 'p1', 499.97)], true);
+    setUp(
+      [
+        createCartItem({
+          sellerUsername: 'user1',
+          quantity: 5,
+          productId: 'p1',
+          price: 499.97,
+        }),
+      ],
+      true,
+    );
     expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     expect(screen.getByText('go to summary')).toBeDisabled();
   });

@@ -39,35 +39,34 @@ describe('<ProductItem />', () => {
 
   describe('Check how renders', () => {
     it('should render everything correctly', () => {
-      const data = createProductItem(
-        'p1',
-        'user1',
-        4,
-        10.6,
-        'product1',
-        true,
-        5,
-        2,
-        'description',
-        productConditions.NEW,
-      );
+      const data = createProductItem({
+        id: 'p1',
+        sellerUsername: 'user1',
+        price: 10.6,
+        quantity: 4,
+        name: 'product1',
+        photo: true,
+        buyerQuantity: 2,
+        quantitySold: 5,
+        description: 'description',
+        condition: productConditions.NEW,
+      });
       const { asFragment } = setUp(data);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should NOT render buyer quantity, condition and should render default photo, price without decimals', () => {
-      const data = createProductItem(
-        'p1',
-        'user1',
-        4,
-        10,
-        'product1',
-        false,
-        0,
-        0,
-        'description',
-        productConditions.NOT_APPLICABLE,
-      );
+      const data = createProductItem({
+        id: 'p1',
+        sellerUsername: 'user1',
+        price: 10,
+        quantity: 4,
+        name: 'product1',
+        buyerQuantity: 0,
+        quantitySold: 0,
+        description: 'description',
+        condition: productConditions.NOT_APPLICABLE,
+      });
       const { asFragment } = setUp(data);
       expect(asFragment()).toMatchSnapshot();
     });
@@ -75,7 +74,9 @@ describe('<ProductItem />', () => {
 
   it('should push correct path after clicking at wrapper', () => {
     const pushFn = jest.fn();
-    const data = createProductItem('p1');
+    const data = createProductItem({
+      id: 'p1',
+    });
     setUp(data, pushFn);
 
     fireEvent.click(screen.getByTestId('ProductItem'));

@@ -448,18 +448,17 @@ describe('Async functions', () => {
 
     const productId = 'p1';
 
-    const defaultProduct = createProductItem(
-      productId,
-      'john',
-      5,
-      50,
-      'Wellingtons',
-      false,
-      3,
-      2,
-      'Cool wellingtons',
-      productConditions.NEW,
-    );
+    const defaultProduct = createProductItem({
+      id: productId,
+      sellerUsername: 'john',
+      quantity: 5,
+      price: 50,
+      name: 'Wellingtons',
+      quantitySold: 3,
+      buyerQuantity: 2,
+      description: 'Cool wellingtons',
+      condition: productConditions.NEW,
+    });
 
     const expectedProduct = {
       ...defaultProduct,
@@ -1228,7 +1227,9 @@ describe('Async functions', () => {
 
   describe('fetchProductDetails()', () => {
     const productId = 'p1';
-    const expectedProduct = createProductItem(productId);
+    const expectedProduct = createProductItem({
+      id: productId,
+    });
 
     describe('Store', () => {
       it('is successful', async () => {
@@ -1380,8 +1381,15 @@ describe('Async functions', () => {
 
   describe('deleteProduct()', () => {
     const productId = 'p1';
-    const defaultProductDetails = createProductItem(productId);
-    const defaultProducts = [defaultProductDetails, createProductItem('p2')];
+    const defaultProductDetails = createProductItem({
+      id: productId,
+    });
+    const defaultProducts = [
+      defaultProductDetails,
+      createProductItem({
+        id: 'p2',
+      }),
+    ];
 
     describe('Store', () => {
       it('is successful', async () => {

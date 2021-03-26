@@ -67,18 +67,18 @@ describe('createProductItem()', () => {
   });
 
   it('should create product item with given values', () => {
-    const productItem = testUtility.createProductItem(
-      'p1',
-      'johnsmith',
-      15,
-      100.1,
-      'Wellingtons',
-      true,
-      10,
-      5,
-      'Cool wellingtons',
-      productConditions.NOT_APPLICABLE,
-    );
+    const productItem = testUtility.createProductItem({
+      id: 'p1',
+      sellerUsername: 'johnsmith',
+      quantity: 15,
+      price: 100.1,
+      name: 'Wellingtons',
+      photo: true,
+      quantitySold: 10,
+      buyerQuantity: 5,
+      description: 'Cool wellingtons',
+      condition: productConditions.NOT_APPLICABLE,
+    });
     expect(productItem).toEqual({
       _id: 'p1',
       quantity: 15,
@@ -128,15 +128,15 @@ describe('createCartItem()', () => {
   });
 
   it('should create cart item with given values', () => {
-    const cartItem = testUtility.createCartItem(
-      'johnsmith',
-      5,
-      'p1',
-      10.2,
-      'Wellingtons',
-      10,
-      true,
-    );
+    const cartItem = testUtility.createCartItem({
+      sellerUsername: 'johnsmith',
+      quantity: 5,
+      productId: 'p1',
+      productQuantity: 10,
+      price: 10.2,
+      photo: true,
+      name: 'Wellingtons',
+    });
     expect(cartItem).toEqual({
       _id: cartItem._id,
       quantity: 5,
@@ -179,14 +179,14 @@ describe('createTransactionAndOrderProdItem()', () => {
   });
 
   it('should create transactionAndOrderProdItem with given values', () => {
-    const transactionAndOrderProdItem = testUtility.createTransactionAndOrderProdItem(
-      'item1',
-      'johnsmith',
-      6,
-      104.7,
-      'Wellingtons',
-      true,
-    );
+    const transactionAndOrderProdItem = testUtility.createTransactionAndOrderProdItem({
+      productId: 'item1',
+      sellerUsername: 'johnsmith',
+      quantity: 6,
+      price: 104.7,
+      name: 'Wellingtons',
+      photo: true,
+    });
     expect(transactionAndOrderProdItem).toEqual({
       _id: 'item1',
       name: 'Wellingtons',
@@ -228,16 +228,16 @@ describe('createOrder()', () => {
       testUtility.createTransactionAndOrderProdItem(),
       testUtility.createTransactionAndOrderProdItem(),
     ];
-    const order = testUtility.createOrder(
+    const order = testUtility.createOrder({
       products,
-      'o1',
-      'johnsmith',
-      'adamsmith',
-      120.54,
-      '2021-02-10T19:10:38.872Z',
-      'john@domain.com',
-      '+48 123456789',
-    );
+      id: 'o1',
+      sellerUsername: 'johnsmith',
+      buyerUsername: 'adamsmith',
+      overallPrice: 120.54,
+      createdAt: '2021-02-10T19:10:38.872Z',
+      sellerEmail: 'john@domain.com',
+      sellerPhone: '+48 123456789',
+    });
     expect(order).toEqual({
       _id: 'o1',
       seller: {

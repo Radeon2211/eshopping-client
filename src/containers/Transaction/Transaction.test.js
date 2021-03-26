@@ -48,8 +48,22 @@ describe('<Transaction />', () => {
   describe('Check how renders', () => {
     it('should render everything correctly with two items from one user', () => {
       const transaction = [
-        createTransactionAndOrderProdItem('p1', 'user1', 4, 10.6, 'product1'),
-        createTransactionAndOrderProdItem('p2', 'user1', 6, 299.98, 'product2'),
+        createTransactionAndOrderProdItem({
+          productId: 'p1',
+          sellerUsername: 'user1',
+          price: 10.6,
+          quantity: 4,
+          name: 'product1',
+          photo: false,
+        }),
+        createTransactionAndOrderProdItem({
+          productId: 'p2',
+          sellerUsername: 'user1',
+          price: 299.98,
+          quantity: 6,
+          name: 'product2',
+          photo: false,
+        }),
       ];
       const { asFragment } = setUp(transaction);
       expect(asFragment()).toMatchSnapshot();
