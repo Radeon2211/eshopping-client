@@ -1,10 +1,10 @@
-import axios from '../../axios';
-import * as actionTypes from './actionTypes';
-import * as uiActions from './uiActions/uiActions';
-import { getErrorMessage } from '../../shared/utility/utility';
-import { modalTypes } from '../../shared/constants';
+import axios from '../../../axios';
+import * as actionTypes from '../actionTypes';
+import * as uiActions from '../uiActions/uiActions';
+import { getErrorMessage } from '../../../shared/utility/utility';
+import { modalTypes } from '../../../shared/constants';
 
-let updateCartItemReqCounter = 0;
+let updateCartItemRequestCounter = 0;
 
 export const setCart = (cart) => ({
   type: actionTypes.SET_CART,
@@ -27,8 +27,8 @@ export const fetchCart = () => {
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
-      dispatch(uiActions.tradeEnd());
       dispatch(setCart(null));
+      dispatch(uiActions.tradeEnd());
     }
   };
 };
@@ -54,16 +54,17 @@ export const updateCartItem = (itemId, action, quantity) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
-      updateCartItemReqCounter += 1;
       const quantityParam = quantity ? `&quantity=${quantity}` : '';
+      updateCartItemRequestCounter += 1;
       const { data } = await axios.patch(`/cart/${itemId}/update?action=${action}${quantityParam}`);
-      updateCartItemReqCounter -= 1;
-      if (updateCartItemReqCounter <= 0) {
+      updateCartItemRequestCounter -= 1;
+      if (updateCartItemRequestCounter <= 0) {
         dispatch(setCart(data.cart));
         dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
         dispatch(uiActions.tradeEnd());
       }
     } catch (error) {
+      updateCartItemRequestCounter -= 1;
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
       dispatch(uiActions.tradeEnd());
@@ -106,18 +107,13 @@ export const goToTransaction = (history, singleItem) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
+
       const {
         data: { transaction, isDifferent, cart },
       } = await axios.patch('/transaction', { singleItem });
 
       dispatch(setTransaction(transaction));
       if (cart) dispatch(setCart(cart));
-
-      if (transaction.length > 0) {
-        history.push('/transaction');
-      } else if (singleItem) {
-        history.goBack();
-      }
 
       if (isDifferent) {
         if (singleItem) {
@@ -126,7 +122,7 @@ export const goToTransaction = (history, singleItem) => {
               uiActions.setAndDeleteMessage('Available quantity of this product changed meanwhile'),
             );
           } else {
-            dispatch(uiActions.setAndDeleteMessage('Sorry, this product does not exist any more'));
+            dispatch(uiActions.setAndDeleteMessage('Sorry, this product does not exist anymore'));
           }
         } else if (transaction.length > 0) {
           dispatch(uiActions.setAndDeleteMessage('Availability of the products changed meanwhile'));
@@ -137,6 +133,12 @@ export const goToTransaction = (history, singleItem) => {
             ),
           );
         }
+      }
+
+      if (transaction.length > 0) {
+        history.push('/transaction');
+      } else if (singleItem) {
+        history.goBack();
       }
 
       dispatch(uiActions.tradeEnd());
@@ -154,13 +156,14 @@ export const buyProducts = (history, lastPath) => {
       dispatch(uiActions.formStart());
       const { transaction, deliveryAddress } = getState().auth;
 
-      let clearCartBool = false;
-      if (lastPath === '/cart') clearCartBool = true;
+      let hasToClearCart = false;
+      if (lastPath === '/cart') hasToClearCart = true;
 
       const {
         data: { transaction: updatedTransaction, cart },
-      } = await axios.post('/orders', { transaction, deliveryAddress, clearCart: clearCartBool });
+      } = await axios.post('/orders', { transaction, deliveryAddress, clearCart: hasToClearCart });
 
+      dispatch(setTransaction(updatedTransaction || []));
       dispatch(setCart(cart));
 
       if (updatedTransaction) {
@@ -171,19 +174,20 @@ export const buyProducts = (history, lastPath) => {
             ),
           );
         } else {
-          dispatch(uiActions.setAndDeleteMessage('Sorry, these products do not exist any more'));
+          dispatch(
+            uiActions.setAndDeleteMessage('Sorry, these products are not available anymore'),
+          );
         }
       } else {
         dispatch(uiActions.setAndDeleteMessage('Transaction was successful'));
         history.replace('/my-account/placed-orders');
       }
 
-      dispatch(setTransaction(updatedTransaction || []));
       dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.setAndDeleteMessage(errorMessage));
-      dispatch(uiActions.formFail(errorMessage));
+      dispatch(uiActions.formSuccess());
     }
   };
 };

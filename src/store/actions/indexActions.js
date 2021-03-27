@@ -24,7 +24,7 @@ export {
   setTransaction,
   goToTransaction,
   buyProducts,
-} from './tradeActions';
+} from './tradeActions/tradeActions';
 
 export { setMessage, setModal, changeProductsPerPage } from './uiActions/uiActions';
 

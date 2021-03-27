@@ -18,7 +18,9 @@ import * as serviceWorker from './serviceWorker';
 
 const reduxDevToolsEnhancer =
   process.env.NODE_ENV === 'development' && !navigator.userAgent.match(/Android/i)
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        trace: true,
+      })
     : null || compose;
 
 const store = createStore(rootReducer, reduxDevToolsEnhancer(applyMiddleware(thunk)));
