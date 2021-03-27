@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   & .nav {
     background-color: ${({ theme }) => theme.colors.light1};
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    left: 0;
+    padding-bottom: ${({ theme }) => theme.spacings.level1};
     position: fixed;
     top: 6.2rem;
-    left: 0;
     width: 100%;
-    padding-bottom: ${({ theme }) => theme.spacings.level1};
     z-index: ${({ theme }) => theme.zIndexes.level3};
   }
 
