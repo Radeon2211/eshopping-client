@@ -108,10 +108,7 @@ const MyData = (props) => {
         {pendingUserActions}
         <FlexWrapper spacing="3" className="actions" justify="center">
           {isAccountActive && (
-            <Button
-              clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}
-              data-testid="MyData-change-password-btn"
-            >
+            <Button clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}>
               Change password
             </Button>
           )}

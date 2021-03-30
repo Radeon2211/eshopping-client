@@ -10,7 +10,8 @@ import thunk from 'redux-thunk';
 import Products from './Products';
 import theme from '../../styled/theme';
 import { defaultUserProfile, createProductItem } from '../../shared/testUtility/testUtility';
-import { PRODUCTS_PER_PAGE } from '../../shared/constants';
+import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
+import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -57,17 +58,29 @@ const setUp = (search = '?p=1') => {
       isDataLoading: false,
     },
   });
+  store.dispatch = jest.fn();
 
-  return render(
-    <Router history={history}>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Products {...props} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <Products {...props} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    store,
+  };
 };
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  fetchProducts: jest.fn().mockImplementation((queryParams, pageType, username) => ({
+    queryParams,
+    pageType,
+    username,
+  })),
+}));
 
 beforeAll(() => {
   matchMediaPolyfill(window);
@@ -97,6 +110,16 @@ describe('<Products />', () => {
     it('should render heading with `Results for "wellingtons"` if wellingtons is in last occurrence of name param', () => {
       setUp('?p=1&name=mushrooms&name=wellingtons');
       expect(screen.getByTestId('Products-heading')).toHaveTextContent('Results for "wellingtons"');
+    });
+  });
+
+  describe('Check useEffect()', () => {
+    it('should call fetchProducts() with correct arguments', () => {
+      const search = '?p=1&name=wellingtons';
+      const { store } = setUp(search);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        actions.fetchProducts(search, pages.ALL_PRODUCTS),
+      );
     });
   });
 });

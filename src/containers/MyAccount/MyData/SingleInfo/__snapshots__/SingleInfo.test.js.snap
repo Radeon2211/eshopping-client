@@ -58,6 +58,7 @@ exports[`<SingleInfo /> Check how renders should render correctly for address an
     <button
       class="sc-bdfBwQ eqGxsp"
       color="blue"
+      data-testid="SingleInfo-Address-btn"
       type="button"
     >
       Change
@@ -161,6 +162,7 @@ exports[`<SingleInfo /> Check how renders should render correctly for contacts (
     <button
       class="sc-bdfBwQ eqGxsp"
       color="blue"
+      data-testid="SingleInfo-Contacts-btn"
       type="button"
     >
       Change
@@ -197,6 +199,7 @@ exports[`<SingleInfo /> Check how renders should render correctly for name and w
     <button
       class="sc-bdfBwQ eqGxsp"
       color="blue"
+      data-testid="SingleInfo-Name-btn"
       type="button"
     >
       Change

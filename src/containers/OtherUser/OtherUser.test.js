@@ -33,16 +33,6 @@ const defaultProducts = [
   }),
 ];
 
-jest.mock('../../store/actions/indexActions.js', () => ({
-  fetchOtherUser: jest.fn().mockImplementation((username) => username),
-  fetchProducts: jest.fn().mockImplementation((queryParams, pageType, username) => ({
-    queryParams,
-    pageType,
-    username,
-  })),
-  setOtherUser: jest.fn().mockImplementation((user) => user),
-}));
-
 const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) => {
   const props = {
     match: {
@@ -79,6 +69,16 @@ const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) 
     store,
   };
 };
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  fetchOtherUser: jest.fn().mockImplementation((username) => username),
+  fetchProducts: jest.fn().mockImplementation((queryParams, pageType, username) => ({
+    queryParams,
+    pageType,
+    username,
+  })),
+  setOtherUser: jest.fn().mockImplementation((user) => user),
+}));
 
 afterEach(cleanup);
 

@@ -43,7 +43,11 @@ const SingleInfo = (props) => {
 
   let button = null;
   if (clickHandler) {
-    button = <Button clicked={clickHandler}>Change</Button>;
+    button = (
+      <Button clicked={clickHandler} data-testid={`SingleInfo-${name}-btn`}>
+        Change
+      </Button>
+    );
   }
 
   return (

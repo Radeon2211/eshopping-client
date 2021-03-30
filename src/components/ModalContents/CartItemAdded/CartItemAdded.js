@@ -42,11 +42,13 @@ const CartItemAdded = () => {
             <PlainText size="5">
               {formatPrice(price * quantity)}
               <PlainText size="2">
-                {` (total in the cart ${quantity} x ${formattedPrice})`}
+                &nbsp;
+                {`(total in the cart ${quantity} x ${formattedPrice})`}
               </PlainText>
             </PlainText>
             <PlainText size="3">
-              <PlainText size="2">{`${quantity} x `}</PlainText>
+              <PlainText size="2">{`${quantity} x`}</PlainText>
+              &nbsp;
               {name}
             </PlainText>
           </FlexWrapper>

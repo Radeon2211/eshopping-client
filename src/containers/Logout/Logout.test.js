@@ -6,10 +6,9 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Logout from './Logout';
 import theme from '../../styled/theme';
+import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
-
-const defaultStore = mockStore({});
 
 const setUp = (goBack = jest.fn()) => {
   const props = {
@@ -18,21 +17,32 @@ const setUp = (goBack = jest.fn()) => {
     },
   };
 
-  return render(
-    <Provider store={defaultStore}>
-      <ThemeProvider theme={theme}>
-        <Logout {...props} />
-      </ThemeProvider>
-    </Provider>,
-  );
+  const store = mockStore({});
+  store.dispatch = jest.fn();
+
+  return {
+    ...render(
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Logout {...props} />
+        </ThemeProvider>
+      </Provider>,
+    ),
+    store,
+  };
 };
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  logoutUser: jest.fn().mockImplementation(() => {}),
+}));
 
 afterEach(cleanup);
 
 describe('<Logout />', () => {
-  it('should call goBack', () => {
+  it('should call goBack and logoutUser()', () => {
     const goBackFn = jest.fn();
-    setUp(goBackFn);
+    const { store } = setUp(goBackFn);
     expect(goBackFn).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith(actions.logoutUser());
   });
 });

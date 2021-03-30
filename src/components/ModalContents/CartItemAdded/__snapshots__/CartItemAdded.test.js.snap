@@ -55,7 +55,7 @@ exports[`<CartItemAdded /> Check how renders should render everything correctly 
           spacing="0px"
           transform=""
         >
-           (total in the cart 3 x $500.60)
+           (total in the cart 3 x $500.60)
         </span>
       </span>
       <span
@@ -76,9 +76,9 @@ exports[`<CartItemAdded /> Check how renders should render everything correctly 
           spacing="0px"
           transform=""
         >
-          3 x 
+          3 x
         </span>
-        product1
+         product1
       </span>
     </div>
   </div>

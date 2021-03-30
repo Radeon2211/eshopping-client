@@ -13,6 +13,7 @@ import {
   defaultDeliveryAddress,
 } from '../../shared/testUtility/testUtility';
 import theme from '../../styled/theme';
+import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -29,16 +30,20 @@ const setUp = (orderDetails, pushFn = jest.fn()) => {
   const store = mockStore({
     auth: { orderDetails },
   });
+  store.dispatch = jest.fn();
 
-  return render(
-    <Provider store={store}>
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <OrderDetails />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router history={history}>
+          <ThemeProvider theme={theme}>
+            <OrderDetails />
+          </ThemeProvider>
+        </Router>
+      </Provider>,
+    ),
+    store,
+  };
 };
 
 jest.mock('react-router-dom', () => ({
@@ -46,6 +51,11 @@ jest.mock('react-router-dom', () => ({
   useParams: () => ({
     id: defaultOrderId,
   }),
+}));
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  fetchOrderDetails: jest.fn().mockImplementation((orderId) => orderId),
+  setOrderDetails: jest.fn().mockImplementation((orderDetails) => orderDetails),
 }));
 
 afterEach(cleanup);
@@ -132,6 +142,17 @@ describe('<OrderDetails />', () => {
       fireEvent.click(screen.getByTestId('OrderDetails-seller-link'));
       expect(pushFn).toHaveBeenLastCalledWith('/user/sellerUser?p=1');
       expect(pushFn).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('Check useEffect()', () => {
+    it('should call fetchOrderDetails() and also setOrderDetails() when unmounting', () => {
+      const { store, unmount } = setUp();
+      expect(store.dispatch).toHaveBeenCalledWith(actions.fetchOrderDetails(defaultOrderId));
+      expect(store.dispatch).toHaveBeenCalledTimes(1);
+      unmount();
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setOrderDetails());
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });

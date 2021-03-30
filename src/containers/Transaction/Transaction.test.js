@@ -11,6 +11,7 @@ import {
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
 } from '../../shared/testUtility/testUtility';
+import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -30,17 +31,25 @@ const setUp = (transaction, history = defaultHistory) => {
       deliveryAddress: defaultDeliveryAddress,
     },
   });
+  store.dispatch = jest.fn();
 
-  return render(
-    <Router history={history}>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Transaction />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <Transaction />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    store,
+  };
 };
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  setTransaction: jest.fn().mockImplementation((transaction) => transaction),
+}));
 
 afterEach(cleanup);
 
@@ -80,7 +89,7 @@ describe('<Transaction />', () => {
     });
   });
 
-  describe('Check how history behaves', () => {
+  describe('Check useEffect()', () => {
     it('should call replace if transaction is falsy', () => {
       const replaceFn = jest.fn();
       const history = createHistory(replaceFn);
@@ -90,13 +99,20 @@ describe('<Transaction />', () => {
       expect(replaceFn).toHaveBeenCalledWith('/cart');
     });
 
-    it('should call replace if transaction has length 0', () => {
+    it('should call replace if transaction length is 0', () => {
       const replaceFn = jest.fn();
       const history = createHistory(replaceFn);
       setUp([], history);
 
       expect(replaceFn).toHaveBeenCalledTimes(1);
       expect(replaceFn).toHaveBeenCalledWith('/cart');
+    });
+
+    it('should call setTransaction() when unmounting', () => {
+      const { store, unmount } = setUp();
+      expect(store.dispatch).not.toHaveBeenCalled();
+      unmount();
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setTransaction(undefined));
     });
   });
 });
