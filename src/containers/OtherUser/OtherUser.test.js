@@ -8,7 +8,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import OtherUser from './OtherUser';
 import theme from '../../styled/theme';
-import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
+import { pages, defaultProductsPerPage } from '../../shared/constants';
 import { createProductItem } from '../../shared/testUtility/testUtility';
 import * as actions from '../../store/actions/indexActions';
 
@@ -43,7 +43,7 @@ const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) 
   };
 
   const store = mockStore({
-    ui: { isDataLoading: false, productsPerPage: PRODUCTS_PER_PAGE },
+    ui: { isDataLoading: false, productsPerPage: defaultProductsPerPage },
     auth: {
       otherUser,
       profile: {

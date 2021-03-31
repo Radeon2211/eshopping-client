@@ -10,7 +10,7 @@ import OrderList from './OrderList/OrderList';
 import SortOrders from './SortOrders/SortOrders';
 import Heading from '../UI/Heading/Heading';
 import Loader from '../UI/Loader/Loader';
-import { listItemTypes, orderTypes, ORDERS_PER_PAGE } from '../../shared/constants';
+import { listItemTypes, orderTypes, defaultOrdersPerPage } from '../../shared/constants';
 import { TopPagination } from '../../styled/components';
 
 const Orders = (props) => {
@@ -54,13 +54,13 @@ const Orders = (props) => {
           <PlainPanel>
             <TopPagination>
               <SortOrders />
-              <InputPagination itemQuantity={orderCount} quantityPerPage={ORDERS_PER_PAGE} />
+              <InputPagination itemQuantity={orderCount} quantityPerPage={defaultOrdersPerPage} />
             </TopPagination>
             <OrderList orders={orders} orderType={type} />
             <BottomPagination
               itemQuantity={orderCount}
               itemsType={listItemTypes.ORDER}
-              quantityPerPage={ORDERS_PER_PAGE}
+              quantityPerPage={defaultOrdersPerPage}
             />
           </PlainPanel>
         </>

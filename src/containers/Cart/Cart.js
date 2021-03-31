@@ -13,7 +13,7 @@ import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
 import ToPayInfo from '../../components/UI/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import FlexWrapper from '../../components/UI/FlexWrapper';
-import { itemTypes, DEFAULT_PATH, modalTypes } from '../../shared/constants';
+import { itemTypes, defaultAppPath, modalTypes } from '../../shared/constants';
 import { roundOverallPrice } from '../../shared/utility/utility';
 import { GreenText, AlignCenter } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
@@ -91,7 +91,7 @@ const Cart = () => {
         <SC.EmptyCart>
           <Heading variant="h3" mgBottom="3" align="center" lineHeight="4">
             Your shopping cart is empty. Check out the latest&nbsp;
-            <Link to={DEFAULT_PATH} data-testid="Cart-default-path-link">
+            <Link to={defaultAppPath} data-testid="Cart-default-path-link">
               <GreenText>offers</GreenText>
             </Link>
           </Heading>

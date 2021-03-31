@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import Products from './Products';
 import theme from '../../styled/theme';
 import { defaultUserProfile, createProductItem } from '../../shared/testUtility/testUtility';
-import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
+import { pages, defaultProductsPerPage } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -54,7 +54,7 @@ const setUp = (search = '?p=1') => {
       maxPrice: 299.98,
     },
     ui: {
-      productsPerPage: PRODUCTS_PER_PAGE,
+      productsPerPage: defaultProductsPerPage,
       isDataLoading: false,
     },
   });

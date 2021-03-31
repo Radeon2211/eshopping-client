@@ -1,6 +1,6 @@
 import * as actionTypes from '../../actions/actionTypes';
 import { updateObject } from '../../../shared/utility/utility';
-import { PRODUCTS_PER_PAGE } from '../../../shared/constants';
+import { defaultProductsPerPage } from '../../../shared/constants';
 
 export const initialState = {
   isFormLoading: false,
@@ -10,7 +10,7 @@ export const initialState = {
   message: '',
   isModalOpen: false,
   modalContent: '',
-  productsPerPage: PRODUCTS_PER_PAGE,
+  productsPerPage: defaultProductsPerPage,
 };
 
 const formStart = (state) => {

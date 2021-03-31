@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import theme from '../../styled/theme';
 import Navbar from './Navbar';
 import { defaultUserProfile } from '../../shared/testUtility/testUtility';
-import { DEFAULT_PATH } from '../../shared/constants';
+import { defaultAppPath } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -57,7 +57,7 @@ describe('<Navbar />', () => {
     setUp({}, pushFn);
 
     fireEvent.click(screen.getByTestId('Navbar-header-link'));
-    expect(pushFn).toHaveBeenCalledWith(DEFAULT_PATH);
+    expect(pushFn).toHaveBeenCalledWith(defaultAppPath);
     expect(pushFn).toHaveBeenCalledTimes(1);
   });
 });

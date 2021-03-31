@@ -4,7 +4,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from './axios';
 import * as actions from './store/actions/indexActions';
-import { DEFAULT_PATH } from './shared/constants';
+import { defaultAppPath } from './shared/constants';
 import ErrorPage from './components/UI/ErrorPage/ErrorPage';
 import FlexWrapper from './components/UI/FlexWrapper';
 import { ReactComponent as ServerErrorImage } from './images/server-connection-error.svg';
@@ -108,7 +108,7 @@ const App = () => {
               <Route path="/cart" exact component={WaitingComponent(Cart)} />
               <Route path="/transaction" exact component={WaitingComponent(Transaction)} />
               <Route path="/my-account" component={WaitingComponent(MyAccount)} />
-              <Redirect to={DEFAULT_PATH} />
+              <Redirect to={defaultAppPath} />
             </Switch>
           </Main>
           <Footer />
@@ -127,7 +127,7 @@ const App = () => {
               <Route path="/products" exact component={Products} />
               <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
               <Route path="/my-account" component={WaitingComponent(MyAccount)} />
-              <Redirect to={DEFAULT_PATH} />
+              <Redirect to={defaultAppPath} />
             </Switch>
           </Main>
           <Footer />

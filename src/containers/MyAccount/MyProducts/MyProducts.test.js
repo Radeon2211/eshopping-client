@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import theme from '../../../styled/theme';
 import MyProducts from './MyProducts';
 import { createProductItem, defaultUserProfile } from '../../../shared/testUtility/testUtility';
-import { pages, productConditions, PRODUCTS_PER_PAGE } from '../../../shared/constants';
+import { pages, productConditions, defaultProductsPerPage } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -53,7 +53,7 @@ const setUp = () => {
       maxPrice: 10,
     },
     ui: {
-      productsPerPage: PRODUCTS_PER_PAGE,
+      productsPerPage: defaultProductsPerPage,
       isDataLoading: false,
     },
   });

@@ -6,7 +6,7 @@ import MyData from './MyData/MyData';
 import MyProducts from './MyProducts/MyProducts';
 import MySellHistory from './MySellHistory/MySellHistory';
 import MyPlacedOrders from './MyPlacedOrders/MyPlacedOrders';
-import { DEFAULT_PATH } from '../../shared/constants';
+import { defaultAppPath } from '../../shared/constants';
 
 const MyAccount = () => {
   const userProfile = useSelector((state) => state.auth.profile);
@@ -23,7 +23,7 @@ const MyAccount = () => {
           </li>
           <li>
             <NavLink
-              to={`/my-account${DEFAULT_PATH}`}
+              to={`/my-account${defaultAppPath}`}
               className="nav-link"
               activeClassName="nav-link-active"
             >

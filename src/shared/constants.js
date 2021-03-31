@@ -98,11 +98,11 @@ export const inputKinds = {
   RADIO: 'RADIO',
 };
 
-export const PRODUCTS_PER_PAGE = 10;
+export const defaultProductsPerPage = 10;
 
-export const ORDERS_PER_PAGE = 6;
+export const defaultOrdersPerPage = 6;
 
-export const DEFAULT_PATH = '/products?p=1';
+export const defaultAppPath = '/products?p=1';
 
 export const filtersActions = {
   INIT_STATE: 'INIT_STATE',

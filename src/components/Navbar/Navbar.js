@@ -7,7 +7,7 @@ import Heading from '../UI/Heading/Heading';
 import SearchForm from './SearchForm/SearchForm';
 import LoggedOutLinks from './LoggedOutLinks/LoggedOutLinks';
 import LoggedInLinks from './LoggedInLinks/LoggedInLinks';
-import { DEFAULT_PATH } from '../../shared/constants';
+import { defaultAppPath } from '../../shared/constants';
 
 const Navbar = (props) => {
   const { userProfile } = props;
@@ -20,7 +20,7 @@ const Navbar = (props) => {
 
   return (
     <SC.Wrapper>
-      <Link to={DEFAULT_PATH} data-testid="Navbar-header-link">
+      <Link to={defaultAppPath} data-testid="Navbar-header-link">
         <header className="header">
           <img src={logo} alt="E-Shopping" className="logo" />
           <Heading variant="h1" className="heading">

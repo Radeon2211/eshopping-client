@@ -4,7 +4,7 @@ import * as SC from './SearchForm.sc';
 import Button from '../../UI/Button/Button';
 import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as SearchIcon } from '../../../images/icons/search.svg';
-import { DEFAULT_PATH } from '../../../shared/constants';
+import { defaultAppPath } from '../../../shared/constants';
 import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 import useWindowSize from '../../../shared/useWindowSize';
 
@@ -39,7 +39,7 @@ const SearchForm = () => {
     if (productName.length > 0) {
       nameParam = `&name=${productName}`;
     }
-    history.push(`${DEFAULT_PATH}${nameParam}`);
+    history.push(`${defaultAppPath}${nameParam}`);
   };
 
   let buttonContent = 'search';

@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import Cart from './Cart';
 import theme from '../../styled/theme';
 import { createCartItem } from '../../shared/testUtility/testUtility';
-import { DEFAULT_PATH, modalTypes } from '../../shared/constants';
+import { defaultAppPath, modalTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -101,12 +101,12 @@ describe('<Cart />', () => {
   });
 
   describe('Check behaviour after clicking and calling redux actions', () => {
-    it('should call push with DEFAULT_PATH after click on link in empty cart', () => {
+    it('should call push with defaultAppPath after click on link in empty cart', () => {
       const pushFn = jest.fn();
       setUp([], false, pushFn);
       fireEvent.click(screen.getByTestId('Cart-default-path-link'));
       expect(pushFn).toHaveBeenCalledTimes(1);
-      expect(pushFn).toHaveBeenCalledWith(DEFAULT_PATH);
+      expect(pushFn).toHaveBeenCalledWith(defaultAppPath);
     });
 
     it('should call fetchCart() and also goToTransaction() and setModal()', () => {

@@ -4,7 +4,7 @@ import {
   defaultErrorMessage,
   pages,
   productConditions,
-  PRODUCTS_PER_PAGE,
+  defaultProductsPerPage,
 } from '../../../shared/constants';
 import {
   checkReqMethodAndURL,
@@ -1020,7 +1020,7 @@ describe('Async functions', () => {
           checkReqMethodAndURL(
             moxios,
             'get',
-            `/products?limit=${PRODUCTS_PER_PAGE}&p=1&page=${pages.ALL_PRODUCTS}`,
+            `/products?limit=${defaultProductsPerPage}&p=1&page=${pages.ALL_PRODUCTS}`,
           ),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
@@ -1140,7 +1140,7 @@ describe('Async functions', () => {
           checkReqMethodAndURL(
             moxios,
             'get',
-            `/products?limit=${PRODUCTS_PER_PAGE}&p=1&page=${pages.ALL_PRODUCTS}`,
+            `/products?limit=${defaultProductsPerPage}&p=1&page=${pages.ALL_PRODUCTS}`,
           ),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();

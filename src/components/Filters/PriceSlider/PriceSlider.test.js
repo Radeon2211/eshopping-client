@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import PriceSlider from './PriceSlider';
 import { checkProps } from '../../../shared/testUtility/testUtility';
 import theme from '../../../styled/theme';
-import { DEFAULT_PATH, sliderPositionsActions, filtersActions } from '../../../shared/constants';
+import { defaultAppPath, sliderPositionsActions, filtersActions } from '../../../shared/constants';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
 const mockStore = configureMockStore([thunk]);
@@ -73,14 +73,14 @@ describe('<PriceSlider />', () => {
     it('should call replace if min value is lower than in store', () => {
       const replaceFn = jest.fn();
       setUp('?p=1&minPrice=5', replaceFn);
-      expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
+      expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
       expect(replaceFn).toHaveBeenCalledTimes(1);
     });
 
     it('should call replace if max value is greater than in store', () => {
       const replaceFn = jest.fn();
       setUp('?p=1&maxPrice=120', replaceFn);
-      expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
+      expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
       expect(replaceFn).toHaveBeenCalledTimes(1);
     });
 

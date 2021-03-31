@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import SearchForm from './SearchForm';
 import * as SC from './SearchForm.sc';
 import theme from '../../../styled/theme';
-import { DEFAULT_PATH } from '../../../shared/constants';
+import { defaultAppPath } from '../../../shared/constants';
 
 const setUp = (push = jest.fn(), search = '?p=1') => {
   const history = {
@@ -25,24 +25,24 @@ const setUp = (push = jest.fn(), search = '?p=1') => {
 
 describe('<SearchForm />', () => {
   describe(`Check if correct url is pushing to history`, () => {
-    it('should push DEFAULT_PATH&name=test-name if there is no name in url', () => {
+    it('should push defaultAppPath&name=test-name if there is no name in url', () => {
       const pushFn = jest.fn();
       const wrapper = setUp(pushFn);
       const form = wrapper.find(SC.SearchForm);
       const nameInput = wrapper.find('.name-input');
       nameInput.simulate('change', { target: { value: 'test-name' } });
       form.simulate('submit');
-      expect(pushFn).toBeCalledWith(`${DEFAULT_PATH}&name=test-name`);
+      expect(pushFn).toBeCalledWith(`${defaultAppPath}&name=test-name`);
     });
 
-    it('should push DEFAULT_PATH if in url is name', () => {
+    it('should push defaultAppPath if in url is name', () => {
       const pushFn = jest.fn();
       const wrapper = setUp(pushFn, '?p=1&name=test-name');
       const form = wrapper.find(SC.SearchForm);
       const nameInput = wrapper.find('.name-input');
       nameInput.simulate('change', { target: { value: '' } });
       form.simulate('submit');
-      expect(pushFn).toBeCalledWith(DEFAULT_PATH);
+      expect(pushFn).toBeCalledWith(defaultAppPath);
     });
 
     it('should NOT call push if in url is no name and input is empty', () => {

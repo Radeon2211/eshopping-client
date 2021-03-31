@@ -1,6 +1,6 @@
 import moxios from 'moxios';
 import axios from '../../../axios';
-import { DEFAULT_PATH, defaultErrorMessage } from '../../../shared/constants';
+import { defaultAppPath, defaultErrorMessage } from '../../../shared/constants';
 import {
   defaultUserProfile,
   testStore,
@@ -917,7 +917,7 @@ describe('Async functions', () => {
         );
         expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.formSuccess());
         expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-        expect(replaceFn).toHaveBeenCalledWith(DEFAULT_PATH);
+        expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
 
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });

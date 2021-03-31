@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
 import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
-import { pages, PRODUCTS_PER_PAGE } from '../../shared/constants';
+import { pages, defaultProductsPerPage } from '../../shared/constants';
 import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
@@ -24,7 +24,7 @@ const createStore = (products, productCount, minPrice, maxPrice) =>
     },
     ui: {
       isDataLoading: false,
-      productsPerPage: PRODUCTS_PER_PAGE,
+      productsPerPage: defaultProductsPerPage,
     },
   });
 
