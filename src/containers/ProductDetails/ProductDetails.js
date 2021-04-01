@@ -31,10 +31,9 @@ const ProductDetails = () => {
     dispatch,
   ]);
   const onSetProductDetails = useCallback(() => dispatch(actions.setProductDetails()), [dispatch]);
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   useEffect(() => {
     onFetchProductDetails(productId);
@@ -103,7 +102,7 @@ const ProductDetails = () => {
       editProductBtn = (
         <Button
           color="blue"
-          clicked={() => onSetModal(true, modalTypes.EDIT_PRODUCT)}
+          clicked={() => onSetModal(modalTypes.EDIT_PRODUCT)}
           data-testid="ProductDetails-edit-button"
         >
           Edit offer
@@ -114,7 +113,7 @@ const ProductDetails = () => {
       deleteProductBtn = (
         <Button
           color="red"
-          clicked={() => onSetModal(true, modalTypes.DELETE_PRODUCT)}
+          clicked={() => onSetModal(modalTypes.DELETE_PRODUCT)}
           data-testid="ProductDetails-delete-button"
         >
           Delete offer

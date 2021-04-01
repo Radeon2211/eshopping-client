@@ -42,7 +42,7 @@ describe('<Footer />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText('About website'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(true, modalTypes.ABOUT_WEBSITE));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ABOUT_WEBSITE));
     });
   });
 });

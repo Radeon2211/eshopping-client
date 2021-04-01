@@ -112,10 +112,7 @@ describe('<Cart />', () => {
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchCart());
 
       fireEvent.click(screen.getByText('clear the cart'));
-      expect(store.dispatch).toHaveBeenNthCalledWith(
-        2,
-        actions.setModal(true, modalTypes.CLEAR_CART),
-      );
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(modalTypes.CLEAR_CART));
 
       fireEvent.click(screen.getByText('go to summary'));
       expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.goToTransaction(history));

@@ -30,10 +30,9 @@ const Cart = () => {
     (currentHistory) => dispatch(actions.goToTransaction(currentHistory)),
     [dispatch],
   );
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   useEffect(() => {
     onFetchCart();
@@ -59,7 +58,7 @@ const Cart = () => {
           <SideBySide proportion="3/1" makeVerticalWhen={1200}>
             <PlainPanel>
               <FlexWrapper justify="center">
-                <Button color="red" clicked={() => onSetModal(true, modalTypes.CLEAR_CART)}>
+                <Button color="red" clicked={() => onSetModal(modalTypes.CLEAR_CART)}>
                   clear the cart
                 </Button>
               </FlexWrapper>

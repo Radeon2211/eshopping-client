@@ -58,6 +58,6 @@ describe('<DeliveryAddressSection />', () => {
 
     fireEvent.click(screen.getByText('Change address'));
     expect(onSetModalFn).toHaveBeenCalledTimes(1);
-    expect(onSetModalFn).toHaveBeenCalledWith(true, modalTypes.CHANGE_DELIVERY_ADDRESS);
+    expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.CHANGE_DELIVERY_ADDRESS);
   });
 });

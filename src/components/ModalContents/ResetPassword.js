@@ -13,10 +13,9 @@ const ResetPassword = () => {
   const onResetPassword = useCallback((creds) => dispatch(actions.resetPassword(creds)), [
     dispatch,
   ]);
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   return (
     <Formik
@@ -46,7 +45,7 @@ const ResetPassword = () => {
             label="Email"
           />
           <PlainText size="1" mgBottom="3">
-            <GreenText onClick={() => onSetModal(true, modalTypes.LOGIN)}>Login</GreenText>
+            <GreenText onClick={() => onSetModal(modalTypes.LOGIN)}>Login</GreenText>
           </PlainText>
         </Form>
       )}

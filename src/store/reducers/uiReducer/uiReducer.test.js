@@ -18,12 +18,11 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should update isFormLoading, formError, isModalOpen and modalContent after FORM_SUCCESS', () => {
+  it('should update isFormLoading, formError, modalContent after FORM_SUCCESS', () => {
     const state = {
       ...initialState,
       isFormLoading: true,
       formError: 'test error',
-      isModalOpen: true,
       modalContent: modalTypes.LOGIN,
     };
     expect(
@@ -34,7 +33,6 @@ describe('UI reducer', () => {
       ...initialState,
       isFormLoading: false,
       formError: '',
-      isModalOpen: false,
       modalContent: '',
     });
   });
@@ -122,7 +120,7 @@ describe('UI reducer', () => {
     });
   });
 
-  it('should set formError to empty string, isModalOpen to true and correct modalContent after SET_MODAL', () => {
+  it('should set formError to empty string and correct modalContent after SET_MODAL', () => {
     const state = {
       ...initialState,
       formError: 'test error',
@@ -130,41 +128,36 @@ describe('UI reducer', () => {
     expect(
       uiReducer(state, {
         type: actionTypes.SET_MODAL,
-        isModalOpen: true,
         modalContent: modalTypes.LOGIN,
       }),
     ).toEqual({
       ...initialState,
-      isModalOpen: true,
       modalContent: modalTypes.LOGIN,
       formError: '',
     });
   });
 
-  it('should set formError and modalContent to empty string and isModalOpen to false after SET_MODAL', () => {
+  it('should set formError and modalContent to empty string after SET_MODAL', () => {
     const state = {
       ...initialState,
-      isModalOpen: true,
       modalContent: modalTypes.LOGIN,
       formError: 'test error',
     };
     expect(
       uiReducer(state, {
         type: actionTypes.SET_MODAL,
-        isModalOpen: false,
+        modalContent: '',
       }),
     ).toEqual({
       ...initialState,
-      isModalOpen: false,
       modalContent: '',
       formError: '',
     });
   });
 
-  it('should NOT update state after SET_MODAL if isFormLoading is true and passed isModalOpen is false', () => {
+  it('should NOT update state after SET_MODAL if isFormLoading is true and modalContent is not empty', () => {
     const state = {
       ...initialState,
-      isModalOpen: true,
       isFormLoading: true,
       modalContent: modalTypes.LOGIN,
       formError: 'test error',
@@ -172,20 +165,20 @@ describe('UI reducer', () => {
     expect(
       uiReducer(state, {
         type: actionTypes.SET_MODAL,
-        isModalOpen: false,
+        modalContent: '',
       }),
     ).toEqual(state);
   });
 
-  it('should NOT update state after SET_MODAL if state.isModalOpen is false and passed isModalOpen is false', () => {
+  it('should NOT update state after SET_MODAL if state.modalContent is false and passed modalContent is false', () => {
     const state = {
       ...initialState,
-      isModalOpen: false,
+      modalContent: false,
     };
     expect(
       uiReducer(state, {
         type: actionTypes.SET_MODAL,
-        isModalOpen: false,
+        modalContent: false,
       }),
     ).toEqual(state);
   });

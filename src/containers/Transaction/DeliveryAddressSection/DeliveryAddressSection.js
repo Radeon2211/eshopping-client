@@ -18,7 +18,7 @@ const DeliveryAddressSection = (props) => {
       <FlexWrapper direction="column" align="start" spacing="3">
         <Heading variant="h4">Delivery address</Heading>
         <DeliveryAddress data={deliveryAddress} />
-        <Button clicked={() => onSetModal(true, modalTypes.CHANGE_DELIVERY_ADDRESS)}>
+        <Button clicked={() => onSetModal(modalTypes.CHANGE_DELIVERY_ADDRESS)}>
           Change address
         </Button>
       </FlexWrapper>

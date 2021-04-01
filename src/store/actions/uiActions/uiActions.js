@@ -36,9 +36,8 @@ export const setMessage = (message) => ({
   message,
 });
 
-export const setModal = (isModalOpen, modalContent = '') => ({
+export const setModal = (modalContent = '') => ({
   type: actionTypes.SET_MODAL,
-  isModalOpen,
   modalContent,
 });
 

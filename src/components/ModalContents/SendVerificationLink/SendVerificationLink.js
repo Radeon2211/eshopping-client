@@ -8,7 +8,7 @@ import FlexWrapper from '../../UI/FlexWrapper';
 
 const SendVerificationLink = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen) => dispatch(actions.setModal(isModalOpen)), [
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
   const onSendAccountVerificationLink = useCallback(
@@ -22,7 +22,7 @@ const SendVerificationLink = () => {
         Are you sure? Number of emails to be sent is very limited
       </Heading>
       <FlexWrapper justify="center" spacing="3">
-        <Button clicked={() => onSetModal(false)}>Cancel</Button>
+        <Button clicked={() => onSetModal('')}>Cancel</Button>
         <Button filled clicked={() => onSendAccountVerificationLink()}>
           Send
         </Button>

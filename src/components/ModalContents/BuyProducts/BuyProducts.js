@@ -13,7 +13,7 @@ const BuyProducts = () => {
   const lastLocation = useLastLocation();
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen) => dispatch(actions.setModal(isModalOpen)), [
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
   const onBuyProducts = useCallback(
@@ -27,7 +27,7 @@ const BuyProducts = () => {
         Are you sure?
       </Heading>
       <FlexWrapper justify="center" spacing="3">
-        <Button clicked={() => onSetModal(false)}>Cancel</Button>
+        <Button clicked={() => onSetModal('')}>Cancel</Button>
         <Button filled clicked={() => onBuyProducts(history, lastLocation?.pathname)}>
           Confirm
         </Button>

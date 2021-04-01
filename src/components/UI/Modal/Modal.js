@@ -60,24 +60,23 @@ const Modal = () => {
   const history = useHistory();
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
-  const isModalOpen = useSelector((state) => state.ui.isModalOpen);
   const modalContent = useSelector((state) => state.ui.modalContent);
 
   const dispatch = useDispatch();
   const onSetModal = useCallback(
-    (isOpen) => {
-      dispatch(actions.setModal(isOpen));
+    (content) => {
+      dispatch(actions.setModal(content));
     },
     [dispatch],
   );
 
   useEffect(() => {
     history.listen(() => {
-      if (isModalOpen) {
-        onSetModal(false);
+      if (modalContent) {
+        onSetModal('');
       }
     });
-  }, [history, isModalOpen, onSetModal]);
+  }, [history, modalContent, onSetModal]);
 
   const loadingOverlay = isFormLoading ? <LoadingOverlay /> : null;
 
@@ -155,15 +154,15 @@ const Modal = () => {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      {isModalOpen && (
+      {modalContent && (
         <SC.Wrapper>
           <SC.Backdrop
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            onClick={() => onSetModal(false)}
-            onKeyDown={() => onSetModal(false)}
+            onClick={() => onSetModal('')}
+            onKeyDown={() => onSetModal('')}
             tabIndex="0"
             role="button"
             aria-label="Close modal"
@@ -173,7 +172,7 @@ const Modal = () => {
             <MyIcon
               size="medium"
               rotation={45}
-              onClick={() => onSetModal(false)}
+              onClick={() => onSetModal('')}
               className="close-icon"
               data-testid="Modal-close-icon"
             >

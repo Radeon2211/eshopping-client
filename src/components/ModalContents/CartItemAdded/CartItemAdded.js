@@ -16,7 +16,7 @@ const CartItemAdded = () => {
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen) => dispatch(actions.setModal(isModalOpen)), [
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
 
@@ -54,11 +54,11 @@ const CartItemAdded = () => {
           </FlexWrapper>
         </FlexWrapper>
         <FlexWrapper mgTop="3" justify="center" spacing="3">
-          <Button color="blue" clicked={() => onSetModal(false)}>
+          <Button color="blue" clicked={() => onSetModal('')}>
             Continue shopping
           </Button>
           <Link to="/cart" data-testid="CartItemAdded-cart-link">
-            <Button color="blue" filled clicked={() => onSetModal(false)}>
+            <Button color="blue" filled clicked={() => onSetModal('')}>
               Go to cart
             </Button>
           </Link>

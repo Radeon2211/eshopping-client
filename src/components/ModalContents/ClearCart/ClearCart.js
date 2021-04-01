@@ -7,14 +7,14 @@ import FlexWrapper from '../../UI/FlexWrapper';
 
 const ClearCart = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen) => dispatch(actions.setModal(isModalOpen)), [
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
   const onClearCart = useCallback(() => dispatch(actions.clearCart()), [dispatch]);
 
   const clearCartClickHandle = () => {
     onClearCart();
-    onSetModal(false);
+    onSetModal('');
   };
 
   return (
@@ -26,7 +26,7 @@ const ClearCart = () => {
         Are you sure to do that?
       </Heading>
       <FlexWrapper mgTop="3" justify="center" spacing="3">
-        <Button color="blue" clicked={() => onSetModal(false)}>
+        <Button color="blue" clicked={() => onSetModal('')}>
           cancel
         </Button>
         <Button color="red" filled clicked={clearCartClickHandle}>

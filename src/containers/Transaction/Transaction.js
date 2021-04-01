@@ -20,10 +20,9 @@ const Transaction = () => {
   const transaction = useSelector((state) => state.auth.transaction);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
   const onSetTransaction = useCallback((items) => dispatch(actions.setTransaction(items)), [
     dispatch,
   ]);
@@ -56,7 +55,7 @@ const Transaction = () => {
           <StickyPanel>
             <FlexWrapper direction="column" spacing="2">
               <ToPayInfo value={roundedToPayValue} />
-              <Button filled clicked={() => onSetModal(true, modalTypes.BUY_PRODUCTS)}>
+              <Button filled clicked={() => onSetModal(modalTypes.BUY_PRODUCTS)}>
                 I buy and pay
               </Button>
             </FlexWrapper>

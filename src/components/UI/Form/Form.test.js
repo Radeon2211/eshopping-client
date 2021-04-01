@@ -122,7 +122,7 @@ describe('<Form />', () => {
       const { store } = setUp(defaultProps, defaultStore);
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText('cancel'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(false));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
   });
 });

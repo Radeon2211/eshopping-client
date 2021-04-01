@@ -34,10 +34,9 @@ SC.Wrapper = styled.footer`
 
 const Footer = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   return (
     <SC.Wrapper>
@@ -64,10 +63,10 @@ const Footer = () => {
       </FlexWrapper>
       <span
         className="about-website"
-        onClick={() => onSetModal(true, modalTypes.ABOUT_WEBSITE)}
+        onClick={() => onSetModal(modalTypes.ABOUT_WEBSITE)}
         role="button"
         tabIndex={0}
-        onKeyDown={() => onSetModal(true, modalTypes.ABOUT_WEBSITE)}
+        onKeyDown={() => onSetModal(modalTypes.ABOUT_WEBSITE)}
       >
         About website
       </span>

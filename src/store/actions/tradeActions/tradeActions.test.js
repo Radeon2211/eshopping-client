@@ -232,7 +232,6 @@ describe('Async functions', () => {
             },
             {},
             {
-              isModalOpen: true,
               modalContent: modalTypes.CART_ITEM_ADDED,
               message:
                 'Some product in cart does not exist any more or its quantity has been changed',
@@ -264,7 +263,6 @@ describe('Async functions', () => {
             },
             {},
             {
-              isModalOpen: true,
               modalContent: modalTypes.CART_ITEM_ADDED,
             },
           ),
@@ -318,7 +316,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
           3,
-          uiActions.setModal(true, modalTypes.CART_ITEM_ADDED),
+          uiActions.setModal(modalTypes.CART_ITEM_ADDED),
         );
         expect(uiActions.writeChangeCartInfo).toHaveBeenCalledWith(true);
         expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());
@@ -346,7 +344,7 @@ describe('Async functions', () => {
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
           3,
-          uiActions.setModal(true, modalTypes.CART_ITEM_ADDED),
+          uiActions.setModal(modalTypes.CART_ITEM_ADDED),
         );
         expect(uiActions.writeChangeCartInfo).toHaveBeenCalledWith(false);
         expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());

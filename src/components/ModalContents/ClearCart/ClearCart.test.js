@@ -49,7 +49,7 @@ describe('<ClearCart />', () => {
       expect(store.dispatch).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByText('cancel'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(false));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
 
     it('should call setModal() and clearCart() after clear button click', () => {
@@ -59,7 +59,7 @@ describe('<ClearCart />', () => {
 
       fireEvent.click(screen.getByText('clear'));
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.clearCart());
-      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(false));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(''));
     });
   });
 });

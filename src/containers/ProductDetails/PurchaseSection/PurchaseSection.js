@@ -65,9 +65,9 @@ const PurchaseSection = (props) => {
 
   const addToCartClickHandle = () => {
     if (!userProfile) {
-      onSetModal(true, modalTypes.LOGIN);
+      onSetModal(modalTypes.LOGIN);
     } else if (userProfile?.status !== 'active') {
-      onSetModal(true, modalTypes.PENDING_USER_INFO);
+      onSetModal(modalTypes.PENDING_USER_INFO);
     } else {
       onAddCartItem({
         quantity: chosenQuantity,
@@ -78,9 +78,9 @@ const PurchaseSection = (props) => {
 
   const buyNowClickHandle = () => {
     if (!userProfile) {
-      onSetModal(true, modalTypes.LOGIN);
+      onSetModal(modalTypes.LOGIN);
     } else if (userProfile?.status !== 'active') {
-      onSetModal(true, modalTypes.PENDING_USER_INFO);
+      onSetModal(modalTypes.PENDING_USER_INFO);
     } else {
       onGoToTransaction(history, {
         product: productId,

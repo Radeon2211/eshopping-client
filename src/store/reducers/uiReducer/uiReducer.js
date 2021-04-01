@@ -8,7 +8,6 @@ export const initialState = {
   isDataLoading: false,
   isCartLoading: false,
   message: '',
-  isModalOpen: false,
   modalContent: '',
   productsPerPage: defaultProductsPerPage,
 };
@@ -21,7 +20,6 @@ const formSuccess = (state) => {
   return updateObject(state, {
     isFormLoading: false,
     formError: '',
-    isModalOpen: false,
     modalContent: '',
   });
 };
@@ -51,12 +49,14 @@ const setMessage = (state, action) => {
 };
 
 const setModal = (state, action) => {
-  if ((state.isFormLoading && !action.isModalOpen) || (!state.isModalOpen && !action.isModalOpen)) {
+  if (
+    (state.isFormLoading && !action.modalContent) ||
+    (!state.modalContent && !action.modalContent)
+  ) {
     return state;
   }
   return updateObject(state, {
-    isModalOpen: action.isModalOpen,
-    modalContent: action.modalContent || '',
+    modalContent: action.modalContent,
     formError: '',
   });
 };

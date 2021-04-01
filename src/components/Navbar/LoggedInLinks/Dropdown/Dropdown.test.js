@@ -96,7 +96,7 @@ describe('<Dropdown />', () => {
       const { store } = setUp(true, jest.fn(), pushFn);
 
       fireEvent.click(screen.getByTestId('Dropdown-add-product-option'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(true, modalTypes.ADD_PRODUCT));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ADD_PRODUCT));
 
       expect(pushFn).not.toHaveBeenCalled();
     });

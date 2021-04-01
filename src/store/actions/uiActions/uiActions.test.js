@@ -79,25 +79,21 @@ describe('Action creators', () => {
   });
 
   describe('setModal()', () => {
-    it('should return isModalOpen true and given modalContent', () => {
-      const isModalOpen = true;
+    it('should return given modalContent', () => {
       const modalContent = modalTypes.CHANGE_EMAIL;
       const expectedAction = {
         type: actionTypes.SET_MODAL,
-        isModalOpen,
         modalContent,
       };
-      expect(uiActions.setModal(isModalOpen, modalContent)).toEqual(expectedAction);
+      expect(uiActions.setModal(modalContent)).toEqual(expectedAction);
     });
 
-    it('should return isModalOpen false and empty modalContent by default', () => {
-      const isModalOpen = false;
+    it('should return empty modalContent by default', () => {
       const expectedAction = {
         type: actionTypes.SET_MODAL,
-        isModalOpen,
         modalContent: '',
       };
-      expect(uiActions.setModal(isModalOpen)).toEqual(expectedAction);
+      expect(uiActions.setModal('')).toEqual(expectedAction);
     });
   });
 

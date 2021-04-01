@@ -16,10 +16,9 @@ const MyData = (props) => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   let dataAndActions = null;
   let pendingUserContent = null;
@@ -50,8 +49,8 @@ const MyData = (props) => {
           justify="center"
           data-testid="MyData-admin-content"
         >
-          <Button clicked={() => onSetModal(true, modalTypes.ADD_ADMIN)}>Add admin</Button>
-          <Button color="red" clicked={() => onSetModal(true, modalTypes.REMOVE_ADMIN)}>
+          <Button clicked={() => onSetModal(modalTypes.ADD_ADMIN)}>Add admin</Button>
+          <Button color="red" clicked={() => onSetModal(modalTypes.REMOVE_ADMIN)}>
             Remove admin
           </Button>
         </FlexWrapper>
@@ -67,7 +66,7 @@ const MyData = (props) => {
           className="actions"
           data-testid="MyData-pending-user-actions"
         >
-          <Button clicked={() => onSetModal(true, modalTypes.SEND_VERIFICATION_LINK)}>
+          <Button clicked={() => onSetModal(modalTypes.SEND_VERIFICATION_LINK)}>
             Send verification link
           </Button>
           <Button clicked={() => history.push('/logout')}>Logout</Button>
@@ -81,38 +80,34 @@ const MyData = (props) => {
         <SingleInfo
           name={singleInfoNames.NAME}
           content={`${firstName} ${lastName}`}
-          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_NAME) : null}
+          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_NAME) : null}
         />
         <SingleInfo
           name={singleInfoNames.EMAIL}
           content={email}
-          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_EMAIL) : null}
+          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_EMAIL) : null}
         />
         <SingleInfo
           name={singleInfoNames.ADDRESS}
           content={[street, `${zipCode} ${city}`, country]}
-          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_ADDRESS) : null}
+          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_ADDRESS) : null}
         />
         <SingleInfo
           name={singleInfoNames.CONTACTS}
           content={contacts}
-          clickHandler={isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_CONTACTS) : null}
+          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_CONTACTS) : null}
         />
         <SingleInfo
           name={singleInfoNames.PHONE_NUMBER}
           content={phone}
-          clickHandler={
-            isAccountActive ? () => onSetModal(true, modalTypes.CHANGE_PHONE_NUMBER) : null
-          }
+          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_PHONE_NUMBER) : null}
         />
         {pendingUserActions}
         <FlexWrapper spacing="3" className="actions" justify="center">
           {isAccountActive && (
-            <Button clicked={() => onSetModal(true, modalTypes.CHANGE_PASSWORD)}>
-              Change password
-            </Button>
+            <Button clicked={() => onSetModal(modalTypes.CHANGE_PASSWORD)}>Change password</Button>
           )}
-          <Button color="red" clicked={() => onSetModal(true, modalTypes.DELETE_ACCOUNT)}>
+          <Button color="red" clicked={() => onSetModal(modalTypes.DELETE_ACCOUNT)}>
             Delete account
           </Button>
         </FlexWrapper>

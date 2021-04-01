@@ -11,10 +11,9 @@ import { GreenText } from '../../styled/components';
 const Login = () => {
   const dispatch = useDispatch();
   const onLoginUser = useCallback((creds) => dispatch(actions.loginUser(creds)), [dispatch]);
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   return (
     <Formik
@@ -52,7 +51,7 @@ const Login = () => {
             label="Password"
           />
           <PlainText size="1" mgBottom="3">
-            <GreenText onClick={() => onSetModal(true, modalTypes.RESET_PASSWORD)}>
+            <GreenText onClick={() => onSetModal(modalTypes.RESET_PASSWORD)}>
               Forgot password
             </GreenText>
           </PlainText>

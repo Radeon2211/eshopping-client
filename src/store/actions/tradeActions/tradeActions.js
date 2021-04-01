@@ -39,7 +39,7 @@ export const addCartItem = (item) => {
       dispatch(uiActions.tradeStart());
       const { data } = await axios.patch('/cart/add', item);
       dispatch(setCart(data.cart));
-      dispatch(uiActions.setModal(true, modalTypes.CART_ITEM_ADDED));
+      dispatch(uiActions.setModal(modalTypes.CART_ITEM_ADDED));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
       dispatch(uiActions.tradeEnd());
     } catch (error) {

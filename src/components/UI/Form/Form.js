@@ -17,7 +17,7 @@ const Form = (props) => {
   const formError = useSelector((state) => state.ui.formError);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen) => dispatch(actions.setModal(isModalOpen)), [
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
 
@@ -36,7 +36,7 @@ const Form = (props) => {
   if (cancellable) {
     cancelButton = (
       <PlainText display="block" mgRight="3">
-        <Button clicked={() => onSetModal(false)}>cancel</Button>
+        <Button clicked={() => onSetModal('')}>cancel</Button>
       </PlainText>
     );
   }

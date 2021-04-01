@@ -42,7 +42,7 @@ describe('<PendingUserInfo />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText('Ok'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(false));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
   });
 });

@@ -8,7 +8,7 @@ import FlexWrapper from '../../UI/FlexWrapper';
 
 const PendingUserInfo = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen) => dispatch(actions.setModal(isModalOpen)), [
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
 
@@ -18,7 +18,7 @@ const PendingUserInfo = () => {
         You need to activate your account
       </Heading>
       <FlexWrapper justify="center">
-        <Button clicked={() => onSetModal(false)}>Ok</Button>
+        <Button clicked={() => onSetModal('')}>Ok</Button>
       </FlexWrapper>
     </>
   );

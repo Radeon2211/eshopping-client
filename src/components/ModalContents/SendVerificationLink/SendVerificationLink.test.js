@@ -49,7 +49,7 @@ describe('<SendVerificationLink />', () => {
       expect(store.dispatch).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByText('Cancel'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(false));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
 
     it('should call and sendAccountVerificationLink() after send button click', () => {

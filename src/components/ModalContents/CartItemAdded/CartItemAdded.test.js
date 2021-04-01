@@ -93,9 +93,9 @@ describe('<CartItemAdded />', () => {
 
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText('Continue shopping'));
-      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(false));
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(''));
       fireEvent.click(screen.getByText('Go to cart'));
-      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(false));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(''));
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
   });

@@ -43,14 +43,14 @@ describe('<LoggedOutLinks />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText('login'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(true, modalTypes.LOGIN));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.LOGIN));
     });
 
     it('should call setModal() with signup modal after signup button click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText('signup'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(true, modalTypes.SIGNUP));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.SIGNUP));
     });
   });
 });

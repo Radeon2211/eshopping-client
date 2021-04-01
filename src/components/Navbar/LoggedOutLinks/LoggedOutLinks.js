@@ -7,15 +7,14 @@ import FlexWrapper from '../../UI/FlexWrapper';
 
 const LoggedOutLinks = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   return (
     <FlexWrapper width="auto" spacing="3">
-      <Button clicked={() => onSetModal(true, modalTypes.LOGIN)}>login</Button>
-      <Button filled clicked={() => onSetModal(true, modalTypes.SIGNUP)}>
+      <Button clicked={() => onSetModal(modalTypes.LOGIN)}>login</Button>
+      <Button filled clicked={() => onSetModal(modalTypes.SIGNUP)}>
         signup
       </Button>
     </FlexWrapper>

@@ -13,7 +13,7 @@ const DeleteProduct = () => {
   const productDetails = useSelector((state) => state.product.productDetails);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((isModalOpen) => dispatch(actions.setModal(isModalOpen)), [
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
   const onDeleteProduct = useCallback(
@@ -27,7 +27,7 @@ const DeleteProduct = () => {
         Are you sure to delete &quot;{productDetails?.name}&quot;?
       </Heading>
       <FlexWrapper justify="center" spacing="3">
-        <Button clicked={() => onSetModal(false)}>Cancel</Button>
+        <Button clicked={() => onSetModal('')}>Cancel</Button>
         <Button filled color="red" clicked={() => onDeleteProduct(productDetails?._id, history)}>
           Delete
         </Button>

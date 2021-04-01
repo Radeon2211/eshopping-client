@@ -32,10 +32,9 @@ const Dropdown = (props) => {
   const { isVisible, closed } = props;
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback(
-    (isModalOpen, modalContent) => dispatch(actions.setModal(isModalOpen, modalContent)),
-    [dispatch],
-  );
+  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
+    dispatch,
+  ]);
 
   return (
     <OutsideClickHandler
@@ -58,8 +57,8 @@ const Dropdown = (props) => {
               <li className="item">
                 <div
                   className="link"
-                  onClick={() => onSetModal(true, modalTypes.ADD_PRODUCT)}
-                  onKeyDown={() => onSetModal(true, modalTypes.ADD_PRODUCT)}
+                  onClick={() => onSetModal(modalTypes.ADD_PRODUCT)}
+                  onKeyDown={() => onSetModal(modalTypes.ADD_PRODUCT)}
                   role="button"
                   tabIndex={0}
                   data-testid="Dropdown-add-product-option"

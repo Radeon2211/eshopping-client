@@ -61,57 +61,45 @@ describe('<MyData />', () => {
       const { store } = setUp({ ...defaultUserProfile, isAdmin: true });
 
       fireEvent.click(screen.getByText('Add admin'));
-      expect(store.dispatch).toHaveBeenNthCalledWith(
-        1,
-        actions.setModal(true, modalTypes.ADD_ADMIN),
-      );
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(modalTypes.ADD_ADMIN));
 
       fireEvent.click(screen.getByText('Remove admin'));
-      expect(store.dispatch).toHaveBeenNthCalledWith(
-        2,
-        actions.setModal(true, modalTypes.REMOVE_ADMIN),
-      );
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(modalTypes.REMOVE_ADMIN));
 
       fireEvent.click(screen.getByTestId(`SingleInfo-${singleInfoNames.NAME}-btn`));
-      expect(store.dispatch).toHaveBeenNthCalledWith(
-        3,
-        actions.setModal(true, modalTypes.CHANGE_NAME),
-      );
+      expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.setModal(modalTypes.CHANGE_NAME));
 
       fireEvent.click(screen.getByTestId(`SingleInfo-${singleInfoNames.EMAIL}-btn`));
-      expect(store.dispatch).toHaveBeenNthCalledWith(
-        4,
-        actions.setModal(true, modalTypes.CHANGE_EMAIL),
-      );
+      expect(store.dispatch).toHaveBeenNthCalledWith(4, actions.setModal(modalTypes.CHANGE_EMAIL));
 
       fireEvent.click(screen.getByTestId(`SingleInfo-${singleInfoNames.ADDRESS}-btn`));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         5,
-        actions.setModal(true, modalTypes.CHANGE_ADDRESS),
+        actions.setModal(modalTypes.CHANGE_ADDRESS),
       );
 
       fireEvent.click(screen.getByTestId(`SingleInfo-${singleInfoNames.CONTACTS}-btn`));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         6,
-        actions.setModal(true, modalTypes.CHANGE_CONTACTS),
+        actions.setModal(modalTypes.CHANGE_CONTACTS),
       );
 
       fireEvent.click(screen.getByTestId(`SingleInfo-${singleInfoNames.PHONE_NUMBER}-btn`));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         7,
-        actions.setModal(true, modalTypes.CHANGE_PHONE_NUMBER),
+        actions.setModal(modalTypes.CHANGE_PHONE_NUMBER),
       );
 
       fireEvent.click(screen.getByText('Change password'));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         8,
-        actions.setModal(true, modalTypes.CHANGE_PASSWORD),
+        actions.setModal(modalTypes.CHANGE_PASSWORD),
       );
 
       fireEvent.click(screen.getByText('Delete account'));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         9,
-        actions.setModal(true, modalTypes.DELETE_ACCOUNT),
+        actions.setModal(modalTypes.DELETE_ACCOUNT),
       );
     });
 
@@ -121,7 +109,7 @@ describe('<MyData />', () => {
 
       fireEvent.click(screen.getByText('Send verification link'));
       expect(store.dispatch).toHaveBeenCalledWith(
-        actions.setModal(true, modalTypes.SEND_VERIFICATION_LINK),
+        actions.setModal(modalTypes.SEND_VERIFICATION_LINK),
       );
 
       fireEvent.click(screen.getByText('Logout'));

@@ -128,9 +128,9 @@ describe('<PurchaseSection />', () => {
       setUp(props);
 
       fireEvent.click(screen.getByText('buy now'));
-      expect(onSetModalFn).toHaveBeenCalledWith(true, modalTypes.LOGIN);
+      expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.LOGIN);
       fireEvent.click(screen.getByText('add to cart'));
-      expect(onSetModalFn).toHaveBeenLastCalledWith(true, modalTypes.LOGIN);
+      expect(onSetModalFn).toHaveBeenLastCalledWith(modalTypes.LOGIN);
       expect(onSetModalFn).toHaveBeenCalledTimes(2);
     });
 
@@ -143,9 +143,9 @@ describe('<PurchaseSection />', () => {
       setUp(props);
 
       fireEvent.click(screen.getByText('buy now'));
-      expect(onSetModalFn).toHaveBeenCalledWith(true, modalTypes.PENDING_USER_INFO);
+      expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.PENDING_USER_INFO);
       fireEvent.click(screen.getByText('add to cart'));
-      expect(onSetModalFn).toHaveBeenLastCalledWith(true, modalTypes.PENDING_USER_INFO);
+      expect(onSetModalFn).toHaveBeenLastCalledWith(modalTypes.PENDING_USER_INFO);
       expect(onSetModalFn).toHaveBeenCalledTimes(2);
     });
   });
