@@ -62,6 +62,7 @@ const SearchForm = () => {
         autoComplete="off"
         spellCheck="false"
         onChange={(e) => setProductName(e.target.value)}
+        data-testid="SearchForm-input"
       />
       <Button type="submit" filled>
         {buttonContent}

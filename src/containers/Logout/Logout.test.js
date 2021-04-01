@@ -33,7 +33,7 @@ const setUp = (goBack = jest.fn()) => {
 };
 
 jest.mock('../../store/actions/indexActions.js', () => ({
-  logoutUser: jest.fn().mockImplementation(() => {}),
+  logoutUser: () => {},
 }));
 
 afterEach(cleanup);

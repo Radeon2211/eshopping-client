@@ -74,11 +74,11 @@ const setUp = () => {
 };
 
 jest.mock('../../../store/actions/indexActions.js', () => ({
-  fetchProducts: jest.fn().mockImplementation((queryParams, pageType, username) => ({
+  fetchProducts: (queryParams, pageType, username) => ({
     queryParams,
     pageType,
     username,
-  })),
+  }),
 }));
 
 afterEach(cleanup);

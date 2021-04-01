@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ClearCart /> Checks how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-jSgupP iSLovm"
+  >
+    Clear the shopping cart
+  </h3>
+  <h4
+    class="sc-jSgupP ebaNpd"
+  >
+    Are you sure to do that?
+  </h4>
+  <div
+    class="sc-gKsewC gQOALd"
+    direction="row"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <button
+      class="sc-bdfBwQ eqGxsp"
+      color="blue"
+      type="button"
+    >
+      cancel
+    </button>
+    <button
+      class="sc-bdfBwQ dqnjqx"
+      color="red"
+      type="button"
+    >
+      clear
+    </button>
+  </div>
+</DocumentFragment>
+`;

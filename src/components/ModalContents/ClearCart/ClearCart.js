@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import Button from '../UI/Button/Button';
-import * as actions from '../../store/actions/indexActions';
-import Heading from '../UI/Heading/Heading';
-import FlexWrapper from '../UI/FlexWrapper';
+import Button from '../../UI/Button/Button';
+import * as actions from '../../../store/actions/indexActions';
+import Heading from '../../UI/Heading/Heading';
+import FlexWrapper from '../../UI/FlexWrapper';
 
 const ClearCart = () => {
   const dispatch = useDispatch();

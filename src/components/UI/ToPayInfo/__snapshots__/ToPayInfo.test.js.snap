@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToPayInfo /> should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hyiZji"
+    direction="row"
+    spacing="1"
+    width="100%"
+    wrap="wrap"
+  >
+    <span
+      class="sc-gsTCUz jhJJLb"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="4"
+      spacing="0px"
+      transform=""
+    >
+      To pay
+    </span>
+    <span
+      class="sc-gsTCUz byQcZA"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="6"
+      spacing="1px"
+      transform=""
+    >
+      $1,195.20
+    </span>
+  </div>
+</DocumentFragment>
+`;

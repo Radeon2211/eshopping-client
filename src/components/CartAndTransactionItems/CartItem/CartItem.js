@@ -123,6 +123,7 @@ const CartItem = (props) => {
         color={theme.colors.red}
         onClick={() => onRemoveCartItem(itemId)}
         className="remove-icon"
+        data-testid="CartItem-trash-icon"
       >
         <TrashIcon />
       </MyIcon>

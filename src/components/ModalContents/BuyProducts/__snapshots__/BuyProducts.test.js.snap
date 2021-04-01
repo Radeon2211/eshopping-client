@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BuyProducts /> Checks how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <h3
+    class="sc-jSgupP iUTWMO"
+  >
+    Are you sure?
+  </h3>
+  <div
+    class="sc-gKsewC jZYkID"
+    direction="row"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <button
+      class="sc-bdfBwQ eqGxsp"
+      color="blue"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      class="sc-bdfBwQ ejJsLd"
+      color="blue"
+      type="button"
+    >
+      Confirm
+    </button>
+  </div>
+</DocumentFragment>
+`;

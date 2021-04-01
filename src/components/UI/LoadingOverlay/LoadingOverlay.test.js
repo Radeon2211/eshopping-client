@@ -24,33 +24,35 @@ describe('<LoadingOverlay />', () => {
     jest.useRealTimers();
   });
 
-  it('should render correctly without info', () => {
-    const { asFragment } = setUp();
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('should render info after 8 seconds', () => {
-    setUp();
-    expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
-    act(() => {
-      jest.advanceTimersByTime(8000);
+  describe('Check how renders', () => {
+    it('should render correctly without info', () => {
+      const { asFragment } = setUp();
+      expect(asFragment()).toMatchSnapshot();
     });
-    expect(screen.getByTestId('LoadingOverlay-info')).toBeInTheDocument();
-  });
 
-  it('should NOT render info after 7999ms', () => {
-    setUp();
-    act(() => {
-      jest.advanceTimersByTime(7999);
+    it('should render info after 8 seconds', () => {
+      setUp();
+      expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
+      act(() => {
+        jest.advanceTimersByTime(8000);
+      });
+      expect(screen.getByTestId('LoadingOverlay-info')).toBeInTheDocument();
     });
-    expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
-  });
 
-  it('should NOT render info after 8 seconds if disableText is true', () => {
-    setUp(true);
-    act(() => {
-      jest.advanceTimersByTime(8000);
+    it('should NOT render info after 7999ms', () => {
+      setUp();
+      act(() => {
+        jest.advanceTimersByTime(7999);
+      });
+      expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
     });
-    expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
+
+    it('should NOT render info after 8 seconds if disableText is true', () => {
+      setUp(true);
+      act(() => {
+        jest.advanceTimersByTime(8000);
+      });
+      expect(screen.queryByTestId('LoadingOverlay-info')).not.toBeInTheDocument();
+    });
   });
 });

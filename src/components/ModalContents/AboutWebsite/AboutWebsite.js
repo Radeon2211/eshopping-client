@@ -1,6 +1,6 @@
 import React from 'react';
-import Heading from '../UI/Heading/Heading';
-import PlainText from '../UI/PlainText';
+import Heading from '../../UI/Heading/Heading';
+import PlainText from '../../UI/PlainText';
 
 const AboutWebsite = () => {
   return (

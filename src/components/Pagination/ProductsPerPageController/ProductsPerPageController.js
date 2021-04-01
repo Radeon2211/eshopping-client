@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Select from 'react-select';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
+import * as actions from '../../../store/actions/indexActions';
+import { productsPerPageControllerOptions } from '../../../shared/constants';
 
 export const SC = {};
 SC.Wrapper = styled.div`
@@ -42,22 +43,12 @@ const customStyles = {
   }),
 };
 
-const quantityOptions = [
-  { value: 1, label: '1' },
-  { value: 2, label: '2' },
-  { value: 3, label: '3' },
-  { value: 4, label: '4' },
-  { value: 5, label: '5' },
-  { value: 10, label: '10' },
-  { value: 15, label: '15' },
-  { value: 20, label: '20' },
-  { value: 25, label: '25' },
-];
-
 const ProductsPerPageController = (props) => {
   const { quantityPerPage } = props;
 
-  const defaultOption = quantityOptions.find(({ value }) => value === quantityPerPage);
+  const defaultOption = productsPerPageControllerOptions.find(
+    ({ value }) => value === quantityPerPage,
+  );
   const [option, setOption] = useState(defaultOption);
 
   const history = useHistory();
@@ -80,7 +71,7 @@ const ProductsPerPageController = (props) => {
         Per page
       </label>
       <Select
-        options={quantityOptions}
+        options={productsPerPageControllerOptions}
         value={option}
         onChange={optionChangeHandle}
         isSearchable={false}

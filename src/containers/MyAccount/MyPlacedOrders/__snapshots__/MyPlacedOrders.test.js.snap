@@ -6,7 +6,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
     class="sc-dlfnbm eNBhAw"
   >
     <h3
-      class="sc-kfzAmx izNfje"
+      class="sc-dmlrTW kzEtpd"
     >
       My placed orders
     </h3>
@@ -14,10 +14,10 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
       class="sc-hKgILt jLFCGR"
     >
       <div
-        class="sc-dQppl ddUGzD"
+        class="sc-crrsfI jnkwPJ"
       >
         <div
-          class="sc-dmlrTW kZlKro"
+          class="sc-hHftDr bPRUtw"
         >
           <label
             class="label"
@@ -154,7 +154,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
           class="sc-kEjbxe eqCUFO"
         >
           <div
-            class="sc-bqyKva kPSnZd"
+            class="sc-dQppl jjWvYi"
             direction="row"
             spacing="3"
             width="100%"
@@ -195,7 +195,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
             </span>
           </div>
           <div
-            class="sc-bqyKva bVVRDF sc-kstrdz djqGGm"
+            class="sc-dQppl Ejhse sc-bqyKva eCKrkI"
             data-testid="TransactionAndOrderProdItem"
             direction="row"
             spacing="2"
@@ -206,7 +206,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
               data-testid="TransactionAndOrderProdItem-product-link-photo"
             >
               <div
-                class="sc-bqyKva cSmzIA sc-fFubgz kXCxAg"
+                class="sc-dQppl bLxFyT sc-fodVxV gdFDCb"
                 data-testid="ProductThumbnail"
                 direction="row"
                 height="5"
@@ -222,7 +222,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
               </div>
             </a>
             <div
-              class="sc-hBEYos eDiEjB"
+              class="sc-kstrdz cPEvH"
             >
               <span
                 class="name"
@@ -234,7 +234,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
                 </a>
               </span>
               <div
-                class="sc-bqyKva lhEiNi sc-fodVxV RMNQC"
+                class="sc-dQppl hYTqVV sc-hBEYos kYeIPx"
                 direction="row"
                 spacing=""
                 width="100%"
@@ -266,7 +266,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
             </div>
           </div>
           <div
-            class="sc-bqyKva bqxyoB"
+            class="sc-dQppl jleYWC"
             direction="row"
             spacing="3"
             width="100%"
@@ -276,7 +276,7 @@ exports[`<MyPlacedOrders /> should render everything correctly with given defaul
               data-testid="OrderList-order-details-link"
             >
               <button
-                class="sc-bkzZxe fOBTDd"
+                class="sc-fFubgz kWCnvv"
                 color="blue"
                 type="button"
               >

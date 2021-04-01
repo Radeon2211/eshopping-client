@@ -6,7 +6,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots should render everythin
     class="sc-bdfBwQ jLAphW"
   >
     <div
-      class="sc-crrsfI kVcTlN"
+      class="sc-iqHYGH lcqKto"
       data-testid="PurchaseSection-choose-quantity-wrapper"
       direction="row"
       spacing=""
@@ -114,7 +114,7 @@ exports[`<PurchaseSection /> Check how renders Snapshots should render info that
       Quantity: 5
     </span>
     <h4
-      class="sc-iqHYGH dmdouW"
+      class="sc-kEjbxe EZwUf"
     >
       You are the seller of this product
     </h4>

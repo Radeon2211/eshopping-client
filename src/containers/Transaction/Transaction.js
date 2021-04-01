@@ -8,7 +8,7 @@ import PlainPanel from '../../components/UI/Panels/PlainPanel';
 import StickyPanel from '../../components/UI/Panels/StickyPanel';
 import DeliveryAddressSection from './DeliveryAddressSection/DeliveryAddressSection';
 import Heading from '../../components/UI/Heading/Heading';
-import ToPayInfo from '../../components/UI/ToPayInfo';
+import ToPayInfo from '../../components/UI/ToPayInfo/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import Button from '../../components/UI/Button/Button';
 import { itemTypes, modalTypes } from '../../shared/constants';

@@ -13,31 +13,46 @@ import {
   createTransactionAndOrderProdItem,
 } from '../../shared/testUtility/testUtility';
 import { orderTypes } from '../../shared/constants';
+import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/my-account/placed-orders', search: '?p=1' },
-};
+const defaultSearch = '?p=1';
 
 const setUp = (orders, orderCount, type = orderTypes.PLACED_ORDERS) => {
   const store = mockStore({
     auth: { orderCount },
     ui: { isDataLoading: false },
   });
+  store.dispatch = jest.fn();
 
-  return render(
-    <Router history={defaultHistory}>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Orders orders={orders} type={type} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/my-account/placed-orders', search: defaultSearch },
+  };
+
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <Orders orders={orders} type={type} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    store,
+    history,
+  };
 };
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  fetchOrders: (queryParams, orderType) => ({
+    queryParams,
+    orderType,
+  }),
+}));
 
 afterEach(cleanup);
 
@@ -148,6 +163,22 @@ describe('<Orders />', () => {
     it('should render correct info if orders are empty array and type SELL_HISTORY', () => {
       const { asFragment } = setUp([], undefined, orderTypes.SELL_HISTORY);
       expect(asFragment()).toMatchSnapshot();
+    });
+  });
+
+  describe('Check useEffect()', () => {
+    it('should call fetchOrders() with default search and type PLACED_ORDERS', () => {
+      const { store } = setUp([createOrder()], undefined, orderTypes.PLACED_ORDERS);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        actions.fetchOrders(defaultSearch, orderTypes.PLACED_ORDERS),
+      );
+    });
+
+    it('should call fetchOrders() with default search and type SELL_HISTORY', () => {
+      const { store } = setUp([createOrder()], undefined, orderTypes.SELL_HISTORY);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        actions.fetchOrders(defaultSearch, orderTypes.SELL_HISTORY),
+      );
     });
   });
 });

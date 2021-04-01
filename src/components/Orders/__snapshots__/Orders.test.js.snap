@@ -6,10 +6,10 @@ exports[`<Orders /> Check how renders should everything correctly with one order
     class="sc-bdfBwQ dIpFeA"
   >
     <div
-      class="sc-kEjbxe dSjtmZ"
+      class="sc-jrAGrp jKAffG"
     >
       <div
-        class="sc-idOhPF ckvBxo"
+        class="sc-bkzZxe kBJXSI"
       >
         <label
           class="label"
@@ -146,7 +146,7 @@ exports[`<Orders /> Check how renders should everything correctly with one order
         class="sc-fubCfw cijXbO"
       >
         <div
-          class="sc-iqHYGH fAChvl"
+          class="sc-kEjbxe bWYhw"
           direction="row"
           spacing="3"
           width="100%"
@@ -187,7 +187,7 @@ exports[`<Orders /> Check how renders should everything correctly with one order
           </span>
         </div>
         <div
-          class="sc-iqHYGH ZKsJN sc-crrsfI jEsAbF"
+          class="sc-kEjbxe cKJMWE sc-iqHYGH dRRIlo"
           data-testid="TransactionAndOrderProdItem"
           direction="row"
           spacing="2"
@@ -198,7 +198,7 @@ exports[`<Orders /> Check how renders should everything correctly with one order
             data-testid="TransactionAndOrderProdItem-product-link-photo"
           >
             <div
-              class="sc-iqHYGH fVPTNg sc-kstrdz hcpuVO"
+              class="sc-kEjbxe kBdnxJ sc-bqyKva fFZOZM"
               data-testid="ProductThumbnail"
               direction="row"
               height="5"
@@ -214,7 +214,7 @@ exports[`<Orders /> Check how renders should everything correctly with one order
             </div>
           </a>
           <div
-            class="sc-dQppl cZhraS"
+            class="sc-crrsfI cVMBMY"
           >
             <span
               class="name"
@@ -226,7 +226,7 @@ exports[`<Orders /> Check how renders should everything correctly with one order
               </a>
             </span>
             <div
-              class="sc-iqHYGH bALALa sc-bqyKva kIpkqx"
+              class="sc-kEjbxe hXbalD sc-dQppl hJRTPu"
               direction="row"
               spacing=""
               width="100%"
@@ -258,7 +258,7 @@ exports[`<Orders /> Check how renders should everything correctly with one order
           </div>
         </div>
         <div
-          class="sc-iqHYGH kRDxPF"
+          class="sc-kEjbxe QFVDk"
           direction="row"
           spacing="3"
           width="100%"
@@ -268,7 +268,7 @@ exports[`<Orders /> Check how renders should everything correctly with one order
             data-testid="OrderList-order-details-link"
           >
             <button
-              class="sc-hBEYos cmoUln"
+              class="sc-kstrdz fbgsMl"
               color="blue"
               type="button"
             >
@@ -374,10 +374,10 @@ exports[`<Orders /> Check how renders should everything correctly with two order
     class="sc-bdfBwQ dIpFeA"
   >
     <div
-      class="sc-kEjbxe dSjtmZ"
+      class="sc-jrAGrp jKAffG"
     >
       <div
-        class="sc-idOhPF ckvBxo"
+        class="sc-bkzZxe kBJXSI"
       >
         <label
           class="label"
@@ -514,7 +514,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
         class="sc-fubCfw cijXbO"
       >
         <div
-          class="sc-iqHYGH fAChvl"
+          class="sc-kEjbxe bWYhw"
           direction="row"
           spacing="3"
           width="100%"
@@ -555,7 +555,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
           </span>
         </div>
         <div
-          class="sc-iqHYGH ZKsJN sc-crrsfI jEsAbF"
+          class="sc-kEjbxe cKJMWE sc-iqHYGH dRRIlo"
           data-testid="TransactionAndOrderProdItem"
           direction="row"
           spacing="2"
@@ -566,7 +566,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
             data-testid="TransactionAndOrderProdItem-product-link-photo"
           >
             <div
-              class="sc-iqHYGH fVPTNg sc-kstrdz hcpuVO"
+              class="sc-kEjbxe kBdnxJ sc-bqyKva fFZOZM"
               data-testid="ProductThumbnail"
               direction="row"
               height="5"
@@ -582,7 +582,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
             </div>
           </a>
           <div
-            class="sc-dQppl cZhraS"
+            class="sc-crrsfI cVMBMY"
           >
             <span
               class="name"
@@ -594,7 +594,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
               </a>
             </span>
             <div
-              class="sc-iqHYGH bALALa sc-bqyKva kIpkqx"
+              class="sc-kEjbxe hXbalD sc-dQppl hJRTPu"
               direction="row"
               spacing=""
               width="100%"
@@ -626,7 +626,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
           </div>
         </div>
         <div
-          class="sc-iqHYGH kRDxPF"
+          class="sc-kEjbxe QFVDk"
           direction="row"
           spacing="3"
           width="100%"
@@ -636,7 +636,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
             data-testid="OrderList-order-details-link"
           >
             <button
-              class="sc-hBEYos cmoUln"
+              class="sc-kstrdz fbgsMl"
               color="blue"
               type="button"
             >
@@ -673,7 +673,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
         class="sc-fubCfw cijXbO"
       >
         <div
-          class="sc-iqHYGH fAChvl"
+          class="sc-kEjbxe bWYhw"
           direction="row"
           spacing="3"
           width="100%"
@@ -714,7 +714,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
           </span>
         </div>
         <div
-          class="sc-iqHYGH ZKsJN sc-crrsfI jEsAbF"
+          class="sc-kEjbxe cKJMWE sc-iqHYGH dRRIlo"
           data-testid="TransactionAndOrderProdItem"
           direction="row"
           spacing="2"
@@ -725,7 +725,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
             data-testid="TransactionAndOrderProdItem-product-link-photo"
           >
             <div
-              class="sc-iqHYGH fVPTNg sc-kstrdz hcpuVO"
+              class="sc-kEjbxe kBdnxJ sc-bqyKva fFZOZM"
               data-testid="ProductThumbnail"
               direction="row"
               height="5"
@@ -741,7 +741,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
             </div>
           </a>
           <div
-            class="sc-dQppl cZhraS"
+            class="sc-crrsfI cVMBMY"
           >
             <span
               class="name"
@@ -753,7 +753,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
               </a>
             </span>
             <div
-              class="sc-iqHYGH bALALa sc-bqyKva kIpkqx"
+              class="sc-kEjbxe hXbalD sc-dQppl hJRTPu"
               direction="row"
               spacing=""
               width="100%"
@@ -785,7 +785,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
           </div>
         </div>
         <div
-          class="sc-iqHYGH kRDxPF"
+          class="sc-kEjbxe QFVDk"
           direction="row"
           spacing="3"
           width="100%"
@@ -795,7 +795,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
             data-testid="OrderList-order-details-link"
           >
             <button
-              class="sc-hBEYos cmoUln"
+              class="sc-kstrdz fbgsMl"
               color="blue"
               type="button"
             >
@@ -898,7 +898,7 @@ exports[`<Orders /> Check how renders should everything correctly with two order
 exports[`<Orders /> Check how renders should render correct info if orders are empty array and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-dIUggk qbmUV"
+    class="sc-idOhPF hdxiSy"
   >
     You don't have any placed orders yet
   </h4>
@@ -908,7 +908,7 @@ exports[`<Orders /> Check how renders should render correct info if orders are e
 exports[`<Orders /> Check how renders should render correct info if orders are empty array and type SELL_HISTORY 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-dIUggk qbmUV"
+    class="sc-idOhPF hdxiSy"
   >
     Your sell history is empty
   </h4>
@@ -918,7 +918,7 @@ exports[`<Orders /> Check how renders should render correct info if orders are e
 exports[`<Orders /> Check how renders should render correct info if orders are null and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-dIUggk qbmUV"
+    class="sc-idOhPF hdxiSy"
   >
     There is a problem to fetch your placed orders
   </h4>
@@ -928,7 +928,7 @@ exports[`<Orders /> Check how renders should render correct info if orders are n
 exports[`<Orders /> Check how renders should render correct info if orders are null and type SELL_HISTORY 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-dIUggk qbmUV"
+    class="sc-idOhPF hdxiSy"
   >
     There is a problem to fetch your sell history
   </h4>
@@ -938,11 +938,11 @@ exports[`<Orders /> Check how renders should render correct info if orders are n
 exports[`<Orders /> Check how renders should render only <Loader /> 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fodVxV eaPFxd"
+    class="sc-hBEYos jCeqqG"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-fFubgz cHAJHi"
+      class="sc-fodVxV fMDYCd"
       data-testid="Loader"
     >
       <div />

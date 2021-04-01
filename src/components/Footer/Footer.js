@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import * as actions from '../store/actions/indexActions';
-import { modalTypes } from '../shared/constants';
-import MyIcon from './UI/MyIcon';
-import PlainText from './UI/PlainText';
-import FlexWrapper from './UI/FlexWrapper';
-import { ReactComponent as LinkedinIcon } from '../images/icons/linkedin.svg';
-import { ReactComponent as EmailIcon } from '../images/icons/email.svg';
+import * as actions from '../../store/actions/indexActions';
+import { modalTypes } from '../../shared/constants';
+import MyIcon from '../UI/MyIcon';
+import PlainText from '../UI/PlainText';
+import FlexWrapper from '../UI/FlexWrapper';
+import { ReactComponent as LinkedinIcon } from '../../images/icons/linkedin.svg';
+import { ReactComponent as EmailIcon } from '../../images/icons/email.svg';
 
 const SC = {};
 SC.Wrapper = styled.footer`

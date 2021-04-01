@@ -52,7 +52,6 @@ const CartAndTransactionItems = (props) => {
       </PlainText>
       {type === itemTypes.CART
         ? listItem.map((item) => (
-            // eslint-disable-next-line react/jsx-indent
             <CartItem key={item._id} data={item} isCartLoading={isCartLoading} />
           ))
         : listItem.map((item) => <TransactionAndOrderProdItem key={item._id} data={item} />)}

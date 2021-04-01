@@ -54,8 +54,8 @@ jest.mock('react-router-dom', () => ({
 }));
 
 jest.mock('../../store/actions/indexActions.js', () => ({
-  fetchOrderDetails: jest.fn().mockImplementation((orderId) => orderId),
-  setOrderDetails: jest.fn().mockImplementation((orderDetails) => orderDetails),
+  fetchOrderDetails: (orderId) => orderId,
+  setOrderDetails: (orderDetails) => orderDetails,
 }));
 
 afterEach(cleanup);

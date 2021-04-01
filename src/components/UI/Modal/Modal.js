@@ -9,10 +9,10 @@ import * as SC from './Modal.sc';
 import MyIcon from '../MyIcon';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
-import AboutWebsite from '../../ModalContents/AboutWebsite';
+import AboutWebsite from '../../ModalContents/AboutWebsite/AboutWebsite';
 import AddProduct from '../../ModalContents/AddProduct';
 import AddAdmin from '../../ModalContents/AddAdmin';
-import BuyProducts from '../../ModalContents/BuyProducts';
+import BuyProducts from '../../ModalContents/BuyProducts/BuyProducts';
 import CartItemAdded from '../../ModalContents/CartItemAdded/CartItemAdded';
 import ChangeName from '../../ModalContents/ChangeName';
 import ChangeEmail from '../../ModalContents/ChangeEmail';
@@ -21,16 +21,16 @@ import ChangeAddress from '../../ModalContents/ChangeAddress';
 import ChangeContacts from '../../ModalContents/ChangeContacts';
 import ChangePassword from '../../ModalContents/ChangePassword';
 import ChangeDeliveryAddress from '../../ModalContents/ChangeDeliveryAddress';
-import ClearCart from '../../ModalContents/ClearCart';
+import ClearCart from '../../ModalContents/ClearCart/ClearCart';
 import DeleteAccount from '../../ModalContents/DeleteAccount';
 import DeleteProduct from '../../ModalContents/DeleteProduct';
 import EditProduct from '../../ModalContents/EditProduct';
 import Login from '../../ModalContents/Login';
 import RemoveAdmin from '../../ModalContents/RemoveAdmin';
 import ResetPassword from '../../ModalContents/ResetPassword';
-import PendingUserInfo from '../../ModalContents/PendingUserInfo';
+import PendingUserInfo from '../../ModalContents/PendingUserInfo/PendingUserInfo';
 import Signup from '../../ModalContents/Signup/Signup';
-import SendVerificationLink from '../../ModalContents/SendVerificationLink';
+import SendVerificationLink from '../../ModalContents/SendVerificationLink/SendVerificationLink';
 
 export const backdropVariants = {
   hidden: {
@@ -72,8 +72,12 @@ const Modal = () => {
   );
 
   useEffect(() => {
-    return history.listen(() => onSetModal(false));
-  }, [history, onSetModal]);
+    history.listen(() => {
+      if (isModalOpen) {
+        onSetModal(false);
+      }
+    });
+  }, [history, isModalOpen, onSetModal]);
 
   const loadingOverlay = isFormLoading ? <LoadingOverlay /> : null;
 
@@ -163,6 +167,7 @@ const Modal = () => {
             tabIndex="0"
             role="button"
             aria-label="Close modal"
+            data-testid="Modal-backdrop"
           />
           <SC.Popup variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
             <MyIcon
@@ -170,6 +175,7 @@ const Modal = () => {
               rotation={45}
               onClick={() => onSetModal(false)}
               className="close-icon"
+              data-testid="Modal-close-icon"
             >
               <PlusIcon />
             </MyIcon>

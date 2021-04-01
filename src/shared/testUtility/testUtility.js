@@ -83,6 +83,7 @@ export const createProductItem = (props = {}) => {
 
 export const createCartItem = (props = {}) => {
   const finalProps = {
+    id: uuidv4(),
     sellerUsername: 'username',
     quantity: 1,
     productId: uuidv4(),
@@ -102,7 +103,7 @@ export const createCartItem = (props = {}) => {
   });
 
   return {
-    _id: uuidv4(),
+    _id: finalProps.id,
     quantity: finalProps.quantity,
     product,
   };

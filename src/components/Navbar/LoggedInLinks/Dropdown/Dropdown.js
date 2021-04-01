@@ -62,6 +62,7 @@ const Dropdown = (props) => {
                   onKeyDown={() => onSetModal(true, modalTypes.ADD_PRODUCT)}
                   role="button"
                   tabIndex={0}
+                  data-testid="Dropdown-add-product-option"
                 >
                   <MyIcon size="small">
                     <AddProductIcon />

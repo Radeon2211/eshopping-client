@@ -10,12 +10,12 @@ import StickyPanel from '../../components/UI/Panels/StickyPanel';
 import Button from '../../components/UI/Button/Button';
 import Loader from '../../components/UI/Loader/Loader';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
-import ToPayInfo from '../../components/UI/ToPayInfo';
+import ToPayInfo from '../../components/UI/ToPayInfo/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import { itemTypes, defaultAppPath, modalTypes } from '../../shared/constants';
 import { roundOverallPrice } from '../../shared/utility/utility';
-import { GreenText, AlignCenter } from '../../styled/components';
+import { GreenText } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 
 const Cart = () => {
@@ -58,11 +58,11 @@ const Cart = () => {
           <Heading variant="h3">Your shopping cart</Heading>
           <SideBySide proportion="3/1" makeVerticalWhen={1200}>
             <PlainPanel>
-              <AlignCenter>
+              <FlexWrapper justify="center">
                 <Button color="red" clicked={() => onSetModal(true, modalTypes.CLEAR_CART)}>
                   clear the cart
                 </Button>
-              </AlignCenter>
+              </FlexWrapper>
               <CartAndTransactionItems
                 items={cart}
                 type={itemTypes.CART}

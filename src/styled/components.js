@@ -10,10 +10,6 @@ export const GreenText = styled.span`
   }
 `;
 
-export const AlignCenter = styled.div`
-  text-align: center;
-`;
-
 export const TopPagination = styled.div`
   align-items: center;
   display: flex;

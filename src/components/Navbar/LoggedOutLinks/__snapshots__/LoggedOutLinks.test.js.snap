@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoggedOutLinks /> Checks how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-jSgupP cXopKq"
+    direction="row"
+    spacing="3"
+    width="auto"
+    wrap="nowrap"
+  >
+    <button
+      class="sc-bdfBwQ eqGxsp"
+      color="blue"
+      type="button"
+    >
+      login
+    </button>
+    <button
+      class="sc-bdfBwQ ejJsLd"
+      color="blue"
+      type="button"
+    >
+      signup
+    </button>
+  </div>
+</DocumentFragment>
+`;

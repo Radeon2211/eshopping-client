@@ -51,12 +51,9 @@ const setUp = (cart, isCartLoading = false, pushFn = jest.fn()) => {
 };
 
 jest.mock('../../store/actions/indexActions.js', () => ({
-  fetchCart: jest.fn().mockImplementation(() => {}),
-  goToTransaction: jest.fn().mockImplementation((history) => history),
-  setModal: jest.fn().mockImplementation((isModalOpen, modalContent) => ({
-    isModalOpen,
-    modalContent,
-  })),
+  ...jest.requireActual('../../store/actions/indexActions.js'),
+  fetchCart: () => {},
+  goToTransaction: (history) => history,
 }));
 
 afterEach(cleanup);
@@ -122,6 +119,7 @@ describe('<Cart />', () => {
 
       fireEvent.click(screen.getByText('go to summary'));
       expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.goToTransaction(history));
+      expect(store.dispatch).toHaveBeenCalledTimes(3);
     });
   });
 });

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PendingUserInfo /> Checks how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-jSgupP fXGiwP"
+  >
+    You need to activate your account
+  </h4>
+  <div
+    class="sc-gKsewC fyUzxR"
+    direction="row"
+    spacing=""
+    width="100%"
+    wrap="nowrap"
+  >
+    <button
+      class="sc-bdfBwQ eqGxsp"
+      color="blue"
+      type="button"
+    >
+      Ok
+    </button>
+  </div>
+</DocumentFragment>
+`;

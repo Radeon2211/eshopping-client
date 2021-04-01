@@ -36,13 +36,6 @@ const setUp = (profile, pushFn = jest.fn()) => {
   };
 };
 
-jest.mock('../../../store/actions/indexActions.js', () => ({
-  setModal: jest.fn().mockImplementation((isModalOpen, modalContent) => ({
-    isModalOpen,
-    modalContent,
-  })),
-}));
-
 afterEach(cleanup);
 
 describe('<MyData />', () => {

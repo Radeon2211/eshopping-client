@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -9,6 +9,7 @@ import { Formik } from 'formik';
 import theme from '../../../styled/theme';
 import Form from './Form';
 import { checkProps } from '../../../shared/testUtility/testUtility';
+import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -20,26 +21,32 @@ const defaultProps = {
   children: <div data-testid="Form-children" />,
 };
 
-const createStore = (isFormLoading, formError) =>
-  mockStore({
+const createStore = (isFormLoading, formError) => {
+  const store = mockStore({
     ui: {
       isFormLoading,
       formError,
     },
   });
+  store.dispatch = jest.fn();
+  return store;
+};
 
 const defaultStore = createStore(false, 'testError');
 
 const setUp = (props, store) => {
-  return render(
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Formik>
-          <Form {...props} />
-        </Formik>
-      </ThemeProvider>
-    </Provider>,
-  );
+  return {
+    ...render(
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Formik>
+            <Form {...props} />
+          </Formik>
+        </ThemeProvider>
+      </Provider>,
+    ),
+    store,
+  };
 };
 
 afterEach(cleanup);
@@ -107,6 +114,15 @@ describe('<Form />', () => {
     it('should submit button NOT be disabled if isValid is true and isFormLoading is false', () => {
       setUp(defaultProps, defaultStore);
       expect(screen.getByTestId('Form-submit-btn')).not.toBeDisabled();
+    });
+  });
+
+  describe('Check redux action calls', () => {
+    it('should call setModal() after cancel button click', () => {
+      const { store } = setUp(defaultProps, defaultStore);
+      expect(store.dispatch).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByText('cancel'));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(false));
     });
   });
 });

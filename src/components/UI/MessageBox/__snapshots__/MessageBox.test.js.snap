@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MessageBox /> should NOT render anything 1`] = `<DocumentFragment />`;
+exports[`<MessageBox /> Check how renders should NOT render anything if message is empty 1`] = `<DocumentFragment />`;
 
-exports[`<MessageBox /> should render everything correctly 1`] = `
+exports[`<MessageBox /> Check how renders should render everything correctly if message is NOT empty 1`] = `
 <DocumentFragment>
   <div
     class="sc-gsTCUz bCTrL"
@@ -17,6 +17,7 @@ exports[`<MessageBox /> should render everything correctly 1`] = `
       <div
         class="sc-bdfBwQ kEdXJo close-icon"
         color="#fff"
+        data-testid="MessageBox-close-icon"
       >
         <svg>
           plus.svg

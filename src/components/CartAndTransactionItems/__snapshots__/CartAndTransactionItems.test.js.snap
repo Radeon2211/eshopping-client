@@ -3,7 +3,7 @@
 exports[`<CartAndTransactionItems /> Check how renders should render everything with one seller and one cart item 1`] = `
 <DocumentFragment>
   <div
-    class="sc-crrsfI fvpbQF"
+    class="sc-iqHYGH jQuAQg"
   >
     <span
       class="sc-jSgupP dapyFi"
@@ -143,6 +143,7 @@ exports[`<CartAndTransactionItems /> Check how renders should render everything 
       <div
         class="sc-fubCfw eICEUr remove-icon"
         color="#F22613"
+        data-testid="CartItem-trash-icon"
       >
         <svg>
           trash.svg
@@ -156,7 +157,7 @@ exports[`<CartAndTransactionItems /> Check how renders should render everything 
 exports[`<CartAndTransactionItems /> Check how renders should render everything with two sellers, each with one transaction item 1`] = `
 <DocumentFragment>
   <div
-    class="sc-crrsfI fvpbQF"
+    class="sc-iqHYGH jQuAQg"
   >
     <span
       class="sc-jSgupP dapyFi"
@@ -253,7 +254,7 @@ exports[`<CartAndTransactionItems /> Check how renders should render everything 
     </div>
   </div>
   <div
-    class="sc-crrsfI fvpbQF"
+    class="sc-iqHYGH jQuAQg"
   >
     <span
       class="sc-jSgupP dapyFi"

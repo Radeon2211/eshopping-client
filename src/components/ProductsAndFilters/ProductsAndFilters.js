@@ -8,7 +8,7 @@ import ProductList from '../ProductList/ProductList';
 import PlainPanel from '../UI/Panels/PlainPanel';
 import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
-import ProductsPerPageController from '../Pagination/ProductsPerPageController';
+import ProductsPerPageController from '../Pagination/ProductsPerPageController/ProductsPerPageController';
 import { TopPagination } from '../../styled/components';
 import { listItemTypes } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';

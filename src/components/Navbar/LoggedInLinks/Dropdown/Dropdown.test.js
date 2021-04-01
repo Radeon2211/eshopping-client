@@ -9,9 +9,10 @@ import userEvent from '@testing-library/user-event';
 import theme from '../../../../styled/theme';
 import Dropdown from './Dropdown';
 import { checkProps } from '../../../../shared/testUtility/testUtility';
+import { modalTypes } from '../../../../shared/constants';
+import * as actions from '../../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
-const defaultStore = mockStore({});
 
 const setUp = (isVisible, closed = jest.fn(), pushFn = jest.fn()) => {
   const history = {
@@ -21,15 +22,21 @@ const setUp = (isVisible, closed = jest.fn(), pushFn = jest.fn()) => {
     push: pushFn,
   };
 
-  return render(
-    <Provider store={defaultStore}>
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <Dropdown isVisible={isVisible} closed={closed} />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  const store = mockStore({});
+  store.dispatch = jest.fn();
+
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router history={history}>
+          <ThemeProvider theme={theme}>
+            <Dropdown isVisible={isVisible} closed={closed} />
+          </ThemeProvider>
+        </Router>
+      </Provider>,
+    ),
+    store,
+  };
 };
 
 afterEach(cleanup);
@@ -61,7 +68,7 @@ describe('<Dropdown />', () => {
     });
   });
 
-  describe('Check general behaviour', () => {
+  describe('Check behaviour after clicking at options', () => {
     it('should call push with correct paths after clicking at links', () => {
       const pushFn = jest.fn();
       setUp(true, jest.fn(), pushFn);
@@ -84,6 +91,18 @@ describe('<Dropdown />', () => {
       expect(pushFn).toHaveBeenCalledTimes(5);
     });
 
+    it('should call setModal() after add product option click', () => {
+      const pushFn = jest.fn();
+      const { store } = setUp(true, jest.fn(), pushFn);
+
+      fireEvent.click(screen.getByTestId('Dropdown-add-product-option'));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(true, modalTypes.ADD_PRODUCT));
+
+      expect(pushFn).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Check closing mechanism', () => {
     it('should call closed after clicking outside if isVisible is true', () => {
       const closedFn = jest.fn();
       setUp(true, closedFn);

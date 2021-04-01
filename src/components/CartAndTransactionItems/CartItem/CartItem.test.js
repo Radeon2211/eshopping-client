@@ -9,11 +9,11 @@ import thunk from 'redux-thunk';
 import CartItem from './CartItem';
 import theme from '../../../styled/theme';
 import { checkProps, createCartItem } from '../../../shared/testUtility/testUtility';
+import * as actions from '../../../store/actions/indexActions';
 import noPhoto from '../../../images/no-photo.png';
+import { updateCartActions } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
-
-const defaultStore = mockStore({});
 
 const setUp = (data, isCartLoading = false, pushFn = jest.fn()) => {
   const history = {
@@ -23,24 +23,51 @@ const setUp = (data, isCartLoading = false, pushFn = jest.fn()) => {
     push: pushFn,
   };
 
-  return render(
-    <Router history={history}>
-      <Provider store={defaultStore}>
-        <ThemeProvider theme={theme}>
-          <CartItem data={data} isCartLoading={isCartLoading} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  const store = mockStore({});
+  store.dispatch = jest.fn();
+
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <CartItem data={data} isCartLoading={isCartLoading} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    store,
+  };
 };
+
+jest.mock('../../../store/actions/indexActions.js', () => ({
+  removeCartItem: (itemId) => itemId,
+  updateCartItem: (itemId, action, itemQuantity) => ({
+    itemId,
+    action,
+    itemQuantity,
+  }),
+}));
 
 afterEach(cleanup);
 
 describe('<CartItem />', () => {
+  const itemId = 'i1';
+  const defaultData = createCartItem({
+    id: itemId,
+    sellerUsername: 'user1',
+    productId: 'p1',
+    quantity: 5,
+    productQuantity: 6,
+    price: 299.98,
+    photo: true,
+    name: 'productName',
+  });
+
   describe('Check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
-        data: { _id: 'i1' },
+        data: defaultData,
         isCartLoading: false,
       };
       expect(checkProps(CartItem, props)).toBeUndefined();
@@ -53,44 +80,53 @@ describe('<CartItem />', () => {
 
   describe('Checks how renders', () => {
     it('should render everything correctly', () => {
-      const { asFragment } = setUp(
-        createCartItem({
-          sellerUsername: 'user1',
-          productId: 'p1',
-          quantity: 5,
-          productQuantity: 6,
-          price: 299.98,
-          photo: true,
-          name: 'productName',
-        }),
-      );
+      const { asFragment } = setUp(defaultData);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should NOT render price per piece and should render default photo if photo is empty and available quantity is 1', () => {
       const data = createCartItem();
-      setUp(data);
+      setUp(createCartItem());
       expect(screen.queryByTestId('CartItem-price-per-piece')).not.toBeInTheDocument();
       expect(screen.getByAltText(data.product.name)).toHaveAttribute('src', noPhoto);
     });
+  });
 
+  describe('Check behaviour of history and calling redux actions', () => {
     it('should call push with correct paths after clicking links', () => {
       const pushFn = jest.fn();
-      const data = createCartItem({
-        sellerUsername: 'user1',
-        quantity: 5,
-        productQuantity: 6,
-        price: 299.98,
-        photo: true,
-        name: 'productName',
-      });
-      setUp(data, false, pushFn);
+      setUp(defaultData, false, pushFn);
 
       fireEvent.click(screen.getByTestId('CartItem-product-link-photo'));
-      expect(pushFn).toHaveBeenCalledWith(`/product/${data.product._id}`);
+      expect(pushFn).toHaveBeenCalledWith(`/product/${defaultData.product._id}`);
       fireEvent.click(screen.getByTestId('CartItem-product-link-name'));
-      expect(pushFn).toHaveBeenLastCalledWith(`/product/${data.product._id}`);
+      expect(pushFn).toHaveBeenLastCalledWith(`/product/${defaultData.product._id}`);
       expect(pushFn).toHaveBeenCalledTimes(2);
+    });
+
+    it('should call removeCartItem() after clicking at trash icon', () => {
+      const { store } = setUp(defaultData);
+      expect(store.dispatch).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByTestId('CartItem-trash-icon'));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.removeCartItem(itemId));
+    });
+
+    it('should call updateCartItem() after clicking at minus and plus buttons', () => {
+      const { store } = setUp(defaultData);
+      expect(store.dispatch).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        1,
+        actions.updateCartItem(itemId, updateCartActions.INCREMENT),
+      );
+
+      fireEvent.click(screen.getByTestId('ChooseQuantity-minus-btn'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        2,
+        actions.updateCartItem(itemId, updateCartActions.DECREMENT),
+      );
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });

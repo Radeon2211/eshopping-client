@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchForm /> Check how renders should render with icon in button if width is lower than 900px 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-bdfBwQ eVTBHG"
+  >
+    <input
+      autocomplete="off"
+      class="name-input"
+      data-testid="SearchForm-input"
+      maxlength="150"
+      name="product"
+      spellcheck="false"
+      type="text"
+      value=""
+    />
+    <button
+      class="sc-gsTCUz fUKWKF"
+      color="blue"
+      type="submit"
+    >
+      <div
+        class="sc-gKsewC zQbGG"
+        color="#fff"
+      >
+        <svg>
+          search.svg
+        </svg>
+      </div>
+    </button>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`<SearchForm /> Check how renders should render with text in button if width is equal or greater than 900px 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-bdfBwQ eVTBHG"
+  >
+    <input
+      autocomplete="off"
+      class="name-input"
+      data-testid="SearchForm-input"
+      maxlength="150"
+      name="product"
+      spellcheck="false"
+      type="text"
+      value=""
+    />
+    <button
+      class="sc-gsTCUz fUKWKF"
+      color="blue"
+      type="submit"
+    >
+      search
+    </button>
+  </form>
+</DocumentFragment>
+`;

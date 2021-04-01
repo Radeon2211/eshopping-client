@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> Check how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <footer
+    class="sc-hKgILt iBQjgp"
+  >
+    <span
+      class="sc-gsTCUz fDiIfY"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="2"
+      spacing="0px"
+      transform=""
+    >
+      © 2020 Radosław Mikrut. All rights reserved
+    </span>
+    <div
+      class="sc-dlfnbm bcSocG"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <a
+        class="social-link"
+        href="https://www.linkedin.com/in/rados%C5%82aw-mikrut-a8600b198/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div
+          class="sc-bdfBwQ hQNiId"
+          color=""
+        >
+          <svg>
+            linkedin.svg
+          </svg>
+        </div>
+      </a>
+      <a
+        class="social-link"
+        href="mailto:radoslawmikrut@wp.pl"
+        rel="noopener noreferrer"
+      >
+        <div
+          class="sc-bdfBwQ hQNiId"
+          color=""
+        >
+          <svg>
+            email.svg
+          </svg>
+        </div>
+        <span
+          class="sc-gsTCUz liWcVX"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="1"
+          spacing="0px"
+          transform=""
+        >
+          radoslawmikrut@wp.pl
+        </span>
+      </a>
+    </div>
+    <span
+      class="about-website"
+      role="button"
+      tabindex="0"
+    >
+      About website
+    </span>
+  </footer>
+</DocumentFragment>
+`;

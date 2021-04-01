@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Modal /> should NOT render anything if isModalOpen is false 1`] = `<DocumentFragment />`;
+exports[`<Modal /> Check how renders should NOT render anything if isModalOpen is false 1`] = `<DocumentFragment />`;
 
-exports[`<Modal /> should render everything correctly 1`] = `
+exports[`<Modal /> Check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ HlrnY"
@@ -10,6 +10,7 @@ exports[`<Modal /> should render everything correctly 1`] = `
     <div
       aria-label="Close modal"
       class="sc-gsTCUz esKygk"
+      data-testid="Modal-backdrop"
       role="button"
       style="opacity: 0; pointer-events: none;"
       tabindex="0"
@@ -21,6 +22,7 @@ exports[`<Modal /> should render everything correctly 1`] = `
       <div
         class="sc-hKgILt jAwInK close-icon"
         color=""
+        data-testid="Modal-close-icon"
       >
         <svg>
           plus.svg

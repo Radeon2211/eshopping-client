@@ -129,6 +129,7 @@ exports[`<CartItem /> Checks how renders should render everything correctly 1`] 
     <div
       class="sc-dlfnbm cGwLef remove-icon"
       color="#F22613"
+      data-testid="CartItem-trash-icon"
     >
       <svg>
         trash.svg

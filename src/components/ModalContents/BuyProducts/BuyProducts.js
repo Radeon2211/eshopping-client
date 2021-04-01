@@ -3,10 +3,10 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLastLocation } from 'react-router-last-location';
 import { useHistory } from 'react-router-dom';
-import * as actions from '../../store/actions/indexActions';
-import Button from '../UI/Button/Button';
-import Heading from '../UI/Heading/Heading';
-import FlexWrapper from '../UI/FlexWrapper';
+import * as actions from '../../../store/actions/indexActions';
+import Button from '../../UI/Button/Button';
+import Heading from '../../UI/Heading/Heading';
+import FlexWrapper from '../../UI/FlexWrapper';
 
 const BuyProducts = () => {
   const history = useHistory();
@@ -28,7 +28,7 @@ const BuyProducts = () => {
       </Heading>
       <FlexWrapper justify="center" spacing="3">
         <Button clicked={() => onSetModal(false)}>Cancel</Button>
-        <Button filled clicked={() => onBuyProducts(history, lastLocation.pathname)}>
+        <Button filled clicked={() => onBuyProducts(history, lastLocation?.pathname)}>
           Confirm
         </Button>
       </FlexWrapper>

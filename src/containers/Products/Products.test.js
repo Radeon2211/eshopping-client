@@ -75,11 +75,11 @@ const setUp = (search = '?p=1') => {
 };
 
 jest.mock('../../store/actions/indexActions.js', () => ({
-  fetchProducts: jest.fn().mockImplementation((queryParams, pageType, username) => ({
+  fetchProducts: (queryParams, pageType, username) => ({
     queryParams,
     pageType,
     username,
-  })),
+  }),
 }));
 
 beforeAll(() => {

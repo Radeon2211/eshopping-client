@@ -43,42 +43,43 @@ describe('<SortOrders />', () => {
     expect(screen.getByText(sortOrdersOptions[2].label)).toBeInTheDocument();
     expect(screen.getByText(sortOrdersOptions[3].label)).toBeInTheDocument();
   });
-  it('should call push with correct paths and params', async () => {
-    const pushFn = jest.fn();
-    setUp(pushFn);
+
+  it('should call replace with correct paths and params', async () => {
+    const replaceFn = jest.fn();
+    setUp(replaceFn);
 
     const defaultOption = screen.getByText(sortOrdersOptions[0].label);
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getAllByText(sortOrdersOptions[0].label)[0]);
-    expect(pushFn).not.toHaveBeenCalled();
+    expect(replaceFn).not.toHaveBeenCalled();
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getAllByText(sortOrdersOptions[0].label)[1]);
-    expect(pushFn).not.toHaveBeenCalled();
+    expect(replaceFn).not.toHaveBeenCalled();
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[1].label));
-    expect(pushFn).toHaveBeenCalledWith('/my-account/placed-orders?p=1&sortBy=createdAt%3Aasc');
+    expect(replaceFn).toHaveBeenCalledWith('/my-account/placed-orders?p=1&sortBy=createdAt%3Aasc');
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[0].label));
-    expect(pushFn).toHaveBeenLastCalledWith(
+    expect(replaceFn).toHaveBeenLastCalledWith(
       '/my-account/placed-orders?p=1&sortBy=createdAt%3Adesc',
     );
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[2].label));
-    expect(pushFn).toHaveBeenLastCalledWith(
+    expect(replaceFn).toHaveBeenLastCalledWith(
       '/my-account/placed-orders?p=1&sortBy=overallPrice%3Aasc',
     );
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[3].label));
-    expect(pushFn).toHaveBeenLastCalledWith(
+    expect(replaceFn).toHaveBeenLastCalledWith(
       '/my-account/placed-orders?p=1&sortBy=overallPrice%3Adesc',
     );
 
-    expect(pushFn).toHaveBeenCalledTimes(4);
+    expect(replaceFn).toHaveBeenCalledTimes(4);
   });
 });

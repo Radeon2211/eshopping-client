@@ -29,6 +29,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
       <input
         autocomplete="off"
         class="name-input"
+        data-testid="SearchForm-input"
         maxlength="150"
         name="product"
         spellcheck="false"
@@ -119,6 +120,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
       <input
         autocomplete="off"
         class="name-input"
+        data-testid="SearchForm-input"
         maxlength="150"
         name="product"
         spellcheck="false"

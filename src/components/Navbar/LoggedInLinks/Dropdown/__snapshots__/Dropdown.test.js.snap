@@ -22,6 +22,7 @@ exports[`<Dropdown /> Check how renders should render everything correctly 1`] =
         >
           <div
             class="link"
+            data-testid="Dropdown-add-product-option"
             role="button"
             tabindex="0"
           >

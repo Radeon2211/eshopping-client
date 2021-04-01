@@ -50,20 +50,18 @@ const Orders = (props) => {
       );
     } else if (orderCount > 0) {
       content = (
-        <>
-          <PlainPanel>
-            <TopPagination>
-              <SortOrders />
-              <InputPagination itemQuantity={orderCount} quantityPerPage={defaultOrdersPerPage} />
-            </TopPagination>
-            <OrderList orders={orders} orderType={type} />
-            <BottomPagination
-              itemQuantity={orderCount}
-              itemsType={listItemTypes.ORDER}
-              quantityPerPage={defaultOrdersPerPage}
-            />
-          </PlainPanel>
-        </>
+        <PlainPanel>
+          <TopPagination>
+            <SortOrders />
+            <InputPagination itemQuantity={orderCount} quantityPerPage={defaultOrdersPerPage} />
+          </TopPagination>
+          <OrderList orders={orders} orderType={type} />
+          <BottomPagination
+            itemQuantity={orderCount}
+            itemsType={listItemTypes.ORDER}
+            quantityPerPage={defaultOrdersPerPage}
+          />
+        </PlainPanel>
       );
     }
   }

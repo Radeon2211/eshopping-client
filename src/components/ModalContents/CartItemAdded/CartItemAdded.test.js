@@ -8,15 +8,19 @@ import thunk from 'redux-thunk';
 import CartItemAdded from './CartItemAdded';
 import theme from '../../../styled/theme';
 import { createProductItem } from '../../../shared/testUtility/testUtility';
+import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
-const createStore = (cart, productDetails, isCartLoading) =>
-  mockStore({
+const createStore = (cart, productDetails, isCartLoading) => {
+  const store = mockStore({
     auth: { cart },
     product: { productDetails },
     ui: { isCartLoading },
   });
+  store.dispatch = jest.fn();
+  return store;
+};
 
 const defaultProduct = createProductItem({
   id: 'p1',
@@ -33,7 +37,7 @@ const setUp = (store, pushFn = jest.fn()) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
-    location: { pathname: '/products', search: '?p=1' },
+    location: { pathname: '/product/p1' },
     push: pushFn,
   };
 
@@ -71,13 +75,28 @@ describe('<CartItemAdded />', () => {
     });
   });
 
-  it('should render everything correctly if isCartLoading is false', () => {
-    const store = createStore(defaultCart, defaultProduct);
-    const pushFn = jest.fn();
-    setUp(store, pushFn);
+  describe('Check reactions to buttons clicks', () => {
+    it('should call push with /cart after go to cart button click', () => {
+      const store = createStore(defaultCart, defaultProduct);
+      const pushFn = jest.fn();
+      setUp(store, pushFn);
 
-    fireEvent.click(screen.getByTestId('CartItemAdded-cart-link'));
-    expect(pushFn).toHaveBeenCalledWith('/cart');
-    expect(pushFn).toHaveBeenCalledTimes(1);
+      fireEvent.click(screen.getByTestId('CartItemAdded-cart-link'));
+      expect(pushFn).toHaveBeenCalledWith('/cart');
+      expect(pushFn).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call setModal() after buttons clicks', () => {
+      const store = createStore(defaultCart, defaultProduct);
+      const pushFn = jest.fn();
+      setUp(store, pushFn);
+
+      expect(store.dispatch).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByText('Continue shopping'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(false));
+      fireEvent.click(screen.getByText('Go to cart'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(false));
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
+    });
   });
 });

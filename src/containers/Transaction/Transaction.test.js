@@ -47,10 +47,6 @@ const setUp = (transaction, history = defaultHistory) => {
   };
 };
 
-jest.mock('../../store/actions/indexActions.js', () => ({
-  setTransaction: jest.fn().mockImplementation((transaction) => transaction),
-}));
-
 afterEach(cleanup);
 
 describe('<Transaction />', () => {

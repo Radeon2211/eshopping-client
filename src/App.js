@@ -14,7 +14,7 @@ import MessageBox from './components/UI/MessageBox/MessageBox';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/UI/Loader/Loader';
 import Main from './components/UI/Main';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 import Products from './containers/Products/Products';
 import Logout from './containers/Logout/Logout';
 

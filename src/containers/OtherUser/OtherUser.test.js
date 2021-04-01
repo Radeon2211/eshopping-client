@@ -71,13 +71,13 @@ const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) 
 };
 
 jest.mock('../../store/actions/indexActions.js', () => ({
-  fetchOtherUser: jest.fn().mockImplementation((username) => username),
-  fetchProducts: jest.fn().mockImplementation((queryParams, pageType, username) => ({
+  fetchOtherUser: (username) => username,
+  fetchProducts: (queryParams, pageType, username) => ({
     queryParams,
     pageType,
     username,
-  })),
-  setOtherUser: jest.fn().mockImplementation((user) => user),
+  }),
+  setOtherUser: (user) => user,
 }));
 
 afterEach(cleanup);

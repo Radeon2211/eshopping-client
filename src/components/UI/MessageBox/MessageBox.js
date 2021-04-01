@@ -81,6 +81,7 @@ const MessageBox = () => {
               color="#fff"
               onClick={() => onSetMessage('')}
               className="close-icon"
+              data-testid="MessageBox-close-icon"
             >
               <PlusIcon />
             </MyIcon>
