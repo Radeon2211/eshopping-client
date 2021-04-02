@@ -2,7 +2,7 @@ import moxios from 'moxios';
 import axios from '../../../axios';
 import {
   defaultErrorMessage,
-  pages,
+  productPages,
   productConditions,
   defaultProductsPerPage,
 } from '../../../shared/constants';
@@ -1002,7 +1002,7 @@ describe('Async functions', () => {
             productCount: 5,
           },
         );
-        await store.dispatch(actions.fetchProducts('?p=1', pages.ALL_PRODUCTS));
+        await store.dispatch(actions.fetchProducts('?p=1', productPages.ALL_PRODUCTS));
 
         expect(store.getState()).toEqual(
           createExpectedState(
@@ -1020,7 +1020,7 @@ describe('Async functions', () => {
           checkReqMethodAndURL(
             moxios,
             'get',
-            `/products?limit=${defaultProductsPerPage}&p=1&page=${pages.ALL_PRODUCTS}`,
+            `/products?limit=${defaultProductsPerPage}&p=1&page=${productPages.ALL_PRODUCTS}`,
           ),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
@@ -1052,7 +1052,11 @@ describe('Async functions', () => {
           },
         );
         await store.dispatch(
-          actions.fetchProducts('?p=-1&minPrice=5&maxPrice=150', pages.USER_PRODUCTS, 'john'),
+          actions.fetchProducts(
+            '?p=-1&minPrice=5&maxPrice=150',
+            productPages.USER_PRODUCTS,
+            'john',
+          ),
         );
 
         expect(store.getState()).toEqual(
@@ -1071,7 +1075,7 @@ describe('Async functions', () => {
           checkReqMethodAndURL(
             moxios,
             'get',
-            `/products?limit=5&maxPrice=150&minPrice=5&page=${pages.USER_PRODUCTS}&seller=john`,
+            `/products?limit=5&maxPrice=150&minPrice=5&page=${productPages.USER_PRODUCTS}&seller=john`,
           ),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
@@ -1097,7 +1101,7 @@ describe('Async functions', () => {
             productsPerPage: 15,
           },
         );
-        await store.dispatch(actions.fetchProducts('?p=10&seller=me', pages.MY_PRODUCTS));
+        await store.dispatch(actions.fetchProducts('?p=10&seller=me', productPages.MY_PRODUCTS));
 
         expect(store.getState()).toEqual(
           createExpectedState(
@@ -1110,7 +1114,11 @@ describe('Async functions', () => {
           ),
         );
         expect(
-          checkReqMethodAndURL(moxios, 'get', `/products?limit=15&page=${pages.MY_PRODUCTS}`),
+          checkReqMethodAndURL(
+            moxios,
+            'get',
+            `/products?limit=15&page=${productPages.MY_PRODUCTS}`,
+          ),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
         expect(moxios.requests.__items).toHaveLength(1);
@@ -1122,7 +1130,7 @@ describe('Async functions', () => {
         });
 
         const { store, initialState } = setUpStoreWithDefaultProfile();
-        await store.dispatch(actions.fetchProducts('?p=1', pages.ALL_PRODUCTS));
+        await store.dispatch(actions.fetchProducts('?p=1', productPages.ALL_PRODUCTS));
 
         expect(store.getState()).toEqual(
           createExpectedState(
@@ -1140,7 +1148,7 @@ describe('Async functions', () => {
           checkReqMethodAndURL(
             moxios,
             'get',
-            `/products?limit=${defaultProductsPerPage}&p=1&page=${pages.ALL_PRODUCTS}`,
+            `/products?limit=${defaultProductsPerPage}&p=1&page=${productPages.ALL_PRODUCTS}`,
           ),
         ).toEqual(true);
         expect(moxios.requests.mostRecent().config.data).toBeUndefined();
@@ -1166,7 +1174,10 @@ describe('Async functions', () => {
 
         const innerDispatchFn = jest.fn();
         const { store } = setUpStoreWithDefaultProfile();
-        await actions.fetchProducts('?p=1', pages.ALL_PRODUCTS)(innerDispatchFn, store.getState);
+        await actions.fetchProducts('?p=1', productPages.ALL_PRODUCTS)(
+          innerDispatchFn,
+          store.getState,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1194,7 +1205,10 @@ describe('Async functions', () => {
 
         const innerDispatchFn = jest.fn();
         const { store } = setUpStoreWithDefaultProfile();
-        await actions.fetchProducts('?p=1', pages.ALL_PRODUCTS)(innerDispatchFn, store.getState);
+        await actions.fetchProducts('?p=1', productPages.ALL_PRODUCTS)(
+          innerDispatchFn,
+          store.getState,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, productActions.setProducts([], 0, 0, 0));
@@ -1212,7 +1226,10 @@ describe('Async functions', () => {
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
         const { store } = setUpStoreWithDefaultProfile();
-        await actions.fetchProducts('?p=1', pages.ALL_PRODUCTS)(innerDispatchFn, store.getState);
+        await actions.fetchProducts('?p=1', productPages.ALL_PRODUCTS)(
+          innerDispatchFn,
+          store.getState,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);

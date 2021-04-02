@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ProductItem from './ProductItem/ProductItem';
 import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
 import Heading from '../UI/Heading/Heading';
-import { pages } from '../../shared/constants';
+import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 
 const SC = {};
@@ -35,11 +35,11 @@ const ProductList = (props) => {
         (!queryStringKeys.includes('name') && queryStringKeys.length === 1)
       ) {
         switch (page) {
-          case pages.ALL_PRODUCTS:
+          case productPages.ALL_PRODUCTS:
             headingText = `We didn't find any matching results. Try to search something else or change filters`;
             break;
-          case pages.MY_PRODUCTS:
-          case pages.USER_PRODUCTS:
+          case productPages.MY_PRODUCTS:
+          case productPages.USER_PRODUCTS:
             headingText = `We didn't find any matching results. Try to change filters`;
             break;
           default:
@@ -47,13 +47,13 @@ const ProductList = (props) => {
         }
       } else {
         switch (page) {
-          case pages.ALL_PRODUCTS:
+          case productPages.ALL_PRODUCTS:
             headingText = `We didn't find any matching results. Try to search something else`;
             break;
-          case pages.MY_PRODUCTS:
+          case productPages.MY_PRODUCTS:
             headingText = `You don't have any offers published yet`;
             break;
-          case pages.USER_PRODUCTS:
+          case productPages.USER_PRODUCTS:
             headingText = `This user doesn't have any offers published yet`;
             break;
           default:

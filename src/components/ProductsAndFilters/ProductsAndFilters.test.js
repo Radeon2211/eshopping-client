@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
 import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
-import { pages, defaultProductsPerPage } from '../../shared/constants';
+import { productPages, defaultProductsPerPage } from '../../shared/constants';
 import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
@@ -57,7 +57,7 @@ const setUp = (store, search = '?p=1') => {
     <Provider store={store}>
       <Router history={history}>
         <ThemeProvider theme={theme}>
-          <ProductsAndFilters page={pages.ALL_PRODUCTS} />
+          <ProductsAndFilters page={productPages.ALL_PRODUCTS} />
         </ThemeProvider>
       </Router>
     </Provider>,
@@ -84,7 +84,7 @@ describe('<ProductsAndFilters />', () => {
   describe('Check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
-        page: pages.ALL_PRODUCTS,
+        page: productPages.ALL_PRODUCTS,
       };
       expect(checkProps(ProductsAndFilters, props)).toBeUndefined();
     });

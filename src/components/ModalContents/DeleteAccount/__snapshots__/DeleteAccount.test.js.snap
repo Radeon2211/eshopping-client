@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeleteAccount /> Check how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hYjfqi"
+  >
+    <h3
+      class="sc-iBPRYJ kqmSLn"
+    >
+      Delete your account
+    </h3>
+    <form
+      action="#"
+      class="formik-form"
+    >
+      <div
+        class="sc-fubCfw drZTsR"
+        type="password"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="currentPassword"
+        >
+          Current password
+        </label>
+        <input
+          autocomplete="off"
+          class="sc-pFZIQ fjonmB"
+          data-testid="DeleteAccount-current-password"
+          id="currentPassword"
+          name="currentPassword"
+          placeholder="Your current password"
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-gKsewC dLOeOj"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-eCssSg gABWUT"
+          color=""
+          display="block"
+          overflow="visible"
+          spacing="0px"
+          transform=""
+        >
+          <button
+            class="sc-gsTCUz cpcmUx"
+            color="blue"
+            type="button"
+          >
+            cancel
+          </button>
+        </span>
+        <button
+          class="sc-gsTCUz KHXhw"
+          color="red"
+          data-testid="Form-submit-btn"
+          disabled=""
+          type="submit"
+        >
+          delete
+        </button>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom';
 import theme from '../../styled/theme';
 import ProductList from './ProductList';
 import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
-import { pages } from '../../shared/constants';
+import { productPages } from '../../shared/constants';
 
 const createHistory = (search = '?p=1') => ({
   listen: jest.fn(),
@@ -32,7 +32,7 @@ const defaultProducts = [
   }),
 ];
 
-const createProps = (isDataLoading, products, page = pages.ALL_PRODUCTS) => ({
+const createProps = (isDataLoading, products, page = productPages.ALL_PRODUCTS) => ({
   isDataLoading,
   products,
   page,
@@ -82,42 +82,42 @@ describe('<ProductItem />', () => {
     });
 
     it('should render correct info for ALL_PRODUCTS with filters', () => {
-      const props = createProps(false, [], pages.ALL_PRODUCTS);
+      const props = createProps(false, [], productPages.ALL_PRODUCTS);
       const history = createHistory('?p=1&minPrice=100');
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for MY_PRODUCTS with filters', () => {
-      const props = createProps(false, [], pages.MY_PRODUCTS);
+      const props = createProps(false, [], productPages.MY_PRODUCTS);
       const history = createHistory('?p=1&condition=new');
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for USER_PRODUCTS with filters', () => {
-      const props = createProps(false, [], pages.USER_PRODUCTS);
+      const props = createProps(false, [], productPages.USER_PRODUCTS);
       const history = createHistory('?p=1&maxPrice=100');
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for ALL_PRODUCTS without filters other than name', () => {
-      const props = createProps(false, [], pages.ALL_PRODUCTS);
+      const props = createProps(false, [], productPages.ALL_PRODUCTS);
       const history = createHistory('?p=1&name=testName');
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for MY_PRODUCTS without filters other than name', () => {
-      const props = createProps(false, [], pages.MY_PRODUCTS);
+      const props = createProps(false, [], productPages.MY_PRODUCTS);
       const history = createHistory('?p=1&name=testName');
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for USER_PRODUCTS without filters other than name', () => {
-      const props = createProps(false, [], pages.USER_PRODUCTS);
+      const props = createProps(false, [], productPages.USER_PRODUCTS);
       const history = createHistory('?p=1&name=testName');
       const { asFragment } = setUp(props, history);
       expect(asFragment()).toMatchSnapshot();

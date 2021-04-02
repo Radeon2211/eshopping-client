@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import Products from './Products';
 import theme from '../../styled/theme';
 import { defaultUserProfile, createProductItem } from '../../shared/testUtility/testUtility';
-import { pages, defaultProductsPerPage } from '../../shared/constants';
+import { productPages, defaultProductsPerPage } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -118,7 +118,7 @@ describe('<Products />', () => {
       const search = '?p=1&name=wellingtons';
       const { store } = setUp(search);
       expect(store.dispatch).toHaveBeenCalledWith(
-        actions.fetchProducts(search, pages.ALL_PRODUCTS),
+        actions.fetchProducts(search, productPages.ALL_PRODUCTS),
       );
     });
   });

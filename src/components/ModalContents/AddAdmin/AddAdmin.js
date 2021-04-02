@@ -2,18 +2,18 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import { inputKinds, userRules } from '../../shared/constants';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import { inputKinds, userRules } from '../../../shared/constants';
 
 const validationSchema = Yup.object({
   email: userRules.email,
 });
 
-const RemoveAdmin = () => {
+const AddAdmin = () => {
   const dispatch = useDispatch();
-  const onRemoveAdmin = useCallback((email) => dispatch(actions.removeAdmin(email)), [dispatch]);
+  const onAddAdmin = useCallback((email) => dispatch(actions.addAdmin(email)), [dispatch]);
 
   return (
     <Formik
@@ -22,27 +22,22 @@ const RemoveAdmin = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(data) => {
-        onRemoveAdmin(data.email);
+        onAddAdmin(data.email);
       }}
     >
       {({ dirty, errors, touched, isValid, setFieldTouched }) => (
-        <Form
-          btnText="Remove"
-          btnColor="red"
-          headingText="Remove admin"
-          isValid={dirty && isValid}
-          cancellable
-        >
+        <Form btnText="Add" headingText="Add admin" isValid={dirty && isValid} cancellable>
           <Input
             kind={inputKinds.INPUT}
             config={{
               type: 'email',
               name: 'email',
               id: 'email',
-              placeholder: 'Email of the user whose admin rights you want to revoke',
+              placeholder: 'Email of user that you want make an admin',
               autoComplete: 'email',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'email', true, true),
+              'data-testid': 'AddAdmin-email',
             }}
             isValid={!errors.email}
             isTouched={touched.email}
@@ -54,4 +49,4 @@ const RemoveAdmin = () => {
   );
 };
 
-export default RemoveAdmin;
+export default AddAdmin;

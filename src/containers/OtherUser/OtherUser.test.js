@@ -8,7 +8,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import OtherUser from './OtherUser';
 import theme from '../../styled/theme';
-import { pages, defaultProductsPerPage } from '../../shared/constants';
+import { productPages, defaultProductsPerPage } from '../../shared/constants';
 import { createProductItem } from '../../shared/testUtility/testUtility';
 import * as actions from '../../store/actions/indexActions';
 
@@ -141,7 +141,7 @@ describe('<OtherUser />', () => {
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchOtherUser('user1'));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
-        actions.fetchProducts('?p=1', pages.USER_PRODUCTS, 'user1'),
+        actions.fetchProducts('?p=1', productPages.USER_PRODUCTS, 'user1'),
       );
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });

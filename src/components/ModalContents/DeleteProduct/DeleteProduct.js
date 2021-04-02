@@ -2,10 +2,10 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import * as actions from '../../store/actions/indexActions';
-import Button from '../UI/Button/Button';
-import Heading from '../UI/Heading/Heading';
-import FlexWrapper from '../UI/FlexWrapper';
+import * as actions from '../../../store/actions/indexActions';
+import Button from '../../UI/Button/Button';
+import Heading from '../../UI/Heading/Heading';
+import FlexWrapper from '../../UI/FlexWrapper';
 
 const DeleteProduct = () => {
   const history = useHistory();

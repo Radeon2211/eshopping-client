@@ -5,7 +5,7 @@ import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader/Loader';
 import PlainText from '../../components/UI/PlainText';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
-import { pages } from '../../shared/constants';
+import { productPages } from '../../shared/constants';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 
 const OtherUser = (props) => {
@@ -38,7 +38,7 @@ const OtherUser = (props) => {
       history.replace('/my-account/data');
     } else {
       onFetchOtherUser(otherUserUsername);
-      onFetchProducts(search, pages.USER_PRODUCTS, otherUserUsername);
+      onFetchProducts(search, productPages.USER_PRODUCTS, otherUserUsername);
     }
     return () => onSetOtherUser(undefined);
   }, [
@@ -90,7 +90,7 @@ const OtherUser = (props) => {
       <>
         <Heading variant="h3">{username}</Heading>
         {contactData}
-        <ProductsAndFilters page={pages.USER_PRODUCTS} />
+        <ProductsAndFilters page={productPages.USER_PRODUCTS} />
       </>
     );
   }

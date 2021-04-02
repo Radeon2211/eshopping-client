@@ -58,7 +58,7 @@ export const listOfCountries = getCountries().map(({ name }) => {
   };
 });
 
-export const pages = {
+export const productPages = {
   ALL_PRODUCTS: 'ALL_PRODUCTS',
   MY_PRODUCTS: 'MY_PRODUCTS',
   USER_PRODUCTS: 'USER_PRODUCTS',

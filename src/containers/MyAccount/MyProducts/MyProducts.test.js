@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import theme from '../../../styled/theme';
 import MyProducts from './MyProducts';
 import { createProductItem, defaultUserProfile } from '../../../shared/testUtility/testUtility';
-import { pages, productConditions, defaultProductsPerPage } from '../../../shared/constants';
+import { productPages, productConditions, defaultProductsPerPage } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -92,7 +92,7 @@ describe('<MySellHistory />', () => {
   it('should call fetchProducts() in useEffect()', () => {
     const { store } = setUp();
     expect(store.dispatch).toHaveBeenCalledWith(
-      actions.fetchProducts(defaultSearch, pages.MY_PRODUCTS),
+      actions.fetchProducts(defaultSearch, productPages.MY_PRODUCTS),
     );
   });
 });

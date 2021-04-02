@@ -2,10 +2,10 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import { inputKinds } from '../../shared/constants';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import { inputKinds } from '../../../shared/constants';
 
 const DeleteAccount = () => {
   const history = useHistory();
@@ -42,6 +42,7 @@ const DeleteAccount = () => {
               placeholder: 'Your current password',
               autoComplete: 'off',
               autoFocus: true,
+              'data-testid': 'DeleteAccount-current-password',
             }}
             label="Current password"
           />

@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddAdmin /> Check how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hYjfqi"
+  >
+    <h3
+      class="sc-iBPRYJ kqmSLn"
+    >
+      Add admin
+    </h3>
+    <form
+      action="#"
+      class="formik-form"
+    >
+      <div
+        class="sc-fubCfw drZTsR"
+        type="email"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          autocomplete="email"
+          class="sc-pFZIQ fjonmB"
+          data-testid="AddAdmin-email"
+          id="email"
+          name="email"
+          placeholder="Email of user that you want make an admin"
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-gKsewC dLOeOj"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-eCssSg gABWUT"
+          color=""
+          display="block"
+          overflow="visible"
+          spacing="0px"
+          transform=""
+        >
+          <button
+            class="sc-gsTCUz cpcmUx"
+            color="blue"
+            type="button"
+          >
+            cancel
+          </button>
+        </span>
+        <button
+          class="sc-gsTCUz kaTXms"
+          color="blue"
+          data-testid="Form-submit-btn"
+          disabled=""
+          type="submit"
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

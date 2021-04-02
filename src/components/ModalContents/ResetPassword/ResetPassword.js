@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import PlainText from '../UI/PlainText';
-import { inputKinds, modalTypes } from '../../shared/constants';
-import { GreenText } from '../../styled/components';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import PlainText from '../../UI/PlainText';
+import { inputKinds, modalTypes } from '../../../shared/constants';
+import { GreenText } from '../../../styled/components';
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
-  const onResetPassword = useCallback((creds) => dispatch(actions.resetPassword(creds)), [
+  const onResetPassword = useCallback((email) => dispatch(actions.resetPassword(email)), [
     dispatch,
   ]);
   const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
@@ -41,6 +41,7 @@ const ResetPassword = () => {
               placeholder: 'Your email address',
               autoComplete: 'email',
               autoFocus: true,
+              'data-testid': 'ResetPassword-email',
             }}
             label="Email"
           />

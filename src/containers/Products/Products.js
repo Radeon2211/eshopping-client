@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
-import { pages } from '../../shared/constants';
+import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 
 const Products = (props) => {
@@ -21,7 +21,7 @@ const Products = (props) => {
   );
 
   useEffect(() => {
-    onFetchProducts(search, pages.ALL_PRODUCTS);
+    onFetchProducts(search, productPages.ALL_PRODUCTS);
   }, [search, onFetchProducts, productsPerPage, userProfile]);
 
   const correctQueryParams = getParamsWithoutPollution(search);
@@ -36,7 +36,7 @@ const Products = (props) => {
       <Heading variant="h3" data-testid="Products-heading">
         {headingText}
       </Heading>
-      <ProductsAndFilters page={pages.ALL_PRODUCTS} />
+      <ProductsAndFilters page={productPages.ALL_PRODUCTS} />
     </>
   );
 };

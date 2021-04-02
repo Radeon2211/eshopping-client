@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import { pages } from '../../../shared/constants';
+import { productPages } from '../../../shared/constants';
 import Heading from '../../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../../components/ProductsAndFilters/ProductsAndFilters';
 
@@ -20,13 +20,13 @@ const MyProducts = (props) => {
   );
 
   useEffect(() => {
-    onFetchProducts(search, pages.MY_PRODUCTS);
+    onFetchProducts(search, productPages.MY_PRODUCTS);
   }, [search, onFetchProducts, productsPerPage, userProfile]);
 
   return (
     <>
       <Heading variant="h3">My products</Heading>
-      <ProductsAndFilters page={pages.MY_PRODUCTS} />
+      <ProductsAndFilters page={productPages.MY_PRODUCTS} />
     </>
   );
 };
