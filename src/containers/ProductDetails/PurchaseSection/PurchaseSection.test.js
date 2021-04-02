@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { HashRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -10,6 +10,7 @@ import PurchaseSection from './PurchaseSection';
 import { checkProps, defaultUserProfile } from '../../../shared/testUtility/testUtility';
 import theme from '../../../styled/theme';
 import { modalTypes } from '../../../shared/constants';
+import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -37,18 +38,37 @@ const setUp = (props = {}, cart = defaultCart, isLoading = false) => {
       }
     : defaultProps;
 
-  const store = createStore(cart, isLoading);
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/product/123' },
+  };
 
-  return render(
-    <Provider store={store}>
-      <Router>
-        <ThemeProvider theme={theme}>
-          <PurchaseSection {...finalProps} />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  const store = createStore(cart, isLoading);
+  store.dispatch = jest.fn();
+
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router history={history}>
+          <ThemeProvider theme={theme}>
+            <PurchaseSection {...finalProps} />
+          </ThemeProvider>
+        </Router>
+      </Provider>,
+    ),
+    store,
+    history,
+  };
 };
+
+jest.mock('../../../store/actions/indexActions.js', () => ({
+  addCartItem: (item) => item,
+  goToTransaction: (currentHistory, item) => ({
+    currentHistory,
+    item,
+  }),
+}));
 
 afterEach(cleanup);
 
@@ -106,7 +126,7 @@ describe('<PurchaseSection />', () => {
     });
   });
 
-  describe('Check behaviour of onSetModal()', () => {
+  describe('Check calling of onSetModal()', () => {
     it('should NOT call after click on "buy now" and "add to cart" if user has status active', () => {
       const onSetModalFn = jest.fn();
       const props = {
@@ -196,6 +216,36 @@ describe('<PurchaseSection />', () => {
         fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
       }
       expect(input).toHaveAttribute('value', '5');
+    });
+  });
+
+  describe('Check redux actions calling', () => {
+    it('should call addCartItem() and goToTransaction() with quantity 2 after buttons clicks', () => {
+      const { store, history } = setUp();
+
+      expect(store.dispatch).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
+
+      fireEvent.click(screen.getByText('add to cart'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        1,
+        actions.addCartItem({
+          quantity: 2,
+          product: defaultProps.productId,
+        }),
+      );
+
+      fireEvent.click(screen.getByText('buy now'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        2,
+        actions.goToTransaction(history, {
+          quantity: 2,
+          product: defaultProps.productId,
+        }),
+      );
+
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });

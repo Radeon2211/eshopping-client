@@ -8,9 +8,10 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
 import { defaultUserProfile } from '../../shared/testUtility/testUtility';
-import { productConditions } from '../../shared/constants';
+import { modalTypes, productConditions } from '../../shared/constants';
 import noPhoto from '../../images/no-photo.png';
 import theme from '../../styled/theme';
+import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -39,13 +40,14 @@ const defaultStore = {
   },
 };
 
-const setUp = (store, pushFn = jest.fn()) => {
-  const finalStore = store
+const setUp = (storePart, pushFn = jest.fn()) => {
+  const store = storePart
     ? mockStore({
         ...defaultStore,
-        ...store,
+        ...storePart,
       })
     : mockStore(defaultStore);
+  store.dispatch = jest.fn();
 
   const history = {
     listen: jest.fn(),
@@ -54,16 +56,25 @@ const setUp = (store, pushFn = jest.fn()) => {
     push: pushFn,
   };
 
-  return render(
-    <Provider store={finalStore}>
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <ProductDetails />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router history={history}>
+          <ThemeProvider theme={theme}>
+            <ProductDetails />
+          </ThemeProvider>
+        </Router>
+      </Provider>,
+    ),
+    store,
+  };
 };
+
+jest.mock('../../store/actions/indexActions.js', () => ({
+  ...jest.requireActual('../../store/actions/indexActions.js'),
+  fetchProductDetails: (productId) => productId,
+  setProductDetails: () => {},
+}));
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -89,7 +100,7 @@ describe('<ProductDetails />', () => {
         expect(asFragment()).toMatchSnapshot();
       });
 
-      it(`Should render everything correctly if user is a product's owner`, () => {
+      it(`should render everything correctly if user is a product's owner`, () => {
         const store = {
           product: {
             productDetails: {
@@ -158,7 +169,7 @@ describe('<ProductDetails />', () => {
         expect(screen.getByAltText(defaultProductDetails.name)).toHaveAttribute('src', noPhoto);
       });
 
-      it(`Should NOT render edit and delete buttons if user is not admin and not a product's owner`, () => {
+      it(`should NOT render edit and delete buttons if user is not admin and not a product's owner`, () => {
         const store = {
           product: {
             productDetails: {
@@ -172,7 +183,7 @@ describe('<ProductDetails />', () => {
         expect(screen.queryByTestId('ProductDetails-delete-button')).not.toBeInTheDocument();
       });
 
-      it(`Should NOT render edit button and should render delete button if user not a product's owner but is an admin`, () => {
+      it(`should NOT render edit button and should render delete button if user not a product's owner but is an admin`, () => {
         const store = {
           auth: {
             profile: { ...defaultUserProfile, username: 'user2', isAdmin: true },
@@ -192,6 +203,34 @@ describe('<ProductDetails />', () => {
         expect(pushFn).toHaveBeenCalledWith(`/user/${defaultProductDetails.seller.username}?p=1`);
         expect(pushFn).toHaveBeenCalledTimes(1);
       });
+    });
+  });
+
+  describe('Check redux actions calling', () => {
+    it('should call fetchProductDetails() after mounting and setProductDetails() after unmounting', () => {
+      const { store, unmount } = setUp();
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        1,
+        actions.fetchProductDetails(defaultProductId),
+      );
+      unmount();
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setProductDetails());
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
+    });
+
+    it('should call setModal() after clicking at edit and delete buttons', () => {
+      const { store } = setUp();
+
+      fireEvent.click(screen.getByTestId('ProductDetails-edit-button'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(modalTypes.EDIT_PRODUCT));
+
+      fireEvent.click(screen.getByTestId('ProductDetails-delete-button'));
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        3,
+        actions.setModal(modalTypes.DELETE_PRODUCT),
+      );
+
+      expect(store.dispatch).toHaveBeenCalledTimes(3);
     });
   });
 });

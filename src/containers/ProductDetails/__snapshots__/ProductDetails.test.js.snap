@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductDetails /> Check how renders Snapshots Should render everything correctly if user is a product's owner 1`] = `
+exports[`<ProductDetails /> Check how renders Snapshots should render everything correctly if user is a product's owner 1`] = `
 <DocumentFragment>
   <section
     class="sc-hKgILt jLFCGR"
