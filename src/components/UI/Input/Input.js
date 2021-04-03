@@ -11,9 +11,9 @@ const Input = (props) => {
   const { kind, config, label, isValid, isTouched } = props;
 
   let input = null;
-  let valid = null;
+  let validityClassname = null;
   if (isValid !== undefined && isTouched) {
-    valid = isValid ? 'valid' : 'invalid';
+    validityClassname = isValid ? 'valid' : 'invalid';
   }
 
   switch (kind) {
@@ -67,7 +67,7 @@ const Input = (props) => {
   }
 
   return (
-    <SC.Wrapper className={valid} type={config.type} checked={config.checked}>
+    <SC.Wrapper className={validityClassname} type={config.type} checked={config.checked}>
       <SC.Label htmlFor={config.id}>{label}</SC.Label>
       {input}
     </SC.Wrapper>

@@ -39,7 +39,7 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 
 afterEach(cleanup);
 
-describe('<AddAdmin />', () => {
+describe('<RemoveAdmin />', () => {
   describe('Check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
@@ -48,17 +48,22 @@ describe('<AddAdmin />', () => {
   });
 
   describe('Check form', () => {
-    it('should call addAdmin() with given email after input submit and button click', async () => {
-      const { store, container } = setUp();
+    it('should have empty input and focus on it by default', () => {
+      setUp();
+      const emailInput = screen.getByTestId('RemoveAdmin-email');
+      expect(emailInput).toHaveFocus();
+      expect(emailInput.value).toEqual('');
+    });
 
+    it('should call removeAdmin() with given email after input submit and button click', async () => {
+      const { store, container } = setUp();
       const emailInput = screen.getByTestId('RemoveAdmin-email');
       const testEmail = 'test@domain.com';
-
-      expect(emailInput).toHaveFocus();
 
       await waitFor(() => {
         fireEvent.change(emailInput, { target: { value: testEmail } });
       });
+      expect(emailInput.value).toEqual(testEmail);
 
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));
@@ -69,20 +74,24 @@ describe('<AddAdmin />', () => {
         fireEvent.submit(emailInput);
       });
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.removeAdmin(testEmail));
+
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
 
-    it('should NOT call resetPassword() if input is empty or email is not valid', async () => {
+    it('should NOT call removeAdmin() if input is empty or email is not valid', async () => {
       const { store, container } = setUp();
 
       const emailInput = screen.getByTestId('RemoveAdmin-email');
+      const testEmail = 'invalidemail';
 
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));
       });
 
       await waitFor(() => {
-        fireEvent.change(emailInput, { target: { value: 'invalidemail' } });
+        fireEvent.change(emailInput, { target: { value: testEmail } });
       });
+      expect(emailInput.value).toEqual(testEmail);
 
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`] = `
+exports[`<ChangeEmail /> Check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hYjfqi"
@@ -8,12 +8,23 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
     <h3
       class="sc-iBPRYJ kqmSLn"
     >
-      Remove admin
+      Change your email
     </h3>
     <form
       action="#"
       class="formik-form"
     >
+      <span
+        class="sc-eCssSg ktlTnl"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        We will send to given email address an email with verification link. Link will be active for 10 minutes. To resend an email you will need to fill this form again.
+      </span>
       <div
         class="sc-fubCfw drZTsR"
         type="email"
@@ -22,16 +33,37 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
           class="sc-jrAGrp bkXExJ"
           for="email"
         >
-          Email
+          New email
         </label>
         <input
           autocomplete="email"
           class="sc-pFZIQ fjonmB"
-          data-testid="RemoveAdmin-email"
+          data-testid="ChangeEmail-email"
           id="email"
           name="email"
-          placeholder="Email of the user whose admin rights you want to revoke"
+          placeholder="Your new email"
           type="email"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-fubCfw drZTsR"
+        type="password"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="currentPassword"
+        >
+          Current password
+        </label>
+        <input
+          autocomplete="off"
+          class="sc-pFZIQ fjonmB"
+          data-testid="ChangeEmail-current-password"
+          id="currentPassword"
+          name="currentPassword"
+          placeholder="Your current password"
+          type="password"
           value=""
         />
       </div>
@@ -59,13 +91,13 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
           </button>
         </span>
         <button
-          class="sc-gsTCUz KHXhw"
-          color="red"
+          class="sc-gsTCUz kaTXms"
+          color="blue"
           data-testid="Form-submit-btn"
           disabled=""
           type="submit"
         >
-          Remove
+          change
         </button>
       </div>
     </form>

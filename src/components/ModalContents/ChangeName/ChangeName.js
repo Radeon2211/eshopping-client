@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import { inputKinds, userRules } from '../../shared/constants';
-import { getChangedValues } from '../../shared/utility/utility';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import { inputKinds, userRules } from '../../../shared/constants';
+import { getChangedValues } from '../../../shared/utility/utility';
 
 const validationSchema = Yup.object({
   firstName: userRules.firstName,
@@ -53,6 +53,7 @@ const ChangeName = () => {
               autoComplete: 'given-name',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'firstName', true, true),
+              'data-testid': 'ChangeName-first-name',
             }}
             label="First name"
             isValid={!errors.firstName}
@@ -67,6 +68,7 @@ const ChangeName = () => {
               placeholder: 'Your last name',
               autoComplete: 'family-name',
               onInput: setFieldTouched.bind(this, 'lastName', true, true),
+              'data-testid': 'ChangeName-last-name',
             }}
             label="Last name"
             isValid={!errors.lastName}

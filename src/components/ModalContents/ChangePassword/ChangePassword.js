@@ -2,12 +2,13 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import { inputKinds, userRules } from '../../shared/constants';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import { anyStringRule, inputKinds, userRules } from '../../../shared/constants';
 
 const validationSchema = Yup.object({
+  currentPassword: anyStringRule,
   password: userRules.password,
 });
 
@@ -45,7 +46,10 @@ const ChangePassword = () => {
               placeholder: 'Your current password',
               autoComplete: 'off',
               autoFocus: true,
+              'data-testid': 'ChangePassword-current-password',
             }}
+            isValid={!errors.currentPassword}
+            isTouched={touched.currentPassword}
             label="Current password"
           />
           <Input
@@ -57,6 +61,7 @@ const ChangePassword = () => {
               placeholder: 'Secure password (7-64 characters)',
               autoComplete: 'off',
               onInput: setFieldTouched.bind(this, 'password', true, true),
+              'data-testid': 'ChangePassword-password',
             }}
             isValid={!errors.password}
             isTouched={touched.password}

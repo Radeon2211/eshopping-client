@@ -1,13 +1,15 @@
 import * as Yup from 'yup';
 import { getCountries } from 'country-fns';
 
+export const anyStringRule = Yup.string().min(1).required();
+
 export const userRules = {
   email: Yup.string().email().max(320).trim().required(),
   hideEmail: Yup.bool(),
   username: Yup.string().min(3).max(20).trim().required(),
   password: Yup.string().min(7).max(64).trim().required(),
-  firstName: Yup.string().max(60).required(),
-  lastName: Yup.string().max(80).required(),
+  firstName: Yup.string().max(60).trim().required(),
+  lastName: Yup.string().max(80).trim().required(),
   phonePrefix: Yup.object()
     .shape({
       value: Yup.string().required(),

@@ -2,14 +2,15 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import { inputKinds, userRules } from '../../shared/constants';
-import PlainText from '../UI/PlainText';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import { anyStringRule, inputKinds, userRules } from '../../../shared/constants';
+import PlainText from '../../UI/PlainText';
 
 const validationSchema = Yup.object({
   email: userRules.email,
+  currentPassword: anyStringRule,
 });
 
 const ChangeEmail = () => {
@@ -50,6 +51,7 @@ const ChangeEmail = () => {
               autoComplete: 'email',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'email', true, true),
+              'data-testid': 'ChangeEmail-email',
             }}
             isValid={!errors.email && userProfile.email !== values.email}
             isTouched={touched.email}
@@ -63,7 +65,10 @@ const ChangeEmail = () => {
               id: 'currentPassword',
               placeholder: 'Your current password',
               autoComplete: 'off',
+              'data-testid': 'ChangeEmail-current-password',
             }}
+            isValid={!errors.currentPassword}
+            isTouched={touched.currentPassword}
             label="Current password"
           />
         </Form>

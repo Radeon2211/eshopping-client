@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`] = `
+exports[`<ChangeName /> Check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hYjfqi"
@@ -8,7 +8,7 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
     <h3
       class="sc-iBPRYJ kqmSLn"
     >
-      Remove admin
+      Change your name
     </h3>
     <form
       action="#"
@@ -16,23 +16,44 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
     >
       <div
         class="sc-fubCfw drZTsR"
-        type="email"
+        type="text"
       >
         <label
           class="sc-jrAGrp bkXExJ"
-          for="email"
+          for="firstName"
         >
-          Email
+          First name
         </label>
         <input
-          autocomplete="email"
+          autocomplete="given-name"
           class="sc-pFZIQ fjonmB"
-          data-testid="RemoveAdmin-email"
-          id="email"
-          name="email"
-          placeholder="Email of the user whose admin rights you want to revoke"
-          type="email"
-          value=""
+          data-testid="ChangeName-first-name"
+          id="firstName"
+          name="firstName"
+          placeholder="Your first name"
+          type="text"
+          value="oldFirstName"
+        />
+      </div>
+      <div
+        class="sc-fubCfw drZTsR"
+        type="text"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="lastName"
+        >
+          Last name
+        </label>
+        <input
+          autocomplete="family-name"
+          class="sc-pFZIQ fjonmB"
+          data-testid="ChangeName-last-name"
+          id="lastName"
+          name="lastName"
+          placeholder="Your last name"
+          type="text"
+          value="oldLastName"
         />
       </div>
       <div
@@ -59,13 +80,13 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
           </button>
         </span>
         <button
-          class="sc-gsTCUz KHXhw"
-          color="red"
+          class="sc-gsTCUz kaTXms"
+          color="blue"
           data-testid="Form-submit-btn"
           disabled=""
           type="submit"
         >
-          Remove
+          change
         </button>
       </div>
     </form>

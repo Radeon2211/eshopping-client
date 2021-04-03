@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import PlainText from '../UI/PlainText';
-import { inputKinds, modalTypes } from '../../shared/constants';
-import { GreenText } from '../../styled/components';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import PlainText from '../../UI/PlainText';
+import { inputKinds, modalTypes } from '../../../shared/constants';
+import { GreenText } from '../../../styled/components';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -36,6 +36,7 @@ const Login = () => {
               placeholder: 'Your email address',
               autoComplete: 'email',
               autoFocus: true,
+              'data-testid': 'Login-email',
             }}
             label="Email"
           />
@@ -47,6 +48,7 @@ const Login = () => {
               id: 'password',
               placeholder: 'Your password',
               autoComplete: 'off',
+              'data-testid': 'Login-password',
             }}
             label="Password"
           />

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`] = `
+exports[`<Login /> Check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hYjfqi"
@@ -8,7 +8,7 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
     <h3
       class="sc-iBPRYJ kqmSLn"
     >
-      Remove admin
+      Login to your account
     </h3>
     <form
       action="#"
@@ -27,14 +27,50 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
         <input
           autocomplete="email"
           class="sc-pFZIQ fjonmB"
-          data-testid="RemoveAdmin-email"
+          data-testid="Login-email"
           id="email"
           name="email"
-          placeholder="Email of the user whose admin rights you want to revoke"
+          placeholder="Your email address"
           type="email"
           value=""
         />
       </div>
+      <div
+        class="sc-fubCfw drZTsR"
+        type="password"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          autocomplete="off"
+          class="sc-pFZIQ fjonmB"
+          data-testid="Login-password"
+          id="password"
+          name="password"
+          placeholder="Your password"
+          type="password"
+          value=""
+        />
+      </div>
+      <span
+        class="sc-eCssSg iYsaRr"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        <span
+          class="sc-iqHYGH fHWvCx"
+        >
+          Forgot password
+        </span>
+      </span>
       <div
         class="sc-gKsewC dLOeOj"
         direction="row"
@@ -59,13 +95,13 @@ exports[`<RemoveAdmin /> Check how renders should render everything correctly 1`
           </button>
         </span>
         <button
-          class="sc-gsTCUz KHXhw"
-          color="red"
+          class="sc-gsTCUz kaTXms"
+          color="blue"
           data-testid="Form-submit-btn"
           disabled=""
           type="submit"
         >
-          Remove
+          login
         </button>
       </div>
     </form>

@@ -48,17 +48,23 @@ describe('<AddAdmin />', () => {
   });
 
   describe('Check form', () => {
+    it('should have empty input and focus on it by default', () => {
+      setUp();
+      const emailInput = screen.getByTestId('AddAdmin-email');
+      expect(emailInput).toHaveFocus();
+      expect(emailInput.value).toEqual('');
+    });
+
     it('should call addAdmin() with given email after input submit and button click', async () => {
       const { store, container } = setUp();
 
       const emailInput = screen.getByTestId('AddAdmin-email');
       const testEmail = 'test@domain.com';
 
-      expect(emailInput).toHaveFocus();
-
       await waitFor(() => {
         fireEvent.change(emailInput, { target: { value: testEmail } });
       });
+      expect(emailInput.value).toEqual(testEmail);
 
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));
@@ -75,14 +81,16 @@ describe('<AddAdmin />', () => {
       const { store, container } = setUp();
 
       const emailInput = screen.getByTestId('AddAdmin-email');
+      const testEmail = 'invalidemail';
 
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));
       });
 
       await waitFor(() => {
-        fireEvent.change(emailInput, { target: { value: 'invalidemail' } });
+        fireEvent.change(emailInput, { target: { value: testEmail } });
       });
+      expect(emailInput.value).toEqual(testEmail);
 
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));

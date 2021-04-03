@@ -60,32 +60,38 @@ describe('<DeleteAccount />', () => {
   });
 
   describe('Check form', () => {
+    it('should have empty input and focus on it by default', () => {
+      setUp();
+      const currentPasswordInput = screen.getByTestId('DeleteAccount-current-password');
+      expect(currentPasswordInput).toHaveFocus();
+      expect(currentPasswordInput.value).toEqual('');
+    });
+
     it('should call deleteAccount() with given password after input submit and button click', async () => {
       const { store, history, container } = setUp();
 
-      const passwordInput = screen.getByTestId('DeleteAccount-current-password');
-      const testPassword = 'password';
-
-      expect(passwordInput).toHaveFocus();
+      const currentPasswordInput = screen.getByTestId('DeleteAccount-current-password');
+      const currentPassword = 'password';
 
       await waitFor(() => {
-        fireEvent.change(passwordInput, { target: { value: testPassword } });
+        fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
       });
+      expect(currentPasswordInput.value).toEqual(currentPassword);
 
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));
       });
       expect(store.dispatch).toHaveBeenNthCalledWith(
         1,
-        actions.deleteAccount({ currentPassword: testPassword }, history),
+        actions.deleteAccount({ currentPassword }, history),
       );
 
       await waitFor(() => {
-        fireEvent.submit(passwordInput);
+        fireEvent.submit(currentPasswordInput);
       });
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
-        actions.deleteAccount({ currentPassword: testPassword }, history),
+        actions.deleteAccount({ currentPassword }, history),
       );
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);
@@ -93,11 +99,9 @@ describe('<DeleteAccount />', () => {
 
     it('should NOT call deleteAccount() if input is empty', async () => {
       const { store, container } = setUp();
-
       await waitFor(() => {
         fireEvent.click(container.querySelector('button[type="submit"]'));
       });
-
       expect(store.dispatch).not.toHaveBeenCalled();
     });
   });
