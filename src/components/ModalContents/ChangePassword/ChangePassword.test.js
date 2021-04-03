@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import ChangePassword from './ChangePassword';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
+import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -34,7 +35,10 @@ const setUp = () => {
 
 jest.mock('../../../store/actions/indexActions.js', () => ({
   ...jest.requireActual('../../../store/actions/indexActions.js'),
-  updateUser: (credentials) => credentials,
+  updateUser: (credentials, message) => ({
+    credentials,
+    message,
+  }),
 }));
 
 afterEach(cleanup);
@@ -60,7 +64,7 @@ describe('<ChangePassword />', () => {
       expect(newPasswordInput.value).toEqual('');
     });
 
-    describe('should update', () => {
+    describe('should call', () => {
       const updateMessage = 'Password has been changed successfully';
 
       it('should call updateUser() with given values after inputs submit and button click', async () => {
@@ -69,7 +73,7 @@ describe('<ChangePassword />', () => {
         const currentPasswordInput = screen.getByTestId('ChangePassword-current-password');
         const newPasswordInput = screen.getByTestId('ChangePassword-password');
 
-        const credentials = {
+        const dataToPass = {
           currentPassword,
           password: defaultNewPassword,
         };
@@ -83,12 +87,10 @@ describe('<ChangePassword />', () => {
         expect(currentPasswordInput.value).toEqual(currentPassword);
         expect(newPasswordInput.value).toEqual(defaultNewPassword);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
         expect(store.dispatch).toHaveBeenNthCalledWith(
           1,
-          actions.updateUser(credentials, updateMessage),
+          actions.updateUser(dataToPass, updateMessage),
         );
 
         await waitFor(() => {
@@ -96,7 +98,7 @@ describe('<ChangePassword />', () => {
         });
         expect(store.dispatch).toHaveBeenNthCalledWith(
           2,
-          actions.updateUser(credentials, updateMessage),
+          actions.updateUser(dataToPass, updateMessage),
         );
 
         await waitFor(() => {
@@ -104,19 +106,17 @@ describe('<ChangePassword />', () => {
         });
         expect(store.dispatch).toHaveBeenNthCalledWith(
           3,
-          actions.updateUser(credentials, updateMessage),
+          actions.updateUser(dataToPass, updateMessage),
         );
 
         expect(store.dispatch).toHaveBeenCalledTimes(3);
       });
     });
 
-    describe('should NOT update', () => {
+    describe('should NOT call', () => {
       it('should NOT call updateUser() if both inputs are empty', async () => {
         const { store, container } = setUp();
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
         expect(store.dispatch).not.toHaveBeenCalled();
       });
 
@@ -139,9 +139,7 @@ describe('<ChangePassword />', () => {
         expect(currentPasswordInput.value).toEqual('');
         expect(newPasswordInput.value).toEqual(defaultNewPassword);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });
@@ -165,9 +163,7 @@ describe('<ChangePassword />', () => {
         expect(currentPasswordInput.value).toEqual(currentPassword);
         expect(newPasswordInput.value).toEqual('');
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });
@@ -193,9 +189,7 @@ describe('<ChangePassword />', () => {
         expect(currentPasswordInput.value).toEqual(currentPassword);
         expect(newPasswordInput.value).toEqual(newPassword);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });
@@ -224,9 +218,7 @@ describe('<ChangePassword />', () => {
         expect(currentPasswordInput.value).toEqual(currentPassword);
         expect(newPasswordInput.value).toEqual(newPassword);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });

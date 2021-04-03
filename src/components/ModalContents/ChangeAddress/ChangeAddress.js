@@ -2,12 +2,12 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import SideBySide from '../UI/SideBySide';
-import { inputKinds, userRules, listOfCountries } from '../../shared/constants';
-import { getChangedValues } from '../../shared/utility/utility';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import SideBySide from '../../UI/SideBySide';
+import { inputKinds, userRules, listOfCountries } from '../../../shared/constants';
+import { getChangedValues } from '../../../shared/utility/utility';
 
 const validationSchema = Yup.object({
   street: userRules.street,
@@ -63,6 +63,7 @@ const ChangeAddress = () => {
               autoComplete: 'street-address',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'street', true, true),
+              'data-testid': 'ChangeAddress-street',
             }}
             label="Street and number"
             isValid={!errors.street}
@@ -78,6 +79,7 @@ const ChangeAddress = () => {
                 placeholder: 'Your zip code',
                 autoComplete: 'postal-code',
                 onInput: setFieldTouched.bind(this, 'zipCode', true, true),
+                'data-testid': 'ChangeAddress-zip-code',
               }}
               label="Zip code"
               isValid={!errors.zipCode}
@@ -92,6 +94,7 @@ const ChangeAddress = () => {
                 placeholder: 'Your city',
                 autoComplete: 'address-level2',
                 onInput: setFieldTouched.bind(this, 'city', true, true),
+                'data-testid': 'ChangeAddress-city',
               }}
               label="City"
               isValid={!errors.city}

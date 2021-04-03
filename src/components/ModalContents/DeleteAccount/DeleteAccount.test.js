@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import DeleteAccount from './DeleteAccount';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
+import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -78,9 +79,7 @@ describe('<DeleteAccount />', () => {
       });
       expect(currentPasswordInput.value).toEqual(currentPassword);
 
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      await clickAtSubmitButton(container);
       expect(store.dispatch).toHaveBeenNthCalledWith(
         1,
         actions.deleteAccount({ currentPassword }, history),
@@ -99,9 +98,7 @@ describe('<DeleteAccount />', () => {
 
     it('should NOT call deleteAccount() if input is empty', async () => {
       const { store, container } = setUp();
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      await clickAtSubmitButton(container);
       expect(store.dispatch).not.toHaveBeenCalled();
     });
   });

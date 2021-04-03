@@ -7,7 +7,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ChangeEmail from './ChangeEmail';
 import theme from '../../../styled/theme';
-import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import { clickAtSubmitButton, defaultUserProfile } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -66,125 +66,117 @@ describe('<ChangeEmail />', () => {
       expect(currentPasswordInput.value).toEqual('');
     });
 
-    it('should call changeEmail() with given credentials after input submit and button click', async () => {
-      const { store, container } = setUp();
+    describe('should call', () => {
+      it('should call changeEmail() with given credentials after input submit and button click', async () => {
+        const { store, container } = setUp();
 
-      const emailInput = screen.getByTestId('ChangeEmail-email');
-      const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
+        const emailInput = screen.getByTestId('ChangeEmail-email');
+        const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
 
-      const credentials = {
-        email: defaultNewEmail,
-        currentPassword,
-      };
+        const dataToPass = {
+          email: defaultNewEmail,
+          currentPassword,
+        };
 
-      await waitFor(() => {
-        fireEvent.change(emailInput, { target: { value: defaultNewEmail } });
+        await waitFor(() => {
+          fireEvent.change(emailInput, { target: { value: defaultNewEmail } });
+        });
+        await waitFor(() => {
+          fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
+        });
+        expect(emailInput.value).toEqual(defaultNewEmail);
+        expect(currentPasswordInput.value).toEqual(currentPassword);
+
+        await clickAtSubmitButton(container);
+        expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.changeEmail(dataToPass));
+
+        await waitFor(() => {
+          fireEvent.submit(emailInput);
+        });
+        expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.changeEmail(dataToPass));
+
+        expect(store.dispatch).toHaveBeenCalledTimes(2);
       });
-      await waitFor(() => {
-        fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
-      });
-      expect(emailInput.value).toEqual(defaultNewEmail);
-      expect(currentPasswordInput.value).toEqual(currentPassword);
-
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
-      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.changeEmail(credentials));
-
-      await waitFor(() => {
-        fireEvent.submit(emailInput);
-      });
-      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.changeEmail(credentials));
-
-      expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
 
-    it('should NOT call changeEmail() if both inputs are empty', async () => {
-      const { store, container } = setUp();
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
-      expect(store.dispatch).not.toHaveBeenCalled();
-    });
-
-    it('should NOT call changeEmail() if current password input is empty (email is valid)', async () => {
-      const { store, container } = setUp();
-
-      const emailInput = screen.getByTestId('ChangeEmail-email');
-
-      await waitFor(() => {
-        fireEvent.change(emailInput, { target: { value: defaultNewEmail } });
-      });
-      expect(emailInput.value).toEqual(defaultNewEmail);
-
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
+    describe('should NOT call', () => {
+      it('should NOT call changeEmail() if both inputs are empty', async () => {
+        const { store, container } = setUp();
+        await clickAtSubmitButton(container);
+        expect(store.dispatch).not.toHaveBeenCalled();
       });
 
-      expect(store.dispatch).not.toHaveBeenCalled();
-    });
+      it('should NOT call changeEmail() if current password input is empty (email is valid)', async () => {
+        const { store, container } = setUp();
 
-    it('should NOT call changeEmail() if email input is empty (password is given)', async () => {
-      const { store, container } = setUp();
+        const emailInput = screen.getByTestId('ChangeEmail-email');
 
-      const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
+        await waitFor(() => {
+          fireEvent.change(emailInput, { target: { value: defaultNewEmail } });
+        });
+        expect(emailInput.value).toEqual(defaultNewEmail);
 
-      await waitFor(() => {
-        fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
-      });
-      expect(currentPasswordInput.value).toEqual(currentPassword);
+        await clickAtSubmitButton(container);
 
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
+        expect(store.dispatch).not.toHaveBeenCalled();
       });
 
-      expect(store.dispatch).not.toHaveBeenCalled();
-    });
+      it('should NOT call changeEmail() if email input is empty (password is given)', async () => {
+        const { store, container } = setUp();
 
-    it('should NOT call changeEmail() if email is invalid (password is given)', async () => {
-      const { store, container } = setUp();
+        const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
 
-      const emailInput = screen.getByTestId('ChangeEmail-email');
-      const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
+        await waitFor(() => {
+          fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
+        });
+        expect(currentPasswordInput.value).toEqual(currentPassword);
 
-      const newEmail = 'invalidemail';
+        await clickAtSubmitButton(container);
 
-      await waitFor(() => {
-        fireEvent.change(emailInput, { target: { value: newEmail } });
-      });
-      await waitFor(() => {
-        fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
-      });
-      expect(emailInput.value).toEqual(newEmail);
-      expect(currentPasswordInput.value).toEqual(currentPassword);
-
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
+        expect(store.dispatch).not.toHaveBeenCalled();
       });
 
-      expect(store.dispatch).not.toHaveBeenCalled();
-    });
+      it('should NOT call changeEmail() if email is invalid (password is given)', async () => {
+        const { store, container } = setUp();
 
-    it('should NOT call changeEmail() if email is the same as current email (password is given)', async () => {
-      const { store, container } = setUp();
+        const emailInput = screen.getByTestId('ChangeEmail-email');
+        const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
 
-      const emailInput = screen.getByTestId('ChangeEmail-email');
-      const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
+        const newEmail = 'invalidemail';
 
-      await waitFor(() => {
-        fireEvent.change(emailInput, { target: { value: oldEmail } });
+        await waitFor(() => {
+          fireEvent.change(emailInput, { target: { value: newEmail } });
+        });
+        await waitFor(() => {
+          fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
+        });
+        expect(emailInput.value).toEqual(newEmail);
+        expect(currentPasswordInput.value).toEqual(currentPassword);
+
+        await clickAtSubmitButton(container);
+
+        expect(store.dispatch).not.toHaveBeenCalled();
       });
-      await waitFor(() => {
-        fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
-      });
-      expect(emailInput.value).toEqual(oldEmail);
-      expect(currentPasswordInput.value).toEqual(currentPassword);
 
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      it('should NOT call changeEmail() if email is the same as current email (password is given)', async () => {
+        const { store, container } = setUp();
 
-      expect(store.dispatch).not.toHaveBeenCalled();
+        const emailInput = screen.getByTestId('ChangeEmail-email');
+        const currentPasswordInput = screen.getByTestId('ChangeEmail-current-password');
+
+        await waitFor(() => {
+          fireEvent.change(emailInput, { target: { value: oldEmail } });
+        });
+        await waitFor(() => {
+          fireEvent.change(currentPasswordInput, { target: { value: currentPassword } });
+        });
+        expect(emailInput.value).toEqual(oldEmail);
+        expect(currentPasswordInput.value).toEqual(currentPassword);
+
+        await clickAtSubmitButton(container);
+
+        expect(store.dispatch).not.toHaveBeenCalled();
+      });
     });
   });
 });

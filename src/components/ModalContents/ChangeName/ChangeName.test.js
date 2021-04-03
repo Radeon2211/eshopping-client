@@ -7,7 +7,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ChangeName from './ChangeName';
 import theme from '../../../styled/theme';
-import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import { clickAtSubmitButton, defaultUserProfile } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -41,7 +41,10 @@ const setUp = () => {
 
 jest.mock('../../../store/actions/indexActions.js', () => ({
   ...jest.requireActual('../../../store/actions/indexActions.js'),
-  updateUser: (credentials) => credentials,
+  updateUser: (credentials, message) => ({
+    credentials,
+    message,
+  }),
 }));
 
 afterEach(cleanup);
@@ -67,7 +70,7 @@ describe('<ChangeName />', () => {
       expect(lastNameInput.value).toEqual(oldLastName);
     });
 
-    describe('should update', () => {
+    describe('should call', () => {
       const updateMessage = 'Name has been changed successfully';
 
       it('should call updateUser() with all changed values after inputs submit and button click', async () => {
@@ -76,7 +79,7 @@ describe('<ChangeName />', () => {
         const firstNameInput = screen.getByTestId('ChangeName-first-name');
         const lastNameInput = screen.getByTestId('ChangeName-last-name');
 
-        const credentials = {
+        const dataToPass = {
           firstName: defaultNewFirstName,
           lastName: defaultNewLastName,
         };
@@ -90,12 +93,10 @@ describe('<ChangeName />', () => {
         expect(firstNameInput.value).toEqual(defaultNewFirstName);
         expect(lastNameInput.value).toEqual(defaultNewLastName);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
         expect(store.dispatch).toHaveBeenNthCalledWith(
           1,
-          actions.updateUser(credentials, updateMessage),
+          actions.updateUser(dataToPass, updateMessage),
         );
 
         await waitFor(() => {
@@ -103,7 +104,7 @@ describe('<ChangeName />', () => {
         });
         expect(store.dispatch).toHaveBeenNthCalledWith(
           2,
-          actions.updateUser(credentials, updateMessage),
+          actions.updateUser(dataToPass, updateMessage),
         );
 
         await waitFor(() => {
@@ -111,7 +112,7 @@ describe('<ChangeName />', () => {
         });
         expect(store.dispatch).toHaveBeenNthCalledWith(
           3,
-          actions.updateUser(credentials, updateMessage),
+          actions.updateUser(dataToPass, updateMessage),
         );
 
         expect(store.dispatch).toHaveBeenCalledTimes(3);
@@ -122,7 +123,7 @@ describe('<ChangeName />', () => {
 
         const firstNameInput = screen.getByTestId('ChangeName-first-name');
 
-        const credentials = {
+        const dataToPass = {
           firstName: defaultNewFirstName,
         };
 
@@ -133,11 +134,9 @@ describe('<ChangeName />', () => {
         });
         expect(firstNameInput.value).toEqual(defaultNewFirstName);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
-        expect(store.dispatch).toHaveBeenCalledWith(actions.updateUser(credentials, updateMessage));
+        expect(store.dispatch).toHaveBeenCalledWith(actions.updateUser(dataToPass, updateMessage));
       });
 
       it('should call updateUser() with updated lastName only', async () => {
@@ -145,7 +144,7 @@ describe('<ChangeName />', () => {
 
         const lastNameInput = screen.getByTestId('ChangeName-last-name');
 
-        const credentials = {
+        const dataToPass = {
           lastName: defaultNewLastName,
         };
 
@@ -156,15 +155,13 @@ describe('<ChangeName />', () => {
         });
         expect(lastNameInput.value).toEqual(defaultNewLastName);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
-        expect(store.dispatch).toHaveBeenCalledWith(actions.updateUser(credentials, updateMessage));
+        expect(store.dispatch).toHaveBeenCalledWith(actions.updateUser(dataToPass, updateMessage));
       });
     });
 
-    describe('should NOT update', () => {
+    describe('should NOT call', () => {
       it('should NOT call updateUser() if both inputs are empty', async () => {
         const { store, container } = setUp();
 
@@ -184,18 +181,14 @@ describe('<ChangeName />', () => {
         expect(firstNameInput.value).toEqual('');
         expect(lastNameInput.value).toEqual('');
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });
 
       it('should NOT call updateUser() if both values are the same as current', async () => {
         const { store, container } = setUp();
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
         expect(store.dispatch).not.toHaveBeenCalled();
       });
 
@@ -218,9 +211,7 @@ describe('<ChangeName />', () => {
         expect(firstNameInput.value).toEqual('');
         expect(lastNameInput.value).toEqual(defaultNewLastName);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });
@@ -244,9 +235,7 @@ describe('<ChangeName />', () => {
         expect(firstNameInput.value).toEqual(defaultNewFirstName);
         expect(lastNameInput.value).toEqual('');
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });
@@ -267,9 +256,7 @@ describe('<ChangeName />', () => {
         });
         expect(firstNameInput.value).toEqual(newFirstName);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });
@@ -290,9 +277,7 @@ describe('<ChangeName />', () => {
         });
         expect(lastNameInput.value).toEqual(newLastName);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
         expect(store.dispatch).not.toHaveBeenCalled();
       });

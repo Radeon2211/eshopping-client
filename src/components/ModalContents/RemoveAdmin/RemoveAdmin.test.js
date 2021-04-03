@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import RemoveAdmin from './RemoveAdmin';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
+import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -65,14 +66,10 @@ describe('<RemoveAdmin />', () => {
       });
       expect(emailInput.value).toEqual(testEmail);
 
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      await clickAtSubmitButton(container);
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.removeAdmin(testEmail));
 
-      await waitFor(() => {
-        fireEvent.submit(emailInput);
-      });
+      await clickAtSubmitButton(container);
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.removeAdmin(testEmail));
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);
@@ -84,18 +81,14 @@ describe('<RemoveAdmin />', () => {
       const emailInput = screen.getByTestId('RemoveAdmin-email');
       const testEmail = 'invalidemail';
 
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      await clickAtSubmitButton(container);
 
       await waitFor(() => {
         fireEvent.change(emailInput, { target: { value: testEmail } });
       });
       expect(emailInput.value).toEqual(testEmail);
 
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      await clickAtSubmitButton(container);
 
       expect(store.dispatch).not.toHaveBeenCalled();
     });

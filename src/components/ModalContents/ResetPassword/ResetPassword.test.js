@@ -9,6 +9,7 @@ import ResetPassword from './ResetPassword';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
+import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -76,22 +77,20 @@ describe('<ResetPassword />', () => {
       });
       expect(emailInput.value).toEqual(testEmail);
 
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      await clickAtSubmitButton(container);
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.resetPassword(testEmail));
 
       await waitFor(() => {
         fireEvent.submit(emailInput);
       });
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.resetPassword(testEmail));
+
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
 
     it('should NOT call resetPassword() if input is empty', async () => {
       const { store, container } = setUp();
-      await waitFor(() => {
-        fireEvent.click(container.querySelector('button[type="submit"]'));
-      });
+      await clickAtSubmitButton(container);
       expect(store.dispatch).not.toHaveBeenCalled();
     });
   });

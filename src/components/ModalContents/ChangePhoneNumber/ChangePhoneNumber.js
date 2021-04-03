@@ -2,12 +2,12 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import SideBySide from '../UI/SideBySide';
-import { inputKinds, userRules, listOfAreaCodes } from '../../shared/constants';
-import { getPhonePrefixAndNumber } from '../../shared/utility/utility';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import SideBySide from '../../UI/SideBySide';
+import { inputKinds, userRules, listOfAreaCodes } from '../../../shared/constants';
+import { getPhonePrefixAndNumber } from '../../../shared/utility/utility';
 
 const validationSchema = Yup.object({
   phonePrefix: userRules.phonePrefix,
@@ -69,6 +69,7 @@ const ChangePhoneNumber = () => {
                 autoComplete: 'tel-national',
                 autoFocus: true,
                 onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
+                'data-testid': 'ChangePhoneNumber-phone-number',
               }}
               label="Phone number"
               isValid={!errors.phoneNumber}

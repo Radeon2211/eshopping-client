@@ -2,12 +2,12 @@ import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import SideBySide from '../UI/SideBySide';
-import { inputKinds, userRules, listOfCountries, listOfAreaCodes } from '../../shared/constants';
-import { getPhonePrefixAndNumber, getChangedValues } from '../../shared/utility/utility';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import SideBySide from '../../UI/SideBySide';
+import { inputKinds, userRules, listOfCountries, listOfAreaCodes } from '../../../shared/constants';
+import { getPhonePrefixAndNumber, getChangedValues } from '../../../shared/utility/utility';
 
 const validationSchema = Yup.object({
   firstName: userRules.firstName,
@@ -104,6 +104,7 @@ const ChangeDeliveryAddress = () => {
                 autoComplete: 'given-name',
                 autoFocus: true,
                 onInput: setFieldTouched.bind(this, 'firstName', true, true),
+                'data-testid': 'ChangeDeliveryAddress-first-name',
               }}
               label="First name"
               isValid={!errors.firstName}
@@ -118,6 +119,7 @@ const ChangeDeliveryAddress = () => {
                 placeholder: 'Your last name',
                 autoComplete: 'family-name',
                 onInput: setFieldTouched.bind(this, 'lastName', true, true),
+                'data-testid': 'ChangeDeliveryAddress-last-name',
               }}
               label="Last name"
               isValid={!errors.lastName}
@@ -132,6 +134,7 @@ const ChangeDeliveryAddress = () => {
                 placeholder: 'Your street and number',
                 autoComplete: 'street-address',
                 onInput: setFieldTouched.bind(this, 'street', true, true),
+                'data-testid': 'ChangeDeliveryAddress-street',
               }}
               label="Street and number"
               isValid={!errors.street}
@@ -147,6 +150,7 @@ const ChangeDeliveryAddress = () => {
                   placeholder: 'Your zip code',
                   autoComplete: 'postal-code',
                   onInput: setFieldTouched.bind(this, 'zipCode', true, true),
+                  'data-testid': 'ChangeDeliveryAddress-zip-code',
                 }}
                 label="Zip code"
                 isValid={!errors.zipCode}
@@ -161,6 +165,7 @@ const ChangeDeliveryAddress = () => {
                   placeholder: 'Your city',
                   autoComplete: 'address-level2',
                   onInput: setFieldTouched.bind(this, 'city', true, true),
+                  'data-testid': 'ChangeDeliveryAddress-city',
                 }}
                 label="City"
                 isValid={!errors.city}
@@ -205,6 +210,7 @@ const ChangeDeliveryAddress = () => {
                   placeholder: 'Your phone number',
                   autoComplete: 'tel-national',
                   onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
+                  'data-testid': 'ChangeDeliveryAddress-phone-number',
                 }}
                 label="Phone number"
                 isValid={!errors.phoneNumber}
@@ -218,6 +224,7 @@ const ChangeDeliveryAddress = () => {
                 name: 'onlyCurrentOrders',
                 id: 'onlyCurrentOrders',
                 checked: values.onlyCurrentOrders,
+                'data-testid': 'ChangeDeliveryAddress-only-current-orders',
               }}
               label="Apply changes only to these orders"
             />

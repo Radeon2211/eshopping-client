@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../../store/reducers/rootReducer';
@@ -243,4 +244,10 @@ export const setUpStoreWithDefaultProfile = (auth = {}, product = {}, ui = {}) =
     product,
     ui,
   );
+};
+
+export const clickAtSubmitButton = async (container) => {
+  await waitFor(() => {
+    fireEvent.click(container.querySelector('button[type="submit"]'));
+  });
 };

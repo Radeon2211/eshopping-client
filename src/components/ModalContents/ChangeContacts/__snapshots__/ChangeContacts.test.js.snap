@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChangeContacts /> Check how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hYjfqi"
+  >
+    <h3
+      class="sc-iBPRYJ kqmSLn"
+    >
+      Change your contacts visibility
+    </h3>
+    <form
+      action="#"
+      class="formik-form"
+    >
+      <div
+        class="sc-fubCfw fwowZk"
+        type="checkbox"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="hideEmail"
+        >
+          Hide my email address from others
+        </label>
+        <input
+          class="sc-pFZIQ fjonmB"
+          data-testid="ChangeContacts-hideEmail"
+          id="hideEmail"
+          name="hideEmail"
+          type="checkbox"
+          value="false"
+        />
+      </div>
+      <div
+        class="sc-fubCfw gbhveZ"
+        type="checkbox"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="hidePhone"
+        >
+          Hide my phone number from others
+        </label>
+        <input
+          checked=""
+          class="sc-pFZIQ fjonmB"
+          data-testid="ChangeContacts-hidePhone"
+          id="hidePhone"
+          name="hidePhone"
+          type="checkbox"
+          value="true"
+        />
+      </div>
+      <div
+        class="sc-gKsewC dLOeOj"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-eCssSg gABWUT"
+          color=""
+          display="block"
+          overflow="visible"
+          spacing="0px"
+          transform=""
+        >
+          <button
+            class="sc-gsTCUz cpcmUx"
+            color="blue"
+            type="button"
+          >
+            cancel
+          </button>
+        </span>
+        <button
+          class="sc-gsTCUz kaTXms"
+          color="blue"
+          data-testid="Form-submit-btn"
+          disabled=""
+          type="submit"
+        >
+          change
+        </button>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -9,6 +9,7 @@ import Login from './Login';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
+import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -70,14 +71,14 @@ describe('<Login />', () => {
       expect(passwordInput.value).toEqual('');
     });
 
-    describe('successful', () => {
+    describe('should call', () => {
       it('should call loginUser() with given values after inputs submits and button click', async () => {
         const { store, container } = setUp();
 
         const emailInput = screen.getByTestId('Login-email');
         const passwordInput = screen.getByTestId('Login-password');
 
-        const credentials = {
+        const dataToPass = {
           email: testEmail,
           password: testPassword,
         };
@@ -91,20 +92,18 @@ describe('<Login />', () => {
         expect(emailInput.value).toEqual(testEmail);
         expect(passwordInput.value).toEqual(testPassword);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
-        expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.loginUser(credentials));
+        await clickAtSubmitButton(container);
+        expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.loginUser(dataToPass));
 
         await waitFor(() => {
           fireEvent.submit(emailInput);
         });
-        expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.loginUser(credentials));
+        expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.loginUser(dataToPass));
 
         await waitFor(() => {
           fireEvent.submit(passwordInput);
         });
-        expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.loginUser(credentials));
+        expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.loginUser(dataToPass));
 
         expect(store.dispatch).toHaveBeenCalledTimes(3);
       });
@@ -114,7 +113,7 @@ describe('<Login />', () => {
 
         const emailInput = screen.getByTestId('Login-email');
 
-        const credentials = {
+        const dataToPass = {
           email: testEmail,
           password: '',
         };
@@ -124,11 +123,9 @@ describe('<Login />', () => {
         });
         expect(emailInput.value).toEqual(testEmail);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
-        expect(store.dispatch).toHaveBeenCalledWith(actions.loginUser(credentials));
+        expect(store.dispatch).toHaveBeenCalledWith(actions.loginUser(dataToPass));
       });
 
       it('should call loginUser() with given password and empty email', async () => {
@@ -136,7 +133,7 @@ describe('<Login />', () => {
 
         const passwordInput = screen.getByTestId('Login-password');
 
-        const credentials = {
+        const dataToPass = {
           email: '',
           password: testPassword,
         };
@@ -146,20 +143,16 @@ describe('<Login />', () => {
         });
         expect(passwordInput.value).toEqual(testPassword);
 
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
 
-        expect(store.dispatch).toHaveBeenCalledWith(actions.loginUser(credentials));
+        expect(store.dispatch).toHaveBeenCalledWith(actions.loginUser(dataToPass));
       });
     });
 
-    describe('unsuccessful', () => {
+    describe('should NOT call', () => {
       it('should NOT call loginUser() if both inputs are empty', async () => {
         const { store, container } = setUp();
-        await waitFor(() => {
-          fireEvent.click(container.querySelector('button[type="submit"]'));
-        });
+        await clickAtSubmitButton(container);
         expect(store.dispatch).not.toHaveBeenCalled();
       });
     });
