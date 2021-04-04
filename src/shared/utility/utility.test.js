@@ -268,20 +268,20 @@ describe('isValidFileType()', () => {
 
 describe('calculateFileSize()', () => {
   it('should return value in bytes if size is lower than 1024', () => {
-    expect(utility.calculateFileSize(1023)).toEqual('1023 bytes');
+    expect(utility.calculateFileSize(1023)).toEqual('1023 B');
   });
 
   it('should return value in KB if size is between 1023 and 1048576', () => {
-    expect(utility.calculateFileSize(1024)).toEqual('1KB');
-    expect(utility.calculateFileSize(22222)).toEqual('21.7KB');
-    expect(utility.calculateFileSize(800000)).toEqual('781.3KB');
-    expect(utility.calculateFileSize(1048575)).toEqual('1024KB');
+    expect(utility.calculateFileSize(1024)).toEqual('1 KB');
+    expect(utility.calculateFileSize(22222)).toEqual('21,7 KB');
+    expect(utility.calculateFileSize(800000)).toEqual('781,25 KB');
+    expect(utility.calculateFileSize(1048570)).toEqual('1023,99 KB');
   });
 
   it('should return value in MB if size is at least 1048576', () => {
-    expect(utility.calculateFileSize(1048576)).toEqual('1MB');
-    expect(utility.calculateFileSize(2222222)).toEqual('2.1MB');
-    expect(utility.calculateFileSize(5675432)).toEqual('5.4MB');
+    expect(utility.calculateFileSize(1048576)).toEqual('1 MB');
+    expect(utility.calculateFileSize(2222222)).toEqual('2,12 MB');
+    expect(utility.calculateFileSize(5675432)).toEqual('5,41 MB');
   });
 });
 

@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddProduct /> Check how renders should render everything correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hYjfqi"
+  >
+    <h3
+      class="sc-iBPRYJ kqmSLn"
+    >
+      Add product for sale
+    </h3>
+    <form
+      action="#"
+      class="formik-form"
+    >
+      <div
+        class="sc-fubCfw drZTsR"
+        type="text"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="name"
+        >
+          Name
+        </label>
+        <input
+          autocomplete="off"
+          class="sc-pFZIQ fjonmB"
+          data-testid="AddProduct-name"
+          id="name"
+          name="name"
+          placeholder="Name of the product (up to 150 characters)"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-crrsfI YLswv"
+      >
+        <div
+          class="sc-fubCfw drZTsR"
+          type="number"
+        >
+          <label
+            class="sc-jrAGrp bkXExJ"
+            for="price"
+          >
+            Price ($)
+          </label>
+          <input
+            autocomplete="off"
+            class="sc-pFZIQ fjonmB"
+            data-testid="AddProduct-price"
+            id="price"
+            max="1000000"
+            min="0.01"
+            name="price"
+            placeholder="Price of the product"
+            step=".01"
+            type="number"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-fubCfw drZTsR"
+          type="number"
+        >
+          <label
+            class="sc-jrAGrp bkXExJ"
+            for="quantity"
+          >
+            Quantity
+          </label>
+          <input
+            class="sc-pFZIQ fjonmB"
+            data-testid="AddProduct-quantity"
+            id="quantity"
+            max="1000000"
+            min="1"
+            name="quantity"
+            placeholder="Quantity you want to sell"
+            type="number"
+            value="1"
+          />
+        </div>
+      </div>
+      <div
+        class="sc-fubCfw drZTsR"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+        >
+          Condition
+        </label>
+        <div
+          class="sc-kEjbxe byHhTc"
+        >
+          <input
+            class="sc-pFZIQ fjonmB"
+            data-testid="AddProduct-condition-new"
+            id="new"
+            label="new"
+            name="condition"
+            type="radio"
+            value="new"
+          />
+          <label
+            for="new"
+          >
+            new
+          </label>
+        </div>
+        <div
+          class="sc-kEjbxe byHhTc"
+        >
+          <input
+            class="sc-pFZIQ fjonmB"
+            data-testid="AddProduct-condition-used"
+            id="used"
+            label="used"
+            name="condition"
+            type="radio"
+            value="used"
+          />
+          <label
+            for="used"
+          >
+            used
+          </label>
+        </div>
+        <div
+          class="sc-kEjbxe lbZuO"
+        >
+          <input
+            checked=""
+            class="sc-pFZIQ fjonmB"
+            data-testid="AddProduct-condition-not-applicable"
+            id="not_applicable"
+            label="not applicable"
+            name="condition"
+            type="radio"
+            value="not_applicable"
+          />
+          <label
+            for="not_applicable"
+          >
+            not applicable
+          </label>
+        </div>
+      </div>
+      <div
+        class="sc-fubCfw drZTsR"
+      >
+        <label
+          class="sc-jrAGrp bkXExJ"
+          for="description"
+        >
+          Description
+        </label>
+        <textarea
+          class="textarea"
+          data-testid="AddProduct-description"
+          id="description"
+          name="description"
+          placeholder="Describe your product (up to 800 characters)"
+        />
+      </div>
+      <div
+        class="sc-iqHYGH dfaNMv"
+      >
+        <div
+          class="sc-gKsewC RnYls"
+          direction="row"
+          spacing="3"
+          width="100%"
+          wrap="nowrap"
+        >
+          <label
+            class="label"
+            for="photo"
+          >
+            <button
+              class="sc-gsTCUz fUKWKF"
+              color="blue"
+              type="button"
+            >
+              Upload photo
+            </button>
+          </label>
+        </div>
+        <span
+          class="sc-eCssSg gXddCR"
+          color=""
+          display="inline-block"
+          overflow="visible"
+          size="2"
+          spacing="0px"
+          transform=""
+        >
+          Photo is optional. Max size is 6 MB. Available extensions are JPG and PNG
+        </span>
+        <input
+          class="input"
+          data-testid="UploadPhoto-input"
+          id="photo"
+          name="photo"
+          type="file"
+        />
+      </div>
+      <div
+        class="sc-gKsewC dLOeOj"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <span
+          class="sc-eCssSg gABWUT"
+          color=""
+          display="block"
+          overflow="visible"
+          spacing="0px"
+          transform=""
+        >
+          <button
+            class="sc-gsTCUz cpcmUx"
+            color="blue"
+            type="button"
+          >
+            cancel
+          </button>
+        </span>
+        <button
+          class="sc-gsTCUz kaTXms"
+          color="blue"
+          data-testid="Form-submit-btn"
+          disabled=""
+          type="submit"
+        >
+          Add an offer
+        </button>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

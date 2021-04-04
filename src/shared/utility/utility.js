@@ -1,6 +1,7 @@
 import queryString from 'query-string';
 import moment from 'moment';
 import roundTo from 'round-to';
+import filesize from 'filesize';
 import { listOfAreaCodes, defaultErrorMessage } from '../constants';
 
 export const getPhonePrefixAndNumber = (phone) => {
@@ -48,24 +49,7 @@ const fileTypes = ['image/jpeg', 'image/png'];
 export const isValidFileType = (type) => fileTypes.includes(type);
 
 export const calculateFileSize = (size) => {
-  if (size < 1024) {
-    return `${size} bytes`;
-  }
-  if (size >= 1024 && size < 1048576) {
-    let calculatedSize = `${(size / 1024).toFixed(1)}`;
-    if (calculatedSize.endsWith('.0')) {
-      calculatedSize = calculatedSize.slice(0, -2);
-    }
-    return `${calculatedSize}KB`;
-  }
-  if (size >= 1048576) {
-    let calculatedSize = `${(size / 1048576).toFixed(1)}`;
-    if (calculatedSize.endsWith('.0')) {
-      calculatedSize = calculatedSize.slice(0, -2);
-    }
-    return `${calculatedSize}MB`;
-  }
-  return ``;
+  return filesize(size, { separator: ',', round: 2 });
 };
 
 export const getParamsWithoutPollution = (search) => {
@@ -117,3 +101,21 @@ export const validateURL = (url) => {
   const parsed = new URL(url);
   return ['https:', 'http:'].includes(parsed.protocol);
 };
+
+function MockFile() {}
+MockFile.prototype.create = (name = 'mock.png', size = 1024, mimeType = 'image/png') => {
+  const range = (count) => {
+    let output = '';
+    for (let i = 0; i < count; i += 1) {
+      output += 'a';
+    }
+    return output;
+  };
+
+  const blob = new Blob([range(size)], { type: mimeType });
+  blob.lastModifiedDate = new Date();
+  blob.name = name;
+
+  return blob;
+};
+export const mockFile = new MockFile();

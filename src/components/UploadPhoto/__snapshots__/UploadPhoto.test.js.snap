@@ -1,0 +1,510 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UploadPhoto /> Check how renders default view should render default view after deleting current photo 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+    </div>
+    <span
+      class="sc-eCssSg gXddCR"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="2"
+      spacing="0px"
+      transform=""
+    >
+      Photo is optional. Max size is 6 MB. Available extensions are JPG and PNG
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> Check how renders default view should render default view when files field has 0 length 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+    </div>
+    <span
+      class="sc-eCssSg gXddCR"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="2"
+      spacing="0px"
+      transform=""
+    >
+      Photo is optional. Max size is 6 MB. Available extensions are JPG and PNG
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> Check how renders should render default view when hasCurrentPhoto is false 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+    </div>
+    <span
+      class="sc-eCssSg gXddCR"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="2"
+      spacing="0px"
+      transform=""
+    >
+      Photo is optional. Max size is 6 MB. Available extensions are JPG and PNG
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> Check how renders should render with delete current button when hasCurrentPhoto is true 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="sc-gsTCUz jXcazB"
+        color="red"
+        type="button"
+      >
+        Delete current
+      </button>
+    </div>
+    <span
+      class="sc-eCssSg gXddCR"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="2"
+      spacing="0px"
+      transform=""
+    >
+      Photo is optional. Max size is 6 MB. Available extensions are JPG and PNG
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> Check how renders show errors should render delete button and info when error appeared and then photo is uploaded correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="sc-gsTCUz jXcazB"
+        color="red"
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      class="sc-gKsewC eJjdRD"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-eCssSg fwHiXJ"
+        color=""
+        display="inline-block"
+        overflow="hidden"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Name: boots.png
+      </span>
+      <span
+        class="sc-eCssSg gTHaLR"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Size: 6 MB
+      </span>
+    </div>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> Check how renders show errors should render with error when size is too big 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="sc-gsTCUz jXcazB"
+        color="red"
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      class="sc-gKsewC eJjdRD"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-eCssSg fwHiXJ"
+        color=""
+        display="inline-block"
+        overflow="hidden"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Name: boots.png
+      </span>
+      <span
+        class="sc-eCssSg gTHaLR"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Size: 6,1 MB
+      </span>
+    </div>
+    <span
+      class="sc-eCssSg iNydNf"
+      color="#F22613"
+      display="inline-block"
+      overflow="visible"
+      size="1"
+      spacing="0px"
+      transform=""
+    >
+      Maximum available size is 6 MB
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> Check how renders show errors should render with error, delete button and file info when image type is incorrect 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="sc-gsTCUz jXcazB"
+        color="red"
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      class="sc-gKsewC eJjdRD"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-eCssSg fwHiXJ"
+        color=""
+        display="inline-block"
+        overflow="hidden"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Name: boots.svg
+      </span>
+      <span
+        class="sc-eCssSg gTHaLR"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Size: 6 MB
+      </span>
+    </div>
+    <span
+      class="sc-eCssSg iNydNf"
+      color="#F22613"
+      display="inline-block"
+      overflow="visible"
+      size="1"
+      spacing="0px"
+      transform=""
+    >
+      File extension is not valid (JPG and PNG only)
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> Check how renders successful upload should render delete button and info when photo is uploaded 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hafmfB"
+  >
+    <div
+      class="sc-gKsewC RnYls"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="sc-gsTCUz fUKWKF"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="sc-gsTCUz jXcazB"
+        color="red"
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      class="sc-gKsewC eJjdRD"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="sc-eCssSg fwHiXJ"
+        color=""
+        display="inline-block"
+        overflow="hidden"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Name: boots.jpg
+      </span>
+      <span
+        class="sc-eCssSg gTHaLR"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Size: 6 MB
+      </span>
+    </div>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;

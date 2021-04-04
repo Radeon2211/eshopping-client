@@ -24,9 +24,9 @@ export const userRules = {
     .trim()
     .required(),
   hidePhone: Yup.bool(),
-  street: Yup.string().max(60).required(),
+  street: Yup.string().max(60).trim().required(),
   zipCode: Yup.string().max(12).trim().required(),
-  city: Yup.string().max(100).required(),
+  city: Yup.string().max(100).trim().required(),
   country: Yup.object()
     .shape({
       value: Yup.string().required(),
@@ -36,11 +36,19 @@ export const userRules = {
     .required(),
 };
 
+export const productConditions = {
+  NEW: 'new',
+  USED: 'used',
+  NOT_APPLICABLE: 'not_applicable',
+};
+
 export const productRules = {
   name: Yup.string().max(150).trim().required(),
-  price: Yup.number().moreThan(0).max(1000000).required(),
+  price: Yup.number().min(0.01).max(1000000).required(),
   quantity: Yup.number().min(1).max(100000).required(),
-  condition: Yup.string().required(),
+  condition: Yup.string()
+    .oneOf([productConditions.NEW, productConditions.USED, productConditions.NOT_APPLICABLE])
+    .required(),
   description: Yup.string().max(600).trim(),
 };
 
@@ -70,12 +78,6 @@ export const itemTypes = {
   CART: 'CART',
   ORDER: 'ORDER',
   TRANSACTION: 'TRANSACTION',
-};
-
-export const productConditions = {
-  NEW: 'new',
-  USED: 'used',
-  NOT_APPLICABLE: 'not_applicable',
 };
 
 export const listItemTypes = {

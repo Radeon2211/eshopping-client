@@ -3,12 +3,12 @@ import { useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/indexActions';
-import Form from '../UI/Form/Form';
-import Input from '../UI/Input/Input';
-import UploadPhoto from '../UploadPhoto/UploadPhoto';
-import SideBySide from '../UI/SideBySide';
-import { inputKinds, productRules, productConditions } from '../../shared/constants';
+import * as actions from '../../../store/actions/indexActions';
+import Form from '../../UI/Form/Form';
+import Input from '../../UI/Input/Input';
+import UploadPhoto from '../../UploadPhoto/UploadPhoto';
+import SideBySide from '../../UI/SideBySide';
+import { inputKinds, productRules, productConditions } from '../../../shared/constants';
 
 const validationSchema = Yup.object({
   name: productRules.name,
@@ -31,7 +31,7 @@ const AddProduct = () => {
     <Formik
       initialValues={{
         name: '',
-        price: 0,
+        price: '',
         quantity: 1,
         condition: productConditions.NOT_APPLICABLE,
         description: '',
@@ -59,6 +59,7 @@ const AddProduct = () => {
               autoComplete: 'off',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'name', true, true),
+              'data-testid': 'AddProduct-name',
             }}
             label="Name"
             isValid={!errors.name}
@@ -73,10 +74,11 @@ const AddProduct = () => {
                 id: 'price',
                 placeholder: 'Price of the product',
                 autoComplete: 'off',
-                min: 0,
+                min: 0.01,
                 max: 1000000,
                 step: '.01',
                 onInput: setFieldTouched.bind(this, 'price', true, true),
+                'data-testid': 'AddProduct-price',
               }}
               label="Price ($)"
               isValid={!errors.price}
@@ -92,6 +94,7 @@ const AddProduct = () => {
                 min: 1,
                 max: 1000000,
                 onInput: setFieldTouched.bind(this, 'quantity', true, true),
+                'data-testid': 'AddProduct-quantity',
               }}
               label="Quantity"
               isValid={!errors.quantity}
@@ -109,18 +112,21 @@ const AddProduct = () => {
                   id: productConditions.NEW,
                   checked: values.condition === productConditions.NEW,
                   label: productConditions.NEW,
+                  'data-testid': 'AddProduct-condition-new',
                 },
                 {
                   value: productConditions.USED,
                   id: productConditions.USED,
                   checked: values.condition === productConditions.USED,
                   label: productConditions.USED,
+                  'data-testid': 'AddProduct-condition-used',
                 },
                 {
                   value: productConditions.NOT_APPLICABLE,
                   id: productConditions.NOT_APPLICABLE,
                   checked: values.condition === productConditions.NOT_APPLICABLE,
                   label: 'not applicable',
+                  'data-testid': 'AddProduct-condition-not-applicable',
                 },
               ],
             }}
@@ -134,6 +140,7 @@ const AddProduct = () => {
               placeholder: 'Describe your product (up to 800 characters)',
               onInput: setFieldTouched.bind(this, 'description', true, true),
               maxRows: 6,
+              'data-testid': 'AddProduct-description',
             }}
             label="Description"
             isValid={!errors.description}

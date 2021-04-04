@@ -10,7 +10,7 @@ import MyIcon from '../MyIcon';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import { ReactComponent as PlusIcon } from '../../../images/icons/plus.svg';
 import AboutWebsite from '../../ModalContents/AboutWebsite/AboutWebsite';
-import AddProduct from '../../ModalContents/AddProduct';
+import AddProduct from '../../ModalContents/AddProduct/AddProduct';
 import AddAdmin from '../../ModalContents/AddAdmin/AddAdmin';
 import BuyProducts from '../../ModalContents/BuyProducts/BuyProducts';
 import CartItemAdded from '../../ModalContents/CartItemAdded/CartItemAdded';
@@ -24,7 +24,7 @@ import ChangeDeliveryAddress from '../../ModalContents/ChangeDeliveryAddress/Cha
 import ClearCart from '../../ModalContents/ClearCart/ClearCart';
 import DeleteAccount from '../../ModalContents/DeleteAccount/DeleteAccount';
 import DeleteProduct from '../../ModalContents/DeleteProduct/DeleteProduct';
-import EditProduct from '../../ModalContents/EditProduct';
+import EditProduct from '../../ModalContents/EditProduct/EditProduct';
 import Login from '../../ModalContents/Login/Login';
 import RemoveAdmin from '../../ModalContents/RemoveAdmin/RemoveAdmin';
 import ResetPassword from '../../ModalContents/ResetPassword/ResetPassword';

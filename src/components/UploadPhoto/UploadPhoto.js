@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
@@ -8,8 +7,8 @@ import FlexWrapper from '../UI/FlexWrapper';
 import PlainText from '../UI/PlainText';
 import theme from '../../styled/theme';
 
-const PRODUCT_PHOTO_MAX_SIZE = 6291456;
-const PRODUCT_PHOTO_MAX_SIZE_STRING = calculateFileSize(PRODUCT_PHOTO_MAX_SIZE);
+const productPhotoMaxSize = 6291456;
+const productPhotoMaxSizeString = calculateFileSize(productPhotoMaxSize);
 
 const UploadPhoto = (props) => {
   const { setFieldValue, hasCurrentPhoto } = props;
@@ -33,7 +32,7 @@ const UploadPhoto = (props) => {
     setFieldValue('photo', 'DELETED');
   };
 
-  const inputChangedHandler = async (e) => {
+  const inputChangeHandle = (e) => {
     const { files } = e.target;
     if (!files.length > 0) {
       resetState();
@@ -50,10 +49,10 @@ const UploadPhoto = (props) => {
       setError('File extension is not valid (JPG and PNG only)');
       return;
     }
-    setError(null);
+    setError('');
 
-    if (file.size > PRODUCT_PHOTO_MAX_SIZE) {
-      setError(`Maximum available size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}`);
+    if (file.size > productPhotoMaxSize) {
+      setError(`Maximum available size is ${productPhotoMaxSizeString}`);
     }
 
     const reader = new FileReader();
@@ -65,7 +64,7 @@ const UploadPhoto = (props) => {
     };
   };
 
-  const defaultPreviewText = `Photo is optional. Max size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG`;
+  const defaultPreviewText = `Photo is optional. Max size is ${productPhotoMaxSizeString}. Available extensions are JPG and PNG`;
   let preview = (
     <PlainText size="2" mgTop="2">
       {defaultPreviewText}
@@ -124,7 +123,14 @@ const UploadPhoto = (props) => {
       </FlexWrapper>
       {preview}
       {errorNode}
-      <input type="file" id="photo" name="photo" className="input" onChange={inputChangedHandler} />
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        className="input"
+        onChange={inputChangeHandle}
+        data-testid="UploadPhoto-input"
+      />
     </SC.Wrapper>
   );
 };

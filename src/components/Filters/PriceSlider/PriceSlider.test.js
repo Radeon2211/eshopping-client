@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, wait } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import userEvent from '@testing-library/user-event';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
