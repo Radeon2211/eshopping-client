@@ -27,24 +27,8 @@ export const registerUser = (creds) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
-      const country = creds.country.value;
-      const phone = `+${creds.phonePrefix.value} ${creds.phoneNumber}`;
-      const contacts = {
-        email: !creds.hideEmail,
-        phone: !creds.hidePhone,
-      };
-      const correctCreds = {
-        ...creds,
-        country,
-        phone,
-        contacts,
-      };
-      delete correctCreds.hideEmail;
-      delete correctCreds.hidePhone;
-      delete correctCreds.phoneNumber;
-      delete correctCreds.phonePrefix;
 
-      const { data } = await axios.post('/users', correctCreds);
+      const { data } = await axios.post('/users', creds);
 
       dispatch(setProfile(data.user));
       dispatch(

@@ -27,7 +27,7 @@ exports[`<ChangeDeliveryAddress /> Check how renders should render everything co
         <input
           autocomplete="given-name"
           class="sc-pFZIQ fjonmB"
-          data-testid="ChangeDeliveryAddress-first-name"
+          data-testid="ChangeDeliveryAddress-firstName"
           id="firstName"
           name="firstName"
           placeholder="Your first name"
@@ -48,7 +48,7 @@ exports[`<ChangeDeliveryAddress /> Check how renders should render everything co
         <input
           autocomplete="family-name"
           class="sc-pFZIQ fjonmB"
-          data-testid="ChangeDeliveryAddress-last-name"
+          data-testid="ChangeDeliveryAddress-lastName"
           id="lastName"
           name="lastName"
           placeholder="Your last name"
@@ -93,7 +93,7 @@ exports[`<ChangeDeliveryAddress /> Check how renders should render everything co
           <input
             autocomplete="postal-code"
             class="sc-pFZIQ fjonmB"
-            data-testid="ChangeDeliveryAddress-zip-code"
+            data-testid="ChangeDeliveryAddress-zipCode"
             id="zipCode"
             name="zipCode"
             placeholder="Your zip code"
@@ -313,7 +313,7 @@ exports[`<ChangeDeliveryAddress /> Check how renders should render everything co
           <input
             autocomplete="tel-national"
             class="sc-pFZIQ fjonmB"
-            data-testid="ChangeDeliveryAddress-phone-number"
+            data-testid="ChangeDeliveryAddress-phoneNumber"
             id="phoneNumber"
             name="phoneNumber"
             placeholder="Your phone number"

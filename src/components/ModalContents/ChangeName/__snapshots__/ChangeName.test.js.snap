@@ -27,7 +27,7 @@ exports[`<ChangeName /> Check how renders should render everything correctly 1`]
         <input
           autocomplete="given-name"
           class="sc-pFZIQ fjonmB"
-          data-testid="ChangeName-first-name"
+          data-testid="ChangeName-firstName"
           id="firstName"
           name="firstName"
           placeholder="Your first name"
@@ -48,7 +48,7 @@ exports[`<ChangeName /> Check how renders should render everything correctly 1`]
         <input
           autocomplete="family-name"
           class="sc-pFZIQ fjonmB"
-          data-testid="ChangeName-last-name"
+          data-testid="ChangeName-lastName"
           id="lastName"
           name="lastName"
           placeholder="Your last name"

@@ -75,7 +75,7 @@ describe('<ChangeAddress />', () => {
     it('should have values from state in inputs and focus on street input by default', () => {
       setUp();
       const streetInput = screen.getByTestId('ChangeAddress-street');
-      const zipCodeInput = screen.getByTestId('ChangeAddress-zip-code');
+      const zipCodeInput = screen.getByTestId('ChangeAddress-zipCode');
       const cityInput = screen.getByTestId('ChangeAddress-city');
       expect(streetInput).toHaveFocus();
       expect(streetInput.value).toEqual(oldStreet);
@@ -91,7 +91,7 @@ describe('<ChangeAddress />', () => {
         const { store, container } = setUp();
 
         const streetInput = screen.getByTestId('ChangeAddress-street');
-        const zipCodeInput = screen.getByTestId('ChangeAddress-zip-code');
+        const zipCodeInput = screen.getByTestId('ChangeAddress-zipCode');
         const cityInput = screen.getByTestId('ChangeAddress-city');
 
         const dataToPass = {
@@ -184,7 +184,7 @@ describe('<ChangeAddress />', () => {
         it('should call updateUser() with changed zipCode only', async () => {
           const { store, container } = setUp();
 
-          const zipCodeInput = screen.getByTestId('ChangeAddress-zip-code');
+          const zipCodeInput = screen.getByTestId('ChangeAddress-zipCode');
           const dataToPass = {
             zipCode: defaultNewZipCode,
           };
@@ -266,7 +266,7 @@ describe('<ChangeAddress />', () => {
 
         it('should NOT call updateUser() if zipCode input is empty', async () => {
           const { store, container } = setUp();
-          const zipCodeInput = screen.getByTestId('ChangeAddress-zip-code');
+          const zipCodeInput = screen.getByTestId('ChangeAddress-zipCode');
 
           await waitFor(() => {
             fireEvent.change(zipCodeInput, { target: { value: '' } });
@@ -314,7 +314,7 @@ describe('<ChangeAddress />', () => {
 
         it('should NOT call updateUser() if zipCode is too long', async () => {
           const { store, container } = setUp();
-          const zipCodeInput = screen.getByTestId('ChangeAddress-zip-code');
+          const zipCodeInput = screen.getByTestId('ChangeAddress-zipCode');
 
           let newZipCode = '';
           for (let i = 1; i <= 13; i += 1) {

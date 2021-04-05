@@ -69,7 +69,7 @@ const ChangePhoneNumber = () => {
                 autoComplete: 'tel-national',
                 autoFocus: true,
                 onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
-                'data-testid': 'ChangePhoneNumber-phone-number',
+                'data-testid': 'ChangePhoneNumber-phoneNumber',
               }}
               label="Phone number"
               isValid={!errors.phoneNumber}

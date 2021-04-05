@@ -51,7 +51,7 @@ exports[`<ChangeAddress /> Check how renders should render everything correctly 
           <input
             autocomplete="postal-code"
             class="sc-pFZIQ fjonmB"
-            data-testid="ChangeAddress-zip-code"
+            data-testid="ChangeAddress-zipCode"
             id="zipCode"
             name="zipCode"
             placeholder="Your zip code"

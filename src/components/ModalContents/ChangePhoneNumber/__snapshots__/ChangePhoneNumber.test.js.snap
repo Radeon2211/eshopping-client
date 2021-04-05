@@ -117,7 +117,7 @@ exports[`<ChangePhoneNumber /> Check how renders should render everything correc
           <input
             autocomplete="tel-national"
             class="sc-pFZIQ fjonmB"
-            data-testid="ChangePhoneNumber-phone-number"
+            data-testid="ChangePhoneNumber-phoneNumber"
             id="phoneNumber"
             name="phoneNumber"
             placeholder="Your phone number (numbers, dashes)"

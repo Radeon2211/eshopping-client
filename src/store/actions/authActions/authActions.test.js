@@ -76,17 +76,12 @@ describe('Async functions', () => {
       street: 'Nowakowska 11',
       zipCode: '12-345',
       city: 'Grunwald',
-      country: {
-        value: 'Poland',
-        label: 'Poland',
+      country: 'Poland',
+      phone: '+48 123456789',
+      contacts: {
+        email: false,
+        phone: true,
       },
-      phoneNumber: '123456789',
-      phonePrefix: {
-        value: '48',
-        label: '+48 Poland',
-      },
-      hideEmail: true,
-      hidePhone: false,
     };
 
     const expectedDeliveryAddress = {

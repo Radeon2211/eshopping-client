@@ -53,7 +53,7 @@ const ChangeName = () => {
               autoComplete: 'given-name',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'firstName', true, true),
-              'data-testid': 'ChangeName-first-name',
+              'data-testid': 'ChangeName-firstName',
             }}
             label="First name"
             isValid={!errors.firstName}
@@ -68,7 +68,7 @@ const ChangeName = () => {
               placeholder: 'Your last name',
               autoComplete: 'family-name',
               onInput: setFieldTouched.bind(this, 'lastName', true, true),
-              'data-testid': 'ChangeName-last-name',
+              'data-testid': 'ChangeName-lastName',
             }}
             label="Last name"
             isValid={!errors.lastName}

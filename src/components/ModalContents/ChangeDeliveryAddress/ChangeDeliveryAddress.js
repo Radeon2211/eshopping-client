@@ -104,7 +104,7 @@ const ChangeDeliveryAddress = () => {
                 autoComplete: 'given-name',
                 autoFocus: true,
                 onInput: setFieldTouched.bind(this, 'firstName', true, true),
-                'data-testid': 'ChangeDeliveryAddress-first-name',
+                'data-testid': 'ChangeDeliveryAddress-firstName',
               }}
               label="First name"
               isValid={!errors.firstName}
@@ -119,7 +119,7 @@ const ChangeDeliveryAddress = () => {
                 placeholder: 'Your last name',
                 autoComplete: 'family-name',
                 onInput: setFieldTouched.bind(this, 'lastName', true, true),
-                'data-testid': 'ChangeDeliveryAddress-last-name',
+                'data-testid': 'ChangeDeliveryAddress-lastName',
               }}
               label="Last name"
               isValid={!errors.lastName}
@@ -150,7 +150,7 @@ const ChangeDeliveryAddress = () => {
                   placeholder: 'Your zip code',
                   autoComplete: 'postal-code',
                   onInput: setFieldTouched.bind(this, 'zipCode', true, true),
-                  'data-testid': 'ChangeDeliveryAddress-zip-code',
+                  'data-testid': 'ChangeDeliveryAddress-zipCode',
                 }}
                 label="Zip code"
                 isValid={!errors.zipCode}
@@ -210,7 +210,7 @@ const ChangeDeliveryAddress = () => {
                   placeholder: 'Your phone number',
                   autoComplete: 'tel-national',
                   onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
-                  'data-testid': 'ChangeDeliveryAddress-phone-number',
+                  'data-testid': 'ChangeDeliveryAddress-phoneNumber',
                 }}
                 label="Phone number"
                 isValid={!errors.phoneNumber}

@@ -58,7 +58,23 @@ const Signup = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(data) => {
-          onRegisterUser(data);
+          const country = data.country.value;
+          const phone = `+${data.phonePrefix.value} ${data.phoneNumber}`;
+          const contacts = {
+            email: !data.hideEmail,
+            phone: !data.hidePhone,
+          };
+          const correctData = {
+            ...data,
+            country,
+            phone,
+            contacts,
+          };
+          delete correctData.hideEmail;
+          delete correctData.hidePhone;
+          delete correctData.phoneNumber;
+          delete correctData.phonePrefix;
+          onRegisterUser(correctData);
         }}
       >
         {({ errors, touched, setFieldTouched, setFieldValue, values }) => (
@@ -68,7 +84,7 @@ const Signup = () => {
               errors={errors}
               values={values}
               touched={touched}
-              currentStep={currentStep}
+              isVisible={currentStep === 1}
               setFieldTouched={setFieldTouched}
             />
             <Step2
@@ -77,7 +93,7 @@ const Signup = () => {
               errors={errors}
               values={values}
               touched={touched}
-              currentStep={currentStep}
+              isVisible={currentStep === 2}
               setFieldTouched={setFieldTouched}
               setFieldValue={setFieldValue}
             />
@@ -85,10 +101,10 @@ const Signup = () => {
               goToPrevStep={goToPrevStep}
               errors={errors}
               touched={touched}
-              currentStep={currentStep}
+              isVisible={currentStep === 3}
               setFieldTouched={setFieldTouched}
               setFieldValue={setFieldValue}
-              formValues={values}
+              values={values}
             />
           </Form>
         )}

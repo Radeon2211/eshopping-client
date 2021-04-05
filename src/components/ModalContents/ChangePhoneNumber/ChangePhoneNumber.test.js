@@ -68,7 +68,7 @@ describe('<ChangePhoneNumber />', () => {
 
     it('should have values from state in inputs and focus on phoneNumber input by default', () => {
       setUp();
-      const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phone-number');
+      const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phoneNumber');
       expect(phoneNumberInput).toHaveFocus();
       expect(phoneNumberInput.value).toEqual(oldPhoneNumber);
       expect(screen.getByText(oldPhonePrefixLabel)).toBeInTheDocument();
@@ -78,7 +78,7 @@ describe('<ChangePhoneNumber />', () => {
       it('should call updateUser() with given values after input submit and button click', async () => {
         const { store, container } = setUp();
 
-        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phone-number');
+        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phoneNumber');
 
         const dataToPass = {
           phone: defaultNewPhone,
@@ -122,7 +122,7 @@ describe('<ChangePhoneNumber />', () => {
       it('should call updateUser() with changed phoneNumber only', async () => {
         const { store, container } = setUp();
 
-        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phone-number');
+        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phoneNumber');
 
         const dataToPass = {
           phone: `${oldPhonePrefix} ${defaultNewPhoneNumber}`,
@@ -167,7 +167,7 @@ describe('<ChangePhoneNumber />', () => {
       it('should NOT call updateUser() if phoneNumber is too short', async () => {
         const { store, container } = setUp();
 
-        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phone-number');
+        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phoneNumber');
         const newPhoneNumber = '1234';
 
         await waitFor(() => {
@@ -183,7 +183,7 @@ describe('<ChangePhoneNumber />', () => {
       it('should NOT call updateUser() if phoneNumber is too long', async () => {
         const { store, container } = setUp();
 
-        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phone-number');
+        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phoneNumber');
         const newPhoneNumber = '123-456-789-123-2';
 
         await waitFor(() => {
@@ -199,7 +199,7 @@ describe('<ChangePhoneNumber />', () => {
       it('should NOT call updateUser() if phoneNumber also has other characters than numbers and dashes', async () => {
         const { store, container } = setUp();
 
-        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phone-number');
+        const phoneNumberInput = screen.getByTestId('ChangePhoneNumber-phoneNumber');
         const newPhoneNumber = '123 456 789';
 
         await waitFor(() => {

@@ -9,7 +9,7 @@ import { stepFormVariants } from '../Signup.sc';
 import { inputKinds } from '../../../../shared/constants';
 
 const Step1 = (props) => {
-  const { currentStep, goToNextStep, errors, values, touched, setFieldTouched } = props;
+  const { isVisible, goToNextStep, errors, values, touched, setFieldTouched } = props;
 
   let btnDisabled = false;
   if (
@@ -25,8 +25,14 @@ const Step1 = (props) => {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      {currentStep === 1 && (
-        <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
+      {isVisible && (
+        <SC.Step
+          variants={stepFormVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          data-testid="Step1"
+        >
           <Input
             kind={inputKinds.INPUT}
             config={{
@@ -37,6 +43,7 @@ const Step1 = (props) => {
               autoComplete: 'email',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'email', true, true),
+              'data-testid': 'Step1-email',
             }}
             label="Email"
             isValid={!errors.email}
@@ -61,6 +68,7 @@ const Step1 = (props) => {
               name: 'hideEmail',
               id: 'hideEmail',
               checked: values.hideEmail,
+              'data-testid': 'Step1-hideEmail',
             }}
             label="Hide my email address from others"
           />
@@ -85,6 +93,7 @@ const Step1 = (props) => {
               placeholder: 'Your identifier (3-20 characters)',
               autoComplete: 'username',
               onInput: setFieldTouched.bind(this, 'username', true, true),
+              'data-testid': 'Step1-username',
             }}
             label="Username"
             isValid={!errors.username}
@@ -110,13 +119,19 @@ const Step1 = (props) => {
               placeholder: 'Secure password (7-64 characters)',
               autoComplete: 'off',
               onInput: setFieldTouched.bind(this, 'password', true, true),
+              'data-testid': 'Step1-password',
             }}
             label="Password"
             isValid={!errors.password}
             isTouched={touched.password}
           />
           <SC.Buttons buttonsNumber={1}>
-            <Button filled clicked={goToNextStep} disabled={btnDisabled}>
+            <Button
+              filled
+              clicked={goToNextStep}
+              disabled={btnDisabled}
+              data-testid="Step1-next-btn"
+            >
               Next
             </Button>
           </SC.Buttons>
@@ -127,11 +142,12 @@ const Step1 = (props) => {
 };
 
 Step1.propTypes = {
-  currentStep: PropTypes.number.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   goToNextStep: PropTypes.func.isRequired,
   errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
   touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
+  values: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default Step1;

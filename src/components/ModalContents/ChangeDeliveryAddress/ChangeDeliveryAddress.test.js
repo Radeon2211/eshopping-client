@@ -85,12 +85,12 @@ describe('<ChangeDeliveryAddress />', () => {
 
     it('should have values from state in inputs and focus on street input by default', () => {
       setUp();
-      const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-first-name');
-      const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-last-name');
+      const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-firstName');
+      const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-lastName');
       const cityInput = screen.getByTestId('ChangeDeliveryAddress-city');
       const streetInput = screen.getByTestId('ChangeDeliveryAddress-street');
-      const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zip-code');
-      const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phone-number');
+      const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zipCode');
+      const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phoneNumber');
       const onlyCurrentOrdersInput = screen.getByTestId(
         'ChangeDeliveryAddress-only-current-orders',
       );
@@ -111,12 +111,12 @@ describe('<ChangeDeliveryAddress />', () => {
       it('should call changeDeliveryAddress() with all changed values after inputs submit and button click', async () => {
         const { store, container } = setUp();
 
-        const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-first-name');
-        const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-last-name');
+        const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-firstName');
+        const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-lastName');
         const cityInput = screen.getByTestId('ChangeDeliveryAddress-city');
         const streetInput = screen.getByTestId('ChangeDeliveryAddress-street');
-        const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zip-code');
-        const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phone-number');
+        const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zipCode');
+        const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phoneNumber');
         const onlyCurrentOrdersInput = screen.getByTestId(
           'ChangeDeliveryAddress-only-current-orders',
         );
@@ -256,7 +256,7 @@ describe('<ChangeDeliveryAddress />', () => {
         it('should call changeDeliveryAddress() with changed firstName only', async () => {
           const { store, container } = setUp();
 
-          const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-first-name');
+          const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-firstName');
           const dataToPass = {
             firstName: defaultNewFirstName,
             onlyCurrentOrders: false,
@@ -275,7 +275,7 @@ describe('<ChangeDeliveryAddress />', () => {
         it('should call changeDeliveryAddress() with changed lastName only', async () => {
           const { store, container } = setUp();
 
-          const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-last-name');
+          const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-lastName');
           const dataToPass = {
             lastName: defaultNewLastName,
             onlyCurrentOrders: false,
@@ -313,7 +313,7 @@ describe('<ChangeDeliveryAddress />', () => {
         it('should call changeDeliveryAddress() with changed zipCode only', async () => {
           const { store, container } = setUp();
 
-          const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zip-code');
+          const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zipCode');
           const dataToPass = {
             zipCode: defaultNewZipCode,
             onlyCurrentOrders: false,
@@ -387,7 +387,7 @@ describe('<ChangeDeliveryAddress />', () => {
         it('should call changeDeliveryAddress() with changed phoneNumber only', async () => {
           const { store, container } = setUp();
 
-          const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phone-number');
+          const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phoneNumber');
           const dataToPass = {
             phone: `+${oldPhonePrefixValue} ${defaultNewPhoneNumber}`,
             onlyCurrentOrders: false,
@@ -432,7 +432,7 @@ describe('<ChangeDeliveryAddress />', () => {
     describe('inputs are empty', () => {
       it('should NOT call changeDeliveryAddress() if firstName input is empty', async () => {
         const { store, container } = setUp();
-        const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-first-name');
+        const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-firstName');
 
         await waitFor(() => {
           fireEvent.change(firstNameInput, { target: { value: '' } });
@@ -446,7 +446,7 @@ describe('<ChangeDeliveryAddress />', () => {
 
       it('should NOT call changeDeliveryAddress() if lastName input is empty', async () => {
         const { store, container } = setUp();
-        const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-last-name');
+        const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-lastName');
 
         await waitFor(() => {
           fireEvent.change(lastNameInput, { target: { value: '' } });
@@ -474,7 +474,7 @@ describe('<ChangeDeliveryAddress />', () => {
 
       it('should NOT call changeDeliveryAddress() if zipCode input is empty', async () => {
         const { store, container } = setUp();
-        const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zip-code');
+        const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zipCode');
 
         await waitFor(() => {
           fireEvent.change(zipCodeInput, { target: { value: '' } });
@@ -502,7 +502,7 @@ describe('<ChangeDeliveryAddress />', () => {
 
       it('should NOT call changeDeliveryAddress() if phoneNumber input is empty', async () => {
         const { store, container } = setUp();
-        const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phone-number');
+        const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phoneNumber');
 
         await waitFor(() => {
           fireEvent.change(phoneNumberInput, { target: { value: '' } });
@@ -518,7 +518,7 @@ describe('<ChangeDeliveryAddress />', () => {
     describe('values are too long or too short', () => {
       it('should NOT call changeDeliveryAddress() if firstName is too long', async () => {
         const { store, container } = setUp();
-        const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-first-name');
+        const firstNameInput = screen.getByTestId('ChangeDeliveryAddress-firstName');
 
         let newFirstName = '';
         for (let i = 1; i <= 61; i += 1) {
@@ -536,7 +536,7 @@ describe('<ChangeDeliveryAddress />', () => {
 
       it('should NOT call changeDeliveryAddress() if lastName is too long', async () => {
         const { store, container } = setUp();
-        const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-last-name');
+        const lastNameInput = screen.getByTestId('ChangeDeliveryAddress-lastName');
 
         let newLastName = '';
         for (let i = 1; i <= 81; i += 1) {
@@ -572,7 +572,7 @@ describe('<ChangeDeliveryAddress />', () => {
 
       it('should NOT call changeDeliveryAddress() if zipCode is too long', async () => {
         const { store, container } = setUp();
-        const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zip-code');
+        const zipCodeInput = screen.getByTestId('ChangeDeliveryAddress-zipCode');
 
         let newZipCode = '';
         for (let i = 1; i <= 13; i += 1) {
@@ -608,7 +608,7 @@ describe('<ChangeDeliveryAddress />', () => {
 
       it('should NOT call changeDeliveryAddress() if phoneNumber is too long or too short', async () => {
         const { store, container } = setUp();
-        const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phone-number');
+        const phoneNumberInput = screen.getByTestId('ChangeDeliveryAddress-phoneNumber');
 
         let tooShortNewPhoneNumber = '';
         for (let i = 1; i <= 4; i += 1) {

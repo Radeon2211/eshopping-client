@@ -63,8 +63,8 @@ describe('<ChangeName />', () => {
 
     it('should have values from state in inputs and focus on firstName input by default', () => {
       setUp();
-      const firstNameInput = screen.getByTestId('ChangeName-first-name');
-      const lastNameInput = screen.getByTestId('ChangeName-last-name');
+      const firstNameInput = screen.getByTestId('ChangeName-firstName');
+      const lastNameInput = screen.getByTestId('ChangeName-lastName');
       expect(firstNameInput).toHaveFocus();
       expect(firstNameInput.value).toEqual(oldFirstName);
       expect(lastNameInput.value).toEqual(oldLastName);
@@ -76,8 +76,8 @@ describe('<ChangeName />', () => {
       it('should call updateUser() with all changed values after inputs submit and button click', async () => {
         const { store, container } = setUp();
 
-        const firstNameInput = screen.getByTestId('ChangeName-first-name');
-        const lastNameInput = screen.getByTestId('ChangeName-last-name');
+        const firstNameInput = screen.getByTestId('ChangeName-firstName');
+        const lastNameInput = screen.getByTestId('ChangeName-lastName');
 
         const dataToPass = {
           firstName: defaultNewFirstName,
@@ -121,14 +121,14 @@ describe('<ChangeName />', () => {
       it('should call updateUser() with updated firstName only', async () => {
         const { store, container } = setUp();
 
-        const firstNameInput = screen.getByTestId('ChangeName-first-name');
+        const firstNameInput = screen.getByTestId('ChangeName-firstName');
 
         const dataToPass = {
           firstName: defaultNewFirstName,
         };
 
         await waitFor(() => {
-          fireEvent.change(screen.getByTestId('ChangeName-first-name'), {
+          fireEvent.change(screen.getByTestId('ChangeName-firstName'), {
             target: { value: defaultNewFirstName },
           });
         });
@@ -142,7 +142,7 @@ describe('<ChangeName />', () => {
       it('should call updateUser() with updated lastName only', async () => {
         const { store, container } = setUp();
 
-        const lastNameInput = screen.getByTestId('ChangeName-last-name');
+        const lastNameInput = screen.getByTestId('ChangeName-lastName');
 
         const dataToPass = {
           lastName: defaultNewLastName,
@@ -165,8 +165,8 @@ describe('<ChangeName />', () => {
       it('should NOT call updateUser() if both inputs are empty', async () => {
         const { store, container } = setUp();
 
-        const firstNameInput = screen.getByTestId('ChangeName-first-name');
-        const lastNameInput = screen.getByTestId('ChangeName-last-name');
+        const firstNameInput = screen.getByTestId('ChangeName-firstName');
+        const lastNameInput = screen.getByTestId('ChangeName-lastName');
 
         await waitFor(() => {
           fireEvent.change(firstNameInput, {
@@ -195,8 +195,8 @@ describe('<ChangeName />', () => {
       it('should NOT call updateUser() if firstName input is empty (lastName is changed)', async () => {
         const { store, container } = setUp();
 
-        const firstNameInput = screen.getByTestId('ChangeName-first-name');
-        const lastNameInput = screen.getByTestId('ChangeName-last-name');
+        const firstNameInput = screen.getByTestId('ChangeName-firstName');
+        const lastNameInput = screen.getByTestId('ChangeName-lastName');
 
         await waitFor(() => {
           fireEvent.change(firstNameInput, {
@@ -219,16 +219,16 @@ describe('<ChangeName />', () => {
       it('should NOT call updateUser() if lastName input is empty (firstName is changed)', async () => {
         const { store, container } = setUp();
 
-        const firstNameInput = screen.getByTestId('ChangeName-first-name');
-        const lastNameInput = screen.getByTestId('ChangeName-last-name');
+        const firstNameInput = screen.getByTestId('ChangeName-firstName');
+        const lastNameInput = screen.getByTestId('ChangeName-lastName');
 
         await waitFor(() => {
-          fireEvent.change(screen.getByTestId('ChangeName-first-name'), {
+          fireEvent.change(screen.getByTestId('ChangeName-firstName'), {
             target: { value: defaultNewFirstName },
           });
         });
         await waitFor(() => {
-          fireEvent.change(screen.getByTestId('ChangeName-last-name'), {
+          fireEvent.change(screen.getByTestId('ChangeName-lastName'), {
             target: { value: '' },
           });
         });
@@ -243,7 +243,7 @@ describe('<ChangeName />', () => {
       it('should NOT call updateUser() if firstName is too long', async () => {
         const { store, container } = setUp();
 
-        const firstNameInput = screen.getByTestId('ChangeName-first-name');
+        const firstNameInput = screen.getByTestId('ChangeName-firstName');
 
         let newFirstName = '';
         for (let i = 1; i <= 61; i += 1) {
@@ -264,7 +264,7 @@ describe('<ChangeName />', () => {
       it('should NOT call updateUser() if lastName is too long', async () => {
         const { store, container } = setUp();
 
-        const lastNameInput = screen.getByTestId('ChangeName-last-name');
+        const lastNameInput = screen.getByTestId('ChangeName-lastName');
 
         let newLastName = '';
         for (let i = 1; i <= 81; i += 1) {

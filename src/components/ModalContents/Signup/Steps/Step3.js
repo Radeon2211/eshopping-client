@@ -12,13 +12,13 @@ import { inputKinds, listOfCountries } from '../../../../shared/constants';
 
 const Step3 = (props) => {
   const {
-    currentStep,
+    isVisible,
     goToPrevStep,
     errors,
     touched,
     setFieldTouched,
     setFieldValue,
-    formValues,
+    values,
   } = props;
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -28,7 +28,7 @@ const Step3 = (props) => {
     errors.street ||
     errors.zipCode ||
     errors.city ||
-    (errors.country && !formValues.country) ||
+    (errors.country && !values.country) ||
     !touched.street ||
     !touched.zipCode ||
     !touched.city ||
@@ -39,8 +39,14 @@ const Step3 = (props) => {
 
   return (
     <AnimatePresence>
-      {currentStep === 3 && (
-        <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
+      {isVisible && (
+        <SC.Step
+          variants={stepFormVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          data-testid="Step3"
+        >
           <PlainText size="1" mgBottom="3" textAlign="justify">
             These data will be visible only to user you will place order with (and you can change it
             to specific order)
@@ -55,6 +61,7 @@ const Step3 = (props) => {
               autoComplete: 'street-address',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'street', true, true),
+              'data-testid': 'Step3-street',
             }}
             label="Street and number"
             isValid={!errors.street}
@@ -70,6 +77,7 @@ const Step3 = (props) => {
                 placeholder: 'Your zip code',
                 autoComplete: 'postal-code',
                 onInput: setFieldTouched.bind(this, 'zipCode', true, true),
+                'data-testid': 'Step3-zipCode',
               }}
               label="Zip code"
               isValid={!errors.zipCode}
@@ -84,6 +92,7 @@ const Step3 = (props) => {
                 placeholder: 'Your city',
                 autoComplete: 'address-level2',
                 onInput: setFieldTouched.bind(this, 'city', true, true),
+                'data-testid': 'Step3-city',
               }}
               label="City"
               isValid={!errors.city}
@@ -101,7 +110,7 @@ const Step3 = (props) => {
               setFieldTouched,
             }}
             label="Country"
-            isValid={Boolean(!errors.country || formValues.country)}
+            isValid={Boolean(!errors.country || values.country)}
             isTouched={touched.country}
           />
           <PlainText size="1" mgBottom="3" textAlign="justify">
@@ -110,7 +119,9 @@ const Step3 = (props) => {
             activate your account within 1 hour, account will be deleted permanently
           </PlainText>
           <SC.Buttons buttonsNumber={2}>
-            <Button clicked={goToPrevStep}>Previous</Button>
+            <Button clicked={goToPrevStep} data-testid="Step3-previous-btn">
+              Previous
+            </Button>
             <Button type="submit" filled disabled={btnDisabled || isFormLoading}>
               Finish
             </Button>
@@ -122,13 +133,13 @@ const Step3 = (props) => {
 };
 
 Step3.propTypes = {
-  currentStep: PropTypes.number.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   goToPrevStep: PropTypes.func.isRequired,
   errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
   touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
-  formValues: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  values: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default Step3;

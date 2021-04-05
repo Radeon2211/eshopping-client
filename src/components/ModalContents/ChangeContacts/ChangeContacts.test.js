@@ -63,10 +63,10 @@ describe('<ChangeContacts />', () => {
   describe('Check form', () => {
     it('should have values that correspons to state - profile.contacts', () => {
       setUp();
-      const hideEmailInput = screen.getByTestId('ChangeContacts-hideEmail');
-      const hidePhoneInput = screen.getByTestId('ChangeContacts-hidePhone');
-      expect(hideEmailInput).not.toBeChecked();
-      expect(hidePhoneInput).toBeChecked();
+      const hideEmailCheckbox = screen.getByTestId('ChangeContacts-hideEmail');
+      const hidePhoneCheckbox = screen.getByTestId('ChangeContacts-hidePhone');
+      expect(hideEmailCheckbox).not.toBeChecked();
+      expect(hidePhoneCheckbox).toBeChecked();
     });
 
     describe('should call', () => {
@@ -75,8 +75,8 @@ describe('<ChangeContacts />', () => {
       it('should call updateUser() with email false and phone true (by clicking at inputs) after inputs submits and button click', async () => {
         const { store, container } = setUp();
 
-        const hideEmailInput = screen.getByTestId('ChangeContacts-hideEmail');
-        const hidePhoneInput = screen.getByTestId('ChangeContacts-hidePhone');
+        const hideEmailCheckbox = screen.getByTestId('ChangeContacts-hideEmail');
+        const hidePhoneCheckbox = screen.getByTestId('ChangeContacts-hidePhone');
 
         const dataToPass = {
           contacts: {
@@ -86,13 +86,13 @@ describe('<ChangeContacts />', () => {
         };
 
         await waitFor(() => {
-          fireEvent.click(hideEmailInput);
+          fireEvent.click(hideEmailCheckbox);
         });
         await waitFor(() => {
-          fireEvent.click(hidePhoneInput);
+          fireEvent.click(hidePhoneCheckbox);
         });
-        expect(hideEmailInput).toBeChecked();
-        expect(hidePhoneInput).not.toBeChecked();
+        expect(hideEmailCheckbox).toBeChecked();
+        expect(hidePhoneCheckbox).not.toBeChecked();
 
         await clickAtSubmitButton(container);
         expect(store.dispatch).toHaveBeenNthCalledWith(
@@ -101,7 +101,7 @@ describe('<ChangeContacts />', () => {
         );
 
         await waitFor(() => {
-          fireEvent.submit(hideEmailInput);
+          fireEvent.submit(hideEmailCheckbox);
         });
         expect(store.dispatch).toHaveBeenNthCalledWith(
           2,
@@ -109,7 +109,7 @@ describe('<ChangeContacts />', () => {
         );
 
         await waitFor(() => {
-          fireEvent.submit(hidePhoneInput);
+          fireEvent.submit(hidePhoneCheckbox);
         });
         expect(store.dispatch).toHaveBeenNthCalledWith(
           3,
@@ -146,7 +146,7 @@ describe('<ChangeContacts />', () => {
       it('should call updateUser() with email true and phone true', async () => {
         const { store, container } = setUp();
 
-        const hideEmailInput = screen.getByTestId('ChangeContacts-hideEmail');
+        const hideEmailCheckbox = screen.getByTestId('ChangeContacts-hideEmail');
 
         const dataToPass = {
           contacts: {
@@ -156,9 +156,9 @@ describe('<ChangeContacts />', () => {
         };
 
         await waitFor(() => {
-          fireEvent.click(hideEmailInput);
+          fireEvent.click(hideEmailCheckbox);
         });
-        expect(hideEmailInput).toBeChecked();
+        expect(hideEmailCheckbox).toBeChecked();
 
         await clickAtSubmitButton(container);
 
@@ -168,7 +168,7 @@ describe('<ChangeContacts />', () => {
       it('should call updateUser() with email true and phone true', async () => {
         const { store, container } = setUp();
 
-        const hidePhoneInput = screen.getByTestId('ChangeContacts-hidePhone');
+        const hidePhoneCheckbox = screen.getByTestId('ChangeContacts-hidePhone');
 
         const dataToPass = {
           contacts: {
@@ -178,9 +178,9 @@ describe('<ChangeContacts />', () => {
         };
 
         await waitFor(() => {
-          fireEvent.click(hidePhoneInput);
+          fireEvent.click(hidePhoneCheckbox);
         });
-        expect(hidePhoneInput).not.toBeChecked();
+        expect(hidePhoneCheckbox).not.toBeChecked();
 
         await clickAtSubmitButton(container);
 

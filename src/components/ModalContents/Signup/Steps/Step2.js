@@ -11,7 +11,7 @@ import { inputKinds, listOfAreaCodes } from '../../../../shared/constants';
 
 const Step2 = (props) => {
   const {
-    currentStep,
+    isVisible,
     goToNextStep,
     goToPrevStep,
     errors,
@@ -37,8 +37,14 @@ const Step2 = (props) => {
 
   return (
     <AnimatePresence>
-      {currentStep === 2 && (
-        <SC.Step variants={stepFormVariants} initial="hidden" animate="visible" exit="hidden">
+      {isVisible && (
+        <SC.Step
+          variants={stepFormVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          data-testid="Step2"
+        >
           <Input
             kind={inputKinds.INPUT}
             config={{
@@ -49,6 +55,7 @@ const Step2 = (props) => {
               autoComplete: 'given-name',
               autoFocus: true,
               onInput: setFieldTouched.bind(this, 'firstName', true, true),
+              'data-testid': 'Step2-firstName',
             }}
             label="First name"
             isValid={!errors.firstName}
@@ -63,6 +70,7 @@ const Step2 = (props) => {
               placeholder: 'Your last name (up to 80 characters)',
               autoComplete: 'family-name',
               onInput: setFieldTouched.bind(this, 'lastName', true, true),
+              'data-testid': 'Step2-lastName',
             }}
             label="Last name"
             isValid={!errors.lastName}
@@ -104,6 +112,7 @@ const Step2 = (props) => {
                 placeholder: 'Your phone number (numbers, dashes)',
                 autoComplete: 'tel-national',
                 onInput: setFieldTouched.bind(this, 'phoneNumber', true, true),
+                'data-testid': 'Step2-phoneNumber',
               }}
               label="Phone number"
               isValid={!errors.phoneNumber}
@@ -128,6 +137,7 @@ const Step2 = (props) => {
               name: 'hidePhone',
               id: 'hidePhone',
               checked: values.hidePhone,
+              'data-testid': 'Step2-hidePhone',
             }}
             label="Hide my phone number from others"
           />
@@ -145,8 +155,15 @@ const Step2 = (props) => {
             with)
           </PlainText>
           <SC.Buttons buttonsNumber={2}>
-            <Button clicked={goToPrevStep}>Previous</Button>
-            <Button filled clicked={goToNextStep} disabled={btnDisabled}>
+            <Button clicked={goToPrevStep} data-testid="Step2-previous-btn">
+              Previous
+            </Button>
+            <Button
+              filled
+              clicked={goToNextStep}
+              disabled={btnDisabled}
+              data-testid="Step2-next-btn"
+            >
               Next
             </Button>
           </SC.Buttons>
@@ -157,13 +174,14 @@ const Step2 = (props) => {
 };
 
 Step2.propTypes = {
-  currentStep: PropTypes.number.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   goToPrevStep: PropTypes.func.isRequired,
   goToNextStep: PropTypes.func.isRequired,
   errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
   touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
+  values: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default Step2;

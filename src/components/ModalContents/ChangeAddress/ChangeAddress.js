@@ -79,7 +79,7 @@ const ChangeAddress = () => {
                 placeholder: 'Your zip code',
                 autoComplete: 'postal-code',
                 onInput: setFieldTouched.bind(this, 'zipCode', true, true),
-                'data-testid': 'ChangeAddress-zip-code',
+                'data-testid': 'ChangeAddress-zipCode',
               }}
               label="Zip code"
               isValid={!errors.zipCode}
