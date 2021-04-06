@@ -18,7 +18,7 @@ import * as productActions from './productActions';
 import * as actionTypes from '../actionTypes';
 import logoImage from '../../../images/logo.png';
 
-describe('Action creators', () => {
+describe('action creators', () => {
   describe('setProducts()', () => {
     it('should return with default values', () => {
       const expectedAction = {
@@ -79,7 +79,7 @@ describe('Action creators', () => {
   });
 });
 
-describe('Async functions', () => {
+describe('async functions', () => {
   beforeEach(() => {
     moxios.install(axios);
   });
@@ -108,7 +108,7 @@ describe('Async functions', () => {
 
     const expectedProductId = 'p1';
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful when product photo is given and path starts with /my-account/products', async () => {
         moxios.stubRequest('/products', {
           status: 200,
@@ -296,7 +296,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('should call inner dispatch three times correctly when path starts with /my-account/products', async () => {
         moxios.stubRequest('/products', {
           status: 200,
@@ -465,8 +465,8 @@ describe('Async functions', () => {
       ...editedProps,
     };
 
-    describe('Store', () => {
-      describe('Is successful', () => {
+    describe('store', () => {
+      describe('is successful', () => {
         describe('Passed with photo null', () => {
           it('should NOT call second request', async () => {
             moxios.stubRequest(`/products/${productId}`, {
@@ -725,7 +725,7 @@ describe('Async functions', () => {
         });
       });
 
-      describe('Is failed', () => {
+      describe('is failed', () => {
         it('should fail at updating product', async () => {
           moxios.stubRequest(`/products/${productId}`, {
             status: 500,
@@ -852,7 +852,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful when product should have photo false', async () => {
         moxios.stubRequest(`/products/${productId}`, {
           status: 200,
@@ -980,7 +980,7 @@ describe('Async functions', () => {
     const expectedMinPrice = 10;
     const expectedMaxPrice = 100;
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and page is ALL_PRODUCTS and page number is 1', async () => {
         moxios.stubRequest(/products.*/, {
           status: 200,
@@ -1156,7 +1156,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and response has expected products', async () => {
         moxios.stubRequest(/products.*/, {
           status: 200,
@@ -1248,7 +1248,7 @@ describe('Async functions', () => {
       id: productId,
     });
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest(`/products/${productId}`, {
           status: 200,
@@ -1328,7 +1328,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is failed due to incorrect Id', async () => {
         moxios.stubRequest(`/products/${productId}`, {
           status: 200,
@@ -1408,7 +1408,7 @@ describe('Async functions', () => {
       }),
     ];
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest(`/products/${productId}`, {
           status: 200,
@@ -1478,7 +1478,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest(`/products/${productId}`, {
           status: 200,

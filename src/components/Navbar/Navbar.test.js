@@ -17,47 +17,44 @@ const defaultStore = mockStore({
   auth: { cart: [] },
 });
 
-const setUp = (props = {}, pushFn) => {
+const setUp = (userProfile) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search: '?p=1' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
-  return render(
-    <Router history={history}>
-      <Provider store={defaultStore}>
-        <ThemeProvider theme={theme}>
-          <Navbar {...props} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={defaultStore}>
+          <ThemeProvider theme={theme}>
+            <Navbar userProfile={userProfile} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
 
 describe('<Navbar />', () => {
   it('should render <LoggedInLinks /> if user is logged in', () => {
-    const props = {
-      userProfile: defaultUserProfile,
-    };
-    const { asFragment } = setUp(props);
+    const { asFragment } = setUp(defaultUserProfile);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render <LoggedOutLinks /> if user is logged out', () => {
-    const { asFragment } = setUp();
+    const { asFragment } = setUp(null);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should call push after clicking at logo', () => {
-    const pushFn = jest.fn();
-    setUp({}, pushFn);
-
+    const { history } = setUp(null);
     fireEvent.click(screen.getByTestId('Navbar-header-link'));
-    expect(pushFn).toHaveBeenCalledWith(defaultAppPath);
-    expect(pushFn).toHaveBeenCalledTimes(1);
+    expect(history.push).toHaveBeenCalledWith(defaultAppPath);
   });
 });

@@ -61,7 +61,6 @@ const Dropdown = (props) => {
                   onKeyDown={() => onSetModal(modalTypes.ADD_PRODUCT)}
                   role="button"
                   tabIndex={0}
-                  data-testid="Dropdown-add-product-option"
                 >
                   <MyIcon size="small">
                     <AddProductIcon />
@@ -70,11 +69,7 @@ const Dropdown = (props) => {
                 </div>
               </li>
               <li className="item">
-                <Link
-                  to="/my-account/data"
-                  className="link"
-                  data-testid="Dropdown-my-account-data-link"
-                >
+                <Link to="/my-account/data" className="link">
                   <MyIcon size="small">
                     <MyAccountIcon />
                   </MyIcon>
@@ -82,11 +77,7 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link
-                  to="/my-account/products?p=1"
-                  className="link"
-                  data-testid="Dropdown-my-account-products-link"
-                >
+                <Link to="/my-account/products?p=1" className="link">
                   <MyIcon size="small">
                     <MyOffersIcon />
                   </MyIcon>
@@ -94,11 +85,7 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link
-                  to="/my-account/sell-history?p=1"
-                  className="link"
-                  data-testid="Dropdown-my-account-sell-history-link"
-                >
+                <Link to="/my-account/sell-history?p=1" className="link">
                   <MyIcon size="small">
                     <SellHistoryIcon />
                   </MyIcon>
@@ -106,11 +93,7 @@ const Dropdown = (props) => {
                 </Link>
               </li>
               <li className="item">
-                <Link
-                  to="/my-account/placed-orders?p=1"
-                  className="link"
-                  data-testid="Dropdown-my-account-placed-orders-link"
-                >
+                <Link to="/my-account/placed-orders?p=1" className="link">
                   <MyIcon size="small">
                     <PlacedOrdersIcon />
                   </MyIcon>

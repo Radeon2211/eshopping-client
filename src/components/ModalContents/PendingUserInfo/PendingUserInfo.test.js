@@ -30,14 +30,14 @@ const setUp = () => {
 afterEach(cleanup);
 
 describe('<PendingUserInfo />', () => {
-  describe('Checks how renders', () => {
+  describe('checks how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Checks behaviour after button click', () => {
+  describe('checks behaviour after button click', () => {
     it('should call setModal() after button click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();

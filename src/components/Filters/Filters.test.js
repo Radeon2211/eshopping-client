@@ -24,23 +24,26 @@ const defaultStore = mockStore({
   },
 });
 
-const setUp = (isDataLoading = false, search = '?p=1', push = jest.fn()) => {
+const setUp = (isDataLoading = false, search = '?p=1') => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search },
-    push,
+    push: jest.fn(),
   };
 
-  return render(
-    <Router history={history}>
-      <Provider store={defaultStore}>
-        <ThemeProvider theme={theme}>
-          <Filters isDataLoading={isDataLoading} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={defaultStore}>
+          <ThemeProvider theme={theme}>
+            <Filters isDataLoading={isDataLoading} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 beforeAll(() => {
@@ -60,7 +63,7 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe('<Filters />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(Filters, { isDataLoading: false })).toBeUndefined();
     });
@@ -70,7 +73,7 @@ describe('<Filters />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       act(() => {
@@ -106,7 +109,7 @@ describe('<Filters />', () => {
     });
   });
 
-  describe('Check behaviour of controls', () => {
+  describe('check behaviour of controls', () => {
     it('should condition checkboxes be checked', () => {
       setUp(
         false,
@@ -148,8 +151,7 @@ describe('<Filters />', () => {
       act(() => {
         window.resizeTo(1920, 1080);
       });
-      const pushFn = jest.fn();
-      setUp(false, '?p=1', pushFn);
+      const { history } = setUp(false, '?p=1');
 
       fireEvent.click(screen.getByTestId('Filters-checkbox-new'));
       fireEvent.click(screen.getByTestId('Filters-checkbox-used'));
@@ -164,14 +166,13 @@ describe('<Filters />', () => {
 
       fireEvent.click(screen.getByTestId('Filters-submit-btn'));
 
-      expect(pushFn).toHaveBeenCalledWith(
+      expect(history.push).toHaveBeenCalledWith(
         '/products?condition=new%2Cused&maxPrice=50&minPrice=20&p=1&sortBy=price%3Aasc',
       );
-      expect(pushFn).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe('Check filtersReducer', () => {
+  describe('check filtersReducer', () => {
     it('should return default state', () => {
       expect(filtersReducer(undefined, {})).toEqual(filtersInitialState);
     });

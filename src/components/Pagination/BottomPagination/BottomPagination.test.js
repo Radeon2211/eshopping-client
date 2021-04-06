@@ -25,8 +25,8 @@ const setUp = (props) => {
   );
 };
 
-describe('<DeliveryAddress />', () => {
-  describe('Check prop types', () => {
+describe('<BottomPagination />', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning if itemsType is product', () => {
       const expectedProps = createProps(5, listItemTypes.PRODUCT, 2);
       expect(checkProps(BottomPagination, expectedProps)).toBeUndefined();

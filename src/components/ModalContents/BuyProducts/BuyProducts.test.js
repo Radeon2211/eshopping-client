@@ -54,17 +54,16 @@ jest.mock('react-router-last-location', () => ({
 afterEach(cleanup);
 
 describe('<BuyProducts />', () => {
-  describe('Checks how renders', () => {
+  describe('checks how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Checks behaviour after buttons clicks', () => {
+  describe('checks behaviour after buttons clicks', () => {
     it('should call setModal() and buyProducts() after buttons clicks', () => {
       const { store, history } = setUp();
-
       expect(store.dispatch).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByText('Cancel'));
@@ -72,6 +71,7 @@ describe('<BuyProducts />', () => {
 
       fireEvent.click(screen.getByText('Confirm'));
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.buyProducts(history, '/cart'));
+
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
   });

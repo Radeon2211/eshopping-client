@@ -35,19 +35,17 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ClearCart />', () => {
-  describe('Checks how renders', () => {
+  describe('checks how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Checks behaviour after buttons clicks', () => {
+  describe('checks behaviour after buttons clicks', () => {
     it('should call setModal() after cancel button click', () => {
       const { store } = setUp();
-
       expect(store.dispatch).not.toHaveBeenCalled();
-
       fireEvent.click(screen.getByText('cancel'));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
@@ -60,6 +58,8 @@ describe('<ClearCart />', () => {
       fireEvent.click(screen.getByText('clear'));
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.clearCart());
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(''));
+
+      expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });

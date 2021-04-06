@@ -57,7 +57,7 @@ const CartItemAdded = () => {
           <Button color="blue" clicked={() => onSetModal('')}>
             Continue shopping
           </Button>
-          <Link to="/cart" data-testid="CartItemAdded-cart-link">
+          <Link to="/cart">
             <Button color="blue" filled clicked={() => onSetModal('')}>
               Go to cart
             </Button>

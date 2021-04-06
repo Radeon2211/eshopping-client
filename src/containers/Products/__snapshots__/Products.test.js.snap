@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Products /> Check how renders should render everything correctly with default params and two products 1`] = `
+exports[`<Products /> check how renders should render everything correctly with default params and two products 1`] = `
 <DocumentFragment>
   <h3
     class="sc-bdfBwQ hSpIvR"

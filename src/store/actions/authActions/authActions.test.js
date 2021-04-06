@@ -14,7 +14,7 @@ import * as uiActions from '../uiActions/uiActions';
 import * as authActions from './authActions';
 import * as actionTypes from '../actionTypes';
 
-describe('Action creators', () => {
+describe('action creators', () => {
   it('tests setProfile()', () => {
     const profile = {
       ...defaultUserProfile,
@@ -57,7 +57,7 @@ describe('Action creators', () => {
   });
 });
 
-describe('Async functions', () => {
+describe('async functions', () => {
   beforeEach(() => {
     moxios.install(axios);
   });
@@ -122,7 +122,7 @@ describe('Async functions', () => {
       contacts: { email: false, phone: true },
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users', {
           status: 200,
@@ -181,7 +181,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users', {
           status: 200,
@@ -233,7 +233,7 @@ describe('Async functions', () => {
       cart: [],
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/login', {
           status: 200,
@@ -320,7 +320,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/login', {
           status: 200,
@@ -390,7 +390,7 @@ describe('Async functions', () => {
       cart: [],
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -468,7 +468,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and isDifferent is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -519,7 +519,7 @@ describe('Async functions', () => {
   });
 
   describe('logoutUser()', () => {
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/logout', {
           status: 200,
@@ -573,7 +573,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/logout', {
           status: 200,
@@ -626,7 +626,7 @@ describe('Async functions', () => {
       cart: [],
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -687,7 +687,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -732,7 +732,7 @@ describe('Async functions', () => {
       currentPassword: 'Pa$$w0rd',
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/me/email', {
           status: 200,
@@ -781,7 +781,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/me/email', {
           status: 200,
@@ -827,7 +827,7 @@ describe('Async functions', () => {
       replace: replaceFn,
     });
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -888,7 +888,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -949,7 +949,7 @@ describe('Async functions', () => {
       cart: [],
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and onlyCurrentOrders is true', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -1040,7 +1040,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and onlyCurrentOrders is false', async () => {
         moxios.stubRequest('/users/me', {
           status: 200,
@@ -1116,7 +1116,7 @@ describe('Async functions', () => {
       username: otherUserUsername,
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest(`/users/${otherUserUsername}`, {
           status: 200,
@@ -1166,7 +1166,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest(`/users/${otherUserUsername}`, {
           status: 200,
@@ -1212,7 +1212,7 @@ describe('Async functions', () => {
   describe('addAdmin()', () => {
     const userEmail = 'user@domain.com';
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/add-admin', {
           status: 200,
@@ -1260,7 +1260,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/add-admin', {
           status: 200,
@@ -1306,7 +1306,7 @@ describe('Async functions', () => {
   describe('removeAdmin()', () => {
     const userEmail = 'user@domain.com';
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/remove-admin', {
           status: 200,
@@ -1354,7 +1354,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/remove-admin', {
           status: 200,
@@ -1398,7 +1398,7 @@ describe('Async functions', () => {
   });
 
   describe('sendAccountVerificationLink()', () => {
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/send-account-verification-email', {
           status: 200,
@@ -1450,7 +1450,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/send-account-verification-email', {
           status: 200,
@@ -1496,7 +1496,7 @@ describe('Async functions', () => {
   describe('resetPassword()', () => {
     const userEmail = 'user@domain.com';
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/request-for-reset-password', {
           status: 200,
@@ -1548,7 +1548,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/request-for-reset-password', {
           status: 200,

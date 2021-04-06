@@ -19,12 +19,12 @@ const mockStore = configureMockStore([thunk]);
 
 const defaultOrderId = 'o1';
 
-const setUp = (orderDetails, pushFn = jest.fn()) => {
+const setUp = (orderDetails) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: `/order/${defaultOrderId}` },
-    push: pushFn,
+    push: jest.fn(),
   };
 
   const store = mockStore({
@@ -43,6 +43,7 @@ const setUp = (orderDetails, pushFn = jest.fn()) => {
       </Provider>,
     ),
     store,
+    history,
   };
 };
 
@@ -61,7 +62,7 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<OrderDetails />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render only <Loader /> if orderDetails is undefined', () => {
       const { asFragment } = setUp(undefined);
       expect(asFragment()).toMatchSnapshot();
@@ -127,31 +128,31 @@ describe('<OrderDetails />', () => {
         sellerPhone: '123',
       });
 
-      const pushFn = jest.fn();
-
-      setUp(
-        {
-          ...orderDetails,
-          deliveryAddress: defaultDeliveryAddress,
-        },
-        pushFn,
-      );
+      const { history } = setUp({
+        ...orderDetails,
+        deliveryAddress: defaultDeliveryAddress,
+      });
 
       fireEvent.click(screen.getByTestId('OrderDetails-buyer-link'));
-      expect(pushFn).toHaveBeenCalledWith('/user/buyerUser?p=1');
+      expect(history.push).toHaveBeenCalledWith('/user/buyerUser?p=1');
+
       fireEvent.click(screen.getByTestId('OrderDetails-seller-link'));
-      expect(pushFn).toHaveBeenLastCalledWith('/user/sellerUser?p=1');
-      expect(pushFn).toHaveBeenCalledTimes(2);
+      expect(history.push).toHaveBeenLastCalledWith('/user/sellerUser?p=1');
+
+      expect(history.push).toHaveBeenCalledTimes(2);
     });
   });
 
-  describe('Check useEffect()', () => {
+  describe('check useEffect()', () => {
     it('should call fetchOrderDetails() and also setOrderDetails() when unmounting', () => {
       const { store, unmount } = setUp();
-      expect(store.dispatch).toHaveBeenCalledWith(actions.fetchOrderDetails(defaultOrderId));
+
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchOrderDetails(defaultOrderId));
       expect(store.dispatch).toHaveBeenCalledTimes(1);
+
       unmount();
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setOrderDetails());
+
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
   });

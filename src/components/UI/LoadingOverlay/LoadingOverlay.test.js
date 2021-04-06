@@ -24,7 +24,7 @@ describe('<LoadingOverlay />', () => {
     jest.useRealTimers();
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render correctly without info', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();

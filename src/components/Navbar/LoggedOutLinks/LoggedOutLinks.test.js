@@ -31,14 +31,14 @@ const setUp = () => {
 afterEach(cleanup);
 
 describe('<LoggedOutLinks />', () => {
-  describe('Checks how renders', () => {
+  describe('checks how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Checks behaviour after buttons clicks', () => {
+  describe('checks behaviour after buttons clicks', () => {
     it('should call setModal() with login modal after login button click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();

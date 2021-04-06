@@ -81,7 +81,7 @@ describe('<ProductsAndFilters />', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
         page: productPages.ALL_PRODUCTS,
@@ -94,30 +94,31 @@ describe('<ProductsAndFilters />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly with two products', () => {
       const store = createStore(defaultProducts, defaultProducts.length, 10.6, 299.98);
-      window.resizeTo(1920, 1080);
+      window.resizeTo(1201, 800);
       const { asFragment } = setUp(store);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render only <ProductList />', () => {
       const store = createStore([], 0);
+      window.resizeTo(1199, 800);
       const { asFragment } = setUp(store);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render <Filters /> if at least two params (except p)', () => {
       const store = createStore([], 0);
-      window.resizeTo(1920, 1080);
+      window.resizeTo(1201, 800);
       setUp(store, '?p=1&name=testName&minPrice=10');
       expect(screen.getByTestId('Filters')).toBeInTheDocument();
     });
 
     it('should render <Filters /> if one param (except p)', () => {
       const store = createStore([], 0);
-      window.resizeTo(1920, 1080);
+      window.resizeTo(1201, 800);
       setUp(store, '?p=1&minPrice=10');
       expect(screen.getByTestId('Filters')).toBeInTheDocument();
     });

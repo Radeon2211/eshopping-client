@@ -90,11 +90,6 @@ export const orderTypes = {
   SELL_HISTORY: 'SELL_HISTORY',
 };
 
-export const historyActions = {
-  PUSH: 'PUSH',
-  REPLACE: 'REPLACE',
-};
-
 export const inputKinds = {
   INPUT: 'INPUT',
   TEXTAREA: 'TEXTAREA',

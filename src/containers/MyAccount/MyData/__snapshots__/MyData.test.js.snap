@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MyData /> Check how renders should render everything correctly for admin user 1`] = `
+exports[`<MyData /> check how renders should render everything correctly for admin user 1`] = `
 <DocumentFragment>
   <h3
     class="sc-eCssSg ceYvmz"
@@ -304,7 +304,7 @@ exports[`<MyData /> Check how renders should render everything correctly for adm
 </DocumentFragment>
 `;
 
-exports[`<MyData /> Check how renders should render everything correctly for non admin user with status active 1`] = `
+exports[`<MyData /> check how renders should render everything correctly for non admin user with status active 1`] = `
 <DocumentFragment>
   <h3
     class="sc-eCssSg ceYvmz"
@@ -585,7 +585,7 @@ exports[`<MyData /> Check how renders should render everything correctly for non
 </DocumentFragment>
 `;
 
-exports[`<MyData /> Check how renders should render everything correctly for non admin user with status pending 1`] = `
+exports[`<MyData /> check how renders should render everything correctly for non admin user with status pending 1`] = `
 <DocumentFragment>
   <h3
     class="sc-eCssSg ceYvmz"

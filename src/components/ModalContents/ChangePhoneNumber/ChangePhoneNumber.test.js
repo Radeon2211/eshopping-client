@@ -52,14 +52,14 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ChangePhoneNumber />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     const updateMessage = 'Phone number has been changed successfully';
     const defaultNewPhonePrefix = '+51';
     const defaultNewPhonePrefixLabel = '+51 Peru';

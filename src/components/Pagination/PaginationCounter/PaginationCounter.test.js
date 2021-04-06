@@ -26,7 +26,7 @@ const setUp = (props, history) => {
 afterEach(cleanup);
 
 describe('<PaginationCounter />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning if itemsType is product', () => {
       const expectedProps = createProps(5, listItemTypes.PRODUCT, 2);
       expect(checkProps(PaginationCounter, expectedProps)).toBeUndefined();
@@ -47,7 +47,7 @@ describe('<PaginationCounter />', () => {
     });
   });
 
-  describe('Check if correct text render', () => {
+  describe('check if correct text render', () => {
     it('should be 1 - 2 of 5 products', () => {
       const props = createProps(5, listItemTypes.PRODUCT, 2);
       const history = createHistoryPageNumber(1);

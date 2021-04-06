@@ -73,7 +73,7 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<PurchaseSection />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(PurchaseSection, defaultProps)).toBeUndefined();
     });
@@ -83,8 +83,8 @@ describe('<PurchaseSection />', () => {
     });
   });
 
-  describe('Check how renders', () => {
-    describe('Snapshots', () => {
+  describe('check how renders', () => {
+    describe('snapshots', () => {
       it('should render info that user is a seller', () => {
         const props = {
           productSellerUsername: 'user1',
@@ -99,7 +99,7 @@ describe('<PurchaseSection />', () => {
       });
     });
 
-    describe('Check single items', () => {
+    describe('check single items', () => {
       it('should render not able to add info if quantity in cart equals to product quantity', () => {
         const props = {
           productQuantity: 3,
@@ -126,7 +126,7 @@ describe('<PurchaseSection />', () => {
     });
   });
 
-  describe('Check calling of onSetModal()', () => {
+  describe('check calling of onSetModal()', () => {
     it('should NOT call after click on "buy now" and "add to cart" if user has status active', () => {
       const onSetModalFn = jest.fn();
       const props = {
@@ -170,7 +170,7 @@ describe('<PurchaseSection />', () => {
     });
   });
 
-  describe('Check behaviour of <ChooseQuantity /> (min - 1, max - 5)', () => {
+  describe('check behaviour of <ChooseQuantity /> (min - 1, max - 5)', () => {
     it('should change value to 5', () => {
       setUp();
       const input = screen.getByTestId('NumberInput-quantity');
@@ -219,7 +219,7 @@ describe('<PurchaseSection />', () => {
     });
   });
 
-  describe('Check redux actions calling', () => {
+  describe('check redux actions calling', () => {
     it('should call addCartItem() and goToTransaction() with quantity 2 after buttons clicks', () => {
       const { store, history } = setUp();
 

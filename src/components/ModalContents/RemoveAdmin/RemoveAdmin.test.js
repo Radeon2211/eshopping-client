@@ -41,14 +41,14 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<RemoveAdmin />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     it('should have empty input and focus on it by default', () => {
       setUp();
       const emailInput = screen.getByTestId('RemoveAdmin-email');

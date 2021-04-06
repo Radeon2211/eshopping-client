@@ -20,7 +20,7 @@ describe('<UploadPhoto />', () => {
   const maxPossibleFileSize = 6291456;
   const tooBigFileSize = 6400000;
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render default view when hasCurrentPhoto is false', () => {
       const { asFragment } = setUp(false);
       expect(asFragment()).toMatchSnapshot();

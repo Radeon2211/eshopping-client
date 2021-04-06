@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChangePhoneNumber /> Check how renders should render everything correctly 1`] = `
+exports[`<ChangePhoneNumber /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hYjfqi"

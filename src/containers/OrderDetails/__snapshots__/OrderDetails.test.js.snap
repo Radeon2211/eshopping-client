@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<OrderDetails /> Check how renders should render everything correctly with two <TransactionAndOrderProdItem /> 1`] = `
+exports[`<OrderDetails /> check how renders should render everything correctly with two <TransactionAndOrderProdItem /> 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hSaYLI"
@@ -459,7 +459,7 @@ exports[`<OrderDetails /> Check how renders should render everything correctly w
 </DocumentFragment>
 `;
 
-exports[`<OrderDetails /> Check how renders should render only <Loader /> if orderDetails is undefined 1`] = `
+exports[`<OrderDetails /> check how renders should render only <Loader /> if orderDetails is undefined 1`] = `
 <DocumentFragment>
   <div
     class="sc-hKgILt dfaweV"
@@ -478,7 +478,7 @@ exports[`<OrderDetails /> Check how renders should render only <Loader /> if ord
 </DocumentFragment>
 `;
 
-exports[`<OrderDetails /> Check how renders should render only info that there is a problem to fetch order details 1`] = `
+exports[`<OrderDetails /> check how renders should render only info that there is a problem to fetch order details 1`] = `
 <DocumentFragment>
   <h4
     class="sc-dlfnbm iFVlIY"

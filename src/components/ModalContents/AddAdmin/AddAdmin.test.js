@@ -41,14 +41,14 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<AddAdmin />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     it('should have empty input and focus on it by default', () => {
       setUp();
       const emailInput = screen.getByTestId('AddAdmin-email');
@@ -76,13 +76,17 @@ describe('<AddAdmin />', () => {
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.addAdmin(testEmail));
     });
 
-    it('should NOT call resetPassword() if input is empty or email is not valid', async () => {
+    it('should NOT call resetPassword() if input is empty', async () => {
+      const { store, container } = setUp();
+      await clickAtSubmitButton(container);
+      expect(store.dispatch).not.toHaveBeenCalled();
+    });
+
+    it('should NOT call resetPassword() if email is not valid', async () => {
       const { store, container } = setUp();
 
       const emailInput = screen.getByTestId('AddAdmin-email');
       const testEmail = 'invalidemail';
-
-      await clickAtSubmitButton(container);
 
       await waitFor(() => {
         fireEvent.change(emailInput, { target: { value: testEmail } });

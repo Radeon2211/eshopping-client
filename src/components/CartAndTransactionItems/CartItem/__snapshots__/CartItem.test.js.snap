@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartItem /> Checks how renders should render everything correctly 1`] = `
+exports[`<CartItem /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ SZA-Dk"

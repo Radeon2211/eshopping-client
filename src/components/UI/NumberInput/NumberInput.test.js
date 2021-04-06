@@ -20,8 +20,8 @@ const setUp = (props) => {
 
 afterEach(cleanup);
 
-describe('<NumberPagination />', () => {
-  describe('Check prop types', () => {
+describe('<NumberInput />', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(NumberInput, defaultProps)).toBeUndefined();
     });
@@ -30,7 +30,7 @@ describe('<NumberPagination />', () => {
     });
   });
 
-  describe('Check behaviour', () => {
+  describe('check behaviour', () => {
     it('should fire off functions from props', () => {
       const changedFn = jest.fn();
       const focusedFn = jest.fn();

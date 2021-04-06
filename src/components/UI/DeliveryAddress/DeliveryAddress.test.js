@@ -16,7 +16,7 @@ const setUp = (data) => {
 afterEach(cleanup);
 
 describe('<DeliveryAddress />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(DeliveryAddress, { data: defaultDeliveryAddress })).toBeUndefined();
     });

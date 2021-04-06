@@ -16,7 +16,7 @@ const setUp = (currentStep = 1, stepsNumber = 3) => {
 afterEach(cleanup);
 
 describe('<ProgressBar />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
         currentStep: 1,
@@ -30,7 +30,7 @@ describe('<ProgressBar />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly for currentStep 1 and stepsNumber 3', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();

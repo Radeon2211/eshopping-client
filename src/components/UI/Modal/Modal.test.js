@@ -65,7 +65,7 @@ const setUpRTL = (modalContent = '', isFormLoading = false) => {
 };
 
 describe('<Modal />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUpRTL(modalTypes.ABOUT_WEBSITE, false);
       expect(asFragment()).toMatchSnapshot();
@@ -204,7 +204,7 @@ describe('<Modal />', () => {
     });
   });
 
-  describe('Check redux actions calls', () => {
+  describe('check redux actions calls', () => {
     it('should call setModal() after clicking at backdrop', () => {
       const { store } = setUpRTL(modalTypes.ABOUT_WEBSITE);
       expect(store.dispatch).not.toHaveBeenCalled();

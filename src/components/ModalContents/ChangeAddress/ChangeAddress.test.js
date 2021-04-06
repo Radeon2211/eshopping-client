@@ -59,14 +59,14 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ChangeAddress />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     const defaultNewStreet = 'Woodhouse 17';
     const defaultNewZipCode = 'LS1-LS29';
     const defaultNewCity = 'Leeds';

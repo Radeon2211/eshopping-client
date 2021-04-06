@@ -7,7 +7,7 @@ import * as uiActions from './uiActions';
 import * as actionTypes from '../actionTypes';
 import { modalTypes } from '../../../shared/constants';
 
-describe('Action creators', () => {
+describe('action creators', () => {
   it('tests formStart()', () => {
     const expectedAction = {
       type: actionTypes.FORM_START,
@@ -107,7 +107,7 @@ describe('Action creators', () => {
   });
 });
 
-describe('Functions with dispatch', () => {
+describe('functions with dispatch', () => {
   describe('setAndDeleteMessage()', () => {
     beforeAll(() => {
       jest.useFakeTimers('modern');
@@ -117,7 +117,7 @@ describe('Functions with dispatch', () => {
       jest.useRealTimers();
     });
 
-    describe('Store', () => {
+    describe('store', () => {
       it('should update message after 5000ms but NOT after 4999ms', () => {
         const { store, initialState } = setUpStoreWithDefaultProfile();
         store.dispatch(uiActions.setAndDeleteMessage('test message'));
@@ -159,7 +159,7 @@ describe('Functions with dispatch', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('should dispatch 2 times setMessage()', () => {
         const innerDispatchFn = jest.fn();
         uiActions.setAndDeleteMessage('test message')(innerDispatchFn);
@@ -173,7 +173,7 @@ describe('Functions with dispatch', () => {
   });
 
   describe('writeChangeCartInfo()', () => {
-    describe('Store', () => {
+    describe('store', () => {
       it('should change message if condition is true', () => {
         const { store, initialState } = setUpStoreWithDefaultProfile();
         store.dispatch(uiActions.writeChangeCartInfo(true));
@@ -198,7 +198,7 @@ describe('Functions with dispatch', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('should call 1 time inner dispatch if condition is true', async () => {
         const innerDispatchFn = jest.fn();
         await uiActions.writeChangeCartInfo(true)(innerDispatchFn);
@@ -214,19 +214,18 @@ describe('Functions with dispatch', () => {
   });
 
   describe('changeProductsPerPage()', () => {
-    const createHistory = (pushFn = jest.fn(), search = '?p=1', pathname = '/products') => ({
-      push: pushFn,
+    const createHistory = (search = '?p=1', pathname = '/products') => ({
+      push: jest.fn(),
       location: { pathname, search },
     });
 
-    describe('Store', () => {
+    describe('store', () => {
       it('should only change productsPerPage if page number is 1', () => {
         const { store, initialState } = setUpStoreWithDefaultProfile();
-        const pushFn = jest.fn();
-        const history = createHistory(pushFn, '?p=1');
+        const history = createHistory('?p=1');
         store.dispatch(actions.changeProductsPerPage(15, history));
 
-        expect(pushFn).not.toHaveBeenCalled();
+        expect(history.push).not.toHaveBeenCalled();
         expect(store.getState()).toEqual(
           createExpectedState(
             initialState,
@@ -241,11 +240,10 @@ describe('Functions with dispatch', () => {
 
       it('should change productsPerPage and also call push if page number is other than 1', () => {
         const { store, initialState } = setUpStoreWithDefaultProfile();
-        const pushFn = jest.fn();
-        const history = createHistory(pushFn, '?p=2&minPrice=100', '/products');
+        const history = createHistory('?p=2&minPrice=100', '/products');
         store.dispatch(actions.changeProductsPerPage(20, history));
 
-        expect(pushFn).toHaveBeenCalledWith('/products?minPrice=100&p=1');
+        expect(history.push).toHaveBeenCalledWith('/products?minPrice=100&p=1');
         expect(store.getState()).toEqual(
           createExpectedState(
             initialState,
@@ -259,10 +257,10 @@ describe('Functions with dispatch', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('should call inner dispatch', () => {
         const innerDispatchFn = jest.fn();
-        const history = createHistory(jest.fn(), '?p=2');
+        const history = createHistory('?p=2');
         actions.changeProductsPerPage(5, history)(innerDispatchFn);
         expect(innerDispatchFn).toHaveBeenCalledWith(uiActions.setProductsPerPage(5));
       });

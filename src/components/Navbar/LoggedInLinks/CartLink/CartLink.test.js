@@ -10,7 +10,7 @@ import theme from '../../../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (cart, pushFn = jest.fn()) => {
+const setUp = (cart) => {
   const store = mockStore({
     auth: { cart },
   });
@@ -19,18 +19,21 @@ const setUp = (cart, pushFn = jest.fn()) => {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search: '?p=1' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
-  return render(
-    <Router history={history}>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <CartLink />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <CartLink />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
@@ -57,11 +60,8 @@ describe('<CartLink />', () => {
   });
 
   it('should call push after clicking cart link', () => {
-    const pushFn = jest.fn();
-    setUp([], pushFn);
-
+    const { history } = setUp([]);
     fireEvent.click(screen.getByTestId('CartLink'));
-    expect(pushFn).toHaveBeenCalledWith('/cart');
-    expect(pushFn).toHaveBeenCalledTimes(1);
+    expect(history.push).toHaveBeenCalledWith('/cart');
   });
 });

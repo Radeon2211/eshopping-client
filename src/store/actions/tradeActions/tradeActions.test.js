@@ -14,7 +14,7 @@ import * as uiActions from '../uiActions/uiActions';
 import * as tradeActions from './tradeActions';
 import * as actionTypes from '../actionTypes';
 
-describe('Action creators', () => {
+describe('action creators', () => {
   it('tests setCart()', () => {
     const cart = [createCartItem()];
     const expectedAction = {
@@ -34,7 +34,7 @@ describe('Action creators', () => {
   });
 });
 
-describe('Async functions', () => {
+describe('async functions', () => {
   beforeEach(() => {
     moxios.install(axios);
   });
@@ -46,7 +46,7 @@ describe('Async functions', () => {
   describe('fetchCart()', () => {
     const expectedCart = [createCartItem()];
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/cart', {
           status: 200,
@@ -125,7 +125,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/cart', {
           status: 200,
@@ -211,7 +211,7 @@ describe('Async functions', () => {
       }),
     ];
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/cart/add', {
           status: 200,
@@ -296,7 +296,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/cart/add', {
           status: 200,
@@ -382,7 +382,7 @@ describe('Async functions', () => {
       }),
     ];
 
-    describe('Store', () => {
+    describe('store', () => {
       describe('increment quantity', () => {
         it('is successful and isDifferent is true', async () => {
           moxios.stubRequest(/cart.*/, {
@@ -669,7 +669,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch (increment everywhere)', () => {
+    describe('inner dispatch (increment everywhere)', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest(/cart.*/, {
           status: 200,
@@ -742,7 +742,7 @@ describe('Async functions', () => {
   describe('clearCart()', () => {
     const defaultCart = [createCartItem()];
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/cart/clear', {
           status: 200,
@@ -789,7 +789,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest('/cart/clear', {
           status: 200,
@@ -829,7 +829,7 @@ describe('Async functions', () => {
     const itemId = 'i1';
     const expectedCart = [createCartItem()];
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest(`/cart/${itemId}/remove`, {
           status: 200,
@@ -906,7 +906,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and isDifferent is true', async () => {
         moxios.stubRequest(`/cart/${itemId}/remove`, {
           status: 200,
@@ -977,9 +977,9 @@ describe('Async functions', () => {
   });
 
   describe('goToTransaction()', () => {
-    const createHistory = (pushFn = jest.fn(), goBackFn = jest.fn()) => ({
-      push: pushFn,
-      goBack: goBackFn,
+    const createHistory = () => ({
+      push: jest.fn(),
+      goBack: jest.fn(),
     });
     const defaultHistory = createHistory();
 
@@ -995,7 +995,7 @@ describe('Async functions', () => {
       quantity: 3,
     };
 
-    describe('Store', () => {
+    describe('store', () => {
       describe('single item is passed', () => {
         it('is successful and transaction length is 1, isDifferent is true, cart is null', async () => {
           moxios.stubRequest('/transaction', {
@@ -1283,7 +1283,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       describe('single item is passed', () => {
         it('is successful and transaction length is 1, isDifferent is true, cart is null', async () => {
           moxios.stubRequest('/transaction', {
@@ -1299,9 +1299,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
@@ -1314,8 +1312,8 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(pushFn).toHaveBeenCalledWith('/transaction');
-          expect(goBackFn).not.toHaveBeenCalled();
+          expect(history.push).toHaveBeenCalledWith('/transaction');
+          expect(history.goBack).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1334,9 +1332,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
@@ -1346,8 +1342,8 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(pushFn).not.toHaveBeenCalled();
-          expect(goBackFn).toHaveBeenCalledTimes(1);
+          expect(history.push).not.toHaveBeenCalled();
+          expect(history.goBack).toHaveBeenCalledTimes(1);
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1363,9 +1359,7 @@ describe('Async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
@@ -1375,8 +1369,8 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(pushFn).toHaveBeenCalledWith('/transaction');
-          expect(goBackFn).not.toHaveBeenCalled();
+          expect(history.push).toHaveBeenCalledWith('/transaction');
+          expect(history.goBack).not.toHaveBeenCalled();
         });
 
         it('is successful and transaction length is 0, isDifferent is false, cart is null', async () => {
@@ -1390,17 +1384,15 @@ describe('Async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(pushFn).not.toHaveBeenCalled();
-          expect(goBackFn).toHaveBeenCalledTimes(1);
+          expect(history.push).not.toHaveBeenCalled();
+          expect(history.goBack).toHaveBeenCalledTimes(1);
         });
 
         it('is failed', async () => {
@@ -1412,17 +1404,15 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(pushFn).not.toHaveBeenCalled();
-          expect(goBackFn).not.toHaveBeenCalled();
+          expect(history.push).not.toHaveBeenCalled();
+          expect(history.goBack).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1443,9 +1433,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
@@ -1459,8 +1447,8 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(pushFn).toHaveBeenCalledWith('/transaction');
-          expect(goBackFn).not.toHaveBeenCalled();
+          expect(history.push).toHaveBeenCalledWith('/transaction');
+          expect(history.goBack).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1479,9 +1467,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
@@ -1492,8 +1478,8 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(pushFn).not.toHaveBeenCalled();
-          expect(goBackFn).toHaveBeenCalledTimes(1);
+          expect(history.push).not.toHaveBeenCalled();
+          expect(history.goBack).toHaveBeenCalledTimes(1);
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1509,9 +1495,7 @@ describe('Async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
@@ -1522,8 +1506,8 @@ describe('Async functions', () => {
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, tradeActions.setCart(expectedCart));
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(pushFn).toHaveBeenCalledWith('/transaction');
-          expect(goBackFn).not.toHaveBeenCalled();
+          expect(history.push).toHaveBeenCalledWith('/transaction');
+          expect(history.goBack).not.toHaveBeenCalled();
         });
 
         it('is successful and transaction length is 0, isDifferent is false, cart is null', async () => {
@@ -1537,9 +1521,7 @@ describe('Async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
@@ -1547,8 +1529,8 @@ describe('Async functions', () => {
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, tradeActions.setCart(expectedCart));
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(pushFn).not.toHaveBeenCalled();
-          expect(goBackFn).toHaveBeenCalledTimes(1);
+          expect(history.push).not.toHaveBeenCalled();
+          expect(history.goBack).toHaveBeenCalledTimes(1);
         });
 
         it('is failed', async () => {
@@ -1560,17 +1542,15 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const pushFn = jest.fn();
-          const goBackFn = jest.fn();
-          const history = createHistory(pushFn, goBackFn);
+          const history = createHistory();
           await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(pushFn).not.toHaveBeenCalled();
-          expect(goBackFn).not.toHaveBeenCalled();
+          expect(history.push).not.toHaveBeenCalled();
+          expect(history.goBack).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1599,7 +1579,7 @@ describe('Async functions', () => {
 
     const replaceFnArgument = '/my-account/placed-orders';
 
-    describe('Store', () => {
+    describe('store', () => {
       describe('receive transaction only', () => {
         it('is successful and received transaction length is 1, lastPath is /cart', async () => {
           moxios.stubRequest('/orders', {
@@ -1883,7 +1863,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       describe('receive transaction only', () => {
         it('is successful and received transaction length is 1, lastPath is /cart', async () => {
           moxios.stubRequest('/orders', {
@@ -1898,8 +1878,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -1916,7 +1895,7 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(replaceFn).not.toHaveBeenCalled();
+          expect(history.replace).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1934,8 +1913,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -1952,7 +1930,7 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(replaceFn).not.toHaveBeenCalled();
+          expect(history.replace).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1970,8 +1948,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -1985,7 +1962,7 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(replaceFn).not.toHaveBeenCalled();
+          expect(history.replace).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2003,8 +1980,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -2018,7 +1994,7 @@ describe('Async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(replaceFn).not.toHaveBeenCalled();
+          expect(history.replace).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2038,8 +2014,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -2051,7 +2026,7 @@ describe('Async functions', () => {
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith('Transaction was successful');
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(replaceFn).toHaveBeenCalledWith(replaceFnArgument);
+          expect(history.replace).toHaveBeenCalledWith(replaceFnArgument);
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2069,8 +2044,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -2082,7 +2056,7 @@ describe('Async functions', () => {
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith('Transaction was successful');
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(replaceFn).toHaveBeenCalledWith(replaceFnArgument);
+          expect(history.replace).toHaveBeenCalledWith(replaceFnArgument);
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2098,8 +2072,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -2109,7 +2082,7 @@ describe('Async functions', () => {
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(replaceFn).not.toHaveBeenCalled();
+          expect(history.replace).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2123,8 +2096,7 @@ describe('Async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const replaceFn = jest.fn();
-          const history = createHistory(replaceFn);
+          const history = createHistory();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
@@ -2134,7 +2106,7 @@ describe('Async functions', () => {
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(replaceFn).not.toHaveBeenCalled();
+          expect(history.replace).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });

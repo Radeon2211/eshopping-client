@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -30,19 +31,27 @@ const setUp = () => {
 afterEach(cleanup);
 
 describe('<Footer />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check redux actions calls', () => {
-    it('should call setModal() after about website text click', () => {
+  describe('check redux actions calls and mail link href', () => {
+    it('should call setModal() after about website text click and render correct', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText('About website'));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ABOUT_WEBSITE));
+    });
+
+    it('should mail link has correct href attribute', () => {
+      setUp();
+      expect(screen.getByText('radoslawmikrut@wp.pl').closest('a')).toHaveAttribute(
+        'href',
+        'mailto:radoslawmikrut@wp.pl',
+      );
     });
   });
 });

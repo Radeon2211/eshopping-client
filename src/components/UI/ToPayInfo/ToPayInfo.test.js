@@ -17,7 +17,7 @@ const setUp = (value) => {
 afterEach(cleanup);
 
 describe('<ToPayInfo />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(ToPayInfo, { value: 35 })).toBeUndefined();
     });

@@ -18,7 +18,7 @@ const setUp = (children, info) => {
 afterEach(cleanup);
 
 describe('<ErrorPage />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(ErrorPage, { children: <div /> })).toBeUndefined();
     });

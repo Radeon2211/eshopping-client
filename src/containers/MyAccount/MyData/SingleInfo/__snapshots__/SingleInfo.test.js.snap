@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SingleInfo /> Check how renders should render correctly for address and with button 1`] = `
+exports[`<SingleInfo /> check how renders should render correctly for address and with button 1`] = `
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"
@@ -67,7 +67,7 @@ exports[`<SingleInfo /> Check how renders should render correctly for address an
 </DocumentFragment>
 `;
 
-exports[`<SingleInfo /> Check how renders should render correctly for contacts (both hidden) and without button 1`] = `
+exports[`<SingleInfo /> check how renders should render correctly for contacts (both hidden) and without button 1`] = `
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"
@@ -115,7 +115,7 @@ exports[`<SingleInfo /> Check how renders should render correctly for contacts (
 </DocumentFragment>
 `;
 
-exports[`<SingleInfo /> Check how renders should render correctly for contacts (both visible) and with button 1`] = `
+exports[`<SingleInfo /> check how renders should render correctly for contacts (both visible) and with button 1`] = `
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"
@@ -171,7 +171,7 @@ exports[`<SingleInfo /> Check how renders should render correctly for contacts (
 </DocumentFragment>
 `;
 
-exports[`<SingleInfo /> Check how renders should render correctly for name and with button 1`] = `
+exports[`<SingleInfo /> check how renders should render correctly for name and with button 1`] = `
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"

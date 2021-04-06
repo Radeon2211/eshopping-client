@@ -12,7 +12,7 @@ import { defaultUserProfile } from '../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (userProfile, pushFn = jest.fn()) => {
+const setUp = (userProfile) => {
   const store = mockStore({
     auth: { profile: userProfile },
   });
@@ -21,18 +21,21 @@ const setUp = (userProfile, pushFn = jest.fn()) => {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/my-account/data' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
-  return render(
-    <Provider store={store}>
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <MyAccount />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router history={history}>
+          <ThemeProvider theme={theme}>
+            <MyAccount />
+          </ThemeProvider>
+        </Router>
+      </Provider>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
@@ -53,24 +56,23 @@ describe('<MyAccount />', () => {
   });
 
   it('should call push with correct paths after clicking on links', () => {
-    const pushFn = jest.fn();
-    setUp(defaultUserProfile, pushFn);
+    const { history } = setUp(defaultUserProfile);
 
     fireEvent.click(screen.getByText('Data'));
-    expect(pushFn.mock.calls[0][0].pathname).toEqual('/my-account/data');
+    expect(history.push.mock.calls[0][0].pathname).toEqual('/my-account/data');
 
     fireEvent.click(screen.getByText('Products'));
-    expect(pushFn.mock.calls[1][0].pathname).toEqual(`/my-account/products`);
-    expect(pushFn.mock.calls[1][0].search).toEqual('?p=1');
+    expect(history.push.mock.calls[1][0].pathname).toEqual('/my-account/products');
+    expect(history.push.mock.calls[1][0].search).toEqual('?p=1');
 
     fireEvent.click(screen.getByText('Sell history'));
-    expect(pushFn.mock.calls[2][0].pathname).toEqual('/my-account/sell-history');
-    expect(pushFn.mock.calls[2][0].search).toEqual('?p=1');
+    expect(history.push.mock.calls[2][0].pathname).toEqual('/my-account/sell-history');
+    expect(history.push.mock.calls[2][0].search).toEqual('?p=1');
 
     fireEvent.click(screen.getByText('Placed orders'));
-    expect(pushFn.mock.calls[3][0].pathname).toEqual('/my-account/placed-orders');
-    expect(pushFn.mock.calls[3][0].search).toEqual('?p=1');
+    expect(history.push.mock.calls[3][0].pathname).toEqual('/my-account/placed-orders');
+    expect(history.push.mock.calls[3][0].search).toEqual('?p=1');
 
-    expect(pushFn).toHaveBeenCalledTimes(4);
+    expect(history.push).toHaveBeenCalledTimes(4);
   });
 });

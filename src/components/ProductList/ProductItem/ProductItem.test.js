@@ -7,27 +7,30 @@ import ProductItem from './ProductItem';
 import { checkProps, createProductItem } from '../../../shared/testUtility/testUtility';
 import { productConditions } from '../../../shared/constants';
 
-const setUp = (data, pushFn = jest.fn()) => {
+const setUp = (data) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search: '?p=1' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
-  return render(
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <ProductItem data={data} />
-      </ThemeProvider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <ThemeProvider theme={theme}>
+          <ProductItem data={data} />
+        </ThemeProvider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
 
 describe('<ProductItem />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(ProductItem, { data: createProductItem() })).toBeUndefined();
     });
@@ -37,7 +40,7 @@ describe('<ProductItem />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const data = createProductItem({
         id: 'p1',
@@ -55,7 +58,7 @@ describe('<ProductItem />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('should NOT render buyer quantity, condition and should render default photo, price without decimals', () => {
+    it('should NOT render buyer quantity, condition and should render default photo and price without decimals', () => {
       const data = createProductItem({
         id: 'p1',
         sellerUsername: 'user1',
@@ -70,17 +73,26 @@ describe('<ProductItem />', () => {
       const { asFragment } = setUp(data);
       expect(asFragment()).toMatchSnapshot();
     });
+
+    it('should NOT render buyer quantity, condition and should render default photo and price without decimals', () => {
+      const data = createProductItem({
+        buyerQuantity: 1,
+        condition: productConditions.USED,
+      });
+      setUp(data);
+      expect(screen.getByTestId('ProductItem-condition').textContent).toEqual('Condition: Used');
+      expect(screen.getByTestId('ProductItem-buyer-quantity').textContent).toEqual(
+        '1 person bought',
+      );
+    });
   });
 
   it('should push correct path after clicking at wrapper', () => {
-    const pushFn = jest.fn();
     const data = createProductItem({
       id: 'p1',
     });
-    setUp(data, pushFn);
-
+    const { history } = setUp(data);
     fireEvent.click(screen.getByTestId('ProductItem'));
-    expect(pushFn).toHaveBeenCalledWith('/product/p1');
-    expect(pushFn).toHaveBeenCalledTimes(1);
+    expect(history.push).toHaveBeenCalledWith('/product/p1');
   });
 });

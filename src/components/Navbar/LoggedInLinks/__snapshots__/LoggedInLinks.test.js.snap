@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoggedInLinks /> Check how renders should render version for user with status active 1`] = `
+exports[`<LoggedInLinks /> check how renders should render version for user with status active 1`] = `
 <DocumentFragment>
   <nav
     class="sc-jSgupP TeqAh"
@@ -48,7 +48,7 @@ exports[`<LoggedInLinks /> Check how renders should render version for user with
 </DocumentFragment>
 `;
 
-exports[`<LoggedInLinks /> Check how renders should render version for user with status pending 1`] = `
+exports[`<LoggedInLinks /> check how renders should render version for user with status pending 1`] = `
 <DocumentFragment>
   <nav
     class="sc-jSgupP TeqAh"

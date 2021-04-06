@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchForm /> Check how renders should render with icon in button if width is lower than 900px 1`] = `
+exports[`<SearchForm /> check how renders should render with icon in button if width is lower than 900px 1`] = `
 <DocumentFragment>
   <form
     class="sc-bdfBwQ eVTBHG"
@@ -33,7 +33,7 @@ exports[`<SearchForm /> Check how renders should render with icon in button if w
 </DocumentFragment>
 `;
 
-exports[`<SearchForm /> Check how renders should render with text in button if width is equal or greater than 900px 1`] = `
+exports[`<SearchForm /> check how renders should render with text in button if width is equal or greater than 900px 1`] = `
 <DocumentFragment>
   <form
     class="sc-bdfBwQ eVTBHG"

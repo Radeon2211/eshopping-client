@@ -31,7 +31,7 @@ const setUp = (message) => {
 afterEach(cleanup);
 
 describe('<MessageBox />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly if message is NOT empty', () => {
       const { asFragment } = setUp('test message');
       expect(asFragment()).toMatchSnapshot();
@@ -43,7 +43,7 @@ describe('<MessageBox />', () => {
     });
   });
 
-  describe('Check redux actions calls', () => {
+  describe('check redux actions calls', () => {
     it('should call setMessage() after close icon click', () => {
       const { store } = setUp('test message');
       expect(store.dispatch).not.toHaveBeenCalled();

@@ -10,27 +10,30 @@ import {
   createTransactionAndOrderProdItem,
 } from '../../shared/testUtility/testUtility';
 
-const setUp = (data, orderId = '', pushFn = jest.fn()) => {
+const setUp = (data, orderId) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/transaction' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
-  return render(
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <TransactionAndOrderProdItem data={data} orderId={orderId} />
-      </ThemeProvider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <ThemeProvider theme={theme}>
+          <TransactionAndOrderProdItem data={data} orderId={orderId} />
+        </ThemeProvider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
 
 describe('<TransactionAndOrderProdItem />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(
         checkProps(TransactionAndOrderProdItem, { data: createTransactionAndOrderProdItem() }),
@@ -42,7 +45,7 @@ describe('<TransactionAndOrderProdItem />', () => {
     });
   });
 
-  describe('Checks how renders and behaviour', () => {
+  describe('checks how renders and behaviour', () => {
     it('should render everything correctly', () => {
       const data = createTransactionAndOrderProdItem({
         productId: 'p1',
@@ -73,17 +76,18 @@ describe('<TransactionAndOrderProdItem />', () => {
     });
 
     it('should call push with correct paths after clicking product links', () => {
-      const pushFn = jest.fn();
       const data = createTransactionAndOrderProdItem({
         productId: 'p1',
       });
-      setUp(data, '', pushFn);
+      const { history } = setUp(data);
 
       fireEvent.click(screen.getByTestId('TransactionAndOrderProdItem-product-link-photo'));
-      expect(pushFn).toHaveBeenCalledWith('/product/p1');
+      expect(history.push).toHaveBeenCalledWith('/product/p1');
+
       fireEvent.click(screen.getByTestId('TransactionAndOrderProdItem-product-link-name'));
-      expect(pushFn).toHaveBeenLastCalledWith('/product/p1');
-      expect(pushFn).toHaveBeenCalledTimes(2);
+      expect(history.push).toHaveBeenLastCalledWith('/product/p1');
+
+      expect(history.push).toHaveBeenCalledTimes(2);
     });
   });
 });

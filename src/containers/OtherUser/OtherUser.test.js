@@ -83,8 +83,8 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<OtherUser />', () => {
-  describe('Check how renders', () => {
-    describe('Snapshots', () => {
+  describe('check how renders', () => {
+    describe('snapshots', () => {
       it('should render <Loader /> if other user is undefined', () => {
         const { asFragment } = setUp(undefined);
         expect(asFragment()).toMatchSnapshot();
@@ -102,7 +102,7 @@ describe('<OtherUser />', () => {
       });
     });
 
-    describe('Check single things', () => {
+    describe('check single things', () => {
       it('should render only phone number if other user has only phone number set to public', () => {
         const otherUser = { ...defaultOtherUser, phone: '123' };
         setUp(otherUser);
@@ -123,7 +123,7 @@ describe('<OtherUser />', () => {
     });
   });
 
-  describe('Check useEffect()', () => {
+  describe('check useEffect()', () => {
     it('should call only replace if otherUser is the same as current user', () => {
       const replaceFn = jest.fn();
       const { store } = setUp(defaultOtherUser, 'user1', replaceFn);

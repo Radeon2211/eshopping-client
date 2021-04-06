@@ -42,14 +42,14 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ResetPassword />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check behaviour after link click', () => {
+  describe('check behaviour after link click', () => {
     it('should call setModal() after link click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
@@ -58,7 +58,7 @@ describe('<ResetPassword />', () => {
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     it('should have empty input and focus on it by default', () => {
       setUp();
       const emailInput = screen.getByTestId('ResetPassword-email');

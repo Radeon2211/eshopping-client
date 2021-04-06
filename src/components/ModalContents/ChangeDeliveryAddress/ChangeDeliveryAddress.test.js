@@ -64,14 +64,14 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ChangeDeliveryAddress />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     const defaultNewFirstName = 'Andrew';
     const defaultNewLastName = 'Neil';
     const defaultNewStreet = 'Woodhouse 17';

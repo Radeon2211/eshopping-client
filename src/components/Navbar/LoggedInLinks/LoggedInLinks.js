@@ -35,15 +35,7 @@ SC.User = styled.div`
 const LoggedInLinks = (props) => {
   const { username, status } = props;
 
-  const [dropdownIsVisible, setDropdownIsVisible] = useState(false);
-
-  const userClickHandle = () => {
-    setDropdownIsVisible((prevState) => !prevState);
-  };
-
-  const closeDropdownHandle = () => {
-    setDropdownIsVisible(false);
-  };
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const showUsername = (name) => {
     return (
@@ -65,12 +57,16 @@ const LoggedInLinks = (props) => {
     status === 'active' ? (
       <SC.Wrapper>
         <CartLink />
-        <SC.User id="user" onClick={userClickHandle} data-testid="LoggedInLinks-user-box">
+        <SC.User
+          id="user"
+          onClick={() => setIsDropdownVisible((prevState) => !prevState)}
+          data-testid="LoggedInLinks-user-box"
+        >
           {showUsername(username)}
-          <MyIcon size="small" rotation={dropdownIsVisible ? -90 : 90}>
+          <MyIcon size="small" rotation={isDropdownVisible ? -90 : 90}>
             <ArrowIcon />
           </MyIcon>
-          <Dropdown isVisible={dropdownIsVisible} closed={closeDropdownHandle} />
+          <Dropdown isVisible={isDropdownVisible} closed={() => setIsDropdownVisible(false)} />
         </SC.User>
       </SC.Wrapper>
     ) : (

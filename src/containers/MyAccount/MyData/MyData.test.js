@@ -39,7 +39,7 @@ const setUp = (profile, pushFn = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<MyData />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly for non admin user with status active', () => {
       const { asFragment } = setUp(defaultUserProfile);
       expect(asFragment()).toMatchSnapshot();
@@ -56,7 +56,7 @@ describe('<MyData />', () => {
     });
   });
 
-  describe('Check behaviour after clicking', () => {
+  describe('check behaviour after clicking', () => {
     it('should call correct functions after clicking in admin and active user content', () => {
       const { store } = setUp({ ...defaultUserProfile, isAdmin: true });
 

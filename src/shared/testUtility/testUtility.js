@@ -35,11 +35,14 @@ export const checkProps = (component, expectedProps) => {
   return checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
 };
 
-export const createHistoryPageNumber = (pageNumber = 1, push = jest.fn()) => ({
+export const createHistoryPageNumber = (pageNumber = 1, length = 1) => ({
   listen: jest.fn(),
+  length,
   location: { pathname: '/products', search: `?p=${pageNumber}` },
   createHref: jest.fn(),
-  push,
+  push: jest.fn(),
+  replace: jest.fn(),
+  goBack: jest.fn(),
 });
 
 export const createPaginationProps = (itemQuantity = 5) => ({

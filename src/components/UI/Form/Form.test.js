@@ -52,7 +52,7 @@ const setUp = (props, store) => {
 afterEach(cleanup);
 
 describe('<Form />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const expectedProps = {
         children: <div />,
@@ -66,7 +66,7 @@ describe('<Form />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything what is possible with blue submit button', () => {
       const { asFragment } = setUp(defaultProps, defaultStore);
       expect(asFragment()).toMatchSnapshot();
@@ -117,7 +117,7 @@ describe('<Form />', () => {
     });
   });
 
-  describe('Check redux action calls', () => {
+  describe('check redux action calls', () => {
     it('should call setModal() after cancel button click', () => {
       const { store } = setUp(defaultProps, defaultStore);
       expect(store.dispatch).not.toHaveBeenCalled();

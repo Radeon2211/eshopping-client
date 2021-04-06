@@ -6,7 +6,7 @@ import {
   defaultUserProfile,
 } from '../../../shared/testUtility/testUtility';
 
-describe('Auth reducer', () => {
+describe('auth reducer', () => {
   it('should return initial state after passing empty object', () => {
     expect(authReducer(undefined, {})).toEqual(initialState);
   });

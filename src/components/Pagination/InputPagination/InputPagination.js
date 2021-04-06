@@ -7,7 +7,6 @@ import MyIcon from '../../UI/MyIcon';
 import PlainText from '../../UI/PlainText';
 import NumberInput from '../../UI/NumberInput/NumberInput';
 import { ReactComponent as ArrowIcon } from '../../../images/icons/arrow.svg';
-import { historyActions } from '../../../shared/constants';
 import {
   stringifyParamsWithOtherPage,
   calculateNumberOfPages,
@@ -26,7 +25,7 @@ const InputPagination = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const changePage = useCallback(
-    (pageNumber, action) => {
+    (pageNumber) => {
       const updatedQueryParams = stringifyParamsWithOtherPage(search, pageNumber);
 
       const previousPath = `${lastLocation?.pathname}${lastLocation?.search}`;
@@ -35,9 +34,7 @@ const InputPagination = (props) => {
 
       if ((previousPath === currentPath || previousPath === nextPath) && history.length > 2) {
         history.goBack();
-      } else if (action === historyActions.PUSH && nextPath !== currentPath) {
-        history.push(nextPath);
-      } else if (action === historyActions.REPLACE) {
+      } else {
         history.replace(nextPath);
       }
     },
@@ -54,15 +51,15 @@ const InputPagination = (props) => {
     if (!Number.isNaN(urlPageNumber)) {
       if (urlPageNumber > numberOfPages) {
         correctPageNumber = numberOfPages;
-        changePage(correctPageNumber, historyActions.REPLACE);
+        changePage(correctPageNumber);
       } else if (urlPageNumber < 1) {
         correctPageNumber = 1;
-        changePage(correctPageNumber, historyActions.REPLACE);
+        changePage(correctPageNumber);
       } else {
         correctPageNumber = urlPageNumber;
       }
     } else {
-      changePage(1, historyActions.REPLACE);
+      changePage(1);
     }
 
     setInputValue(correctPageNumber);

@@ -95,7 +95,7 @@ beforeAll(() => {
 afterEach(cleanup);
 
 describe('<Products />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly with default params and two products', () => {
       window.resizeTo(1920, 1080);
       const { asFragment } = setUp();
@@ -113,7 +113,7 @@ describe('<Products />', () => {
     });
   });
 
-  describe('Check useEffect()', () => {
+  describe('check useEffect()', () => {
     it('should call fetchProducts() with correct arguments', () => {
       const search = '?p=1&name=wellingtons';
       const { store } = setUp(search);

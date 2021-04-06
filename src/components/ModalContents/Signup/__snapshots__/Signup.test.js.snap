@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Signup /> Check how renders should render with Step1 by default 1`] = `
+exports[`<Signup /> check how renders should render with Step1 by default 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ VOJFF"
@@ -279,7 +279,7 @@ exports[`<Signup /> Check how renders should render with Step1 by default 1`] = 
 </DocumentFragment>
 `;
 
-exports[`<Signup /> Check how renders should render with Step2 1`] = `
+exports[`<Signup /> check how renders should render with Step2 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ VOJFF"
@@ -657,7 +657,7 @@ exports[`<Signup /> Check how renders should render with Step2 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Signup /> Check how renders should render with Step3 1`] = `
+exports[`<Signup /> check how renders should render with Step3 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ VOJFF"

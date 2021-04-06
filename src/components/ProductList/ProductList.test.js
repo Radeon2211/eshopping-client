@@ -7,14 +7,6 @@ import ProductList from './ProductList';
 import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
 import { productPages } from '../../shared/constants';
 
-const createHistory = (search = '?p=1') => ({
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/products', search },
-});
-
-const defaultHistory = createHistory();
-
 const defaultProducts = [
   createProductItem({
     id: 'p1',
@@ -38,7 +30,13 @@ const createProps = (isDataLoading, products, page = productPages.ALL_PRODUCTS) 
   page,
 });
 
-const setUp = (props, history = defaultHistory) => {
+const setUp = (props, search = '?p=1') => {
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/products', search },
+  };
+
   return render(
     <Router history={history}>
       <ThemeProvider theme={theme}>
@@ -50,8 +48,8 @@ const setUp = (props, history = defaultHistory) => {
 
 afterEach(cleanup);
 
-describe('<ProductItem />', () => {
-  describe('Check prop types', () => {
+describe('<ProductList />', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const expectedProps = createProps(false);
       expect(checkProps(ProductList, expectedProps)).toBeUndefined();
@@ -62,7 +60,7 @@ describe('<ProductItem />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render only <LoadingOverlay />', () => {
       const props = createProps(true);
       const { asFragment } = setUp(props);
@@ -83,43 +81,37 @@ describe('<ProductItem />', () => {
 
     it('should render correct info for ALL_PRODUCTS with filters', () => {
       const props = createProps(false, [], productPages.ALL_PRODUCTS);
-      const history = createHistory('?p=1&minPrice=100');
-      const { asFragment } = setUp(props, history);
+      const { asFragment } = setUp(props, '?p=1&minPrice=100');
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for MY_PRODUCTS with filters', () => {
       const props = createProps(false, [], productPages.MY_PRODUCTS);
-      const history = createHistory('?p=1&condition=new');
-      const { asFragment } = setUp(props, history);
+      const { asFragment } = setUp(props, '?p=1&condition=new');
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for USER_PRODUCTS with filters', () => {
       const props = createProps(false, [], productPages.USER_PRODUCTS);
-      const history = createHistory('?p=1&maxPrice=100');
-      const { asFragment } = setUp(props, history);
+      const { asFragment } = setUp(props, '?p=1&maxPrice=100');
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for ALL_PRODUCTS without filters other than name', () => {
       const props = createProps(false, [], productPages.ALL_PRODUCTS);
-      const history = createHistory('?p=1&name=testName');
-      const { asFragment } = setUp(props, history);
+      const { asFragment } = setUp(props, '?p=1&name=testName');
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for MY_PRODUCTS without filters other than name', () => {
       const props = createProps(false, [], productPages.MY_PRODUCTS);
-      const history = createHistory('?p=1&name=testName');
-      const { asFragment } = setUp(props, history);
+      const { asFragment } = setUp(props, '?p=1&name=testName');
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct info for USER_PRODUCTS without filters other than name', () => {
       const props = createProps(false, [], productPages.USER_PRODUCTS);
-      const history = createHistory('?p=1&name=testName');
-      const { asFragment } = setUp(props, history);
+      const { asFragment } = setUp(props, '?p=1&name=testName');
       expect(asFragment()).toMatchSnapshot();
     });
   });

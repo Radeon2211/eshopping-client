@@ -220,7 +220,7 @@ const fillEntireForm = async (submit = false, container) => {
 afterEach(cleanup);
 
 describe('<Signup />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render with Step1 by default', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
@@ -243,7 +243,7 @@ describe('<Signup />', () => {
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     const defaultEmail = '';
     const defaultUsername = '';
     const defaultPassword = '';

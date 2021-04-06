@@ -17,7 +17,7 @@ const setUp = (name, content, clickHandler) => {
 afterEach(cleanup);
 
 describe('<SingleInfo />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
         name: singleInfoNames.NAME,
@@ -32,7 +32,7 @@ describe('<SingleInfo />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render correctly for name and with button', () => {
       const { asFragment } = setUp(singleInfoNames.NAME, 'Ludwig von Mises', jest.fn());
       expect(asFragment()).toMatchSnapshot();

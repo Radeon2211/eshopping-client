@@ -34,7 +34,7 @@ const setUp = (props = {}) => {
 afterEach(cleanup);
 
 describe('<ChooseQuantity />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(ChooseQuantity, defaultProps)).toBeUndefined();
     });
@@ -44,7 +44,7 @@ describe('<ChooseQuantity />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
@@ -93,7 +93,7 @@ describe('<ChooseQuantity />', () => {
     });
   });
 
-  describe('Check behaviour', () => {
+  describe('check behaviour', () => {
     it('should call changed', () => {
       const changedFn = jest.fn();
       const props = {
@@ -161,8 +161,10 @@ describe('<ChooseQuantity />', () => {
       setUp(props);
 
       const input = screen.getByTestId('NumberInput-quantity');
+
       fireEvent.focus(input);
       expect(focusedFn).toHaveBeenCalledTimes(1);
+
       fireEvent.blur(input);
       expect(bluredFn).toHaveBeenCalledTimes(1);
     });

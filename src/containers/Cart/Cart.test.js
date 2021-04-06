@@ -21,12 +21,12 @@ const defaultCartItem = createCartItem({
   price: 499.97,
 });
 
-const setUp = (cart, isCartLoading = false, pushFn = jest.fn()) => {
+const setUp = (cart, isCartLoading = false) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/cart' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
   const store = mockStore({
@@ -59,7 +59,7 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<Cart />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly with one cart item', () => {
       const { asFragment } = setUp([defaultCartItem]);
       expect(asFragment()).toMatchSnapshot();
@@ -97,13 +97,11 @@ describe('<Cart />', () => {
     });
   });
 
-  describe('Check behaviour after clicking and calling redux actions', () => {
+  describe('check behaviour after clicking and calling redux actions', () => {
     it('should call push with defaultAppPath after click on link in empty cart', () => {
-      const pushFn = jest.fn();
-      setUp([], false, pushFn);
+      const { history } = setUp([], false);
       fireEvent.click(screen.getByTestId('Cart-default-path-link'));
-      expect(pushFn).toHaveBeenCalledTimes(1);
-      expect(pushFn).toHaveBeenCalledWith(defaultAppPath);
+      expect(history.push).toHaveBeenCalledWith(defaultAppPath);
     });
 
     it('should call fetchCart() and also goToTransaction() and setModal()', () => {
@@ -116,6 +114,7 @@ describe('<Cart />', () => {
 
       fireEvent.click(screen.getByText('go to summary'));
       expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.goToTransaction(history));
+
       expect(store.dispatch).toHaveBeenCalledTimes(3);
     });
   });

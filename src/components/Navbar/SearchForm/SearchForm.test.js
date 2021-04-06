@@ -7,12 +7,12 @@ import SearchForm from './SearchForm';
 import theme from '../../../styled/theme';
 import { defaultAppPath } from '../../../shared/constants';
 
-const setUp = (push = jest.fn(), search = '?p=1') => {
+const setUp = (search = '?p=1') => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search },
-    push,
+    push: jest.fn(),
   };
 
   return {
@@ -44,7 +44,7 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe('<SearchForm />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render with text in button if width is equal or greater than 900px', () => {
       act(() => {
         window.resizeTo(900, 500);
@@ -62,50 +62,43 @@ describe('<SearchForm />', () => {
     });
   });
 
-  describe('Check if correct url is pushing to history', () => {
+  describe('check if correct url is pushing to history', () => {
     it('should push defaultAppPath&name=test-name if there is no name in url', () => {
-      const pushFn = jest.fn();
-      setUp(pushFn);
-
+      const { history } = setUp();
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.input(input, { target: { value: 'test-name' } });
       fireEvent.submit(input);
-      expect(pushFn).toHaveBeenCalledWith(`${defaultAppPath}&name=test-name`);
+      expect(history.push).toHaveBeenCalledWith(`${defaultAppPath}&name=test-name`);
     });
 
     it('should push defaultAppPath if in url is name', () => {
-      const pushFn = jest.fn();
-      setUp(pushFn, '?p=1&name=test-name');
+      const { history } = setUp('?p=1&name=test-name');
 
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.input(input, { target: { value: '' } });
       fireEvent.submit(input);
-      expect(pushFn).toHaveBeenCalledWith(defaultAppPath);
+      expect(history.push).toHaveBeenCalledWith(defaultAppPath);
     });
 
     it('should NOT call push if in url is no name and input is empty', () => {
-      const pushFn = jest.fn();
-      setUp(pushFn);
+      const { history } = setUp();
 
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.submit(input);
-      expect(pushFn).not.toHaveBeenCalled();
+      expect(history.push).not.toHaveBeenCalled();
     });
 
     it('should NOT call push if in url is name and input is not edited', () => {
-      const pushFn = jest.fn();
-      setUp(pushFn, '?p=1&name=test-name');
-
+      const { history } = setUp('?p=1&name=test-name');
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.submit(input);
-      expect(pushFn).not.toHaveBeenCalled();
+      expect(history.push).not.toHaveBeenCalled();
     });
   });
 
-  describe('Check useEffect()', () => {
+  describe('check useEffect()', () => {
     it('should change input value after name param change', () => {
-      const pushFn = jest.fn();
-      const { rerender, history } = setUp(pushFn, '?p=1');
+      const { rerender, history } = setUp('?p=1');
 
       const inputBefore = screen.getByTestId('SearchForm-input');
       expect(inputBefore.value).toEqual('');
@@ -133,8 +126,7 @@ describe('<SearchForm />', () => {
     });
 
     it('should change input value after name param change with pollution', () => {
-      const pushFn = jest.fn();
-      const { rerender, history } = setUp(pushFn, '?p=1');
+      const { rerender, history } = setUp('?p=1');
 
       const inputBefore = screen.getByTestId('SearchForm-input');
       expect(inputBefore.value).toEqual('');

@@ -34,7 +34,7 @@ const setUp = (kind, extraProps = {}, extraConfig = {}) => {
 };
 
 describe('<Input />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const expectedProps = {
         kind: 'testKind',
@@ -52,7 +52,7 @@ describe('<Input />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render <SC.Input /> with default props', () => {
       const wrapper = setUp(inputKinds.INPUT);
 

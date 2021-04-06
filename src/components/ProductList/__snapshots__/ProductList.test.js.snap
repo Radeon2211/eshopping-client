@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductItem /> Check how renders should render correct info for ALL_PRODUCTS with filters 1`] = `
+exports[`<ProductList /> check how renders should render correct info for ALL_PRODUCTS with filters 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -15,7 +15,7 @@ exports[`<ProductItem /> Check how renders should render correct info for ALL_PR
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render correct info for ALL_PRODUCTS without filters other than name 1`] = `
+exports[`<ProductList /> check how renders should render correct info for ALL_PRODUCTS without filters other than name 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -30,7 +30,7 @@ exports[`<ProductItem /> Check how renders should render correct info for ALL_PR
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render correct info for MY_PRODUCTS with filters 1`] = `
+exports[`<ProductList /> check how renders should render correct info for MY_PRODUCTS with filters 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -45,7 +45,7 @@ exports[`<ProductItem /> Check how renders should render correct info for MY_PRO
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render correct info for MY_PRODUCTS without filters other than name 1`] = `
+exports[`<ProductList /> check how renders should render correct info for MY_PRODUCTS without filters other than name 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -60,7 +60,7 @@ exports[`<ProductItem /> Check how renders should render correct info for MY_PRO
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render correct info for USER_PRODUCTS with filters 1`] = `
+exports[`<ProductList /> check how renders should render correct info for USER_PRODUCTS with filters 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -75,7 +75,7 @@ exports[`<ProductItem /> Check how renders should render correct info for USER_P
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render correct info for USER_PRODUCTS without filters other than name 1`] = `
+exports[`<ProductList /> check how renders should render correct info for USER_PRODUCTS without filters other than name 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -90,7 +90,7 @@ exports[`<ProductItem /> Check how renders should render correct info for USER_P
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render list with one item 1`] = `
+exports[`<ProductList /> check how renders should render list with one item 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -180,7 +180,7 @@ exports[`<ProductItem /> Check how renders should render list with one item 1`] 
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render list with two items 1`] = `
+exports[`<ProductList /> check how renders should render list with two items 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"
@@ -350,7 +350,7 @@ exports[`<ProductItem /> Check how renders should render list with two items 1`]
 </DocumentFragment>
 `;
 
-exports[`<ProductItem /> Check how renders should render only <LoadingOverlay /> 1`] = `
+exports[`<ProductList /> check how renders should render only <LoadingOverlay /> 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw kEEAfr"

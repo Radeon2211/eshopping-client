@@ -1,5 +1,12 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, act, waitFor } from '@testing-library/react';
+import {
+  render,
+  cleanup,
+  screen,
+  fireEvent,
+  act,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
@@ -17,29 +24,32 @@ const defaultStore = mockStore({
   auth: { cart: [] },
 });
 
-const setUp = (username, status, pushFn) => {
+const setUp = (username, status) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search: '?p=1' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
-  return render(
-    <Router history={history}>
-      <Provider store={defaultStore}>
-        <ThemeProvider theme={theme}>
-          <LoggedInLinks username={username} status={status} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={defaultStore}>
+          <ThemeProvider theme={theme}>
+            <LoggedInLinks username={username} status={status} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
 
 describe('<LoggedInLinks />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning if status is active', () => {
       const props = {
         username: 'username',
@@ -69,7 +79,7 @@ describe('<LoggedInLinks />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render version for user with status active', () => {
       const { asFragment } = setUp('username', 'active');
       expect(asFragment()).toMatchSnapshot();
@@ -91,9 +101,7 @@ describe('<LoggedInLinks />', () => {
       act(() => {
         userEvent.click(document.body);
       });
-      await waitFor(() => {
-        expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
-      });
+      await waitForElementToBeRemoved(screen.queryByTestId('Dropdown'));
     });
 
     it('should not close <Dropdown /> after clicking at <Dropdown />', async () => {
@@ -111,11 +119,8 @@ describe('<LoggedInLinks />', () => {
   });
 
   it('should call push after clicking at link to settings', async () => {
-    const pushFn = jest.fn();
-    setUp('username', 'pending', pushFn);
-
+    const { history } = setUp('username', 'pending');
     fireEvent.click(screen.getByTestId('LoggedInLinks-my-account-link'));
-    expect(pushFn).toHaveBeenCalledWith('/my-account/data');
-    expect(pushFn).toHaveBeenCalledTimes(1);
+    expect(history.push).toHaveBeenCalledWith('/my-account/data');
   });
 });

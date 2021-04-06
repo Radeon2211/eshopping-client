@@ -17,7 +17,7 @@ const setUp = (props = {}) => {
 afterEach(cleanup);
 
 describe('<Button />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(Button, { children: 'Test button' })).toBeUndefined();
     });
@@ -27,7 +27,7 @@ describe('<Button />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render without <LoadingOverlay />', () => {
       const props = {
         children: 'Test button',

@@ -17,33 +17,36 @@ import { orderTypes } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (orders, orderType, isDataLoading = false, pushFn) => {
+const setUp = (orders, orderType, isDataLoading = false) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/my-account/placed-orders', search: '?p=1' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
   const store = mockStore({
     ui: { isDataLoading },
   });
 
-  return render(
-    <Router history={history}>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <OrderList orders={orders} orderType={orderType} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <OrderList orders={orders} orderType={orderType} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
 
 describe('<OrderList />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
         orders: [createOrder()],
@@ -57,7 +60,7 @@ describe('<OrderList />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly with two items and type PLACED_ORDERS', () => {
       const products = [
         createTransactionAndOrderProdItem({
@@ -196,7 +199,7 @@ describe('<OrderList />', () => {
     });
   });
 
-  describe('Check behaviour after clicking links', () => {
+  describe('check behaviour after clicking links', () => {
     it('should call push with correct path after clicking links - type PLACED_ORDERS', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orders = [
@@ -207,16 +210,15 @@ describe('<OrderList />', () => {
           buyerUsername: 'buyerUser',
         }),
       ];
-      const pushFn = jest.fn();
-      setUp(orders, orderTypes.PLACED_ORDERS, false, pushFn);
+      const { history } = setUp(orders, orderTypes.PLACED_ORDERS, false);
 
       fireEvent.click(screen.getByTestId('OrderList-user-link'));
-      expect(pushFn).toHaveBeenCalledWith('/user/sellerUser?p=1');
+      expect(history.push).toHaveBeenNthCalledWith(1, '/user/sellerUser?p=1');
 
       fireEvent.click(screen.getByTestId('OrderList-order-details-link'));
-      expect(pushFn).toHaveBeenLastCalledWith('/order/o1');
+      expect(history.push).toHaveBeenNthCalledWith(2, '/order/o1');
 
-      expect(pushFn).toHaveBeenCalledTimes(2);
+      expect(history.push).toHaveBeenCalledTimes(2);
     });
 
     it('should call push with correct path after clicking links - type SELL_HISTORY', () => {
@@ -229,16 +231,15 @@ describe('<OrderList />', () => {
           buyerUsername: 'buyerUser',
         }),
       ];
-      const pushFn = jest.fn();
-      setUp(orders, orderTypes.SELL_HISTORY, false, pushFn);
+      const { history } = setUp(orders, orderTypes.SELL_HISTORY, false);
 
       fireEvent.click(screen.getByTestId('OrderList-user-link'));
-      expect(pushFn).toHaveBeenCalledWith('/user/buyerUser?p=1');
+      expect(history.push).toHaveBeenNthCalledWith(1, '/user/buyerUser?p=1');
 
       fireEvent.click(screen.getByTestId('OrderList-order-details-link'));
-      expect(pushFn).toHaveBeenLastCalledWith('/order/o1');
+      expect(history.push).toHaveBeenNthCalledWith(2, '/order/o1');
 
-      expect(pushFn).toHaveBeenCalledTimes(2);
+      expect(history.push).toHaveBeenCalledTimes(2);
     });
   });
 });

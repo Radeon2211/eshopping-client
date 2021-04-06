@@ -83,7 +83,7 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 
 afterEach(cleanup);
 
-describe('<MySellHistory />', () => {
+describe('<MyProducts />', () => {
   it('should render everything correctly with given default data', () => {
     const { asFragment } = setUp();
     expect(asFragment()).toMatchSnapshot();

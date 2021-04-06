@@ -18,29 +18,32 @@ const mockStore = configureMockStore([thunk]);
 
 const defaultStore = mockStore({});
 
-const setUp = (items, type, pushFn = jest.fn()) => {
+const setUp = (items, type) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/cart' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
-  return render(
-    <Router history={history}>
-      <Provider store={defaultStore}>
-        <ThemeProvider theme={theme}>
-          <CartAndTransactionItems items={items} type={type} isCartLoading={false} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+  return {
+    ...render(
+      <Router history={history}>
+        <Provider store={defaultStore}>
+          <ThemeProvider theme={theme}>
+            <CartAndTransactionItems items={items} type={type} isCartLoading={false} />
+          </ThemeProvider>
+        </Provider>
+      </Router>,
+    ),
+    history,
+  };
 };
 
 afterEach(cleanup);
 
 describe('<CartAndTransactionItems />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning if type is CART', () => {
       const props = {
         items: [createTransactionAndOrderProdItem()],
@@ -73,7 +76,7 @@ describe('<CartAndTransactionItems />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything with one seller and one cart item', () => {
       const { asFragment } = setUp(
         [
@@ -104,20 +107,17 @@ describe('<CartAndTransactionItems />', () => {
     });
 
     it('should call push with correct path after click on user link', () => {
-      const pushFn = jest.fn();
-      setUp(
+      const { history } = setUp(
         [
           createCartItem({
             sellerUsername: 'user1',
           }),
         ],
         itemTypes.CART,
-        pushFn,
       );
 
       fireEvent.click(screen.getByTestId('CartAndTransactionItems-seller-link'));
-      expect(pushFn).toHaveBeenCalledTimes(1);
-      expect(pushFn).toHaveBeenCalledWith('/user/user1?p=1');
+      expect(history.push).toHaveBeenCalledWith('/user/user1?p=1');
     });
   });
 });

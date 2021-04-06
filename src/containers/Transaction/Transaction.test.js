@@ -15,16 +15,7 @@ import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
-const createHistory = (replace = jest.fn()) => ({
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/transaction' },
-  replace,
-});
-
-const defaultHistory = createHistory();
-
-const setUp = (transaction, history = defaultHistory) => {
+const setUp = (transaction) => {
   const store = mockStore({
     auth: {
       transaction,
@@ -32,6 +23,13 @@ const setUp = (transaction, history = defaultHistory) => {
     },
   });
   store.dispatch = jest.fn();
+
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname: '/transaction' },
+    replace: jest.fn(),
+  };
 
   return {
     ...render(
@@ -44,13 +42,14 @@ const setUp = (transaction, history = defaultHistory) => {
       </Router>,
     ),
     store,
+    history,
   };
 };
 
 afterEach(cleanup);
 
 describe('<Transaction />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly with two items from one user', () => {
       const transaction = [
         createTransactionAndOrderProdItem({
@@ -85,23 +84,15 @@ describe('<Transaction />', () => {
     });
   });
 
-  describe('Check useEffect()', () => {
+  describe('check useEffect()', () => {
     it('should call replace if transaction is falsy', () => {
-      const replaceFn = jest.fn();
-      const history = createHistory(replaceFn);
-      setUp(undefined, history);
-
-      expect(replaceFn).toHaveBeenCalledTimes(1);
-      expect(replaceFn).toHaveBeenCalledWith('/cart');
+      const { history } = setUp(undefined);
+      expect(history.replace).toHaveBeenCalledWith('/cart');
     });
 
     it('should call replace if transaction length is 0', () => {
-      const replaceFn = jest.fn();
-      const history = createHistory(replaceFn);
-      setUp([], history);
-
-      expect(replaceFn).toHaveBeenCalledTimes(1);
-      expect(replaceFn).toHaveBeenCalledWith('/cart');
+      const { history } = setUp([]);
+      expect(history.replace).toHaveBeenCalledWith('/cart');
     });
 
     it('should call setTransaction() when unmounting', () => {

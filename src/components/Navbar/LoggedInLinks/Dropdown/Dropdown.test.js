@@ -14,12 +14,12 @@ import * as actions from '../../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (isVisible, closed = jest.fn(), pushFn = jest.fn()) => {
+const setUp = (isVisible, closed = jest.fn()) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/products', search: '?p=1' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
   const store = mockStore({});
@@ -36,13 +36,14 @@ const setUp = (isVisible, closed = jest.fn(), pushFn = jest.fn()) => {
       </Provider>,
     ),
     store,
+    history,
   };
 };
 
 afterEach(cleanup);
 
 describe('<Dropdown />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
         isVisible: true,
@@ -56,7 +57,7 @@ describe('<Dropdown />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp(true);
       expect(asFragment()).toMatchSnapshot();
@@ -68,41 +69,37 @@ describe('<Dropdown />', () => {
     });
   });
 
-  describe('Check behaviour after clicking at options', () => {
+  describe('check behaviour after clicking at options', () => {
     it('should call push with correct paths after clicking at links', () => {
-      const pushFn = jest.fn();
-      setUp(true, jest.fn(), pushFn);
+      const { history } = setUp(true, jest.fn());
 
-      fireEvent.click(screen.getByTestId('Dropdown-my-account-data-link'));
-      expect(pushFn).toHaveBeenCalledWith('/my-account/data');
+      fireEvent.click(screen.getByText('My account'));
+      expect(history.push).toHaveBeenCalledWith('/my-account/data');
 
-      fireEvent.click(screen.getByTestId('Dropdown-my-account-products-link'));
-      expect(pushFn).toHaveBeenLastCalledWith('/my-account/products?p=1');
+      fireEvent.click(screen.getByText('My offers'));
+      expect(history.push).toHaveBeenLastCalledWith('/my-account/products?p=1');
 
-      fireEvent.click(screen.getByTestId('Dropdown-my-account-placed-orders-link'));
-      expect(pushFn).toHaveBeenLastCalledWith('/my-account/placed-orders?p=1');
+      fireEvent.click(screen.getByText('My sell history'));
+      expect(history.push).toHaveBeenLastCalledWith('/my-account/sell-history?p=1');
 
-      fireEvent.click(screen.getByTestId('Dropdown-my-account-sell-history-link'));
-      expect(pushFn).toHaveBeenLastCalledWith('/my-account/sell-history?p=1');
+      fireEvent.click(screen.getByText('Placed orders'));
+      expect(history.push).toHaveBeenLastCalledWith('/my-account/placed-orders?p=1');
 
-      fireEvent.click(screen.getByTestId('Dropdown-logout-link'));
-      expect(pushFn).toHaveBeenLastCalledWith('/logout');
+      fireEvent.click(screen.getByText('Log out'));
+      expect(history.push).toHaveBeenLastCalledWith('/logout');
 
-      expect(pushFn).toHaveBeenCalledTimes(5);
+      expect(history.push).toHaveBeenCalledTimes(5);
     });
 
     it('should call setModal() after add product option click', () => {
-      const pushFn = jest.fn();
-      const { store } = setUp(true, jest.fn(), pushFn);
-
-      fireEvent.click(screen.getByTestId('Dropdown-add-product-option'));
+      const { store, history } = setUp(true, jest.fn());
+      fireEvent.click(screen.getByText('Add product'));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ADD_PRODUCT));
-
-      expect(pushFn).not.toHaveBeenCalled();
+      expect(history.push).not.toHaveBeenCalled();
     });
   });
 
-  describe('Check closing mechanism', () => {
+  describe('check closing mechanism', () => {
     it('should call closed after clicking outside if isVisible is true', () => {
       const closedFn = jest.fn();
       setUp(true, closedFn);

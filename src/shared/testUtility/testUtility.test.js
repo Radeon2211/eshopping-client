@@ -12,14 +12,13 @@ describe('createHistoryPageNumber()', () => {
   });
 
   it('should create history with given page number and push function', () => {
-    const pushFn = jest.fn();
-    pushFn('/cart');
-    const history = testUtility.createHistoryPageNumber(3, pushFn);
+    const history = testUtility.createHistoryPageNumber(3);
     expect(history.listen).toEqual(expect.any(Function));
+    expect(history.replace).toEqual(expect.any(Function));
+    expect(history.push).toEqual(expect.any(Function));
+    expect(history.goBack).toEqual(expect.any(Function));
     expect(history.createHref).toEqual(expect.any(Function));
     expect(history.location).toEqual({ pathname: '/products', search: `?p=3` });
-    expect(history.push).toEqual(pushFn);
-    expect(history.push).toHaveBeenCalledWith('/cart');
   });
 });
 

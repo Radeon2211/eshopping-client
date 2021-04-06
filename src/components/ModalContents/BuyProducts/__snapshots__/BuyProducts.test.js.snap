@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BuyProducts /> Checks how renders should render everything correctly 1`] = `
+exports[`<BuyProducts /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <h3
     class="sc-jSgupP iUTWMO"

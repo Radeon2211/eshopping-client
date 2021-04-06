@@ -15,12 +15,12 @@ import { updateCartActions } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (data, isCartLoading = false, pushFn = jest.fn()) => {
+const setUp = (data, isCartLoading = false) => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: '/cart' },
-    push: pushFn,
+    push: jest.fn(),
   };
 
   const store = mockStore({});
@@ -37,6 +37,7 @@ const setUp = (data, isCartLoading = false, pushFn = jest.fn()) => {
       </Router>,
     ),
     store,
+    history,
   };
 };
 
@@ -64,7 +65,7 @@ describe('<CartItem />', () => {
     name: 'productName',
   });
 
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
         data: defaultData,
@@ -78,7 +79,7 @@ describe('<CartItem />', () => {
     });
   });
 
-  describe('Checks how renders', () => {
+  describe('checks how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp(defaultData);
       expect(asFragment()).toMatchSnapshot();
@@ -92,16 +93,17 @@ describe('<CartItem />', () => {
     });
   });
 
-  describe('Check behaviour of history and calling redux actions', () => {
+  describe('check behaviour of history and calling redux actions', () => {
     it('should call push with correct paths after clicking links', () => {
-      const pushFn = jest.fn();
-      setUp(defaultData, false, pushFn);
+      const { history } = setUp(defaultData, false);
 
       fireEvent.click(screen.getByTestId('CartItem-product-link-photo'));
-      expect(pushFn).toHaveBeenCalledWith(`/product/${defaultData.product._id}`);
+      expect(history.push).toHaveBeenCalledWith(`/product/${defaultData.product._id}`);
+
       fireEvent.click(screen.getByTestId('CartItem-product-link-name'));
-      expect(pushFn).toHaveBeenLastCalledWith(`/product/${defaultData.product._id}`);
-      expect(pushFn).toHaveBeenCalledTimes(2);
+      expect(history.push).toHaveBeenLastCalledWith(`/product/${defaultData.product._id}`);
+
+      expect(history.push).toHaveBeenCalledTimes(2);
     });
 
     it('should call removeCartItem() after clicking at trash icon', () => {
@@ -126,7 +128,31 @@ describe('<CartItem />', () => {
         2,
         actions.updateCartItem(itemId, updateCartActions.DECREMENT),
       );
+
       expect(store.dispatch).toHaveBeenCalledTimes(2);
+    });
+
+    it('should call updateCartItem() after input blur', () => {
+      const { store } = setUp(defaultData);
+      expect(store.dispatch).not.toHaveBeenCalled();
+
+      const input = screen.getByTestId('NumberInput-quantity');
+
+      fireEvent.focus(input);
+      fireEvent.change(input, { target: { value: 3 } });
+      fireEvent.blur(input);
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        1,
+        actions.updateCartItem(itemId, updateCartActions.NUMBER, 3),
+      );
+
+      fireEvent.focus(input);
+      fireEvent.change(input, { target: { value: '' } });
+      fireEvent.blur(input);
+      expect(store.dispatch).toHaveBeenNthCalledWith(
+        2,
+        actions.updateCartItem(itemId, updateCartActions.NUMBER, 1),
+      );
     });
   });
 });

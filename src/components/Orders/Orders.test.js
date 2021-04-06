@@ -57,7 +57,7 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<Orders />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const expectedProps = {
         orders: [createOrder()],
@@ -71,7 +71,7 @@ describe('<Orders />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render only <Loader />', () => {
       const { asFragment } = setUp(undefined, undefined);
       expect(asFragment()).toMatchSnapshot();
@@ -166,7 +166,7 @@ describe('<Orders />', () => {
     });
   });
 
-  describe('Check useEffect()', () => {
+  describe('check useEffect()', () => {
     it('should call fetchOrders() with default search and type PLACED_ORDERS', () => {
       const { store } = setUp([createOrder()], undefined, orderTypes.PLACED_ORDERS);
       expect(store.dispatch).toHaveBeenCalledWith(

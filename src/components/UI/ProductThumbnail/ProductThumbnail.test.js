@@ -16,7 +16,7 @@ const setUp = (photo = false, orderId = '') => {
 };
 
 describe('<ProductThumbnail />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     const props = {
       photo: false,
       productId: 'p1',
@@ -32,7 +32,7 @@ describe('<ProductThumbnail />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should src be a link to product photo in order collection', () => {
       const wrapper = setUp(true, 'o1');
       expect(wrapper).toMatchSnapshot();

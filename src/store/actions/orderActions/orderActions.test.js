@@ -12,7 +12,7 @@ import * as uiActions from '../uiActions/uiActions';
 import * as orderActions from './orderActions';
 import * as actionTypes from '../actionTypes';
 
-describe('Action creators', () => {
+describe('action creators', () => {
   it('tests setPlacedOrders()', () => {
     const placedOrders = [createOrder()];
     const orderCount = 1;
@@ -45,7 +45,7 @@ describe('Action creators', () => {
   });
 });
 
-describe('Async functions', () => {
+describe('async functions', () => {
   beforeEach(() => {
     moxios.install(axios);
   });
@@ -58,7 +58,7 @@ describe('Async functions', () => {
     const expectedOrders = [createOrder()];
     const defaultSearch = '?p=1';
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful and page number is 3 and type is PLACED_ORDERS', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 200,
@@ -166,7 +166,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful and type is PLACED_ORDERS', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 200,
@@ -261,7 +261,7 @@ describe('Async functions', () => {
     const orderId = 'o1';
     const expectedOrder = createOrder();
 
-    describe('Store', () => {
+    describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 200,
@@ -309,7 +309,7 @@ describe('Async functions', () => {
       });
     });
 
-    describe('Inner dispatch', () => {
+    describe('inner dispatch', () => {
       it('is successful', async () => {
         moxios.stubRequest(/orders.*/, {
           status: 200,

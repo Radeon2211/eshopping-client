@@ -2,7 +2,7 @@ import * as actionTypes from '../../actions/actionTypes';
 import uiReducer, { initialState } from './uiReducer';
 import { modalTypes } from '../../../shared/constants';
 
-describe('UI reducer', () => {
+describe('ui reducer', () => {
   it('should return initial state after passing empty object', () => {
     expect(uiReducer(undefined, {})).toEqual(initialState);
   });

@@ -34,7 +34,7 @@ window.IntersectionObserver = jest.fn(() => ({
 afterEach(cleanup);
 
 describe('<DeliveryAddressSection />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       const props = {
         onSetModal: jest.fn(),

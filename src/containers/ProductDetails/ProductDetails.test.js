@@ -40,7 +40,7 @@ const defaultStore = {
   },
 };
 
-const setUp = (storePart, pushFn = jest.fn()) => {
+const setUp = (storePart) => {
   const store = storePart
     ? mockStore({
         ...defaultStore,
@@ -53,7 +53,7 @@ const setUp = (storePart, pushFn = jest.fn()) => {
     listen: jest.fn(),
     createHref: jest.fn(),
     location: { pathname: `/product/${defaultProductId}` },
-    push: pushFn,
+    push: jest.fn(),
   };
 
   return {
@@ -67,6 +67,7 @@ const setUp = (storePart, pushFn = jest.fn()) => {
       </Provider>,
     ),
     store,
+    history,
   };
 };
 
@@ -86,8 +87,8 @@ jest.mock('react-router-dom', () => ({
 afterEach(cleanup);
 
 describe('<ProductDetails />', () => {
-  describe('Check how renders', () => {
-    describe('Snapshots', () => {
+  describe('check how renders', () => {
+    describe('snapshots', () => {
       it('should render only <Loader /> if productDetails is undefined', () => {
         const store = { product: { productDetails: undefined } };
         const { asFragment } = setUp(store);
@@ -116,7 +117,7 @@ describe('<ProductDetails />', () => {
       });
     });
 
-    describe('Check single items', () => {
+    describe('check single items', () => {
       it('should render quantity sold node - "2 people bought 3 units"', () => {
         const store = {
           product: {
@@ -196,25 +197,26 @@ describe('<ProductDetails />', () => {
       });
 
       it('should call push with correct path after clicking on seller link', () => {
-        const pushFn = jest.fn();
-        setUp(defaultStore, pushFn);
-
+        const { history } = setUp(defaultStore);
         fireEvent.click(screen.getByTestId('ProductDetails-seller-link'));
-        expect(pushFn).toHaveBeenCalledWith(`/user/${defaultProductDetails.seller.username}?p=1`);
-        expect(pushFn).toHaveBeenCalledTimes(1);
+        expect(history.push).toHaveBeenCalledWith(
+          `/user/${defaultProductDetails.seller.username}?p=1`,
+        );
       });
     });
   });
 
-  describe('Check redux actions calling', () => {
+  describe('check redux actions calling', () => {
     it('should call fetchProductDetails() after mounting and setProductDetails() after unmounting', () => {
       const { store, unmount } = setUp();
       expect(store.dispatch).toHaveBeenNthCalledWith(
         1,
         actions.fetchProductDetails(defaultProductId),
       );
+
       unmount();
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setProductDetails());
+
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });
 

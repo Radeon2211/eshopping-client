@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Transaction /> Check how renders should render everything correctly with two items from one user 1`] = `
+exports[`<Transaction /> check how renders should render everything correctly with two items from one user 1`] = `
 <DocumentFragment>
   <h3
     class="sc-eCssSg ceYvmz"
@@ -340,6 +340,6 @@ exports[`<Transaction /> Check how renders should render everything correctly wi
 </DocumentFragment>
 `;
 
-exports[`<Transaction /> Check how renders should render nothing if transaction is empty 1`] = `<DocumentFragment />`;
+exports[`<Transaction /> check how renders should render nothing if transaction is empty 1`] = `<DocumentFragment />`;
 
-exports[`<Transaction /> Check how renders should render nothing if transaction is falsy 1`] = `<DocumentFragment />`;
+exports[`<Transaction /> check how renders should render nothing if transaction is falsy 1`] = `<DocumentFragment />`;

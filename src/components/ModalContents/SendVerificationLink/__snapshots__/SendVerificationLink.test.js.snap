@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SendVerificationLink /> Checks how renders should render everything correctly 1`] = `
+exports[`<SendVerificationLink /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <h4
     class="sc-jSgupP fXGiwP"

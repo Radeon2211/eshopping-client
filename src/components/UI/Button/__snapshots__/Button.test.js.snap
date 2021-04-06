@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> Check how renders should render with <LoadingOverlay /> 1`] = `
+exports[`<Button /> check how renders should render with <LoadingOverlay /> 1`] = `
 <DocumentFragment>
   <button
     class="sc-bdfBwQ clkCDw"
@@ -27,7 +27,7 @@ exports[`<Button /> Check how renders should render with <LoadingOverlay /> 1`] 
 </DocumentFragment>
 `;
 
-exports[`<Button /> Check how renders should render without <LoadingOverlay /> 1`] = `
+exports[`<Button /> check how renders should render without <LoadingOverlay /> 1`] = `
 <DocumentFragment>
   <button
     class="sc-bdfBwQ eqGxsp"

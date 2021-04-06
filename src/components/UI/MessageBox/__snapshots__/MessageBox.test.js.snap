@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MessageBox /> Check how renders should NOT render anything if message is empty 1`] = `<DocumentFragment />`;
+exports[`<MessageBox /> check how renders should NOT render anything if message is empty 1`] = `<DocumentFragment />`;
 
-exports[`<MessageBox /> Check how renders should render everything correctly if message is NOT empty 1`] = `
+exports[`<MessageBox /> check how renders should render everything correctly if message is NOT empty 1`] = `
 <DocumentFragment>
   <div
     class="sc-gsTCUz bCTrL"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UploadPhoto /> Check how renders default view should render default view after deleting current photo 1`] = `
+exports[`<UploadPhoto /> check how renders default view should render default view after deleting current photo 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"
@@ -47,7 +47,7 @@ exports[`<UploadPhoto /> Check how renders default view should render default vi
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> Check how renders default view should render default view when files field has 0 length 1`] = `
+exports[`<UploadPhoto /> check how renders default view should render default view when files field has 0 length 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"
@@ -94,7 +94,7 @@ exports[`<UploadPhoto /> Check how renders default view should render default vi
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> Check how renders should render default view when hasCurrentPhoto is false 1`] = `
+exports[`<UploadPhoto /> check how renders should render default view when hasCurrentPhoto is false 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"
@@ -141,7 +141,7 @@ exports[`<UploadPhoto /> Check how renders should render default view when hasCu
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> Check how renders should render with delete current button when hasCurrentPhoto is true 1`] = `
+exports[`<UploadPhoto /> check how renders should render with delete current button when hasCurrentPhoto is true 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"
@@ -195,7 +195,7 @@ exports[`<UploadPhoto /> Check how renders should render with delete current but
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> Check how renders show errors should render delete button and info when error appeared and then photo is uploaded correctly 1`] = `
+exports[`<UploadPhoto /> check how renders show errors should render delete button and info when error appeared and then photo is uploaded correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"
@@ -268,7 +268,7 @@ exports[`<UploadPhoto /> Check how renders show errors should render delete butt
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> Check how renders show errors should render with error when size is too big 1`] = `
+exports[`<UploadPhoto /> check how renders show errors should render with error when size is too big 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"
@@ -352,7 +352,7 @@ exports[`<UploadPhoto /> Check how renders show errors should render with error 
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> Check how renders show errors should render with error, delete button and file info when image type is incorrect 1`] = `
+exports[`<UploadPhoto /> check how renders show errors should render with error, delete button and file info when image type is incorrect 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"
@@ -436,7 +436,7 @@ exports[`<UploadPhoto /> Check how renders show errors should render with error,
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> Check how renders successful upload should render delete button and info when photo is uploaded 1`] = `
+exports[`<UploadPhoto /> check how renders successful upload should render delete button and info when photo is uploaded 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ hafmfB"

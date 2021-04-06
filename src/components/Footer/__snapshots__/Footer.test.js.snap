@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Footer /> Check how renders should render everything correctly 1`] = `
+exports[`<Footer /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <footer
     class="sc-hKgILt iBQjgp"

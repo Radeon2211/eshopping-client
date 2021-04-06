@@ -43,7 +43,7 @@ const setUp = (search = '?p=1', replace = jest.fn(), dispatchFilters = jest.fn()
 afterEach(cleanup);
 
 describe('<PriceSlider />', () => {
-  describe('Check prop types', () => {
+  describe('check prop types', () => {
     it('should NOT throw a warning', () => {
       expect(checkProps(PriceSlider, { dispatchFilters: jest.fn() })).toBeUndefined();
     });
@@ -53,7 +53,7 @@ describe('<PriceSlider />', () => {
     });
   });
 
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly with default values', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
@@ -68,24 +68,23 @@ describe('<PriceSlider />', () => {
     });
   });
 
-  describe('Check general behaviour', () => {
+  describe('check general behaviour', () => {
     it('should call replace if min value is lower than in store', () => {
       const replaceFn = jest.fn();
       setUp('?p=1&minPrice=5', replaceFn);
       expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
-      expect(replaceFn).toHaveBeenCalledTimes(1);
     });
 
     it('should call replace if max value is greater than in store', () => {
       const replaceFn = jest.fn();
       setUp('?p=1&maxPrice=120', replaceFn);
       expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
-      expect(replaceFn).toHaveBeenCalledTimes(1);
     });
 
     it('should call dispatchFilters twice with correct values', () => {
       const dispatchFiltersFn = jest.fn();
       setUp('?p=1&minPrice=20&maxPrice=80', jest.fn(), dispatchFiltersFn);
+
       expect(dispatchFiltersFn).toHaveBeenNthCalledWith(1, {
         minPrice: 20,
         type: filtersActions.SET_MIN_PRICE,
@@ -94,6 +93,7 @@ describe('<PriceSlider />', () => {
         maxPrice: 80,
         type: filtersActions.SET_MAX_PRICE,
       });
+
       expect(dispatchFiltersFn).toHaveBeenCalledTimes(2);
     });
 
@@ -121,7 +121,7 @@ describe('<PriceSlider />', () => {
     });
   });
 
-  describe('Check sliderPositionsReducer', () => {
+  describe('check sliderPositionsReducer', () => {
     it('should return default state', () => {
       expect(sliderPositionsReducer(undefined, {})).toEqual(sliderPositionsInitialState);
     });

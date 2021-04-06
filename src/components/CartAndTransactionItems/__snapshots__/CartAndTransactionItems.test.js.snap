@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartAndTransactionItems /> Check how renders should render everything with one seller and one cart item 1`] = `
+exports[`<CartAndTransactionItems /> check how renders should render everything with one seller and one cart item 1`] = `
 <DocumentFragment>
   <div
     class="sc-iqHYGH jQuAQg"
@@ -154,7 +154,7 @@ exports[`<CartAndTransactionItems /> Check how renders should render everything 
 </DocumentFragment>
 `;
 
-exports[`<CartAndTransactionItems /> Check how renders should render everything with two sellers, each with one transaction item 1`] = `
+exports[`<CartAndTransactionItems /> check how renders should render everything with two sellers, each with one transaction item 1`] = `
 <DocumentFragment>
   <div
     class="sc-iqHYGH jQuAQg"

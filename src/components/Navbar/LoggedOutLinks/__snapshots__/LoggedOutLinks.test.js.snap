@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoggedOutLinks /> Checks how renders should render everything correctly 1`] = `
+exports[`<LoggedOutLinks /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-jSgupP cXopKq"

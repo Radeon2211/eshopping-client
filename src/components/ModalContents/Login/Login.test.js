@@ -42,14 +42,14 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<Login />', () => {
-  describe('Check how renders', () => {
+  describe('check how renders', () => {
     it('should render everything correctly', () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe('Check behaviour after link click', () => {
+  describe('check behaviour after link click', () => {
     it('should call setModal() after link click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
@@ -58,7 +58,7 @@ describe('<Login />', () => {
     });
   });
 
-  describe('Check form', () => {
+  describe('check form', () => {
     const testEmail = 'test@domain.com';
     const testPassword = 'password';
 

@@ -24,4 +24,3 @@ Next steps are:
 
 - add the option to write a review of the purchased products
 - add notifications when someone buy your product or write a review of your product
-- add and strongly improve tests
