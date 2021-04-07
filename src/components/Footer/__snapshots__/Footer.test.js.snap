@@ -14,7 +14,7 @@ exports[`<Footer /> check how renders should render everything correctly 1`] = `
       spacing="0px"
       transform=""
     >
-      © 2020 Radosław Mikrut. All rights reserved
+      © 2021 Radosław Mikrut. All rights reserved
     </span>
     <div
       class="sc-dlfnbm bcSocG"

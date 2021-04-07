@@ -186,3 +186,9 @@ export const productsPerPageControllerOptions = [
   { value: 20, label: '20' },
   { value: 25, label: '25' },
 ];
+
+export const defaultScrollToConfig = {
+  top: 0,
+  left: 0,
+  behavior: 'smooth',
+};

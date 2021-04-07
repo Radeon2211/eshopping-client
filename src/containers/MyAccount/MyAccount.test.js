@@ -40,6 +40,10 @@ const setUp = (userProfile) => {
 
 afterEach(cleanup);
 
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
+
 describe('<MyAccount />', () => {
   it('should render navigation and all routes', () => {
     setUp(defaultUserProfile);

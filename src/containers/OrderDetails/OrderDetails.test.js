@@ -14,6 +14,7 @@ import {
 } from '../../shared/testUtility/testUtility';
 import theme from '../../styled/theme';
 import * as actions from '../../store/actions/indexActions';
+import { defaultScrollToConfig } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -60,6 +61,10 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 }));
 
 afterEach(cleanup);
+
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
 
 describe('<OrderDetails />', () => {
   describe('check how renders', () => {
@@ -144,16 +149,22 @@ describe('<OrderDetails />', () => {
   });
 
   describe('check useEffect()', () => {
-    it('should call fetchOrderDetails() and also setOrderDetails() when unmounting', () => {
+    it('should call fetchOrderDetails() after mounting', () => {
+      const { store } = setUp();
+      expect(store.dispatch).toHaveBeenCalledWith(actions.fetchOrderDetails(defaultOrderId));
+    });
+
+    it('should call setOrderDetails() after unmounting', () => {
       const { store, unmount } = setUp();
-
-      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchOrderDetails(defaultOrderId));
       expect(store.dispatch).toHaveBeenCalledTimes(1);
-
       unmount();
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setOrderDetails());
-
       expect(store.dispatch).toHaveBeenCalledTimes(2);
+    });
+
+    it('should call scrollTo() after mounting', () => {
+      setUp();
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
   });
 });

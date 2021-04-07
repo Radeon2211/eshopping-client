@@ -1,15 +1,18 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLastLocation } from 'react-router-last-location';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { productPages } from '../../shared/constants';
-import { getParamsWithoutPollution } from '../../shared/utility/utility';
+import { getParamsWithoutPollution, scrollToTop } from '../../shared/utility/utility';
 
 const Products = (props) => {
   const {
     location: { search },
   } = props;
+
+  const lastLocation = useLastLocation();
 
   const productsPerPage = useSelector((state) => state.ui.productsPerPage);
   const userProfile = useSelector((state) => state.auth.profile);
@@ -22,7 +25,10 @@ const Products = (props) => {
 
   useEffect(() => {
     onFetchProducts(search, productPages.ALL_PRODUCTS);
-  }, [search, onFetchProducts, productsPerPage, userProfile]);
+    if (!lastLocation?.pathname.startsWith('/product/')) {
+      scrollToTop();
+    }
+  }, [search, onFetchProducts, productsPerPage, userProfile, lastLocation]);
 
   const correctQueryParams = getParamsWithoutPollution(search);
   const { name } = correctQueryParams;

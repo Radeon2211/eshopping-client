@@ -8,7 +8,11 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import OtherUser from './OtherUser';
 import theme from '../../styled/theme';
-import { productPages, defaultProductsPerPage } from '../../shared/constants';
+import {
+  productPages,
+  defaultProductsPerPage,
+  defaultScrollToConfig,
+} from '../../shared/constants';
 import { createProductItem } from '../../shared/testUtility/testUtility';
 import * as actions from '../../store/actions/indexActions';
 
@@ -82,6 +86,10 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 
 afterEach(cleanup);
 
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
+
 describe('<OtherUser />', () => {
   describe('check how renders', () => {
     describe('snapshots', () => {
@@ -131,24 +139,27 @@ describe('<OtherUser />', () => {
       expect(replaceFn).toHaveBeenCalledTimes(1);
       expect(replaceFn).toHaveBeenCalledWith('/my-account/data');
       expect(store.dispatch).not.toHaveBeenCalled();
+      expect(window.scrollTo).not.toHaveBeenCalled();
     });
 
-    it('should call fetchOtherUser() and fetchProducts() if otherUser is different from current user', () => {
+    it('should call fetchOtherUser(), fetchProducts(), and scrollTo() if otherUser is different from current user', () => {
       const replaceFn = jest.fn();
       const { store } = setUp(defaultOtherUser, 'differentUser', replaceFn);
 
-      expect(replaceFn).toHaveBeenCalledTimes(0);
+      expect(replaceFn).not.toHaveBeenCalled();
+
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchOtherUser('user1'));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
         actions.fetchProducts('?p=1', productPages.USER_PRODUCTS, 'user1'),
       );
       expect(store.dispatch).toHaveBeenCalledTimes(2);
+
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
 
     it('should call setOtherUser() after unmounting component', () => {
       const { store, unmount } = setUp(defaultOtherUser, 'user1');
-
       expect(store.dispatch).not.toHaveBeenCalled();
       unmount();
       expect(store.dispatch).toHaveBeenCalledWith(actions.setOtherUser(undefined));

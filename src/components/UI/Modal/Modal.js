@@ -72,7 +72,6 @@ const Modal = () => {
 
   useEffect(() => {
     history.listen(() => {
-      console.log('eeeeeeeee');
       if (modalContent) {
         onSetModal('');
       }

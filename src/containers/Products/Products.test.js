@@ -5,12 +5,17 @@ import matchMediaPolyfill from 'mq-polyfill';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
+import { useLastLocation } from 'react-router-last-location';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Products from './Products';
 import theme from '../../styled/theme';
 import { defaultUserProfile, createProductItem } from '../../shared/testUtility/testUtility';
-import { productPages, defaultProductsPerPage } from '../../shared/constants';
+import {
+  productPages,
+  defaultProductsPerPage,
+  defaultScrollToConfig,
+} from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -90,7 +95,13 @@ beforeAll(() => {
       innerHeight: height,
     }).dispatchEvent(new this.Event('resize'));
   };
+
+  window.scrollTo = jest.fn();
 });
+
+jest.mock('react-router-last-location', () => ({
+  useLastLocation: jest.fn(),
+}));
 
 afterEach(cleanup);
 
@@ -120,6 +131,22 @@ describe('<Products />', () => {
       expect(store.dispatch).toHaveBeenCalledWith(
         actions.fetchProducts(search, productPages.ALL_PRODUCTS),
       );
+    });
+
+    it('should call scrollTo() if last rendered route was ProductDetails', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/product/p1',
+      }));
+      setUp();
+      expect(window.scrollTo).not.toHaveBeenCalled();
+    });
+
+    it('should NOT call scrollTo() if last rendered route was NOT ProductDetails', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/cart',
+      }));
+      setUp();
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
   });
 });

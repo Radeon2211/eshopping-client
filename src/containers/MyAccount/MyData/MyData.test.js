@@ -8,7 +8,7 @@ import MyData from './MyData';
 import theme from '../../../styled/theme';
 import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes, singleInfoNames } from '../../../shared/constants';
+import { defaultScrollToConfig, modalTypes, singleInfoNames } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -37,6 +37,10 @@ const setUp = (profile, pushFn = jest.fn()) => {
 };
 
 afterEach(cleanup);
+
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
 
 describe('<MyData />', () => {
   describe('check how renders', () => {
@@ -114,6 +118,13 @@ describe('<MyData />', () => {
 
       fireEvent.click(screen.getByText('Logout'));
       expect(pushFn).toHaveBeenCalledWith('/logout');
+    });
+  });
+
+  describe('check useEffect()', () => {
+    it('should call scrollTo() after mounting', () => {
+      setUp();
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
   });
 });

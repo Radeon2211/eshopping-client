@@ -12,7 +12,7 @@ import ToPayInfo from '../../components/UI/ToPayInfo/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import Button from '../../components/UI/Button/Button';
 import { itemTypes, modalTypes } from '../../shared/constants';
-import { roundOverallPrice } from '../../shared/utility/utility';
+import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
 
 const Transaction = () => {
   const history = useHistory();
@@ -28,6 +28,7 @@ const Transaction = () => {
   ]);
 
   useEffect(() => {
+    scrollToTop();
     if (!transaction || transaction?.length <= 0) {
       history.replace('/cart');
     }

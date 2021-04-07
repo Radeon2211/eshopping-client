@@ -12,6 +12,7 @@ import {
   defaultDeliveryAddress,
 } from '../../shared/testUtility/testUtility';
 import * as actions from '../../store/actions/indexActions';
+import { defaultScrollToConfig } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -47,6 +48,10 @@ const setUp = (transaction) => {
 };
 
 afterEach(cleanup);
+
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
 
 describe('<Transaction />', () => {
   describe('check how renders', () => {
@@ -85,14 +90,22 @@ describe('<Transaction />', () => {
   });
 
   describe('check useEffect()', () => {
-    it('should call replace if transaction is falsy', () => {
+    it('should call replace if transaction is falsy and call scrollTo()', () => {
       const { history } = setUp(undefined);
       expect(history.replace).toHaveBeenCalledWith('/cart');
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
 
-    it('should call replace if transaction length is 0', () => {
+    it('should call replace if transaction length is 0 and call scrollTo()', () => {
       const { history } = setUp([]);
       expect(history.replace).toHaveBeenCalledWith('/cart');
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
+    });
+
+    it('should NOT call replace if transaction length is more than 1 and call scrollTo()', () => {
+      const { history } = setUp([createTransactionAndOrderProdItem()]);
+      expect(history.replace).not.toHaveBeenCalled();
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
 
     it('should call setTransaction() when unmounting', () => {

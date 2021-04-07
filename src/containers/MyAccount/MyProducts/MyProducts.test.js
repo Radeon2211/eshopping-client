@@ -6,10 +6,16 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
+import { useLastLocation } from 'react-router-last-location';
 import theme from '../../../styled/theme';
 import MyProducts from './MyProducts';
 import { createProductItem, defaultUserProfile } from '../../../shared/testUtility/testUtility';
-import { productPages, productConditions, defaultProductsPerPage } from '../../../shared/constants';
+import {
+  productPages,
+  productConditions,
+  defaultProductsPerPage,
+  defaultScrollToConfig,
+} from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -81,18 +87,46 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   }),
 }));
 
+jest.mock('react-router-last-location', () => ({
+  useLastLocation: jest.fn(),
+}));
+
 afterEach(cleanup);
 
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
+
 describe('<MyProducts />', () => {
-  it('should render everything correctly with given default data', () => {
-    const { asFragment } = setUp();
-    expect(asFragment()).toMatchSnapshot();
+  describe('check how renders', () => {
+    it('should render everything correctly with given default data', () => {
+      const { asFragment } = setUp();
+      expect(asFragment()).toMatchSnapshot();
+    });
   });
 
-  it('should call fetchProducts() in useEffect()', () => {
-    const { store } = setUp();
-    expect(store.dispatch).toHaveBeenCalledWith(
-      actions.fetchProducts(defaultSearch, productPages.MY_PRODUCTS),
-    );
+  describe('check useEffect()', () => {
+    it('should call fetchProducts()', () => {
+      const { store } = setUp();
+      expect(store.dispatch).toHaveBeenCalledWith(
+        actions.fetchProducts(defaultSearch, productPages.MY_PRODUCTS),
+      );
+    });
+
+    it('should call scrollTo() if last rendered route was ProductDetails', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/product/p1',
+      }));
+      setUp();
+      expect(window.scrollTo).not.toHaveBeenCalled();
+    });
+
+    it('should NOT call scrollTo() if last rendered route was NOT ProductDetails', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/cart',
+      }));
+      setUp();
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
+    });
   });
 });

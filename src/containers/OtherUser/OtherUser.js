@@ -7,6 +7,7 @@ import PlainText from '../../components/UI/PlainText';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { productPages } from '../../shared/constants';
 import FlexWrapper from '../../components/UI/FlexWrapper';
+import { scrollToTop } from '../../shared/utility/utility';
 
 const OtherUser = (props) => {
   const {
@@ -39,6 +40,7 @@ const OtherUser = (props) => {
     } else {
       onFetchOtherUser(otherUserUsername);
       onFetchProducts(search, productPages.USER_PRODUCTS, otherUserUsername);
+      scrollToTop();
     }
     return () => onSetOtherUser(undefined);
   }, [

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MyPlacedOrders /> should render everything correctly with given default data 1`] = `
+exports[`<MyPlacedOrders /> check how renders should render everything correctly with given default data 1`] = `
 <DocumentFragment>
   <div
     class="sc-dlfnbm eNBhAw"

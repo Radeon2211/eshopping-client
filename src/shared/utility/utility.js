@@ -2,7 +2,7 @@ import queryString from 'query-string';
 import moment from 'moment';
 import roundTo from 'round-to';
 import filesize from 'filesize';
-import { listOfAreaCodes, defaultErrorMessage } from '../constants';
+import { listOfAreaCodes, defaultErrorMessage, defaultScrollToConfig } from '../constants';
 
 export const getPhonePrefixAndNumber = (phone) => {
   const currentPhonePrefix = phone.split(' ')[0].split('+')[1];
@@ -119,3 +119,7 @@ MockFile.prototype.create = (name = 'mock.png', size = 1024, mimeType = 'image/p
   return blob;
 };
 export const mockFile = new MockFile();
+
+export const scrollToTop = () => {
+  window.scrollTo(defaultScrollToConfig);
+};

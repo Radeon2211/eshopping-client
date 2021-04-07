@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SC from './MyData.sc';
 import * as actions from '../../../store/actions/indexActions';
@@ -9,6 +9,7 @@ import Heading from '../../../components/UI/Heading/Heading';
 import SingleInfo from './SingleInfo/SingleInfo';
 import Button from '../../../components/UI/Button/Button';
 import PlainText from '../../../components/UI/PlainText';
+import { scrollToTop } from '../../../shared/utility/utility';
 
 const MyData = (props) => {
   const { history } = props;
@@ -19,6 +20,10 @@ const MyData = (props) => {
   const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
     dispatch,
   ]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   let dataAndActions = null;
   let pendingUserContent = null;

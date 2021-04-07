@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import Cart from './Cart';
 import theme from '../../styled/theme';
 import { createCartItem } from '../../shared/testUtility/testUtility';
-import { defaultAppPath, modalTypes } from '../../shared/constants';
+import { defaultAppPath, modalTypes, defaultScrollToConfig } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -58,6 +58,10 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 
 afterEach(cleanup);
 
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
+
 describe('<Cart />', () => {
   describe('check how renders', () => {
     it('should render everything correctly with one cart item', () => {
@@ -104,9 +108,10 @@ describe('<Cart />', () => {
       expect(history.push).toHaveBeenCalledWith(defaultAppPath);
     });
 
-    it('should call fetchCart() and also goToTransaction() and setModal()', () => {
+    it('should call fetchCart() and scrollTo() after mounting and then goToTransaction() and setModal()', () => {
       const { store, history } = setUp([defaultCartItem]);
 
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchCart());
 
       fireEvent.click(screen.getByText('clear the cart'));

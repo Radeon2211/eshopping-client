@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
 import { defaultUserProfile } from '../../shared/testUtility/testUtility';
-import { modalTypes, productConditions } from '../../shared/constants';
+import { defaultScrollToConfig, modalTypes, productConditions } from '../../shared/constants';
 import noPhoto from '../../images/no-photo.png';
 import theme from '../../styled/theme';
 import * as actions from '../../store/actions/indexActions';
@@ -85,6 +85,10 @@ jest.mock('react-router-dom', () => ({
 }));
 
 afterEach(cleanup);
+
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
 
 describe('<ProductDetails />', () => {
   describe('check how renders', () => {
@@ -206,18 +210,23 @@ describe('<ProductDetails />', () => {
     });
   });
 
-  describe('check redux actions calling', () => {
-    it('should call fetchProductDetails() after mounting and setProductDetails() after unmounting', () => {
-      const { store, unmount } = setUp();
-      expect(store.dispatch).toHaveBeenNthCalledWith(
-        1,
-        actions.fetchProductDetails(defaultProductId),
-      );
+  describe('check useEffect() and redux actions calling', () => {
+    it('should call fetchProductDetails() after mounting', () => {
+      const { store } = setUp();
+      expect(store.dispatch).toHaveBeenCalledWith(actions.fetchProductDetails(defaultProductId));
+    });
 
+    it('should call setProductDetails() after unmounting', () => {
+      const { store, unmount } = setUp();
+      expect(store.dispatch).toHaveBeenCalledTimes(1);
       unmount();
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setProductDetails());
-
       expect(store.dispatch).toHaveBeenCalledTimes(2);
+    });
+
+    it('should call scrollTo() after mounting', () => {
+      setUp();
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
 
     it('should call setModal() after clicking at edit and delete buttons', () => {

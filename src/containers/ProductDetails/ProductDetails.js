@@ -14,7 +14,7 @@ import noPhoto from '../../images/no-photo.png';
 import { GreenText } from '../../styled/components';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import theme from '../../styled/theme';
-import { formatPrice } from '../../shared/utility/utility';
+import { formatPrice, scrollToTop } from '../../shared/utility/utility';
 import { modalTypes, productConditions } from '../../shared/constants';
 import useWindowSize from '../../shared/useWindowSize';
 
@@ -37,6 +37,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     onFetchProductDetails(productId);
+    scrollToTop();
     return () => onSetProductDetails();
   }, [productId, onFetchProductDetails, onSetProductDetails]);
 

@@ -4,6 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import { useLastLocation } from 'react-router-last-location';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import theme from '../../../styled/theme';
@@ -12,6 +13,7 @@ import {
   createOrder,
   createTransactionAndOrderProdItem,
 } from '../../../shared/testUtility/testUtility';
+import { defaultScrollToConfig } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -64,11 +66,39 @@ const setUp = () => {
   );
 };
 
+jest.mock('react-router-last-location', () => ({
+  useLastLocation: jest.fn(),
+}));
+
 afterEach(cleanup);
 
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+});
+
 describe('<MySellHistory />', () => {
-  it('should render everything correctly with given default data', () => {
-    const { asFragment } = setUp();
-    expect(asFragment()).toMatchSnapshot();
+  describe('check how renders', () => {
+    it('should render everything correctly with given default data', () => {
+      const { asFragment } = setUp();
+      expect(asFragment()).toMatchSnapshot();
+    });
+  });
+
+  describe('check useEffect()', () => {
+    it('should call scrollTo() if last rendered route was OrderDetails', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/order/o1',
+      }));
+      setUp();
+      expect(window.scrollTo).not.toHaveBeenCalled();
+    });
+
+    it('should NOT call scrollTo() if last rendered route was NOT OrderDetails', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/cart',
+      }));
+      setUp();
+      expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
+    });
   });
 });

@@ -40,7 +40,7 @@ const Footer = () => {
 
   return (
     <SC.Wrapper>
-      <PlainText size="2">&copy; 2020 Radosław Mikrut. All rights reserved</PlainText>
+      <PlainText size="2">&copy; 2021 Radosław Mikrut. All rights reserved</PlainText>
       <FlexWrapper align="center" justify="center" mgBottom="2" mgTop="2" spacing="3">
         <a
           href="https://www.linkedin.com/in/rados%C5%82aw-mikrut-a8600b198/"

@@ -10,7 +10,7 @@ import PlainText from '../../components/UI/PlainText';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import TransactionAndOrderProdItem from '../../components/TransactionAndOrderProdItem/TransactionAndOrderProdItem';
 import DeliveryAddress from '../../components/UI/DeliveryAddress/DeliveryAddress';
-import { formatOrderDate, formatPrice } from '../../shared/utility/utility';
+import { formatOrderDate, formatPrice, scrollToTop } from '../../shared/utility/utility';
 import { GreenText } from '../../styled/components';
 import theme from '../../styled/theme';
 
@@ -27,6 +27,7 @@ const OrderDetails = () => {
 
   useEffect(() => {
     onFetchOrderDetails(orderId);
+    scrollToTop();
     return () => onSetOrderDetails();
   }, [orderId, onFetchOrderDetails, onSetOrderDetails]);
 

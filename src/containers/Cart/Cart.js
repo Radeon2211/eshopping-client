@@ -14,7 +14,7 @@ import ToPayInfo from '../../components/UI/ToPayInfo/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import { itemTypes, defaultAppPath, modalTypes } from '../../shared/constants';
-import { roundOverallPrice } from '../../shared/utility/utility';
+import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
 import { GreenText } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 
@@ -36,6 +36,7 @@ const Cart = () => {
 
   useEffect(() => {
     onFetchCart();
+    scrollToTop();
   }, [onFetchCart]);
 
   let content = <Loader align="center" />;
