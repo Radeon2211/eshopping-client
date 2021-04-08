@@ -16,7 +16,7 @@ SC.Main = styled.main`
 
 const Main = (props) => {
   const { children } = props;
-  return <SC.Main>{children}</SC.Main>;
+  return <SC.Main {...props}>{children}</SC.Main>;
 };
 
 Main.propTypes = {

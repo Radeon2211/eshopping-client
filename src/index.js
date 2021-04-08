@@ -13,7 +13,7 @@ import { ReactComponent as UnexpectedBugImage } from './images/unexpected-bug.sv
 import theme from './styled/theme';
 import GlobalStyles from './styled/globalStyles';
 import rootReducer from './store/reducers/rootReducer';
-import App from './App';
+import App from './App/App';
 import * as serviceWorker from './serviceWorker';
 
 const reduxDevToolsEnhancer =
