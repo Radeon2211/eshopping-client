@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> check how renders should render error if we do NOT wait for setting token in useEffect() 1`] = `
+exports[`<App /> check how renders should render error from ErrorBoundary 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ eOqngX sc-dlfnbm eTsFig"
@@ -12,10 +12,10 @@ exports[`<App /> check how renders should render error if we do NOT wait for set
     <h3
       class="sc-gsTCUz djuqLc"
     >
-      Oops! Server connection error. Please try again later
+      Something went wrong. Please refresh the page
     </h3>
     <svg>
-      server-connection-error.svg
+      unexpected-bug.svg
     </svg>
   </div>
 </DocumentFragment>
@@ -39,6 +39,27 @@ exports[`<App /> check how renders should render loading screen 1`] = `
       <div />
       <div />
     </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<App /> check how renders should render server connection error if we do NOT wait for setting token in useEffect() 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ eOqngX sc-dlfnbm eTsFig"
+    direction="column"
+    spacing="3"
+    width="100%"
+    wrap="nowrap"
+  >
+    <h3
+      class="sc-gsTCUz djuqLc"
+    >
+      Oops! Server connection error. Please try again later
+    </h3>
+    <svg>
+      server-connection-error.svg
+    </svg>
   </div>
 </DocumentFragment>
 `;

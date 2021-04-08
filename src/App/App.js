@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, Suspense, lazy } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 import axios from '../axios';
 import * as actions from '../store/actions/indexActions';
 import { defaultAppPath } from '../shared/constants';
 import ErrorPage from '../components/UI/ErrorPage/ErrorPage';
 import FlexWrapper from '../components/UI/FlexWrapper';
 import { ReactComponent as ServerErrorImage } from '../images/server-connection-error.svg';
+import { ReactComponent as UnexpectedBugImage } from '../images/unexpected-bug.svg';
 
 import Modal from '../components/UI/Modal/Modal';
 import MessageBox from '../components/UI/MessageBox/MessageBox';
@@ -128,7 +130,17 @@ const App = () => {
     );
   }
 
-  return content;
+  return (
+    <ErrorBoundary
+      fallback={
+        <ErrorPage info="Something went wrong. Please refresh the page">
+          <UnexpectedBugImage />
+        </ErrorPage>
+      }
+    >
+      {content}
+    </ErrorBoundary>
+  );
 };
 
 export default App;

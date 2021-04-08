@@ -2,13 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { LastLocationProvider } from 'react-router-last-location';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorPage from './components/UI/ErrorPage/ErrorPage';
-import { ReactComponent as UnexpectedBugImage } from './images/unexpected-bug.svg';
 
 import theme from './styled/theme';
 import GlobalStyles from './styled/globalStyles';
@@ -25,28 +22,23 @@ const reduxDevToolsEnhancer =
 
 const store = createStore(rootReducer, reduxDevToolsEnhancer(applyMiddleware(thunk)));
 
-ReactDOM.render(
+export const app = (
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <Router basename="/eshopping-client">
         <LastLocationProvider>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <ErrorBoundary
-              fallback={
-                <ErrorPage info="Something went wrong. Please refresh the page">
-                  <UnexpectedBugImage />
-                </ErrorPage>
-              }
-            >
-              <App />
-            </ErrorBoundary>
+            <App />
           </ThemeProvider>
         </LastLocationProvider>
       </Router>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root'),
+  </React.StrictMode>
 );
+
+export const rootElement = document.getElementById('root');
+
+ReactDOM.render(app, rootElement);
 
 serviceWorker.register();

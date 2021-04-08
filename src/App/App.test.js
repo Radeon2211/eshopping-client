@@ -22,14 +22,12 @@ const defaultHistory = {
   goBack: jest.fn(),
 };
 
-const setUp = (userProfile) => {
+const setUp = (userProfile, ui = { message: '', isFormLoading: false }) => {
   const store = mockStore({
     auth: {
       profile: userProfile,
     },
-    ui: {
-      message: '',
-    },
+    ui,
   });
   store.dispatch = jest.fn();
 
@@ -61,6 +59,8 @@ describe('<App />', () => {
     axiosMock.onGet('/csrf-token').reply(200, {
       csrfToken: 'token',
     });
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    delete axiosMock.axiosInstance.defaults.headers.post['X-CSRF-Token'];
   });
 
   describe('check how renders', () => {
@@ -78,15 +78,9 @@ describe('<App />', () => {
       expect(screen.getByTestId('App-user-pending')).toBeInTheDocument();
     });
 
-    it('should render version for unauthenticated user if we wait for setting token in useEffect()', () => {
-      setUp(null);
-      waitFor(() => {
-        expect(screen.getByTestId('App-user-null')).toBeInTheDocument();
-      });
-    });
-
-    it('should render error if we do NOT wait for setting token in useEffect()', () => {
+    it('should render server connection error if we do NOT wait for setting token in useEffect()', () => {
       const { asFragment } = setUp(null);
+      expect(axiosMock.axiosInstance.defaults.headers.post['X-CSRF-Token']).toBeUndefined();
       expect(asFragment()).toMatchSnapshot();
     });
 
@@ -94,11 +88,20 @@ describe('<App />', () => {
       const { asFragment } = setUp(undefined);
       expect(asFragment()).toMatchSnapshot();
     });
+
+    it('should render error from ErrorBoundary', () => {
+      const { asFragment } = setUp(defaultUserProfile, null);
+      expect(asFragment()).toMatchSnapshot();
+    });
   });
 
   describe('check useEffect()', () => {
-    beforeEach(() => {
-      delete axiosMock.axiosInstance.defaults.headers.post['X-CSRF-Token'];
+    it('should set token in useEffect() after waiting', async () => {
+      setUp(null);
+      expect(axiosMock.axiosInstance.defaults.headers.post['X-CSRF-Token']).toBeUndefined();
+      await waitFor(() => {
+        expect(axiosMock.axiosInstance.defaults.headers.post['X-CSRF-Token']).toEqual('token');
+      });
     });
 
     it('should call fetchProfile() and axios.get(/csrf-token) successfully', async () => {
