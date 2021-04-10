@@ -16,6 +16,7 @@ exports[`<SearchForm /> check how renders should render with icon in button if w
       value=""
     />
     <button
+      aria-label="Search"
       class="sc-gsTCUz fUKWKF"
       color="blue"
       type="submit"
@@ -49,6 +50,7 @@ exports[`<SearchForm /> check how renders should render with text in button if w
       value=""
     />
     <button
+      aria-label="Search"
       class="sc-gsTCUz fUKWKF"
       color="blue"
       type="submit"

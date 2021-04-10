@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
@@ -99,9 +99,12 @@ beforeAll(() => {
 
 describe('<MyProducts />', () => {
   describe('check how renders', () => {
-    it('should render everything correctly with given default data', () => {
+    it('should render everything correctly with given default data', async () => {
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
+      await waitFor(() => {
+        expect(document.title).toEqual('Your offers - E-Shopping');
+      });
     });
   });
 

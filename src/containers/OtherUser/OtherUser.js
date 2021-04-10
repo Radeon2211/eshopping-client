@@ -8,6 +8,7 @@ import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndF
 import { productPages } from '../../shared/constants';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import { scrollToTop } from '../../shared/utility/utility';
+import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 const OtherUser = (props) => {
   const {
@@ -54,8 +55,10 @@ const OtherUser = (props) => {
     history,
   ]);
 
+  let pageTitle = 'User info is loading... - E-Shopping';
   let content = <Loader align="center" />;
   if (otherUser === null) {
+    pageTitle = 'User not found - E-Shopping';
     content = (
       <Heading variant="h4" align="center" lineHeight="4">
         Such user does not exist or problem during fetching occurred
@@ -63,6 +66,8 @@ const OtherUser = (props) => {
     );
   } else if (otherUser) {
     const { username, email, phone } = otherUser;
+
+    pageTitle = `User "${otherUserUsername}" - E-Shopping`;
 
     let contactData = (
       <Heading variant="h4" mgBottom="3" data-testid="OtherUser-data-private">
@@ -97,7 +102,15 @@ const OtherUser = (props) => {
     );
   }
 
-  return content;
+  return (
+    <>
+      <MetaDescriptor
+        title={pageTitle}
+        description="Check out informations about this user and his products"
+      />
+      {content}
+    </>
+  );
 };
 
 export default OtherUser;

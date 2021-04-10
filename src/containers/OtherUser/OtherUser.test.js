@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { render, cleanup, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -93,20 +93,29 @@ beforeAll(() => {
 describe('<OtherUser />', () => {
   describe('check how renders', () => {
     describe('snapshots', () => {
-      it('should render <Loader /> if other user is undefined', () => {
+      it('should render <Loader /> if other user is undefined', async () => {
         const { asFragment } = setUp(undefined);
         expect(asFragment()).toMatchSnapshot();
+        await waitFor(() => {
+          expect(document.title).toEqual('User info is loading... - E-Shopping');
+        });
       });
 
-      it('should render info about problem with fetching if other user is null', () => {
+      it('should render info about problem with fetching if other user is null', async () => {
         const { asFragment } = setUp(null);
         expect(asFragment()).toMatchSnapshot();
+        await waitFor(() => {
+          expect(document.title).toEqual('User not found - E-Shopping');
+        });
       });
 
-      it('should render everything correctly', () => {
+      it('should render everything correctly', async () => {
         const otherUser = { ...defaultOtherUser, email: 'test@email.com', phone: '123' };
         const { asFragment } = setUp(otherUser);
         expect(asFragment()).toMatchSnapshot();
+        await waitFor(() => {
+          expect(document.title).toEqual('User "user1" - E-Shopping');
+        });
       });
     });
 

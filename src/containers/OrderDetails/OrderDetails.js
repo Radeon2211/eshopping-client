@@ -13,6 +13,7 @@ import DeliveryAddress from '../../components/UI/DeliveryAddress/DeliveryAddress
 import { formatOrderDate, formatPrice, scrollToTop } from '../../shared/utility/utility';
 import { GreenText } from '../../styled/components';
 import theme from '../../styled/theme';
+import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 const OrderDetails = () => {
   const { id: orderId } = useParams();
@@ -141,7 +142,12 @@ const OrderDetails = () => {
     );
   }
 
-  return content;
+  return (
+    <>
+      <MetaDescriptor title="Order details - E-Shopping" />
+      {content}
+    </>
+  );
 };
 
 export default OrderDetails;

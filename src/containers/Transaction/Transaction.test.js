@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -55,7 +55,7 @@ beforeAll(() => {
 
 describe('<Transaction />', () => {
   describe('check how renders', () => {
-    it('should render everything correctly with two items from one user', () => {
+    it('should render everything correctly with two items from one user', async () => {
       const transaction = [
         createTransactionAndOrderProdItem({
           productId: 'p1',
@@ -76,6 +76,9 @@ describe('<Transaction />', () => {
       ];
       const { asFragment } = setUp(transaction);
       expect(asFragment()).toMatchSnapshot();
+      await waitFor(() => {
+        expect(document.title).toEqual('Transaction summary - E-Shopping');
+      });
     });
 
     it('should render nothing if transaction is empty', () => {

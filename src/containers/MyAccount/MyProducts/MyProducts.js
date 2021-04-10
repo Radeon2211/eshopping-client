@@ -6,6 +6,7 @@ import { productPages } from '../../../shared/constants';
 import Heading from '../../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../../components/ProductsAndFilters/ProductsAndFilters';
 import { scrollToTop } from '../../../shared/utility/utility';
+import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
 const MyProducts = (props) => {
   const {
@@ -32,6 +33,7 @@ const MyProducts = (props) => {
 
   return (
     <>
+      <MetaDescriptor title="Your offers - E-Shopping" description="Check out your offers" />
       <Heading variant="h3">My products</Heading>
       <ProductsAndFilters page={productPages.MY_PRODUCTS} />
     </>

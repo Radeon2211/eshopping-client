@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
@@ -64,9 +64,12 @@ beforeAll(() => {
 
 describe('<Cart />', () => {
   describe('check how renders', () => {
-    it('should render everything correctly with one cart item', () => {
+    it('should render everything correctly with one cart item', async () => {
       const { asFragment } = setUp([defaultCartItem]);
       expect(asFragment()).toMatchSnapshot();
+      await waitFor(() => {
+        expect(document.title).toEqual('Your cart - E-Shopping');
+      });
     });
 
     it('should render empty cart', () => {

@@ -48,6 +48,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
           class="sc-hKgILt dhKALD"
         >
           <button
+            aria-label="Decrease product quantity"
             class="button minus"
             data-testid="ChooseQuantity-minus-btn"
             type="button"
@@ -70,6 +71,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
             value="5"
           />
           <button
+            aria-label="Increase product quantity"
             class="button plus"
             data-testid="ChooseQuantity-plus-btn"
             type="button"

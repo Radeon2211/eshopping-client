@@ -17,6 +17,7 @@ import { itemTypes, defaultAppPath, modalTypes } from '../../shared/constants';
 import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
 import { GreenText } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
+import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 const Cart = () => {
   const history = useHistory();
@@ -104,7 +105,12 @@ const Cart = () => {
     }
   }
 
-  return content;
+  return (
+    <>
+      <MetaDescriptor title="Your cart - E-Shopping" description="Check out content of your cart" />
+      {content}
+    </>
+  );
 };
 
 export default Cart;

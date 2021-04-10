@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -44,9 +44,12 @@ beforeAll(() => {
 
 describe('<MyData />', () => {
   describe('check how renders', () => {
-    it('should render everything correctly for non admin user with status active', () => {
+    it('should render everything correctly for non admin user with status active', async () => {
       const { asFragment } = setUp(defaultUserProfile);
       expect(asFragment()).toMatchSnapshot();
+      await waitFor(() => {
+        expect(document.title).toEqual('Your account data - E-Shopping');
+      });
     });
 
     it('should render everything correctly for non admin user with status pending', () => {

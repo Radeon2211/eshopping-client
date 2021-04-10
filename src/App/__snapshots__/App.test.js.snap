@@ -101,6 +101,7 @@ exports[`<App /> check how renders should render version for user with active st
         value=""
       />
       <button
+        aria-label="Search"
         class="sc-iqHYGH gOVxBz"
         color="blue"
         type="submit"
@@ -155,7 +156,21 @@ exports[`<App /> check how renders should render version for user with active st
   <main
     class="sc-iktFzd hBgZGv"
     data-testid="App-user-active"
-  />
+  >
+    <div
+      style="text-align: center;"
+    >
+      <div
+        class="sc-fubCfw fMrswq"
+        data-testid="Loader"
+      >
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+    </div>
+  </main>
   <footer
     class="sc-jJEJSO edZpJL"
   >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -39,10 +39,13 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<Logout />', () => {
-  it('should call goBack and logoutUser()', () => {
+  it('should call goBack and logoutUser()', async () => {
     const goBackFn = jest.fn();
     const { store } = setUp(goBackFn);
     expect(goBackFn).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(actions.logoutUser());
+    await waitFor(() => {
+      expect(document.title).toEqual('Logging out...');
+    });
   });
 });

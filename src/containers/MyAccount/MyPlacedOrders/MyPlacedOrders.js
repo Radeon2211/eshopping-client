@@ -6,6 +6,7 @@ import { orderTypes } from '../../../shared/constants';
 import Orders from '../../../components/Orders/Orders';
 import Heading from '../../../components/UI/Heading/Heading';
 import { scrollToTop } from '../../../shared/utility/utility';
+import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
 const MyPlacedOrders = () => {
   const lastLocation = useLastLocation();
@@ -20,6 +21,10 @@ const MyPlacedOrders = () => {
 
   return (
     <SC.OrdersWrapper>
+      <MetaDescriptor
+        title="Your placed orders - E-Shopping"
+        description="Check out orders that you placed"
+      />
       <Heading variant="h3">My placed orders</Heading>
       <Orders orders={placedOrders} type={orderTypes.PLACED_ORDERS} />
     </SC.OrdersWrapper>

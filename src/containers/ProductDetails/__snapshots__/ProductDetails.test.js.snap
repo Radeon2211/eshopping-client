@@ -15,7 +15,7 @@ exports[`<ProductDetails /> check how renders snapshots should render everything
           class="photo-section"
         >
           <img
-            alt="testName"
+            alt="Test name"
             class="photo"
             src="http://192.168.1.109:4000/products/123/photo"
           />
@@ -26,7 +26,7 @@ exports[`<ProductDetails /> check how renders snapshots should render everything
           <h4
             class="sc-jSgupP pLLjl"
           >
-            testName
+            Test name
           </h4>
           <span
             class="sc-eCssSg fQZWAK"

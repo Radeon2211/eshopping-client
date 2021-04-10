@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
@@ -93,23 +93,30 @@ beforeAll(() => {
 describe('<ProductDetails />', () => {
   describe('check how renders', () => {
     describe('snapshots', () => {
-      it('should render only <Loader /> if productDetails is undefined', () => {
+      it('should render only <Loader /> if productDetails is undefined', async () => {
         const store = { product: { productDetails: undefined } };
         const { asFragment } = setUp(store);
         expect(asFragment()).toMatchSnapshot();
+        await waitFor(() => {
+          expect(document.title).toEqual('Offer is loading... - E-Shopping');
+        });
       });
 
-      it('should render only info that there is a problem to fetch product details', () => {
+      it('should render only info that there is a problem to fetch product details', async () => {
         const store = { product: { productDetails: null } };
         const { asFragment } = setUp(store);
         expect(asFragment()).toMatchSnapshot();
+        await waitFor(() => {
+          expect(document.title).toEqual('Offer does not exist - E-Shopping');
+        });
       });
 
-      it(`should render everything correctly if user is a product's owner`, () => {
+      it(`should render everything correctly if user is a product's owner`, async () => {
         const store = {
           product: {
             productDetails: {
               ...defaultProductDetails,
+              name: 'Test name',
               description: 'testDescription',
               quantitySold: 1,
               buyerQuantity: 1,
@@ -118,6 +125,9 @@ describe('<ProductDetails />', () => {
         };
         const { asFragment } = setUp(store);
         expect(asFragment()).toMatchSnapshot();
+        await waitFor(() => {
+          expect(document.title).toEqual('Test name - E-Shopping');
+        });
       });
     });
 

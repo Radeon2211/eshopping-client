@@ -17,6 +17,7 @@ exports[`<PurchaseSection /> check how renders snapshots should render everythin
         class="sc-fubCfw bLlOpR"
       >
         <button
+          aria-label="Decrease product quantity"
           class="button minus"
           data-testid="ChooseQuantity-minus-btn"
           disabled=""
@@ -40,6 +41,7 @@ exports[`<PurchaseSection /> check how renders snapshots should render everythin
           value="1"
         />
         <button
+          aria-label="Increase product quantity"
           class="button plus"
           data-testid="ChooseQuantity-plus-btn"
           type="button"

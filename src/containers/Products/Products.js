@@ -6,6 +6,7 @@ import Heading from '../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution, scrollToTop } from '../../shared/utility/utility';
+import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 const Products = (props) => {
   const {
@@ -39,6 +40,10 @@ const Products = (props) => {
 
   return (
     <>
+      <MetaDescriptor
+        title="E-Shopping - Buy and sell"
+        description="E-Shopping - shop where you can buy and sell whatever you want"
+      />
       <Heading variant="h3" data-testid="Products-heading">
         {headingText}
       </Heading>

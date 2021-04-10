@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { render, cleanup, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import matchMediaPolyfill from 'mq-polyfill';
 import { Router } from 'react-router-dom';
@@ -107,10 +107,13 @@ afterEach(cleanup);
 
 describe('<Products />', () => {
   describe('check how renders', () => {
-    it('should render everything correctly with default params and two products', () => {
+    it('should render everything correctly with default params and two products', async () => {
       window.resizeTo(1920, 1080);
       const { asFragment } = setUp();
       expect(asFragment()).toMatchSnapshot();
+      await waitFor(() => {
+        expect(document.title).toEqual('E-Shopping - Buy and sell');
+      });
     });
 
     it('should render heading with `Results for "mushrooms"`', () => {

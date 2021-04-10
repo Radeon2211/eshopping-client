@@ -10,6 +10,7 @@ import SingleInfo from './SingleInfo/SingleInfo';
 import Button from '../../../components/UI/Button/Button';
 import PlainText from '../../../components/UI/PlainText';
 import { scrollToTop } from '../../../shared/utility/utility';
+import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
 const MyData = (props) => {
   const { history } = props;
@@ -135,6 +136,10 @@ const MyData = (props) => {
 
   return (
     <>
+      <MetaDescriptor
+        title="Your account data - E-Shopping"
+        description="Check out your account informations"
+      />
       <Heading variant="h3">My data</Heading>
       <FlexWrapper direction="column" spacing="3">
         {pendingUserContent}

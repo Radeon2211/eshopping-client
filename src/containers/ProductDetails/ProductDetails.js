@@ -17,6 +17,7 @@ import theme from '../../styled/theme';
 import { formatPrice, scrollToTop } from '../../shared/utility/utility';
 import { modalTypes, productConditions } from '../../shared/constants';
 import useWindowSize from '../../shared/useWindowSize';
+import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -41,8 +42,10 @@ const ProductDetails = () => {
     return () => onSetProductDetails();
   }, [productId, onFetchProductDetails, onSetProductDetails]);
 
+  let pageTitle = 'Offer is loading... - E-Shopping';
   let details = <Loader align="center" />;
   if (productDetails === null) {
+    pageTitle = 'Offer does not exist - E-Shopping';
     details = (
       <Heading variant="h4" align="center" lineHeight="4">
         Such product does not exist or has already been sold
@@ -61,6 +64,8 @@ const ProductDetails = () => {
       seller,
       _id,
     } = productDetails;
+
+    pageTitle = `${name} - E-Shopping`;
 
     let quantitySoldNode = null;
     if (quantitySold >= 1) {
@@ -178,7 +183,12 @@ const ProductDetails = () => {
     );
   }
 
-  return details;
+  return (
+    <>
+      <MetaDescriptor title={pageTitle} description="Check out details about this products" />
+      {details}
+    </>
+  );
 };
 
 export default ProductDetails;

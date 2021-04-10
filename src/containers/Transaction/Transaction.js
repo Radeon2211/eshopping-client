@@ -13,6 +13,7 @@ import CartAndTransactionItems from '../../components/CartAndTransactionItems/Ca
 import Button from '../../components/UI/Button/Button';
 import { itemTypes, modalTypes } from '../../shared/constants';
 import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
+import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 const Transaction = () => {
   const history = useHistory();
@@ -66,7 +67,12 @@ const Transaction = () => {
     );
   }
 
-  return content;
+  return (
+    <>
+      <MetaDescriptor title="Transaction summary - E-Shopping" />
+      {content}
+    </>
+  );
 };
 
 export default Transaction;
