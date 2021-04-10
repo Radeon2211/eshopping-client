@@ -8,9 +8,10 @@
       "type": "image/x-icon"
     },
     {
-      "src": "images/logo192.png",
+      "src": "images/logo192-maskable.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "images/logo512.png",
@@ -18,7 +19,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://radeon2211.github.io/eshopping-client/#/products?p=1",
   "display": "standalone",
   "theme_color": "#1e8bc3",
   "background_color": "#dadfe1"
