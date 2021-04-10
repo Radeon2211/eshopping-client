@@ -45,6 +45,7 @@ const ChooseQuantity = (props) => {
         disabled={value <= 1}
         onClick={decremented}
         data-testid="ChooseQuantity-minus-btn"
+        aria-label="Decrease product quantity"
       >
         <MyIcon
           size="small"
@@ -68,6 +69,7 @@ const ChooseQuantity = (props) => {
         disabled={value >= maxQuantity}
         onClick={incremented}
         data-testid="ChooseQuantity-plus-btn"
+        aria-label="Increase product quantity"
       >
         <MyIcon
           size="small"

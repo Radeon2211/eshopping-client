@@ -18,7 +18,7 @@ The application is used for selling and buying products.
 
 Only first 3 routes are available for unauthenticated user.
 
-App is partially tested.
+App is almost fully tested with unit and integration tests.
 
 Next steps are:
 

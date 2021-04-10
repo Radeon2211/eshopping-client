@@ -64,7 +64,7 @@ const SearchForm = () => {
         onChange={(e) => setProductName(e.target.value)}
         data-testid="SearchForm-input"
       />
-      <Button type="submit" filled>
+      <Button type="submit" filled aria-label="Search">
         {buttonContent}
       </Button>
     </SC.SearchForm>

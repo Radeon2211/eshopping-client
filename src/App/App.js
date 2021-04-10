@@ -17,7 +17,6 @@ import Loader from '../components/UI/Loader/Loader';
 import Main from '../components/UI/Main';
 import Footer from '../components/Footer/Footer';
 import Products from '../containers/Products/Products';
-import Logout from '../containers/Logout/Logout';
 
 const OrderDetails = lazy(() => import('../containers/OrderDetails/OrderDetails'));
 const ProductDetails = lazy(() => import('../containers/ProductDetails/ProductDetails'));
@@ -25,6 +24,7 @@ const OtherUser = lazy(() => import('../containers/OtherUser/OtherUser'));
 const MyAccount = lazy(() => import('../containers/MyAccount/MyAccount'));
 const Cart = lazy(() => import('../containers/Cart/Cart'));
 const Transaction = lazy(() => import('../containers/Transaction/Transaction'));
+const Logout = lazy(() => import('../containers/Logout/Logout'));
 
 const WaitingComponent = (Component) => {
   return (props) => (
@@ -89,8 +89,8 @@ const App = () => {
     if (userProfile.status === 'active') {
       routes = (
         <Main data-testid="App-user-active">
-          <Switch data-testid="kupa">
-            <Route path="/logout" component={Logout} />
+          <Switch>
+            <Route path="/logout" exact component={WaitingComponent(Logout)} />
             <Route path="/order/:id" exact component={WaitingComponent(OrderDetails)} />
             <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
@@ -106,7 +106,7 @@ const App = () => {
       routes = (
         <Main data-testid="App-user-pending">
           <Switch>
-            <Route path="/logout" component={Logout} />
+            <Route path="/logout" exact component={WaitingComponent(Logout)} />
             <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
             <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
