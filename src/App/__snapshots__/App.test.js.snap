@@ -3,7 +3,7 @@
 exports[`<App /> check how renders should render error from ErrorBoundary 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ eOqngX sc-dlfnbm eTsFig"
+    class="sc-bdfBwQ eOqngX sc-dlfnbm evdNNg"
     direction="column"
     spacing="3"
     width="100%"
@@ -46,7 +46,7 @@ exports[`<App /> check how renders should render loading screen 1`] = `
 exports[`<App /> check how renders should render server connection error if we do NOT wait for setting token in useEffect() 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ eOqngX sc-dlfnbm eTsFig"
+    class="sc-bdfBwQ eOqngX sc-dlfnbm evdNNg"
     direction="column"
     spacing="3"
     width="100%"

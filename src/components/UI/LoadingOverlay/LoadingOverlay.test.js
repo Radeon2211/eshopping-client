@@ -16,11 +16,11 @@ const setUp = (disableText = false) => {
 afterEach(cleanup);
 
 describe('<LoadingOverlay />', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     jest.useFakeTimers('modern');
   });
 
-  afterAll(() => {
+  afterEach(() => {
     jest.useRealTimers();
   });
 

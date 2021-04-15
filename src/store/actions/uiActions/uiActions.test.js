@@ -109,11 +109,11 @@ describe('action creators', () => {
 
 describe('functions with dispatch', () => {
   describe('setAndDeleteMessage()', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       jest.useFakeTimers('modern');
     });
 
-    afterAll(() => {
+    afterEach(() => {
       jest.useRealTimers();
     });
 

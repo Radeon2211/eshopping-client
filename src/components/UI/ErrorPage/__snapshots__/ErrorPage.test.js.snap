@@ -3,7 +3,7 @@
 exports[`<ErrorPage /> should NOT render info and should render server error image image 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ eOqngX sc-dlfnbm eTsFig"
+    class="sc-bdfBwQ eOqngX sc-dlfnbm evdNNg"
     direction="column"
     spacing="3"
     width="100%"
@@ -19,7 +19,7 @@ exports[`<ErrorPage /> should NOT render info and should render server error ima
 exports[`<ErrorPage /> should render "Something went wrong" and unexpected bug image 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ eOqngX sc-dlfnbm eTsFig"
+    class="sc-bdfBwQ eOqngX sc-dlfnbm evdNNg"
     direction="column"
     spacing="3"
     width="100%"

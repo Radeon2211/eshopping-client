@@ -6,6 +6,8 @@ import Heading from '../Heading/Heading';
 
 const SC = {};
 SC.Wrapper = styled(FlexWrapper)`
+  padding: 0 ${({ theme }) => theme.spacings.level2};
+
   & > svg {
     max-width: 100%;
     width: 60rem;
