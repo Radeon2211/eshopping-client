@@ -11,8 +11,7 @@ describe('unauthenticated user', () => {
 
   describe('check rendering and flow', () => {
     it('renders correct elements', () => {
-      cy.findByTestId('LoggedOutLinks').should('exist');
-      cy.findByTestId('LoggedInLinks').should('not.exist');
+      cy.checkLoginState();
       cy.findByTestId('ProductItem').should('have.length', 1);
     });
 
@@ -98,41 +97,6 @@ describe('unauthenticated user', () => {
       cy.findByText(userOne.email).should('exist');
       cy.findByText(userOne.phone).should('exist');
       cy.findByTestId('ProductItem').should('have.length', 1);
-    });
-  });
-
-  describe('login form', () => {
-    it('logins correctly', () => {
-      cy.checkHash();
-      cy.findByRole('button', { name: /login/i }).click();
-      cy.findByTestId('Login-email').type(userOne.email);
-      cy.findByTestId('Login-password').type(userOne.password);
-      cy.submitForm();
-      cy.findByTestId('Modal').should('not.exist');
-      cy.findByTestId('LoggedOutLinks').should('not.exist');
-      cy.findByTestId('LoggedInLinks').should('exist');
-      cy.reload();
-      cy.findByTestId('LoggedInLinks').should('exist');
-    });
-
-    it('fails due to incorrect credentials', () => {
-      cy.checkHash();
-      cy.findByRole('button', { name: /login/i }).click();
-      cy.findByTestId('Form-error').should('not.exist');
-      cy.findByTestId('Login-email').type('incorrect@email.com');
-      cy.findByTestId('Login-password').type('incorrectPassword');
-      cy.submitForm();
-      cy.findByTestId('Form-error').should('exist');
-    });
-
-    it('does nothing after clicking at disabled submit button', () => {
-      cy.checkHash();
-      cy.findByRole('button', { name: /login/i }).click();
-      cy.submitForm({ force: true });
-      cy.findByTestId('Form-error').should('not.exist');
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
-      cy.findByTestId('LoggedOutLinks').should('exist');
-      cy.findByTestId('LoggedInLinks').should('not.exist');
     });
   });
 });

@@ -6,6 +6,7 @@ exports[`<MessageBox /> check how renders should render everything correctly if 
 <DocumentFragment>
   <div
     class="sc-gsTCUz bCTrL"
+    data-testid="MessageBox"
   >
     <div
       class="sc-dlfnbm jxlYsy"

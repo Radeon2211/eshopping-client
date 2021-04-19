@@ -64,4 +64,14 @@ describe('modal behaviour', () => {
       cy.findByTestId('Form-error').should('not.exist');
     });
   });
+
+  describe('check when submit button is disabled', () => {
+    it('does nothing after click', () => {
+      cy.checkHash();
+      cy.findByRole('button', { name: /login/i }).click();
+      cy.submitForm({ force: true });
+      cy.findByTestId('Form-error').should('not.exist');
+      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+    });
+  });
 });

@@ -68,7 +68,7 @@ const MessageBox = () => {
   return (
     <AnimatePresence exitBeforeEnter>
       {message && (
-        <SC.Wrapper>
+        <SC.Wrapper data-testid="MessageBox">
           <SC.Message
             variants={messageBoxVariants}
             initial="hidden"

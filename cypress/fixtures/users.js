@@ -1,6 +1,5 @@
 import { userStatuses } from '../../src/shared/constants';
 
-// eslint-disable-next-line import/prefer-default-export
 export const userOne = {
   firstName: 'User',
   lastName: 'One',
@@ -17,4 +16,23 @@ export const userOne = {
     phone: true,
   },
   status: userStatuses.ACTIVE,
+};
+
+export const testUser = {
+  firstName: 'Test',
+  lastName: 'User',
+  username: 'testuser',
+  email: 'test@example.com',
+  password: 'Pa$$w0rd',
+  street: 'Kolejowa 99',
+  zipCode: '77-400',
+  city: 'Złotów',
+  country: 'Poland',
+  phone: '+48 345-678-192',
+  phoneNumber: '345-678-192',
+  phonePrefixLabel: '+48 Poland',
+  contacts: {
+    email: true,
+    phone: false,
+  },
 };
