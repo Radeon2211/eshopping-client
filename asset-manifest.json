@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.131287a1.chunk.js",
-    "runtime-main.js": "/eshopping-client/static/js/runtime-main.b1685de1.js",
+    "main.js": "/eshopping-client/static/js/main.d2a6cf0d.chunk.js",
+    "runtime-main.js": "/eshopping-client/static/js/runtime-main.5ed86e18.js",
     "static/js/2.85bae804.chunk.js": "/eshopping-client/static/js/2.85bae804.chunk.js",
-    "static/js/3.3df14c73.chunk.js": "/eshopping-client/static/js/3.3df14c73.chunk.js",
-    "static/js/4.65d800d8.chunk.js": "/eshopping-client/static/js/4.65d800d8.chunk.js",
+    "static/js/3.9b6fac4e.chunk.js": "/eshopping-client/static/js/3.9b6fac4e.chunk.js",
+    "static/js/4.180b32f8.chunk.js": "/eshopping-client/static/js/4.180b32f8.chunk.js",
     "static/js/5.9b72303f.chunk.js": "/eshopping-client/static/js/5.9b72303f.chunk.js",
-    "static/js/6.322e9c8e.chunk.js": "/eshopping-client/static/js/6.322e9c8e.chunk.js",
-    "static/js/7.dd94bdc6.chunk.js": "/eshopping-client/static/js/7.dd94bdc6.chunk.js",
+    "static/js/6.c07368eb.chunk.js": "/eshopping-client/static/js/6.c07368eb.chunk.js",
+    "static/js/7.e034f955.chunk.js": "/eshopping-client/static/js/7.e034f955.chunk.js",
     "static/js/8.c4bad19b.chunk.js": "/eshopping-client/static/js/8.c4bad19b.chunk.js",
-    "static/js/9.95a066fd.chunk.js": "/eshopping-client/static/js/9.95a066fd.chunk.js",
+    "static/js/9.c60945ee.chunk.js": "/eshopping-client/static/js/9.c60945ee.chunk.js",
     "index.html": "/eshopping-client/index.html",
     "static/js/2.85bae804.chunk.js.LICENSE.txt": "/eshopping-client/static/js/2.85bae804.chunk.js.LICENSE.txt",
     "static/media/add-product.77b2fe6c.svg": "/eshopping-client/static/media/add-product.77b2fe6c.svg",
@@ -34,8 +34,8 @@
     "static/media/unexpected-bug.a9f339c1.svg": "/eshopping-client/static/media/unexpected-bug.a9f339c1.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b1685de1.js",
+    "static/js/runtime-main.5ed86e18.js",
     "static/js/2.85bae804.chunk.js",
-    "static/js/main.131287a1.chunk.js"
+    "static/js/main.d2a6cf0d.chunk.js"
   ]
 }
