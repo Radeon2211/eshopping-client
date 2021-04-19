@@ -1,6 +1,6 @@
 import moxios from 'moxios';
 import axios from '../../../axios';
-import { defaultAppPath, defaultErrorMessage } from '../../../shared/constants';
+import { defaultAppPath, defaultErrorMessage, userStatuses } from '../../../shared/constants';
 import {
   defaultUserProfile,
   testStore,
@@ -103,7 +103,7 @@ describe('async functions', () => {
         email: true,
         phone: false,
       },
-      status: 'pending',
+      status: userStatuses.PENDING,
       createdAt: '2021-03-14T11:16:13.547Z',
       cart: [],
     };

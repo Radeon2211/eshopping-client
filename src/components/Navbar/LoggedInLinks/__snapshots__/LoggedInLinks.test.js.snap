@@ -4,6 +4,7 @@ exports[`<LoggedInLinks /> check how renders should render version for user with
 <DocumentFragment>
   <nav
     class="sc-jSgupP TeqAh"
+    data-testid="LoggedInLinks"
   >
     <a
       class="sc-dlfnbm laaXGn"
@@ -52,6 +53,7 @@ exports[`<LoggedInLinks /> check how renders should render version for user with
 <DocumentFragment>
   <nav
     class="sc-jSgupP TeqAh"
+    data-testid="LoggedInLinks"
   >
     <a
       data-testid="LoggedInLinks-my-account-link"

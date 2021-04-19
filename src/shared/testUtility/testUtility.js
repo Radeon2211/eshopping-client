@@ -5,7 +5,7 @@ import { fireEvent, waitFor } from '@testing-library/react';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../../store/reducers/rootReducer';
-import { productConditions } from '../constants';
+import { productConditions, userStatuses } from '../constants';
 
 export const defaultDeliveryAddress = {
   firstName: 'firstName',
@@ -22,7 +22,7 @@ export const defaultUserProfile = {
   _id: 'userId',
   username: 'username',
   email: 'email@domain.com',
-  status: 'active',
+  status: userStatuses.ACTIVE,
   contacts: {
     email: true,
     phone: true,

@@ -8,6 +8,7 @@ import MyIcon from '../../UI/MyIcon';
 import Dropdown from './Dropdown/Dropdown';
 import CartLink from './CartLink/CartLink';
 import PlainText from '../../UI/PlainText';
+import { userStatuses } from '../../../shared/constants';
 
 export const SC = {};
 SC.Wrapper = styled.nav`
@@ -54,8 +55,8 @@ const LoggedInLinks = (props) => {
   };
 
   const content =
-    status === 'active' ? (
-      <SC.Wrapper>
+    status === userStatuses.ACTIVE ? (
+      <>
         <CartLink />
         <SC.User
           id="user"
@@ -68,26 +69,24 @@ const LoggedInLinks = (props) => {
           </MyIcon>
           <Dropdown isVisible={isDropdownVisible} closed={() => setIsDropdownVisible(false)} />
         </SC.User>
-      </SC.Wrapper>
+      </>
     ) : (
-      <SC.Wrapper>
-        <Link to="/my-account/data" data-testid="LoggedInLinks-my-account-link">
-          <SC.User id="user">
-            {showUsername(username)}
-            <MyIcon size="small">
-              <SettingsIcon />
-            </MyIcon>
-          </SC.User>
-        </Link>
-      </SC.Wrapper>
+      <Link to="/my-account/data" data-testid="LoggedInLinks-my-account-link">
+        <SC.User id="user">
+          {showUsername(username)}
+          <MyIcon size="small">
+            <SettingsIcon />
+          </MyIcon>
+        </SC.User>
+      </Link>
     );
 
-  return content;
+  return <SC.Wrapper data-testid="LoggedInLinks">{content}</SC.Wrapper>;
 };
 
 LoggedInLinks.propTypes = {
   username: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(['active', 'pending']).isRequired,
+  status: PropTypes.oneOf(Object.values(userStatuses)).isRequired,
 };
 
 export default LoggedInLinks;

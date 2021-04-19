@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SC from './MyData.sc';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes, singleInfoNames } from '../../../shared/constants';
+import { modalTypes, singleInfoNames, userStatuses } from '../../../shared/constants';
 import PlainPanel from '../../../components/UI/Panels/PlainPanel';
 import FlexWrapper from '../../../components/UI/FlexWrapper';
 import Heading from '../../../components/UI/Heading/Heading';
@@ -44,7 +44,7 @@ const MyData = (props) => {
       isAdmin,
     } = userProfile;
 
-    const isAccountActive = status === 'active';
+    const isAccountActive = status === userStatuses.ACTIVE;
 
     let adminContent = null;
     if (isAdmin) {

@@ -6,6 +6,7 @@ exports[`<Modal /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ HlrnY"
+    data-testid="Modal"
   >
     <div
       aria-label="Close modal"
@@ -17,6 +18,7 @@ exports[`<Modal /> check how renders should render everything correctly 1`] = `
     />
     <div
       class="sc-dlfnbm ewrkMb"
+      data-testid="Modal-ABOUT_WEBSITE"
       style="opacity: 0; pointer-events: none;"
     >
       <div

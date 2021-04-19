@@ -4,6 +4,7 @@ exports[`<LoggedOutLinks /> checks how renders should render everything correctl
 <DocumentFragment>
   <div
     class="sc-jSgupP cXopKq"
+    data-testid="LoggedOutLinks"
     direction="row"
     spacing="3"
     width="auto"

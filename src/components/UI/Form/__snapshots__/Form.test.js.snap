@@ -70,6 +70,7 @@ exports[`<Form /> check how renders should render everything what is possible wi
     <span
       class="sc-eCssSg hNFRhM"
       color="#F22613"
+      data-testid="Form-error"
       display="inline-block"
       overflow="visible"
       size="3"

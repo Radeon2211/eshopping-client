@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import * as SC from './PurchaseSection.sc';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes } from '../../../shared/constants';
+import { modalTypes, userStatuses } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
 import ChooseQuantity from '../../../components/UI/ChooseQuantity/ChooseQuantity';
 import PlainText from '../../../components/UI/PlainText';
@@ -66,7 +66,7 @@ const PurchaseSection = (props) => {
   const addToCartClickHandle = () => {
     if (!userProfile) {
       onSetModal(modalTypes.LOGIN);
-    } else if (userProfile?.status !== 'active') {
+    } else if (userProfile?.status !== userStatuses.ACTIVE) {
       onSetModal(modalTypes.PENDING_USER_INFO);
     } else {
       onAddCartItem({
@@ -79,7 +79,7 @@ const PurchaseSection = (props) => {
   const buyNowClickHandle = () => {
     if (!userProfile) {
       onSetModal(modalTypes.LOGIN);
-    } else if (userProfile?.status !== 'active') {
+    } else if (userProfile?.status !== userStatuses.ACTIVE) {
       onSetModal(modalTypes.PENDING_USER_INFO);
     } else {
       onGoToTransaction(history, {

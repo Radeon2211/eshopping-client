@@ -4,7 +4,7 @@
         "es6": true,
         "jest": true
     },
-    "extends": ["airbnb", "plugin:prettier/recommended"],
+    "extends": ["airbnb", "plugin:prettier/recommended", "plugin:cypress/recommended"],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -17,7 +17,7 @@
         "ecmaVersion": 11,
         "sourceType": "module"
     },
-    "plugins": ["react"],
+    "plugins": ["react", "cypress"],
     "rules": {
         "react/jsx-filename-extension": [
             1,

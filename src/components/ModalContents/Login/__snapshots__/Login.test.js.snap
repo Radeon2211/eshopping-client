@@ -61,6 +61,7 @@ exports[`<Login /> check how renders should render everything correctly 1`] = `
         color=""
         display="inline-block"
         overflow="visible"
+        role="link"
         size="1"
         spacing="0px"
         transform=""

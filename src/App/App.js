@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import axios from '../axios';
 import * as actions from '../store/actions/indexActions';
-import { defaultAppPath } from '../shared/constants';
+import { defaultAppPath, userStatuses } from '../shared/constants';
 import ErrorPage from '../components/UI/ErrorPage/ErrorPage';
 import FlexWrapper from '../components/UI/FlexWrapper';
 import { ReactComponent as ServerErrorImage } from '../images/server-connection-error.svg';
@@ -86,7 +86,7 @@ const App = () => {
       );
     }
   } else if (userProfile) {
-    if (userProfile.status === 'active') {
+    if (userProfile.status === userStatuses.ACTIVE) {
       routes = (
         <Main data-testid="App-user-active">
           <Switch>

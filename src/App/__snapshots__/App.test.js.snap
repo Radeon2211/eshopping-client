@@ -111,6 +111,7 @@ exports[`<App /> check how renders should render version for user with active st
     </form>
     <nav
       class="sc-bYEvPH hgIkpO"
+      data-testid="LoggedInLinks"
     >
       <a
         class="sc-giIncl dFcXOK"

@@ -52,7 +52,7 @@ const Login = () => {
             }}
             label="Password"
           />
-          <PlainText size="1" mgBottom="3">
+          <PlainText size="1" mgBottom="3" role="link">
             <GreenText onClick={() => onSetModal(modalTypes.RESET_PASSWORD)}>
               Forgot password
             </GreenText>

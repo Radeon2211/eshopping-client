@@ -6,13 +6,13 @@ import MyData from './MyData/MyData';
 import MyProducts from './MyProducts/MyProducts';
 import MySellHistory from './MySellHistory/MySellHistory';
 import MyPlacedOrders from './MyPlacedOrders/MyPlacedOrders';
-import { defaultAppPath } from '../../shared/constants';
+import { defaultAppPath, userStatuses } from '../../shared/constants';
 
 const MyAccount = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   let navigation = null;
-  if (userProfile.status === 'active') {
+  if (userProfile.status === userStatuses.ACTIVE) {
     navigation = (
       <nav className="nav" data-testid="MyAccount-navigation">
         <ul className="nav-list">
@@ -61,7 +61,7 @@ const MyAccount = () => {
       </Switch>
     </SC.Routes>
   );
-  if (userProfile.status === 'active') {
+  if (userProfile.status === userStatuses.ACTIVE) {
     routes = (
       <SC.Routes extraMargin data-testid="MyAccount-active-user-routes">
         <Switch>

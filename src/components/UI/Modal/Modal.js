@@ -155,7 +155,7 @@ const Modal = () => {
   return (
     <AnimatePresence exitBeforeEnter>
       {modalContent && (
-        <SC.Wrapper>
+        <SC.Wrapper data-testid="Modal">
           <SC.Backdrop
             variants={backdropVariants}
             initial="hidden"
@@ -168,7 +168,13 @@ const Modal = () => {
             aria-label="Close modal"
             data-testid="Modal-backdrop"
           />
-          <SC.Popup variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
+          <SC.Popup
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            data-testid={`Modal-${modalContent}`}
+          >
             <MyIcon
               size="medium"
               rotation={45}

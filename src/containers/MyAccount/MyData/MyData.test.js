@@ -8,7 +8,12 @@ import MyData from './MyData';
 import theme from '../../../styled/theme';
 import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
-import { defaultScrollToConfig, modalTypes, singleInfoNames } from '../../../shared/constants';
+import {
+  defaultScrollToConfig,
+  modalTypes,
+  singleInfoNames,
+  userStatuses,
+} from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -53,7 +58,7 @@ describe('<MyData />', () => {
     });
 
     it('should render everything correctly for non admin user with status pending', () => {
-      const { asFragment } = setUp({ ...defaultUserProfile, status: 'pending' });
+      const { asFragment } = setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
       expect(asFragment()).toMatchSnapshot();
     });
 
@@ -112,7 +117,7 @@ describe('<MyData />', () => {
 
     it('should call correct functions after clicking in pending user content', () => {
       const pushFn = jest.fn();
-      const { store } = setUp({ ...defaultUserProfile, status: 'pending' }, pushFn);
+      const { store } = setUp({ ...defaultUserProfile, status: userStatuses.PENDING }, pushFn);
 
       fireEvent.click(screen.getByText('Send verification link'));
       expect(store.dispatch).toHaveBeenCalledWith(

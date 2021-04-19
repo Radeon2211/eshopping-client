@@ -80,6 +80,7 @@ exports[`<OtherUser /> check how renders snapshots should render everything corr
   </div>
   <div
     class="sc-eCssSg covMuV"
+    data-testid="ProductsAndFilters"
   >
     <div
       class="sc-gKsewC jeimXn"

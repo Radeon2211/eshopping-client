@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import MyAccount from './MyAccount';
 import theme from '../../styled/theme';
 import { defaultUserProfile } from '../../shared/testUtility/testUtility';
+import { userStatuses } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -53,7 +54,7 @@ describe('<MyAccount />', () => {
   });
 
   it('should NOT render navigation and render only one route if user has status pending', () => {
-    setUp({ ...defaultUserProfile, status: 'pending' });
+    setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
     expect(screen.queryByTestId('MyAccount-navigation')).not.toBeInTheDocument();
     expect(screen.getByTestId('MyAccount-pending-user-routes')).toBeInTheDocument();
     expect(screen.queryByTestId('MyAccount-active-user-routes')).not.toBeInTheDocument();

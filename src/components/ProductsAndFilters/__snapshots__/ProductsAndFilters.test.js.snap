@@ -4,6 +4,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
 <DocumentFragment>
   <div
     class="sc-bdfBwQ eOpHEH"
+    data-testid="ProductsAndFilters"
   >
     <section
       class="sc-jSgupP ikrxvH"
@@ -594,6 +595,7 @@ exports[`<ProductsAndFilters /> check how renders should render only <ProductLis
 <DocumentFragment>
   <div
     class="sc-bdfBwQ eOpHEH"
+    data-testid="ProductsAndFilters"
   >
     <div
       class="sc-bkzZxe fwDVgA"

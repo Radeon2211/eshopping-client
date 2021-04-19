@@ -58,7 +58,7 @@ const ProductsAndFilters = (props) => {
   }
 
   return (
-    <SideBySide proportion="1/3" makeVerticalWhen={1200}>
+    <SideBySide proportion="1/3" makeVerticalWhen={1200} data-testid="ProductsAndFilters">
       {filters}
       {productListSection}
     </SideBySide>

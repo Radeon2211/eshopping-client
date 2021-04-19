@@ -12,6 +12,7 @@ import theme from '../styled/theme';
 import App from './App';
 import { defaultUserProfile } from '../shared/testUtility/testUtility';
 import * as actions from '../store/actions/indexActions';
+import { userStatuses } from '../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -73,7 +74,7 @@ describe('<App />', () => {
     it('should render version for user with pending status', () => {
       setUp({
         ...defaultUserProfile,
-        status: 'pending',
+        status: userStatuses.PENDING,
       });
       expect(screen.getByTestId('App-user-pending')).toBeInTheDocument();
     });

@@ -45,7 +45,7 @@ const ResetPassword = () => {
             }}
             label="Email"
           />
-          <PlainText size="1" mgBottom="3">
+          <PlainText size="1" mgBottom="3" role="link">
             <GreenText onClick={() => onSetModal(modalTypes.LOGIN)}>Login</GreenText>
           </PlainText>
         </Form>

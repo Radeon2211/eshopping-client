@@ -44,7 +44,8 @@
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "build:prod": "env-cmd -e prod npm run-script build",
     "test": "react-scripts test",
-    "test:local": "env-cmd -e dev npm run-script test",
+    "test:unit": "env-cmd -e dev npm run-script test",
+    "test:e2e": "npx cypress open",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
@@ -64,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.6",
     "babel-eslint": "^10.1.0",
     "check-prop-types": "^1.1.2",
     "cypress": "^7.0.1",
@@ -75,6 +77,7 @@
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",

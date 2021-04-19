@@ -47,6 +47,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
     </form>
     <nav
       class="sc-crrsfI btxiNp"
+      data-testid="LoggedInLinks"
     >
       <a
         class="sc-kEjbxe dWwZfv"
@@ -139,6 +140,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
     </form>
     <div
       class="sc-pFZIQ iLRtPl"
+      data-testid="LoggedOutLinks"
       direction="row"
       spacing="3"
       width="auto"

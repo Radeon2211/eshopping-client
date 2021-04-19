@@ -17,6 +17,7 @@ import thunk from 'redux-thunk';
 import theme from '../../../styled/theme';
 import LoggedInLinks from './LoggedInLinks';
 import { checkProps } from '../../../shared/testUtility/testUtility';
+import { userStatuses } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -53,7 +54,7 @@ describe('<LoggedInLinks />', () => {
     it('should NOT throw a warning if status is active', () => {
       const props = {
         username: 'username',
-        status: 'active',
+        status: userStatuses.ACTIVE,
       };
       expect(checkProps(LoggedInLinks, props)).toBeUndefined();
     });
@@ -61,7 +62,7 @@ describe('<LoggedInLinks />', () => {
     it('should NOT throw a warning if status is pending', () => {
       const props = {
         username: 'username',
-        status: 'pending',
+        status: userStatuses.PENDING,
       };
       expect(checkProps(LoggedInLinks, props)).toBeUndefined();
     });
@@ -81,17 +82,17 @@ describe('<LoggedInLinks />', () => {
 
   describe('check how renders', () => {
     it('should render version for user with status active', () => {
-      const { asFragment } = setUp('username', 'active');
+      const { asFragment } = setUp('username', userStatuses.ACTIVE);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render version for user with status pending', () => {
-      const { asFragment } = setUp('username', 'pending');
+      const { asFragment } = setUp('username', userStatuses.PENDING);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('should open <Dropdown /> after clicking at user box and close after clicking outside <Dropdown />', async () => {
-      setUp('username', 'active');
+      setUp('username', userStatuses.ACTIVE);
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
 
@@ -105,7 +106,7 @@ describe('<LoggedInLinks />', () => {
     });
 
     it('should not close <Dropdown /> after clicking at <Dropdown />', async () => {
-      setUp('username', 'active');
+      setUp('username', userStatuses.ACTIVE);
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
 
@@ -119,7 +120,7 @@ describe('<LoggedInLinks />', () => {
   });
 
   it('should call push after clicking at link to settings', async () => {
-    const { history } = setUp('username', 'pending');
+    const { history } = setUp('username', userStatuses.PENDING);
     fireEvent.click(screen.getByTestId('LoggedInLinks-my-account-link'));
     expect(history.push).toHaveBeenCalledWith('/my-account/data');
   });

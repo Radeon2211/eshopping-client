@@ -12,7 +12,7 @@ const LoggedOutLinks = () => {
   ]);
 
   return (
-    <FlexWrapper width="auto" spacing="3">
+    <FlexWrapper width="auto" spacing="3" data-testid="LoggedOutLinks">
       <Button clicked={() => onSetModal(modalTypes.LOGIN)}>login</Button>
       <Button filled clicked={() => onSetModal(modalTypes.SIGNUP)}>
         signup

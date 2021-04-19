@@ -22,7 +22,7 @@ const Form = (props) => {
   ]);
 
   const error = formError ? (
-    <PlainText size="3" mgTop="3" color={theme.colors.red}>
+    <PlainText size="3" mgTop="3" color={theme.colors.red} data-testid="Form-error">
       {formError}
     </PlainText>
   ) : null;

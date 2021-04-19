@@ -192,3 +192,8 @@ export const defaultScrollToConfig = {
   left: 0,
   behavior: 'smooth',
 };
+
+export const userStatuses = {
+  ACTIVE: 'active',
+  PENDING: 'pending',
+};

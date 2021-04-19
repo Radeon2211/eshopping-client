@@ -10,6 +10,7 @@ exports[`<Products /> check how renders should render everything correctly with 
   </h3>
   <div
     class="sc-gsTCUz iakHmb"
+    data-testid="ProductsAndFilters"
   >
     <section
       class="sc-gKsewC hOOrhu"
