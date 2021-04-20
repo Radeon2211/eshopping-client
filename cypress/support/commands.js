@@ -1,3 +1,7 @@
+Cypress.Commands.add('seedDb', () => {
+  cy.request('POST', `${Cypress.env('API_URL')}/testing/seed`);
+});
+
 Cypress.Commands.add('closeModal', () => {
   cy.findByTestId('Modal-close-icon').click();
 });
@@ -14,15 +18,37 @@ Cypress.Commands.add('submitForm', (options = {}) => {
 });
 
 Cypress.Commands.add('closeMessageBox', () => {
-  cy.findByTestId('MessageBox-close-icon').click();
+  cy.findByTestId('MessageBox-close-icon').then(($icon) => {
+    if ($icon.length > 0) {
+      cy.wrap($icon).click({ force: true });
+    }
+  });
 });
 
-Cypress.Commands.add('checkLoginState', (shouldBeLogged) => {
+Cypress.Commands.add('checkLoginState', (shouldBeLogged = false) => {
   if (shouldBeLogged) {
     cy.findByTestId('LoggedInLinks').should('exist');
     cy.findByTestId('LoggedOutLinks').should('not.exist');
   } else {
     cy.findByTestId('LoggedInLinks').should('not.exist');
     cy.findByTestId('LoggedOutLinks').should('exist');
+  }
+});
+
+Cypress.Commands.add('loginRequest', (user) => {
+  cy.request('POST', `${Cypress.env('API_URL')}/users/login`, {
+    email: user.email,
+    password: user.password,
+  });
+});
+
+Cypress.Commands.add('fillLoginForm', (email, password, openModal = false, submitForm = false) => {
+  if (openModal) {
+    cy.findByRole('button', { name: /login/i }).click({ force: true });
+  }
+  cy.findByTestId('Login-email').type(email);
+  cy.findByTestId('Login-password').type(password);
+  if (submitForm) {
+    cy.submitForm();
   }
 });

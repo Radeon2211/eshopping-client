@@ -5,7 +5,7 @@ import { productOne } from '../fixtures/products';
 
 describe('unauthenticated user', () => {
   beforeEach(() => {
-    cy.request('POST', `${Cypress.env('API_URL')}/seed`);
+    cy.seedDb();
     cy.visit('/');
   });
 

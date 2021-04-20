@@ -11,6 +11,8 @@ export const userOne = {
   city: 'Białystok',
   country: 'Poland',
   phone: '+48 123456789',
+  phoneNumber: '123456789',
+  phonePrefixLabel: '+48 Poland',
   contacts: {
     email: true,
     phone: true,

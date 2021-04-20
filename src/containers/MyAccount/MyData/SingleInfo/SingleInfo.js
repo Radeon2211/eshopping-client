@@ -51,7 +51,7 @@ const SingleInfo = (props) => {
   }
 
   return (
-    <FlexWrapper direction="column" spacing="2" align="start">
+    <FlexWrapper direction="column" spacing="2" align="start" data-testid={`SingleInfo-${name}`}>
       <Heading variant="h4">{name}</Heading>
       {contentNode}
       {button}

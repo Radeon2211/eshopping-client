@@ -22,6 +22,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
       >
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Username"
           direction="column"
           spacing="2"
           width="100%"
@@ -46,6 +47,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Name"
           direction="column"
           spacing="2"
           width="100%"
@@ -78,6 +80,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Email"
           direction="column"
           spacing="2"
           width="100%"
@@ -110,6 +113,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Address"
           direction="column"
           spacing="2"
           width="100%"
@@ -172,6 +176,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Contacts"
           direction="column"
           spacing="2"
           width="100%"
@@ -223,6 +228,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Phone number"
           direction="column"
           spacing="2"
           width="100%"
@@ -326,6 +332,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
       >
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Username"
           direction="column"
           spacing="2"
           width="100%"
@@ -350,6 +357,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Name"
           direction="column"
           spacing="2"
           width="100%"
@@ -382,6 +390,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Email"
           direction="column"
           spacing="2"
           width="100%"
@@ -414,6 +423,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Address"
           direction="column"
           spacing="2"
           width="100%"
@@ -476,6 +486,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Contacts"
           direction="column"
           spacing="2"
           width="100%"
@@ -527,6 +538,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Phone number"
           direction="column"
           spacing="2"
           width="100%"
@@ -623,6 +635,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
       >
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Username"
           direction="column"
           spacing="2"
           width="100%"
@@ -647,6 +660,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Name"
           direction="column"
           spacing="2"
           width="100%"
@@ -671,6 +685,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Email"
           direction="column"
           spacing="2"
           width="100%"
@@ -695,6 +710,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Address"
           direction="column"
           spacing="2"
           width="100%"
@@ -749,6 +765,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Contacts"
           direction="column"
           spacing="2"
           width="100%"
@@ -792,6 +809,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         </div>
         <div
           class="sc-hKgILt gmWsbW"
+          data-testid="SingleInfo-Phone number"
           direction="column"
           spacing="2"
           width="100%"

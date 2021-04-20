@@ -2,11 +2,6 @@ import '@testing-library/cypress/add-commands';
 import { modalTypes } from '../../src/shared/constants';
 import { userOne, testUser } from '../fixtures/users';
 
-const fillLoginForm = (email, password) => {
-  cy.findByTestId('Login-email').type(email);
-  cy.findByTestId('Login-password').type(password);
-};
-
 const fillSignupForm = () => {
   cy.findByTestId('Step1-email').type(testUser.email);
   cy.findByTestId('Step1-hideEmail').then(($checkbox) => {
@@ -45,7 +40,7 @@ const deleteAccount = () => {
 
 describe('login and signup form', () => {
   beforeEach(() => {
-    cy.request('POST', `${Cypress.env('API_URL')}/seed`);
+    cy.seedDb();
     cy.visit('/');
   });
 
@@ -53,9 +48,7 @@ describe('login and signup form', () => {
     it('logins and logouts correctly', () => {
       cy.checkHash();
 
-      cy.findByRole('button', { name: /login/i }).click();
-      fillLoginForm(userOne.email, userOne.password);
-      cy.submitForm();
+      cy.fillLoginForm(userOne.email, userOne.password, true, true);
       cy.findByTestId('Modal').should('not.exist');
       cy.checkLoginState(true);
       cy.reload();
@@ -65,10 +58,7 @@ describe('login and signup form', () => {
     it('logins, deletes account and not logins', () => {
       cy.checkHash();
 
-      cy.findByRole('button', { name: /login/i }).click();
-      fillLoginForm(userOne.email, userOne.password);
-      cy.submitForm();
-
+      cy.fillLoginForm(userOne.email, userOne.password, true, true);
       cy.findByTestId('LoggedInLinks-user-box').click();
       cy.findByTestId('Dropdown')
         .findByText(/my account/i)
@@ -76,9 +66,7 @@ describe('login and signup form', () => {
       deleteAccount();
 
       cy.closeMessageBox();
-      cy.findByRole('button', { name: /login/i }).click();
-      fillLoginForm(userOne.email, userOne.password);
-      cy.submitForm();
+      cy.fillLoginForm(userOne.email, userOne.password, true, true);
       cy.findByTestId('Form-error').should('exist');
     });
 
@@ -87,8 +75,7 @@ describe('login and signup form', () => {
 
       cy.findByRole('button', { name: /login/i }).click();
       cy.findByTestId('Form-error').should('not.exist');
-      fillLoginForm('incorrect@email.com', 'incorrectPassword');
-      cy.submitForm();
+      cy.fillLoginForm('incorrect@email.com', 'incorrectPassword', false, true);
       cy.findByTestId('Form-error').should('exist');
     });
   });
@@ -107,7 +94,7 @@ describe('login and signup form', () => {
         .findByText(testUser.username)
         .should('exist');
       cy.findByTestId('MessageBox').should('exist');
-      cy.findByTestId('MessageBox', { timeout: 5500 }).should('not.exist');
+      cy.findByTestId('MessageBox', { timeout: 6000 }).should('not.exist');
 
       cy.reload();
       cy.findByTestId('LoggedInLinks-my-account-link')
@@ -121,9 +108,7 @@ describe('login and signup form', () => {
       cy.checkHash();
       cy.checkLoginState();
 
-      cy.findByRole('button', { name: /login/i }).click();
-      fillLoginForm(testUser.email, testUser.password);
-      cy.submitForm();
+      cy.fillLoginForm(testUser.email, testUser.password, true, true);
       cy.findByTestId('LoggedInLinks-my-account-link')
         .findByText(testUser.username)
         .should('exist');
@@ -140,9 +125,7 @@ describe('login and signup form', () => {
       deleteAccount();
 
       cy.closeMessageBox();
-      cy.findByRole('button', { name: /login/i }).click();
-      fillLoginForm(testUser.email, testUser.password);
-      cy.submitForm();
+      cy.fillLoginForm(testUser.email, testUser.password, true, true);
       cy.findByTestId('Form-error').should('exist');
     });
 
@@ -155,8 +138,7 @@ describe('login and signup form', () => {
 
       cy.findByTestId('Step3-previous-btn').click();
       cy.findByTestId('Step2-previous-btn').click();
-      cy.findByTestId('Step1-email').clear();
-      cy.findByTestId('Step1-email').type(userOne.email);
+      cy.findByTestId('Step1-email').clear().type(userOne.email);
       cy.findByTestId('Step1-next-btn').click();
       cy.findByTestId('Step2-next-btn').click();
       cy.submitForm();

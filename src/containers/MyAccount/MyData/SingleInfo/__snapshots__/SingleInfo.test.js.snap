@@ -4,6 +4,7 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"
+    data-testid="SingleInfo-Address"
     direction="column"
     spacing="2"
     width="100%"
@@ -71,6 +72,7 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"
+    data-testid="SingleInfo-Contacts"
     direction="column"
     spacing="2"
     width="100%"
@@ -119,6 +121,7 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"
+    data-testid="SingleInfo-Contacts"
     direction="column"
     spacing="2"
     width="100%"
@@ -175,6 +178,7 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
 <DocumentFragment>
   <div
     class="sc-gKsewC eqhPHB"
+    data-testid="SingleInfo-Name"
     direction="column"
     spacing="2"
     width="100%"
