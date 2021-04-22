@@ -1747,7 +1747,7 @@ describe('async functions', () => {
             createExpectedState(
               initialState,
               {
-                transaction: [],
+                transaction: undefined,
                 cart: expectedCart,
               },
               {},
@@ -1783,7 +1783,7 @@ describe('async functions', () => {
             createExpectedState(
               initialState,
               {
-                transaction: [],
+                transaction: undefined,
                 cart: expectedCart,
               },
               {},
@@ -2021,7 +2021,10 @@ describe('async functions', () => {
           await actions.buyProducts(history, '/cart')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
-          expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
+          expect(innerDispatchFn).toHaveBeenNthCalledWith(
+            2,
+            tradeActions.setTransaction(undefined),
+          );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, tradeActions.setCart(expectedCart));
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith('Transaction was successful');
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
@@ -2051,7 +2054,10 @@ describe('async functions', () => {
           await actions.buyProducts(history, '/product/p1')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
-          expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
+          expect(innerDispatchFn).toHaveBeenNthCalledWith(
+            2,
+            tradeActions.setTransaction(undefined),
+          );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, tradeActions.setCart(expectedCart));
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith('Transaction was successful');
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());

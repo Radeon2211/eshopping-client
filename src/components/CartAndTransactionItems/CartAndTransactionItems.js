@@ -43,10 +43,13 @@ const CartAndTransactionItems = (props) => {
   }));
 
   const sellerList = sellersArray.map(({ sellerUsername, items: listItem }) => (
-    <SC.SingleSeller key={sellerUsername}>
+    <SC.SingleSeller key={sellerUsername} data-testid="CartAndTransactionItems-item">
       <PlainText size="3" display="block">
         <span>seller </span>
-        <Link to={`/user/${sellerUsername}?p=1`} data-testid="CartAndTransactionItems-seller-link">
+        <Link
+          to={`/user/${sellerUsername}?p=1`}
+          data-testid="CartAndTransactionItems-item-seller-link"
+        >
           <GreenText>{sellerUsername}</GreenText>
         </Link>
       </PlainText>

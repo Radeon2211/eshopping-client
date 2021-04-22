@@ -110,7 +110,9 @@ const CartItem = (props) => {
           </PlainText>
         </div>
         <div className="price-box">
-          <PlainText size="5">{formatPrice(price * quantity)}</PlainText>
+          <PlainText size="5" data-testid="CartItem-total-price">
+            {formatPrice(price * quantity)}
+          </PlainText>
           {quantity > 1 && (
             <PlainText size="2" textAlign="right" data-testid="CartItem-price-per-piece">
               {`per piece ${formatPrice(price)}`}

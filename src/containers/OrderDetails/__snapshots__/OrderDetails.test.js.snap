@@ -482,6 +482,7 @@ exports[`<OrderDetails /> check how renders should render only info that there i
 <DocumentFragment>
   <h4
     class="sc-dlfnbm iFVlIY"
+    data-testid="OrderDetails-error"
   >
     There is a problem to fetch order details or given order does not exist
   </h4>

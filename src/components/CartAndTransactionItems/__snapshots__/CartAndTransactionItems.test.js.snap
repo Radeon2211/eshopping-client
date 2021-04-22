@@ -4,6 +4,7 @@ exports[`<CartAndTransactionItems /> check how renders should render everything 
 <DocumentFragment>
   <div
     class="sc-iqHYGH jQuAQg"
+    data-testid="CartAndTransactionItems-item"
   >
     <span
       class="sc-jSgupP dapyFi"
@@ -18,7 +19,7 @@ exports[`<CartAndTransactionItems /> check how renders should render everything 
         seller 
       </span>
       <a
-        data-testid="CartAndTransactionItems-seller-link"
+        data-testid="CartAndTransactionItems-item-seller-link"
       >
         <span
           class="sc-jrAGrp cfzRYv"
@@ -132,6 +133,7 @@ exports[`<CartAndTransactionItems /> check how renders should render everything 
           <span
             class="sc-jSgupP esalpy"
             color=""
+            data-testid="CartItem-total-price"
             display="inline-block"
             overflow="visible"
             size="5"
@@ -160,6 +162,7 @@ exports[`<CartAndTransactionItems /> check how renders should render everything 
 <DocumentFragment>
   <div
     class="sc-iqHYGH jQuAQg"
+    data-testid="CartAndTransactionItems-item"
   >
     <span
       class="sc-jSgupP dapyFi"
@@ -174,7 +177,7 @@ exports[`<CartAndTransactionItems /> check how renders should render everything 
         seller 
       </span>
       <a
-        data-testid="CartAndTransactionItems-seller-link"
+        data-testid="CartAndTransactionItems-item-seller-link"
       >
         <span
           class="sc-jrAGrp cfzRYv"
@@ -257,6 +260,7 @@ exports[`<CartAndTransactionItems /> check how renders should render everything 
   </div>
   <div
     class="sc-iqHYGH jQuAQg"
+    data-testid="CartAndTransactionItems-item"
   >
     <span
       class="sc-jSgupP dapyFi"
@@ -271,7 +275,7 @@ exports[`<CartAndTransactionItems /> check how renders should render everything 
         seller 
       </span>
       <a
-        data-testid="CartAndTransactionItems-seller-link"
+        data-testid="CartAndTransactionItems-item-seller-link"
       >
         <span
           class="sc-jrAGrp cfzRYv"

@@ -1250,7 +1250,7 @@ describe('async functions', () => {
             {},
             {},
             {
-              message: defaultErrorMessage,
+              formError: defaultErrorMessage,
             },
           ),
         );
@@ -1287,18 +1287,12 @@ describe('async functions', () => {
           status: 500,
         });
 
-        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
-
-        uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
         await actions.addAdmin(userEmail)(innerDispatchFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
-        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
-        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formFail());
-        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-
-        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
+        expect(innerDispatchFn).toHaveBeenCalledTimes(2);
       });
     });
   });
@@ -1344,7 +1338,7 @@ describe('async functions', () => {
             {},
             {},
             {
-              message: defaultErrorMessage,
+              formError: defaultErrorMessage,
             },
           ),
         );
@@ -1381,18 +1375,12 @@ describe('async functions', () => {
           status: 500,
         });
 
-        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
-
-        uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
         await actions.removeAdmin(userEmail)(innerDispatchFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
-        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
-        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formFail());
-        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-
-        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
+        expect(innerDispatchFn).toHaveBeenCalledTimes(2);
       });
     });
   });
@@ -1536,7 +1524,7 @@ describe('async functions', () => {
             {},
             {},
             {
-              message: defaultErrorMessage,
+              formError: defaultErrorMessage,
             },
           ),
         );
@@ -1575,18 +1563,12 @@ describe('async functions', () => {
           status: 500,
         });
 
-        const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
-
-        uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
         await actions.resetPassword(userEmail)(innerDispatchFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
-        expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
-        expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formFail());
-        expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-
-        uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
+        expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
+        expect(innerDispatchFn).toHaveBeenCalledTimes(2);
       });
     });
   });

@@ -1,0 +1,257 @@
+import '@testing-library/cypress/add-commands';
+import { activeUser } from '../fixtures/users';
+import { productOne } from '../fixtures/products';
+import { formatPrice } from '../../src/shared/utility/utility';
+import { modalTypes, singleInfoNames } from '../../src/shared/constants';
+
+const usedUser = activeUser;
+const usedProduct = productOne;
+
+const newDeliveryAddress = {
+  firstName: 'New',
+  lastName: 'Name',
+  street: 'Merrion Way 66',
+  zipCode: '35004',
+  city: 'Leeds',
+  country: 'United Kingdom',
+  phone: '+44 111-222-3333',
+  phoneNumber: '111-222-3333',
+  phonePrefixLabel: '+44 United Kingdom',
+};
+
+const fillDeliveryAddressForm = (data) => {
+  cy.findByTestId('ChangeDeliveryAddress-firstName').clear().type(data.firstName);
+  cy.findByTestId('ChangeDeliveryAddress-lastName').clear().type(data.lastName);
+  cy.findByTestId('ChangeDeliveryAddress-street').clear().type(data.street);
+  cy.findByTestId('ChangeDeliveryAddress-zipCode').clear().type(data.zipCode);
+  cy.findByTestId('ChangeDeliveryAddress-city').clear().type(data.city);
+  cy.get('#country').click();
+  cy.findByText(data.country).click();
+  cy.get('#phonePrefix').click();
+  cy.findByText(data.phonePrefixLabel).click();
+  cy.findByTestId('ChangeDeliveryAddress-phoneNumber').clear().type(data.phoneNumber);
+};
+
+const checkTransactionOrOrderProdItems = (quantityBought) => {
+  cy.findAllByTestId('TransactionAndOrderProdItem').within(() => {
+    cy.findByTestId('TransactionAndOrderProdItem-product-link-name').should(
+      'have.text',
+      usedProduct.name,
+    );
+    cy.findByText(`${quantityBought} x ${formatPrice(usedProduct.price)}`).should('exist');
+    cy.findByText(formatPrice(quantityBought * usedProduct.price)).should('exist');
+  });
+};
+
+const checkDeliveryAddressInAccountData = (data) => {
+  const checkData = () => {
+    cy.findByTestId(`SingleInfo-${singleInfoNames.NAME}`).findByText(
+      `${data.firstName} ${data.lastName}`,
+    );
+    cy.findByTestId(`SingleInfo-${singleInfoNames.ADDRESS}`).within(() => {
+      cy.findByText(data.street).should('exist');
+      cy.findByText(`${data.zipCode} ${data.city}`).should('exist');
+      cy.findByText(data.country).should('exist');
+    });
+    cy.findByTestId(`SingleInfo-${singleInfoNames.PHONE_NUMBER}`)
+      .findByText(data.phone)
+      .should('exist');
+  };
+  checkData();
+  cy.reload();
+  checkData();
+};
+
+const checkDeliveryAddressInOrderDetails = () => {
+  const checkData = () => {
+    cy.findByTestId('OrderDetails-delivery-address-section').within(() => {
+      cy.findByText(`${newDeliveryAddress.firstName} ${newDeliveryAddress.lastName}`).should(
+        'exist',
+      );
+      cy.findByText(newDeliveryAddress.street).should('exist');
+      cy.findByText(`${newDeliveryAddress.zipCode} ${newDeliveryAddress.city}`).should('exist');
+      cy.findByText(newDeliveryAddress.country).should('exist');
+      cy.findByText(newDeliveryAddress.phone).should('exist');
+    });
+  };
+  checkData();
+  cy.reload();
+  checkData();
+};
+
+describe('trading actions', () => {
+  beforeEach(() => {
+    cy.seedDb();
+    cy.loginRequest(usedUser);
+    cy.visit('/');
+  });
+
+  describe('check entire proccess of buying and results', () => {
+    it('adds item to cart with quantity: 2 * 5 and change data forever', () => {
+      const quantityChosen = usedProduct.quantity / 2;
+      const quantityBought = quantityChosen * 2;
+
+      // choose given quantity by button clicks
+      cy.findByText(usedProduct.name).closest('[data-testid="ProductItem"]').click();
+      cy.findByText(`of ${usedProduct.quantity} pieces`).should('exist');
+      for (let i = 0; i < quantityChosen - 1; i += 1) {
+        cy.findByTestId('ChooseQuantity-plus-btn').click();
+      }
+      cy.findByTestId('NumberInput-quantity').should('have.value', quantityChosen);
+      cy.findByTestId('CartLink-quantity').should('not.exist');
+      // add to cart and check ui
+      cy.findByRole('button', { name: /add to cart/ }).click();
+      cy.findByText(
+        `(total in the cart ${quantityChosen} x ${formatPrice(usedProduct.price)})`,
+      ).should('exist');
+      cy.findByRole('button', { name: /continue shopping/i }).click();
+      cy.findByTestId('Modal').should('not.exist');
+      cy.findByTestId('NumberInput-quantity').should('have.value', quantityChosen);
+      cy.findByText(`(${quantityChosen} in cart)`).should('exist');
+      cy.findByTestId('CartLink-quantity').should('have.text', 1);
+      // reload and check ui
+      cy.reload();
+      cy.findByTestId('NumberInput-quantity').should('have.value', 1);
+      cy.findByText(`(${quantityChosen} in cart)`).should('exist');
+      cy.findByTestId('CartLink-quantity').should('have.text', 1);
+      // choose given quantity, add to cart and go to cart
+      cy.findByTestId('NumberInput-quantity').clear().type(quantityChosen);
+      cy.findByRole('button', { name: /add to cart/ }).click();
+      cy.findByTestId('PurchaseSection-not-able-to-add').should('exist');
+      cy.findByText(
+        `(total in the cart ${quantityBought} x ${formatPrice(usedProduct.price)})`,
+      ).should('exist');
+      cy.findByRole('button', { name: /go to cart/i }).click();
+      // check products in cart
+      cy.checkHash('#/cart');
+      cy.findByTestId('CartLink-quantity').should('have.text', 1);
+      cy.findByTestId('CartAndTransactionItems-item-seller-link').should(
+        'have.text',
+        usedProduct.seller.username,
+      );
+      cy.findByTestId('CartItem').within(() => {
+        cy.findByTestId('CartItem-product-link-name').should('have.text', usedProduct.name);
+        cy.findByTestId('NumberInput-quantity').should('have.value', quantityBought);
+        cy.findByTestId('CartItem-total-price').should(
+          'have.text',
+          formatPrice(quantityBought * usedProduct.price),
+        );
+        cy.findByTestId('CartItem-price-per-piece').should(
+          'have.text',
+          `per piece ${formatPrice(usedProduct.price)}`,
+        );
+      });
+      // test links to seller and product
+      cy.findByTestId('CartAndTransactionItems-item-seller-link').click();
+      cy.checkHash(`#/user/${usedProduct.seller.username}?p=1`);
+      cy.go('back');
+      cy.findByTestId('CartItem-product-link-name').click();
+      cy.checkHash('#/product/', 'contains');
+      cy.go('back');
+      cy.findByTestId('CartItem-product-link-photo').click();
+      cy.checkHash('#/product/', 'contains');
+      cy.go('back');
+      // go to transaction and check data at transaction page
+      cy.findByRole('button', { name: /go to summary/i }).click();
+      cy.checkHash('#/transaction');
+      cy.findByTestId('DeliveryAddressSection').within(() => {
+        cy.findByText(`${usedUser.firstName} ${usedUser.lastName}`).should('exist');
+        cy.findByText(usedUser.street).should('exist');
+        cy.findByText(`${usedUser.zipCode} ${usedUser.city}`).should('exist');
+        cy.findByText(usedUser.country).should('exist');
+        cy.findByText(usedUser.phone).should('exist');
+      });
+      cy.findByTestId('CartAndTransactionItems-item-seller-link').should(
+        'have.text',
+        usedProduct.seller.username,
+      );
+      checkTransactionOrOrderProdItems(quantityBought);
+      // change delivery address
+      cy.findByRole('button', { name: /change address/i }).click();
+      fillDeliveryAddressForm(newDeliveryAddress);
+      cy.submitForm();
+      cy.findByTestId('Modal').should('not.exist');
+      // buy
+      cy.findByRole('button', { name: /i buy and pay/i }).click();
+      cy.findByTestId(`Modal-${modalTypes.BUY_PRODUCTS}`).should('exist');
+      cy.findByRole('button', { name: /confirm/i }).click();
+      // check placed orders and cart link
+      cy.findByTestId('CartLink-quantity').should('not.exist');
+      cy.checkHash('#/my-account/placed-orders?p=1');
+      cy.findByTestId('OrderList-user-link').should('have.text', usedProduct.seller.username);
+      checkTransactionOrOrderProdItems(quantityBought);
+      // check order details and user and product links
+      cy.findByRole('button', { name: /details/i }).click();
+      cy.checkHash('#/order/', 'contains');
+      checkDeliveryAddressInOrderDetails();
+      checkTransactionOrOrderProdItems(quantityBought);
+      cy.findByTestId('OrderDetails-buyer-link').click();
+      cy.checkHash(`#/my-account/data`);
+      cy.go('back');
+      cy.findByTestId('OrderDetails-seller-link').click();
+      cy.checkHash(`#/user/${usedProduct.seller.username}?p=1`);
+      cy.go('back');
+      // check delivery address data at /my-account/data
+      cy.visit('/my-account/data');
+      checkDeliveryAddressInAccountData(newDeliveryAddress);
+      // check cart and go to default page
+      cy.findByTestId('CartLink').click();
+      cy.findByTestId('Cart-empty-cart').should('exist');
+      // check offers at default page
+      cy.findByTestId('Navbar-header-link').click();
+      cy.findAllByTestId('ProductItem').should('have.length', 0);
+      // visit transaction and automatically go to default page
+      cy.visit('/transaction');
+      cy.checkHash('#/cart');
+    });
+
+    it('adds item to cart with quantity: 1 and change data only for current order', () => {
+      const quantityBought = 1;
+
+      // click buy now and go to transaction
+      cy.findByText(usedProduct.name).closest('[data-testid="ProductItem"]').click();
+      cy.findByRole('button', { name: /buy now/ }).click();
+      cy.findByTestId('CartLink-quantity').should('not.exist');
+      // check transaction data
+      cy.checkHash('#/transaction');
+      cy.findByTestId('CartAndTransactionItems-item-seller-link').should(
+        'have.text',
+        usedProduct.seller.username,
+      );
+      checkTransactionOrOrderProdItems(quantityBought);
+      // change delivery address
+      cy.findByRole('button', { name: /change address/i }).click();
+      fillDeliveryAddressForm(newDeliveryAddress);
+      cy.findByTestId('ChangeDeliveryAddress-only-current-orders').click({ force: true });
+      cy.submitForm();
+      cy.findByTestId('Modal').should('not.exist');
+      // buy
+      cy.findByRole('button', { name: /i buy and pay/i }).click();
+      cy.findByTestId(`Modal-${modalTypes.BUY_PRODUCTS}`).should('exist');
+      cy.findByRole('button', { name: /confirm/i }).click();
+      // placed orders
+      cy.checkHash('#/my-account/placed-orders?p=1');
+      cy.findByTestId('OrderList-user-link').should('have.text', usedProduct.seller.username);
+      checkTransactionOrOrderProdItems(quantityBought);
+      // order details
+      cy.findByRole('button', { name: /details/i }).click();
+      cy.checkHash('#/order/', 'contains');
+      checkDeliveryAddressInOrderDetails();
+      checkTransactionOrOrderProdItems(quantityBought);
+      // check delivery address data at /my-account/data
+      cy.visit('/my-account/data');
+      checkDeliveryAddressInAccountData(usedUser);
+      // check bought product data
+      cy.findByTestId('Navbar-header-link').click();
+      cy.findByText(usedProduct.name)
+        .closest('[data-testid="ProductItem"]')
+        .findByText('1 person bought');
+      cy.findByText(usedProduct.name).closest('[data-testid="ProductItem"]').click();
+      cy.findByText(`of ${usedProduct.quantity - quantityBought} pieces`).should('exist');
+      cy.findByText(`1 person bought ${quantityBought} unit`).should('exist');
+      // visit transaction and automatically go to cart
+      cy.visit('/transaction');
+      cy.checkHash('#/cart');
+    });
+  });
+});

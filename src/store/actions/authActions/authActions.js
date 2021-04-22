@@ -182,8 +182,7 @@ export const addAdmin = (email) => {
       dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.setAndDeleteMessage(errorMessage));
-      dispatch(uiActions.formFail());
+      dispatch(uiActions.formFail(errorMessage));
     }
   };
 };
@@ -201,8 +200,7 @@ export const removeAdmin = (email) => {
       dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.setAndDeleteMessage(errorMessage));
-      dispatch(uiActions.formFail());
+      dispatch(uiActions.formFail(errorMessage));
     }
   };
 };
@@ -237,8 +235,7 @@ export const resetPassword = (email) => {
       dispatch(uiActions.formSuccess());
     } catch (error) {
       const errorMessage = getErrorMessage(error);
-      dispatch(uiActions.setAndDeleteMessage(errorMessage));
-      dispatch(uiActions.formFail());
+      dispatch(uiActions.formFail(errorMessage));
     }
   };
 };

@@ -1,5 +1,5 @@
 Cypress.Commands.add('seedDb', () => {
-  cy.request('POST', `${Cypress.env('API_URL')}/testing/seed`);
+  cy.request('PATCH', `${Cypress.env('API_URL')}/testing/seed`);
 });
 
 Cypress.Commands.add('closeModal', () => {

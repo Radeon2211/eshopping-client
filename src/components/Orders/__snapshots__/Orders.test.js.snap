@@ -899,6 +899,7 @@ exports[`<Orders /> check how renders should render correct info if orders are e
 <DocumentFragment>
   <h4
     class="sc-idOhPF hdxiSy"
+    data-testid="Orders-no-orders-info"
   >
     You don't have any placed orders yet
   </h4>
@@ -909,6 +910,7 @@ exports[`<Orders /> check how renders should render correct info if orders are e
 <DocumentFragment>
   <h4
     class="sc-idOhPF hdxiSy"
+    data-testid="Orders-no-orders-info"
   >
     Your sell history is empty
   </h4>
@@ -919,6 +921,7 @@ exports[`<Orders /> check how renders should render correct info if orders are n
 <DocumentFragment>
   <h4
     class="sc-idOhPF hdxiSy"
+    data-testid="Orders-error"
   >
     There is a problem to fetch your placed orders
   </h4>
@@ -929,6 +932,7 @@ exports[`<Orders /> check how renders should render correct info if orders are n
 <DocumentFragment>
   <h4
     class="sc-idOhPF hdxiSy"
+    data-testid="Orders-error"
   >
     There is a problem to fetch your sell history
   </h4>

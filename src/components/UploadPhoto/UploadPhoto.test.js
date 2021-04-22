@@ -44,6 +44,7 @@ describe('<UploadPhoto />', () => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
         await waitFor(() => {});
+        await waitFor(() => {});
 
         expect(asFragment()).toMatchSnapshot();
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', photo);
@@ -71,6 +72,7 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [validPhoto] } });
         });
+        await waitFor(() => {});
         await waitFor(() => {});
 
         expect(asFragment()).toMatchSnapshot();

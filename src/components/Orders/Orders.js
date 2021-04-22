@@ -33,7 +33,7 @@ const Orders = (props) => {
   let content = <Loader align="center" />;
   if (orders === null) {
     content = (
-      <Heading variant="h4" align="center">
+      <Heading variant="h4" align="center" data-testid="Orders-error">
         {type === orderTypes.PLACED_ORDERS
           ? 'There is a problem to fetch your placed orders'
           : 'There is a problem to fetch your sell history'}
@@ -42,7 +42,7 @@ const Orders = (props) => {
   } else if (orders) {
     if (orders.length <= 0) {
       content = (
-        <Heading variant="h4" align="center">
+        <Heading variant="h4" align="center" data-testid="Orders-no-orders-info">
           {type === orderTypes.PLACED_ORDERS
             ? `You don't have any placed orders yet`
             : 'Your sell history is empty'}

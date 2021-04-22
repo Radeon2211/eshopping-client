@@ -116,7 +116,7 @@ describe('<CartAndTransactionItems />', () => {
         itemTypes.CART,
       );
 
-      fireEvent.click(screen.getByTestId('CartAndTransactionItems-seller-link'));
+      fireEvent.click(screen.getByTestId('CartAndTransactionItems-item-seller-link'));
       expect(history.push).toHaveBeenCalledWith('/user/user1?p=1');
     });
   });

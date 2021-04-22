@@ -1,8 +1,8 @@
 import '@testing-library/cypress/add-commands';
 import { modalTypes, singleInfoNames } from '../../src/shared/constants';
-import { userOne } from '../fixtures/users';
+import { adminUser, activeUser } from '../fixtures/users';
 
-const usedUser = userOne;
+const usedUser = adminUser;
 
 const newData = {
   firstName: 'New',
@@ -39,10 +39,11 @@ const checkAccountData = (checkNewEmail = false) => {
     }
   });
 
-  cy.findByTestId(`SingleInfo-${singleInfoNames.ADDRESS}`).as('addressContainer');
-  cy.get('@addressContainer').findByText(newData.street).should('exist');
-  cy.get('@addressContainer').findByText(`${newData.zipCode} ${newData.city}`).should('exist');
-  cy.get('@addressContainer').findByText(newData.country).should('exist');
+  cy.findByTestId(`SingleInfo-${singleInfoNames.ADDRESS}`).within(() => {
+    cy.findByText(newData.street).should('exist');
+    cy.findByText(`${newData.zipCode} ${newData.city}`).should('exist');
+    cy.findByText(newData.country).should('exist');
+  });
 
   cy.findByTestId(`SingleInfo-${singleInfoNames.CONTACTS}`).then(($container) => {
     if (newData.contacts.email) {
@@ -69,7 +70,7 @@ describe('my account data page', () => {
     cy.visit('/my-account/data');
   });
 
-  it('edits all data', () => {
+  it('edits all data, adds and removes admin', () => {
     // name
     cy.findByTestId(`SingleInfo-${singleInfoNames.NAME}-btn`).click();
     cy.findByTestId('ChangeName-firstName').clear().type(newData.firstName);
@@ -103,6 +104,19 @@ describe('my account data page', () => {
     cy.findByText(newData.phonePrefixLabel).click();
     cy.findByTestId('ChangePhoneNumber-phoneNumber').clear().type(newData.phoneNumber);
     cy.submitForm();
+    cy.closeMessageBox();
+    // add admin
+    cy.findByRole('button', { name: /add admin/i }).click();
+    cy.findByTestId(`Modal-${modalTypes.ADD_ADMIN}`).should('exist');
+    cy.findByTestId('AddAdmin-email').type(activeUser.email);
+    cy.submitForm();
+    cy.closeMessageBox();
+    // remove admin
+    cy.findByRole('button', { name: /remove admin/i }).click();
+    cy.findByTestId(`Modal-${modalTypes.REMOVE_ADMIN}`).should('exist');
+    cy.findByTestId('RemoveAdmin-email').type(activeUser.email);
+    cy.submitForm();
+    cy.findByTestId(`Modal-${modalTypes.REMOVE_ADMIN}`).should('not.exist');
     cy.closeMessageBox();
 
     // assert
@@ -175,6 +189,18 @@ describe('my account data page', () => {
     cy.findByRole('button', { name: /change password/i }).click();
     cy.findByTestId('ChangePassword-current-password').clear().type('incorrectPassword');
     cy.findByTestId('ChangePassword-password').clear().type(newData.password);
+    cy.submitForm();
+    cy.findByTestId('Form-error').should('exist');
+    cy.closeModal();
+    // add admin
+    cy.findByRole('button', { name: /add admin/i }).click();
+    cy.findByTestId('AddAdmin-email').type('unexistingemail@example.com');
+    cy.submitForm();
+    cy.findByTestId('Form-error').should('exist');
+    cy.closeModal();
+    // remove admin
+    cy.findByRole('button', { name: /remove admin/i }).click();
+    cy.findByTestId('RemoveAdmin-email').type('unexistingemail@example.com');
     cy.submitForm();
     cy.findByTestId('Form-error').should('exist');
   });

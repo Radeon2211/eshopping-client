@@ -163,7 +163,7 @@ export const buyProducts = (history, lastPath) => {
         data: { transaction: updatedTransaction, cart },
       } = await axios.post('/orders', { transaction, deliveryAddress, clearCart: hasToClearCart });
 
-      dispatch(setTransaction(updatedTransaction || []));
+      dispatch(setTransaction(updatedTransaction));
       dispatch(setCart(cart));
 
       if (updatedTransaction) {

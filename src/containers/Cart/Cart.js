@@ -89,11 +89,11 @@ const Cart = () => {
       );
     } else {
       content = (
-        <SC.EmptyCart>
+        <SC.EmptyCart data-testid="Cart-empty-cart">
           <Heading variant="h3" mgBottom="3" align="center" lineHeight="4">
-            Your shopping cart is empty. Check out the latest&nbsp;
+            Your shopping cart is empty. Check out the&nbsp;
             <Link to={defaultAppPath} data-testid="Cart-default-path-link">
-              <GreenText>offers</GreenText>
+              <GreenText>latest offers</GreenText>
             </Link>
           </Heading>
           <Heading variant="h4" align="center" lineHeight="4" mgBottom="3">

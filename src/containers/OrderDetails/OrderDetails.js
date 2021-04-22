@@ -35,7 +35,7 @@ const OrderDetails = () => {
   let content = <Loader align="center" />;
   if (orderDetails === null) {
     content = (
-      <Heading variant="h4" align="center" lineHeight="4">
+      <Heading variant="h4" align="center" lineHeight="4" data-testid="OrderDetails-error">
         There is a problem to fetch order details or given order does not exist
       </Heading>
     );

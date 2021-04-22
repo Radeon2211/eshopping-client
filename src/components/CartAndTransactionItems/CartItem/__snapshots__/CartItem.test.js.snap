@@ -106,6 +106,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
         <span
           class="sc-eCssSg csGgAf"
           color=""
+          data-testid="CartItem-total-price"
           display="inline-block"
           overflow="visible"
           size="5"
