@@ -23,18 +23,16 @@ const reduxDevToolsEnhancer =
 const store = createStore(rootReducer, reduxDevToolsEnhancer(applyMiddleware(thunk)));
 
 export const app = (
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <LastLocationProvider>
-          <ThemeProvider theme={theme}>
-            <GlobalStyles />
-            <App />
-          </ThemeProvider>
-        </LastLocationProvider>
-      </Router>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Router>
+      <LastLocationProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <App />
+        </ThemeProvider>
+      </LastLocationProvider>
+    </Router>
+  </Provider>
 );
 
 export const rootElement = document.getElementById('root');

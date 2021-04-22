@@ -115,6 +115,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
         </h4>
         <div
           class="sc-bkzZxe hkHVNa"
+          data-testid="CartAndTransactionItems-item"
         >
           <span
             class="sc-fubCfw jalAIu"
@@ -129,7 +130,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               seller 
             </span>
             <a
-              data-testid="CartAndTransactionItems-seller-link"
+              data-testid="CartAndTransactionItems-item-seller-link"
             >
               <span
                 class="sc-fodVxV fCxCGe"

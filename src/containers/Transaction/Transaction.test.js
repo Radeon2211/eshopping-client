@@ -11,7 +11,6 @@ import {
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
 } from '../../shared/testUtility/testUtility';
-import * as actions from '../../store/actions/indexActions';
 import { defaultScrollToConfig } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
@@ -26,7 +25,7 @@ const setUp = (transaction) => {
   store.dispatch = jest.fn();
 
   const history = {
-    listen: jest.fn(),
+    listen: () => () => {},
     createHref: jest.fn(),
     location: { pathname: '/transaction' },
     replace: jest.fn(),
@@ -109,13 +108,6 @@ describe('<Transaction />', () => {
       const { history } = setUp([createTransactionAndOrderProdItem()]);
       expect(history.replace).not.toHaveBeenCalled();
       expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
-    });
-
-    it('should call setTransaction() when unmounting', () => {
-      const { store, unmount } = setUp();
-      expect(store.dispatch).not.toHaveBeenCalled();
-      unmount();
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setTransaction(undefined));
     });
   });
 });

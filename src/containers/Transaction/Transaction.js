@@ -33,7 +33,14 @@ const Transaction = () => {
     if (!transaction || transaction?.length <= 0) {
       history.replace('/cart');
     }
-    return () => onSetTransaction(undefined);
+    const unlisten = history.listen((location) => {
+      if (location.pathname !== '/transaction') {
+        onSetTransaction(undefined);
+      }
+    });
+    return () => {
+      unlisten();
+    };
   }, [history, transaction, onSetTransaction]);
 
   let content = null;
