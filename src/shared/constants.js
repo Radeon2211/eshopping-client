@@ -145,7 +145,7 @@ export const modalTypes = {
 
 export const sortProductsOptions = [
   { value: undefined, label: 'Default sorting' },
-  { value: 'price:asc', label: `Price - ascending` },
+  { value: 'price:asc', label: 'Price - ascending' },
   { value: 'price:desc', label: 'Price - descending' },
   { value: 'name:asc', label: 'Name - A to Z' },
   { value: 'name:desc', label: 'Name - Z to A' },
@@ -154,7 +154,7 @@ export const sortProductsOptions = [
 export const sortOrdersOptions = [
   { value: 'createdAt:desc', label: 'Date - from newest' },
   { value: 'createdAt:asc', label: 'Date - from oldest' },
-  { value: 'overallPrice:asc', label: `Price - ascending` },
+  { value: 'overallPrice:asc', label: 'Price - ascending' },
   { value: 'overallPrice:desc', label: 'Price - descending' },
 ];
 

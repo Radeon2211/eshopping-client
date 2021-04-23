@@ -1,7 +1,7 @@
 import '@testing-library/cypress/add-commands';
 import { modalTypes } from '../../src/shared/constants';
 import { testUser, adminUser } from '../fixtures/users';
-import { productOne } from '../fixtures/products';
+import { productOne, allProducts } from '../fixtures/products';
 
 const fillSignupForm = () => {
   cy.findByTestId('Step1-email').type(testUser.email);
@@ -48,7 +48,7 @@ describe('unauthenticated user', () => {
   describe('check rendering and flow', () => {
     it('renders correct elements', () => {
       cy.checkLoginState();
-      cy.findAllByTestId('ProductItem').should('have.length', 2);
+      cy.findAllByTestId('ProductItem').should('have.length', allProducts.length);
     });
 
     it('opens and closes modals correctly', () => {
