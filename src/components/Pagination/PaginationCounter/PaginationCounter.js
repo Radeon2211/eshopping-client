@@ -38,7 +38,7 @@ const PaginationCounter = (props) => {
   let paginationCounter = null;
   if (itemQuantity) {
     paginationCounter = (
-      <PlainText size="1" color={theme.colors.light4}>
+      <PlainText size="1" color={theme.colors.light4} data-testid="PaginationCounter">
         {`${firstOfferNumber} - ${lastOfferNumber} of ${itemQuantity} ${itemsTypeText}`}
       </PlainText>
     );

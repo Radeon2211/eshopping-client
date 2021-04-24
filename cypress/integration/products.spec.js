@@ -64,6 +64,45 @@ const checkResultsOfPriceSliderChanges = (minPrice, maxPrice) => {
   });
 };
 
+const changeProductsPerPage = (quantity) => {
+  cy.get('#perPageQuantity').click();
+  cy.findByTestId('ProductsPerPageController').findAllByText(quantity).eq(0).click();
+  cy.findByTestId('ProductsPerPageController').findByText(quantity).should('exist');
+};
+
+const checkPaginationCurrentPage = (expectedPage) => {
+  // scenario for products per page = 1
+  cy.checkHash(`p=${expectedPage}`, 'contains');
+  cy.findByTestId('ProductList').within(() => {
+    cy.findAllByTestId('ProductItem').should('have.length', 1);
+    cy.findByTestId('ProductItem')
+      .findByText(allProducts[expectedPage - 1].name)
+      .should('exist');
+  });
+  cy.findByTestId('NumberInput-page').should('have.value', expectedPage);
+  cy.findByTestId(`NumberPagination-page${expectedPage}`).should('have.class', 'active');
+  cy.findByTestId('InputPagination-number-of-pages').should('have.text', allProducts.length);
+  cy.findByTestId('NumberPagination-number-of-pages').should('have.text', allProducts.length);
+  cy.findByTestId('PaginationCounter').should(
+    'have.text',
+    `${expectedPage} - ${expectedPage} of ${allProducts.length} products`,
+  );
+  if (expectedPage <= 1) {
+    cy.findByTestId('InputPagination-left-arrow').should('have.class', 'hide-arrow');
+    cy.findByTestId('NumberPagination-left-arrow').should('have.class', 'hide-arrow');
+  } else {
+    cy.findByTestId('InputPagination-left-arrow').should('not.have.class', 'hide-arrow');
+    cy.findByTestId('NumberPagination-left-arrow').should('not.have.class', 'hide-arrow');
+  }
+  if (expectedPage >= allProducts.length) {
+    cy.findByTestId('InputPagination-right-arrow').should('have.class', 'hide-arrow');
+    cy.findByTestId('NumberPagination-right-arrow').should('have.class', 'hide-arrow');
+  } else {
+    cy.findByTestId('InputPagination-right-arrow').should('not.have.class', 'hide-arrow');
+    cy.findByTestId('NumberPagination-right-arrow').should('not.have.class', 'hide-arrow');
+  }
+};
+
 describe('product list and filters', () => {
   beforeEach(() => {
     cy.seedDb();
@@ -358,6 +397,98 @@ describe('product list and filters', () => {
       cy.findByTestId('Filters-checkbox-used').click({ force: true });
       submitFiltersForm();
       cy.findAllByTestId('ProductItem').should('have.length', 0);
+    });
+  });
+
+  describe('pagination', () => {
+    it('renders default values', () => {
+      cy.findByTestId('InputPagination-number-of-pages').should('have.text', 1);
+      cy.findByTestId('NumberInput-page').should('have.value', 1);
+      cy.findByTestId('NumberPagination-number-of-pages').should('have.text', 1);
+      cy.findByTestId('PaginationCounter').should(
+        'have.text',
+        `1 - ${allProducts.length} of ${allProducts.length} products`,
+      );
+    });
+
+    describe('ProductsPerPageController', () => {
+      it('shows pages as many as products and renders 1 product per page and then change to 25', () => {
+        changeProductsPerPage(1);
+        checkPaginationCurrentPage(1);
+
+        changeProductsPerPage(25);
+        cy.findAllByTestId('ProductItem').should('have.length', allProducts.length);
+        cy.findByTestId('NumberInput-page').should('have.value', 1);
+        cy.findByTestId(`NumberPagination-page1`).should('have.class', 'active');
+        cy.findByTestId('InputPagination-number-of-pages').should('have.text', 1);
+        cy.findByTestId('NumberPagination-number-of-pages').should('have.text', 1);
+        cy.findByTestId('PaginationCounter').should(
+          'have.text',
+          `1 - ${allProducts.length} of ${allProducts.length} products`,
+        );
+      });
+
+      it('renders 2 products per page and show correct number of pages when products per page is set to 2', () => {
+        changeProductsPerPage(2);
+        const expectedNumberOfPages = Math.ceil(allProducts.length / 2);
+
+        cy.findAllByTestId('ProductItem').should('have.length', 2);
+
+        cy.findByTestId('InputPagination-number-of-pages').should(
+          'have.text',
+          expectedNumberOfPages,
+        );
+        cy.findByTestId('NumberInput-page').should('have.value', 1);
+        cy.findByTestId('NumberPagination-number-of-pages').should(
+          'have.text',
+          expectedNumberOfPages,
+        );
+
+        cy.findByTestId('PaginationCounter').should(
+          'have.text',
+          `1 - 2 of ${allProducts.length} products`,
+        );
+      });
+    });
+
+    describe('InputPagination', () => {
+      it('changes pages correctly', () => {
+        changeProductsPerPage(1);
+        cy.findByTestId('InputPagination-right-arrow').click();
+        checkPaginationCurrentPage(2);
+        cy.findByTestId('InputPagination-right-arrow').click();
+        checkPaginationCurrentPage(3);
+        cy.findByTestId('InputPagination-left-arrow').click();
+        checkPaginationCurrentPage(2);
+        cy.findByTestId('InputPagination-left-arrow').click();
+        checkPaginationCurrentPage(1);
+        cy.findByTestId('NumberInput-page').clear().type('9999{enter}');
+        checkPaginationCurrentPage(allProducts.length);
+        cy.findByTestId('NumberInput-page').clear().type('0{enter}');
+        checkPaginationCurrentPage(1);
+        cy.findByTestId('NumberInput-page').clear().type('2{enter}');
+        checkPaginationCurrentPage(2);
+      });
+    });
+
+    describe('NumberPagination', () => {
+      it('changes pages correctly', () => {
+        changeProductsPerPage(1);
+        cy.findByTestId('NumberPagination-right-arrow').click();
+        checkPaginationCurrentPage(2);
+        cy.findByTestId('NumberPagination-right-arrow').click();
+        checkPaginationCurrentPage(3);
+        cy.findByTestId('NumberPagination-left-arrow').click();
+        checkPaginationCurrentPage(2);
+        cy.findByTestId('NumberPagination-left-arrow').click();
+        checkPaginationCurrentPage(1);
+        cy.findByTestId(`NumberPagination-page${allProducts.length}`).click();
+        checkPaginationCurrentPage(allProducts.length);
+        cy.findByTestId('NumberPagination-page1').click();
+        checkPaginationCurrentPage(1);
+        cy.findByTestId('NumberPagination-page2').click();
+        checkPaginationCurrentPage(2);
+      });
     });
   });
 });

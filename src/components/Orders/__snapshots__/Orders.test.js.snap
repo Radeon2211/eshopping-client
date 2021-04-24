@@ -116,6 +116,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
         <span
           class="sc-hKgILt gvqqww"
           color=""
+          data-testid="InputPagination-number-of-pages"
           display="inline-block"
           overflow="visible"
           size="3"
@@ -235,6 +236,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
               <span
                 class="sc-hKgILt jQArHJ"
                 color="#777"
+                data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                 display="inline-block"
                 overflow="visible"
                 size="2"
@@ -308,6 +310,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
       <span
         class="sc-hKgILt kshmRe"
         color="#777"
+        data-testid="PaginationCounter"
         display="inline-block"
         overflow="visible"
         size="1"
@@ -346,6 +349,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
         </span>
         <span
           class="of"
+          data-testid="NumberPagination-number-of-pages"
         >
           1
         </span>
@@ -484,6 +488,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
         <span
           class="sc-hKgILt gvqqww"
           color=""
+          data-testid="InputPagination-number-of-pages"
           display="inline-block"
           overflow="visible"
           size="3"
@@ -603,6 +608,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
               <span
                 class="sc-hKgILt jQArHJ"
                 color="#777"
+                data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                 display="inline-block"
                 overflow="visible"
                 size="2"
@@ -762,6 +768,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
               <span
                 class="sc-hKgILt jQArHJ"
                 color="#777"
+                data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                 display="inline-block"
                 overflow="visible"
                 size="2"
@@ -835,6 +842,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
       <span
         class="sc-hKgILt kshmRe"
         color="#777"
+        data-testid="PaginationCounter"
         display="inline-block"
         overflow="visible"
         size="1"
@@ -873,6 +881,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
         </span>
         <span
           class="of"
+          data-testid="NumberPagination-number-of-pages"
         >
           1
         </span>

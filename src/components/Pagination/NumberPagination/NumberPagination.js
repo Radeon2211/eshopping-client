@@ -81,7 +81,9 @@ const NumberPagination = (props) => {
         </Link>
         {paginationNumbers}
         <span className="of">of</span>
-        <span className="of">{numberOfPages}</span>
+        <span className="of" data-testid="NumberPagination-number-of-pages">
+          {numberOfPages}
+        </span>
         <Link
           to={nextPagePath}
           className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}

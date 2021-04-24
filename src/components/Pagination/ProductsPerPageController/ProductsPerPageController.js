@@ -66,7 +66,7 @@ const ProductsPerPageController = (props) => {
   };
 
   return (
-    <SC.Wrapper>
+    <SC.Wrapper data-testid="ProductsPerPageController">
       <label htmlFor="perPageQuantity" className="label">
         Per page
       </label>

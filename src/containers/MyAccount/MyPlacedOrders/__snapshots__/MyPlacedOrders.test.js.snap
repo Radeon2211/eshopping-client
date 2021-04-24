@@ -124,6 +124,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
           <span
             class="sc-gKsewC hpFlQD"
             color=""
+            data-testid="InputPagination-number-of-pages"
             display="inline-block"
             overflow="visible"
             size="3"
@@ -243,6 +244,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
                 <span
                   class="sc-gKsewC vWWge"
                   color="#777"
+                  data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                   display="inline-block"
                   overflow="visible"
                   size="2"
@@ -316,6 +318,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
         <span
           class="sc-gKsewC rBmjh"
           color="#777"
+          data-testid="PaginationCounter"
           display="inline-block"
           overflow="visible"
           size="1"
@@ -354,6 +357,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
           </span>
           <span
             class="of"
+            data-testid="NumberPagination-number-of-pages"
           >
             1
           </span>

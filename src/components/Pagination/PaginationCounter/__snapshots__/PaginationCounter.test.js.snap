@@ -5,6 +5,7 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1
   <span
     class="sc-bdfBwQ cPtBJf"
     color="#777"
+    data-testid="PaginationCounter"
     display="inline-block"
     overflow="visible"
     size="1"
@@ -21,6 +22,7 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1
   <span
     class="sc-bdfBwQ cPtBJf"
     color="#777"
+    data-testid="PaginationCounter"
     display="inline-block"
     overflow="visible"
     size="1"
@@ -37,6 +39,7 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1
   <span
     class="sc-bdfBwQ cPtBJf"
     color="#777"
+    data-testid="PaginationCounter"
     display="inline-block"
     overflow="visible"
     size="1"
@@ -53,6 +56,7 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 2 of 5
   <span
     class="sc-bdfBwQ cPtBJf"
     color="#777"
+    data-testid="PaginationCounter"
     display="inline-block"
     overflow="visible"
     size="1"
@@ -69,6 +73,7 @@ exports[`<PaginationCounter /> check if correct text render should be 3 - 4 of 5
   <span
     class="sc-bdfBwQ cPtBJf"
     color="#777"
+    data-testid="PaginationCounter"
     display="inline-block"
     overflow="visible"
     size="1"
@@ -85,6 +90,7 @@ exports[`<PaginationCounter /> check if correct text render should be 5 - 7 of 7
   <span
     class="sc-bdfBwQ cPtBJf"
     color="#777"
+    data-testid="PaginationCounter"
     display="inline-block"
     overflow="visible"
     size="1"
@@ -101,6 +107,7 @@ exports[`<PaginationCounter /> check if correct text render should be 10 - 10 of
   <span
     class="sc-bdfBwQ cPtBJf"
     color="#777"
+    data-testid="PaginationCounter"
     display="inline-block"
     overflow="visible"
     size="1"

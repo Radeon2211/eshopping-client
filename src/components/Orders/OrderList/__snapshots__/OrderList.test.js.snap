@@ -98,6 +98,7 @@ exports[`<OrderList /> check how renders should render everything correctly with
             <span
               class="sc-pFZIQ eBEFzI"
               color="#777"
+              data-testid="TransactionAndOrderProdItem-product-price-per-piece"
               display="inline-block"
               overflow="visible"
               size="2"
@@ -266,6 +267,7 @@ exports[`<OrderList /> check how renders should render everything correctly with
             <span
               class="sc-pFZIQ eBEFzI"
               color="#777"
+              data-testid="TransactionAndOrderProdItem-product-price-per-piece"
               display="inline-block"
               overflow="visible"
               size="2"
@@ -337,6 +339,7 @@ exports[`<OrderList /> check how renders should render everything correctly with
             <span
               class="sc-pFZIQ eBEFzI"
               color="#777"
+              data-testid="TransactionAndOrderProdItem-product-price-per-piece"
               display="inline-block"
               overflow="visible"
               size="2"

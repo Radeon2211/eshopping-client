@@ -331,6 +331,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             <span
               class="sc-jSgupP jUhfHv"
               color="#777"
+              data-testid="TransactionAndOrderProdItem-product-price-per-piece"
               display="inline-block"
               overflow="visible"
               size="2"
@@ -402,6 +403,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             <span
               class="sc-jSgupP jUhfHv"
               color="#777"
+              data-testid="TransactionAndOrderProdItem-product-price-per-piece"
               display="inline-block"
               overflow="visible"
               size="2"

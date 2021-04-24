@@ -188,6 +188,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
                 <span
                   class="sc-fubCfw eLnxgP"
                   color="#777"
+                  data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                   display="inline-block"
                   overflow="visible"
                   size="2"
@@ -259,6 +260,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
                 <span
                   class="sc-fubCfw eLnxgP"
                   color="#777"
+                  data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                   display="inline-block"
                   overflow="visible"
                   size="2"

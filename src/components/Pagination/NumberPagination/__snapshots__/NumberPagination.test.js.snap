@@ -44,6 +44,7 @@ exports[`<NumberPagination /> check how renders should render all correctly (wit
     </span>
     <span
       class="of"
+      data-testid="NumberPagination-number-of-pages"
     >
       3
     </span>
@@ -131,6 +132,7 @@ exports[`<NumberPagination /> check how renders should render ellipsis and six n
     </span>
     <span
       class="of"
+      data-testid="NumberPagination-number-of-pages"
     >
       10
     </span>
@@ -218,6 +220,7 @@ exports[`<NumberPagination /> check how renders should render ellipsis and six n
     </span>
     <span
       class="of"
+      data-testid="NumberPagination-number-of-pages"
     >
       10
     </span>
@@ -300,6 +303,7 @@ exports[`<NumberPagination /> check how renders should render six number links i
     </span>
     <span
       class="of"
+      data-testid="NumberPagination-number-of-pages"
     >
       10
     </span>

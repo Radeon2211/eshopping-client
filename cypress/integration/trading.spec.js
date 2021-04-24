@@ -79,6 +79,27 @@ const checkDeliveryAddressInOrderDetails = () => {
   checkData();
 };
 
+const goToUsedProductDetails = () => {
+  cy.findAllByTestId('ProductItem').should('have.length.above', 0);
+  cy.findByTestId('ProductList')
+    .findByText(usedProduct.name)
+    .closest('[data-testid="ProductItem"]')
+    .click();
+};
+
+const addUsedProductToCart = () => {
+  goToUsedProductDetails();
+  cy.findByRole('button', { name: /add to cart/i }).click();
+  cy.findByRole('button', { name: /go to cart/i }).click();
+};
+
+const updateProductQuantity = (newQuantity) => {
+  cy.request('PATCH', `${Cypress.env('API_URL')}/testing/edit-product-quantity`, {
+    name: usedProduct.name,
+    newQuantity,
+  });
+};
+
 describe('trading actions', () => {
   beforeEach(() => {
     cy.seedDb();
@@ -86,7 +107,7 @@ describe('trading actions', () => {
     cy.visit('/');
   });
 
-  describe('check entire proccess of buying and results', () => {
+  describe('entire proccess of buying and results of it', () => {
     it('adds item to cart with quantity: 2 * 5 and change data forever', () => {
       const quantityChosen = usedProduct.quantity / 2;
       const quantityBought = quantityChosen * 2;
@@ -252,6 +273,204 @@ describe('trading actions', () => {
       // visit transaction and automatically go to cart
       cy.visit('/transaction');
       cy.checkHash('#/cart');
+    });
+  });
+
+  describe('test ChooseQuantity in product details and in cart', () => {
+    it('does not decrease below 1 and does not increase above product quantity in product details', () => {
+      cy.findAllByTestId('ProductItem').should('have.length.above', 0);
+      cy.findByTestId('ProductList')
+        .findByText(usedProduct.name)
+        .closest('[data-testid="ProductItem"]')
+        .click();
+      cy.findByTestId('NumberInput-quantity').should('have.value', 1);
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').should('have.value', '');
+      cy.findByTestId('NumberInput-quantity').type(`${usedProduct.quantity}{enter}`);
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      cy.findByTestId('ChooseQuantity-plus-btn').click({ force: true });
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      cy.findByTestId('NumberInput-quantity').clear().type('1{enter}');
+      cy.findByTestId('ChooseQuantity-minus-btn').click({ force: true });
+      cy.findByTestId('NumberInput-quantity').should('have.value', 1);
+      cy.findByTestId('NumberInput-quantity').clear().type('1000{enter}');
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      cy.findByTestId('NumberInput-quantity').clear().type('9999{enter}');
+      cy.findByTestId('NumberInput-quantity').should('have.value', 9);
+      cy.findByTestId('ChooseQuantity-plus-btn').click();
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      for (let i = 0; i < 9; i += 1) {
+        cy.findByTestId('ChooseQuantity-minus-btn').click();
+      }
+      cy.findByTestId('NumberInput-quantity').should('have.value', 1);
+    });
+
+    it('does not decrease below 1 and does not increase above product quantity in cart', () => {
+      addUsedProductToCart();
+      cy.findAllByTestId('CartItem').should('have.length', 1);
+      cy.findByTestId('NumberInput-quantity').should('have.value', 1);
+      cy.findByTestId('CartItem-total-price').should('have.text', formatPrice(usedProduct.price));
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').should('have.value', '');
+      cy.findByTestId('NumberInput-quantity').type(`${usedProduct.quantity}{enter}`);
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      cy.findByTestId('CartItem-total-price').should(
+        'have.text',
+        formatPrice(usedProduct.price * usedProduct.quantity),
+      );
+      cy.findByTestId('ChooseQuantity-plus-btn').click({ force: true });
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      cy.findByTestId('NumberInput-quantity').clear().type('1{enter}');
+      cy.findByTestId('CartItem-total-price').should('have.text', formatPrice(usedProduct.price));
+      cy.findByTestId('ChooseQuantity-minus-btn').click({ force: true });
+      cy.findByTestId('NumberInput-quantity').should('have.value', 1);
+      cy.findByTestId('NumberInput-quantity').clear().type('1000{enter}');
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      cy.findByTestId('CartItem-total-price').should(
+        'have.text',
+        formatPrice(usedProduct.price * usedProduct.quantity),
+      );
+      cy.findByTestId('NumberInput-quantity').clear().type('9999{enter}');
+      cy.findByTestId('NumberInput-quantity').should('have.value', 9);
+      cy.findByTestId('CartItem-total-price').should(
+        'have.text',
+        formatPrice(usedProduct.price * 9),
+      );
+      cy.findByTestId('ChooseQuantity-plus-btn').click();
+      cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
+      cy.findByTestId('CartItem-total-price').should(
+        'have.text',
+        formatPrice(usedProduct.price * usedProduct.quantity),
+      );
+      for (let i = 1; i <= 9; i += 1) {
+        cy.findByTestId('ChooseQuantity-minus-btn').click();
+        cy.findByTestId('CartItem-total-price').should(
+          'have.text',
+          formatPrice(usedProduct.price * (usedProduct.quantity - i)),
+        );
+      }
+      cy.findByTestId('NumberInput-quantity').should('have.value', 1);
+      cy.findByTestId('CartItem-total-price').should('have.text', formatPrice(usedProduct.price));
+    });
+  });
+
+  describe('removing items from cart', () => {
+    it('removes item with trash icon', () => {
+      addUsedProductToCart();
+      cy.findAllByTestId('CartItem').should('have.length', 1);
+      cy.findByTestId('CartItem-trash-icon').click();
+      cy.findAllByTestId('CartItem').should('have.length', 0);
+      cy.findByTestId('Cart-empty-cart').should('exist');
+    });
+
+    it('clears cart with button', () => {
+      addUsedProductToCart();
+      cy.findAllByTestId('CartItem').should('have.length', 1);
+      cy.findByRole('button', { name: /clear the cart/i }).click();
+      cy.findByTestId(`Modal-${modalTypes.CLEAR_CART}`)
+        .findByRole('button', { name: /clear/i })
+        .click();
+      cy.findByTestId('Modal').should('not.exist');
+      cy.findAllByTestId('CartItem').should('have.length', 0);
+      cy.findByTestId('Cart-empty-cart').should('exist');
+    });
+  });
+
+  describe('behaviour when product does not exist or its quantity is lower than chosen', () => {
+    describe('adding to cart and go to transaction from product details page', () => {
+      it('adds product to cart with updated quantity', () => {
+        const newQuantity = usedProduct.quantity - 1;
+        goToUsedProductDetails();
+        cy.findByRole('button', { name: /add to cart/i }).should('exist');
+        updateProductQuantity(newQuantity);
+        cy.findByTestId('NumberInput-quantity').clear().type(`${usedProduct.quantity}{enter}`);
+        cy.findByRole('button', { name: /add to cart/i }).click();
+        cy.findByTestId('MessageBox').should('exist');
+        cy.findByText(
+          `(total in the cart ${newQuantity} x ${formatPrice(usedProduct.price)})`,
+        ).should('exist');
+      });
+
+      it('shows message when product does not exist and user wants to add it to cart', () => {
+        goToUsedProductDetails();
+        cy.findByRole('button', { name: /add to cart/i }).should('exist');
+        updateProductQuantity(0);
+        cy.findByRole('button', { name: /add to cart/i }).click();
+        cy.findByTestId('MessageBox').should('exist');
+        cy.findByTestId('Modal').should('not.exist');
+        cy.checkHash('#/product/', 'contains');
+        cy.reload();
+        cy.findByRole('heading', {
+          name: 'Such product does not exist or has already been sold',
+        }).should('exist');
+      });
+
+      it('shows message and product with updated quantity after going to transaction', () => {
+        const newQuantity = usedProduct.quantity - 1;
+        goToUsedProductDetails();
+        cy.findByRole('button', { name: /buy now/i }).should('exist');
+        updateProductQuantity(newQuantity);
+        cy.findByTestId('NumberInput-quantity').clear().type(`${usedProduct.quantity}{enter}`);
+        cy.findByRole('button', { name: /buy now/i }).click();
+        cy.findByTestId('MessageBox').should('exist');
+        cy.checkHash('#/transaction');
+        cy.findAllByTestId('TransactionAndOrderProdItem').should('have.length', 1);
+        cy.findByTestId('TransactionAndOrderProdItem-product-link-name').should(
+          'have.text',
+          usedProduct.name,
+        );
+        cy.findByTestId('TransactionAndOrderProdItem-product-price-per-piece').should(
+          'have.text',
+          `${newQuantity} x ${formatPrice(usedProduct.price)}`,
+        );
+      });
+
+      it('shows message and go to previous page when product does not exist and user wants to buy it', () => {
+        goToUsedProductDetails();
+        cy.findByRole('button', { name: /buy now/i }).should('exist');
+        updateProductQuantity(0);
+        cy.findByRole('button', { name: /buy now/i }).click();
+        cy.findByTestId('MessageBox').should('exist');
+        cy.checkHash();
+      });
+    });
+
+    describe('finalizing transaction', () => {
+      it('updates product quantity, shows message and closes modal when quantity is lower than chosen', () => {
+        const newQuantity = usedProduct.quantity - 1;
+        goToUsedProductDetails();
+        cy.findByTestId('NumberInput-quantity').clear().type(`${usedProduct.quantity}{enter}`);
+        cy.findByRole('button', { name: /buy now/i }).click();
+        cy.findAllByTestId('TransactionAndOrderProdItem').should('have.length', 1);
+        cy.findByTestId('TransactionAndOrderProdItem-product-price-per-piece').should(
+          'have.text',
+          `${usedProduct.quantity} x ${formatPrice(usedProduct.price)}`,
+        );
+        updateProductQuantity(newQuantity);
+        cy.findByRole('button', { name: /i buy and pay/i }).click();
+        cy.findByRole('button', { name: /confirm/i }).click();
+        cy.findByTestId('Modal').should('not.exist');
+        cy.findByTestId('MessageBox').should('exist');
+        cy.findAllByTestId('TransactionAndOrderProdItem').should('have.length', 1);
+        cy.findByTestId('TransactionAndOrderProdItem-product-price-per-piece').should(
+          'have.text',
+          `${newQuantity} x ${formatPrice(usedProduct.price)}`,
+        );
+        cy.visit('/my-account/placed-orders');
+        cy.findByRole('heading', { name: `You don't have any placed orders yet` }).should('exist');
+      });
+
+      it('shows message and goes to cart when product does not exist', () => {
+        goToUsedProductDetails();
+        cy.findByRole('button', { name: /buy now/i }).click();
+        updateProductQuantity(0);
+        cy.findByRole('button', { name: /i buy and pay/i }).click();
+        cy.findByRole('button', { name: /confirm/i }).click();
+        cy.findByTestId('MessageBox').should('exist');
+        cy.checkHash('#/cart');
+        cy.visit('/my-account/placed-orders');
+        cy.findByRole('heading', { name: `You don't have any placed orders yet` }).should('exist');
+      });
     });
   });
 });

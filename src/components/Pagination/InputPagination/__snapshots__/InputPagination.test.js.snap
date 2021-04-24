@@ -44,6 +44,7 @@ exports[`<InputPagination /> check how renders should render all correctly (with
     <span
       class="sc-dlfnbm bVPrHq"
       color=""
+      data-testid="InputPagination-number-of-pages"
       display="inline-block"
       overflow="visible"
       size="3"

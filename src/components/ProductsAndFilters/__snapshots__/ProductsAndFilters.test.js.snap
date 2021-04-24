@@ -230,6 +230,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
       >
         <div
           class="sc-dmlrTW fHfiAZ"
+          data-testid="ProductsPerPageController"
         >
           <label
             class="label"
@@ -336,6 +337,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
           <span
             class="sc-gKsewC hpFlQD"
             color=""
+            data-testid="InputPagination-number-of-pages"
             display="inline-block"
             overflow="visible"
             size="3"
@@ -530,6 +532,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
         <span
           class="sc-gKsewC rBmjh"
           color="#777"
+          data-testid="PaginationCounter"
           display="inline-block"
           overflow="visible"
           size="1"
@@ -568,6 +571,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
           </span>
           <span
             class="of"
+            data-testid="NumberPagination-number-of-pages"
           >
             1
           </span>

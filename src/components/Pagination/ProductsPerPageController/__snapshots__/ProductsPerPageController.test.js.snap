@@ -4,6 +4,7 @@ exports[`<ProductsPerPageController /> check how renders should render everythin
 <DocumentFragment>
   <div
     class="sc-bdfBwQ eNkMOl"
+    data-testid="ProductsPerPageController"
   >
     <label
       class="label"

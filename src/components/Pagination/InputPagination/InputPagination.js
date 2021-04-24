@@ -73,7 +73,10 @@ const InputPagination = (props) => {
   const formSubmitHandle = (e) => {
     e.preventDefault();
     const numberOfPages = calculateNumberOfPages(itemQuantity, quantityPerPage);
-    if (currentPage === numberOfPages && inputValue >= numberOfPages) return;
+    if (currentPage === numberOfPages && inputValue >= numberOfPages) {
+      setInputValue(currentPage);
+      return;
+    }
     const updatedQueryParams = stringifyParamsWithOtherPage(search, inputValue);
     history.push(`${pathname}?${updatedQueryParams}`);
   };
@@ -101,7 +104,7 @@ const InputPagination = (props) => {
         <PlainText size="3" mgLeft="1" mgRight="1">
           of
         </PlainText>
-        <PlainText size="3" mgLeft="1" mgRight="1">
+        <PlainText size="3" mgLeft="1" mgRight="1" data-testid="InputPagination-number-of-pages">
           {numberOfPages}
         </PlainText>
         <Link

@@ -236,6 +236,7 @@ exports[`<Products /> check how renders should render everything correctly with 
       >
         <div
           class="sc-dmlrTW fHfiAZ"
+          data-testid="ProductsPerPageController"
         >
           <label
             class="label"
@@ -342,6 +343,7 @@ exports[`<Products /> check how renders should render everything correctly with 
           <span
             class="sc-iBPRYJ jlwgZf"
             color=""
+            data-testid="InputPagination-number-of-pages"
             display="inline-block"
             overflow="visible"
             size="3"
@@ -536,6 +538,7 @@ exports[`<Products /> check how renders should render everything correctly with 
         <span
           class="sc-iBPRYJ inTSQh"
           color="#777"
+          data-testid="PaginationCounter"
           display="inline-block"
           overflow="visible"
           size="1"
@@ -574,6 +577,7 @@ exports[`<Products /> check how renders should render everything correctly with 
           </span>
           <span
             class="of"
+            data-testid="NumberPagination-number-of-pages"
           >
             1
           </span>

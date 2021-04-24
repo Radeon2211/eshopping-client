@@ -38,7 +38,11 @@ const TransactionAndOrderProdItem = (props) => {
           </Link>
         </span>
         <SC.Price justify="space-between" align="center" flex="1">
-          <PlainText size="2" color={theme.colors.light4}>
+          <PlainText
+            size="2"
+            color={theme.colors.light4}
+            data-testid="TransactionAndOrderProdItem-product-price-per-piece"
+          >
             {`${quantity} x ${formatPrice(price)}`}
           </PlainText>
           <PlainText size="4">{formatPrice(roundedOverallPrice)}</PlainText>
