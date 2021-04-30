@@ -24,15 +24,3 @@ Next steps are:
 
 - add the option to write a review of the purchased products
 - add notifications when someone buy your product or write a review of your product
-
-If you want to reproduce it, add .env-cmdrc file in root directory with content like this:
-
-  {
-    "dev": {
-      "REACT_APP_API_URL": LOCAL_API_URL:PORT
-    },
-    "prod": {
-      "REACT_APP_API_URL": PRODUCTION_API_URL
-    }
-  }
-

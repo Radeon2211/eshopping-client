@@ -607,6 +607,7 @@ exports[`<ProductsAndFilters /> check how renders should render only <ProductLis
     >
       <h4
         class="sc-fFubgz kDCMhs"
+        data-testid="ProductList-empty-list-info"
       >
         We didn't find any matching results. Try to search something else
       </h4>

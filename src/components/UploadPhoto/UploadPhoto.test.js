@@ -44,7 +44,6 @@ describe('<UploadPhoto />', () => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
         await waitFor(() => {});
-        await waitFor(() => {});
 
         expect(asFragment()).toMatchSnapshot();
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', photo);
@@ -64,6 +63,8 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [invalidPhoto] } });
         });
+        await waitFor(() => {});
+
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', null);
         expect(
           screen.getByText('File extension is not valid (JPG and PNG only)'),
@@ -72,7 +73,6 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [validPhoto] } });
         });
-        await waitFor(() => {});
         await waitFor(() => {});
 
         expect(asFragment()).toMatchSnapshot();
@@ -108,6 +108,7 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
+        await waitFor(() => {});
 
         expect(asFragment()).toMatchSnapshot();
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', null);
@@ -122,6 +123,7 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.click(screen.getByText('Delete current'));
         });
+        await waitFor(() => {});
 
         expect(asFragment()).toMatchSnapshot();
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', 'DELETED');
@@ -136,6 +138,7 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [] } });
         });
+        await waitFor(() => {});
 
         expect(asFragment()).toMatchSnapshot();
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', null);

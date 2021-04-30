@@ -61,7 +61,7 @@ const ProductList = (props) => {
         }
       }
       productList = (
-        <Heading variant="h4" align="center">
+        <Heading variant="h4" align="center" data-testid="ProductList-empty-list-info">
           {headingText}
         </Heading>
       );

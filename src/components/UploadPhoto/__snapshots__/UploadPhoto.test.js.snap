@@ -299,6 +299,13 @@ exports[`<UploadPhoto /> check how renders show errors should render with error 
       >
         Delete
       </button>
+      <button
+        class="sc-gsTCUz jXcazB"
+        color="red"
+        type="button"
+      >
+        Delete current
+      </button>
     </div>
     <div
       class="sc-gKsewC eJjdRD"

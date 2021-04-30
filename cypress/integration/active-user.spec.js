@@ -1,10 +1,20 @@
 import '@testing-library/cypress/add-commands';
 import { adminUser } from '../fixtures/users';
-import { productTwo } from '../fixtures/products';
+import { productOne, productTwo } from '../fixtures/products';
+import { productConditions } from '../../src/shared/constants';
+import { formatPrice } from '../../src/shared/utility/utility';
 
 const usedUser = adminUser;
 
-describe('authenticated user', () => {
+const newProduct = {
+  name: 'NewProduct',
+  price: 1801.25,
+  quantity: 49,
+  condition: productConditions.USED,
+  description: 'Description of cool new product',
+};
+
+describe('authenticated active user', () => {
   beforeEach(() => {
     cy.seedDb();
     cy.loginRequest(usedUser);
@@ -91,5 +101,96 @@ describe('authenticated user', () => {
     cy.visit('/order/123');
     cy.findByTestId('OrderDetails-error').should('exist');
     cy.checkHash('#/order/123');
+  });
+
+  it('adds new product', () => {
+    // open form
+    cy.findByTestId('LoggedInLinks-user-box').click();
+    cy.findByTestId('Dropdown')
+      .findByRole('button', { name: /add product/i })
+      .click();
+    // fill and submit form
+    cy.findByTestId('AddProduct-name').type(newProduct.name);
+    cy.findByTestId('AddProduct-price').type(newProduct.price);
+    cy.findByTestId('AddProduct-quantity').clear().type(newProduct.quantity);
+    cy.findByTestId('AddProduct-condition-used').click({ force: true });
+    cy.findByTestId('AddProduct-description').type(newProduct.description);
+    cy.submitForm();
+    // close message box
+    cy.closeMessageBox();
+    cy.findByTestId('Modal').should('not.exist');
+    // check this product
+    cy.visit('/my-account/products?p=1');
+    cy.findByTestId('ProductList')
+      .findByText(newProduct.name)
+      .closest('[data-testid="ProductItem"]')
+      .click();
+    cy.findByText(formatPrice(newProduct.price)).should('exist');
+    cy.findByText(newProduct.description).should('exist');
+  });
+
+  it('adds new product', () => {
+    // open form
+    cy.findByTestId('LoggedInLinks-user-box').click();
+    cy.findByTestId('Dropdown')
+      .findByRole('button', { name: /add product/i })
+      .click();
+    // fill and submit form
+    cy.findByTestId('AddProduct-name').type(newProduct.name);
+    cy.findByTestId('AddProduct-price').type(newProduct.price);
+    cy.findByTestId('AddProduct-quantity').clear().type(newProduct.quantity);
+    cy.findByTestId('AddProduct-condition-used').click({ force: true });
+    cy.findByTestId('AddProduct-description').type(newProduct.description);
+    cy.submitForm();
+    // close message box
+    cy.closeMessageBox();
+    cy.findByTestId('Modal').should('not.exist');
+    // check this product
+    cy.visit('/my-account/products?p=1');
+    cy.findByTestId('ProductList')
+      .findByText(newProduct.name)
+      .closest('[data-testid="ProductItem"]')
+      .click();
+    cy.findByText(formatPrice(newProduct.price)).should('exist');
+    cy.findByText(newProduct.description).should('exist');
+  });
+
+  it('deletes a product', () => {
+    cy.visit('/my-account/products?p=1');
+    cy.findByTestId('ProductItem').should('have.length.above', 0);
+    cy.findByTestId('ProductList')
+      .findByText(productOne.name)
+      .closest('[data-testid="ProductItem"]')
+      .click();
+    cy.findByRole('button', { name: /delete offer/i }).click();
+    cy.findByTestId('Modal')
+      .findByRole('button', { name: /delete/i })
+      .click();
+    cy.findByTestId('MessageBox').should('exist');
+    cy.findByTestId('Modal').should('not.exist');
+    cy.findByTestId('ProductList-empty-list-info').should('exist');
+    cy.checkHash('#/my-account/products?p=1');
+  });
+
+  it('edits a product', () => {
+    cy.visit('/my-account/products?p=1');
+    cy.findByTestId('ProductItem').should('have.length.above', 0);
+    cy.findByTestId('ProductList')
+      .findByText(productOne.name)
+      .closest('[data-testid="ProductItem"]')
+      .click();
+    cy.findByRole('button', { name: /edit offer/i }).click();
+    // fill and submit form
+    cy.findByTestId('EditProduct-name').clear().type(newProduct.name);
+    cy.findByTestId('EditProduct-price').clear().type(newProduct.price);
+    cy.findByTestId('EditProduct-quantity').clear().type(newProduct.quantity);
+    cy.findByTestId('EditProduct-condition-used').click({ force: true });
+    cy.findByTestId('EditProduct-description').clear().type(newProduct.description);
+    cy.submitForm();
+    cy.findByTestId('MessageBox').should('exist');
+    cy.findByTestId('Modal').should('not.exist');
+    cy.findByText(newProduct.name).should('exist');
+    cy.findByText(formatPrice(newProduct.price)).should('exist');
+    cy.findByText(newProduct.description).should('exist');
   });
 });

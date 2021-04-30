@@ -292,9 +292,7 @@ describe('product list and filters', () => {
       cy.checkHash(`condition=${productConditions.USED}`, 'contains');
       cy.findAllByTestId('ProductItem').should('have.length', 0);
       cy.findByTestId('Filters').should('exist');
-      cy.findByRole('heading', {
-        name: `We didn't find any matching results. Try to search something else or change filters`,
-      }).should('exist');
+      cy.findByTestId('ProductList-empty-list-info').should('exist');
     });
 
     it('does not render cheapest and in ascending order by name', () => {
@@ -345,9 +343,7 @@ describe('product list and filters', () => {
       cy.findByRole('heading', { name: `Results for "${searchName}"` });
       cy.findByTestId('Filters').should('not.exist');
       cy.findAllByTestId('ProductItem').should('have.length', 0);
-      cy.findByRole('heading', {
-        name: `We didn't find any matching results. Try to search something else`,
-      }).should('exist');
+      cy.findByTestId('ProductList-empty-list-info').should('exist');
     });
   });
 
