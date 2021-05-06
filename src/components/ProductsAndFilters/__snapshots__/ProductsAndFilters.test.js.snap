@@ -166,7 +166,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
             Condition
           </span>
           <div
-            class="sc-eCssSg euCWRc"
+            class="sc-eCssSg bvctxj"
           >
             <input
               data-testid="Filters-checkbox-new"
@@ -181,7 +181,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
             </label>
           </div>
           <div
-            class="sc-eCssSg euCWRc"
+            class="sc-eCssSg bvctxj"
           >
             <input
               data-testid="Filters-checkbox-used"
@@ -196,7 +196,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
             </label>
           </div>
           <div
-            class="sc-eCssSg euCWRc"
+            class="sc-eCssSg bvctxj"
           >
             <input
               data-testid="Filters-checkbox-not-applicable"

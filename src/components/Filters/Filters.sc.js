@@ -82,7 +82,7 @@ export const CheckboxBox = styled.div`
   }
 
   & > input {
-    height: 0
+    height: 0;
     opacity: 0;
     margin: 0;
     width: 0;

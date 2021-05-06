@@ -188,7 +188,7 @@ exports[`<Filters /> check how renders should render everything correctly 1`] = 
           Condition
         </span>
         <div
-          class="sc-hKgILt jUSMYX"
+          class="sc-hKgILt hPybys"
         >
           <input
             data-testid="Filters-checkbox-new"
@@ -203,7 +203,7 @@ exports[`<Filters /> check how renders should render everything correctly 1`] = 
           </label>
         </div>
         <div
-          class="sc-hKgILt jUSMYX"
+          class="sc-hKgILt hPybys"
         >
           <input
             data-testid="Filters-checkbox-used"
@@ -218,7 +218,7 @@ exports[`<Filters /> check how renders should render everything correctly 1`] = 
           </label>
         </div>
         <div
-          class="sc-hKgILt jUSMYX"
+          class="sc-hKgILt hPybys"
         >
           <input
             data-testid="Filters-checkbox-not-applicable"

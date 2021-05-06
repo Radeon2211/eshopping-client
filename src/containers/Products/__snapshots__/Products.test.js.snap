@@ -172,7 +172,7 @@ exports[`<Products /> check how renders should render everything correctly with 
             Condition
           </span>
           <div
-            class="sc-jSgupP gZkkyh"
+            class="sc-jSgupP FxCPO"
           >
             <input
               data-testid="Filters-checkbox-new"
@@ -187,7 +187,7 @@ exports[`<Products /> check how renders should render everything correctly with 
             </label>
           </div>
           <div
-            class="sc-jSgupP gZkkyh"
+            class="sc-jSgupP FxCPO"
           >
             <input
               data-testid="Filters-checkbox-used"
@@ -202,7 +202,7 @@ exports[`<Products /> check how renders should render everything correctly with 
             </label>
           </div>
           <div
-            class="sc-jSgupP gZkkyh"
+            class="sc-jSgupP FxCPO"
           >
             <input
               data-testid="Filters-checkbox-not-applicable"
