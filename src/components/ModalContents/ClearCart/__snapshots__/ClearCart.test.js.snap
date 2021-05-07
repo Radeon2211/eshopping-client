@@ -3,12 +3,12 @@
 exports[`<ClearCart /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-jSgupP iSLovm"
+    class="sc-jSgupP jrsZcX"
   >
     Clear the shopping cart
   </h3>
   <h4
-    class="sc-jSgupP ebaNpd"
+    class="sc-jSgupP fuFUaF"
   >
     Are you sure to do that?
   </h4>
@@ -20,14 +20,14 @@ exports[`<ClearCart /> checks how renders should render everything correctly 1`]
     wrap="nowrap"
   >
     <button
-      class="sc-bdfBwQ eqGxsp"
+      class="sc-bdfBwQ lfryQi"
       color="blue"
       type="button"
     >
       cancel
     </button>
     <button
-      class="sc-bdfBwQ dqnjqx"
+      class="sc-bdfBwQ kbgsaW"
       color="red"
       type="button"
     >

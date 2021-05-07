@@ -6,12 +6,12 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
     class="sc-dlfnbm eNBhAw"
   >
     <h3
-      class="sc-dmlrTW kzEtpd"
+      class="sc-dmlrTW zGXEE"
     >
       My placed orders
     </h3>
     <section
-      class="sc-hKgILt jLFCGR"
+      class="sc-hKgILt khuidQ"
     >
       <div
         class="sc-crrsfI jnkwPJ"
@@ -278,7 +278,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
               data-testid="OrderList-order-details-link"
             >
               <button
-                class="sc-fFubgz kWCnvv"
+                class="sc-fFubgz cuQJWU"
                 color="blue"
                 type="button"
               >

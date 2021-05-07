@@ -29,7 +29,7 @@ exports[`<Filters /> check how renders should render everything correctly 1`] = 
     </div>
   </div>
   <section
-    class="sc-eCssSg cuFRxW"
+    class="sc-eCssSg gjOuoP"
     data-testid="Filters"
   >
     <div
@@ -234,7 +234,7 @@ exports[`<Filters /> check how renders should render everything correctly 1`] = 
         </div>
       </div>
       <button
-        class="sc-gKsewC gFbfGD"
+        class="sc-gKsewC jtcKQs"
         color="blue"
         data-testid="Filters-submit-btn"
         type="button"

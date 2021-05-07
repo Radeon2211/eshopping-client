@@ -82,14 +82,14 @@ exports[`<PurchaseSection /> check how renders snapshots should render everythin
       </span>
     </div>
     <button
-      class="sc-gsTCUz jyQmMe"
+      class="sc-gsTCUz bDKIDh"
       color="blue"
       type="button"
     >
       add to cart
     </button>
     <button
-      class="sc-gsTCUz jyQmMe"
+      class="sc-gsTCUz bDKIDh"
       color="blue"
       type="button"
     >
@@ -116,7 +116,7 @@ exports[`<PurchaseSection /> check how renders snapshots should render info that
       Quantity: 5
     </span>
     <h4
-      class="sc-kEjbxe EZwUf"
+      class="sc-kEjbxe giNCnz"
     >
       You are the seller of this product
     </h4>

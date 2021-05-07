@@ -43,7 +43,7 @@ exports[`<CartLink /> should render everything correctly with quantity 1 1`] = `
     data-testid="CartLink"
   >
     <div
-      class="sc-dlfnbm eeDlHq"
+      class="sc-dlfnbm cVfIFS"
       data-testid="CartLink-quantity"
     >
       1

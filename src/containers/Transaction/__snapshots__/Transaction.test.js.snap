@@ -3,7 +3,7 @@
 exports[`<Transaction /> check how renders should render everything correctly with two items from one user 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-eCssSg ceYvmz"
+    class="sc-eCssSg eXQgPS"
   >
     Transaction
   </h3>
@@ -18,7 +18,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
       wrap="nowrap"
     >
       <section
-        class="sc-dlfnbm ctISJv"
+        class="sc-dlfnbm dSatpG"
         data-testid="DeliveryAddressSection"
       >
         <div
@@ -29,7 +29,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Delivery address
           </h4>
@@ -97,7 +97,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
             </span>
           </div>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             type="button"
           >
@@ -106,10 +106,10 @@ exports[`<Transaction /> check how renders should render everything correctly wi
         </div>
       </section>
       <section
-        class="sc-dlfnbm ctISJv"
+        class="sc-dlfnbm dSatpG"
       >
         <h4
-          class="sc-eCssSg gLASfs"
+          class="sc-eCssSg eLKVbs"
         >
           Products
         </h4>
@@ -290,7 +290,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
       class="sc-hKgILt ciIrWM"
     >
       <section
-        class="sc-dlfnbm ctISJv"
+        class="sc-dlfnbm dSatpG"
       >
         <div
           class="sc-gsTCUz ewxwoI"
@@ -330,7 +330,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
             </span>
           </div>
           <button
-            class="sc-jSgupP jrAVxS"
+            class="sc-jSgupP eRkEJJ"
             color="blue"
             type="button"
           >

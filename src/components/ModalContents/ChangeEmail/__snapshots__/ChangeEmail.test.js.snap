@@ -6,7 +6,7 @@ exports[`<ChangeEmail /> check how renders should render everything correctly 1`
     class="sc-bdfBwQ hYjfqi"
   >
     <h3
-      class="sc-iBPRYJ kqmSLn"
+      class="sc-iBPRYJ jtekve"
     >
       Change your email
     </h3>
@@ -83,7 +83,7 @@ exports[`<ChangeEmail /> check how renders should render everything correctly 1`
           transform=""
         >
           <button
-            class="sc-gsTCUz cpcmUx"
+            class="sc-gsTCUz gNMffe"
             color="blue"
             type="button"
           >
@@ -91,7 +91,7 @@ exports[`<ChangeEmail /> check how renders should render everything correctly 1`
           </button>
         </span>
         <button
-          class="sc-gsTCUz kaTXms"
+          class="sc-gsTCUz ghohWv"
           color="blue"
           data-testid="Form-submit-btn"
           disabled=""

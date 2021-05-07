@@ -3,7 +3,7 @@
 exports[`<DeliveryAddressSection /> should render everything correctly with default delivery address 1`] = `
 <DocumentFragment>
   <section
-    class="sc-bdfBwQ dIpFeA"
+    class="sc-bdfBwQ jxHHfd"
     data-testid="DeliveryAddressSection"
   >
     <div
@@ -14,7 +14,7 @@ exports[`<DeliveryAddressSection /> should render everything correctly with defa
       wrap="nowrap"
     >
       <h4
-        class="sc-gsTCUz bOFEQG"
+        class="sc-gsTCUz chleZm"
       >
         Delivery address
       </h4>
@@ -82,7 +82,7 @@ exports[`<DeliveryAddressSection /> should render everything correctly with defa
         </span>
       </div>
       <button
-        class="sc-dlfnbm jWXPSS"
+        class="sc-dlfnbm beExal"
         color="blue"
         type="button"
       >

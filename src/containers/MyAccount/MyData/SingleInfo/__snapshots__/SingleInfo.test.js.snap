@@ -11,7 +11,7 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
     wrap="nowrap"
   >
     <h4
-      class="sc-jSgupP pLLjl"
+      class="sc-jSgupP fBwtht"
     >
       Address
     </h4>
@@ -57,7 +57,7 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
       </span>
     </div>
     <button
-      class="sc-bdfBwQ eqGxsp"
+      class="sc-bdfBwQ lfryQi"
       color="blue"
       data-testid="SingleInfo-Address-btn"
       type="button"
@@ -79,7 +79,7 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
     wrap="nowrap"
   >
     <h4
-      class="sc-jSgupP pLLjl"
+      class="sc-jSgupP fBwtht"
     >
       Contacts
     </h4>
@@ -128,7 +128,7 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
     wrap="nowrap"
   >
     <h4
-      class="sc-jSgupP pLLjl"
+      class="sc-jSgupP fBwtht"
     >
       Contacts
     </h4>
@@ -163,7 +163,7 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
       </span>
     </div>
     <button
-      class="sc-bdfBwQ eqGxsp"
+      class="sc-bdfBwQ lfryQi"
       color="blue"
       data-testid="SingleInfo-Contacts-btn"
       type="button"
@@ -185,7 +185,7 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
     wrap="nowrap"
   >
     <h4
-      class="sc-jSgupP pLLjl"
+      class="sc-jSgupP fBwtht"
     >
       Name
     </h4>
@@ -201,7 +201,7 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
       Ludwig von Mises
     </span>
     <button
-      class="sc-bdfBwQ eqGxsp"
+      class="sc-bdfBwQ lfryQi"
       color="blue"
       data-testid="SingleInfo-Name-btn"
       type="button"

@@ -6,7 +6,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
     class="sc-bdfBwQ hSaYLI"
   >
     <section
-      class="sc-gsTCUz hDsSxM"
+      class="sc-gsTCUz joLnqp"
     >
       <div
         class="sc-gKsewC hzQUwf"
@@ -19,7 +19,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="OrderDetails-general-info-section"
         >
           <h4
-            class="sc-dlfnbm bhzmgj"
+            class="sc-dlfnbm YtZcP"
           >
             General info
           </h4>
@@ -113,7 +113,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="OrderDetails-info-about-seller"
         >
           <h4
-            class="sc-dlfnbm bhzmgj"
+            class="sc-dlfnbm YtZcP"
           >
             Info about seller
           </h4>
@@ -208,7 +208,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="OrderDetails-delivery-address-section"
         >
           <h4
-            class="sc-dlfnbm bhzmgj"
+            class="sc-dlfnbm YtZcP"
           >
             Delivery address
           </h4>
@@ -278,7 +278,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         </div>
       </div>
       <h4
-        class="sc-dlfnbm fLiikH"
+        class="sc-dlfnbm eOHeIb"
       >
         Products
       </h4>
@@ -483,7 +483,7 @@ exports[`<OrderDetails /> check how renders should render only <Loader /> if ord
 exports[`<OrderDetails /> check how renders should render only info that there is a problem to fetch order details 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-dlfnbm iFVlIY"
+    class="sc-dlfnbm iCXKnM"
     data-testid="OrderDetails-error"
   >
     There is a problem to fetch order details or given order does not exist

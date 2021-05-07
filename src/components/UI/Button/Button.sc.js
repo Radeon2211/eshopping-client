@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Button = styled.button`
+  box-shadow: ${({ theme }) => theme.shadows.level1};
   border-radius: 1px;
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes.level2};

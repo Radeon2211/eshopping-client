@@ -3,7 +3,7 @@
 exports[`<CartItemAdded /> check how renders should render everything correctly if product is in cart and isCartLoading is false 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-jSgupP kGSaxZ"
+    class="sc-jSgupP ccwEEU"
   >
     Product added to cart
   </h3>
@@ -90,7 +90,7 @@ exports[`<CartItemAdded /> check how renders should render everything correctly 
     wrap="nowrap"
   >
     <button
-      class="sc-bdfBwQ eqGxsp"
+      class="sc-bdfBwQ lfryQi"
       color="blue"
       type="button"
     >
@@ -98,7 +98,7 @@ exports[`<CartItemAdded /> check how renders should render everything correctly 
     </button>
     <a>
       <button
-        class="sc-bdfBwQ ejJsLd"
+        class="sc-bdfBwQ fJflHS"
         color="blue"
         type="button"
       >

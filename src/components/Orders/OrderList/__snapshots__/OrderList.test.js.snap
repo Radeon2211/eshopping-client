@@ -132,7 +132,7 @@ exports[`<OrderList /> check how renders should render everything correctly with
           data-testid="OrderList-order-details-link"
         >
           <button
-            class="sc-jrAGrp iifaoN"
+            class="sc-jrAGrp jEfGru"
             color="blue"
             type="button"
           >
@@ -373,7 +373,7 @@ exports[`<OrderList /> check how renders should render everything correctly with
           data-testid="OrderList-order-details-link"
         >
           <button
-            class="sc-jrAGrp iifaoN"
+            class="sc-jrAGrp jEfGru"
             color="blue"
             type="button"
           >

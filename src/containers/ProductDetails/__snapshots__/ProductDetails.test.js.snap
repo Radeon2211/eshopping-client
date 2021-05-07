@@ -3,7 +3,7 @@
 exports[`<ProductDetails /> check how renders snapshots should render everything correctly if user is a product's owner 1`] = `
 <DocumentFragment>
   <section
-    class="sc-hKgILt jLFCGR"
+    class="sc-hKgILt khuidQ"
   >
     <div
       class="sc-bdfBwQ gCcBPw"
@@ -24,7 +24,7 @@ exports[`<ProductDetails /> check how renders snapshots should render everything
           class="data-section"
         >
           <h4
-            class="sc-jSgupP pLLjl"
+            class="sc-jSgupP fBwtht"
           >
             Test name
           </h4>
@@ -116,7 +116,7 @@ exports[`<ProductDetails /> check how renders snapshots should render everything
               Quantity: 5
             </span>
             <h4
-              class="sc-jSgupP cFPCfj"
+              class="sc-jSgupP egbdUf"
             >
               You are the seller of this product
             </h4>
@@ -127,7 +127,7 @@ exports[`<ProductDetails /> check how renders snapshots should render everything
         data-testid="ProductDetails-full-description"
       >
         <h4
-          class="sc-jSgupP eqENSN"
+          class="sc-jSgupP rDDnt"
         >
           Description
         </h4>
@@ -151,7 +151,7 @@ exports[`<ProductDetails /> check how renders snapshots should render everything
         wrap="nowrap"
       >
         <button
-          class="sc-fubCfw fLCAlK"
+          class="sc-fubCfw dRdrbt"
           color="blue"
           data-testid="ProductDetails-edit-button"
           type="button"
@@ -159,7 +159,7 @@ exports[`<ProductDetails /> check how renders snapshots should render everything
           Edit offer
         </button>
         <button
-          class="sc-fubCfw hFQaUO"
+          class="sc-fubCfw kqjmIV"
           color="red"
           data-testid="ProductDetails-delete-button"
           type="button"
@@ -194,7 +194,7 @@ exports[`<ProductDetails /> check how renders snapshots should render only <Load
 exports[`<ProductDetails /> check how renders snapshots should render only info that there is a problem to fetch product details 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-jSgupP jizxOE"
+    class="sc-jSgupP tQsGo"
   >
     Such product does not exist or has already been sold
   </h4>

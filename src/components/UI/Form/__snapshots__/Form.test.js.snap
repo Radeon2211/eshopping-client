@@ -23,7 +23,7 @@ exports[`<Form /> check how renders should render everything what is possible wi
     class="sc-bdfBwQ hYjfqi"
   >
     <h3
-      class="sc-iBPRYJ kqmSLn"
+      class="sc-iBPRYJ jtekve"
     >
       testHeadingText
     </h3>
@@ -50,7 +50,7 @@ exports[`<Form /> check how renders should render everything what is possible wi
           transform=""
         >
           <button
-            class="sc-gsTCUz cpcmUx"
+            class="sc-gsTCUz gNMffe"
             color="blue"
             type="button"
           >
@@ -58,7 +58,7 @@ exports[`<Form /> check how renders should render everything what is possible wi
           </button>
         </span>
         <button
-          class="sc-gsTCUz fUKWKF"
+          class="sc-gsTCUz gQZzmy"
           color="blue"
           data-testid="Form-submit-btn"
           type="submit"
@@ -103,7 +103,7 @@ exports[`<Form /> check how renders should render red submit button without canc
         wrap="nowrap"
       >
         <button
-          class="sc-gsTCUz ZzwIN"
+          class="sc-gsTCUz gtJSKi"
           color="red"
           data-testid="Form-submit-btn"
           type="submit"

@@ -6,7 +6,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
     class="sc-bdfBwQ VOJFF"
   >
     <h3
-      class="sc-jrAGrp hNpMLZ"
+      class="sc-jrAGrp krObjk"
     >
       Register new account
     </h3>
@@ -263,7 +263,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             class="sc-dlfnbm cKcjXC"
           >
             <button
-              class="sc-eCssSg fzHHEK"
+              class="sc-eCssSg ghGyRF"
               color="blue"
               data-testid="Step1-next-btn"
               disabled=""
@@ -285,7 +285,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
     class="sc-bdfBwQ VOJFF"
   >
     <h3
-      class="sc-jrAGrp hNpMLZ"
+      class="sc-jrAGrp krObjk"
     >
       Register new account
     </h3>
@@ -633,7 +633,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             class="sc-dlfnbm dFxZbs"
           >
             <button
-              class="sc-eCssSg MTeOr"
+              class="sc-eCssSg fcfMKw"
               color="blue"
               data-testid="Step2-previous-btn"
               type="button"
@@ -641,7 +641,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
               Previous
             </button>
             <button
-              class="sc-eCssSg fzHHEK"
+              class="sc-eCssSg ghGyRF"
               color="blue"
               data-testid="Step2-next-btn"
               disabled=""
@@ -663,7 +663,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
     class="sc-bdfBwQ VOJFF"
   >
     <h3
-      class="sc-jrAGrp hNpMLZ"
+      class="sc-jrAGrp krObjk"
     >
       Register new account
     </h3>
@@ -981,7 +981,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             class="sc-dlfnbm dFxZbs"
           >
             <button
-              class="sc-eCssSg MTeOr"
+              class="sc-eCssSg fcfMKw"
               color="blue"
               data-testid="Step3-previous-btn"
               type="button"
@@ -989,7 +989,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
               Previous
             </button>
             <button
-              class="sc-eCssSg fzHHEK"
+              class="sc-eCssSg ghGyRF"
               color="blue"
               disabled=""
               type="submit"

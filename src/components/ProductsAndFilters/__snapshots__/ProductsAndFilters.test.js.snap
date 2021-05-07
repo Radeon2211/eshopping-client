@@ -7,7 +7,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
     data-testid="ProductsAndFilters"
   >
     <section
-      class="sc-jSgupP ikrxvH"
+      class="sc-jSgupP eJrCMa"
       data-testid="Filters"
     >
       <div
@@ -212,7 +212,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
           </div>
         </div>
         <button
-          class="sc-iBPRYJ fDMRnL"
+          class="sc-iBPRYJ juipGE"
           color="blue"
           data-testid="Filters-submit-btn"
           type="button"
@@ -222,7 +222,7 @@ exports[`<ProductsAndFilters /> check how renders should render everything corre
       </div>
     </section>
     <section
-      class="sc-jSgupP ikrxvH"
+      class="sc-jSgupP eJrCMa"
       data-testid="ProductsAndFilters-product-list-section"
     >
       <div
@@ -606,7 +606,7 @@ exports[`<ProductsAndFilters /> check how renders should render only <ProductLis
       data-testid="ProductList"
     >
       <h4
-        class="sc-fFubgz kDCMhs"
+        class="sc-fFubgz qbMVs"
         data-testid="ProductList-empty-list-info"
       >
         We didn't find any matching results. Try to search something else

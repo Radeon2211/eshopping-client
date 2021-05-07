@@ -3,7 +3,7 @@
 exports[`<MyProducts /> check how renders should render everything correctly with given default data 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-bdfBwQ hSpIvR"
+    class="sc-bdfBwQ ehronY"
   >
     My products
   </h3>
@@ -38,7 +38,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
       </div>
     </div>
     <section
-      class="sc-gKsewC hOOrhu"
+      class="sc-gKsewC bZvwUL"
       data-testid="ProductsAndFilters-product-list-section"
     >
       <div

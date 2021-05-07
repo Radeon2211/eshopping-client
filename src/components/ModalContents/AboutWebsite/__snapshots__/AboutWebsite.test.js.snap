@@ -3,7 +3,7 @@
 exports[`<AboutWebsite /> should render everything correctly 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-bdfBwQ iLqPaG"
+    class="sc-bdfBwQ cSqObv"
   >
     About website
   </h3>

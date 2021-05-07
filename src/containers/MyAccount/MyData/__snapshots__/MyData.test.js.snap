@@ -3,7 +3,7 @@
 exports[`<MyData /> check how renders should render everything correctly for admin user 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-eCssSg ceYvmz"
+    class="sc-eCssSg eXQgPS"
   >
     My data
   </h3>
@@ -15,7 +15,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
     wrap="nowrap"
   >
     <section
-      class="sc-dlfnbm ctISJv"
+      class="sc-dlfnbm dSatpG"
     >
       <div
         class="sc-bdfBwQ iLceJD"
@@ -29,7 +29,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Username
           </h4>
@@ -54,7 +54,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Name
           </h4>
@@ -70,7 +70,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             firstName lastName
           </span>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Name-btn"
             type="button"
@@ -87,7 +87,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Email
           </h4>
@@ -103,7 +103,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             email@domain.com
           </span>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Email-btn"
             type="button"
@@ -120,7 +120,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Address
           </h4>
@@ -166,7 +166,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             </span>
           </div>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Address-btn"
             type="button"
@@ -183,7 +183,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Contacts
           </h4>
@@ -218,7 +218,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             </span>
           </div>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Contacts-btn"
             type="button"
@@ -235,7 +235,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Phone number
           </h4>
@@ -251,7 +251,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             phone
           </span>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Phone number-btn"
             type="button"
@@ -267,14 +267,14 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             type="button"
           >
             Change password
           </button>
           <button
-            class="sc-jSgupP icHxze"
+            class="sc-jSgupP hQkrdZ"
             color="red"
             type="button"
           >
@@ -290,14 +290,14 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             type="button"
           >
             Add admin
           </button>
           <button
-            class="sc-jSgupP icHxze"
+            class="sc-jSgupP hQkrdZ"
             color="red"
             type="button"
           >
@@ -313,7 +313,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
 exports[`<MyData /> check how renders should render everything correctly for non admin user with status active 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-eCssSg ceYvmz"
+    class="sc-eCssSg eXQgPS"
   >
     My data
   </h3>
@@ -325,7 +325,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
     wrap="nowrap"
   >
     <section
-      class="sc-dlfnbm ctISJv"
+      class="sc-dlfnbm dSatpG"
     >
       <div
         class="sc-bdfBwQ iLceJD"
@@ -339,7 +339,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Username
           </h4>
@@ -364,7 +364,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Name
           </h4>
@@ -380,7 +380,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             firstName lastName
           </span>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Name-btn"
             type="button"
@@ -397,7 +397,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Email
           </h4>
@@ -413,7 +413,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             email@domain.com
           </span>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Email-btn"
             type="button"
@@ -430,7 +430,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Address
           </h4>
@@ -476,7 +476,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             </span>
           </div>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Address-btn"
             type="button"
@@ -493,7 +493,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Contacts
           </h4>
@@ -528,7 +528,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             </span>
           </div>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Contacts-btn"
             type="button"
@@ -545,7 +545,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Phone number
           </h4>
@@ -561,7 +561,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             phone
           </span>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             data-testid="SingleInfo-Phone number-btn"
             type="button"
@@ -577,14 +577,14 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             type="button"
           >
             Change password
           </button>
           <button
-            class="sc-jSgupP icHxze"
+            class="sc-jSgupP hQkrdZ"
             color="red"
             type="button"
           >
@@ -600,7 +600,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
 exports[`<MyData /> check how renders should render everything correctly for non admin user with status pending 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-eCssSg ceYvmz"
+    class="sc-eCssSg eXQgPS"
   >
     My data
   </h3>
@@ -612,7 +612,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
     wrap="nowrap"
   >
     <section
-      class="sc-dlfnbm ctISJv"
+      class="sc-dlfnbm dSatpG"
       data-testid="MyData-pending-user-content"
     >
       <span
@@ -628,7 +628,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
       </span>
     </section>
     <section
-      class="sc-dlfnbm ctISJv"
+      class="sc-dlfnbm dSatpG"
     >
       <div
         class="sc-bdfBwQ iLceJD"
@@ -642,7 +642,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Username
           </h4>
@@ -667,7 +667,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Name
           </h4>
@@ -692,7 +692,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Email
           </h4>
@@ -717,7 +717,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Address
           </h4>
@@ -772,7 +772,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Contacts
           </h4>
@@ -816,7 +816,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg gLASfs"
+            class="sc-eCssSg eLKVbs"
           >
             Phone number
           </h4>
@@ -841,14 +841,14 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             type="button"
           >
             Send verification link
           </button>
           <button
-            class="sc-jSgupP kPCWJS"
+            class="sc-jSgupP biAJYh"
             color="blue"
             type="button"
           >
@@ -863,7 +863,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP icHxze"
+            class="sc-jSgupP hQkrdZ"
             color="red"
             type="button"
           >

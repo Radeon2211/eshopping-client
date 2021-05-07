@@ -10,15 +10,18 @@ SC.Link = styled(Link)`
   position: relative;
 `;
 SC.Quantity = styled.div`
-  border-radius: 20px;
+  align-items: center;
+  border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.colors.light1};
+  display: flex;
+  height: ${({ theme }) => theme.fontSizes.level5};
   font-size: ${({ theme }) => theme.fontSizes.level1};
+  justify-content: center;
   position: absolute;
-  padding: calc(0.25 * ${({ theme }) => theme.spacings.level1})
-    calc(0.75 * ${({ theme }) => theme.spacings.level1});
-  top: 0;
-  right: 0;
+  top: -0.1rem;
+  right: -0.1rem;
+  width: ${({ theme }) => theme.fontSizes.level5};
   z-index: ${({ theme }) => theme.zIndexes.level1};
 `;
 

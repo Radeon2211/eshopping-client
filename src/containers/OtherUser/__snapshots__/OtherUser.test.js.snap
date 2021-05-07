@@ -22,7 +22,7 @@ exports[`<OtherUser /> check how renders snapshots should render <Loader /> if o
 exports[`<OtherUser /> check how renders snapshots should render everything correctly 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-bdfBwQ hSpIvR"
+    class="sc-bdfBwQ ehronY"
   >
     user1
   </h3>
@@ -282,7 +282,7 @@ exports[`<OtherUser /> check how renders snapshots should render everything corr
 exports[`<OtherUser /> check how renders snapshots should render info about problem with fetching if other user is null 1`] = `
 <DocumentFragment>
   <h4
-    class="sc-bdfBwQ zzbxL"
+    class="sc-bdfBwQ hArrGX"
   >
     Such user does not exist or problem during fetching occurred
   </h4>

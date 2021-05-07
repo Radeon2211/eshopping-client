@@ -11,14 +11,14 @@ exports[`<LoggedOutLinks /> checks how renders should render everything correctl
     wrap="nowrap"
   >
     <button
-      class="sc-bdfBwQ eqGxsp"
+      class="sc-bdfBwQ lfryQi"
       color="blue"
       type="button"
     >
       login
     </button>
     <button
-      class="sc-bdfBwQ ejJsLd"
+      class="sc-bdfBwQ fJflHS"
       color="blue"
       type="button"
     >

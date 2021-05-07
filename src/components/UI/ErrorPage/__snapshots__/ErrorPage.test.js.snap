@@ -26,7 +26,7 @@ exports[`<ErrorPage /> should render "Something went wrong" and unexpected bug i
     wrap="nowrap"
   >
     <h3
-      class="sc-gsTCUz djuqLc"
+      class="sc-gsTCUz dKvEuV"
     >
       Something went wrong
     </h3>

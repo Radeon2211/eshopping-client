@@ -3,7 +3,7 @@
 exports[`<BuyProducts /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-jSgupP iUTWMO"
+    class="sc-jSgupP gGXuEH"
   >
     Are you sure?
   </h3>
@@ -15,14 +15,14 @@ exports[`<BuyProducts /> checks how renders should render everything correctly 1
     wrap="nowrap"
   >
     <button
-      class="sc-bdfBwQ eqGxsp"
+      class="sc-bdfBwQ lfryQi"
       color="blue"
       type="button"
     >
       Cancel
     </button>
     <button
-      class="sc-bdfBwQ ejJsLd"
+      class="sc-bdfBwQ fJflHS"
       color="blue"
       type="button"
     >

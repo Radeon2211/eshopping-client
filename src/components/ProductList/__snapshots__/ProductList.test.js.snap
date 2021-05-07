@@ -7,7 +7,7 @@ exports[`<ProductList /> check how renders should render correct info for ALL_PR
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ kkqkio"
+      class="sc-iBPRYJ iaCqQM"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to search something else or change filters
@@ -23,7 +23,7 @@ exports[`<ProductList /> check how renders should render correct info for ALL_PR
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ kkqkio"
+      class="sc-iBPRYJ iaCqQM"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to search something else
@@ -39,7 +39,7 @@ exports[`<ProductList /> check how renders should render correct info for MY_PRO
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ kkqkio"
+      class="sc-iBPRYJ iaCqQM"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to change filters
@@ -55,7 +55,7 @@ exports[`<ProductList /> check how renders should render correct info for MY_PRO
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ kkqkio"
+      class="sc-iBPRYJ iaCqQM"
       data-testid="ProductList-empty-list-info"
     >
       You don't have any offers published yet
@@ -71,7 +71,7 @@ exports[`<ProductList /> check how renders should render correct info for USER_P
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ kkqkio"
+      class="sc-iBPRYJ iaCqQM"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to change filters
@@ -87,7 +87,7 @@ exports[`<ProductList /> check how renders should render correct info for USER_P
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ kkqkio"
+      class="sc-iBPRYJ iaCqQM"
       data-testid="ProductList-empty-list-info"
     >
       This user doesn't have any offers published yet

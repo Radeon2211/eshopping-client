@@ -2,7 +2,7 @@
 
 exports[`<Heading /> should render h1 with correct text 1`] = `
 <h1
-  className="sc-bdfBwQ lctQnF"
+  className="sc-bdfBwQ gKWCDV"
 >
   h1 heading
 </h1>
@@ -10,7 +10,7 @@ exports[`<Heading /> should render h1 with correct text 1`] = `
 
 exports[`<Heading /> should render h2 with correct text 1`] = `
 <h2
-  className="sc-bdfBwQ cWdnju"
+  className="sc-bdfBwQ boEwJx"
 >
   h2 heading
 </h2>
@@ -18,7 +18,7 @@ exports[`<Heading /> should render h2 with correct text 1`] = `
 
 exports[`<Heading /> should render h3 with correct text 1`] = `
 <h3
-  className="sc-bdfBwQ hSpIvR"
+  className="sc-bdfBwQ ehronY"
 >
   h3 heading
 </h3>
@@ -26,7 +26,7 @@ exports[`<Heading /> should render h3 with correct text 1`] = `
 
 exports[`<Heading /> should render h4 with correct text 1`] = `
 <h4
-  className="sc-bdfBwQ csIIrS"
+  className="sc-bdfBwQ dblZDm"
 >
   h4 heading
 </h4>

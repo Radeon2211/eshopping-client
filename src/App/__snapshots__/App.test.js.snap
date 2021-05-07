@@ -10,7 +10,7 @@ exports[`<App /> check how renders should render error from ErrorBoundary 1`] = 
     wrap="nowrap"
   >
     <h3
-      class="sc-gsTCUz djuqLc"
+      class="sc-gsTCUz dKvEuV"
     >
       Something went wrong. Please refresh the page
     </h3>
@@ -53,7 +53,7 @@ exports[`<App /> check how renders should render server connection error if we d
     wrap="nowrap"
   >
     <h3
-      class="sc-gsTCUz djuqLc"
+      class="sc-gsTCUz dKvEuV"
     >
       Oops! Server connection error. Please try again later
     </h3>
@@ -81,7 +81,7 @@ exports[`<App /> check how renders should render version for user with active st
           src="logo.png"
         />
         <h1
-          class="sc-gsTCUz gJcZNp heading"
+          class="sc-gsTCUz eVLboZ heading"
         >
           shopping
         </h1>
@@ -102,7 +102,7 @@ exports[`<App /> check how renders should render version for user with active st
       />
       <button
         aria-label="Search"
-        class="sc-iqHYGH gOVxBz"
+        class="sc-iqHYGH kfhoCI"
         color="blue"
         type="submit"
       >

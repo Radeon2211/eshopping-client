@@ -15,15 +15,14 @@ const theme = {
     redDark: '#985A5A',
   },
   shadows: {
-    level1: '0 0 1px rgba(0, 0, 0, .1)',
-    level2: '0 0 2px rgba(0, 0, 0, .3)',
-    level3: '0 0 3px rgba(0, 0, 0, .3)',
-    level4: '0 0 5px rgba(0, 0, 0, .3)',
+    level1: '0 0 3px rgba(0, 0, 0, 0.03)',
+    level2: '0 0 3px rgba(0, 0, 0, 0.3)',
+    level3: '0 0 5px rgba(0, 0, 0, 0.3)',
   },
   fonts: {
     logo: 'Lobster, cursive',
-    heading: 'Ubuntu, sans-serif',
-    text: 'Lato, sans-serif',
+    heading: 'Noto Sans, sans-serif',
+    text: 'Nunito, sans-serif',
   },
   spacings: {
     level1: '0.8rem',

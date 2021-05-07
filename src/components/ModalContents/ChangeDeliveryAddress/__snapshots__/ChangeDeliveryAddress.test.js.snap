@@ -6,7 +6,7 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
     class="sc-bdfBwQ hYjfqi"
   >
     <h3
-      class="sc-iBPRYJ kqmSLn"
+      class="sc-iBPRYJ jtekve"
     >
       Change your delivery address
     </h3>
@@ -357,7 +357,7 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
           transform=""
         >
           <button
-            class="sc-gsTCUz cpcmUx"
+            class="sc-gsTCUz gNMffe"
             color="blue"
             type="button"
           >
@@ -365,7 +365,7 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
           </button>
         </span>
         <button
-          class="sc-gsTCUz kaTXms"
+          class="sc-gsTCUz ghohWv"
           color="blue"
           data-testid="Form-submit-btn"
           disabled=""

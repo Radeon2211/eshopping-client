@@ -7,7 +7,7 @@ exports[`<Cart /> check how renders should render empty cart 1`] = `
     data-testid="Cart-empty-cart"
   >
     <h3
-      class="sc-gsTCUz ezAATf"
+      class="sc-gsTCUz jeinaa"
     >
       Your shopping cart is empty. Check out the 
       <a
@@ -21,7 +21,7 @@ exports[`<Cart /> check how renders should render empty cart 1`] = `
       </a>
     </h3>
     <h4
-      class="sc-gsTCUz cuzwDI"
+      class="sc-gsTCUz kWpKIE"
     >
       You can have up to 50 products in the cart
     </h4>
@@ -37,7 +37,7 @@ exports[`<Cart /> check how renders should render empty cart 1`] = `
 exports[`<Cart /> check how renders should render everything correctly with one cart item 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-gsTCUz iHHWjZ"
+    class="sc-gsTCUz dApEFs"
   >
     Your shopping cart
   </h3>
@@ -45,7 +45,7 @@ exports[`<Cart /> check how renders should render everything correctly with one 
     class="sc-dlfnbm cQBmyc"
   >
     <section
-      class="sc-hKgILt jLFCGR"
+      class="sc-hKgILt khuidQ"
     >
       <div
         class="sc-jrAGrp fAfrlP"
@@ -55,7 +55,7 @@ exports[`<Cart /> check how renders should render everything correctly with one 
         wrap="nowrap"
       >
         <button
-          class="sc-jSgupP icHxze"
+          class="sc-jSgupP hQkrdZ"
           color="red"
           type="button"
         >
@@ -232,7 +232,7 @@ exports[`<Cart /> check how renders should render everything correctly with one 
       class="sc-eCssSg bNvwyr"
     >
       <section
-        class="sc-hKgILt jLFCGR"
+        class="sc-hKgILt khuidQ"
       >
         <div
           class="sc-jrAGrp kdUhfw"
@@ -272,7 +272,7 @@ exports[`<Cart /> check how renders should render everything correctly with one 
             </span>
           </div>
           <button
-            class="sc-jSgupP fYrlGR"
+            class="sc-jSgupP fzCkqS"
             color="blue"
             type="button"
           >
@@ -307,7 +307,7 @@ exports[`<Cart /> check how renders should render only <Loader /> 1`] = `
 exports[`<Cart /> check how renders should render that there is a problem to fetch cart 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-gsTCUz gYothf"
+    class="sc-gsTCUz jrNQMa"
   >
     There is a problem to get your shopping cart
   </h3>

@@ -3,7 +3,7 @@
 exports[`<Products /> check how renders should render everything correctly with default params and two products 1`] = `
 <DocumentFragment>
   <h3
-    class="sc-bdfBwQ hSpIvR"
+    class="sc-bdfBwQ ehronY"
     data-testid="Products-heading"
   >
     All products
@@ -13,7 +13,7 @@ exports[`<Products /> check how renders should render everything correctly with 
     data-testid="ProductsAndFilters"
   >
     <section
-      class="sc-gKsewC hOOrhu"
+      class="sc-gKsewC bZvwUL"
       data-testid="Filters"
     >
       <div
@@ -218,7 +218,7 @@ exports[`<Products /> check how renders should render everything correctly with 
           </div>
         </div>
         <button
-          class="sc-fubCfw dqKGwi"
+          class="sc-fubCfw jOePnJ"
           color="blue"
           data-testid="Filters-submit-btn"
           type="button"
@@ -228,7 +228,7 @@ exports[`<Products /> check how renders should render everything correctly with 
       </div>
     </section>
     <section
-      class="sc-gKsewC hOOrhu"
+      class="sc-gKsewC bZvwUL"
       data-testid="ProductsAndFilters-product-list-section"
     >
       <div

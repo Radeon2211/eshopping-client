@@ -3,7 +3,7 @@
 exports[`<Button /> check how renders should render with <LoadingOverlay /> 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdfBwQ clkCDw"
+    class="sc-bdfBwQ burXJb"
     color="blue"
     disabled=""
     type="button"
@@ -30,7 +30,7 @@ exports[`<Button /> check how renders should render with <LoadingOverlay /> 1`] 
 exports[`<Button /> check how renders should render without <LoadingOverlay /> 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdfBwQ eqGxsp"
+    class="sc-bdfBwQ lfryQi"
     color="blue"
     type="button"
   >

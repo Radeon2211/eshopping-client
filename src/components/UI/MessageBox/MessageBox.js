@@ -24,7 +24,7 @@ SC.Wrapper = styled(motion.div)`
 SC.Message = styled(motion.div)`
   align-items: center;
   background-color: ${theme.colors.blue};
-  box-shadow: ${theme.shadows.level4};
+  box-shadow: ${theme.shadows.level3};
   color: #fff;
   display: flex;
   font-size: ${theme.fontSizes.level2};
