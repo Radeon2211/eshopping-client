@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/eshopping-client/static/js/main.b898a864.chunk.js",
+    "main.js": "/eshopping-client/static/js/main.ce82cb05.chunk.js",
     "runtime-main.js": "/eshopping-client/static/js/runtime-main.552475df.js",
     "static/js/2.7e28b267.chunk.js": "/eshopping-client/static/js/2.7e28b267.chunk.js",
     "static/js/3.b2a3d97c.chunk.js": "/eshopping-client/static/js/3.b2a3d97c.chunk.js",
@@ -36,6 +36,6 @@
   "entrypoints": [
     "static/js/runtime-main.552475df.js",
     "static/js/2.7e28b267.chunk.js",
-    "static/js/main.b898a864.chunk.js"
+    "static/js/main.ce82cb05.chunk.js"
   ]
 }
