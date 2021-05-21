@@ -18,9 +18,10 @@ const MyData = (props) => {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   useEffect(() => {
     scrollToTop();

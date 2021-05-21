@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import checkPropTypes from 'check-prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { fireEvent, waitFor } from '@testing-library/react';
@@ -142,8 +142,8 @@ export const createOrder = (props = {}) => {
     id: uuidv4(),
     sellerUsername: undefined,
     buyerUsername: undefined,
-    overallPrice: undefined,
-    createdAt: undefined,
+    overallPrice: 100,
+    createdAt: '2021-02-10T19:10:38.872Z',
     sellerEmail: undefined,
     sellerPhone: undefined,
     ...props,

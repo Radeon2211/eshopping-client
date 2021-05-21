@@ -8,9 +8,10 @@ import FlexWrapper from '../../UI/FlexWrapper';
 
 const SendVerificationLink = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
   const onSendAccountVerificationLink = useCallback(
     () => dispatch(actions.sendAccountVerificationLink()),
     [dispatch],

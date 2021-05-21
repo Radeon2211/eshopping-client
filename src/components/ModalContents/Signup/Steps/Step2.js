@@ -8,6 +8,7 @@ import SideBySide from '../../../UI/SideBySide';
 import PlainText from '../../../UI/PlainText';
 import { stepFormVariants } from '../Signup.sc';
 import { inputKinds, listOfAreaCodes } from '../../../../shared/constants';
+import * as propTypes from '../../../../shared/propTypes';
 
 const Step2 = (props) => {
   const {
@@ -177,11 +178,11 @@ Step2.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   goToPrevStep: PropTypes.func.isRequired,
   goToNextStep: PropTypes.func.isRequired,
-  errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  errors: PropTypes.shape(propTypes.signupErrors).isRequired,
+  touched: PropTypes.shape(propTypes.signupTouched).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
-  values: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  values: PropTypes.shape(propTypes.signupValues).isRequired,
 };
 
 export default Step2;

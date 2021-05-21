@@ -2,8 +2,263 @@
 
 exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
 <DocumentFragment>
-  <header
-    class="sc-bdfBwQ btxKQt"
+  .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FAFAFA;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  padding: 0.8rem 3.6rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: 3.6rem;
+}
+
+.c0 .logo {
+  width: 4.6rem;
+  height: 4.6rem;
+  margin-right: 0.8rem;
+}
+
+.c0 .header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  font-family: Lobster,cursive;
+  font-size: 3.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 0;
+  text-align: left;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 100%;
+  width: 45rem;
+}
+
+.c2 .name-input {
+  background-color: #FAFAFA;
+  border: 1px solid #BFBFBF;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem;
+  width: 100%;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c3:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+  font-size: 1.5rem;
+  max-width: 15rem;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c6 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 3.4rem;
+  height: 3.4rem;
+}
+
+.c9 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c9 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.c5 {
+  position: relative;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 3.6rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.8rem 0;
+  position: relative;
+}
+
+@media only screen and (max-width:75em) {
+  .c0 .heading {
+    display: none;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c0 {
+    padding: 0.8rem 2.4rem;
+  }
+
+  .c0 > *:not(:last-child) {
+    margin-right: 2.4rem;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c0 {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .c0 > *:nth-child(2) {
+    margin-right: 0;
+    margin-top: 0.8rem;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c2 {
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c4 > *:not(:last-child) {
+    margin-right: 2.4rem;
+  }
+}
+
+<header
+    class="c0"
   >
     <a
       data-testid="Navbar-header-link"
@@ -17,14 +272,14 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
           src="logo.png"
         />
         <h1
-          class="sc-gsTCUz eVLboZ heading"
+          class="c1 heading"
         >
           shopping
         </h1>
       </header>
     </a>
     <form
-      class="sc-dlfnbm cjBYFJ"
+      class="c2"
     >
       <input
         autocomplete="off"
@@ -38,7 +293,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
       />
       <button
         aria-label="Search"
-        class="sc-hKgILt evWxoz"
+        class="c3"
         color="blue"
         type="submit"
       >
@@ -46,15 +301,15 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
       </button>
     </form>
     <nav
-      class="sc-crrsfI btxiNp"
+      class="c4"
       data-testid="LoggedInLinks"
     >
       <a
-        class="sc-kEjbxe dWwZfv"
+        class="c5"
         data-testid="CartLink"
       >
         <div
-          class="sc-fubCfw bzVjbi"
+          class="c6"
           color=""
         >
           <svg>
@@ -63,12 +318,12 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
         </div>
       </a>
       <div
-        class="sc-dQppl ggLoGe"
+        class="c7"
         data-testid="LoggedInLinks-user-box"
         id="user"
       >
         <span
-          class="sc-gKsewC kqhhoC"
+          class="c8"
           color=""
           display="inline-block"
           overflow="hidden"
@@ -79,7 +334,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
           username
         </span>
         <div
-          class="sc-fubCfw koNpdQ"
+          class="c9"
           color=""
         >
           <svg>
@@ -95,8 +350,198 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
 
 exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] = `
 <DocumentFragment>
-  <header
-    class="sc-bdfBwQ btxKQt"
+  .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FAFAFA;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  padding: 0.8rem 3.6rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: 3.6rem;
+}
+
+.c0 .logo {
+  width: 4.6rem;
+  height: 4.6rem;
+  margin-right: 0.8rem;
+}
+
+.c0 .header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  font-family: Lobster,cursive;
+  font-size: 3.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 0;
+  text-align: left;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 100%;
+  width: 45rem;
+}
+
+.c2 .name-input {
+  background-color: #FAFAFA;
+  border: 1px solid #BFBFBF;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem;
+  width: 100%;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c3:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c5 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c5:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: auto;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+@media only screen and (max-width:75em) {
+  .c0 .heading {
+    display: none;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c0 {
+    padding: 0.8rem 2.4rem;
+  }
+
+  .c0 > *:not(:last-child) {
+    margin-right: 2.4rem;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c0 {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .c0 > *:nth-child(2) {
+    margin-right: 0;
+    margin-top: 0.8rem;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c2 {
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+  }
+}
+
+<header
+    class="c0"
   >
     <a
       data-testid="Navbar-header-link"
@@ -110,14 +555,14 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
           src="logo.png"
         />
         <h1
-          class="sc-gsTCUz eVLboZ heading"
+          class="c1 heading"
         >
           shopping
         </h1>
       </header>
     </a>
     <form
-      class="sc-dlfnbm cjBYFJ"
+      class="c2"
     >
       <input
         autocomplete="off"
@@ -131,7 +576,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
       />
       <button
         aria-label="Search"
-        class="sc-hKgILt evWxoz"
+        class="c3"
         color="blue"
         type="submit"
       >
@@ -139,7 +584,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
       </button>
     </form>
     <div
-      class="sc-pFZIQ iLRtPl"
+      class="c4"
       data-testid="LoggedOutLinks"
       direction="row"
       spacing="3"
@@ -147,14 +592,14 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
       wrap="nowrap"
     >
       <button
-        class="sc-hKgILt jMizpf"
+        class="c5"
         color="blue"
         type="button"
       >
         login
       </button>
       <button
-        class="sc-hKgILt evWxoz"
+        class="c3"
         color="blue"
         type="button"
       >

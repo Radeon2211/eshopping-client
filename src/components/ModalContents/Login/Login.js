@@ -11,9 +11,10 @@ import { GreenText } from '../../../styled/components';
 const Login = () => {
   const dispatch = useDispatch();
   const onLoginUser = useCallback((creds) => dispatch(actions.loginUser(creds)), [dispatch]);
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   return (
     <Formik

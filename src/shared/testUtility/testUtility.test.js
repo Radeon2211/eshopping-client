@@ -212,10 +212,10 @@ describe('createOrder()', () => {
           _id: order.products[0]._id,
         },
       ],
-      overallPrice: undefined,
+      overallPrice: 100,
       deliveryAddress: testUtility.defaultDeliveryAddress,
-      createdAt: undefined,
-      updatedAt: undefined,
+      createdAt: '2021-02-10T19:10:38.872Z',
+      updatedAt: '2021-02-10T19:10:38.872Z',
       __v: 0,
     });
     expect(validateUUID(order._id, 4)).toEqual(true);
@@ -233,7 +233,7 @@ describe('createOrder()', () => {
       sellerUsername: 'johnsmith',
       buyerUsername: 'adamsmith',
       overallPrice: 120.54,
-      createdAt: '2021-02-10T19:10:38.872Z',
+      createdAt: '2021-03-11T19:11:38.872Z',
       sellerEmail: 'john@domain.com',
       sellerPhone: '+48 123456789',
     });
@@ -250,8 +250,8 @@ describe('createOrder()', () => {
       products,
       overallPrice: 120.54,
       deliveryAddress: testUtility.defaultDeliveryAddress,
-      createdAt: '2021-02-10T19:10:38.872Z',
-      updatedAt: '2021-02-10T19:10:38.872Z',
+      createdAt: '2021-03-11T19:11:38.872Z',
+      updatedAt: '2021-03-11T19:11:38.872Z',
       __v: 0,
     });
   });

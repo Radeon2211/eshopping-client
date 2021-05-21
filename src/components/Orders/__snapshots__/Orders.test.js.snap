@@ -2,14 +2,718 @@
 
 exports[`<Orders /> check how renders should everything correctly with one order and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
-  <section
-    class="sc-bdfBwQ jxHHfd"
+  .c0 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c3 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c3 .form-number {
+  margin: 0 0.8rem;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c7 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c11 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c13 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+}
+
+.c21 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.4rem;
+}
+
+.c22 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.7rem;
+}
+
+.c25 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.5rem;
+}
+
+.c26 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+}
+
+.c28 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+.c5 {
+  background-color: #FAFAFA;
+  border: 1px solid #777;
+  border-radius: 1px;
+  box-sizing: content-box;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem 0;
+  text-align: center;
+  width: 5rem;
+}
+
+.c5::-webkit-outer-spin-button,
+.c5::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.c29 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.c29 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c29 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c29 .ellipsis {
+  margin: 0 0.8rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c29 .of {
+  margin: 0 0.8rem;
+}
+
+.c29 .number-link {
+  padding: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c29 .number-link:hover {
+  color: #06AD96;
+}
+
+.c29 .number-link.active {
+  color: #22A7F0;
+  font-weight: 700;
+}
+
+.c29 .number-link.active:hover {
+  color: #22A7F0;
+  cursor: default;
+}
+
+.c27 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c9 {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid #BFBFBF;
+}
+
+.c9:first-child {
+  padding-top: 0;
+}
+
+.c12 {
+  color: #06AD96 !important;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c12:hover {
+  color: #009680 !important;
+  cursor: pointer;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c10 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c14 > *:not(:last-child) {
+  margin-right: 1.2rem;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 5;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c16 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c19 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c23 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c15 {
+  padding-top: 2.4rem;
+}
+
+.c15:last-child {
+  padding-bottom: 0;
+}
+
+.c18 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c18 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c18 .name {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  font-size: 1.5rem;
+}
+
+.c18 .name > a {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c18 .name > a:hover {
+  color: #06AD96;
+}
+
+.c17 {
+  max-height: 5rem;
+  min-width: 5rem;
+  width: 5rem;
+}
+
+.c17 img {
+  max-height: 5rem;
+  max-width: 5rem;
+  object-fit: cover;
+}
+
+.c24 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c24:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 1.2rem;
+}
+
+.c2 .label {
+  font-size: 1.5rem;
+  margin-right: 1.2rem;
+}
+
+.c2 .select {
+  font-size: 1.4rem;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 22rem;
+  z-index: 100;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c0 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c27 {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c1 {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c18 {
+    -webkit-align-items: start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .c18 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .c18 .name {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c20 {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+<section
+    class="c0"
   >
     <div
-      class="sc-jrAGrp jKAffG"
+      class="c1"
     >
       <div
-        class="sc-bkzZxe kBJXSI"
+        class="c2"
       >
         <label
           class="label"
@@ -75,7 +779,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
         </div>
       </div>
       <div
-        class="sc-gsTCUz hXFboD"
+        class="c3"
         data-testid="InputPagination"
       >
         <a
@@ -83,7 +787,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           data-testid="InputPagination-left-arrow"
         >
           <div
-            class="sc-dlfnbm jOFrrM"
+            class="c4"
             color=""
           >
             <svg>
@@ -95,7 +799,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           class="form-number"
         >
           <input
-            class="sc-eCssSg gPPIII"
+            class="c5"
             data-testid="NumberInput-page"
             name="page"
             type="number"
@@ -103,7 +807,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           />
         </form>
         <span
-          class="sc-hKgILt gvqqww"
+          class="c6"
           color=""
           display="inline-block"
           overflow="visible"
@@ -114,7 +818,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           of
         </span>
         <span
-          class="sc-hKgILt gvqqww"
+          class="c6"
           color=""
           data-testid="InputPagination-number-of-pages"
           display="inline-block"
@@ -130,7 +834,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           data-testid="InputPagination-right-arrow"
         >
           <div
-            class="sc-dlfnbm lebiLC"
+            class="c7"
             color=""
           >
             <svg>
@@ -141,20 +845,20 @@ exports[`<Orders /> check how renders should everything correctly with one order
       </div>
     </div>
     <div
-      class="sc-iBPRYJ iceOJm"
+      class="c8"
     >
       <div
-        class="sc-fubCfw cijXbO"
+        class="c9"
       >
         <div
-          class="sc-kEjbxe bWYhw"
+          class="c10"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-hKgILt fttxOE"
+            class="c11"
             color=""
             display="inline-block"
             overflow="visible"
@@ -169,14 +873,14 @@ exports[`<Orders /> check how renders should everything correctly with one order
               data-testid="OrderList-user-link"
             >
               <span
-                class="sc-pFZIQ kpCSTb"
+                class="c12"
               >
                 sellerUser
               </span>
             </a>
           </span>
           <span
-            class="sc-hKgILt cTDtWF"
+            class="c13"
             color=""
             display="inline-block"
             overflow="visible"
@@ -188,7 +892,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           </span>
         </div>
         <div
-          class="sc-kEjbxe cKJMWE sc-iqHYGH dRRIlo"
+          class="c14 c15"
           data-testid="TransactionAndOrderProdItem"
           direction="row"
           spacing="2"
@@ -199,7 +903,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
             data-testid="TransactionAndOrderProdItem-product-link-photo"
           >
             <div
-              class="sc-kEjbxe kBdnxJ sc-bqyKva fFZOZM"
+              class="c16 c17"
               data-testid="ProductThumbnail"
               direction="row"
               height="5"
@@ -215,7 +919,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
             </div>
           </a>
           <div
-            class="sc-crrsfI cVMBMY"
+            class="c18"
           >
             <span
               class="name"
@@ -227,14 +931,14 @@ exports[`<Orders /> check how renders should everything correctly with one order
               </a>
             </span>
             <div
-              class="sc-kEjbxe hXbalD sc-dQppl hJRTPu"
+              class="c19 c20"
               direction="row"
               spacing=""
               width="100%"
               wrap="nowrap"
             >
               <span
-                class="sc-hKgILt jQArHJ"
+                class="c21"
                 color="#777"
                 data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                 display="inline-block"
@@ -246,7 +950,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
                 4 x $4
               </span>
               <span
-                class="sc-hKgILt dKfWou"
+                class="c22"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -260,7 +964,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           </div>
         </div>
         <div
-          class="sc-kEjbxe QFVDk"
+          class="c23"
           direction="row"
           spacing="3"
           width="100%"
@@ -270,7 +974,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
             data-testid="OrderList-order-details-link"
           >
             <button
-              class="sc-kstrdz bKa-dZi"
+              class="c24"
               color="blue"
               type="button"
             >
@@ -279,7 +983,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           </a>
           <div>
             <span
-              class="sc-hKgILt cmAqUt"
+              class="c25"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -290,7 +994,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
               TOTAL
             </span>
             <span
-              class="sc-hKgILt kRfSFE"
+              class="c26"
               color=""
               display="inline-block"
               overflow="visible"
@@ -305,10 +1009,10 @@ exports[`<Orders /> check how renders should everything correctly with one order
       </div>
     </div>
     <div
-      class="sc-gKsewC fGOzvo"
+      class="c27"
     >
       <span
-        class="sc-hKgILt kshmRe"
+        class="c28"
         color="#777"
         data-testid="PaginationCounter"
         display="inline-block"
@@ -320,7 +1024,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
         1 - 1 of 1 order
       </span>
       <div
-        class="sc-jSgupP gFFAhR"
+        class="c29"
         data-testid="NumberPagination"
       >
         <a
@@ -328,7 +1032,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           data-testid="NumberPagination-left-arrow"
         >
           <div
-            class="sc-dlfnbm jOFrrM"
+            class="c4"
             color=""
           >
             <svg>
@@ -358,7 +1062,7 @@ exports[`<Orders /> check how renders should everything correctly with one order
           data-testid="NumberPagination-right-arrow"
         >
           <div
-            class="sc-dlfnbm lebiLC"
+            class="c7"
             color=""
           >
             <svg>
@@ -374,14 +1078,718 @@ exports[`<Orders /> check how renders should everything correctly with one order
 
 exports[`<Orders /> check how renders should everything correctly with two orders and type SELL_HISTORY 1`] = `
 <DocumentFragment>
-  <section
-    class="sc-bdfBwQ jxHHfd"
+  .c0 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c3 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c3 .form-number {
+  margin: 0 0.8rem;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c7 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c11 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c13 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+}
+
+.c21 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.4rem;
+}
+
+.c22 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.7rem;
+}
+
+.c25 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.5rem;
+}
+
+.c26 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+}
+
+.c28 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+.c5 {
+  background-color: #FAFAFA;
+  border: 1px solid #777;
+  border-radius: 1px;
+  box-sizing: content-box;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem 0;
+  text-align: center;
+  width: 5rem;
+}
+
+.c5::-webkit-outer-spin-button,
+.c5::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.c29 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.c29 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c29 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c29 .ellipsis {
+  margin: 0 0.8rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c29 .of {
+  margin: 0 0.8rem;
+}
+
+.c29 .number-link {
+  padding: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c29 .number-link:hover {
+  color: #06AD96;
+}
+
+.c29 .number-link.active {
+  color: #22A7F0;
+  font-weight: 700;
+}
+
+.c29 .number-link.active:hover {
+  color: #22A7F0;
+  cursor: default;
+}
+
+.c27 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c9 {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid #BFBFBF;
+}
+
+.c9:first-child {
+  padding-top: 0;
+}
+
+.c12 {
+  color: #06AD96 !important;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c12:hover {
+  color: #009680 !important;
+  cursor: pointer;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c10 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c14 > *:not(:last-child) {
+  margin-right: 1.2rem;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 5;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c16 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c19 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c23 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c15 {
+  padding-top: 2.4rem;
+}
+
+.c15:last-child {
+  padding-bottom: 0;
+}
+
+.c18 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c18 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c18 .name {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  font-size: 1.5rem;
+}
+
+.c18 .name > a {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c18 .name > a:hover {
+  color: #06AD96;
+}
+
+.c17 {
+  max-height: 5rem;
+  min-width: 5rem;
+  width: 5rem;
+}
+
+.c17 img {
+  max-height: 5rem;
+  max-width: 5rem;
+  object-fit: cover;
+}
+
+.c24 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c24:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 1.2rem;
+}
+
+.c2 .label {
+  font-size: 1.5rem;
+  margin-right: 1.2rem;
+}
+
+.c2 .select {
+  font-size: 1.4rem;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 22rem;
+  z-index: 100;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c0 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c27 {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c1 {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c18 {
+    -webkit-align-items: start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .c18 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .c18 .name {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c20 {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+<section
+    class="c0"
   >
     <div
-      class="sc-jrAGrp jKAffG"
+      class="c1"
     >
       <div
-        class="sc-bkzZxe kBJXSI"
+        class="c2"
       >
         <label
           class="label"
@@ -447,7 +1855,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
         </div>
       </div>
       <div
-        class="sc-gsTCUz hXFboD"
+        class="c3"
         data-testid="InputPagination"
       >
         <a
@@ -455,7 +1863,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           data-testid="InputPagination-left-arrow"
         >
           <div
-            class="sc-dlfnbm jOFrrM"
+            class="c4"
             color=""
           >
             <svg>
@@ -467,7 +1875,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           class="form-number"
         >
           <input
-            class="sc-eCssSg gPPIII"
+            class="c5"
             data-testid="NumberInput-page"
             name="page"
             type="number"
@@ -475,7 +1883,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           />
         </form>
         <span
-          class="sc-hKgILt gvqqww"
+          class="c6"
           color=""
           display="inline-block"
           overflow="visible"
@@ -486,7 +1894,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           of
         </span>
         <span
-          class="sc-hKgILt gvqqww"
+          class="c6"
           color=""
           data-testid="InputPagination-number-of-pages"
           display="inline-block"
@@ -502,7 +1910,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           data-testid="InputPagination-right-arrow"
         >
           <div
-            class="sc-dlfnbm lebiLC"
+            class="c7"
             color=""
           >
             <svg>
@@ -513,20 +1921,20 @@ exports[`<Orders /> check how renders should everything correctly with two order
       </div>
     </div>
     <div
-      class="sc-iBPRYJ iceOJm"
+      class="c8"
     >
       <div
-        class="sc-fubCfw cijXbO"
+        class="c9"
       >
         <div
-          class="sc-kEjbxe bWYhw"
+          class="c10"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-hKgILt fttxOE"
+            class="c11"
             color=""
             display="inline-block"
             overflow="visible"
@@ -541,14 +1949,14 @@ exports[`<Orders /> check how renders should everything correctly with two order
               data-testid="OrderList-user-link"
             >
               <span
-                class="sc-pFZIQ kpCSTb"
+                class="c12"
               >
                 buyerUser
               </span>
             </a>
           </span>
           <span
-            class="sc-hKgILt cTDtWF"
+            class="c13"
             color=""
             display="inline-block"
             overflow="visible"
@@ -560,7 +1968,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           </span>
         </div>
         <div
-          class="sc-kEjbxe cKJMWE sc-iqHYGH dRRIlo"
+          class="c14 c15"
           data-testid="TransactionAndOrderProdItem"
           direction="row"
           spacing="2"
@@ -571,7 +1979,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
             data-testid="TransactionAndOrderProdItem-product-link-photo"
           >
             <div
-              class="sc-kEjbxe kBdnxJ sc-bqyKva fFZOZM"
+              class="c16 c17"
               data-testid="ProductThumbnail"
               direction="row"
               height="5"
@@ -587,7 +1995,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
             </div>
           </a>
           <div
-            class="sc-crrsfI cVMBMY"
+            class="c18"
           >
             <span
               class="name"
@@ -599,14 +2007,14 @@ exports[`<Orders /> check how renders should everything correctly with two order
               </a>
             </span>
             <div
-              class="sc-kEjbxe hXbalD sc-dQppl hJRTPu"
+              class="c19 c20"
               direction="row"
               spacing=""
               width="100%"
               wrap="nowrap"
             >
               <span
-                class="sc-hKgILt jQArHJ"
+                class="c21"
                 color="#777"
                 data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                 display="inline-block"
@@ -618,7 +2026,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
                 4 x $4
               </span>
               <span
-                class="sc-hKgILt dKfWou"
+                class="c22"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -632,7 +2040,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           </div>
         </div>
         <div
-          class="sc-kEjbxe QFVDk"
+          class="c23"
           direction="row"
           spacing="3"
           width="100%"
@@ -642,7 +2050,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
             data-testid="OrderList-order-details-link"
           >
             <button
-              class="sc-kstrdz bKa-dZi"
+              class="c24"
               color="blue"
               type="button"
             >
@@ -651,7 +2059,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           </a>
           <div>
             <span
-              class="sc-hKgILt cmAqUt"
+              class="c25"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -662,7 +2070,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
               TOTAL
             </span>
             <span
-              class="sc-hKgILt kRfSFE"
+              class="c26"
               color=""
               display="inline-block"
               overflow="visible"
@@ -676,17 +2084,17 @@ exports[`<Orders /> check how renders should everything correctly with two order
         </div>
       </div>
       <div
-        class="sc-fubCfw cijXbO"
+        class="c9"
       >
         <div
-          class="sc-kEjbxe bWYhw"
+          class="c10"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-hKgILt fttxOE"
+            class="c11"
             color=""
             display="inline-block"
             overflow="visible"
@@ -701,14 +2109,14 @@ exports[`<Orders /> check how renders should everything correctly with two order
               data-testid="OrderList-user-link"
             >
               <span
-                class="sc-pFZIQ kpCSTb"
+                class="c12"
               >
                 buyerUser
               </span>
             </a>
           </span>
           <span
-            class="sc-hKgILt cTDtWF"
+            class="c13"
             color=""
             display="inline-block"
             overflow="visible"
@@ -720,7 +2128,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           </span>
         </div>
         <div
-          class="sc-kEjbxe cKJMWE sc-iqHYGH dRRIlo"
+          class="c14 c15"
           data-testid="TransactionAndOrderProdItem"
           direction="row"
           spacing="2"
@@ -731,7 +2139,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
             data-testid="TransactionAndOrderProdItem-product-link-photo"
           >
             <div
-              class="sc-kEjbxe kBdnxJ sc-bqyKva fFZOZM"
+              class="c16 c17"
               data-testid="ProductThumbnail"
               direction="row"
               height="5"
@@ -747,7 +2155,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
             </div>
           </a>
           <div
-            class="sc-crrsfI cVMBMY"
+            class="c18"
           >
             <span
               class="name"
@@ -759,14 +2167,14 @@ exports[`<Orders /> check how renders should everything correctly with two order
               </a>
             </span>
             <div
-              class="sc-kEjbxe hXbalD sc-dQppl hJRTPu"
+              class="c19 c20"
               direction="row"
               spacing=""
               width="100%"
               wrap="nowrap"
             >
               <span
-                class="sc-hKgILt jQArHJ"
+                class="c21"
                 color="#777"
                 data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                 display="inline-block"
@@ -778,7 +2186,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
                 2 x $6.40
               </span>
               <span
-                class="sc-hKgILt dKfWou"
+                class="c22"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -792,7 +2200,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           </div>
         </div>
         <div
-          class="sc-kEjbxe QFVDk"
+          class="c23"
           direction="row"
           spacing="3"
           width="100%"
@@ -802,7 +2210,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
             data-testid="OrderList-order-details-link"
           >
             <button
-              class="sc-kstrdz bKa-dZi"
+              class="c24"
               color="blue"
               type="button"
             >
@@ -811,7 +2219,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           </a>
           <div>
             <span
-              class="sc-hKgILt cmAqUt"
+              class="c25"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -822,7 +2230,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
               TOTAL
             </span>
             <span
-              class="sc-hKgILt kRfSFE"
+              class="c26"
               color=""
               display="inline-block"
               overflow="visible"
@@ -837,10 +2245,10 @@ exports[`<Orders /> check how renders should everything correctly with two order
       </div>
     </div>
     <div
-      class="sc-gKsewC fGOzvo"
+      class="c27"
     >
       <span
-        class="sc-hKgILt kshmRe"
+        class="c28"
         color="#777"
         data-testid="PaginationCounter"
         display="inline-block"
@@ -852,7 +2260,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
         1 - 2 of 2 orders
       </span>
       <div
-        class="sc-jSgupP gFFAhR"
+        class="c29"
         data-testid="NumberPagination"
       >
         <a
@@ -860,7 +2268,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           data-testid="NumberPagination-left-arrow"
         >
           <div
-            class="sc-dlfnbm jOFrrM"
+            class="c4"
             color=""
           >
             <svg>
@@ -890,7 +2298,7 @@ exports[`<Orders /> check how renders should everything correctly with two order
           data-testid="NumberPagination-right-arrow"
         >
           <div
-            class="sc-dlfnbm lebiLC"
+            class="c7"
             color=""
           >
             <svg>
@@ -906,8 +2314,15 @@ exports[`<Orders /> check how renders should everything correctly with two order
 
 exports[`<Orders /> check how renders should render correct info if orders are empty array and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
-  <h4
-    class="sc-idOhPF gcdZNm"
+  .c0 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+<h4
+    class="c0"
     data-testid="Orders-no-orders-info"
   >
     You don't have any placed orders yet
@@ -917,8 +2332,15 @@ exports[`<Orders /> check how renders should render correct info if orders are e
 
 exports[`<Orders /> check how renders should render correct info if orders are empty array and type SELL_HISTORY 1`] = `
 <DocumentFragment>
-  <h4
-    class="sc-idOhPF gcdZNm"
+  .c0 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+<h4
+    class="c0"
     data-testid="Orders-no-orders-info"
   >
     Your sell history is empty
@@ -928,8 +2350,15 @@ exports[`<Orders /> check how renders should render correct info if orders are e
 
 exports[`<Orders /> check how renders should render correct info if orders are null and type PLACED_ORDERS 1`] = `
 <DocumentFragment>
-  <h4
-    class="sc-idOhPF gcdZNm"
+  .c0 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+<h4
+    class="c0"
     data-testid="Orders-error"
   >
     There is a problem to fetch your placed orders
@@ -939,8 +2368,15 @@ exports[`<Orders /> check how renders should render correct info if orders are n
 
 exports[`<Orders /> check how renders should render correct info if orders are null and type SELL_HISTORY 1`] = `
 <DocumentFragment>
-  <h4
-    class="sc-idOhPF gcdZNm"
+  .c0 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+<h4
+    class="c0"
     data-testid="Orders-error"
   >
     There is a problem to fetch your sell history
@@ -950,12 +2386,51 @@ exports[`<Orders /> check how renders should render correct info if orders are n
 
 exports[`<Orders /> check how renders should render only <Loader /> 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-hBEYos jCeqqG"
+  .c0 {
+  text-align: center;
+}
+
+.c1 {
+  display: inline-block;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+
+.c1 > div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid #1E8BC3;
+  border-color: #1E8BC3 transparent transparent transparent;
+}
+
+.c1 > div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+  animation-delay: -0.45s;
+}
+
+.c1 > div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+
+.c1 > div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+  animation-delay: -0.15s;
+}
+
+<div
+    class="c0"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-fodVxV fMDYCd"
+      class="c1"
       data-testid="Loader"
     >
       <div />

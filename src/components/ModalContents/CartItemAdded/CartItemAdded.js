@@ -16,9 +16,10 @@ const CartItemAdded = () => {
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   const addedProductInCart = cart.find((item) => item?.product?._id === productDetails?._id);
 

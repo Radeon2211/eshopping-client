@@ -10,7 +10,7 @@ import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import ProductsPerPageController from '../Pagination/ProductsPerPageController/ProductsPerPageController';
 import { TopPagination } from '../../styled/components';
-import { listItemTypes } from '../../shared/constants';
+import { listItemTypes, productPages } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 
 const ProductsAndFilters = (props) => {
@@ -66,7 +66,7 @@ const ProductsAndFilters = (props) => {
 };
 
 ProductsAndFilters.propTypes = {
-  page: PropTypes.string.isRequired,
+  page: PropTypes.oneOf(Object.values(productPages)).isRequired,
 };
 
 export default ProductsAndFilters;

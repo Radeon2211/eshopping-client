@@ -2,21 +2,659 @@
 
 exports[`<MyProducts /> check how renders should render everything correctly with given default data 1`] = `
 <DocumentFragment>
-  <h3
-    class="sc-bdfBwQ ehronY"
+  .c0 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+@media only screen and (max-width:75em) {
+
+}
+
+@media only screen and (max-width:56.25em) {
+
+}
+
+@media only screen and (max-width:24.5em) {
+
+}
+
+@media only screen and (max-width:22.5em) {
+
+}
+
+@media only screen and (max-width:37.5em) {
+
+}
+
+@media only screen and (max-width:37.5em) {
+
+}
+
+<h3
+    class="c0"
   >
     My products
   </h3>
-  <div
-    class="sc-gsTCUz iakHmb"
+  .c0 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c0 > *:first-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 2.4rem;
+}
+
+.c0 > *:last-child {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+}
+
+.c1 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  border: 1px solid #777;
+  border-radius: 5px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.4rem;
+  margin-bottom: 2.4rem;
+  padding: 0.8rem 1.2rem;
+}
+
+.c1 .label {
+  margin: 0 1.2rem 0 0.8rem;
+}
+
+.c4 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c10 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c17 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c18 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+  margin-top: calc(0.8rem + 0rem);
+}
+
+.c19 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+}
+
+.c20 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c21 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+.c23 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+.c9 {
+  background-color: #FAFAFA;
+  border: 1px solid #777;
+  border-radius: 1px;
+  box-sizing: content-box;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem 0;
+  text-align: center;
+  width: 5rem;
+}
+
+.c9::-webkit-outer-spin-button,
+.c9::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c8 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c12 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 13;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c14 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c16 > *:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.c13 {
+  border-bottom: 1px solid #DADFE1;
+  padding: 1.2rem;
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+}
+
+.c13:hover {
+  background-color: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.c13 .buyer-quantity-box {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1.2rem;
+}
+
+.c15 {
+  max-height: 15rem;
+  min-width: 13rem;
+  width: 13rem;
+}
+
+.c15 img {
+  max-height: 15rem;
+  max-width: 13rem;
+  object-fit: cover;
+}
+
+.c11 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+.c24 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.c24 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c24 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c24 .ellipsis {
+  margin: 0 0.8rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c24 .of {
+  margin: 0 0.8rem;
+}
+
+.c24 .number-link {
+  padding: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c24 .number-link:hover {
+  color: #06AD96;
+}
+
+.c24 .number-link.active {
+  color: #22A7F0;
+  font-weight: 700;
+}
+
+.c24 .number-link.active:hover {
+  color: #22A7F0;
+  cursor: default;
+}
+
+.c22 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c7 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c7 .form-number {
+  margin: 0 0.8rem;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 .label {
+  font-size: 1.5rem;
+  margin-right: 1.2rem;
+}
+
+.c6 .select {
+  font-size: 1.4rem;
+  z-index: 100;
+}
+
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+@media only screen and (max-width:75em) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .c0 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 2.4rem;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c4 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+@media only screen and (max-width:24.5em) {
+  .c13 .photo-box {
+    max-height: 13rem;
+    min-width: 10rem;
+    width: 10rem;
+  }
+}
+
+@media only screen and (max-width:22.5em) {
+  .c13 .photo-box {
+    max-height: 11rem;
+    min-width: 8rem;
+    width: 8rem;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c22 {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c5 {
+    padding: 0;
+  }
+}
+
+<div
+    class="c0"
     data-testid="ProductsAndFilters"
   >
     <div
-      class="sc-hKgILt hiWagc"
+      class="c1"
       data-testid="Filters-toggler"
     >
       <div
-        class="sc-kstrdz dfYKpJ"
+        class="c2"
         color=""
       >
         <svg>
@@ -29,7 +667,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
         Filters
       </span>
       <div
-        class="sc-kstrdz esXNNz"
+        class="c3"
         color=""
       >
         <svg>
@@ -38,14 +676,14 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
       </div>
     </div>
     <section
-      class="sc-gKsewC bZvwUL"
+      class="c4"
       data-testid="ProductsAndFilters-product-list-section"
     >
       <div
-        class="sc-fKFyDc gMvzTj"
+        class="c5"
       >
         <div
-          class="sc-dmlrTW fHfiAZ"
+          class="c6"
           data-testid="ProductsPerPageController"
         >
           <label
@@ -112,7 +750,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
           </div>
         </div>
         <div
-          class="sc-hHftDr fbtuLP"
+          class="c7"
           data-testid="InputPagination"
         >
           <a
@@ -120,7 +758,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
             data-testid="InputPagination-left-arrow"
           >
             <div
-              class="sc-kstrdz lgDWlP"
+              class="c8"
               color=""
             >
               <svg>
@@ -132,7 +770,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
             class="form-number"
           >
             <input
-              class="sc-bqyKva jja-dMM"
+              class="c9"
               data-testid="NumberInput-page"
               name="page"
               type="number"
@@ -140,7 +778,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
             />
           </form>
           <span
-            class="sc-iBPRYJ jlwgZf"
+            class="c10"
             color=""
             display="inline-block"
             overflow="visible"
@@ -151,7 +789,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
             of
           </span>
           <span
-            class="sc-iBPRYJ jlwgZf"
+            class="c10"
             color=""
             data-testid="InputPagination-number-of-pages"
             display="inline-block"
@@ -167,7 +805,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
             data-testid="InputPagination-right-arrow"
           >
             <div
-              class="sc-kstrdz dfYKpJ"
+              class="c2"
               color=""
             >
               <svg>
@@ -178,21 +816,21 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
         </div>
       </div>
       <div
-        class="sc-bkzZxe fwDVgA"
+        class="c11"
         data-testid="ProductList"
       >
         <a
           data-testid="ProductItem"
         >
           <div
-            class="sc-hBEYos jltyQI sc-fodVxV iia-DsQ"
+            class="c12 c13"
             direction="row"
             spacing="3"
             width="100%"
             wrap="nowrap"
           >
             <div
-              class="sc-hBEYos ezBczf sc-fFubgz kUYmUr"
+              class="c14 c15"
               data-testid="ProductThumbnail"
               direction="row"
               height="15"
@@ -207,14 +845,14 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
               />
             </div>
             <div
-              class="sc-hBEYos fRCKMd"
+              class="c16"
               direction="column"
               spacing=""
               width="100%"
               wrap="nowrap"
             >
               <span
-                class="sc-iBPRYJ kYvbgz"
+                class="c17"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -225,7 +863,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
                 Wellingtons
               </span>
               <span
-                class="sc-iBPRYJ BBDCp"
+                class="c18"
                 color=""
                 data-testid="ProductItem-condition"
                 display="inline-block"
@@ -235,7 +873,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
                 transform=""
               >
                 <span
-                  class="sc-iBPRYJ NtwOd"
+                  class="c19"
                   color="#777"
                   display="inline-block"
                   overflow="visible"
@@ -247,7 +885,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
                  New
               </span>
               <span
-                class="sc-iBPRYJ jtiZdA"
+                class="c20"
                 color=""
                 data-testid="ProductItem-price"
                 display="inline-block"
@@ -263,7 +901,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
                 data-testid="ProductItem-buyer-quantity"
               >
                 <span
-                  class="sc-iBPRYJ eGtFuN"
+                  class="c21"
                   color="#777"
                   display="inline-block"
                   overflow="visible"
@@ -279,10 +917,10 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
         </a>
       </div>
       <div
-        class="sc-dIUggk gVtHox"
+        class="c22"
       >
         <span
-          class="sc-iBPRYJ inTSQh"
+          class="c23"
           color="#777"
           data-testid="PaginationCounter"
           display="inline-block"
@@ -294,7 +932,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
           1 - 1 of 1 product
         </span>
         <div
-          class="sc-idOhPF gwyQBe"
+          class="c24"
           data-testid="NumberPagination"
         >
           <a
@@ -302,7 +940,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
             data-testid="NumberPagination-left-arrow"
           >
             <div
-              class="sc-kstrdz lgDWlP"
+              class="c8"
               color=""
             >
               <svg>
@@ -332,7 +970,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
             data-testid="NumberPagination-right-arrow"
           >
             <div
-              class="sc-kstrdz dfYKpJ"
+              class="c2"
               color=""
             >
               <svg>

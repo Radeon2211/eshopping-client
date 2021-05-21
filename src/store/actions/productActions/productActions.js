@@ -3,6 +3,7 @@ import axios from '../../../axios';
 import * as actionTypes from '../actionTypes';
 import * as uiActions from '../uiActions/uiActions';
 import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
+import { productPhotoFieldValues } from '../../../shared/constants';
 
 export const setProducts = (
   products = undefined,
@@ -92,7 +93,7 @@ export const editProduct = (productData, productId) => {
       editedProduct = data.product;
 
       if (productData.photo) {
-        if (productData.photo === 'DELETED') {
+        if (productData.photo === productPhotoFieldValues.DELETED) {
           await axios.delete(`/products/${data.product._id}/photo`);
           editedProduct.photo = false;
         } else {

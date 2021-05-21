@@ -7,6 +7,7 @@ import Button from '../../../UI/Button/Button';
 import PlainText from '../../../UI/PlainText';
 import { stepFormVariants } from '../Signup.sc';
 import { inputKinds } from '../../../../shared/constants';
+import * as propTypes from '../../../../shared/propTypes';
 
 const Step1 = (props) => {
   const { isVisible, goToNextStep, errors, values, touched, setFieldTouched } = props;
@@ -144,10 +145,10 @@ const Step1 = (props) => {
 Step1.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   goToNextStep: PropTypes.func.isRequired,
-  errors: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  touched: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  errors: PropTypes.shape(propTypes.signupErrors).isRequired,
+  touched: PropTypes.shape(propTypes.signupTouched).isRequired,
   setFieldTouched: PropTypes.func.isRequired,
-  values: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  values: PropTypes.shape(propTypes.signupValues).isRequired,
 };
 
 export default Step1;

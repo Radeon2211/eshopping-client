@@ -2,8 +2,112 @@
 
 exports[`<ChooseQuantity /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-dlfnbm leiqkt"
+  .c2 {
+  background-color: #FAFAFA;
+  border: 1px solid #777;
+  border-radius: 1px;
+  box-sizing: content-box;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem 0;
+  text-align: center;
+  width: 5rem;
+}
+
+.c2::-webkit-outer-spin-button,
+.c2::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #DADFE1;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c0 {
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .button {
+  background-color: transparent;
+  border: 1px solid #777;
+  border-radius: 1px;
+  cursor: pointer;
+  outline: none;
+  padding: 0 1.2rem;
+}
+
+.c0 .button[disabled] {
+  cursor: default;
+}
+
+.c0 .button.minus {
+  border-right: 0;
+}
+
+.c0 .button.plus {
+  border-left: 0;
+}
+
+<div
+    class="c0"
   >
     <button
       aria-label="Decrease product quantity"
@@ -13,7 +117,7 @@ exports[`<ChooseQuantity /> check how renders should render everything correctly
       type="button"
     >
       <div
-        class="sc-gsTCUz clalRB"
+        class="c1"
         color="#DADFE1"
         data-testid="ChooseQuantity-minus-icon"
       >
@@ -23,7 +127,7 @@ exports[`<ChooseQuantity /> check how renders should render everything correctly
       </div>
     </button>
     <input
-      class="sc-bdfBwQ doIofy"
+      class="c2"
       data-testid="NumberInput-quantity"
       name="quantity"
       type="number"
@@ -36,7 +140,7 @@ exports[`<ChooseQuantity /> check how renders should render everything correctly
       type="button"
     >
       <div
-        class="sc-gsTCUz cephmd"
+        class="c3"
         color=""
         data-testid="ChooseQuantity-plus-icon"
       >

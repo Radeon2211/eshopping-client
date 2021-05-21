@@ -2,8 +2,225 @@
 
 exports[`<TransactionAndOrderProdItem /> checks how renders and behaviour should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ ZqsAz sc-gsTCUz inazTm"
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: 1.2rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 5;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c5 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c1 {
+  padding-top: 2.4rem;
+}
+
+.c1:last-child {
+  padding-bottom: 0;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c4 .name {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  font-size: 1.5rem;
+}
+
+.c4 .name > a {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c4 .name > a:hover {
+  color: #06AD96;
+}
+
+.c3 {
+  max-height: 5rem;
+  min-width: 5rem;
+  width: 5rem;
+}
+
+.c3 img {
+  max-height: 5rem;
+  max-width: 5rem;
+  object-fit: cover;
+}
+
+.c7 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.4rem;
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.7rem;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c4 {
+    -webkit-align-items: start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .c4 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .c4 .name {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c6 {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+<div
+    class="c0 c1"
     data-testid="TransactionAndOrderProdItem"
     direction="row"
     spacing="2"
@@ -14,7 +231,7 @@ exports[`<TransactionAndOrderProdItem /> checks how renders and behaviour should
       data-testid="TransactionAndOrderProdItem-product-link-photo"
     >
       <div
-        class="sc-bdfBwQ igmTYO sc-eCssSg eawKUo"
+        class="c2 c3"
         data-testid="ProductThumbnail"
         direction="row"
         height="5"
@@ -30,7 +247,7 @@ exports[`<TransactionAndOrderProdItem /> checks how renders and behaviour should
       </div>
     </a>
     <div
-      class="sc-dlfnbm cjrVjg"
+      class="c4"
     >
       <span
         class="name"
@@ -42,14 +259,14 @@ exports[`<TransactionAndOrderProdItem /> checks how renders and behaviour should
         </a>
       </span>
       <div
-        class="sc-bdfBwQ lgjdug sc-hKgILt huHHva"
+        class="c5 c6"
         direction="row"
         spacing=""
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-jSgupP jUhfHv"
+          class="c7"
           color="#777"
           data-testid="TransactionAndOrderProdItem-product-price-per-piece"
           display="inline-block"
@@ -61,7 +278,7 @@ exports[`<TransactionAndOrderProdItem /> checks how renders and behaviour should
           2 x $9.90
         </span>
         <span
-          class="sc-jSgupP jiAuFg"
+          class="c8"
           color=""
           display="inline-block"
           overflow="visible"

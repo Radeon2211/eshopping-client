@@ -2,11 +2,382 @@
 
 exports[`<ChangeDeliveryAddress /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hYjfqi"
+  .c0 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  justify-self: center;
+  max-width: 100%;
+  text-align: left;
+  width: 65rem;
+}
+
+.c13 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c13:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c14 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+  cursor: not-allowed;
+}
+
+.c14:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c14:hover {
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+}
+
+.c12 {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 2.4rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+.c3 .select {
+  font-size: 1.4rem;
+}
+
+.c3 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c3 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c3 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c3.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c3.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c10 > label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  padding: 0 0 0 calc(2.4rem + 0.8rem);
+  position: relative;
+}
+
+.c10 > label::before {
+  border: 2px solid #1E8BC3;
+  border-radius: 1px;
+  content: '';
+  height: 2.4rem;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 2.4rem;
+}
+
+.c10 > label::after {
+  color: #1E8BC3;
+  content: '✗';
+  font-size: 1.7rem;
+  font-weight: 700;
+  opacity: 0;
+  left: 1.2rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+}
+
+.c10 > input {
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  width: 0;
+}
+
+.c10 .select {
+  font-size: 1.4rem;
+}
+
+.c10 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c10 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c10 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c10.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c10.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c7 {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  color: #000;
+  font-size: 1.3rem;
+  font-family: inherit;
+  outline: none;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  width: 100%;
+}
+
+.c7::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c7:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c2.valid .c6 {
+  border-bottom: 3px solid #009680;
+}
+
+.c2.invalid .c6 {
+  border-bottom: 3px solid #F22613;
+}
+
+.c5 {
+  font-size: 1.5rem;
+  padding-bottom: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c2.valid .c4 {
+  color: #009680;
+}
+
+.c2.invalid .c4 {
+  color: #F22613;
+}
+
+.c8 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c8 > *:first-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 2.4rem;
+}
+
+.c8 > *:last-child {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+}
+
+.c9 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c9 > *:first-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 2.4rem;
+}
+
+.c9 > *:last-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+<div
+    class="c0"
   >
     <h3
-      class="sc-iBPRYJ jtekve"
+      class="c1"
     >
       Change your delivery address
     </h3>
@@ -15,18 +386,18 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
       class="formik-form"
     >
       <div
-        class="sc-fubCfw drZTsR"
+        class="c2 c3"
         type="text"
       >
         <label
-          class="sc-jrAGrp bkXExJ"
+          class="c4 c5"
           for="firstName"
         >
           First name
         </label>
         <input
           autocomplete="given-name"
-          class="sc-pFZIQ fjonmB"
+          class="c6 c7"
           data-testid="ChangeDeliveryAddress-firstName"
           id="firstName"
           name="firstName"
@@ -36,18 +407,18 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
         />
       </div>
       <div
-        class="sc-fubCfw drZTsR"
+        class="c2 c3"
         type="text"
       >
         <label
-          class="sc-jrAGrp bkXExJ"
+          class="c4 c5"
           for="lastName"
         >
           Last name
         </label>
         <input
           autocomplete="family-name"
-          class="sc-pFZIQ fjonmB"
+          class="c6 c7"
           data-testid="ChangeDeliveryAddress-lastName"
           id="lastName"
           name="lastName"
@@ -57,18 +428,18 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
         />
       </div>
       <div
-        class="sc-fubCfw drZTsR"
+        class="c2 c3"
         type="text"
       >
         <label
-          class="sc-jrAGrp bkXExJ"
+          class="c4 c5"
           for="street"
         >
           Street and number
         </label>
         <input
           autocomplete="street-address"
-          class="sc-pFZIQ fjonmB"
+          class="c6 c7"
           data-testid="ChangeDeliveryAddress-street"
           id="street"
           name="street"
@@ -78,21 +449,21 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
         />
       </div>
       <div
-        class="sc-iqHYGH gLceVQ"
+        class="c8"
       >
         <div
-          class="sc-fubCfw drZTsR"
+          class="c2 c3"
           type="text"
         >
           <label
-            class="sc-jrAGrp bkXExJ"
+            class="c4 c5"
             for="zipCode"
           >
             Zip code
           </label>
           <input
             autocomplete="postal-code"
-            class="sc-pFZIQ fjonmB"
+            class="c6 c7"
             data-testid="ChangeDeliveryAddress-zipCode"
             id="zipCode"
             name="zipCode"
@@ -102,18 +473,18 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
           />
         </div>
         <div
-          class="sc-fubCfw drZTsR"
+          class="c2 c3"
           type="text"
         >
           <label
-            class="sc-jrAGrp bkXExJ"
+            class="c4 c5"
             for="city"
           >
             City
           </label>
           <input
             autocomplete="address-level2"
-            class="sc-pFZIQ fjonmB"
+            class="c6 c7"
             data-testid="ChangeDeliveryAddress-city"
             id="city"
             name="city"
@@ -124,10 +495,10 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
         </div>
       </div>
       <div
-        class="sc-fubCfw drZTsR"
+        class="c2 c3"
       >
         <label
-          class="sc-jrAGrp bkXExJ"
+          class="c4 c5"
           for="country"
         >
           Country
@@ -211,13 +582,13 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
         </div>
       </div>
       <div
-        class="sc-iqHYGH fkOBoS"
+        class="c9"
       >
         <div
-          class="sc-fubCfw drZTsR"
+          class="c2 c3"
         >
           <label
-            class="sc-jrAGrp bkXExJ"
+            class="c4 c5"
             for="phonePrefix"
           >
             Phone number prefix
@@ -301,18 +672,18 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
           </div>
         </div>
         <div
-          class="sc-fubCfw drZTsR"
+          class="c2 c3"
           type="text"
         >
           <label
-            class="sc-jrAGrp bkXExJ"
+            class="c4 c5"
             for="phoneNumber"
           >
             Phone number
           </label>
           <input
             autocomplete="tel-national"
-            class="sc-pFZIQ fjonmB"
+            class="c6 c7"
             data-testid="ChangeDeliveryAddress-phoneNumber"
             id="phoneNumber"
             name="phoneNumber"
@@ -323,17 +694,17 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
         </div>
       </div>
       <div
-        class="sc-fubCfw fwowZk"
+        class="c2 c10"
         type="checkbox"
       >
         <label
-          class="sc-jrAGrp bkXExJ"
+          class="c4 c5"
           for="onlyCurrentOrders"
         >
           Apply changes only to these orders
         </label>
         <input
-          class="sc-pFZIQ fjonmB"
+          class="c6 c7"
           data-testid="ChangeDeliveryAddress-only-current-orders"
           id="onlyCurrentOrders"
           name="onlyCurrentOrders"
@@ -342,14 +713,14 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
         />
       </div>
       <div
-        class="sc-gKsewC dLOeOj"
+        class="c11"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-eCssSg gABWUT"
+          class="c12"
           color=""
           display="block"
           overflow="visible"
@@ -357,7 +728,7 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
           transform=""
         >
           <button
-            class="sc-gsTCUz gNMffe"
+            class="c13"
             color="blue"
             type="button"
           >
@@ -365,7 +736,7 @@ exports[`<ChangeDeliveryAddress /> check how renders should render everything co
           </button>
         </span>
         <button
-          class="sc-gsTCUz ghohWv"
+          class="c14"
           color="blue"
           data-testid="Form-submit-btn"
           disabled=""

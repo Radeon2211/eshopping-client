@@ -18,9 +18,4 @@ The application is used for selling and buying products.
 
 Only first 3 routes are available for unauthenticated user.
 
-App is almost fully tested with unit and integration tests.
-
-Next steps are:
-
-- add the option to write a review of the purchased products
-- add notifications when someone buy your product or write a review of your product
+App is almost fully tested with unit, integration and E2E tests.

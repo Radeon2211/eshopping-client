@@ -7,6 +7,7 @@ import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
 import Heading from '../UI/Heading/Heading';
 import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
+import * as propTypes from '../../shared/propTypes';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -86,9 +87,9 @@ const ProductList = (props) => {
 
 ProductList.propTypes = {
   // eslint-disable-next-line react/require-default-props
-  products: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object)]),
+  products: PropTypes.arrayOf(PropTypes.shape(propTypes.fullProductItem)),
   isDataLoading: PropTypes.bool.isRequired,
-  page: PropTypes.string.isRequired,
+  page: PropTypes.oneOf(Object.values(productPages)).isRequired,
 };
 
 export default ProductList;

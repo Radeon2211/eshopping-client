@@ -28,13 +28,15 @@ const ProductDetails = () => {
   const productDetails = useSelector((state) => state.product.productDetails);
 
   const dispatch = useDispatch();
-  const onFetchProductDetails = useCallback((id) => dispatch(actions.fetchProductDetails(id)), [
-    dispatch,
-  ]);
+  const onFetchProductDetails = useCallback(
+    (id) => dispatch(actions.fetchProductDetails(id)),
+    [dispatch],
+  );
   const onSetProductDetails = useCallback(() => dispatch(actions.setProductDetails()), [dispatch]);
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   useEffect(() => {
     onFetchProductDetails(productId);

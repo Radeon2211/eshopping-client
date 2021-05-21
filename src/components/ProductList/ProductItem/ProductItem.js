@@ -5,11 +5,12 @@ import theme from '../../../styled/theme';
 import * as SC from './ProductItem.sc';
 import PlainText from '../../UI/PlainText';
 import FlexWrapper from '../../UI/FlexWrapper';
+import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 import { formatPrice } from '../../../shared/utility/utility';
 import { productConditions } from '../../../shared/constants';
-import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
+import * as propTypes from '../../../shared/propTypes';
 
-const ProductItem = (props) => {
+const ProductItem = React.memo((props) => {
   const {
     data: { _id, name, price, condition, buyerQuantity, photo },
   } = props;
@@ -50,10 +51,10 @@ const ProductItem = (props) => {
       </SC.Wrapper>
     </Link>
   );
-};
+});
 
 ProductItem.propTypes = {
-  data: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  data: PropTypes.shape(propTypes.fullProductItem).isRequired,
 };
 
 export default ProductItem;

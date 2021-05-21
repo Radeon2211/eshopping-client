@@ -13,9 +13,10 @@ const DeleteProduct = () => {
   const productDetails = useSelector((state) => state.product.productDetails);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
   const onDeleteProduct = useCallback(
     (productId, currentHistory) => dispatch(actions.deleteProduct(productId, currentHistory)),
     [dispatch],

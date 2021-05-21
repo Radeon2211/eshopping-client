@@ -1,48 +1,95 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Heading /> should render h1 with correct text 1`] = `
+.c0 {
+  font-family: Lobster,cursive;
+  font-size: 3.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 0;
+  text-align: left;
+}
+
 <h1
-  className="sc-bdfBwQ gKWCDV"
+  className="c0"
 >
   h1 heading
 </h1>
 `;
 
 exports[`<Heading /> should render h2 with correct text 1`] = `
+.c0 {
+  font-size: 3.5rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 0;
+  text-align: left;
+}
+
 <h2
-  className="sc-bdfBwQ boEwJx"
+  className="c0"
 >
   h2 heading
 </h2>
 `;
 
 exports[`<Heading /> should render h3 with correct text 1`] = `
+.c0 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
 <h3
-  className="sc-bdfBwQ ehronY"
+  className="c0"
 >
   h3 heading
 </h3>
 `;
 
 exports[`<Heading /> should render h4 with correct text 1`] = `
+.c0 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: left;
+}
+
 <h4
-  className="sc-bdfBwQ dblZDm"
+  className="c0"
 >
   h4 heading
 </h4>
 `;
 
 exports[`<Heading /> should render h5 with correct text 1`] = `
+.c0 {
+  margin-top: 0;
+  text-align: left;
+}
+
 <h5
-  className="sc-bdfBwQ mWUio"
+  className="c0"
 >
   h5 heading
 </h5>
 `;
 
 exports[`<Heading /> should render h6 with correct text 1`] = `
+.c0 {
+  margin-top: 0;
+  text-align: left;
+}
+
 <h6
-  className="sc-bdfBwQ mWUio"
+  className="c0"
 >
   h6 heading
 </h6>

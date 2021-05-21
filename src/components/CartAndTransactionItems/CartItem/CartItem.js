@@ -12,6 +12,7 @@ import PlainText from '../../UI/PlainText';
 import { ReactComponent as TrashIcon } from '../../../images/icons/trash.svg';
 import theme from '../../../styled/theme';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
+import * as propTypes from '../../../shared/propTypes';
 
 const CartItem = (props) => {
   const { data, isCartLoading } = props;
@@ -134,7 +135,7 @@ const CartItem = (props) => {
 };
 
 CartItem.propTypes = {
-  data: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  data: PropTypes.shape(propTypes.cartItem).isRequired,
   isCartLoading: PropTypes.bool.isRequired,
 };
 

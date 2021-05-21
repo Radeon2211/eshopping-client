@@ -10,13 +10,7 @@ import UploadPhoto from '../../UploadPhoto/UploadPhoto';
 import SideBySide from '../../UI/SideBySide';
 import { inputKinds, productRules, productConditions } from '../../../shared/constants';
 
-const validationSchema = Yup.object({
-  name: productRules.name,
-  price: productRules.price,
-  quantity: productRules.quantity,
-  condition: productRules.condition,
-  description: productRules.description,
-});
+const validationSchema = Yup.object(productRules);
 
 const AddProduct = () => {
   const location = useLocation();

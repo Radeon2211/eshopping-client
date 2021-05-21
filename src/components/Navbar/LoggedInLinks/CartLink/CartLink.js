@@ -25,12 +25,12 @@ SC.Quantity = styled.div`
   z-index: ${({ theme }) => theme.zIndexes.level1};
 `;
 
-const CartLink = () => {
-  const cart = useSelector((state) => state.auth.cart);
+const CartLink = React.memo(() => {
+  const cartLength = useSelector((state) => state.auth.cart?.length);
 
   let quantity = null;
-  if (cart && cart?.length > 0) {
-    quantity = <SC.Quantity data-testid="CartLink-quantity">{cart.length}</SC.Quantity>;
+  if (cartLength && cartLength > 0) {
+    quantity = <SC.Quantity data-testid="CartLink-quantity">{cartLength}</SC.Quantity>;
   }
 
   return (
@@ -41,6 +41,6 @@ const CartLink = () => {
       </MyIcon>
     </SC.Link>
   );
-};
+});
 
 export default CartLink;

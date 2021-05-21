@@ -10,12 +10,14 @@ import { GreenText } from '../../../styled/components';
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
-  const onResetPassword = useCallback((email) => dispatch(actions.resetPassword(email)), [
-    dispatch,
-  ]);
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onResetPassword = useCallback(
+    (email) => dispatch(actions.resetPassword(email)),
+    [dispatch],
+  );
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   return (
     <Formik

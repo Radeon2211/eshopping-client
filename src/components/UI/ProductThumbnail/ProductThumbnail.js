@@ -18,7 +18,7 @@ SC.Wrapper = styled(FlexWrapper)`
   }
 `;
 
-const ProductThumbnail = (props) => {
+const ProductThumbnail = React.memo((props) => {
   const { photo, alt, productId, width, height, orderId } = props;
 
   const photoURL = orderId
@@ -37,7 +37,7 @@ const ProductThumbnail = (props) => {
       <img src={photo ? validPhotoURL : noPhoto} alt={alt} data-testid="ProductThumbnail-img" />
     </SC.Wrapper>
   );
-};
+});
 
 ProductThumbnail.defaultProps = {
   orderId: '',

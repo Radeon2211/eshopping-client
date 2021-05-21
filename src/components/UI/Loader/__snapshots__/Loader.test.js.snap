@@ -2,12 +2,51 @@
 
 exports[`<Loader /> should render with wrapper 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hRzcCE"
+  .c0 {
+  text-align: center;
+}
+
+.c1 {
+  display: inline-block;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+
+.c1 > div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid #1E8BC3;
+  border-color: #1E8BC3 transparent transparent transparent;
+}
+
+.c1 > div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+  animation-delay: -0.45s;
+}
+
+.c1 > div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+
+.c1 > div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+  animation-delay: -0.15s;
+}
+
+<div
+    class="c0"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-gsTCUz Ckrks"
+      class="c1"
       data-testid="Loader"
     >
       <div />
@@ -21,8 +60,43 @@ exports[`<Loader /> should render with wrapper 1`] = `
 
 exports[`<Loader /> should render without wrapper 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-gsTCUz Ckrks"
+  .c0 {
+  display: inline-block;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+
+.c0 > div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid #1E8BC3;
+  border-color: #1E8BC3 transparent transparent transparent;
+}
+
+.c0 > div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+  animation-delay: -0.45s;
+}
+
+.c0 > div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+
+.c0 > div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+  animation-delay: -0.15s;
+}
+
+<div
+    class="c0"
     data-testid="Loader"
   >
     <div />

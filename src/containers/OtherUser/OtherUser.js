@@ -25,9 +25,10 @@ const OtherUser = (props) => {
   const productsPerPage = useSelector((state) => state.ui.productsPerPage);
 
   const dispatch = useDispatch();
-  const onFetchOtherUser = useCallback((username) => dispatch(actions.fetchOtherUser(username)), [
-    dispatch,
-  ]);
+  const onFetchOtherUser = useCallback(
+    (username) => dispatch(actions.fetchOtherUser(username)),
+    [dispatch],
+  );
   const onSetOtherUser = useCallback((user) => dispatch(actions.setOtherUser(user)), [dispatch]);
   const onFetchProducts = useCallback(
     (queryParams, pageType, username) =>

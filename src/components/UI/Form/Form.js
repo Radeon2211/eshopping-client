@@ -17,9 +17,10 @@ const Form = (props) => {
   const formError = useSelector((state) => state.ui.formError);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   const error = formError ? (
     <PlainText size="3" mgTop="3" color={theme.colors.red} data-testid="Form-error">

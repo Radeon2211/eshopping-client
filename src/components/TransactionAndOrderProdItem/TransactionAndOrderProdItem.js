@@ -7,7 +7,7 @@ import ProductThumbnail from '../UI/ProductThumbnail/ProductThumbnail';
 import PlainText from '../UI/PlainText';
 import { formatPrice, roundOverallPrice } from '../../shared/utility/utility';
 
-const TransactionAndOrderProdItem = (props) => {
+const TransactionAndOrderProdItem = React.memo((props) => {
   const { data, orderId } = props;
   const { _id: productId, name, price, quantity, photo } = data;
 
@@ -50,14 +50,20 @@ const TransactionAndOrderProdItem = (props) => {
       </SC.NameAndPrice>
     </SC.Wrapper>
   );
-};
+});
 
 TransactionAndOrderProdItem.defaultProps = {
   orderId: '',
 };
 
 TransactionAndOrderProdItem.propTypes = {
-  data: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  data: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    photo: PropTypes.bool.isRequired,
+  }).isRequired,
   orderId: PropTypes.string,
 };
 

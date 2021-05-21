@@ -21,12 +21,14 @@ const Transaction = () => {
   const transaction = useSelector((state) => state.auth.transaction);
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
-  const onSetTransaction = useCallback((items) => dispatch(actions.setTransaction(items)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
+  const onSetTransaction = useCallback(
+    (items) => dispatch(actions.setTransaction(items)),
+    [dispatch],
+  );
 
   useEffect(() => {
     scrollToTop();

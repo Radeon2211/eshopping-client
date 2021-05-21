@@ -2,8 +2,86 @@
 
 exports[`<LoggedOutLinks /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-jSgupP cXopKq"
+  .c1 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c1:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: auto;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
     data-testid="LoggedOutLinks"
     direction="row"
     spacing="3"
@@ -11,14 +89,14 @@ exports[`<LoggedOutLinks /> checks how renders should render everything correctl
     wrap="nowrap"
   >
     <button
-      class="sc-bdfBwQ lfryQi"
+      class="c1"
       color="blue"
       type="button"
     >
       login
     </button>
     <button
-      class="sc-bdfBwQ fJflHS"
+      class="c2"
       color="blue"
       type="button"
     >

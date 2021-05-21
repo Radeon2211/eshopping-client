@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import EditProduct from './EditProduct';
 import theme from '../../../styled/theme';
 import { clickAtSubmitButton, createProductItem } from '../../../shared/testUtility/testUtility';
-import { productConditions } from '../../../shared/constants';
+import { productConditions, productPhotoFieldValues } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 import { mockFile } from '../../../shared/utility/utility';
 
@@ -331,7 +331,7 @@ describe('<EditProduct />', () => {
         it('should call editProduct() with changed photo only (photo is deleted)', async () => {
           const { store, container } = setUp();
           const dataToPass = {
-            photo: 'DELETED',
+            photo: productPhotoFieldValues.DELETED,
           };
 
           await waitFor(() => {
@@ -577,6 +577,56 @@ describe('<EditProduct />', () => {
             fireEvent.change(descriptionInput, { target: { value: newDescription } });
           });
           expect(descriptionInput.value).toEqual(newDescription);
+
+          await clickAtSubmitButton(container);
+
+          expect(store.dispatch).not.toHaveBeenCalled();
+        });
+
+        it('should NOT call addProduct() if photo is too big (price and name are changed)', async () => {
+          const { store, container } = setUp();
+
+          const nameInput = screen.getByTestId('EditProduct-name');
+          const priceInput = screen.getByTestId('EditProduct-price');
+          const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
+          const newPhoto = mockFile.create('wellingtons.png', 6500000, 'image/png');
+
+          await waitFor(() => {
+            fireEvent.change(nameInput, { target: { value: defaultNewName } });
+          });
+          await waitFor(() => {
+            fireEvent.change(priceInput, { target: { value: defaultNewPrice } });
+          });
+          await waitFor(() => {
+            fireEvent.change(uploadPhotoInput, { target: { files: [newPhoto] } });
+          });
+          expect(nameInput.value).toEqual(defaultNewName);
+          expect(priceInput.value).toEqual(defaultNewPrice.toString());
+
+          await clickAtSubmitButton(container);
+
+          expect(store.dispatch).not.toHaveBeenCalled();
+        });
+
+        it('should NOT call addProduct() if photo has incorrect extension (price and name are changed)', async () => {
+          const { store, container } = setUp();
+
+          const nameInput = screen.getByTestId('EditProduct-name');
+          const priceInput = screen.getByTestId('EditProduct-price');
+          const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
+          const newPhoto = mockFile.create('wellingtons.png', 1024, 'image/svg+xml');
+
+          await waitFor(() => {
+            fireEvent.change(nameInput, { target: { value: defaultNewName } });
+          });
+          await waitFor(() => {
+            fireEvent.change(priceInput, { target: { value: defaultNewPrice } });
+          });
+          await waitFor(() => {
+            fireEvent.change(uploadPhotoInput, { target: { files: [newPhoto] } });
+          });
+          expect(nameInput.value).toEqual(defaultNewName);
+          expect(priceInput.value).toEqual(defaultNewPrice.toString());
 
           await clickAtSubmitButton(container);
 

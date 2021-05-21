@@ -61,7 +61,6 @@ export const messageBoxVariants = {
 
 const MessageBox = () => {
   const message = useSelector((state) => state.ui.message);
-
   const dispatch = useDispatch();
   const onSetMessage = useCallback((msg) => dispatch(actions.setMessage(msg)), [dispatch]);
 

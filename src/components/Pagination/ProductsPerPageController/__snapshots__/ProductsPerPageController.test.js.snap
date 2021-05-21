@@ -2,8 +2,29 @@
 
 exports[`<ProductsPerPageController /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ eNkMOl"
+  .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .label {
+  font-size: 1.5rem;
+  margin-right: 1.2rem;
+}
+
+.c0 .select {
+  font-size: 1.4rem;
+  z-index: 100;
+}
+
+<div
+    class="c0"
     data-testid="ProductsPerPageController"
   >
     <label

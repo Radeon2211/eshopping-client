@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './UploadPhoto.sc';
 import { isValidFileType, calculateFileSize } from '../../shared/utility/utility';
@@ -6,12 +6,15 @@ import Button from '../UI/Button/Button';
 import FlexWrapper from '../UI/FlexWrapper';
 import PlainText from '../UI/PlainText';
 import theme from '../../styled/theme';
+import { productPhotoFieldValues } from '../../shared/constants';
 
 const productPhotoMaxSize = 6291456;
 const productPhotoMaxSizeString = calculateFileSize(productPhotoMaxSize);
 
 const UploadPhoto = (props) => {
   const { setFieldValue, hasCurrentPhoto } = props;
+
+  const input = useRef(null);
 
   const [photo, setPhoto] = useState(null);
   const [photoName, setPhotoName] = useState('');
@@ -25,17 +28,18 @@ const UploadPhoto = (props) => {
     setPhotoName('');
     setPhotoSize('');
     setError('');
+    input.current.value = '';
   };
 
   const deleteCurrentPhotoHandle = () => {
     setIsCurrentPhotoDeleted(true);
-    setFieldValue('photo', 'DELETED');
+    resetState();
+    setFieldValue('photo', productPhotoFieldValues.DELETED);
   };
 
   const inputChangeHandle = (e) => {
     const { files } = e.target;
     if (!files.length > 0) {
-      resetState();
       return;
     }
 
@@ -45,15 +49,18 @@ const UploadPhoto = (props) => {
 
     if (!isValidFileType(file.type)) {
       setPhoto(null);
-      setFieldValue('photo', null);
+      setFieldValue('photo', productPhotoFieldValues.ERROR);
       setError('File extension is not valid (JPG and PNG only)');
       return;
     }
-    setError('');
 
     if (file.size > productPhotoMaxSize) {
+      setPhoto(null);
+      setFieldValue('photo', productPhotoFieldValues.ERROR);
       setError(`Maximum available size is ${productPhotoMaxSizeString}`);
+      return;
     }
+    setError('');
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -130,6 +137,7 @@ const UploadPhoto = (props) => {
         className="input"
         onChange={inputChangeHandle}
         data-testid="UploadPhoto-input"
+        ref={input}
       />
     </SC.Wrapper>
   );

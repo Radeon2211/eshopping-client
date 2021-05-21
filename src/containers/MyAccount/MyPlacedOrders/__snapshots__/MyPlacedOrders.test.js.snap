@@ -2,22 +2,741 @@
 
 exports[`<MyPlacedOrders /> check how renders should render everything correctly with given default data 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-dlfnbm eNBhAw"
+  .c0 {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 80rem;
+}
+
+.c2 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c5 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c5 .form-number {
+  margin: 0 0.8rem;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c6 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c9 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c9 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c13 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c15 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+}
+
+.c23 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.4rem;
+}
+
+.c24 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.7rem;
+}
+
+.c27 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.5rem;
+}
+
+.c28 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+}
+
+.c30 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+.c7 {
+  background-color: #FAFAFA;
+  border: 1px solid #777;
+  border-radius: 1px;
+  box-sizing: content-box;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem 0;
+  text-align: center;
+  width: 5rem;
+}
+
+.c7::-webkit-outer-spin-button,
+.c7::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.c31 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.c31 .arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.8rem;
+}
+
+.c31 .hide-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.c31 .ellipsis {
+  margin: 0 0.8rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c31 .of {
+  margin: 0 0.8rem;
+}
+
+.c31 .number-link {
+  padding: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c31 .number-link:hover {
+  color: #06AD96;
+}
+
+.c31 .number-link.active {
+  color: #22A7F0;
+  font-weight: 700;
+}
+
+.c31 .number-link.active:hover {
+  color: #22A7F0;
+  cursor: default;
+}
+
+.c29 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+.c10 {
+  position: relative;
+}
+
+.c11 {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid #BFBFBF;
+}
+
+.c11:first-child {
+  padding-top: 0;
+}
+
+.c14 {
+  color: #06AD96 !important;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c14:hover {
+  color: #009680 !important;
+  cursor: pointer;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  padding: 0 1.2rem 0 0;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c12 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c16 > *:not(:last-child) {
+  margin-right: 1.2rem;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 5;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c18 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c21 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c25 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c25 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c17 {
+  padding-top: 2.4rem;
+}
+
+.c17:last-child {
+  padding-bottom: 0;
+}
+
+.c20 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c20 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c20 .name {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  font-size: 1.5rem;
+}
+
+.c20 .name > a {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c20 .name > a:hover {
+  color: #06AD96;
+}
+
+.c19 {
+  max-height: 5rem;
+  min-width: 5rem;
+  width: 5rem;
+}
+
+.c19 img {
+  max-height: 5rem;
+  max-width: 5rem;
+  object-fit: cover;
+}
+
+.c26 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c26:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 1.2rem;
+}
+
+.c4 .label {
+  font-size: 1.5rem;
+  margin-right: 1.2rem;
+}
+
+.c4 .select {
+  font-size: 1.4rem;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 22rem;
+  z-index: 100;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c2 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c29 {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c3 {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c20 {
+    -webkit-align-items: start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .c20 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .c20 .name {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c22 {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+<div
+    class="c0"
   >
     <h3
-      class="sc-dmlrTW zGXEE"
+      class="c1"
     >
       My placed orders
     </h3>
     <section
-      class="sc-hKgILt khuidQ"
+      class="c2"
     >
       <div
-        class="sc-crrsfI jnkwPJ"
+        class="c3"
       >
         <div
-          class="sc-hHftDr bPRUtw"
+          class="c4"
         >
           <label
             class="label"
@@ -83,7 +802,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
           </div>
         </div>
         <div
-          class="sc-eCssSg kfCGWB"
+          class="c5"
           data-testid="InputPagination"
         >
           <a
@@ -91,7 +810,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             data-testid="InputPagination-left-arrow"
           >
             <div
-              class="sc-jSgupP iHjayU"
+              class="c6"
               color=""
             >
               <svg>
@@ -103,7 +822,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             class="form-number"
           >
             <input
-              class="sc-iBPRYJ eTbKPo"
+              class="c7"
               data-testid="NumberInput-page"
               name="page"
               type="number"
@@ -111,7 +830,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             />
           </form>
           <span
-            class="sc-gKsewC hpFlQD"
+            class="c8"
             color=""
             display="inline-block"
             overflow="visible"
@@ -122,7 +841,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             of
           </span>
           <span
-            class="sc-gKsewC hpFlQD"
+            class="c8"
             color=""
             data-testid="InputPagination-number-of-pages"
             display="inline-block"
@@ -138,7 +857,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             data-testid="InputPagination-right-arrow"
           >
             <div
-              class="sc-jSgupP elniXq"
+              class="c9"
               color=""
             >
               <svg>
@@ -149,20 +868,20 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
         </div>
       </div>
       <div
-        class="sc-jrAGrp fPUvfA"
+        class="c10"
       >
         <div
-          class="sc-kEjbxe eqCUFO"
+          class="c11"
         >
           <div
-            class="sc-dQppl jjWvYi"
+            class="c12"
             direction="row"
             spacing="3"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-gKsewC ISnTb"
+              class="c13"
               color=""
               display="inline-block"
               overflow="visible"
@@ -177,14 +896,14 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
                 data-testid="OrderList-user-link"
               >
                 <span
-                  class="sc-iqHYGH fHWvCx"
+                  class="c14"
                 >
                   sellerUser
                 </span>
               </a>
             </span>
             <span
-              class="sc-gKsewC dAcVpy"
+              class="c15"
               color=""
               display="inline-block"
               overflow="visible"
@@ -196,7 +915,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             </span>
           </div>
           <div
-            class="sc-dQppl Ejhse sc-bqyKva eCKrkI"
+            class="c16 c17"
             data-testid="TransactionAndOrderProdItem"
             direction="row"
             spacing="2"
@@ -207,7 +926,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
               data-testid="TransactionAndOrderProdItem-product-link-photo"
             >
               <div
-                class="sc-dQppl bLxFyT sc-fodVxV gdFDCb"
+                class="c18 c19"
                 data-testid="ProductThumbnail"
                 direction="row"
                 height="5"
@@ -223,7 +942,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
               </div>
             </a>
             <div
-              class="sc-kstrdz cPEvH"
+              class="c20"
             >
               <span
                 class="name"
@@ -235,14 +954,14 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
                 </a>
               </span>
               <div
-                class="sc-dQppl hYTqVV sc-hBEYos kYeIPx"
+                class="c21 c22"
                 direction="row"
                 spacing=""
                 width="100%"
                 wrap="nowrap"
               >
                 <span
-                  class="sc-gKsewC vWWge"
+                  class="c23"
                   color="#777"
                   data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                   display="inline-block"
@@ -254,7 +973,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
                   4 x $80.20
                 </span>
                 <span
-                  class="sc-gKsewC bSTHgV"
+                  class="c24"
                   color=""
                   display="inline-block"
                   overflow="visible"
@@ -268,7 +987,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             </div>
           </div>
           <div
-            class="sc-dQppl jleYWC"
+            class="c25"
             direction="row"
             spacing="3"
             width="100%"
@@ -278,7 +997,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
               data-testid="OrderList-order-details-link"
             >
               <button
-                class="sc-fFubgz cuQJWU"
+                class="c26"
                 color="blue"
                 type="button"
               >
@@ -287,7 +1006,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             </a>
             <div>
               <span
-                class="sc-gKsewC euBNFu"
+                class="c27"
                 color="#777"
                 display="inline-block"
                 overflow="visible"
@@ -298,7 +1017,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
                 TOTAL
               </span>
               <span
-                class="sc-gKsewC bNImzD"
+                class="c28"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -313,10 +1032,10 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
         </div>
       </div>
       <div
-        class="sc-pFZIQ fCNRZS"
+        class="c29"
       >
         <span
-          class="sc-gKsewC rBmjh"
+          class="c30"
           color="#777"
           data-testid="PaginationCounter"
           display="inline-block"
@@ -328,7 +1047,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
           1 - 1 of 1 order
         </span>
         <div
-          class="sc-fubCfw hDVVIN"
+          class="c31"
           data-testid="NumberPagination"
         >
           <a
@@ -336,7 +1055,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             data-testid="NumberPagination-left-arrow"
           >
             <div
-              class="sc-jSgupP iHjayU"
+              class="c6"
               color=""
             >
               <svg>
@@ -366,7 +1085,7 @@ exports[`<MyPlacedOrders /> check how renders should render everything correctly
             data-testid="NumberPagination-right-arrow"
           >
             <div
-              class="sc-jSgupP elniXq"
+              class="c9"
               color=""
             >
               <svg>

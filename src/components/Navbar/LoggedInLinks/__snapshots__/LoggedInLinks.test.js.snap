@@ -2,16 +2,131 @@
 
 exports[`<LoggedInLinks /> check how renders should render version for user with status active 1`] = `
 <DocumentFragment>
-  <nav
-    class="sc-jSgupP TeqAh"
+  .c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 3.4rem;
+  height: 3.4rem;
+}
+
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.c1 {
+  position: relative;
+}
+
+.c4 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+  font-size: 1.5rem;
+  max-width: 15rem;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: 3.6rem;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.8rem 0;
+  position: relative;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c0 > *:not(:last-child) {
+    margin-right: 2.4rem;
+  }
+}
+
+<nav
+    class="c0"
     data-testid="LoggedInLinks"
   >
     <a
-      class="sc-dlfnbm laaXGn"
+      class="c1"
       data-testid="CartLink"
     >
       <div
-        class="sc-bdfBwQ gtikZV"
+        class="c2"
         color=""
       >
         <svg>
@@ -20,12 +135,12 @@ exports[`<LoggedInLinks /> check how renders should render version for user with
       </div>
     </a>
     <div
-      class="sc-gKsewC jVIvkB"
+      class="c3"
       data-testid="LoggedInLinks-user-box"
       id="user"
     >
       <span
-        class="sc-eCssSg eQzqiy"
+        class="c4"
         color=""
         display="inline-block"
         overflow="hidden"
@@ -36,7 +151,7 @@ exports[`<LoggedInLinks /> check how renders should render version for user with
         username
       </span>
       <div
-        class="sc-bdfBwQ kWqztf"
+        class="c5"
         color=""
       >
         <svg>
@@ -51,19 +166,100 @@ exports[`<LoggedInLinks /> check how renders should render version for user with
 
 exports[`<LoggedInLinks /> check how renders should render version for user with status pending 1`] = `
 <DocumentFragment>
-  <nav
-    class="sc-jSgupP TeqAh"
+  .c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c2 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+  font-size: 1.5rem;
+  max-width: 15rem;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: 3.6rem;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.8rem 0;
+  position: relative;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c0 > *:not(:last-child) {
+    margin-right: 2.4rem;
+  }
+}
+
+<nav
+    class="c0"
     data-testid="LoggedInLinks"
   >
     <a
       data-testid="LoggedInLinks-my-account-link"
     >
       <div
-        class="sc-gKsewC jVIvkB"
+        class="c1"
         id="user"
       >
         <span
-          class="sc-eCssSg eQzqiy"
+          class="c2"
           color=""
           display="inline-block"
           overflow="hidden"
@@ -74,7 +270,7 @@ exports[`<LoggedInLinks /> check how renders should render version for user with
           username
         </span>
         <div
-          class="sc-bdfBwQ krVsOR"
+          class="c3"
           color=""
         >
           <svg>

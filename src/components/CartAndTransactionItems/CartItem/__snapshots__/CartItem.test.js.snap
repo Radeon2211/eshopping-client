@@ -2,8 +2,339 @@
 
 exports[`<CartItem /> checks how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ SZA-Dk"
+  .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: calc(1.5 * 1.2rem) 0;
+}
+
+.c0:not(:last-child) {
+  border-bottom: 1px solid #DADFE1;
+}
+
+.c0:last-child {
+  padding-bottom: 0;
+}
+
+.c0 .photo-and-name {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .name {
+  font-size: 1.5rem;
+  margin-left: 2.4rem;
+  width: 31rem;
+}
+
+.c0 .name > a {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c0 .name > a:hover {
+  color: #06AD96;
+}
+
+.c0 .mobile-lower-row {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c0 .choose-quantity-box {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .price-box {
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 3.6rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0 .remove-icon {
+  cursor: pointer;
+  justify-self: right;
+  margin-left: 1.2rem;
+  padding: calc(0.5 * 0.8rem);
+}
+
+.c5 {
+  background-color: #FAFAFA;
+  border: 1px solid #777;
+  border-radius: 1px;
+  box-sizing: content-box;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.8rem 0;
+  text-align: center;
+  width: 5rem;
+}
+
+.c5::-webkit-outer-spin-button,
+.c5::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c9 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c9 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #F22613;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.c3 {
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 .button {
+  background-color: transparent;
+  border: 1px solid #777;
+  border-radius: 1px;
+  cursor: pointer;
+  outline: none;
+  padding: 0 1.2rem;
+}
+
+.c3 .button[disabled] {
+  cursor: default;
+}
+
+.c3 .button.minus {
+  border-right: 0;
+}
+
+.c3 .button.plus {
+  border-left: 0;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0.8rem;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+}
+
+.c7 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  text-align: right;
+  font-size: 1.4rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 7;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c2 {
+  max-height: 7rem;
+  min-width: 7rem;
+  width: 7rem;
+}
+
+.c2 img {
+  max-height: 7rem;
+  max-width: 7rem;
+  object-fit: cover;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c0 .mobile-lower-row {
+    margin-top: 1.2rem;
+    min-width: 100%;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+
+  .c0 .name {
+    width: auto;
+  }
+
+  .c0 .remove-icon {
+    margin-left: auto;
+    padding-left: calc( 0.5 * 0.8rem + 0.8rem );
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c0 .name {
+    margin-left: 1.2rem;
+  }
+}
+
+<div
+    class="c0"
     data-testid="CartItem"
   >
     <div
@@ -13,7 +344,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
         data-testid="CartItem-product-link-photo"
       >
         <div
-          class="sc-jSgupP iTeoXz sc-gKsewC jmxKKO"
+          class="c1 c2"
           data-testid="ProductThumbnail"
           direction="row"
           height="7"
@@ -45,7 +376,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
         class="choose-quantity-box"
       >
         <div
-          class="sc-hKgILt dhKALD"
+          class="c3"
         >
           <button
             aria-label="Decrease product quantity"
@@ -54,7 +385,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
             type="button"
           >
             <div
-              class="sc-dlfnbm lebiLC"
+              class="c4"
               color=""
               data-testid="ChooseQuantity-minus-icon"
             >
@@ -64,7 +395,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
             </div>
           </button>
           <input
-            class="sc-gsTCUz gxcxjW"
+            class="c5"
             data-testid="NumberInput-quantity"
             name="quantity"
             type="number"
@@ -77,7 +408,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
             type="button"
           >
             <div
-              class="sc-dlfnbm lebiLC"
+              class="c4"
               color=""
               data-testid="ChooseQuantity-plus-icon"
             >
@@ -88,7 +419,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
           </button>
         </div>
         <span
-          class="sc-eCssSg csvHNO"
+          class="c6"
           color=""
           data-testid="CartItem-available-quantity"
           display="inline-block"
@@ -104,7 +435,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
         class="price-box"
       >
         <span
-          class="sc-eCssSg csGgAf"
+          class="c7"
           color=""
           data-testid="CartItem-total-price"
           display="inline-block"
@@ -116,7 +447,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
           $1,499.90
         </span>
         <span
-          class="sc-eCssSg eAuHqK"
+          class="c8"
           color=""
           data-testid="CartItem-price-per-piece"
           display="inline-block"
@@ -130,7 +461,7 @@ exports[`<CartItem /> checks how renders should render everything correctly 1`] 
       </div>
     </div>
     <div
-      class="sc-dlfnbm cGwLef remove-icon"
+      class="c9 remove-icon"
       color="#F22613"
       data-testid="CartItem-trash-icon"
     >

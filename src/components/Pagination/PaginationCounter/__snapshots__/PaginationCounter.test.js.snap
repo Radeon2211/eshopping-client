@@ -2,8 +2,26 @@
 
 exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1 order 1`] = `
 <DocumentFragment>
-  <span
-    class="sc-bdfBwQ cPtBJf"
+  .c0 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+<span
+    class="c0"
     color="#777"
     data-testid="PaginationCounter"
     display="inline-block"
@@ -19,8 +37,26 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1
 
 exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1 products 1`] = `
 <DocumentFragment>
-  <span
-    class="sc-bdfBwQ cPtBJf"
+  .c0 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+<span
+    class="c0"
     color="#777"
     data-testid="PaginationCounter"
     display="inline-block"
@@ -36,8 +72,26 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1
 
 exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 10 orders 1`] = `
 <DocumentFragment>
-  <span
-    class="sc-bdfBwQ cPtBJf"
+  .c0 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+<span
+    class="c0"
     color="#777"
     data-testid="PaginationCounter"
     display="inline-block"
@@ -53,8 +107,26 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 1 of 1
 
 exports[`<PaginationCounter /> check if correct text render should be 1 - 2 of 5 products 1`] = `
 <DocumentFragment>
-  <span
-    class="sc-bdfBwQ cPtBJf"
+  .c0 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+<span
+    class="c0"
     color="#777"
     data-testid="PaginationCounter"
     display="inline-block"
@@ -70,8 +142,26 @@ exports[`<PaginationCounter /> check if correct text render should be 1 - 2 of 5
 
 exports[`<PaginationCounter /> check if correct text render should be 3 - 4 of 5 products 1`] = `
 <DocumentFragment>
-  <span
-    class="sc-bdfBwQ cPtBJf"
+  .c0 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+<span
+    class="c0"
     color="#777"
     data-testid="PaginationCounter"
     display="inline-block"
@@ -87,8 +177,26 @@ exports[`<PaginationCounter /> check if correct text render should be 3 - 4 of 5
 
 exports[`<PaginationCounter /> check if correct text render should be 5 - 7 of 7 orders 1`] = `
 <DocumentFragment>
-  <span
-    class="sc-bdfBwQ cPtBJf"
+  .c0 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+<span
+    class="c0"
     color="#777"
     data-testid="PaginationCounter"
     display="inline-block"
@@ -104,8 +212,26 @@ exports[`<PaginationCounter /> check if correct text render should be 5 - 7 of 7
 
 exports[`<PaginationCounter /> check if correct text render should be 10 - 10 of 10 orders 1`] = `
 <DocumentFragment>
-  <span
-    class="sc-bdfBwQ cPtBJf"
+  .c0 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.3rem;
+}
+
+<span
+    class="c0"
     color="#777"
     data-testid="PaginationCounter"
     display="inline-block"

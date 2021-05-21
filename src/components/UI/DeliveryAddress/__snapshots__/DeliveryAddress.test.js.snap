@@ -2,15 +2,55 @@
 
 exports[`<DeliveryAddress /> should render five <PlainText /> with correct values 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ BWACj"
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c0 > *:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.c1 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-all;
+  font-size: 1.5rem;
+}
+
+<div
+    class="c0"
     direction="column"
     spacing="1"
     width="100%"
     wrap="nowrap"
   >
     <span
-      class="sc-gsTCUz ehKhIH"
+      class="c1"
       color=""
       display="inline-block"
       overflow="visible"
@@ -21,7 +61,7 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
       firstName lastName
     </span>
     <span
-      class="sc-gsTCUz ehKhIH"
+      class="c1"
       color=""
       display="inline-block"
       overflow="visible"
@@ -32,7 +72,7 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
       street
     </span>
     <span
-      class="sc-gsTCUz ehKhIH"
+      class="c1"
       color=""
       display="inline-block"
       overflow="visible"
@@ -43,7 +83,7 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
       zipCode city
     </span>
     <span
-      class="sc-gsTCUz ehKhIH"
+      class="c1"
       color=""
       display="inline-block"
       overflow="visible"
@@ -54,7 +94,7 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
       country
     </span>
     <span
-      class="sc-gsTCUz ehKhIH"
+      class="c1"
       color=""
       display="inline-block"
       overflow="visible"

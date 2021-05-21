@@ -31,9 +31,10 @@ const Cart = () => {
     (currentHistory) => dispatch(actions.goToTransaction(currentHistory)),
     [dispatch],
   );
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   useEffect(() => {
     onFetchCart();

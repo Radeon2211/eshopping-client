@@ -42,6 +42,11 @@ export const productConditions = {
   NOT_APPLICABLE: 'not_applicable',
 };
 
+export const productPhotoFieldValues = {
+  DELETED: 'DELETED',
+  ERROR: 'ERROR',
+};
+
 export const productRules = {
   name: Yup.string().max(150).trim().required(),
   price: Yup.number().min(0.01).max(1000000).required(),
@@ -50,6 +55,7 @@ export const productRules = {
     .oneOf([productConditions.NEW, productConditions.USED, productConditions.NOT_APPLICABLE])
     .required(),
   description: Yup.string().max(600).trim(),
+  photo: Yup.mixed().test('is-error', (value) => value !== productPhotoFieldValues.ERROR),
 };
 
 export const listOfAreaCodes = getCountries().map(({ name, dial }) => {

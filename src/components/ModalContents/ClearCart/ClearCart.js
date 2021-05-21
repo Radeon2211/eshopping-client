@@ -7,9 +7,10 @@ import FlexWrapper from '../../UI/FlexWrapper';
 
 const ClearCart = () => {
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
   const onClearCart = useCallback(() => dispatch(actions.clearCart()), [dispatch]);
 
   const clearCartClickHandle = () => {

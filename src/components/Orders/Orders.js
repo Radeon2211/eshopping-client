@@ -11,6 +11,7 @@ import SortOrders from './SortOrders/SortOrders';
 import Heading from '../UI/Heading/Heading';
 import Loader from '../UI/Loader/Loader';
 import { listItemTypes, orderTypes, defaultOrdersPerPage } from '../../shared/constants';
+import * as propTypes from '../../shared/propTypes';
 import { TopPagination } from '../../styled/components';
 
 const Orders = (props) => {
@@ -70,7 +71,7 @@ const Orders = (props) => {
 };
 
 Orders.propTypes = {
-  orders: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object)]),
+  orders: PropTypes.arrayOf(PropTypes.shape(propTypes.orderItem)),
   type: PropTypes.string.isRequired,
 };
 

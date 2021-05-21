@@ -5,6 +5,7 @@ import {
   productPages,
   productConditions,
   defaultProductsPerPage,
+  productPhotoFieldValues,
 } from '../../../shared/constants';
 import {
   checkReqMethodAndURL,
@@ -524,7 +525,7 @@ describe('async functions', () => {
               actions.editProduct(
                 {
                   ...productData,
-                  photo: 'DELETED',
+                  photo: productPhotoFieldValues.DELETED,
                 },
                 productId,
               ),
@@ -580,7 +581,7 @@ describe('async functions', () => {
               actions.editProduct(
                 {
                   ...productData,
-                  photo: 'DELETED',
+                  photo: productPhotoFieldValues.DELETED,
                 },
                 productId,
               ),
@@ -775,7 +776,7 @@ describe('async functions', () => {
             actions.editProduct(
               {
                 ...productData,
-                photo: 'DELETED',
+                photo: productPhotoFieldValues.DELETED,
               },
               productId,
             ),
@@ -918,7 +919,7 @@ describe('async functions', () => {
         await actions.editProduct(
           {
             ...productData,
-            photo: 'DELETED',
+            photo: productPhotoFieldValues.DELETED,
           },
           productId,
         )(innerDispatchFn);
@@ -962,7 +963,7 @@ describe('async functions', () => {
         await actions.editProduct(
           {
             ...productData,
-            photo: 'DELETED',
+            photo: productPhotoFieldValues.DELETED,
           },
           productId,
         )(innerDispatchFn);

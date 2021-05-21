@@ -2,11 +2,233 @@
 
 exports[`<AddAdmin /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hYjfqi"
+  .c0 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  justify-self: center;
+  max-width: 100%;
+  text-align: left;
+  width: 65rem;
+}
+
+.c10 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c10:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c11 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+  cursor: not-allowed;
+}
+
+.c11:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c11:hover {
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+}
+
+.c9 {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 2.4rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+.c3 .select {
+  font-size: 1.4rem;
+}
+
+.c3 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c3 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c3 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c3.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c3.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c7 {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  color: #000;
+  font-size: 1.3rem;
+  font-family: inherit;
+  outline: none;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  width: 100%;
+}
+
+.c7::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c7:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c2.valid .c6 {
+  border-bottom: 3px solid #009680;
+}
+
+.c2.invalid .c6 {
+  border-bottom: 3px solid #F22613;
+}
+
+.c5 {
+  font-size: 1.5rem;
+  padding-bottom: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c2.valid .c4 {
+  color: #009680;
+}
+
+.c2.invalid .c4 {
+  color: #F22613;
+}
+
+<div
+    class="c0"
   >
     <h3
-      class="sc-iBPRYJ jtekve"
+      class="c1"
     >
       Add admin
     </h3>
@@ -15,18 +237,18 @@ exports[`<AddAdmin /> check how renders should render everything correctly 1`] =
       class="formik-form"
     >
       <div
-        class="sc-fubCfw drZTsR"
+        class="c2 c3"
         type="email"
       >
         <label
-          class="sc-jrAGrp bkXExJ"
+          class="c4 c5"
           for="email"
         >
           Email
         </label>
         <input
           autocomplete="email"
-          class="sc-pFZIQ fjonmB"
+          class="c6 c7"
           data-testid="AddAdmin-email"
           id="email"
           name="email"
@@ -36,14 +258,14 @@ exports[`<AddAdmin /> check how renders should render everything correctly 1`] =
         />
       </div>
       <div
-        class="sc-gKsewC dLOeOj"
+        class="c8"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <span
-          class="sc-eCssSg gABWUT"
+          class="c9"
           color=""
           display="block"
           overflow="visible"
@@ -51,7 +273,7 @@ exports[`<AddAdmin /> check how renders should render everything correctly 1`] =
           transform=""
         >
           <button
-            class="sc-gsTCUz gNMffe"
+            class="c10"
             color="blue"
             type="button"
           >
@@ -59,7 +281,7 @@ exports[`<AddAdmin /> check how renders should render everything correctly 1`] =
           </button>
         </span>
         <button
-          class="sc-gsTCUz ghohWv"
+          class="c11"
           color="blue"
           data-testid="Form-submit-btn"
           disabled=""

@@ -2,26 +2,266 @@
 
 exports[`<MyData /> check how renders should render everything correctly for admin user 1`] = `
 <DocumentFragment>
-  <h3
-    class="sc-eCssSg eXQgPS"
+  .c0 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+@media only screen and (max-width:37.5em) {
+
+}
+
+@media only screen and (max-width:56.25em) {
+
+}
+
+<h3
+    class="c0"
   >
     My data
   </h3>
-  <div
-    class="sc-hKgILt eboeig"
+  .c2 {
+  display: grid;
+  grid-gap: 2.4rem;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.c2 .change-passwd-btn {
+  grid-area: 3 / 2 / 3 / 3;
+}
+
+.c2 .actions {
+  grid-column: 1 / -1;
+}
+
+.c1 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c0 > *:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+.c3 > *:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c7 > *:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c8 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c6 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c6:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c9 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c9:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-all;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width:37.5em) {
+  .c2 {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .c2 .change-passwd-btn {
+    grid-area: 4 / 1 / 4 / 3;
+  }
+
+  .c2 .actions > * {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c1 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+<div
+    class="c0"
     direction="column"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <section
-      class="sc-dlfnbm dSatpG"
+      class="c1"
     >
       <div
-        class="sc-bdfBwQ iLceJD"
+        class="c2"
       >
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Username"
           direction="column"
           spacing="2"
@@ -29,12 +269,12 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Username
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -46,7 +286,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           </span>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Name"
           direction="column"
           spacing="2"
@@ -54,12 +294,12 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Name
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -70,7 +310,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             firstName lastName
           </span>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Name-btn"
             type="button"
@@ -79,7 +319,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Email"
           direction="column"
           spacing="2"
@@ -87,12 +327,12 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Email
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -103,7 +343,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             email@domain.com
           </span>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Email-btn"
             type="button"
@@ -112,7 +352,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Address"
           direction="column"
           spacing="2"
@@ -120,19 +360,19 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Address
           </h4>
           <div
-            class="sc-hKgILt cUIkdS"
+            class="c7"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -143,7 +383,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
               street
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -154,7 +394,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
               zipCode city
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -166,7 +406,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             </span>
           </div>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Address-btn"
             type="button"
@@ -175,7 +415,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Contacts"
           direction="column"
           spacing="2"
@@ -183,19 +423,19 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Contacts
           </h4>
           <div
-            class="sc-hKgILt cUIkdS"
+            class="c7"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -206,7 +446,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
               Email: visible
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -218,7 +458,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             </span>
           </div>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Contacts-btn"
             type="button"
@@ -227,7 +467,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Phone number"
           direction="column"
           spacing="2"
@@ -235,12 +475,12 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Phone number
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -251,7 +491,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
             phone
           </span>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Phone number-btn"
             type="button"
@@ -260,21 +500,21 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           </button>
         </div>
         <div
-          class="sc-hKgILt kWUthc actions"
+          class="c8 actions"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             type="button"
           >
             Change password
           </button>
           <button
-            class="sc-jSgupP hQkrdZ"
+            class="c9"
             color="red"
             type="button"
           >
@@ -282,7 +522,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           </button>
         </div>
         <div
-          class="sc-hKgILt kWUthc actions"
+          class="c8 actions"
           data-testid="MyData-admin-content"
           direction="row"
           spacing="3"
@@ -290,14 +530,14 @@ exports[`<MyData /> check how renders should render everything correctly for adm
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             type="button"
           >
             Add admin
           </button>
           <button
-            class="sc-jSgupP hQkrdZ"
+            class="c9"
             color="red"
             type="button"
           >
@@ -312,26 +552,266 @@ exports[`<MyData /> check how renders should render everything correctly for adm
 
 exports[`<MyData /> check how renders should render everything correctly for non admin user with status active 1`] = `
 <DocumentFragment>
-  <h3
-    class="sc-eCssSg eXQgPS"
+  .c0 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+@media only screen and (max-width:37.5em) {
+
+}
+
+@media only screen and (max-width:56.25em) {
+
+}
+
+<h3
+    class="c0"
   >
     My data
   </h3>
-  <div
-    class="sc-hKgILt eboeig"
+  .c2 {
+  display: grid;
+  grid-gap: 2.4rem;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.c2 .change-passwd-btn {
+  grid-area: 3 / 2 / 3 / 3;
+}
+
+.c2 .actions {
+  grid-column: 1 / -1;
+}
+
+.c1 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c0 > *:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+.c3 > *:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c7 > *:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c8 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c6 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c6:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c9 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c9:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-all;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width:37.5em) {
+  .c2 {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .c2 .change-passwd-btn {
+    grid-area: 4 / 1 / 4 / 3;
+  }
+
+  .c2 .actions > * {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c1 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+<div
+    class="c0"
     direction="column"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <section
-      class="sc-dlfnbm dSatpG"
+      class="c1"
     >
       <div
-        class="sc-bdfBwQ iLceJD"
+        class="c2"
       >
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Username"
           direction="column"
           spacing="2"
@@ -339,12 +819,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Username
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -356,7 +836,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </span>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Name"
           direction="column"
           spacing="2"
@@ -364,12 +844,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Name
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -380,7 +860,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             firstName lastName
           </span>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Name-btn"
             type="button"
@@ -389,7 +869,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Email"
           direction="column"
           spacing="2"
@@ -397,12 +877,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Email
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -413,7 +893,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             email@domain.com
           </span>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Email-btn"
             type="button"
@@ -422,7 +902,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Address"
           direction="column"
           spacing="2"
@@ -430,19 +910,19 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Address
           </h4>
           <div
-            class="sc-hKgILt cUIkdS"
+            class="c7"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -453,7 +933,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
               street
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -464,7 +944,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
               zipCode city
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -476,7 +956,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             </span>
           </div>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Address-btn"
             type="button"
@@ -485,7 +965,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Contacts"
           direction="column"
           spacing="2"
@@ -493,19 +973,19 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Contacts
           </h4>
           <div
-            class="sc-hKgILt cUIkdS"
+            class="c7"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -516,7 +996,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
               Email: visible
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c5"
               color=""
               display="inline-block"
               overflow="visible"
@@ -528,7 +1008,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             </span>
           </div>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Contacts-btn"
             type="button"
@@ -537,7 +1017,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </button>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c3"
           data-testid="SingleInfo-Phone number"
           direction="column"
           spacing="2"
@@ -545,12 +1025,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Phone number
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c5"
             color=""
             display="inline-block"
             overflow="visible"
@@ -561,7 +1041,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
             phone
           </span>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             data-testid="SingleInfo-Phone number-btn"
             type="button"
@@ -570,21 +1050,21 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </button>
         </div>
         <div
-          class="sc-hKgILt kWUthc actions"
+          class="c8 actions"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP biAJYh"
+            class="c6"
             color="blue"
             type="button"
           >
             Change password
           </button>
           <button
-            class="sc-jSgupP hQkrdZ"
+            class="c9"
             color="red"
             type="button"
           >
@@ -599,24 +1079,282 @@ exports[`<MyData /> check how renders should render everything correctly for non
 
 exports[`<MyData /> check how renders should render everything correctly for non admin user with status pending 1`] = `
 <DocumentFragment>
-  <h3
-    class="sc-eCssSg eXQgPS"
+  .c0 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+@media only screen and (max-width:37.5em) {
+
+}
+
+@media only screen and (max-width:56.25em) {
+
+}
+
+<h3
+    class="c0"
   >
     My data
   </h3>
-  <div
-    class="sc-hKgILt eboeig"
+  .c3 {
+  display: grid;
+  grid-gap: 2.4rem;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.c3 .change-passwd-btn {
+  grid-area: 3 / 2 / 3 / 3;
+}
+
+.c3 .actions {
+  grid-column: 1 / -1;
+}
+
+.c1 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c0 > *:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+.c4 > *:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c7 > *:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c8 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c5 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c9 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c9:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c10 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c10:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c2 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  line-height: 1.4;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-all;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width:37.5em) {
+  .c3 {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .c3 .change-passwd-btn {
+    grid-area: 4 / 1 / 4 / 3;
+  }
+
+  .c3 .actions > * {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c1 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+<div
+    class="c0"
     direction="column"
     spacing="3"
     width="100%"
     wrap="nowrap"
   >
     <section
-      class="sc-dlfnbm dSatpG"
+      class="c1"
       data-testid="MyData-pending-user-content"
     >
       <span
-        class="sc-fubCfw hUhCPF"
+        class="c2"
         color=""
         display="inline-block"
         overflow="visible"
@@ -628,13 +1366,13 @@ exports[`<MyData /> check how renders should render everything correctly for non
       </span>
     </section>
     <section
-      class="sc-dlfnbm dSatpG"
+      class="c1"
     >
       <div
-        class="sc-bdfBwQ iLceJD"
+        class="c3"
       >
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c4"
           data-testid="SingleInfo-Username"
           direction="column"
           spacing="2"
@@ -642,12 +1380,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c5"
           >
             Username
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c6"
             color=""
             display="inline-block"
             overflow="visible"
@@ -659,7 +1397,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </span>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c4"
           data-testid="SingleInfo-Name"
           direction="column"
           spacing="2"
@@ -667,12 +1405,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c5"
           >
             Name
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c6"
             color=""
             display="inline-block"
             overflow="visible"
@@ -684,7 +1422,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </span>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c4"
           data-testid="SingleInfo-Email"
           direction="column"
           spacing="2"
@@ -692,12 +1430,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c5"
           >
             Email
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c6"
             color=""
             display="inline-block"
             overflow="visible"
@@ -709,7 +1447,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </span>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c4"
           data-testid="SingleInfo-Address"
           direction="column"
           spacing="2"
@@ -717,19 +1455,19 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c5"
           >
             Address
           </h4>
           <div
-            class="sc-hKgILt cUIkdS"
+            class="c7"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -740,7 +1478,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
               street
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -751,7 +1489,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
               zipCode city
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -764,7 +1502,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </div>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c4"
           data-testid="SingleInfo-Contacts"
           direction="column"
           spacing="2"
@@ -772,19 +1510,19 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c5"
           >
             Contacts
           </h4>
           <div
-            class="sc-hKgILt cUIkdS"
+            class="c7"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -795,7 +1533,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
               Email: visible
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -808,7 +1546,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </div>
         </div>
         <div
-          class="sc-hKgILt gmWsbW"
+          class="c4"
           data-testid="SingleInfo-Phone number"
           direction="column"
           spacing="2"
@@ -816,12 +1554,12 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c5"
           >
             Phone number
           </h4>
           <span
-            class="sc-fubCfw osNBQ"
+            class="c6"
             color=""
             display="inline-block"
             overflow="visible"
@@ -833,7 +1571,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </span>
         </div>
         <div
-          class="sc-hKgILt kWUthc actions"
+          class="c8 actions"
           data-testid="MyData-pending-user-actions"
           direction="row"
           spacing="3"
@@ -841,14 +1579,14 @@ exports[`<MyData /> check how renders should render everything correctly for non
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP biAJYh"
+            class="c9"
             color="blue"
             type="button"
           >
             Send verification link
           </button>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c9"
             color="blue"
             type="button"
           >
@@ -856,14 +1594,14 @@ exports[`<MyData /> check how renders should render everything correctly for non
           </button>
         </div>
         <div
-          class="sc-hKgILt kWUthc actions"
+          class="c8 actions"
           direction="row"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <button
-            class="sc-jSgupP hQkrdZ"
+            class="c10"
             color="red"
             type="button"
           >

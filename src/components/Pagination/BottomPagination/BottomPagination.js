@@ -35,7 +35,7 @@ const BottomPagination = (props) => {
 
 BottomPagination.propTypes = {
   itemQuantity: PropTypes.number.isRequired,
-  itemsType: PropTypes.oneOf([listItemTypes.PRODUCT, listItemTypes.ORDER]).isRequired,
+  itemsType: PropTypes.oneOf(Object.values(listItemTypes)).isRequired,
   quantityPerPage: PropTypes.number.isRequired,
 };
 

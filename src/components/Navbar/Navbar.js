@@ -8,6 +8,7 @@ import SearchForm from './SearchForm/SearchForm';
 import LoggedOutLinks from './LoggedOutLinks/LoggedOutLinks';
 import LoggedInLinks from './LoggedInLinks/LoggedInLinks';
 import { defaultAppPath } from '../../shared/constants';
+import * as propTypes from '../../shared/propTypes';
 
 const Navbar = (props) => {
   const { userProfile } = props;
@@ -39,7 +40,7 @@ Navbar.defaultProps = {
 };
 
 Navbar.propTypes = {
-  userProfile: PropTypes.oneOfType([PropTypes.object]),
+  userProfile: PropTypes.shape(propTypes.userProfile),
 };
 
 export default Navbar;

@@ -13,9 +13,10 @@ const BuyProducts = () => {
   const lastLocation = useLastLocation();
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
   const onBuyProducts = useCallback(
     (currentHistory, lastPath) => dispatch(actions.buyProducts(currentHistory, lastPath)),
     [dispatch],

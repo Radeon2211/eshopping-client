@@ -21,9 +21,10 @@ const OrderDetails = () => {
   const orderDetails = useSelector((state) => state.auth.orderDetails);
 
   const dispatch = useDispatch();
-  const onFetchOrderDetails = useCallback((id) => dispatch(actions.fetchOrderDetails(id)), [
-    dispatch,
-  ]);
+  const onFetchOrderDetails = useCallback(
+    (id) => dispatch(actions.fetchOrderDetails(id)),
+    [dispatch],
+  );
   const onSetOrderDetails = useCallback(() => dispatch(actions.setOrderDetails()), [dispatch]);
 
   useEffect(() => {

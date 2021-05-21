@@ -666,6 +666,56 @@ describe('<AddProduct />', () => {
 
           expect(store.dispatch).not.toHaveBeenCalled();
         });
+
+        it('should NOT call addProduct() if photo is too big (price and name are changed)', async () => {
+          const { store, container } = setUp();
+
+          const nameInput = screen.getByTestId('AddProduct-name');
+          const priceInput = screen.getByTestId('AddProduct-price');
+          const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
+          const newPhoto = mockFile.create('wellingtons.png', 6500000, 'image/png');
+
+          await waitFor(() => {
+            fireEvent.change(nameInput, { target: { value: defaultNewName } });
+          });
+          await waitFor(() => {
+            fireEvent.change(priceInput, { target: { value: defaultNewPrice } });
+          });
+          await waitFor(() => {
+            fireEvent.change(uploadPhotoInput, { target: { files: [newPhoto] } });
+          });
+          expect(nameInput.value).toEqual(defaultNewName);
+          expect(priceInput.value).toEqual(defaultNewPrice.toString());
+
+          await clickAtSubmitButton(container);
+
+          expect(store.dispatch).not.toHaveBeenCalled();
+        });
+
+        it('should NOT call addProduct() if photo has incorrect extension (price and name are changed)', async () => {
+          const { store, container } = setUp();
+
+          const nameInput = screen.getByTestId('AddProduct-name');
+          const priceInput = screen.getByTestId('AddProduct-price');
+          const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
+          const newPhoto = mockFile.create('wellingtons.png', 1024, 'image/svg+xml');
+
+          await waitFor(() => {
+            fireEvent.change(nameInput, { target: { value: defaultNewName } });
+          });
+          await waitFor(() => {
+            fireEvent.change(priceInput, { target: { value: defaultNewPrice } });
+          });
+          await waitFor(() => {
+            fireEvent.change(uploadPhotoInput, { target: { files: [newPhoto] } });
+          });
+          expect(nameInput.value).toEqual(defaultNewName);
+          expect(priceInput.value).toEqual(defaultNewPrice.toString());
+
+          await clickAtSubmitButton(container);
+
+          expect(store.dispatch).not.toHaveBeenCalled();
+        });
       });
     });
   });

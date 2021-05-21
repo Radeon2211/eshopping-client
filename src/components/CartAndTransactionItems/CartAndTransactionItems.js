@@ -7,6 +7,7 @@ import CartItem from './CartItem/CartItem';
 import PlainText from '../UI/PlainText';
 import { GreenText } from '../../styled/components';
 import { itemTypes } from '../../shared/constants';
+import * as propTypes from '../../shared/propTypes';
 
 export const SC = {};
 SC.SingleSeller = styled.div`
@@ -69,7 +70,21 @@ CartAndTransactionItems.defaultProps = {
 };
 
 CartAndTransactionItems.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  items: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape(propTypes.cartItem).isRequired),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        quantity: PropTypes.number.isRequired,
+        photo: PropTypes.bool.isRequired,
+        seller: PropTypes.shape({
+          username: PropTypes.string.isRequired,
+        }).isRequired,
+      }),
+    ),
+  ]),
   type: PropTypes.oneOf([itemTypes.TRANSACTION, itemTypes.CART]).isRequired,
   isCartLoading: PropTypes.bool,
 };

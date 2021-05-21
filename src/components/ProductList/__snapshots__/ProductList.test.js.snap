@@ -2,12 +2,25 @@
 
 exports[`<ProductList /> check how renders should render correct info for ALL_PRODUCTS with filters 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ iaCqQM"
+      class="c1"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to search something else or change filters
@@ -18,12 +31,25 @@ exports[`<ProductList /> check how renders should render correct info for ALL_PR
 
 exports[`<ProductList /> check how renders should render correct info for ALL_PRODUCTS without filters other than name 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ iaCqQM"
+      class="c1"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to search something else
@@ -34,12 +60,25 @@ exports[`<ProductList /> check how renders should render correct info for ALL_PR
 
 exports[`<ProductList /> check how renders should render correct info for MY_PRODUCTS with filters 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ iaCqQM"
+      class="c1"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to change filters
@@ -50,12 +89,25 @@ exports[`<ProductList /> check how renders should render correct info for MY_PRO
 
 exports[`<ProductList /> check how renders should render correct info for MY_PRODUCTS without filters other than name 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ iaCqQM"
+      class="c1"
       data-testid="ProductList-empty-list-info"
     >
       You don't have any offers published yet
@@ -66,12 +118,25 @@ exports[`<ProductList /> check how renders should render correct info for MY_PRO
 
 exports[`<ProductList /> check how renders should render correct info for USER_PRODUCTS with filters 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ iaCqQM"
+      class="c1"
       data-testid="ProductList-empty-list-info"
     >
       We didn't find any matching results. Try to change filters
@@ -82,12 +147,25 @@ exports[`<ProductList /> check how renders should render correct info for USER_P
 
 exports[`<ProductList /> check how renders should render correct info for USER_PRODUCTS without filters other than name 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <h4
-      class="sc-iBPRYJ iaCqQM"
+      class="c1"
       data-testid="ProductList-empty-list-info"
     >
       This user doesn't have any offers published yet
@@ -98,22 +176,228 @@ exports[`<ProductList /> check how renders should render correct info for USER_P
 
 exports[`<ProductList /> check how renders should render list with one item 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 13;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c5 > *:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.c2 {
+  border-bottom: 1px solid #DADFE1;
+  padding: 1.2rem;
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+}
+
+.c2:hover {
+  background-color: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.c2 .buyer-quantity-box {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1.2rem;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c7 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+  margin-top: calc(0.8rem + 0rem);
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+}
+
+.c9 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c4 {
+  max-height: 15rem;
+  min-width: 13rem;
+  width: 13rem;
+}
+
+.c4 img {
+  max-height: 15rem;
+  max-width: 13rem;
+  object-fit: cover;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+@media only screen and (max-width:24.5em) {
+  .c2 .photo-box {
+    max-height: 13rem;
+    min-width: 10rem;
+    width: 10rem;
+  }
+}
+
+@media only screen and (max-width:22.5em) {
+  .c2 .photo-box {
+    max-height: 11rem;
+    min-width: 8rem;
+    width: 8rem;
+  }
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <a
       data-testid="ProductItem"
     >
       <div
-        class="sc-bdfBwQ dXFlzG sc-gsTCUz vzdrx"
+        class="c1 c2"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <div
-          class="sc-bdfBwQ gEWXUp sc-hKgILt iGwkBA"
+          class="c3 c4"
           data-testid="ProductThumbnail"
           direction="row"
           height="15"
@@ -128,14 +412,14 @@ exports[`<ProductList /> check how renders should render list with one item 1`] 
           />
         </div>
         <div
-          class="sc-bdfBwQ jPnCyv"
+          class="c5"
           direction="column"
           spacing=""
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-dlfnbm LDMTW"
+            class="c6"
             color=""
             display="inline-block"
             overflow="visible"
@@ -146,7 +430,7 @@ exports[`<ProductList /> check how renders should render list with one item 1`] 
             product1
           </span>
           <span
-            class="sc-dlfnbm iDQpJo"
+            class="c7"
             color=""
             data-testid="ProductItem-condition"
             display="inline-block"
@@ -156,7 +440,7 @@ exports[`<ProductList /> check how renders should render list with one item 1`] 
             transform=""
           >
             <span
-              class="sc-dlfnbm fMxJtk"
+              class="c8"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -168,7 +452,7 @@ exports[`<ProductList /> check how renders should render list with one item 1`] 
              New
           </span>
           <span
-            class="sc-dlfnbm cQEZxx"
+            class="c9"
             color=""
             data-testid="ProductItem-price"
             display="inline-block"
@@ -188,22 +472,228 @@ exports[`<ProductList /> check how renders should render list with one item 1`] 
 
 exports[`<ProductList /> check how renders should render list with two items 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 13;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c5 > *:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.c2 {
+  border-bottom: 1px solid #DADFE1;
+  padding: 1.2rem;
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+}
+
+.c2:hover {
+  background-color: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.c2 .buyer-quantity-box {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1.2rem;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c7 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+  margin-top: calc(0.8rem + 0rem);
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+}
+
+.c9 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c4 {
+  max-height: 15rem;
+  min-width: 13rem;
+  width: 13rem;
+}
+
+.c4 img {
+  max-height: 15rem;
+  max-width: 13rem;
+  object-fit: cover;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+@media only screen and (max-width:24.5em) {
+  .c2 .photo-box {
+    max-height: 13rem;
+    min-width: 10rem;
+    width: 10rem;
+  }
+}
+
+@media only screen and (max-width:22.5em) {
+  .c2 .photo-box {
+    max-height: 11rem;
+    min-width: 8rem;
+    width: 8rem;
+  }
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <a
       data-testid="ProductItem"
     >
       <div
-        class="sc-bdfBwQ dXFlzG sc-gsTCUz vzdrx"
+        class="c1 c2"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <div
-          class="sc-bdfBwQ gEWXUp sc-hKgILt iGwkBA"
+          class="c3 c4"
           data-testid="ProductThumbnail"
           direction="row"
           height="15"
@@ -218,14 +708,14 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
           />
         </div>
         <div
-          class="sc-bdfBwQ jPnCyv"
+          class="c5"
           direction="column"
           spacing=""
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-dlfnbm LDMTW"
+            class="c6"
             color=""
             display="inline-block"
             overflow="visible"
@@ -236,7 +726,7 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
             product1
           </span>
           <span
-            class="sc-dlfnbm iDQpJo"
+            class="c7"
             color=""
             data-testid="ProductItem-condition"
             display="inline-block"
@@ -246,7 +736,7 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
             transform=""
           >
             <span
-              class="sc-dlfnbm fMxJtk"
+              class="c8"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -258,7 +748,7 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
              New
           </span>
           <span
-            class="sc-dlfnbm cQEZxx"
+            class="c9"
             color=""
             data-testid="ProductItem-price"
             display="inline-block"
@@ -276,14 +766,14 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
       data-testid="ProductItem"
     >
       <div
-        class="sc-bdfBwQ dXFlzG sc-gsTCUz vzdrx"
+        class="c1 c2"
         direction="row"
         spacing="3"
         width="100%"
         wrap="nowrap"
       >
         <div
-          class="sc-bdfBwQ gEWXUp sc-hKgILt iGwkBA"
+          class="c3 c4"
           data-testid="ProductThumbnail"
           direction="row"
           height="15"
@@ -298,14 +788,14 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
           />
         </div>
         <div
-          class="sc-bdfBwQ jPnCyv"
+          class="c5"
           direction="column"
           spacing=""
           width="100%"
           wrap="nowrap"
         >
           <span
-            class="sc-dlfnbm LDMTW"
+            class="c6"
             color=""
             display="inline-block"
             overflow="visible"
@@ -316,7 +806,7 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
             product2
           </span>
           <span
-            class="sc-dlfnbm iDQpJo"
+            class="c7"
             color=""
             data-testid="ProductItem-condition"
             display="inline-block"
@@ -326,7 +816,7 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
             transform=""
           >
             <span
-              class="sc-dlfnbm fMxJtk"
+              class="c8"
               color="#777"
               display="inline-block"
               overflow="visible"
@@ -338,7 +828,7 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
              New
           </span>
           <span
-            class="sc-dlfnbm cQEZxx"
+            class="c9"
             color=""
             data-testid="ProductItem-price"
             display="inline-block"
@@ -358,16 +848,83 @@ exports[`<ProductList /> check how renders should render list with two items 1`]
 
 exports[`<ProductList /> check how renders should render only <LoadingOverlay /> 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-fubCfw kEEAfr"
+  .c2 {
+  display: inline-block;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+
+.c2 > div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid #1E8BC3;
+  border-color: #1E8BC3 transparent transparent transparent;
+}
+
+.c2 > div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+  animation-delay: -0.45s;
+}
+
+.c2 > div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+
+.c2 > div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+  animation-delay: -0.15s;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FAFAFA88;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  justify-items: start;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.c0 {
+  min-height: 4rem;
+  position: relative;
+  width: 100%;
+}
+
+<div
+    class="c0"
     data-testid="ProductList"
   >
     <div
-      class="sc-gKsewC jItbZz"
+      class="c1"
       data-testid="LoadingOverlay"
     >
       <div
-        class="sc-jSgupP dKnIqn"
+        class="c2"
         data-testid="Loader"
       >
         <div />

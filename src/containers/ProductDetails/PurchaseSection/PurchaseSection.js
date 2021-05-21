@@ -4,14 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import * as SC from './PurchaseSection.sc';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes, userStatuses } from '../../../shared/constants';
 import Button from '../../../components/UI/Button/Button';
 import ChooseQuantity from '../../../components/UI/ChooseQuantity/ChooseQuantity';
 import PlainText from '../../../components/UI/PlainText';
-import { GreenText } from '../../../styled/components';
-import Heading from '../../../components/UI/Heading/Heading';
-import theme from '../../../styled/theme';
 import FlexWrapper from '../../../components/UI/FlexWrapper';
+import Heading from '../../../components/UI/Heading/Heading';
+import { GreenText } from '../../../styled/components';
+import theme from '../../../styled/theme';
+import { modalTypes, userStatuses } from '../../../shared/constants';
+import * as propTypes from '../../../shared/propTypes';
 
 const PurchaseSection = (props) => {
   const { productId, productQuantity, productSellerUsername, onSetModal, userProfile } = props;
@@ -171,7 +172,7 @@ PurchaseSection.propTypes = {
   productQuantity: PropTypes.number.isRequired,
   productSellerUsername: PropTypes.string,
   onSetModal: PropTypes.func.isRequired,
-  userProfile: PropTypes.oneOfType([PropTypes.object]),
+  userProfile: PropTypes.shape(propTypes.userProfile),
 };
 
 export default PurchaseSection;

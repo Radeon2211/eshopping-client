@@ -2,11 +2,450 @@
 
 exports[`<Signup /> check how renders should render with Step1 by default 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ VOJFF"
+  .c0 {
+  text-align: left;
+}
+
+.c0 .progress-bar-box {
+  padding: 0 2.4rem;
+}
+
+.c8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c7 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  justify-self: center;
+  max-width: 100%;
+  text-align: left;
+  width: 65rem;
+}
+
+.c7 .formik-form {
+  position: relative;
+  height: 46rem;
+}
+
+.c18 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+  cursor: not-allowed;
+}
+
+.c18:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c18:hover {
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+}
+
+.c3 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c15 {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 2.4rem;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  text-align: justify;
+  font-size: 1.3rem;
+  margin-top: calc(-1.2rem - 0.4rem);
+}
+
+.c1 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2.4rem;
+  max-width: 100%;
+  width: 45rem;
+}
+
+.c2 .step-box {
+  background-color: #FAFAFA;
+  border: 3px solid #DADFE1;
+  border-radius: 50%;
+  color: #BFBFBF;
+  height: 3.2rem;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 3.2rem;
+}
+
+.c2 .step-box.active {
+  background-color: #FAFAFA;
+  border: 3px solid #1E8BC3;
+  color: #000;
+}
+
+.c2 .step-line {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: #DADFE1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 4px;
+  position: relative;
+}
+
+.c2 .step-line-fill {
+  background-color: #1E8BC3;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+  width: 0;
+}
+
+.c2 .step-line-fill.active {
+  width: 100%;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #000;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+.c10 .select {
+  font-size: 1.4rem;
+}
+
+.c10 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c10 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c10 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c10.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c10.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c16 > label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  padding: 0 0 0 calc(2.4rem + 0.8rem);
+  position: relative;
+}
+
+.c16 > label::before {
+  border: 2px solid #1E8BC3;
+  border-radius: 1px;
+  content: '';
+  height: 2.4rem;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 2.4rem;
+}
+
+.c16 > label::after {
+  color: #1E8BC3;
+  content: '✗';
+  font-size: 1.7rem;
+  font-weight: 700;
+  opacity: 0;
+  left: 1.2rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+}
+
+.c16 > input {
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  width: 0;
+}
+
+.c16 .select {
+  font-size: 1.4rem;
+}
+
+.c16 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c16 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c16 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c16.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c16.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c14 {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  color: #000;
+  font-size: 1.3rem;
+  font-family: inherit;
+  outline: none;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  width: 100%;
+}
+
+.c14::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c14:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c9.valid .c13 {
+  border-bottom: 3px solid #009680;
+}
+
+.c9.invalid .c13 {
+  border-bottom: 3px solid #F22613;
+}
+
+.c12 {
+  font-size: 1.5rem;
+  padding-bottom: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c9.valid .c11 {
+  color: #009680;
+}
+
+.c9.invalid .c11 {
+  color: #F22613;
+}
+
+<div
+    class="c0"
   >
     <h3
-      class="sc-jrAGrp krObjk"
+      class="c1"
     >
       Register new account
     </h3>
@@ -14,13 +453,13 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
       class="progress-bar-box"
     >
       <div
-        class="sc-kEjbxe czbdkt"
+        class="c2"
       >
         <div
           class="step-box active"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -29,11 +468,11 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             transform=""
           >
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c4"
               data-testid="ProgressBar-step-box-checkmark-hidden"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -42,7 +481,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
               </div>
             </div>
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c6"
               data-testid="ProgressBar-step-box-number-visible"
             >
               1
@@ -60,7 +499,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
           class="step-box"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -69,11 +508,11 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             transform=""
           >
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c4"
               data-testid="ProgressBar-step-box-checkmark-hidden"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -82,7 +521,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
               </div>
             </div>
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c6"
               data-testid="ProgressBar-step-box-number-visible"
             >
               2
@@ -100,7 +539,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
           class="step-box"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -109,11 +548,11 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             transform=""
           >
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c4"
               data-testid="ProgressBar-step-box-checkmark-hidden"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -122,7 +561,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
               </div>
             </div>
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c6"
               data-testid="ProgressBar-step-box-number-visible"
             >
               3
@@ -132,7 +571,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
       </div>
     </div>
     <div
-      class="sc-hKgILt cAntWy"
+      class="c7"
       height="46"
     >
       <form
@@ -140,23 +579,23 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
         class="formik-form"
       >
         <div
-          class="sc-gsTCUz mRRDa"
+          class="c8"
           data-testid="Step1"
           style="opacity: 0;"
         >
           <div
-            class="sc-dQppl eVncb"
+            class="c9 c10"
             type="email"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c11 c12"
               for="email"
             >
               Email
             </label>
             <input
               autocomplete="email"
-              class="sc-bqyKva dfRFOj"
+              class="c13 c14"
               data-testid="Step1-email"
               id="email"
               name="email"
@@ -166,7 +605,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             />
           </div>
           <span
-            class="sc-iBPRYJ fQTCab"
+            class="c15"
             color=""
             display="block"
             overflow="visible"
@@ -177,17 +616,17 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             We will send verification link to this email, so make sure it is correct. If you provide someone else's email, that person will have access to that account.
           </span>
           <div
-            class="sc-dQppl echBYe"
+            class="c9 c16"
             type="checkbox"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c11 c12"
               for="hideEmail"
             >
               Hide my email address from others
             </label>
             <input
-              class="sc-bqyKva dfRFOj"
+              class="c13 c14"
               data-testid="Step1-hideEmail"
               id="hideEmail"
               name="hideEmail"
@@ -196,7 +635,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             />
           </div>
           <span
-            class="sc-iBPRYJ fQTCab"
+            class="c15"
             color=""
             display="block"
             overflow="visible"
@@ -207,18 +646,18 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             Email is visible to everyone by default. You can hide it from others (it will still be visible to people who will place order with you)
           </span>
           <div
-            class="sc-dQppl eVncb"
+            class="c9 c10"
             type="text"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c11 c12"
               for="username"
             >
               Username
             </label>
             <input
               autocomplete="username"
-              class="sc-bqyKva dfRFOj"
+              class="c13 c14"
               data-testid="Step1-username"
               id="username"
               name="username"
@@ -228,7 +667,7 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             />
           </div>
           <span
-            class="sc-iBPRYJ fQTCab"
+            class="c15"
             color=""
             display="block"
             overflow="visible"
@@ -239,18 +678,18 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             Username will be visible to everyone and cannot be changed
           </span>
           <div
-            class="sc-dQppl eVncb"
+            class="c9 c10"
             type="password"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c11 c12"
               for="password"
             >
               Password
             </label>
             <input
               autocomplete="off"
-              class="sc-bqyKva dfRFOj"
+              class="c13 c14"
               data-testid="Step1-password"
               id="password"
               name="password"
@@ -260,10 +699,10 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
             />
           </div>
           <div
-            class="sc-dlfnbm cKcjXC"
+            class="c17"
           >
             <button
-              class="sc-eCssSg ghGyRF"
+              class="c18"
               color="blue"
               data-testid="Step1-next-btn"
               disabled=""
@@ -281,11 +720,503 @@ exports[`<Signup /> check how renders should render with Step1 by default 1`] = 
 
 exports[`<Signup /> check how renders should render with Step2 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ VOJFF"
+  .c0 {
+  text-align: left;
+}
+
+.c0 .progress-bar-box {
+  padding: 0 2.4rem;
+}
+
+.c8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c7 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  justify-self: center;
+  max-width: 100%;
+  text-align: left;
+  width: 65rem;
+}
+
+.c7 .formik-form {
+  position: relative;
+  height: 46rem;
+}
+
+.c20 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+  cursor: not-allowed;
+}
+
+.c20:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c20:hover {
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+}
+
+.c19 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c19:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c3 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c15 {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 2.4rem;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  text-align: justify;
+  font-size: 1.3rem;
+  margin-top: calc(-1.2rem - 0.4rem);
+}
+
+.c1 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2.4rem;
+  max-width: 100%;
+  width: 45rem;
+}
+
+.c2 .step-box {
+  background-color: #FAFAFA;
+  border: 3px solid #DADFE1;
+  border-radius: 50%;
+  color: #BFBFBF;
+  height: 3.2rem;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 3.2rem;
+}
+
+.c2 .step-box.active {
+  background-color: #FAFAFA;
+  border: 3px solid #1E8BC3;
+  color: #000;
+}
+
+.c2 .step-line {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: #DADFE1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 4px;
+  position: relative;
+}
+
+.c2 .step-line-fill {
+  background-color: #1E8BC3;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+  width: 0;
+}
+
+.c2 .step-line-fill.active {
+  width: 100%;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #000;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+.c10 .select {
+  font-size: 1.4rem;
+}
+
+.c10 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c10 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c10 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c10.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c10.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c17 > label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  padding: 0 0 0 calc(2.4rem + 0.8rem);
+  position: relative;
+}
+
+.c17 > label::before {
+  border: 2px solid #1E8BC3;
+  border-radius: 1px;
+  content: '';
+  height: 2.4rem;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 2.4rem;
+}
+
+.c17 > label::after {
+  color: #1E8BC3;
+  content: '✗';
+  font-size: 1.7rem;
+  font-weight: 700;
+  opacity: 0;
+  left: 1.2rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+}
+
+.c17 > input {
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  width: 0;
+}
+
+.c17 .select {
+  font-size: 1.4rem;
+}
+
+.c17 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c17 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c17 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c17.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c17.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c14 {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  color: #000;
+  font-size: 1.3rem;
+  font-family: inherit;
+  outline: none;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  width: 100%;
+}
+
+.c14::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c14:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c9.valid .c13 {
+  border-bottom: 3px solid #009680;
+}
+
+.c9.invalid .c13 {
+  border-bottom: 3px solid #F22613;
+}
+
+.c12 {
+  font-size: 1.5rem;
+  padding-bottom: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c9.valid .c11 {
+  color: #009680;
+}
+
+.c9.invalid .c11 {
+  color: #F22613;
+}
+
+.c16 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c16 > *:first-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 2.4rem;
+}
+
+.c16 > *:last-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+<div
+    class="c0"
   >
     <h3
-      class="sc-jrAGrp krObjk"
+      class="c1"
     >
       Register new account
     </h3>
@@ -293,13 +1224,13 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
       class="progress-bar-box"
     >
       <div
-        class="sc-kEjbxe czbdkt"
+        class="c2"
       >
         <div
           class="step-box active"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -308,11 +1239,11 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             transform=""
           >
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c4"
               data-testid="ProgressBar-step-box-checkmark-visible"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -321,7 +1252,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
               </div>
             </div>
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c6"
               data-testid="ProgressBar-step-box-number-hidden"
             >
               1
@@ -339,7 +1270,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
           class="step-box active"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -348,11 +1279,11 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             transform=""
           >
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c6"
               data-testid="ProgressBar-step-box-checkmark-hidden"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -361,7 +1292,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
               </div>
             </div>
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c4"
               data-testid="ProgressBar-step-box-number-visible"
             >
               2
@@ -379,7 +1310,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
           class="step-box"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -388,11 +1319,11 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             transform=""
           >
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c6"
               data-testid="ProgressBar-step-box-checkmark-hidden"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -401,7 +1332,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
               </div>
             </div>
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c4"
               data-testid="ProgressBar-step-box-number-visible"
             >
               3
@@ -411,7 +1342,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
       </div>
     </div>
     <div
-      class="sc-hKgILt cAntWy"
+      class="c7"
       height="46"
     >
       <form
@@ -419,23 +1350,23 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
         class="formik-form"
       >
         <div
-          class="sc-gsTCUz mRRDa"
+          class="c8"
           data-testid="Step2"
           style="opacity: 1;"
         >
           <div
-            class="sc-dQppl eVncb"
+            class="c9 c10"
             type="text"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c11 c12"
               for="firstName"
             >
               First name
             </label>
             <input
               autocomplete="given-name"
-              class="sc-bqyKva dfRFOj"
+              class="c13 c14"
               data-testid="Step2-firstName"
               id="firstName"
               name="firstName"
@@ -445,18 +1376,18 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             />
           </div>
           <div
-            class="sc-dQppl eVncb"
+            class="c9 c10"
             type="text"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c11 c12"
               for="lastName"
             >
               Last name
             </label>
             <input
               autocomplete="family-name"
-              class="sc-bqyKva dfRFOj"
+              class="c13 c14"
               data-testid="Step2-lastName"
               id="lastName"
               name="lastName"
@@ -466,7 +1397,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             />
           </div>
           <span
-            class="sc-iBPRYJ fQTCab"
+            class="c15"
             color=""
             display="block"
             overflow="visible"
@@ -477,13 +1408,13 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             Name is visible only to user you will place order with (and you can change it to specific order)
           </span>
           <div
-            class="sc-fodVxV cYAnxR"
+            class="c16"
           >
             <div
-              class="sc-dQppl eVncb"
+              class="c9 c10"
             >
               <label
-                class="sc-kstrdz dcXmaZ"
+                class="c11 c12"
                 for="phonePrefix"
               >
                 Phone number prefix
@@ -567,18 +1498,18 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
               </div>
             </div>
             <div
-              class="sc-dQppl eVncb"
+              class="c9 c10"
               type="text"
             >
               <label
-                class="sc-kstrdz dcXmaZ"
+                class="c11 c12"
                 for="phoneNumber"
               >
                 Phone number
               </label>
               <input
                 autocomplete="tel-national"
-                class="sc-bqyKva dfRFOj"
+                class="c13 c14"
                 data-testid="Step2-phoneNumber"
                 id="phoneNumber"
                 name="phoneNumber"
@@ -589,7 +1520,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             </div>
           </div>
           <span
-            class="sc-iBPRYJ fQTCab"
+            class="c15"
             color=""
             display="block"
             overflow="visible"
@@ -600,17 +1531,17 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             You can change phone number to specific order
           </span>
           <div
-            class="sc-dQppl echBYe"
+            class="c9 c17"
             type="checkbox"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c11 c12"
               for="hidePhone"
             >
               Hide my phone number from others
             </label>
             <input
-              class="sc-bqyKva dfRFOj"
+              class="c13 c14"
               data-testid="Step2-hidePhone"
               id="hidePhone"
               name="hidePhone"
@@ -619,7 +1550,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             />
           </div>
           <span
-            class="sc-iBPRYJ fQTCab"
+            class="c15"
             color=""
             display="block"
             overflow="visible"
@@ -630,10 +1561,10 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
             Phone number is visible to everyone by default. You can hide it from others (it will still be visible to user who will place order with you and to user you will place order with)
           </span>
           <div
-            class="sc-dlfnbm dFxZbs"
+            class="c18"
           >
             <button
-              class="sc-eCssSg fcfMKw"
+              class="c19"
               color="blue"
               data-testid="Step2-previous-btn"
               type="button"
@@ -641,7 +1572,7 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
               Previous
             </button>
             <button
-              class="sc-eCssSg ghGyRF"
+              class="c20"
               color="blue"
               data-testid="Step2-next-btn"
               disabled=""
@@ -659,11 +1590,403 @@ exports[`<Signup /> check how renders should render with Step2 1`] = `
 
 exports[`<Signup /> check how renders should render with Step3 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ VOJFF"
+  .c0 {
+  text-align: left;
+}
+
+.c0 .progress-bar-box {
+  padding: 0 2.4rem;
+}
+
+.c8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c7 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  justify-self: center;
+  max-width: 100%;
+  text-align: left;
+  width: 65rem;
+}
+
+.c7 .formik-form {
+  position: relative;
+  height: 46rem;
+}
+
+.c19 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+  cursor: not-allowed;
+}
+
+.c19:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c19:hover {
+  background-color: #67809F;
+  border-color: #67809F;
+  color: #FAFAFA;
+}
+
+.c18 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c18:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c3 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c9 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 2.4rem;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  text-align: justify;
+  font-size: 1.3rem;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2.4rem;
+  max-width: 100%;
+  width: 45rem;
+}
+
+.c2 .step-box {
+  background-color: #FAFAFA;
+  border: 3px solid #DADFE1;
+  border-radius: 50%;
+  color: #BFBFBF;
+  height: 3.2rem;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 3.2rem;
+}
+
+.c2 .step-box.active {
+  background-color: #FAFAFA;
+  border: 3px solid #1E8BC3;
+  color: #000;
+}
+
+.c2 .step-line {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: #DADFE1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 4px;
+  position: relative;
+}
+
+.c2 .step-line-fill {
+  background-color: #1E8BC3;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+  width: 0;
+}
+
+.c2 .step-line-fill.active {
+  width: 100%;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #000;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+.c11 .select {
+  font-size: 1.4rem;
+}
+
+.c11 .textarea {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  outline: none;
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  resize: none;
+}
+
+.c11 .textarea::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c11 .textarea:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c11.valid .textarea {
+  border-bottom: 3px solid #009680;
+}
+
+.c11.invalid .textarea {
+  border-bottom: 3px solid #F22613;
+}
+
+.c15 {
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  color: #000;
+  font-size: 1.3rem;
+  font-family: inherit;
+  outline: none;
+  padding: 0 0 0.8rem 0;
+  -webkit-transition: border-bottom 0.1s;
+  transition: border-bottom 0.1s;
+  width: 100%;
+}
+
+.c15::-webkit-input-placeholder {
+  color: #BFBFBF;
+}
+
+.c15:focus {
+  border-bottom: 3px solid rgba(0,0,0,0.35);
+}
+
+.c10.valid .c14 {
+  border-bottom: 3px solid #009680;
+}
+
+.c10.invalid .c14 {
+  border-bottom: 3px solid #F22613;
+}
+
+.c13 {
+  font-size: 1.5rem;
+  padding-bottom: 0.8rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c10.valid .c12 {
+  color: #009680;
+}
+
+.c10.invalid .c12 {
+  color: #F22613;
+}
+
+.c16 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c16 > *:first-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 2.4rem;
+}
+
+.c16 > *:last-child {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+}
+
+<div
+    class="c0"
   >
     <h3
-      class="sc-jrAGrp krObjk"
+      class="c1"
     >
       Register new account
     </h3>
@@ -671,13 +1994,13 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
       class="progress-bar-box"
     >
       <div
-        class="sc-kEjbxe czbdkt"
+        class="c2"
       >
         <div
           class="step-box active"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -686,11 +2009,11 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             transform=""
           >
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c4"
               data-testid="ProgressBar-step-box-checkmark-visible"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -699,7 +2022,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
               </div>
             </div>
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c6"
               data-testid="ProgressBar-step-box-number-hidden"
             >
               1
@@ -717,7 +2040,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
           class="step-box active"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -726,11 +2049,11 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             transform=""
           >
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c4"
               data-testid="ProgressBar-step-box-checkmark-visible"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -739,7 +2062,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
               </div>
             </div>
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c6"
               data-testid="ProgressBar-step-box-number-hidden"
             >
               2
@@ -757,7 +2080,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
           class="step-box active"
         >
           <span
-            class="sc-iBPRYJ hdpxjS"
+            class="c3"
             color=""
             display="inline-block"
             overflow="visible"
@@ -766,11 +2089,11 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             transform=""
           >
             <div
-              class="sc-iqHYGH fRQVGl"
+              class="c6"
               data-testid="ProgressBar-step-box-checkmark-hidden"
             >
               <div
-                class="sc-crrsfI fibqbd"
+                class="c5"
                 color="#000"
               >
                 <svg>
@@ -779,7 +2102,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
               </div>
             </div>
             <div
-              class="sc-iqHYGH gWdKKQ"
+              class="c4"
               data-testid="ProgressBar-step-box-number-visible"
             >
               3
@@ -789,7 +2112,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
       </div>
     </div>
     <div
-      class="sc-hKgILt cAntWy"
+      class="c7"
       height="46"
     >
       <form
@@ -797,12 +2120,12 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
         class="formik-form"
       >
         <div
-          class="sc-gsTCUz mRRDa"
+          class="c8"
           data-testid="Step3"
           style="opacity: 1;"
         >
           <span
-            class="sc-iBPRYJ ixOMCN"
+            class="c9"
             color=""
             display="inline-block"
             overflow="visible"
@@ -813,18 +2136,18 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             These data will be visible only to user you will place order with (and you can change it to specific order)
           </span>
           <div
-            class="sc-dQppl eVncb"
+            class="c10 c11"
             type="text"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c12 c13"
               for="street"
             >
               Street and number
             </label>
             <input
               autocomplete="street-address"
-              class="sc-bqyKva dfRFOj"
+              class="c14 c15"
               data-testid="Step3-street"
               id="street"
               name="street"
@@ -834,21 +2157,21 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             />
           </div>
           <div
-            class="sc-fodVxV gNpXpj"
+            class="c16"
           >
             <div
-              class="sc-dQppl eVncb"
+              class="c10 c11"
               type="text"
             >
               <label
-                class="sc-kstrdz dcXmaZ"
+                class="c12 c13"
                 for="zipCode"
               >
                 Zip code
               </label>
               <input
                 autocomplete="postal-code"
-                class="sc-bqyKva dfRFOj"
+                class="c14 c15"
                 data-testid="Step3-zipCode"
                 id="zipCode"
                 name="zipCode"
@@ -858,18 +2181,18 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
               />
             </div>
             <div
-              class="sc-dQppl eVncb"
+              class="c10 c11"
               type="text"
             >
               <label
-                class="sc-kstrdz dcXmaZ"
+                class="c12 c13"
                 for="city"
               >
                 City
               </label>
               <input
                 autocomplete="address-level2"
-                class="sc-bqyKva dfRFOj"
+                class="c14 c15"
                 data-testid="Step3-city"
                 id="city"
                 name="city"
@@ -880,10 +2203,10 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             </div>
           </div>
           <div
-            class="sc-dQppl eVncb"
+            class="c10 c11"
           >
             <label
-              class="sc-kstrdz dcXmaZ"
+              class="c12 c13"
               for="country"
             >
               Country
@@ -967,7 +2290,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             </div>
           </div>
           <span
-            class="sc-iBPRYJ ixOMCN"
+            class="c9"
             color=""
             display="inline-block"
             overflow="visible"
@@ -978,10 +2301,10 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
             We will send verification link to email provided by you. It will be active for 10 minutes, but you will be able to resend the activation link later. If you do not activate your account within 1 hour, account will be deleted permanently
           </span>
           <div
-            class="sc-dlfnbm dFxZbs"
+            class="c17"
           >
             <button
-              class="sc-eCssSg fcfMKw"
+              class="c18"
               color="blue"
               data-testid="Step3-previous-btn"
               type="button"
@@ -989,7 +2312,7 @@ exports[`<Signup /> check how renders should render with Step3 1`] = `
               Previous
             </button>
             <button
-              class="sc-eCssSg ghGyRF"
+              class="c19"
               color="blue"
               disabled=""
               type="submit"

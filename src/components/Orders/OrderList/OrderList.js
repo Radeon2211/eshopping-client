@@ -12,6 +12,7 @@ import FlexWrapper from '../../UI/FlexWrapper';
 import Button from '../../UI/Button/Button';
 import LoadingOverlay from '../../UI/LoadingOverlay/LoadingOverlay';
 import { formatPrice, formatOrderDate } from '../../../shared/utility/utility';
+import * as propTypes from '../../../shared/propTypes';
 
 const OrderList = (props) => {
   const { orders, orderType } = props;
@@ -69,8 +70,8 @@ const OrderList = (props) => {
 };
 
 OrderList.propTypes = {
-  orders: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
-  orderType: PropTypes.string.isRequired,
+  orders: PropTypes.arrayOf(PropTypes.shape(propTypes.orderItem)).isRequired,
+  orderType: PropTypes.oneOf(Object.values(orderTypes)).isRequired,
 };
 
 export default OrderList;

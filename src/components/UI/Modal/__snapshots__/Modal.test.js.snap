@@ -4,25 +4,150 @@ exports[`<Modal /> check how renders should NOT render anything if modalContent 
 
 exports[`<Modal /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ HlrnY"
+  .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  padding: 1.2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100000;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.35);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.c2 {
+  background-color: #fff;
+  border-radius: 1px;
+  max-width: 100%;
+  padding: 2.4rem;
+  position: relative;
+  text-align: center;
+  width: 55rem;
+  z-index: 100;
+}
+
+.c2 .close-icon {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 2.5rem;
+  height: 2.5rem;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  line-height: 1.4;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  text-align: justify;
+  font-size: 1.5rem;
+}
+
+.c4 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+<div
+    class="c0"
     data-testid="Modal"
   >
     <div
       aria-label="Close modal"
-      class="sc-gsTCUz esKygk"
+      class="c1"
       data-testid="Modal-backdrop"
       role="button"
       style="opacity: 0; pointer-events: none;"
       tabindex="0"
     />
     <div
-      class="sc-dlfnbm ewrkMb"
+      class="c2"
       data-testid="Modal-ABOUT_WEBSITE"
       style="opacity: 0; pointer-events: none;"
     >
       <div
-        class="sc-hKgILt jAwInK close-icon"
+        class="c3 close-icon"
         color=""
         data-testid="Modal-close-icon"
       >
@@ -31,12 +156,12 @@ exports[`<Modal /> check how renders should render everything correctly 1`] = `
         </svg>
       </div>
       <h3
-        class="sc-fubCfw daXnPk"
+        class="c4"
       >
         About website
       </h3>
       <span
-        class="sc-gKsewC jYTWRq"
+        class="c5"
         color=""
         display="inline-block"
         overflow="visible"

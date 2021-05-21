@@ -2,14 +2,423 @@
 
 exports[`<OrderDetails /> check how renders should render everything correctly with two <TransactionAndOrderProdItem /> 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hSaYLI"
+  .c0 {
+  font-size: 1.5rem;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 80rem;
+}
+
+.c1 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c3 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 1.2rem;
+}
+
+.c9 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 2.4rem;
+  text-align: left;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: 700;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-all;
+  font-size: 1.5rem;
+}
+
+.c17 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.4rem;
+}
+
+.c18 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.7rem;
+}
+
+.c19 {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  text-align: right;
+  margin-top: calc(2.4rem + 0rem);
+}
+
+.c20 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0.8rem;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+}
+
+.c21 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.2rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c2 > *:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c4 > *:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c10 > *:not(:last-child) {
+  margin-right: 1.2rem;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 5;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c12 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c15 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c11 {
+  padding-top: 2.4rem;
+}
+
+.c11:last-child {
+  padding-bottom: 0;
+}
+
+.c14 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c14 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c14 .name {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  font-size: 1.5rem;
+}
+
+.c14 .name > a {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c14 .name > a:hover {
+  color: #06AD96;
+}
+
+.c13 {
+  max-height: 5rem;
+  min-width: 5rem;
+  width: 5rem;
+}
+
+.c13 img {
+  max-height: 5rem;
+  max-width: 5rem;
+  object-fit: cover;
+}
+
+.c7 {
+  color: #06AD96 !important;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c7:hover {
+  color: #009680 !important;
+  cursor: pointer;
+}
+
+@media only screen and (max-width:56.25em) {
+  .c1 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c14 {
+    -webkit-align-items: start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .c14 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .c14 .name {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c16 {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+<div
+    class="c0"
   >
     <section
-      class="sc-gsTCUz joLnqp"
+      class="c1"
     >
       <div
-        class="sc-gKsewC hzQUwf"
+        class="c2"
         direction="column"
         spacing="3"
         width="100%"
@@ -19,12 +428,12 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="OrderDetails-general-info-section"
         >
           <h4
-            class="sc-dlfnbm YtZcP"
+            class="c3"
           >
             General info
           </h4>
           <div
-            class="sc-gKsewC eAJIKJ"
+            class="c4"
             direction="column"
             spacing="1"
             width="100%"
@@ -32,7 +441,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           >
             <div>
               <span
-                class="sc-jSgupP ehBahY"
+                class="c5"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -42,7 +451,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                 Order number: 
               </span>
               <span
-                class="sc-jSgupP hYzbrm"
+                class="c6"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -55,7 +464,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-jSgupP ehBahY"
+                class="c5"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -65,7 +474,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                 Transaction date: 
               </span>
               <span
-                class="sc-jSgupP hYzbrm"
+                class="c6"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -78,7 +487,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-jSgupP ehBahY"
+                class="c5"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -88,7 +497,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                 Buyer: 
               </span>
               <span
-                class="sc-jSgupP hYzbrm"
+                class="c6"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -100,7 +509,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                   data-testid="OrderDetails-buyer-link"
                 >
                   <span
-                    class="sc-kEjbxe ktswaQ"
+                    class="c7"
                   >
                     buyerUser
                   </span>
@@ -113,12 +522,12 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="OrderDetails-info-about-seller"
         >
           <h4
-            class="sc-dlfnbm YtZcP"
+            class="c3"
           >
             Info about seller
           </h4>
           <div
-            class="sc-gKsewC eAJIKJ"
+            class="c4"
             data-test="OrderDetails-seller-info"
             direction="column"
             spacing="1"
@@ -127,7 +536,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           >
             <div>
               <span
-                class="sc-jSgupP ehBahY"
+                class="c5"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -137,7 +546,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                 Username: 
               </span>
               <span
-                class="sc-jSgupP hYzbrm"
+                class="c6"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -149,7 +558,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                   data-testid="OrderDetails-seller-link"
                 >
                   <span
-                    class="sc-kEjbxe ktswaQ"
+                    class="c7"
                   >
                     sellerUser
                   </span>
@@ -158,7 +567,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-jSgupP ehBahY"
+                class="c5"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -168,7 +577,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                 Email: 
               </span>
               <span
-                class="sc-jSgupP hYzbrm"
+                class="c6"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -181,7 +590,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             </div>
             <div>
               <span
-                class="sc-jSgupP ehBahY"
+                class="c5"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -191,7 +600,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
                 Phone: 
               </span>
               <span
-                class="sc-jSgupP hYzbrm"
+                class="c6"
                 color=""
                 display="inline-block"
                 overflow="visible"
@@ -208,19 +617,19 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="OrderDetails-delivery-address-section"
         >
           <h4
-            class="sc-dlfnbm YtZcP"
+            class="c3"
           >
             Delivery address
           </h4>
           <div
-            class="sc-gKsewC eAJIKJ"
+            class="c4"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-jSgupP hmeBsg"
+              class="c8"
               color=""
               display="inline-block"
               overflow="visible"
@@ -231,7 +640,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
               firstName lastName
             </span>
             <span
-              class="sc-jSgupP hmeBsg"
+              class="c8"
               color=""
               display="inline-block"
               overflow="visible"
@@ -242,7 +651,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
               street
             </span>
             <span
-              class="sc-jSgupP hmeBsg"
+              class="c8"
               color=""
               display="inline-block"
               overflow="visible"
@@ -253,7 +662,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
               zipCode city
             </span>
             <span
-              class="sc-jSgupP hmeBsg"
+              class="c8"
               color=""
               display="inline-block"
               overflow="visible"
@@ -264,7 +673,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
               country
             </span>
             <span
-              class="sc-jSgupP hmeBsg"
+              class="c8"
               color=""
               display="inline-block"
               overflow="visible"
@@ -278,12 +687,12 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         </div>
       </div>
       <h4
-        class="sc-dlfnbm eOHeIb"
+        class="c9"
       >
         Products
       </h4>
       <div
-        class="sc-gKsewC eChul sc-iBPRYJ zrgPI"
+        class="c10 c11"
         data-testid="TransactionAndOrderProdItem"
         direction="row"
         spacing="2"
@@ -294,7 +703,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="TransactionAndOrderProdItem-product-link-photo"
         >
           <div
-            class="sc-gKsewC hunsTM sc-jrAGrp fpwiDe"
+            class="c12 c13"
             data-testid="ProductThumbnail"
             direction="row"
             height="5"
@@ -310,7 +719,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           </div>
         </a>
         <div
-          class="sc-fubCfw hqkNjI"
+          class="c14"
         >
           <span
             class="name"
@@ -322,14 +731,14 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             </a>
           </span>
           <div
-            class="sc-gKsewC foOdGC sc-pFZIQ hXfKqv"
+            class="c15 c16"
             direction="row"
             spacing=""
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-jSgupP jUhfHv"
+              class="c17"
               color="#777"
               data-testid="TransactionAndOrderProdItem-product-price-per-piece"
               display="inline-block"
@@ -341,7 +750,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
               1 x $2
             </span>
             <span
-              class="sc-jSgupP jiAuFg"
+              class="c18"
               color=""
               display="inline-block"
               overflow="visible"
@@ -355,7 +764,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         </div>
       </div>
       <div
-        class="sc-gKsewC eChul sc-iBPRYJ zrgPI"
+        class="c10 c11"
         data-testid="TransactionAndOrderProdItem"
         direction="row"
         spacing="2"
@@ -366,7 +775,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           data-testid="TransactionAndOrderProdItem-product-link-photo"
         >
           <div
-            class="sc-gKsewC hunsTM sc-jrAGrp fpwiDe"
+            class="c12 c13"
             data-testid="ProductThumbnail"
             direction="row"
             height="5"
@@ -382,7 +791,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           </div>
         </a>
         <div
-          class="sc-fubCfw hqkNjI"
+          class="c14"
         >
           <span
             class="name"
@@ -394,14 +803,14 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
             </a>
           </span>
           <div
-            class="sc-gKsewC foOdGC sc-pFZIQ hXfKqv"
+            class="c15 c16"
             direction="row"
             spacing=""
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-jSgupP jUhfHv"
+              class="c17"
               color="#777"
               data-testid="TransactionAndOrderProdItem-product-price-per-piece"
               display="inline-block"
@@ -413,7 +822,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
               1 x $2
             </span>
             <span
-              class="sc-jSgupP jiAuFg"
+              class="c18"
               color=""
               display="inline-block"
               overflow="visible"
@@ -427,7 +836,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         </div>
       </div>
       <span
-        class="sc-jSgupP kEFlwC"
+        class="c19"
         color=""
         display="block"
         overflow="visible"
@@ -435,7 +844,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         transform=""
       >
         <span
-          class="sc-jSgupP kpsuzl"
+          class="c20"
           color="#777"
           display="inline-block"
           overflow="visible"
@@ -445,7 +854,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
           TOTAL
         </span>
         <span
-          class="sc-jSgupP esalpy"
+          class="c21"
           color=""
           display="inline-block"
           overflow="visible"
@@ -463,12 +872,51 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
 
 exports[`<OrderDetails /> check how renders should render only <Loader /> if orderDetails is undefined 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-hKgILt dfaweV"
+  .c0 {
+  text-align: center;
+}
+
+.c1 {
+  display: inline-block;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+
+.c1 > div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  animation: rotate 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid #1E8BC3;
+  border-color: #1E8BC3 transparent transparent transparent;
+}
+
+.c1 > div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+  animation-delay: -0.45s;
+}
+
+.c1 > div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+
+.c1 > div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+  animation-delay: -0.15s;
+}
+
+<div
+    class="c0"
     data-testid="LoaderWrapper"
   >
     <div
-      class="sc-eCssSg kpOnna"
+      class="c1"
       data-testid="Loader"
     >
       <div />
@@ -482,8 +930,16 @@ exports[`<OrderDetails /> check how renders should render only <Loader /> if ord
 
 exports[`<OrderDetails /> check how renders should render only info that there is a problem to fetch order details 1`] = `
 <DocumentFragment>
-  <h4
-    class="sc-dlfnbm iCXKnM"
+  .c0 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+  line-height: 1.3;
+}
+
+<h4
+    class="c0"
     data-testid="OrderDetails-error"
   >
     There is a problem to fetch order details or given order does not exist

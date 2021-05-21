@@ -2,11 +2,103 @@
 
 exports[`<UploadPhoto /> check how renders default view should render default view after deleting current photo 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gKsewC RnYls"
+      class="c1"
       direction="row"
       spacing="3"
       width="100%"
@@ -17,7 +109,7 @@ exports[`<UploadPhoto /> check how renders default view should render default vi
         for="photo"
       >
         <button
-          class="sc-gsTCUz gQZzmy"
+          class="c2"
           color="blue"
           type="button"
         >
@@ -26,7 +118,146 @@ exports[`<UploadPhoto /> check how renders default view should render default vi
       </label>
     </div>
     <span
-      class="sc-eCssSg gXddCR"
+      class="c3"
+      color=""
+      display="inline-block"
+      overflow="visible"
+      size="2"
+      spacing="0px"
+      transform=""
+    >
+      Photo is optional. Max size is 6 MB. Available extensions are JPG and PNG
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> check how renders default view should render default view when file is uploaded and deleted 1`] = `
+<DocumentFragment>
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="c1"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="c2"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+    </div>
+    <span
+      class="c3"
       color=""
       display="inline-block"
       overflow="visible"
@@ -49,11 +280,103 @@ exports[`<UploadPhoto /> check how renders default view should render default vi
 
 exports[`<UploadPhoto /> check how renders default view should render default view when files field has 0 length 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gKsewC RnYls"
+      class="c1"
       direction="row"
       spacing="3"
       width="100%"
@@ -64,7 +387,7 @@ exports[`<UploadPhoto /> check how renders default view should render default vi
         for="photo"
       >
         <button
-          class="sc-gsTCUz gQZzmy"
+          class="c2"
           color="blue"
           type="button"
         >
@@ -73,7 +396,7 @@ exports[`<UploadPhoto /> check how renders default view should render default vi
       </label>
     </div>
     <span
-      class="sc-eCssSg gXddCR"
+      class="c3"
       color=""
       display="inline-block"
       overflow="visible"
@@ -96,11 +419,103 @@ exports[`<UploadPhoto /> check how renders default view should render default vi
 
 exports[`<UploadPhoto /> check how renders should render default view when hasCurrentPhoto is false 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gKsewC RnYls"
+      class="c1"
       direction="row"
       spacing="3"
       width="100%"
@@ -111,7 +526,7 @@ exports[`<UploadPhoto /> check how renders should render default view when hasCu
         for="photo"
       >
         <button
-          class="sc-gsTCUz gQZzmy"
+          class="c2"
           color="blue"
           type="button"
         >
@@ -120,7 +535,7 @@ exports[`<UploadPhoto /> check how renders should render default view when hasCu
       </label>
     </div>
     <span
-      class="sc-eCssSg gXddCR"
+      class="c3"
       color=""
       display="inline-block"
       overflow="visible"
@@ -143,11 +558,131 @@ exports[`<UploadPhoto /> check how renders should render default view when hasCu
 
 exports[`<UploadPhoto /> check how renders should render with delete current button when hasCurrentPhoto is true 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c3:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c4 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gKsewC RnYls"
+      class="c1"
       direction="row"
       spacing="3"
       width="100%"
@@ -158,7 +693,7 @@ exports[`<UploadPhoto /> check how renders should render with delete current but
         for="photo"
       >
         <button
-          class="sc-gsTCUz gQZzmy"
+          class="c2"
           color="blue"
           type="button"
         >
@@ -166,7 +701,7 @@ exports[`<UploadPhoto /> check how renders should render with delete current but
         </button>
       </label>
       <button
-        class="sc-gsTCUz gqkUyy"
+        class="c3"
         color="red"
         type="button"
       >
@@ -174,7 +709,7 @@ exports[`<UploadPhoto /> check how renders should render with delete current but
       </button>
     </div>
     <span
-      class="sc-eCssSg gXddCR"
+      class="c4"
       color=""
       display="inline-block"
       overflow="visible"
@@ -197,11 +732,170 @@ exports[`<UploadPhoto /> check how renders should render with delete current but
 
 exports[`<UploadPhoto /> check how renders show errors should render delete button and info when error appeared and then photo is uploaded correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c3:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  max-width: 75%;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 1.2rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gKsewC RnYls"
+      class="c1"
       direction="row"
       spacing="3"
       width="100%"
@@ -212,7 +906,7 @@ exports[`<UploadPhoto /> check how renders show errors should render delete butt
         for="photo"
       >
         <button
-          class="sc-gsTCUz gQZzmy"
+          class="c2"
           color="blue"
           type="button"
         >
@@ -220,7 +914,7 @@ exports[`<UploadPhoto /> check how renders show errors should render delete butt
         </button>
       </label>
       <button
-        class="sc-gsTCUz gqkUyy"
+        class="c3"
         color="red"
         type="button"
       >
@@ -228,14 +922,14 @@ exports[`<UploadPhoto /> check how renders show errors should render delete butt
       </button>
     </div>
     <div
-      class="sc-gKsewC eJjdRD"
+      class="c4"
       direction="row"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <span
-        class="sc-eCssSg fwHiXJ"
+        class="c5"
         color=""
         display="inline-block"
         overflow="hidden"
@@ -246,7 +940,7 @@ exports[`<UploadPhoto /> check how renders show errors should render delete butt
         Name: boots.png
       </span>
       <span
-        class="sc-eCssSg gTHaLR"
+        class="c6"
         color=""
         display="inline-block"
         overflow="visible"
@@ -257,90 +951,6 @@ exports[`<UploadPhoto /> check how renders show errors should render delete butt
         Size: 6 MB
       </span>
     </div>
-    <input
-      class="input"
-      data-testid="UploadPhoto-input"
-      id="photo"
-      name="photo"
-      type="file"
-    />
-  </div>
-</DocumentFragment>
-`;
-
-exports[`<UploadPhoto /> check how renders show errors should render with error when size is too big 1`] = `
-<DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
-  >
-    <div
-      class="sc-gKsewC RnYls"
-      direction="row"
-      spacing="3"
-      width="100%"
-      wrap="nowrap"
-    >
-      <label
-        class="label"
-        for="photo"
-      >
-        <button
-          class="sc-gsTCUz gQZzmy"
-          color="blue"
-          type="button"
-        >
-          Upload photo
-        </button>
-      </label>
-      <button
-        class="sc-gsTCUz gqkUyy"
-        color="red"
-        type="button"
-      >
-        Delete
-      </button>
-    </div>
-    <div
-      class="sc-gKsewC eJjdRD"
-      direction="row"
-      spacing="3"
-      width="100%"
-      wrap="nowrap"
-    >
-      <span
-        class="sc-eCssSg fwHiXJ"
-        color=""
-        display="inline-block"
-        overflow="hidden"
-        size="1"
-        spacing="0px"
-        transform=""
-      >
-        Name: boots.png
-      </span>
-      <span
-        class="sc-eCssSg gTHaLR"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="1"
-        spacing="0px"
-        transform=""
-      >
-        Size: 6,1 MB
-      </span>
-    </div>
-    <span
-      class="sc-eCssSg iNydNf"
-      color="#F22613"
-      display="inline-block"
-      overflow="visible"
-      size="1"
-      spacing="0px"
-      transform=""
-    >
-      Maximum available size is 6 MB
-    </span>
     <input
       class="input"
       data-testid="UploadPhoto-input"
@@ -354,11 +964,189 @@ exports[`<UploadPhoto /> check how renders show errors should render with error 
 
 exports[`<UploadPhoto /> check how renders show errors should render with error, delete button and file info when image type is incorrect 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c3:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  max-width: 75%;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+}
+
+.c7 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #F22613;
+  font-size: 1.3rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 1.2rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gKsewC RnYls"
+      class="c1"
       direction="row"
       spacing="3"
       width="100%"
@@ -369,7 +1157,7 @@ exports[`<UploadPhoto /> check how renders show errors should render with error,
         for="photo"
       >
         <button
-          class="sc-gsTCUz gQZzmy"
+          class="c2"
           color="blue"
           type="button"
         >
@@ -377,7 +1165,7 @@ exports[`<UploadPhoto /> check how renders show errors should render with error,
         </button>
       </label>
       <button
-        class="sc-gsTCUz gqkUyy"
+        class="c3"
         color="red"
         type="button"
       >
@@ -385,14 +1173,14 @@ exports[`<UploadPhoto /> check how renders show errors should render with error,
       </button>
     </div>
     <div
-      class="sc-gKsewC eJjdRD"
+      class="c4"
       direction="row"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <span
-        class="sc-eCssSg fwHiXJ"
+        class="c5"
         color=""
         display="inline-block"
         overflow="hidden"
@@ -403,7 +1191,7 @@ exports[`<UploadPhoto /> check how renders show errors should render with error,
         Name: boots.svg
       </span>
       <span
-        class="sc-eCssSg gTHaLR"
+        class="c6"
         color=""
         display="inline-block"
         overflow="visible"
@@ -415,7 +1203,7 @@ exports[`<UploadPhoto /> check how renders show errors should render with error,
       </span>
     </div>
     <span
-      class="sc-eCssSg iNydNf"
+      class="c7"
       color="#F22613"
       display="inline-block"
       overflow="visible"
@@ -436,13 +1224,191 @@ exports[`<UploadPhoto /> check how renders show errors should render with error,
 </DocumentFragment>
 `;
 
-exports[`<UploadPhoto /> check how renders successful upload should render delete button and info when photo is uploaded 1`] = `
+exports[`<UploadPhoto /> check how renders show errors should render with error, delete button and file info when size is too big 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdfBwQ hafmfB"
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c3:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  max-width: 75%;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+}
+
+.c7 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #F22613;
+  font-size: 1.3rem;
+  margin-top: calc(1.2rem + 0rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 1.2rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gKsewC RnYls"
+      class="c1"
       direction="row"
       spacing="3"
       width="100%"
@@ -453,7 +1419,7 @@ exports[`<UploadPhoto /> check how renders successful upload should render delet
         for="photo"
       >
         <button
-          class="sc-gsTCUz gQZzmy"
+          class="c2"
           color="blue"
           type="button"
         >
@@ -461,7 +1427,257 @@ exports[`<UploadPhoto /> check how renders successful upload should render delet
         </button>
       </label>
       <button
-        class="sc-gsTCUz gqkUyy"
+        class="c3"
+        color="red"
+        type="button"
+      >
+        Delete
+      </button>
+      <button
+        class="c3"
+        color="red"
+        type="button"
+      >
+        Delete current
+      </button>
+    </div>
+    <div
+      class="c4"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="c5"
+        color=""
+        display="inline-block"
+        overflow="hidden"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Name: boots.png
+      </span>
+      <span
+        class="c6"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Size: 6,1 MB
+      </span>
+    </div>
+    <span
+      class="c7"
+      color="#F22613"
+      display="inline-block"
+      overflow="visible"
+      size="1"
+      spacing="0px"
+      transform=""
+    >
+      Maximum available size is 6 MB
+    </span>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> check how renders successful upload should render delete button and correct info when one photo is uploaded after another 1`] = `
+<DocumentFragment>
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c3:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  max-width: 75%;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 1.2rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="c1"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="c2"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="c3"
         color="red"
         type="button"
       >
@@ -469,14 +1685,246 @@ exports[`<UploadPhoto /> check how renders successful upload should render delet
       </button>
     </div>
     <div
-      class="sc-gKsewC eJjdRD"
+      class="c4"
       direction="row"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <span
-        class="sc-eCssSg fwHiXJ"
+        class="c5"
+        color=""
+        display="inline-block"
+        overflow="hidden"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Name: photo2.jpg
+      </span>
+      <span
+        class="c6"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Size: 6 MB
+      </span>
+    </div>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> check how renders successful upload should render delete button and info when photo is uploaded 1`] = `
+<DocumentFragment>
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c3:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  max-width: 75%;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 1.2rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="c1"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="c2"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="c3"
+        color="red"
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      class="c4"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="c5"
         color=""
         display="inline-block"
         overflow="hidden"
@@ -487,7 +1935,239 @@ exports[`<UploadPhoto /> check how renders successful upload should render delet
         Name: boots.jpg
       </span>
       <span
-        class="sc-eCssSg gTHaLR"
+        class="c6"
+        color=""
+        display="inline-block"
+        overflow="visible"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Size: 6 MB
+      </span>
+    </div>
+    <input
+      class="input"
+      data-testid="UploadPhoto-input"
+      id="photo"
+      name="photo"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<UploadPhoto /> check how renders successful upload should render delete button and info when the same photo is uploaded twice 1`] = `
+<DocumentFragment>
+  .c0 {
+  margin-bottom: 2.4rem;
+}
+
+.c0 .input {
+  display: none;
+}
+
+.c0 .label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.c0 .label > button {
+  pointer-events: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c0 .label:hover > button {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c2 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c2:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c3 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.c3:hover {
+  border-color: #F94D2A;
+  color: #F94D2A;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  max-width: 75%;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 1.2rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="c1"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <label
+        class="label"
+        for="photo"
+      >
+        <button
+          class="c2"
+          color="blue"
+          type="button"
+        >
+          Upload photo
+        </button>
+      </label>
+      <button
+        class="c3"
+        color="red"
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      class="c4"
+      direction="row"
+      spacing="3"
+      width="100%"
+      wrap="nowrap"
+    >
+      <span
+        class="c5"
+        color=""
+        display="inline-block"
+        overflow="hidden"
+        size="1"
+        spacing="0px"
+        transform=""
+      >
+        Name: boots.jpg
+      </span>
+      <span
+        class="c6"
         color=""
         display="inline-block"
         overflow="visible"

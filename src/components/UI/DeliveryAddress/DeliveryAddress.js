@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FlexWrapper from '../FlexWrapper';
 import PlainText from '../PlainText';
+import * as propTypes from '../../../shared/propTypes';
 
 const DeliveryAddress = (props) => {
   const { data } = props;
@@ -21,15 +22,7 @@ const DeliveryAddress = (props) => {
 };
 
 DeliveryAddress.propTypes = {
-  data: PropTypes.shape({
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    street: PropTypes.string.isRequired,
-    zipCode: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-  }).isRequired,
+  data: PropTypes.shape(propTypes.deliveryAddressStrings).isRequired,
 };
 
 export default DeliveryAddress;

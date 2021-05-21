@@ -2,11 +2,135 @@
 
 exports[`<Footer /> check how renders should render everything correctly 1`] = `
 <DocumentFragment>
-  <footer
-    class="sc-hKgILt iBQjgp"
+  .c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 > svg {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  fill: #777;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.c1 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.4rem;
+}
+
+.c4 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0.8rem;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.3rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 1.2rem;
+  margin-right: 0;
+  margin-bottom: 1.2rem;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.c0 {
+  border-top: 1px solid #BFBFBF;
+  padding: 2.4rem 1.2rem;
+  text-align: center;
+}
+
+.c0 .social-link {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .about-website {
+  color: #777;
+  cursor: pointer;
+  font-size: 1.3rem;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c0 .about-website:hover {
+  color: #000;
+}
+
+<footer
+    class="c0"
   >
     <span
-      class="sc-gsTCUz fDiIfY"
+      class="c1"
       color=""
       display="inline-block"
       overflow="visible"
@@ -17,7 +141,7 @@ exports[`<Footer /> check how renders should render everything correctly 1`] = `
       © 2021 Radosław Mikrut. All rights reserved
     </span>
     <div
-      class="sc-dlfnbm bcSocG"
+      class="c2"
       direction="row"
       spacing="3"
       width="100%"
@@ -30,7 +154,7 @@ exports[`<Footer /> check how renders should render everything correctly 1`] = `
         target="_blank"
       >
         <div
-          class="sc-bdfBwQ hQNiId"
+          class="c3"
           color=""
         >
           <svg>
@@ -44,7 +168,7 @@ exports[`<Footer /> check how renders should render everything correctly 1`] = `
         rel="noopener noreferrer"
       >
         <div
-          class="sc-bdfBwQ hQNiId"
+          class="c3"
           color=""
         >
           <svg>
@@ -52,7 +176,7 @@ exports[`<Footer /> check how renders should render everything correctly 1`] = `
           </svg>
         </div>
         <span
-          class="sc-gsTCUz liWcVX"
+          class="c4"
           color=""
           display="inline-block"
           overflow="visible"

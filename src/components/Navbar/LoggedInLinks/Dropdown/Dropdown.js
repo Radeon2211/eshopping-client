@@ -32,9 +32,10 @@ const Dropdown = (props) => {
   const { isVisible, closed } = props;
 
   const dispatch = useDispatch();
-  const onSetModal = useCallback((modalContent) => dispatch(actions.setModal(modalContent)), [
-    dispatch,
-  ]);
+  const onSetModal = useCallback(
+    (modalContent) => dispatch(actions.setModal(modalContent)),
+    [dispatch],
+  );
 
   return (
     <OutsideClickHandler

@@ -2,46 +2,639 @@
 
 exports[`<Transaction /> check how renders should render everything correctly with two items from one user 1`] = `
 <DocumentFragment>
-  <h3
-    class="sc-eCssSg eXQgPS"
+  .c0 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+@media only screen and (max-width:75em) {
+
+}
+
+@media only screen and (max-width:56.25em) {
+
+}
+
+@media only screen and (max-width:75em) {
+
+}
+
+@media only screen and (max-width:56.25em) {
+
+}
+
+@media only screen and (max-width:56.25em) {
+
+}
+
+<h3
+    class="c0"
   >
     Transaction
   </h3>
-  <div
-    class="sc-bdfBwQ gbtjgb"
+  .c0 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c0 > *:first-child {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  margin-right: 2.4rem;
+}
+
+.c0 > *:last-child {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c1 > *:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+.c3 > *:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c5 > *:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c11 > *:not(:last-child) {
+  margin-right: 1.2rem;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 5;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c13 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c16 > *:not(:last-child) {
+  margin-right: 0;
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.c21 > *:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c22 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c2 {
+  background-color: #FAFAFA;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+.c20 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: calc(6.4rem + 2.4rem);
+  width: 100%;
+}
+
+.c20 > *:first-child {
+  -webkit-transition: padding 0.2s;
+  transition: padding 0.2s;
+}
+
+.c20.is-sticky {
+  border-top: 1px solid #BFBFBF;
+}
+
+.c4 {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: left;
+}
+
+.c7 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c7:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c24 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c24:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c6 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-all;
+  font-size: 1.5rem;
+}
+
+.c9 {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.5rem;
+}
+
+.c18 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  color: #777;
+  font-size: 1.4rem;
+}
+
+.c19 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 1.7rem;
+}
+
+.c23 {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 2.6rem;
+}
+
+.c12 {
+  padding-top: 2.4rem;
+}
+
+.c12:last-child {
+  padding-bottom: 0;
+}
+
+.c15 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c15 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c15 .name {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  font-size: 1.5rem;
+}
+
+.c15 .name > a {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c15 .name > a:hover {
+  color: #06AD96;
+}
+
+.c14 {
+  max-height: 5rem;
+  min-width: 5rem;
+  width: 5rem;
+}
+
+.c14 img {
+  max-height: 5rem;
+  max-width: 5rem;
+  object-fit: cover;
+}
+
+.c10 {
+  color: #06AD96 !important;
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s;
+}
+
+.c10:hover {
+  color: #009680 !important;
+  cursor: pointer;
+}
+
+.c8 {
+  padding: 2.4rem 0;
+}
+
+.c8:not(:last-child) {
+  border-bottom: 1px solid #BFBFBF;
+}
+
+.c8:last-child {
+  padding-bottom: 0;
+}
+
+@media only screen and (max-width:75em) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .c0 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 2.4rem;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c2 {
+    padding: 2.4rem 1.2rem;
+  }
+}
+
+@media only screen and (max-width:75em) {
+  .c20 {
+    bottom: -1px;
+    padding-bottom: 1px;
+  }
+
+  .c20 > *:first-child {
+    padding: 1.2rem;
+    -webkit-transition: width 0.2s;
+    transition: width 0.2s;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c15 {
+    -webkit-align-items: start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .c15 > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .c15 .name {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+@media only screen and (max-width:56.25em) {
+  .c17 {
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex: initial;
+  }
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-gsTCUz bwlxQF"
+      class="c1"
       direction="column"
       spacing="3"
       width="100%"
       wrap="nowrap"
     >
       <section
-        class="sc-dlfnbm dSatpG"
+        class="c2"
         data-testid="DeliveryAddressSection"
       >
         <div
-          class="sc-gsTCUz evuYyy"
+          class="c3"
           direction="column"
           spacing="3"
           width="100%"
           wrap="nowrap"
         >
           <h4
-            class="sc-eCssSg eLKVbs"
+            class="c4"
           >
             Delivery address
           </h4>
           <div
-            class="sc-gsTCUz iVaLBf"
+            class="c5"
             direction="column"
             spacing="1"
             width="100%"
             wrap="nowrap"
           >
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -52,7 +645,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               firstName lastName
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -63,7 +656,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               street
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -74,7 +667,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               zipCode city
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -85,7 +678,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               country
             </span>
             <span
-              class="sc-fubCfw osNBQ"
+              class="c6"
               color=""
               display="inline-block"
               overflow="visible"
@@ -97,7 +690,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
             </span>
           </div>
           <button
-            class="sc-jSgupP biAJYh"
+            class="c7"
             color="blue"
             type="button"
           >
@@ -106,19 +699,19 @@ exports[`<Transaction /> check how renders should render everything correctly wi
         </div>
       </section>
       <section
-        class="sc-dlfnbm dSatpG"
+        class="c2"
       >
         <h4
-          class="sc-eCssSg eLKVbs"
+          class="c4"
         >
           Products
         </h4>
         <div
-          class="sc-bkzZxe hkHVNa"
+          class="c8"
           data-testid="CartAndTransactionItems-item"
         >
           <span
-            class="sc-fubCfw jalAIu"
+            class="c9"
             color=""
             display="block"
             overflow="visible"
@@ -133,14 +726,14 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               data-testid="CartAndTransactionItems-item-seller-link"
             >
               <span
-                class="sc-fodVxV fCxCGe"
+                class="c10"
               >
                 user1
               </span>
             </a>
           </span>
           <div
-            class="sc-gsTCUz dMhtIX sc-jrAGrp jjgxPm"
+            class="c11 c12"
             data-testid="TransactionAndOrderProdItem"
             direction="row"
             spacing="2"
@@ -151,7 +744,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               data-testid="TransactionAndOrderProdItem-product-link-photo"
             >
               <div
-                class="sc-gsTCUz cTtigW sc-crrsfI eexKSB"
+                class="c13 c14"
                 data-testid="ProductThumbnail"
                 direction="row"
                 height="5"
@@ -167,7 +760,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               </div>
             </a>
             <div
-              class="sc-kEjbxe gFzfnQ"
+              class="c15"
             >
               <span
                 class="name"
@@ -179,14 +772,14 @@ exports[`<Transaction /> check how renders should render everything correctly wi
                 </a>
               </span>
               <div
-                class="sc-gsTCUz erbZJc sc-iqHYGH bCSkmx"
+                class="c16 c17"
                 direction="row"
                 spacing=""
                 width="100%"
                 wrap="nowrap"
               >
                 <span
-                  class="sc-fubCfw eLnxgP"
+                  class="c18"
                   color="#777"
                   data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                   display="inline-block"
@@ -198,7 +791,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
                   4 x $10.60
                 </span>
                 <span
-                  class="sc-fubCfw bvkSGA"
+                  class="c19"
                   color=""
                   display="inline-block"
                   overflow="visible"
@@ -212,7 +805,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
             </div>
           </div>
           <div
-            class="sc-gsTCUz dMhtIX sc-jrAGrp jjgxPm"
+            class="c11 c12"
             data-testid="TransactionAndOrderProdItem"
             direction="row"
             spacing="2"
@@ -223,7 +816,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               data-testid="TransactionAndOrderProdItem-product-link-photo"
             >
               <div
-                class="sc-gsTCUz cTtigW sc-crrsfI eexKSB"
+                class="c13 c14"
                 data-testid="ProductThumbnail"
                 direction="row"
                 height="5"
@@ -239,7 +832,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               </div>
             </a>
             <div
-              class="sc-kEjbxe gFzfnQ"
+              class="c15"
             >
               <span
                 class="name"
@@ -251,14 +844,14 @@ exports[`<Transaction /> check how renders should render everything correctly wi
                 </a>
               </span>
               <div
-                class="sc-gsTCUz erbZJc sc-iqHYGH bCSkmx"
+                class="c16 c17"
                 direction="row"
                 spacing=""
                 width="100%"
                 wrap="nowrap"
               >
                 <span
-                  class="sc-fubCfw eLnxgP"
+                  class="c18"
                   color="#777"
                   data-testid="TransactionAndOrderProdItem-product-price-per-piece"
                   display="inline-block"
@@ -270,7 +863,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
                   6 x $299.98
                 </span>
                 <span
-                  class="sc-fubCfw bvkSGA"
+                  class="c19"
                   color=""
                   display="inline-block"
                   overflow="visible"
@@ -287,27 +880,27 @@ exports[`<Transaction /> check how renders should render everything correctly wi
       </section>
     </div>
     <section
-      class="sc-hKgILt ciIrWM"
+      class="c20"
     >
       <section
-        class="sc-dlfnbm dSatpG"
+        class="c2"
       >
         <div
-          class="sc-gsTCUz ewxwoI"
+          class="c21"
           direction="column"
           spacing="2"
           width="100%"
           wrap="nowrap"
         >
           <div
-            class="sc-gsTCUz dYcWSu"
+            class="c22"
             direction="row"
             spacing="1"
             width="100%"
             wrap="wrap"
           >
             <span
-              class="sc-fubCfw bvkSGA"
+              class="c19"
               color=""
               display="inline-block"
               overflow="visible"
@@ -318,7 +911,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
               To pay
             </span>
             <span
-              class="sc-fubCfw cQoALv"
+              class="c23"
               color=""
               display="inline-block"
               overflow="visible"
@@ -330,7 +923,7 @@ exports[`<Transaction /> check how renders should render everything correctly wi
             </span>
           </div>
           <button
-            class="sc-jSgupP eRkEJJ"
+            class="c24"
             color="blue"
             type="button"
           >
