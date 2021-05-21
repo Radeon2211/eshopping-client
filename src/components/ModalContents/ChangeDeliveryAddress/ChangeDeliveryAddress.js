@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
   onlyCurrentOrders: Yup.bool(),
 });
 
-const ChangeDeliveryAddress = () => {
+export default function ChangeDeliveryAddress() {
   const deliveryAddress = useSelector((state) => state.auth.deliveryAddress);
   const { firstName, lastName, street, zipCode, city, country, phone } = deliveryAddress;
 
@@ -233,6 +233,4 @@ const ChangeDeliveryAddress = () => {
       }}
     </Formik>
   );
-};
-
-export default ChangeDeliveryAddress;
+}

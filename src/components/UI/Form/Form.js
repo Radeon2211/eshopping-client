@@ -10,7 +10,7 @@ import PlainText from '../PlainText';
 import Heading from '../Heading/Heading';
 import theme from '../../../styled/theme';
 
-const Form = (props) => {
+export default function Form(props) {
   const { headingText, btnText, isValid, cancellable, children, height, btnColor } = props;
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -74,7 +74,7 @@ const Form = (props) => {
       {error}
     </SC.Wrapper>
   );
-};
+}
 
 Form.defaultProps = {
   headingText: '',
@@ -94,5 +94,3 @@ Form.propTypes = {
   height: PropTypes.number,
   btnColor: PropTypes.string,
 };
-
-export default Form;

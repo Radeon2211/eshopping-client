@@ -14,7 +14,7 @@ import { userRules } from '../../../shared/constants';
 
 const validationSchema = Yup.object(userRules);
 
-const Signup = () => {
+export default function Signup() {
   const [currentStep, setCurrentStep] = useState(1);
 
   const dispatch = useDispatch();
@@ -111,6 +111,4 @@ const Signup = () => {
       </Formik>
     </SC.Wrapper>
   );
-};
-
-export default Signup;
+}

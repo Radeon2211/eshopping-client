@@ -19,7 +19,7 @@ import { GreenText } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
-const Cart = () => {
+export default function Cart() {
   const history = useHistory();
 
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
@@ -112,6 +112,4 @@ const Cart = () => {
       {content}
     </>
   );
-};
-
-export default Cart;
+}

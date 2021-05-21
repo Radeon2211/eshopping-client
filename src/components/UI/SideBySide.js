@@ -38,10 +38,10 @@ SC.Wrapper = styled.div`
   }}
 `;
 
-const SideBySide = (props) => {
+export default function SideBySide(props) {
   const { children } = props;
   return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
-};
+}
 
 SideBySide.defaultProps = {
   makeVerticalWhen: undefined,
@@ -52,5 +52,3 @@ SideBySide.propTypes = {
   makeVerticalWhen: PropTypes.number,
   children: PropTypes.node.isRequired,
 };
-
-export default SideBySide;

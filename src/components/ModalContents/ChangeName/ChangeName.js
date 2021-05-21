@@ -13,7 +13,7 @@ const validationSchema = Yup.object({
   lastName: userRules.lastName,
 });
 
-const ChangeName = () => {
+export default function ChangeName() {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -78,6 +78,4 @@ const ChangeName = () => {
       )}
     </Formik>
   );
-};
-
-export default ChangeName;
+}

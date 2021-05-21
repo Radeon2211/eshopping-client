@@ -10,7 +10,7 @@ import Loader from '../../UI/Loader/Loader';
 import { formatPrice } from '../../../shared/utility/utility';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 
-const CartItemAdded = () => {
+export default function CartItemAdded() {
   const productDetails = useSelector((state) => state.product.productDetails);
   const cart = useSelector((state) => state.auth.cart);
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
@@ -69,6 +69,4 @@ const CartItemAdded = () => {
   }
 
   return content;
-};
-
-export default CartItemAdded;
+}

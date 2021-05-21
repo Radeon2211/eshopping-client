@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
   hidePhone: userRules.hidePhone,
 });
 
-const ChangeContacts = () => {
+export default function ChangeContacts() {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -70,6 +70,4 @@ const ChangeContacts = () => {
       )}
     </Formik>
   );
-};
-
-export default ChangeContacts;
+}

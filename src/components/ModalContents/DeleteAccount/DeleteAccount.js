@@ -7,7 +7,7 @@ import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import { inputKinds } from '../../../shared/constants';
 
-const DeleteAccount = () => {
+export default function DeleteAccount() {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -50,6 +50,4 @@ const DeleteAccount = () => {
       )}
     </Formik>
   );
-};
-
-export default DeleteAccount;
+}

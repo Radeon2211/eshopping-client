@@ -16,9 +16,7 @@ SC.Wrapper = styled.div`
   width: 100%;
 `;
 
-const ProductList = (props) => {
-  const { products, isDataLoading, page } = props;
-
+export default function ProductList({ products, isDataLoading, page }) {
   const { search } = useLocation();
 
   let loadingOverlay = null;
@@ -83,7 +81,7 @@ const ProductList = (props) => {
       {productList}
     </SC.Wrapper>
   );
-};
+}
 
 ProductList.propTypes = {
   // eslint-disable-next-line react/require-default-props
@@ -91,5 +89,3 @@ ProductList.propTypes = {
   isDataLoading: PropTypes.bool.isRequired,
   page: PropTypes.oneOf(Object.values(productPages)).isRequired,
 };
-
-export default ProductList;

@@ -8,7 +8,7 @@ import MySellHistory from './MySellHistory/MySellHistory';
 import MyPlacedOrders from './MyPlacedOrders/MyPlacedOrders';
 import { defaultAppPath, userStatuses } from '../../shared/constants';
 
-const MyAccount = () => {
+export default function MyAccount() {
   const userProfile = useSelector((state) => state.auth.profile);
 
   let navigation = null;
@@ -85,6 +85,4 @@ const MyAccount = () => {
       {routes}
     </SC.Wrapper>
   );
-};
-
-export default MyAccount;
+}

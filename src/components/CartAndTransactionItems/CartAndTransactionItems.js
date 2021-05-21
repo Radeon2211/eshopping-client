@@ -22,9 +22,7 @@ SC.SingleSeller = styled.div`
   }
 `;
 
-const CartAndTransactionItems = (props) => {
-  const { items, type, isCartLoading } = props;
-
+export default function CartAndTransactionItems({ items, type, isCartLoading }) {
   const sellersObject = items.reduce((acc, item) => {
     const sellerUsername =
       type === itemTypes.CART ? item.product.seller.username : item.seller.username;
@@ -63,7 +61,7 @@ const CartAndTransactionItems = (props) => {
   ));
 
   return sellerList;
-};
+}
 
 CartAndTransactionItems.defaultProps = {
   isCartLoading: undefined,
@@ -88,5 +86,3 @@ CartAndTransactionItems.propTypes = {
   type: PropTypes.oneOf([itemTypes.TRANSACTION, itemTypes.CART]).isRequired,
   isCartLoading: PropTypes.bool,
 };
-
-export default CartAndTransactionItems;

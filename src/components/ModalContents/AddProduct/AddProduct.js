@@ -12,7 +12,7 @@ import { inputKinds, productRules, productConditions } from '../../../shared/con
 
 const validationSchema = Yup.object(productRules);
 
-const AddProduct = () => {
+export default function AddProduct() {
   const location = useLocation();
 
   const dispatch = useDispatch();
@@ -145,6 +145,4 @@ const AddProduct = () => {
       )}
     </Formik>
   );
-};
-
-export default AddProduct;
+}

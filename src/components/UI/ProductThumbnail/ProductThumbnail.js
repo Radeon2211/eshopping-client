@@ -18,9 +18,7 @@ SC.Wrapper = styled(FlexWrapper)`
   }
 `;
 
-const ProductThumbnail = React.memo((props) => {
-  const { photo, alt, productId, width, height, orderId } = props;
-
+const ProductThumbnail = React.memo(({ photo, alt, productId, width, height, orderId }) => {
   const photoURL = orderId
     ? `${process.env.REACT_APP_API_URL}/orders/${orderId}/${productId}/photo`
     : `${process.env.REACT_APP_API_URL}/products/${productId}/photo`;

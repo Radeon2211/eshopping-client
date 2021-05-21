@@ -14,7 +14,7 @@ const validationSchema = Yup.object({
   phoneNumber: userRules.phoneNumber,
 });
 
-const ChangePhoneNumber = () => {
+export default function ChangePhoneNumber() {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -80,6 +80,4 @@ const ChangePhoneNumber = () => {
       )}
     </Formik>
   );
-};
-
-export default ChangePhoneNumber;
+}

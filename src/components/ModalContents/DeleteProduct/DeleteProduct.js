@@ -7,7 +7,7 @@ import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 
-const DeleteProduct = () => {
+export default function DeleteProduct() {
   const history = useHistory();
 
   const productDetails = useSelector((state) => state.product.productDetails);
@@ -35,6 +35,4 @@ const DeleteProduct = () => {
       </FlexWrapper>
     </>
   );
-};
-
-export default DeleteProduct;
+}

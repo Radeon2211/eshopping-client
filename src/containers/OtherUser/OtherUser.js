@@ -10,14 +10,11 @@ import FlexWrapper from '../../components/UI/FlexWrapper';
 import { scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
-const OtherUser = (props) => {
+export default function OtherUser({ match, location, history }) {
   const {
-    match: {
-      params: { username: otherUserUsername },
-    },
-    location: { search },
-    history,
-  } = props;
+    params: { username: otherUserUsername },
+  } = match;
+  const { search } = location;
 
   const userProfile = useSelector((state) => state.auth.profile);
   const currentUserUsername = userProfile?.username;
@@ -112,6 +109,4 @@ const OtherUser = (props) => {
       {content}
     </>
   );
-};
-
-export default OtherUser;
+}

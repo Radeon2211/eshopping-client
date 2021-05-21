@@ -6,9 +6,7 @@ import theme from '../../../styled/theme';
 import PlainText from '../../UI/PlainText';
 import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 
-const PaginationCounter = (props) => {
-  const { itemQuantity, itemsType, quantityPerPage } = props;
-
+export default function PaginationCounter({ itemQuantity, itemsType, quantityPerPage }) {
   const { search } = useLocation();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,12 +43,10 @@ const PaginationCounter = (props) => {
   }
 
   return paginationCounter;
-};
+}
 
 PaginationCounter.propTyeps = {
   itemQuantity: PropTypes.number.isRequired,
   itemsType: PropTypes.oneOf([listItemTypes.PRODUCT, listItemTypes.ORDER]).isRequired,
   quantityPerPage: PropTypes.number.isRequired,
 };
-
-export default PaginationCounter;

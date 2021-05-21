@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
   password: userRules.password,
 });
 
-const ChangePassword = () => {
+export default function ChangePassword() {
   const dispatch = useDispatch();
   const onUpdateUser = useCallback(
     (creds, message) => dispatch(actions.updateUser(creds, message)),
@@ -71,6 +71,4 @@ const ChangePassword = () => {
       )}
     </Formik>
   );
-};
-
-export default ChangePassword;
+}

@@ -8,7 +8,7 @@ import PlainText from '../../UI/PlainText';
 import { inputKinds, modalTypes } from '../../../shared/constants';
 import { GreenText } from '../../../styled/components';
 
-const ResetPassword = () => {
+export default function ResetPassword() {
   const dispatch = useDispatch();
   const onResetPassword = useCallback(
     (email) => dispatch(actions.resetPassword(email)),
@@ -54,6 +54,4 @@ const ResetPassword = () => {
       )}
     </Formik>
   );
-};
-
-export default ResetPassword;
+}

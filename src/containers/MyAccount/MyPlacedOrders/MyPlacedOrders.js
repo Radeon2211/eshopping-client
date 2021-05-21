@@ -8,7 +8,7 @@ import Heading from '../../../components/UI/Heading/Heading';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
-const MyPlacedOrders = () => {
+export default function MyPlacedOrders() {
   const lastLocation = useLastLocation();
 
   const placedOrders = useSelector((state) => state.auth.placedOrders);
@@ -29,6 +29,4 @@ const MyPlacedOrders = () => {
       <Orders orders={placedOrders} type={orderTypes.PLACED_ORDERS} />
     </SC.OrdersWrapper>
   );
-};
-
-export default MyPlacedOrders;
+}

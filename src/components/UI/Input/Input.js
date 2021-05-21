@@ -7,9 +7,7 @@ import Select from 'react-select';
 import * as SC from './Input.sc';
 import { inputKinds } from '../../../shared/constants';
 
-const Input = (props) => {
-  const { kind, config, label, isValid, isTouched } = props;
-
+export default function Input({ kind, config, label, isValid, isTouched }) {
   let input = null;
   let validityClassname = null;
   if (isValid !== undefined && isTouched) {
@@ -72,7 +70,7 @@ const Input = (props) => {
       {input}
     </SC.Wrapper>
   );
-};
+}
 
 Input.defaultProps = {
   isValid: undefined,
@@ -100,5 +98,3 @@ Input.propTypes = {
   isValid: PropTypes.bool,
   isTouched: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
-
-export default Input;

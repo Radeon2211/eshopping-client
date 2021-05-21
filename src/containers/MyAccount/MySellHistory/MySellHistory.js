@@ -8,7 +8,7 @@ import Heading from '../../../components/UI/Heading/Heading';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
-const MySellHistory = () => {
+export default function MySellHistory() {
   const lastLocation = useLastLocation();
 
   const sellHistory = useSelector((state) => state.auth.sellHistory);
@@ -29,6 +29,4 @@ const MySellHistory = () => {
       <Orders orders={sellHistory} type={orderTypes.SELL_HISTORY} />
     </SC.OrdersWrapper>
   );
-};
-
-export default MySellHistory;
+}

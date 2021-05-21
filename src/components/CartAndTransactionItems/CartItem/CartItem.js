@@ -14,8 +14,7 @@ import theme from '../../../styled/theme';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 import * as propTypes from '../../../shared/propTypes';
 
-const CartItem = (props) => {
-  const { data, isCartLoading } = props;
+export default function CartItem({ data, isCartLoading }) {
   const {
     _id: itemId,
     quantity,
@@ -132,11 +131,9 @@ const CartItem = (props) => {
       </MyIcon>
     </SC.Wrapper>
   );
-};
+}
 
 CartItem.propTypes = {
   data: PropTypes.shape(propTypes.cartItem).isRequired,
   isCartLoading: PropTypes.bool.isRequired,
 };
-
-export default CartItem;

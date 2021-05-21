@@ -12,7 +12,7 @@ import { getChangedValues } from '../../../shared/utility/utility';
 
 const validationSchema = Yup.object(productRules);
 
-const EditProduct = () => {
+export default function EditProduct() {
   const productDetails = useSelector((state) => state.product.productDetails);
 
   const dispatch = useDispatch();
@@ -146,6 +146,4 @@ const EditProduct = () => {
       )}
     </Formik>
   );
-};
-
-export default EditProduct;
+}

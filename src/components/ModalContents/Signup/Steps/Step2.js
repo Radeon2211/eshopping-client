@@ -10,7 +10,7 @@ import { stepFormVariants } from '../Signup.sc';
 import { inputKinds, listOfAreaCodes } from '../../../../shared/constants';
 import * as propTypes from '../../../../shared/propTypes';
 
-const Step2 = (props) => {
+export default function Step2(props) {
   const {
     isVisible,
     goToNextStep,
@@ -172,7 +172,7 @@ const Step2 = (props) => {
       )}
     </AnimatePresence>
   );
-};
+}
 
 Step2.propTypes = {
   isVisible: PropTypes.bool.isRequired,
@@ -184,5 +184,3 @@ Step2.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
   values: PropTypes.shape(propTypes.signupValues).isRequired,
 };
-
-export default Step2;

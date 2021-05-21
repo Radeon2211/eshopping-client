@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './Heading.sc';
 
-const Heading = React.memo((props) => {
-  const { children } = props;
-  return <SC.Heading {...props}>{children}</SC.Heading>;
-});
+const Heading = React.memo((props) => <SC.Heading {...props}>{props.children}</SC.Heading>);
 
 Heading.defaultProps = {
   align: 'left',

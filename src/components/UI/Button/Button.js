@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as SC from './Button.sc';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 
-const Button = (props) => {
+export default function Button(props) {
   const { clicked, isLoading, disabled, children } = props;
 
   const loadingOverlay = isLoading ? <LoadingOverlay loaderSize="small" disableText /> : null;
@@ -14,7 +14,7 @@ const Button = (props) => {
       {loadingOverlay}
     </SC.Button>
   );
-};
+}
 
 Button.defaultProps = {
   type: 'button',
@@ -36,5 +36,3 @@ Button.propTypes = {
   clicked: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
-
-export default Button;

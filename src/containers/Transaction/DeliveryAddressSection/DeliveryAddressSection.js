@@ -8,9 +8,7 @@ import Button from '../../../components/UI/Button/Button';
 import DeliveryAddress from '../../../components/UI/DeliveryAddress/DeliveryAddress';
 import FlexWrapper from '../../../components/UI/FlexWrapper';
 
-const DeliveryAddressSection = (props) => {
-  const { onSetModal } = props;
-
+export default function DeliveryAddressSection({ onSetModal }) {
   const deliveryAddress = useSelector((state) => state.auth.deliveryAddress);
 
   return (
@@ -24,10 +22,8 @@ const DeliveryAddressSection = (props) => {
       </FlexWrapper>
     </PlainPanel>
   );
-};
+}
 
 DeliveryAddressSection.propTypes = {
   onSetModal: PropTypes.func.isRequired,
 };
-
-export default DeliveryAddressSection;

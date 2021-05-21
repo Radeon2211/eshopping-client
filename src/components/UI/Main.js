@@ -14,13 +14,11 @@ SC.Main = styled.main`
   }
 `;
 
-const Main = (props) => {
+export default function Main(props) {
   const { children } = props;
   return <SC.Main {...props}>{children}</SC.Main>;
-};
+}
 
 Main.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Main;

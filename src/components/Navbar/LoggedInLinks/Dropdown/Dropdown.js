@@ -28,9 +28,7 @@ export const dropdownVariants = {
   },
 };
 
-const Dropdown = (props) => {
-  const { isVisible, closed } = props;
-
+export default function Dropdown({ isVisible, closed }) {
   const dispatch = useDispatch();
   const onSetModal = useCallback(
     (modalContent) => dispatch(actions.setModal(modalContent)),
@@ -115,11 +113,9 @@ const Dropdown = (props) => {
       </AnimatePresence>
     </OutsideClickHandler>
   );
-};
+}
 
 Dropdown.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   closed: PropTypes.func.isRequired,
 };
-
-export default Dropdown;

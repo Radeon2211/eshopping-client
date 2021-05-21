@@ -12,9 +12,7 @@ import PlainText from '../../../components/UI/PlainText';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
-const MyData = (props) => {
-  const { history } = props;
-
+export default function MyData({ history }) {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -150,6 +148,4 @@ const MyData = (props) => {
       </FlexWrapper>
     </>
   );
-};
-
-export default MyData;
+}

@@ -8,7 +8,7 @@ import PlainText from '../../UI/PlainText';
 import { inputKinds, modalTypes } from '../../../shared/constants';
 import { GreenText } from '../../../styled/components';
 
-const Login = () => {
+export default function Login() {
   const dispatch = useDispatch();
   const onLoginUser = useCallback((creds) => dispatch(actions.loginUser(creds)), [dispatch]);
   const onSetModal = useCallback(
@@ -62,6 +62,4 @@ const Login = () => {
       )}
     </Formik>
   );
-};
-
-export default Login;
+}

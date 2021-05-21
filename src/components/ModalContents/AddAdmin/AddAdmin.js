@@ -11,7 +11,7 @@ const validationSchema = Yup.object({
   email: userRules.email,
 });
 
-const AddAdmin = () => {
+export default function AddAdmin() {
   const dispatch = useDispatch();
   const onAddAdmin = useCallback((email) => dispatch(actions.addAdmin(email)), [dispatch]);
 
@@ -47,6 +47,4 @@ const AddAdmin = () => {
       )}
     </Formik>
   );
-};
-
-export default AddAdmin;
+}

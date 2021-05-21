@@ -4,8 +4,7 @@ import FlexWrapper from '../FlexWrapper';
 import PlainText from '../PlainText';
 import * as propTypes from '../../../shared/propTypes';
 
-const DeliveryAddress = (props) => {
-  const { data } = props;
+export default function DeliveryAddress({ data }) {
   const { firstName, lastName, street, zipCode, city, country, phone } = data;
 
   const rowValues = [`${firstName} ${lastName}`, street, `${zipCode} ${city}`, country, phone];
@@ -19,10 +18,8 @@ const DeliveryAddress = (props) => {
       ))}
     </FlexWrapper>
   );
-};
+}
 
 DeliveryAddress.propTypes = {
   data: PropTypes.shape(propTypes.deliveryAddressStrings).isRequired,
 };
-
-export default DeliveryAddress;

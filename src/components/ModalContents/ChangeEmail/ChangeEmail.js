@@ -13,7 +13,7 @@ const validationSchema = Yup.object({
   currentPassword: anyStringRule,
 });
 
-const ChangeEmail = () => {
+export default function ChangeEmail() {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -75,6 +75,4 @@ const ChangeEmail = () => {
       )}
     </Formik>
   );
-};
-
-export default ChangeEmail;
+}

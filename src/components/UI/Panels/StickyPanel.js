@@ -28,9 +28,7 @@ SC.Wrapper = styled.section`
   }
 `;
 
-const Panel = (props) => {
-  const { children } = props;
-
+export default function StickyPanel({ children }) {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -48,10 +46,8 @@ const Panel = (props) => {
       <PlainPanel>{children}</PlainPanel>
     </SC.Wrapper>
   );
-};
+}
 
-Panel.propTypes = {
+StickyPanel.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Panel;

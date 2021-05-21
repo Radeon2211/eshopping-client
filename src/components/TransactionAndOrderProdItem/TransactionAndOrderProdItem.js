@@ -7,8 +7,7 @@ import ProductThumbnail from '../UI/ProductThumbnail/ProductThumbnail';
 import PlainText from '../UI/PlainText';
 import { formatPrice, roundOverallPrice } from '../../shared/utility/utility';
 
-const TransactionAndOrderProdItem = React.memo((props) => {
-  const { data, orderId } = props;
+const TransactionAndOrderProdItem = React.memo(({ data, orderId }) => {
   const { _id: productId, name, price, quantity, photo } = data;
 
   const roundedOverallPrice = roundOverallPrice(price * quantity);

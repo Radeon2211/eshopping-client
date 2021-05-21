@@ -20,9 +20,7 @@ SC.Wrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndexes.level1};
 `;
 
-const LoadingOverlay = (props) => {
-  const { alignLoader, loaderSize, disableText } = props;
-
+export default function LoadingOverlay({ alignLoader, loaderSize, disableText }) {
   const [isInfoVisible, setIsInfoVisible] = useState(false);
 
   useEffect(() => {
@@ -47,7 +45,7 @@ const LoadingOverlay = (props) => {
       {info}
     </SC.Wrapper>
   );
-};
+}
 
 LoadingOverlay.defaultProps = {
   alignLoader: 'center',
@@ -60,5 +58,3 @@ LoadingOverlay.propTypes = {
   loaderSize: PropTypes.string,
   disableText: PropTypes.bool,
 };
-
-export default LoadingOverlay;

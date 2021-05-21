@@ -18,9 +18,7 @@ SC.Wrapper = styled.div`
   }
 `;
 
-const BottomPagination = (props) => {
-  const { itemQuantity, itemsType, quantityPerPage } = props;
-
+export default function BottomPagination({ itemQuantity, itemsType, quantityPerPage }) {
   return (
     <SC.Wrapper>
       <PaginationCounter
@@ -31,12 +29,10 @@ const BottomPagination = (props) => {
       <NumberPagination itemQuantity={itemQuantity} quantityPerPage={quantityPerPage} />
     </SC.Wrapper>
   );
-};
+}
 
 BottomPagination.propTypes = {
   itemQuantity: PropTypes.number.isRequired,
   itemsType: PropTypes.oneOf(Object.values(listItemTypes)).isRequired,
   quantityPerPage: PropTypes.number.isRequired,
 };
-
-export default BottomPagination;

@@ -10,10 +10,8 @@ import { formatPrice } from '../../../shared/utility/utility';
 import { productConditions } from '../../../shared/constants';
 import * as propTypes from '../../../shared/propTypes';
 
-const ProductItem = React.memo((props) => {
-  const {
-    data: { _id, name, price, condition, buyerQuantity, photo },
-  } = props;
+const ProductItem = React.memo(({ data }) => {
+  const { _id, name, price, condition, buyerQuantity, photo } = data;
 
   let conditionNode = null;
   if (condition !== productConditions.NOT_APPLICABLE) {

@@ -10,9 +10,7 @@ import {
   getParamsWithoutPollution,
 } from '../../../shared/utility/utility';
 
-const NumberPagination = (props) => {
-  const { itemQuantity, quantityPerPage } = props;
-
+export default function NumberPagination({ itemQuantity, quantityPerPage }) {
   const { search, pathname } = useLocation();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -98,7 +96,7 @@ const NumberPagination = (props) => {
   }
 
   return pagination;
-};
+}
 
 NumberPagination.propTypes = {
   itemQuantity: undefined,
@@ -108,5 +106,3 @@ NumberPagination.propTypes = {
   itemQuantity: PropTypes.number,
   quantityPerPage: PropTypes.number.isRequired,
 };
-
-export default NumberPagination;

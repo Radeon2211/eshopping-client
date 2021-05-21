@@ -13,9 +13,7 @@ import {
   getParamsWithoutPollution,
 } from '../../../shared/utility/utility';
 
-const InputPagination = (props) => {
-  const { itemQuantity, quantityPerPage } = props;
-
+export default function InputPagination({ itemQuantity, quantityPerPage }) {
   const history = useHistory();
   const { search, pathname } = history.location;
 
@@ -121,7 +119,7 @@ const InputPagination = (props) => {
   }
 
   return pagination;
-};
+}
 
 InputPagination.propTypes = {
   itemQuantity: undefined,
@@ -131,5 +129,3 @@ InputPagination.propTypes = {
   itemQuantity: PropTypes.number,
   quantityPerPage: PropTypes.number.isRequired,
 };
-
-export default InputPagination;

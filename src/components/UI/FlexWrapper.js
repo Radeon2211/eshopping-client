@@ -58,10 +58,10 @@ SC.Wrapper = styled.div`
   }}
 `;
 
-const FlexWrapper = (props) => {
+export default function FlexWrapper(props) {
   const { children } = props;
   return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
-};
+}
 
 FlexWrapper.defaultProps = {
   direction: 'row',
@@ -91,5 +91,3 @@ FlexWrapper.propTypes = {
   width: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
-
-export default FlexWrapper;

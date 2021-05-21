@@ -19,7 +19,7 @@ import { modalTypes, productConditions } from '../../shared/constants';
 import useWindowSize from '../../shared/useWindowSize';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
-const ProductDetails = () => {
+export default function ProductDetails() {
   const { id: productId } = useParams();
 
   const windowSize = useWindowSize();
@@ -191,6 +191,4 @@ const ProductDetails = () => {
       {details}
     </>
   );
-};
-
-export default ProductDetails;
+}

@@ -13,9 +13,7 @@ import { TopPagination } from '../../styled/components';
 import { listItemTypes, productPages } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 
-const ProductsAndFilters = (props) => {
-  const { page } = props;
-
+export default function ProductsAndFilters({ page }) {
   const { search } = useLocation();
 
   const products = useSelector((state) => state.product.products);
@@ -63,10 +61,8 @@ const ProductsAndFilters = (props) => {
       {productListSection}
     </SideBySide>
   );
-};
+}
 
 ProductsAndFilters.propTypes = {
   page: PropTypes.oneOf(Object.values(productPages)).isRequired,
 };
-
-export default ProductsAndFilters;

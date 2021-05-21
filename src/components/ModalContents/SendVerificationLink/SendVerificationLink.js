@@ -6,7 +6,7 @@ import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 
-const SendVerificationLink = () => {
+export default function SendVerificationLink() {
   const dispatch = useDispatch();
   const onSetModal = useCallback(
     (modalContent) => dispatch(actions.setModal(modalContent)),
@@ -30,6 +30,4 @@ const SendVerificationLink = () => {
       </FlexWrapper>
     </>
   );
-};
-
-export default SendVerificationLink;
+}

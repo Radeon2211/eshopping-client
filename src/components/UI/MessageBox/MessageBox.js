@@ -59,7 +59,7 @@ export const messageBoxVariants = {
   },
 };
 
-const MessageBox = () => {
+export default function MessageBox() {
   const message = useSelector((state) => state.ui.message);
   const dispatch = useDispatch();
   const onSetMessage = useCallback((msg) => dispatch(actions.setMessage(msg)), [dispatch]);
@@ -89,6 +89,4 @@ const MessageBox = () => {
       )}
     </AnimatePresence>
   );
-};
-
-export default MessageBox;
+}

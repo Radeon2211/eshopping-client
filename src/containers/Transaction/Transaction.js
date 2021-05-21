@@ -15,7 +15,7 @@ import { itemTypes, modalTypes } from '../../shared/constants';
 import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
-const Transaction = () => {
+export default function Transaction() {
   const history = useHistory();
 
   const transaction = useSelector((state) => state.auth.transaction);
@@ -82,6 +82,4 @@ const Transaction = () => {
       {content}
     </>
   );
-};
-
-export default Transaction;
+}

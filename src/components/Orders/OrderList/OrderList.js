@@ -14,9 +14,7 @@ import LoadingOverlay from '../../UI/LoadingOverlay/LoadingOverlay';
 import { formatPrice, formatOrderDate } from '../../../shared/utility/utility';
 import * as propTypes from '../../../shared/propTypes';
 
-const OrderList = (props) => {
-  const { orders, orderType } = props;
-
+export default function OrderList({ orders, orderType }) {
   const isDataLoading = useSelector((state) => state.ui.isDataLoading);
 
   const orderList = orders.map((order) => {
@@ -67,11 +65,9 @@ const OrderList = (props) => {
       {loadingOverlay}
     </SC.Wrapper>
   );
-};
+}
 
 OrderList.propTypes = {
   orders: PropTypes.arrayOf(PropTypes.shape(propTypes.orderItem)).isRequired,
   orderType: PropTypes.oneOf(Object.values(orderTypes)).isRequired,
 };
-
-export default OrderList;

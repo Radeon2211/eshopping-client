@@ -10,9 +10,7 @@ import LoggedInLinks from './LoggedInLinks/LoggedInLinks';
 import { defaultAppPath } from '../../shared/constants';
 import * as propTypes from '../../shared/propTypes';
 
-const Navbar = (props) => {
-  const { userProfile } = props;
-
+export default function Navbar({ userProfile }) {
   const authNav = userProfile ? (
     <LoggedInLinks username={userProfile.username} status={userProfile.status} />
   ) : (
@@ -33,7 +31,7 @@ const Navbar = (props) => {
       {authNav}
     </SC.Wrapper>
   );
-};
+}
 
 Navbar.defaultProps = {
   userProfile: null,
@@ -42,5 +40,3 @@ Navbar.defaultProps = {
 Navbar.propTypes = {
   userProfile: PropTypes.shape(propTypes.userProfile),
 };
-
-export default Navbar;

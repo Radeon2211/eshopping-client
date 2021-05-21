@@ -14,13 +14,11 @@ SC.Wrapper = styled.section`
   }
 `;
 
-const Panel = (props) => {
+export default function PlainPanel(props) {
   const { children } = props;
   return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
-};
+}
 
-Panel.propTypes = {
+PlainPanel.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Panel;

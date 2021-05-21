@@ -34,7 +34,7 @@ SC.Wrapper = styled.div`
   }
 `;
 
-const ChooseQuantity = (props) => {
+export default function ChooseQuantity(props) {
   const { name, value, maxQuantity, incremented, decremented, changed, blured, focused } = props;
 
   return (
@@ -81,7 +81,7 @@ const ChooseQuantity = (props) => {
       </button>
     </SC.Wrapper>
   );
-};
+}
 
 ChooseQuantity.defaultProps = {
   focused: () => {},
@@ -97,5 +97,3 @@ ChooseQuantity.propTypes = {
   blured: PropTypes.func.isRequired,
   focused: PropTypes.func,
 };
-
-export default ChooseQuantity;

@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
   country: userRules.country,
 });
 
-const ChangeAddress = () => {
+export default function ChangeAddress() {
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -119,6 +119,4 @@ const ChangeAddress = () => {
       )}
     </Formik>
   );
-};
-
-export default ChangeAddress;
+}

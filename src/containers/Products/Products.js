@@ -8,10 +8,8 @@ import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution, scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
-const Products = (props) => {
-  const {
-    location: { search },
-  } = props;
+export default function Products({ location }) {
+  const { search } = location;
 
   const lastLocation = useLastLocation();
 
@@ -50,6 +48,4 @@ const Products = (props) => {
       <ProductsAndFilters page={productPages.ALL_PRODUCTS} />
     </>
   );
-};
-
-export default Products;
+}

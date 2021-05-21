@@ -9,7 +9,7 @@ import { stepFormVariants } from '../Signup.sc';
 import { inputKinds } from '../../../../shared/constants';
 import * as propTypes from '../../../../shared/propTypes';
 
-const Step1 = (props) => {
+export default function Step1(props) {
   const { isVisible, goToNextStep, errors, values, touched, setFieldTouched } = props;
 
   let btnDisabled = false;
@@ -140,7 +140,7 @@ const Step1 = (props) => {
       )}
     </AnimatePresence>
   );
-};
+}
 
 Step1.propTypes = {
   isVisible: PropTypes.bool.isRequired,
@@ -150,5 +150,3 @@ Step1.propTypes = {
   setFieldTouched: PropTypes.func.isRequired,
   values: PropTypes.shape(propTypes.signupValues).isRequired,
 };
-
-export default Step1;

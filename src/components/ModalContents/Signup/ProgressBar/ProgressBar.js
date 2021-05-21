@@ -5,9 +5,7 @@ import { ReactComponent as CheckMarkIcon } from '../../../../images/icons/check-
 import MyIcon from '../../../UI/MyIcon';
 import PlainText from '../../../UI/PlainText';
 
-const ProgressBar = (props) => {
-  const { stepsNumber, currentStep } = props;
-
+export default function ProgressBar({ stepsNumber, currentStep }) {
   const steps = [];
   for (let i = 1; i <= stepsNumber; i += 1) {
     steps.push(
@@ -42,11 +40,9 @@ const ProgressBar = (props) => {
   }
 
   return <SC.Wrapper>{steps}</SC.Wrapper>;
-};
+}
 
 ProgressBar.propTypes = {
   stepsNumber: PropTypes.number.isRequired,
   currentStep: PropTypes.number.isRequired,
 };
-
-export default ProgressBar;

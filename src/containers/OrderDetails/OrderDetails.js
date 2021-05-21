@@ -15,7 +15,7 @@ import { GreenText } from '../../styled/components';
 import theme from '../../styled/theme';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
-const OrderDetails = () => {
+export default function OrderDetails() {
   const { id: orderId } = useParams();
 
   const orderDetails = useSelector((state) => state.auth.orderDetails);
@@ -149,6 +149,4 @@ const OrderDetails = () => {
       {content}
     </>
   );
-};
-
-export default OrderDetails;
+}

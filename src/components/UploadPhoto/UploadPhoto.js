@@ -11,9 +11,7 @@ import { productPhotoFieldValues } from '../../shared/constants';
 const productPhotoMaxSize = 6291456;
 const productPhotoMaxSizeString = calculateFileSize(productPhotoMaxSize);
 
-const UploadPhoto = (props) => {
-  const { setFieldValue, hasCurrentPhoto } = props;
-
+export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
   const input = useRef(null);
 
   const [photo, setPhoto] = useState(null);
@@ -141,7 +139,7 @@ const UploadPhoto = (props) => {
       />
     </SC.Wrapper>
   );
-};
+}
 
 UploadPhoto.defaultProps = {
   hasCurrentPhoto: false,
@@ -151,5 +149,3 @@ UploadPhoto.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
   hasCurrentPhoto: PropTypes.bool,
 };
-
-export default UploadPhoto;

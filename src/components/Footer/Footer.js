@@ -32,7 +32,7 @@ SC.Wrapper = styled.footer`
   }
 `;
 
-const Footer = () => {
+export default function Footer() {
   const dispatch = useDispatch();
   const onSetModal = useCallback(
     (modalContent) => dispatch(actions.setModal(modalContent)),
@@ -73,6 +73,4 @@ const Footer = () => {
       </span>
     </SC.Wrapper>
   );
-};
-
-export default Footer;
+}

@@ -11,7 +11,7 @@ const validationSchema = Yup.object({
   email: userRules.email,
 });
 
-const RemoveAdmin = () => {
+export default function RemoveAdmin() {
   const dispatch = useDispatch();
   const onRemoveAdmin = useCallback((email) => dispatch(actions.removeAdmin(email)), [dispatch]);
 
@@ -53,6 +53,4 @@ const RemoveAdmin = () => {
       )}
     </Formik>
   );
-};
-
-export default RemoveAdmin;
+}

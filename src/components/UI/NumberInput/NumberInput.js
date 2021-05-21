@@ -31,9 +31,7 @@ SC.NumberInput = styled.input`
   }
 `;
 
-const NumberInput = (props) => {
-  const { name, value, changed, blured, focused, floating, size } = props;
-
+export default function NumberInput({ name, value, changed, blured, focused, floating, size }) {
   const inputKeyDownHandle = (e) => {
     if (
       e.key === 'e' ||
@@ -66,7 +64,7 @@ const NumberInput = (props) => {
       data-testid={`NumberInput-${name}`}
     />
   );
-};
+}
 
 NumberInput.defaultProps = {
   value: '',
@@ -85,5 +83,3 @@ NumberInput.propTypes = {
   floating: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'big']),
 };
-
-export default NumberInput;

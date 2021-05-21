@@ -8,11 +8,8 @@ import ProductsAndFilters from '../../../components/ProductsAndFilters/ProductsA
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
-const MyProducts = (props) => {
-  const {
-    userProfile,
-    location: { search },
-  } = props;
+export default function MyProducts({ userProfile, location }) {
+  const { search } = location;
 
   const lastLocation = useLastLocation();
 
@@ -38,6 +35,4 @@ const MyProducts = (props) => {
       <ProductsAndFilters page={productPages.MY_PRODUCTS} />
     </>
   );
-};
-
-export default MyProducts;
+}

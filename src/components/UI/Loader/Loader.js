@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as SC from './Loader.sc';
 
-const Loader = (props) => {
-  const { size, align } = props;
-
+export default function Loader({ size, align }) {
   const loader = (
     <SC.Loader size={size} data-testid="Loader">
       <div />
@@ -26,7 +24,7 @@ const Loader = (props) => {
   }
 
   return wrapper;
-};
+}
 
 Loader.defaultProps = {
   align: '',
@@ -37,5 +35,3 @@ Loader.propTypes = {
   align: PropTypes.string,
   size: PropTypes.string,
 };
-
-export default Loader;

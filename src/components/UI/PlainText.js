@@ -96,10 +96,10 @@ SC.Wrapper = styled.span`
   }}
 `;
 
-const PlainText = (props) => {
+export default function PlainText(props) {
   const { children } = props;
   return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
-};
+}
 
 PlainText.defaultProps = {
   display: 'inline-block',
@@ -148,5 +148,3 @@ PlainText.propTypes = {
   extraMgTop: PropTypes.string,
   maxWidth: PropTypes.string,
 };
-
-export default PlainText;

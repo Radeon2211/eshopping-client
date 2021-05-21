@@ -14,9 +14,7 @@ SC.Wrapper = styled(FlexWrapper)`
   }
 `;
 
-const ErrorPage = (props) => {
-  const { info, children } = props;
-
+export default function ErrorPage({ info, children }) {
   return (
     <SC.Wrapper align="center" direction="column" spacing="3" mgTop="3">
       {info && (
@@ -27,7 +25,7 @@ const ErrorPage = (props) => {
       {children}
     </SC.Wrapper>
   );
-};
+}
 
 ErrorPage.defaultProps = {
   info: '',
@@ -37,5 +35,3 @@ ErrorPage.propTypes = {
   info: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
-
-export default ErrorPage;

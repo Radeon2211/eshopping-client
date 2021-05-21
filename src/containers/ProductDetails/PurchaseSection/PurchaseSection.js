@@ -14,7 +14,7 @@ import theme from '../../../styled/theme';
 import { modalTypes, userStatuses } from '../../../shared/constants';
 import * as propTypes from '../../../shared/propTypes';
 
-const PurchaseSection = (props) => {
+export default function PurchaseSection(props) {
   const { productId, productQuantity, productSellerUsername, onSetModal, userProfile } = props;
 
   const history = useHistory();
@@ -160,7 +160,7 @@ const PurchaseSection = (props) => {
   }
 
   return <SC.Wrapper>{purchaseSection}</SC.Wrapper>;
-};
+}
 
 PurchaseSection.defaultProps = {
   productSellerUsername: undefined,
@@ -174,5 +174,3 @@ PurchaseSection.propTypes = {
   onSetModal: PropTypes.func.isRequired,
   userProfile: PropTypes.shape(propTypes.userProfile),
 };
-
-export default PurchaseSection;

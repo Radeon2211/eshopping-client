@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 import * as actions from '../../store/actions/indexActions';
 
-const Logout = (props) => {
-  const { history } = props;
-
+export default function Logout({ history }) {
   const dispatch = useDispatch();
   const onLogoutUser = useCallback(() => dispatch(actions.logoutUser()), [dispatch]);
 
@@ -15,6 +13,4 @@ const Logout = (props) => {
   }, [onLogoutUser, history]);
 
   return <MetaDescriptor title="Logging out..." />;
-};
-
-export default Logout;
+}

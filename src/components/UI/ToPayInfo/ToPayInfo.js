@@ -4,9 +4,7 @@ import FlexWrapper from '../FlexWrapper';
 import PlainText from '../PlainText';
 import { formatPrice } from '../../../shared/utility/utility';
 
-const ToPayInfo = (props) => {
-  const { value } = props;
-
+export default function ToPayInfo({ value }) {
   return (
     <FlexWrapper align="center" justify="center" wrap="wrap" spacing="1">
       <PlainText size="4">To pay</PlainText>
@@ -15,10 +13,8 @@ const ToPayInfo = (props) => {
       </PlainText>
     </FlexWrapper>
   );
-};
+}
 
 ToPayInfo.propTypes = {
   value: PropTypes.number.isRequired,
 };
-
-export default ToPayInfo;

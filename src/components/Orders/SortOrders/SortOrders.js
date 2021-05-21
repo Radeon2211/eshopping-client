@@ -37,7 +37,7 @@ const customStyles = {
   }),
 };
 
-const SortOrders = () => {
+export default function SortOrders() {
   const [option, setOption] = useState(sortOrdersOptions[0]);
 
   const history = useHistory();
@@ -68,6 +68,4 @@ const SortOrders = () => {
       />
     </SC.Wrapper>
   );
-};
-
-export default SortOrders;
+}

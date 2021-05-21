@@ -5,7 +5,7 @@ import * as actions from '../../../store/actions/indexActions';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 
-const ClearCart = () => {
+export default function ClearCart() {
   const dispatch = useDispatch();
   const onSetModal = useCallback(
     (modalContent) => dispatch(actions.setModal(modalContent)),
@@ -36,6 +36,4 @@ const ClearCart = () => {
       </FlexWrapper>
     </>
   );
-};
-
-export default ClearCart;
+}

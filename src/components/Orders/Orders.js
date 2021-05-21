@@ -14,9 +14,7 @@ import { listItemTypes, orderTypes, defaultOrdersPerPage } from '../../shared/co
 import * as propTypes from '../../shared/propTypes';
 import { TopPagination } from '../../styled/components';
 
-const Orders = (props) => {
-  const { orders, type } = props;
-
+export default function Orders({ orders, type }) {
   const { search } = useLocation();
 
   const orderCount = useSelector((state) => state.auth.orderCount);
@@ -68,11 +66,9 @@ const Orders = (props) => {
   }
 
   return content;
-};
+}
 
 Orders.propTypes = {
   orders: PropTypes.arrayOf(PropTypes.shape(propTypes.orderItem)),
   type: PropTypes.string.isRequired,
 };
-
-export default Orders;

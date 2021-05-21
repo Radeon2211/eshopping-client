@@ -8,7 +8,7 @@ import { defaultAppPath } from '../../../shared/constants';
 import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 import useWindowSize from '../../../shared/useWindowSize';
 
-const SearchForm = () => {
+export default function SearchForm() {
   const [productName, setProductName] = useState('');
   const history = useHistory();
 
@@ -69,6 +69,4 @@ const SearchForm = () => {
       </Button>
     </SC.SearchForm>
   );
-};
-
-export default SearchForm;
+}

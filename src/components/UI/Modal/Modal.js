@@ -56,7 +56,7 @@ export const modalVariants = {
   },
 };
 
-const Modal = () => {
+export default function Modal() {
   const history = useHistory();
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
@@ -191,6 +191,4 @@ const Modal = () => {
       )}
     </AnimatePresence>
   );
-};
-
-export default Modal;
+}

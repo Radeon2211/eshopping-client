@@ -6,9 +6,7 @@ import { singleInfoNames } from '../../../../shared/constants';
 import FlexWrapper from '../../../../components/UI/FlexWrapper';
 import PlainText from '../../../../components/UI/PlainText';
 
-const SingleInfo = (props) => {
-  const { name, content, clickHandler } = props;
-
+export default function SingleInfo({ name, content, clickHandler }) {
   let contentNode = '';
   if (name === singleInfoNames.ADDRESS) {
     contentNode = (
@@ -57,7 +55,7 @@ const SingleInfo = (props) => {
       {button}
     </FlexWrapper>
   );
-};
+}
 
 SingleInfo.defaultProps = {
   clickHandler: undefined,
@@ -75,5 +73,3 @@ SingleInfo.propTypes = {
   ]).isRequired,
   clickHandler: PropTypes.func,
 };
-
-export default SingleInfo;

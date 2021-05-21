@@ -62,10 +62,10 @@ SC.Wrapper = styled.div`
   }
 `;
 
-const MyIcon = (props) => {
+export default function MyIcon(props) {
   const { children } = props;
   return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
-};
+}
 
 MyIcon.defaultProps = {
   disabled: false,
@@ -80,5 +80,3 @@ MyIcon.propTypes = {
   rotation: PropTypes.number,
   children: PropTypes.node.isRequired,
 };
-
-export default MyIcon;

@@ -5,7 +5,7 @@ import { modalTypes } from '../../../shared/constants';
 import Button from '../../UI/Button/Button';
 import FlexWrapper from '../../UI/FlexWrapper';
 
-const LoggedOutLinks = () => {
+export default function LoggedOutLinks() {
   const dispatch = useDispatch();
   const onSetModal = useCallback(
     (modalContent) => dispatch(actions.setModal(modalContent)),
@@ -20,6 +20,4 @@ const LoggedOutLinks = () => {
       </Button>
     </FlexWrapper>
   );
-};
-
-export default LoggedOutLinks;
+}

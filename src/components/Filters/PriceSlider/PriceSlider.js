@@ -10,9 +10,7 @@ import { filtersActions, sliderPositionsActions } from '../../../shared/constant
 import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
-const PriceSlider = (props) => {
-  const { dispatchFilters } = props;
-
+export default function PriceSlider({ dispatchFilters }) {
   const history = useHistory();
   const {
     location: { search },
@@ -250,10 +248,8 @@ const PriceSlider = (props) => {
       </SC.Slider>
     </SC.Wrapper>
   );
-};
+}
 
 PriceSlider.propTypes = {
   dispatchFilters: PropTypes.func.isRequired,
 };
-
-export default PriceSlider;

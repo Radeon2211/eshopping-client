@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLastLocation } from 'react-router-last-location';
@@ -8,7 +7,7 @@ import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 
-const BuyProducts = () => {
+export default function BuyProducts() {
   const history = useHistory();
   const lastLocation = useLastLocation();
 
@@ -35,6 +34,4 @@ const BuyProducts = () => {
       </FlexWrapper>
     </>
   );
-};
-
-export default BuyProducts;
+}

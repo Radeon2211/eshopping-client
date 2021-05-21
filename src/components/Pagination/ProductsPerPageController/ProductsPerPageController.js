@@ -43,9 +43,7 @@ const customStyles = {
   }),
 };
 
-const ProductsPerPageController = (props) => {
-  const { quantityPerPage } = props;
-
+export default function ProductsPerPageController({ quantityPerPage }) {
   const defaultOption = productsPerPageControllerOptions.find(
     ({ value }) => value === quantityPerPage,
   );
@@ -81,10 +79,8 @@ const ProductsPerPageController = (props) => {
       />
     </SC.Wrapper>
   );
-};
+}
 
 ProductsPerPageController.propTypes = {
   quantityPerPage: PropTypes.number.isRequired,
 };
-
-export default ProductsPerPageController;

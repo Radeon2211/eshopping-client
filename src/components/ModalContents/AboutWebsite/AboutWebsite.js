@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from '../../UI/Heading/Heading';
 import PlainText from '../../UI/PlainText';
 
-const AboutWebsite = () => {
+export default function AboutWebsite() {
   return (
     <>
       <Heading variant="h3" align="center" mgBottom="3">
@@ -16,6 +16,4 @@ const AboutWebsite = () => {
       </PlainText>
     </>
   );
-};
-
-export default AboutWebsite;
+}

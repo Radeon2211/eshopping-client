@@ -33,9 +33,7 @@ SC.User = styled.div`
   position: relative;
 `;
 
-const LoggedInLinks = (props) => {
-  const { username, status } = props;
-
+export default function LoggedInLinks({ username, status }) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const showUsername = (name) => {
@@ -82,11 +80,9 @@ const LoggedInLinks = (props) => {
     );
 
   return <SC.Wrapper data-testid="LoggedInLinks">{content}</SC.Wrapper>;
-};
+}
 
 LoggedInLinks.propTypes = {
   username: PropTypes.string.isRequired,
   status: PropTypes.oneOf(Object.values(userStatuses)).isRequired,
 };
-
-export default LoggedInLinks;

@@ -16,9 +16,7 @@ import { filtersActions, sortProductsOptions, productConditions } from '../../sh
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 import useWindowSize from '../../shared/useWindowSize';
 
-const Filters = (props) => {
-  const { isDataLoading } = props;
-
+export default function Filters({ isDataLoading }) {
   const history = useHistory();
   const { search, pathname } = history.location;
 
@@ -169,10 +167,8 @@ const Filters = (props) => {
       {filtersPanel}
     </>
   );
-};
+}
 
 Filters.propTypes = {
   isDataLoading: PropTypes.bool.isRequired,
 };
-
-export default Filters;
