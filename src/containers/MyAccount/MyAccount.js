@@ -17,7 +17,12 @@ export default function MyAccount() {
       <nav className="nav" data-testid="MyAccount-navigation">
         <ul className="nav-list">
           <li>
-            <NavLink to="/my-account/data" className="nav-link" activeClassName="nav-link-active">
+            <NavLink
+              to="/my-account/data"
+              className="nav-link"
+              activeClassName="nav-link-active"
+              data-testid="MyAccount-data-link"
+            >
               Data
             </NavLink>
           </li>
@@ -26,6 +31,7 @@ export default function MyAccount() {
               to={`/my-account${defaultAppPath}`}
               className="nav-link"
               activeClassName="nav-link-active"
+              data-testid="MyAccount-products-link"
             >
               Products
             </NavLink>
@@ -35,6 +41,7 @@ export default function MyAccount() {
               to="/my-account/sell-history?p=1"
               className="nav-link"
               activeClassName="nav-link-active"
+              data-testid="MyAccount-sell-history-link"
             >
               Sell history
             </NavLink>
@@ -44,6 +51,7 @@ export default function MyAccount() {
               to="/my-account/placed-orders?p=1"
               className="nav-link"
               activeClassName="nav-link-active"
+              data-testid="MyAccount-placed-orders-link"
             >
               Placed orders
             </NavLink>

@@ -21,6 +21,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
 
 <h3
     class="c0"
+    font-size=""
   >
     My data
   </h3>
@@ -155,7 +156,6 @@ exports[`<MyData /> check how renders should render everything correctly for adm
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -163,12 +163,13 @@ exports[`<MyData /> check how renders should render everything correctly for adm
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
@@ -183,7 +184,6 @@ exports[`<MyData /> check how renders should render everything correctly for adm
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -191,12 +191,13 @@ exports[`<MyData /> check how renders should render everything correctly for adm
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #F22613;
   color: #F22613;
@@ -270,6 +271,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         >
           <h4
             class="c4"
+            font-size=""
           >
             Username
           </h4>
@@ -295,6 +297,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         >
           <h4
             class="c4"
+            font-size=""
           >
             Name
           </h4>
@@ -328,6 +331,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         >
           <h4
             class="c4"
+            font-size=""
           >
             Email
           </h4>
@@ -361,6 +365,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         >
           <h4
             class="c4"
+            font-size=""
           >
             Address
           </h4>
@@ -424,6 +429,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         >
           <h4
             class="c4"
+            font-size=""
           >
             Contacts
           </h4>
@@ -476,6 +482,7 @@ exports[`<MyData /> check how renders should render everything correctly for adm
         >
           <h4
             class="c4"
+            font-size=""
           >
             Phone number
           </h4>
@@ -571,6 +578,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
 
 <h3
     class="c0"
+    font-size=""
   >
     My data
   </h3>
@@ -705,7 +713,6 @@ exports[`<MyData /> check how renders should render everything correctly for non
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -713,12 +720,13 @@ exports[`<MyData /> check how renders should render everything correctly for non
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
@@ -733,7 +741,6 @@ exports[`<MyData /> check how renders should render everything correctly for non
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -741,12 +748,13 @@ exports[`<MyData /> check how renders should render everything correctly for non
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #F22613;
   color: #F22613;
@@ -820,6 +828,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c4"
+            font-size=""
           >
             Username
           </h4>
@@ -845,6 +854,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c4"
+            font-size=""
           >
             Name
           </h4>
@@ -878,6 +888,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c4"
+            font-size=""
           >
             Email
           </h4>
@@ -911,6 +922,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c4"
+            font-size=""
           >
             Address
           </h4>
@@ -974,6 +986,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c4"
+            font-size=""
           >
             Contacts
           </h4>
@@ -1026,6 +1039,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c4"
+            font-size=""
           >
             Phone number
           </h4>
@@ -1098,6 +1112,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
 
 <h3
     class="c0"
+    font-size=""
   >
     My data
   </h3>
@@ -1232,7 +1247,6 @@ exports[`<MyData /> check how renders should render everything correctly for non
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -1240,12 +1254,13 @@ exports[`<MyData /> check how renders should render everything correctly for non
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
@@ -1260,7 +1275,6 @@ exports[`<MyData /> check how renders should render everything correctly for non
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -1268,12 +1282,13 @@ exports[`<MyData /> check how renders should render everything correctly for non
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #F22613;
   color: #F22613;
@@ -1381,6 +1396,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c5"
+            font-size=""
           >
             Username
           </h4>
@@ -1406,6 +1422,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c5"
+            font-size=""
           >
             Name
           </h4>
@@ -1431,6 +1448,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c5"
+            font-size=""
           >
             Email
           </h4>
@@ -1456,6 +1474,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c5"
+            font-size=""
           >
             Address
           </h4>
@@ -1511,6 +1530,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c5"
+            font-size=""
           >
             Contacts
           </h4>
@@ -1555,6 +1575,7 @@ exports[`<MyData /> check how renders should render everything correctly for non
         >
           <h4
             class="c5"
+            font-size=""
           >
             Phone number
           </h4>

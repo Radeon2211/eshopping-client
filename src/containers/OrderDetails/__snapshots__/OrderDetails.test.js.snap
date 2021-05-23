@@ -429,6 +429,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         >
           <h4
             class="c3"
+            font-size=""
           >
             General info
           </h4>
@@ -523,6 +524,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         >
           <h4
             class="c3"
+            font-size=""
           >
             Info about seller
           </h4>
@@ -618,6 +620,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
         >
           <h4
             class="c3"
+            font-size=""
           >
             Delivery address
           </h4>
@@ -688,6 +691,7 @@ exports[`<OrderDetails /> check how renders should render everything correctly w
       </div>
       <h4
         class="c9"
+        font-size=""
       >
         Products
       </h4>
@@ -941,6 +945,7 @@ exports[`<OrderDetails /> check how renders should render only info that there i
 <h4
     class="c0"
     data-testid="OrderDetails-error"
+    font-size=""
   >
     There is a problem to fetch order details or given order does not exist
   </h4>

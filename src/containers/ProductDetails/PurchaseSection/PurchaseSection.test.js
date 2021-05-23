@@ -134,8 +134,8 @@ describe('<PurchaseSection />', () => {
       };
       setUp(props);
 
-      fireEvent.click(screen.getByText('buy now'));
-      fireEvent.click(screen.getByText('add to cart'));
+      fireEvent.click(screen.getByRole('button', { name: /buy now/i }));
+      fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
       expect(onSetModalFn).not.toHaveBeenCalled();
     });
 
@@ -147,9 +147,9 @@ describe('<PurchaseSection />', () => {
       };
       setUp(props);
 
-      fireEvent.click(screen.getByText('buy now'));
+      fireEvent.click(screen.getByRole('button', { name: /buy now/i }));
       expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.LOGIN);
-      fireEvent.click(screen.getByText('add to cart'));
+      fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
       expect(onSetModalFn).toHaveBeenLastCalledWith(modalTypes.LOGIN);
       expect(onSetModalFn).toHaveBeenCalledTimes(2);
     });
@@ -162,9 +162,9 @@ describe('<PurchaseSection />', () => {
       };
       setUp(props);
 
-      fireEvent.click(screen.getByText('buy now'));
+      fireEvent.click(screen.getByRole('button', { name: /buy now/i }));
       expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.PENDING_USER_INFO);
-      fireEvent.click(screen.getByText('add to cart'));
+      fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
       expect(onSetModalFn).toHaveBeenLastCalledWith(modalTypes.PENDING_USER_INFO);
       expect(onSetModalFn).toHaveBeenCalledTimes(2);
     });
@@ -227,7 +227,7 @@ describe('<PurchaseSection />', () => {
 
       fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
 
-      fireEvent.click(screen.getByText('add to cart'));
+      fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         1,
         actions.addCartItem({
@@ -236,7 +236,7 @@ describe('<PurchaseSection />', () => {
         }),
       );
 
-      fireEvent.click(screen.getByText('buy now'));
+      fireEvent.click(screen.getByRole('button', { name: /buy now/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
         actions.goToTransaction(history, {

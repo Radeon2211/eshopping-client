@@ -120,7 +120,7 @@ const fillLastName = async (value = defaultNewLastName) => {
 };
 
 const choosePhonePrefix = async (label = defaultNewPhonePrefixLabel) => {
-  await selectEvent.openMenu(screen.getByText('Choose your phone number prefix'));
+  await selectEvent.openMenu(screen.getByText(/choose your phone number prefix/i));
   await waitFor(() => {
     fireEvent.click(screen.getByText(label));
   });
@@ -162,7 +162,7 @@ const fillCity = async (value = defaultNewCity) => {
 };
 
 const chooseCountry = async (label = defaultNewCountry) => {
-  await selectEvent.openMenu(screen.getByText('Choose your country'));
+  await selectEvent.openMenu(screen.getByText(/choose your country/i));
   await waitFor(() => {
     fireEvent.click(screen.getByText(label));
   });
@@ -288,7 +288,7 @@ describe('<Signup />', () => {
       expect(firstNameInput).toHaveFocus();
       expect(firstNameInput.value).toEqual(defaultFirstName);
       expect(lastNameInput.value).toEqual(defaultLastName);
-      expect(screen.getByText('Choose your phone number prefix')).toBeInTheDocument();
+      expect(screen.getByText(/choose your phone number prefix/i)).toBeInTheDocument();
       expect(phoneNumberInput.value).toEqual(defaultPhoneNumber);
       expect(hidePhoneCheckbox).not.toBeChecked();
 
@@ -310,7 +310,7 @@ describe('<Signup />', () => {
       expect(streetInput).toHaveFocus();
       expect(streetInput.value).toEqual(defaultStreet);
       expect(zipCodeInput.value).toEqual(defaultZipCode);
-      expect(screen.getByText('Choose your country')).toBeInTheDocument();
+      expect(screen.getByText(/choose your country/i)).toBeInTheDocument();
       expect(cityInput.value).toEqual(defaultCity);
 
       await fillStep3();

@@ -82,7 +82,7 @@ describe('<CartItemAdded />', () => {
     it('should call push with /cart after go to cart button click', () => {
       const store = createStore(defaultCart, defaultProduct);
       const { history } = setUp(store);
-      fireEvent.click(screen.getByText('Go to cart').closest('a'));
+      fireEvent.click(screen.getByRole('button', { name: /go to cart/i }).closest('a'));
       expect(history.push).toHaveBeenCalledWith('/cart');
     });
 
@@ -92,10 +92,10 @@ describe('<CartItemAdded />', () => {
 
       expect(store.dispatch).not.toHaveBeenCalled();
 
-      fireEvent.click(screen.getByText('Continue shopping'));
+      fireEvent.click(screen.getByRole('button', { name: /continue shopping/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(''));
 
-      fireEvent.click(screen.getByText('Go to cart'));
+      fireEvent.click(screen.getByRole('button', { name: /go to cart/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(''));
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);

@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LandingPage /> should render everything correctly 1`] = `
+<DocumentFragment>
+  .c5 {
+  font-family: Lobster,cursive;
+  font-size: 4.4rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 0;
+  text-align: left;
+}
+
+.c6 {
+  font-size: 3.5rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 3.6rem;
+  text-align: center;
+  margin-bottom: 4.8rem;
+  line-height: 1.3;
+}
+
+.c10 {
+  font-size: 2.4rem;
+  font-family: Noto Sans,sans-serif;
+  line-height: 1;
+  margin-bottom: 2.4rem;
+  margin-top: 2.4rem;
+  text-align: left;
+  margin-bottom: 2.4rem;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.c2 {
+  background-image: linear-gradient( to right bottom, #22A7F0, #1E8BC3 );
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.c1 {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 60rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 4.8rem 1.2rem;
+  margin: 0 1.2rem;
+  width: 60rem;
+  z-index: 100;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 .logo {
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-right: 0.8rem;
+}
+
+.c9 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  font-size: 1.7rem;
+  padding: 1.2rem 2.4rem;
+  background-color: transparent;
+  border: 2px solid #1E8BC3;
+  color: #1E8BC3;
+}
+
+.c9:hover {
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+
+.c11 {
+  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  border-radius: 1px;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.2;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  font-size: 1.7rem;
+  padding: 1.2rem 2.4rem;
+  background-color: #1E8BC3;
+  border: 2px solid #1E8BC3;
+  color: #fff;
+}
+
+.c11:hover {
+  background-color: #22A7F0;
+  border-color: #22A7F0;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c8 > *:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+@media only screen and (max-width:37.5em) {
+  .c3 {
+    border-radius: 15px;
+    height: auto;
+    max-width: 55rem;
+    width: 100%;
+  }
+}
+
+<div
+    class="c0"
+    data-testid="LandingPage"
+  >
+    <img
+      alt="E-Shopping"
+      class="c1"
+      src="landing-page-bg.jpg"
+    />
+    <div
+      class="c2"
+    />
+    <div
+      class="c3"
+      style="opacity: 0;"
+    >
+      <div
+        style="opacity: 0;"
+      >
+        <header
+          class="c4"
+        >
+          <img
+            alt="E-Shopping"
+            class="logo"
+            src="logo.png"
+          />
+          <h1
+            class="c5 heading"
+            font-size="big"
+          >
+            shopping
+          </h1>
+        </header>
+      </div>
+      <div
+        style="opacity: 0;"
+      >
+        <h2
+          class="c6 c7"
+          font-size=""
+        >
+          <span>
+            Buy and sell
+          </span>
+          <span>
+            whatever you want
+          </span>
+        </h2>
+      </div>
+      <div
+        class="c8"
+        direction="row"
+        spacing="3"
+        width="100%"
+        wrap="nowrap"
+      >
+        <div
+          style="opacity: 0;"
+        >
+          <button
+            class="c9"
+            color="blue"
+            type="button"
+          >
+            Login
+          </button>
+        </div>
+        <div
+          style="opacity: 0;"
+        >
+          <button
+            class="c9"
+            color="blue"
+            type="button"
+          >
+            Signup
+          </button>
+        </div>
+      </div>
+      <div
+        style="opacity: 0;"
+      >
+        <h3
+          class="c10"
+          font-size=""
+        >
+          OR
+        </h3>
+      </div>
+      <div
+        style="opacity: 0;"
+      >
+        <a>
+          <button
+            class="c11"
+            color="blue"
+            type="button"
+          >
+            View the products now
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

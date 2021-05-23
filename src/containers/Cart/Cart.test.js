@@ -100,7 +100,7 @@ describe('<Cart />', () => {
         true,
       );
       expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
-      expect(screen.getByText('go to summary')).toBeDisabled();
+      expect(screen.getByRole('button', { name: /go to summary/i })).toBeDisabled();
     });
   });
 
@@ -117,10 +117,10 @@ describe('<Cart />', () => {
       expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchCart());
 
-      fireEvent.click(screen.getByText('clear the cart'));
+      fireEvent.click(screen.getByRole('button', { name: /clear the cart/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(modalTypes.CLEAR_CART));
 
-      fireEvent.click(screen.getByText('go to summary'));
+      fireEvent.click(screen.getByRole('button', { name: /go to summary/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.goToTransaction(history));
 
       expect(store.dispatch).toHaveBeenCalledTimes(3);

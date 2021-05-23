@@ -46,14 +46,14 @@ describe('<SendVerificationLink />', () => {
     it('should call setModal() after cancel button click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
-      fireEvent.click(screen.getByText('Cancel'));
+      fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
 
     it('should call and sendAccountVerificationLink() after send button click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
-      fireEvent.click(screen.getByText('Send'));
+      fireEvent.click(screen.getByRole('button', { name: /send/i }));
       expect(store.dispatch).toHaveBeenCalledWith(actions.sendAccountVerificationLink());
     });
   });

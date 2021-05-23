@@ -15,6 +15,7 @@ exports[`<Heading /> should render h1 with correct text 1`] = `
 
 <h1
   className="c0"
+  fontSize=""
 >
   h1 heading
 </h1>
@@ -32,6 +33,7 @@ exports[`<Heading /> should render h2 with correct text 1`] = `
 
 <h2
   className="c0"
+  fontSize=""
 >
   h2 heading
 </h2>
@@ -49,6 +51,7 @@ exports[`<Heading /> should render h3 with correct text 1`] = `
 
 <h3
   className="c0"
+  fontSize=""
 >
   h3 heading
 </h3>
@@ -64,6 +67,7 @@ exports[`<Heading /> should render h4 with correct text 1`] = `
 
 <h4
   className="c0"
+  fontSize=""
 >
   h4 heading
 </h4>
@@ -77,6 +81,7 @@ exports[`<Heading /> should render h5 with correct text 1`] = `
 
 <h5
   className="c0"
+  fontSize=""
 >
   h5 heading
 </h5>
@@ -90,6 +95,7 @@ exports[`<Heading /> should render h6 with correct text 1`] = `
 
 <h6
   className="c0"
+  fontSize=""
 >
   h6 heading
 </h6>

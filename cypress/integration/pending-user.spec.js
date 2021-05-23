@@ -34,7 +34,9 @@ describe('pending user', () => {
       cy.checkHash('#/my-account/data');
     });
 
-    it('does not visit pages for active users', () => {
+    it('does not visit landing page and pages for active users', () => {
+      cy.checkHash();
+      cy.visit('/');
       cy.checkHash();
       cy.visit('/cart');
       cy.checkHash();

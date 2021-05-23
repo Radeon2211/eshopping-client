@@ -37,6 +37,7 @@ exports[`<MyProducts /> check how renders should render everything correctly wit
 
 <h3
     class="c0"
+    font-size=""
   >
     My products
   </h3>

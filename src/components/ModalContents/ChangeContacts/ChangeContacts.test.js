@@ -130,10 +130,10 @@ describe('<ChangeContacts />', () => {
         };
 
         await waitFor(() => {
-          fireEvent.click(screen.getByText('Hide my email address from others'));
+          fireEvent.click(screen.getByText(/hide my email address from others/i));
         });
         await waitFor(() => {
-          fireEvent.click(screen.getByText('Hide my phone number from others'));
+          fireEvent.click(screen.getByText(/hide my phone number from others/i));
         });
         expect(screen.getByTestId('ChangeContacts-hideEmail')).toBeChecked();
         expect(screen.getByTestId('ChangeContacts-hidePhone')).not.toBeChecked();

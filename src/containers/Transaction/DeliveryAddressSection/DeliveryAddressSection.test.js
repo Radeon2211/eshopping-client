@@ -56,7 +56,7 @@ describe('<DeliveryAddressSection />', () => {
     const onSetModalFn = jest.fn();
     setUp(onSetModalFn);
 
-    fireEvent.click(screen.getByText('Change address'));
+    fireEvent.click(screen.getByRole('button', { name: /change address/i }));
     expect(onSetModalFn).toHaveBeenCalledTimes(1);
     expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.CHANGE_DELIVERY_ADDRESS);
   });

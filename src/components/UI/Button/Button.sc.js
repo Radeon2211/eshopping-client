@@ -5,16 +5,27 @@ export const Button = styled.button`
   box-shadow: ${({ theme }) => theme.shadows.level1};
   border-radius: 1px;
   cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSizes.level2};
   font-weight: 700;
   line-height: ${({ theme }) => theme.lineHeights.level3};
   letter-spacing: 2px;
   outline: none;
-  padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
   position: relative;
   text-align: center;
   text-transform: uppercase;
   transition: all ${({ theme }) => theme.durations.level1}s;
+
+  ${({ size, theme }) => {
+    if (size === 'big') {
+      return `
+        font-size: ${theme.fontSizes.level4};
+        padding: ${theme.spacings.level2} ${theme.spacings.level3};
+      `;
+    }
+    return `
+    font-size: ${theme.fontSizes.level2};
+        padding: ${theme.spacings.level1} ${theme.spacings.level2};
+    `;
+  }}
 
   ${({ stretch }) => {
     if (stretch) {

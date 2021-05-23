@@ -68,10 +68,10 @@ describe('<DeleteProduct />', () => {
       const { store, history } = setUp('Wellingtons', productId);
       expect(store.dispatch).not.toHaveBeenCalled();
 
-      fireEvent.click(screen.getByText('Cancel'));
+      fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(''));
 
-      fireEvent.click(screen.getByText('Delete'));
+      fireEvent.click(screen.getByRole('button', { name: /delete/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.deleteProduct(productId, history));
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);

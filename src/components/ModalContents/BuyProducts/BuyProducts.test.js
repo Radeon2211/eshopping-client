@@ -66,10 +66,10 @@ describe('<BuyProducts />', () => {
       const { store, history } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
 
-      fireEvent.click(screen.getByText('Cancel'));
+      fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(''));
 
-      fireEvent.click(screen.getByText('Confirm'));
+      fireEvent.click(screen.getByRole('button', { name: /confirm/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.buyProducts(history, '/cart'));
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);

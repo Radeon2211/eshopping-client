@@ -18,16 +18,6 @@ export const Wrapper = styled.header`
     margin-right: ${({ theme }) => theme.spacings.level4};
   }
 
-  & .logo {
-    width: 4.6rem;
-    height: 4.6rem;
-    margin-right: ${({ theme }) => theme.spacings.level1};
-  }
-
-  .header {
-    display: flex;
-  }
-
   @media only screen and (max-width: 75em) {
     & .heading {
       display: none;

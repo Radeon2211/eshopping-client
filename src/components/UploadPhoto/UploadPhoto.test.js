@@ -91,7 +91,7 @@ describe('<UploadPhoto />', () => {
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
 
         await waitFor(() => {
-          fireEvent.click(screen.getByText('Delete'));
+          fireEvent.click(screen.getByRole('button', { name: /delete/i }));
         });
         await waitFor(() => {});
 
@@ -123,9 +123,7 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {});
 
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', productPhotoFieldValues.ERROR);
-        expect(
-          screen.getByText('File extension is not valid (JPG and PNG only)'),
-        ).toBeInTheDocument();
+        expect(screen.getByText(/file extension is not valid/i)).toBeInTheDocument();
 
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [validPhoto] } });
@@ -178,7 +176,7 @@ describe('<UploadPhoto />', () => {
         const { asFragment } = setUp(true, setFieldValueFn);
 
         await waitFor(() => {
-          fireEvent.click(screen.getByText('Delete current'));
+          fireEvent.click(screen.getByRole('button', { name: /delete current/i }));
         });
         await waitFor(() => {});
 
@@ -217,7 +215,7 @@ describe('<UploadPhoto />', () => {
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
 
         await waitFor(() => {
-          fireEvent.click(screen.getByText('Delete'));
+          fireEvent.click(screen.getByRole('button', { name: /delete/i }));
         });
         await waitFor(() => {});
 

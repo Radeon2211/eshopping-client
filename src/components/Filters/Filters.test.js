@@ -96,7 +96,7 @@ describe('<Filters />', () => {
         window.resizeTo(1920, 1080);
       });
       setUp();
-      await selectEvent.openMenu(screen.getByText('Default sorting'));
+      await selectEvent.openMenu(screen.getByText(/default sorting/i));
       expect(screen.getByText(sortProductsOptions[1].label)).toBeInTheDocument();
       expect(screen.getByText(sortProductsOptions[2].label)).toBeInTheDocument();
       expect(screen.getByText(sortProductsOptions[3].label)).toBeInTheDocument();
@@ -161,8 +161,8 @@ describe('<Filters />', () => {
       fireEvent.change(screen.getByTestId('PriceSlider-price-range-min'), {
         target: { value: 20 },
       });
-      await selectEvent.openMenu(screen.getByText('Default sorting'));
-      fireEvent.click(screen.getByText('Price - ascending'));
+      await selectEvent.openMenu(screen.getByText(/default sorting/i));
+      fireEvent.click(screen.getByText(/price - ascending/i));
 
       fireEvent.click(screen.getByTestId('Filters-submit-btn'));
 

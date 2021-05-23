@@ -48,6 +48,7 @@ exports[`<Cart /> check how renders should render empty cart 1`] = `
   >
     <h3
       class="c1"
+      font-size=""
     >
       Your shopping cart is empty. Check out the 
       <a
@@ -62,6 +63,7 @@ exports[`<Cart /> check how renders should render empty cart 1`] = `
     </h3>
     <h4
       class="c3"
+      font-size=""
     >
       You can have up to 50 products in the cart
     </h4>
@@ -107,6 +109,7 @@ exports[`<Cart /> check how renders should render everything correctly with one 
 
 <h3
     class="c0"
+    font-size=""
   >
     Your shopping cart
   </h3>
@@ -161,7 +164,6 @@ exports[`<Cart /> check how renders should render everything correctly with one 
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -169,12 +171,13 @@ exports[`<Cart /> check how renders should render everything correctly with one 
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #F22613;
   color: #F22613;
@@ -189,7 +192,6 @@ exports[`<Cart /> check how renders should render everything correctly with one 
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -197,12 +199,13 @@ exports[`<Cart /> check how renders should render everything correctly with one 
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   width: 100%;
   background-color: #1E8BC3;
   border: 2px solid #1E8BC3;
@@ -1081,6 +1084,7 @@ exports[`<Cart /> check how renders should render that there is a problem to fet
 
 <h3
     class="c0"
+    font-size=""
   >
     There is a problem to get your shopping cart
   </h3>

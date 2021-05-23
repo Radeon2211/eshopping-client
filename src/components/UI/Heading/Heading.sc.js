@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
-  ${({ variant, theme }) => {
+  ${({ variant, fontSize, theme }) => {
     switch (variant) {
       case 'h1':
         return `
           font-family: ${theme.fonts.logo};
-          font-size: 3.3rem;
+          font-size: ${fontSize === 'big' ? '4.4rem' : '3.3rem'};
           letter-spacing: 1px;
           text-shadow: ${theme.shadows.level2};
         `;

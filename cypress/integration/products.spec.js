@@ -380,7 +380,7 @@ describe('product list and filters', () => {
         .type(Math.floor(productsDescendingByPrice[0].price) - 1);
       submitFiltersForm();
       cy.findByTestId('ProductList').within(() => {
-        cy.findAllByTestId('ProductItem').should('have.length', allProducts.length);
+        cy.findAllByTestId('ProductItem').should('have.length', allProducts.length - 1);
         cy.findByText(productsDescendingByPrice[0].name).should('not.exist');
       });
     });

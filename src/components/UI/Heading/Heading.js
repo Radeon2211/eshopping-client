@@ -9,6 +9,7 @@ Heading.defaultProps = {
   mgBottom: '',
   mgTop: '',
   lineHeight: '',
+  fontSize: '',
 };
 
 Heading.propTypes = {
@@ -17,6 +18,7 @@ Heading.propTypes = {
   mgTop: PropTypes.string,
   lineHeight: PropTypes.string,
   variant: PropTypes.string.isRequired,
+  fontSize: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 

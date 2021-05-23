@@ -41,7 +41,7 @@ describe('<PendingUserInfo />', () => {
     it('should call setModal() after button click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
-      fireEvent.click(screen.getByText('Ok'));
+      fireEvent.click(screen.getByRole('button', { name: /ok/i }));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
   });

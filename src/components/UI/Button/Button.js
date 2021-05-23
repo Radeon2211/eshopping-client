@@ -17,6 +17,7 @@ export default function Button(props) {
 }
 
 Button.defaultProps = {
+  size: 'small',
   type: 'button',
   color: 'blue',
   filled: false,
@@ -27,6 +28,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  size: PropTypes.string,
   type: PropTypes.string,
   color: PropTypes.string,
   filled: PropTypes.bool,

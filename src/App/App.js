@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, Suspense, lazy } from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import axios from '../axios';
@@ -17,6 +17,7 @@ import Loader from '../components/UI/Loader/Loader';
 import Main from '../components/UI/Main';
 import Footer from '../components/Footer/Footer';
 import Products from '../containers/Products/Products';
+import LandingPage from '../containers/LandingPage/LandingPage';
 
 const OrderDetails = lazy(() => import('../containers/OrderDetails/OrderDetails'));
 const ProductDetails = lazy(() => import('../containers/ProductDetails/ProductDetails'));
@@ -41,6 +42,8 @@ const WaitingComponent = (Component) => {
 };
 
 const App = () => {
+  const { pathname } = useLocation();
+
   const userProfile = useSelector((state) => state.auth.profile);
 
   const dispatch = useDispatch();
@@ -80,7 +83,8 @@ const App = () => {
             <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
             <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
             <Route path="/products" exact component={Products} />
-            <Redirect to="/products" />
+            <Route path="/" exact component={LandingPage} />
+            <Redirect to={defaultAppPath} />
           </Switch>
         </Main>
       );
@@ -123,9 +127,9 @@ const App = () => {
       <>
         <Modal />
         <MessageBox />
-        <Navbar userProfile={userProfile} />
+        {pathname !== '/' && <Navbar userProfile={userProfile} />}
         {routes}
-        <Footer />
+        {pathname !== '/' && <Footer />}
       </>
     );
   }

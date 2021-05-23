@@ -72,10 +72,10 @@ describe('<MyData />', () => {
     it('should call correct functions after clicking in admin and active user content', () => {
       const { store } = setUp({ ...defaultUserProfile, isAdmin: true });
 
-      fireEvent.click(screen.getByText('Add admin'));
+      fireEvent.click(screen.getByRole('button', { name: /add admin/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(modalTypes.ADD_ADMIN));
 
-      fireEvent.click(screen.getByText('Remove admin'));
+      fireEvent.click(screen.getByRole('button', { name: /remove admin/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(modalTypes.REMOVE_ADMIN));
 
       fireEvent.click(screen.getByTestId(`SingleInfo-${singleInfoNames.NAME}-btn`));
@@ -102,13 +102,13 @@ describe('<MyData />', () => {
         actions.setModal(modalTypes.CHANGE_PHONE_NUMBER),
       );
 
-      fireEvent.click(screen.getByText('Change password'));
+      fireEvent.click(screen.getByRole('button', { name: /change password/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         8,
         actions.setModal(modalTypes.CHANGE_PASSWORD),
       );
 
-      fireEvent.click(screen.getByText('Delete account'));
+      fireEvent.click(screen.getByRole('button', { name: /delete account/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         9,
         actions.setModal(modalTypes.DELETE_ACCOUNT),
@@ -119,12 +119,12 @@ describe('<MyData />', () => {
       const pushFn = jest.fn();
       const { store } = setUp({ ...defaultUserProfile, status: userStatuses.PENDING }, pushFn);
 
-      fireEvent.click(screen.getByText('Send verification link'));
+      fireEvent.click(screen.getByRole('button', { name: /send verification link/i }));
       expect(store.dispatch).toHaveBeenCalledWith(
         actions.setModal(modalTypes.SEND_VERIFICATION_LINK),
       );
 
-      fireEvent.click(screen.getByText('Logout'));
+      fireEvent.click(screen.getByRole('button', { name: /logout/i }));
       expect(pushFn).toHaveBeenCalledWith('/logout');
     });
   });

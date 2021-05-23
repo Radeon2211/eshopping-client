@@ -157,6 +157,7 @@ exports[`<Modal /> check how renders should render everything correctly 1`] = `
       </div>
       <h3
         class="c4"
+        font-size=""
       >
         About website
       </h3>

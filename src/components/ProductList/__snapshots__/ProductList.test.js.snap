@@ -22,6 +22,7 @@ exports[`<ProductList /> check how renders should render correct info for ALL_PR
     <h4
       class="c1"
       data-testid="ProductList-empty-list-info"
+      font-size=""
     >
       We didn't find any matching results. Try to search something else or change filters
     </h4>
@@ -51,6 +52,7 @@ exports[`<ProductList /> check how renders should render correct info for ALL_PR
     <h4
       class="c1"
       data-testid="ProductList-empty-list-info"
+      font-size=""
     >
       We didn't find any matching results. Try to search something else
     </h4>
@@ -80,6 +82,7 @@ exports[`<ProductList /> check how renders should render correct info for MY_PRO
     <h4
       class="c1"
       data-testid="ProductList-empty-list-info"
+      font-size=""
     >
       We didn't find any matching results. Try to change filters
     </h4>
@@ -109,6 +112,7 @@ exports[`<ProductList /> check how renders should render correct info for MY_PRO
     <h4
       class="c1"
       data-testid="ProductList-empty-list-info"
+      font-size=""
     >
       You don't have any offers published yet
     </h4>
@@ -138,6 +142,7 @@ exports[`<ProductList /> check how renders should render correct info for USER_P
     <h4
       class="c1"
       data-testid="ProductList-empty-list-info"
+      font-size=""
     >
       We didn't find any matching results. Try to change filters
     </h4>
@@ -167,6 +172,7 @@ exports[`<ProductList /> check how renders should render correct info for USER_P
     <h4
       class="c1"
       data-testid="ProductList-empty-list-info"
+      font-size=""
     >
       This user doesn't have any offers published yet
     </h4>

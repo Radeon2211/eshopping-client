@@ -238,7 +238,7 @@ describe('<AddProduct />', () => {
           fireEvent.change(uploadPhotoInput, { target: { files: [defaultNewPhoto] } });
         });
         await waitFor(() => {
-          fireEvent.click(screen.getByText('Delete'));
+          fireEvent.click(screen.getByRole('button', { name: /delete/i }));
         });
         expect(nameInput.value).toEqual(defaultNewName);
         expect(priceInput.value).toEqual(defaultNewPrice.toString());
@@ -278,21 +278,21 @@ describe('<AddProduct />', () => {
         expect(priceInput.value).toEqual(defaultNewPrice.toString());
 
         await waitFor(() => {
-          fireEvent.click(screen.getByText('used'));
+          fireEvent.click(screen.getByText(/used/i));
         });
         expect(conditionNewInput).not.toBeChecked();
         expect(conditionUsedInput).toBeChecked();
         expect(conditionNotAppplicableInput).not.toBeChecked();
 
         await waitFor(() => {
-          fireEvent.click(screen.getByText('not applicable'));
+          fireEvent.click(screen.getByText(/not applicable/i));
         });
         expect(conditionNewInput).not.toBeChecked();
         expect(conditionUsedInput).not.toBeChecked();
         expect(conditionNotAppplicableInput).toBeChecked();
 
         await waitFor(() => {
-          fireEvent.click(screen.getByText('new'));
+          fireEvent.click(screen.getByText(/new/i));
         });
         expect(conditionNewInput).toBeChecked();
         expect(conditionUsedInput).not.toBeChecked();

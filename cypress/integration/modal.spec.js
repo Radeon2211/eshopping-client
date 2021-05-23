@@ -1,9 +1,9 @@
 import '@testing-library/cypress/add-commands';
-import { modalTypes } from '../../src/shared/constants';
+import { defaultAppPath, modalTypes } from '../../src/shared/constants';
 
 describe('modal behaviour', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit(defaultAppPath);
   });
 
   describe('close with different ways', () => {
@@ -27,7 +27,7 @@ describe('modal behaviour', () => {
       cy.checkHash();
       cy.findByRole('button', { name: /login/i }).click();
       cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
-      cy.findByTestId('Modal-backdrop').click();
+      cy.findByTestId('Modal-backdrop').click({ force: true });
       cy.findByTestId('Modal').should('not.exist');
     });
   });

@@ -83,6 +83,7 @@ exports[`<OtherUser /> check how renders snapshots should render everything corr
 
 <h3
     class="c0"
+    font-size=""
   >
     user1
   </h3>
@@ -739,6 +740,7 @@ exports[`<OtherUser /> check how renders snapshots should render info about prob
 
 <h4
     class="c0"
+    font-size=""
   >
     Such user does not exist or problem during fetching occurred
   </h4>

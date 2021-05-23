@@ -16,14 +16,7 @@ import { userStatuses } from '../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/logout' },
-  goBack: jest.fn(),
-};
-
-const setUp = (userProfile, ui = { message: '', isFormLoading: false }) => {
+const setUp = (userProfile, ui = { message: '', isFormLoading: false }, pathname = '/logout') => {
   const store = mockStore({
     auth: {
       profile: userProfile,
@@ -32,10 +25,17 @@ const setUp = (userProfile, ui = { message: '', isFormLoading: false }) => {
   });
   store.dispatch = jest.fn();
 
+  const history = {
+    listen: jest.fn(),
+    createHref: jest.fn(),
+    location: { pathname },
+    goBack: jest.fn(),
+  };
+
   return {
     ...render(
       <Provider store={store}>
-        <Router history={defaultHistory}>
+        <Router history={history}>
           <ThemeProvider theme={theme}>
             <App />
           </ThemeProvider>
@@ -90,7 +90,7 @@ describe('<App />', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('should render error from ErrorBoundary', () => {
+    it('should render error from ErrorBoundary if data from redux ui reducer are not available', () => {
       const { asFragment } = setUp(defaultUserProfile, null);
       expect(asFragment()).toMatchSnapshot();
     });

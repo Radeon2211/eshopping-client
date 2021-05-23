@@ -53,7 +53,7 @@ describe('<ResetPassword />', () => {
     it('should call setModal() after link click', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
-      fireEvent.click(screen.getByText('Login'));
+      fireEvent.click(screen.getByText(/login/i));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.LOGIN));
     });
   });

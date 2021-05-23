@@ -128,6 +128,7 @@ exports[`<Footer /> check how renders should render everything correctly 1`] = `
 
 <footer
     class="c0"
+    data-testid="Footer"
   >
     <span
       class="c1"

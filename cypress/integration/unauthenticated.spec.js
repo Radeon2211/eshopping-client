@@ -1,5 +1,5 @@
 import '@testing-library/cypress/add-commands';
-import { modalTypes } from '../../src/shared/constants';
+import { defaultAppPath, modalTypes } from '../../src/shared/constants';
 import { testUser, adminUser } from '../fixtures/users';
 import { productOne, allProducts } from '../fixtures/products';
 
@@ -42,233 +42,270 @@ const deleteAccount = () => {
 describe('unauthenticated user', () => {
   beforeEach(() => {
     cy.seedDb();
-    cy.visit('/');
   });
 
-  describe('check rendering and flow', () => {
-    it('renders correct elements', () => {
-      cy.checkLoginState();
-      cy.findAllByTestId('ProductItem').should('have.length', allProducts.length);
+  describe('landing page', () => {
+    beforeEach(() => {
+      cy.visit('/');
     });
 
-    it('opens and closes modals correctly', () => {
-      cy.checkHash();
-      // login and reset password
+    it('renders landing page without navbar and footer', () => {
+      cy.findByTestId('Navbar').should('not.exist');
+      cy.findByTestId('Footer').should('not.exist');
+      cy.findByTestId('LandingPage').should('exist');
+    });
+
+    it('opens login and signup modals and goes to products page', () => {
       cy.findByRole('button', { name: /login/i }).click();
       cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`)
-        .findByRole('link', /forgot password/i)
-        .click();
-
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('not.exist');
-      cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`).should('exist');
-      cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`)
-        .findByRole('link', { name: /login/i })
-        .click();
-
-      cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`).should('not.exist');
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
       cy.closeModal();
-      cy.findByTestId('Modal').should('not.exist');
-      // signup
       cy.findByRole('button', { name: /signup/i }).click();
       cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
       cy.closeModal();
-      cy.findByTestId('Modal').should('not.exist');
-      // about website
-      cy.findByRole('button', { name: /about website/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.ABOUT_WEBSITE}`).should('exist');
-      cy.closeModal();
-      cy.findByTestId('Modal').should('not.exist');
+      cy.findByRole('button', { name: /view the products now/i }).click();
+      cy.checkHash();
+      cy.go('back');
+      cy.checkHash('#/');
     });
 
-    it('visits available pages', () => {
+    it('logins, goes to products page and not be able to go to landing page', () => {
+      cy.fillLoginForm(adminUser.email, adminUser.password, true, true);
       cy.checkHash();
-
-      cy.findByText(productOne.name).closest('[data-testid="ProductItem"]').click();
-      cy.checkHash('#/product/', 'contain');
-
-      cy.findByRole('link', { name: productOne.seller.username }).click();
-      cy.checkHash(`#/user/${productOne.seller.username}?p=1`);
-
-      cy.findByTestId('Navbar-header-link').click();
+      cy.visit('/');
       cy.checkHash();
-    });
-
-    it('does not visit unavailable pages', () => {
-      cy.checkHash();
-      cy.visit('/cart');
-      cy.checkHash();
-      cy.visit('/my-account/data');
-      cy.checkHash();
-      cy.visit('/my-account/products');
-      cy.checkHash();
-      cy.visit('/my-account/placed-orders');
-      cy.checkHash();
-      cy.visit('/my-account/sell-history');
-      cy.checkHash();
-      cy.visit('/transaction');
-      cy.checkHash();
-      cy.visit('/order/123');
-      cy.checkHash();
-    });
-
-    it('checks how product details page works', () => {
-      cy.findByText(productOne.name).closest('[data-testid="ProductItem"]').click();
-      cy.findByRole('heading', { name: productOne.name }).should('exist');
-
-      cy.findByRole('button', { name: /add to cart/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
-      cy.closeModal();
-
-      cy.findByRole('button', { name: /buy now/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
-      cy.closeModal();
-
-      cy.findByRole('link', { name: productOne.seller.username }).click();
-      cy.checkHash(`#/user/${productOne.seller.username}?p=1`);
-    });
-
-    it('checks how other user page works', () => {
-      cy.visit(`/user/${adminUser.username}`);
-      cy.findByRole('heading', { name: adminUser.username }).should('exist');
-      cy.findByText(adminUser.email).should('exist');
-      cy.findByText(adminUser.phone).should('exist');
-      cy.findByTestId('ProductItem').should('have.length', 1);
     });
   });
 
-  describe('forms', () => {
-    describe('login form', () => {
-      it('logins and logouts correctly', () => {
-        cy.checkHash();
-
-        cy.fillLoginForm(adminUser.email, adminUser.password, true, true);
-        cy.findByTestId('Modal').should('not.exist');
-        cy.checkLoginState(true);
-        cy.reload();
-        cy.checkLoginState(true);
-      });
-
-      it('logins, deletes account and not logins', () => {
-        cy.checkHash();
-
-        cy.fillLoginForm(adminUser.email, adminUser.password, true, true);
-        cy.findByTestId('LoggedInLinks-user-box').click();
-        cy.findByTestId('Dropdown')
-          .findByRole('link', { name: /my account/i })
-          .click();
-        deleteAccount();
-
-        cy.closeMessageBox();
-        cy.fillLoginForm(adminUser.email, adminUser.password, true, true);
-        cy.findByTestId('Form-error').should('exist');
-      });
-
-      it('fails due to incorrect credentials', () => {
-        cy.checkHash();
-
-        cy.findByRole('button', { name: /login/i }).click();
-        cy.findByTestId('Form-error').should('not.exist');
-        cy.fillLoginForm('incorrect@email.com', 'incorrectPassword', false, true);
-        cy.findByTestId('Form-error').should('exist');
-      });
+  describe('other pages', () => {
+    beforeEach(() => {
+      cy.visit(defaultAppPath);
     });
 
-    describe('signup form', () => {
-      it('signups, sign outs, logins, activates account correctly', () => {
-        cy.checkHash();
-
-        cy.findByRole('button', { name: /signup/i }).click();
-        fillSignupForm();
-        cy.submitForm();
-
-        cy.findByTestId('Modal').should('not.exist');
-        cy.checkLoginState(true);
-        cy.findByTestId('LoggedInLinks-my-account-link')
-          .findByText(testUser.username)
-          .should('exist');
-        cy.findByTestId('MessageBox').should('exist');
-        cy.findByTestId('MessageBox', { timeout: 6000 }).should('not.exist');
-
-        cy.reload();
-        cy.findByTestId('LoggedInLinks-my-account-link')
-          .findByText(testUser.username)
-          .should('exist');
-
-        cy.findByTestId('LoggedInLinks-my-account-link').click();
-        cy.checkHash('#/my-account/data');
-
-        cy.findByRole('button', { name: /logout/i }).click();
-        cy.checkHash();
+    describe('check rendering and flow', () => {
+      it('renders correct elements', () => {
         cy.checkLoginState();
-
-        cy.fillLoginForm(testUser.email, testUser.password, true, true);
-        cy.findByTestId('LoggedInLinks-my-account-link')
-          .findByText(testUser.username)
-          .should('exist');
-        cy.findByTestId('LoggedInLinks-my-account-link').click();
-
-        cy.request('PATCH', `${Cypress.env('API_URL')}/testing/activate-account`, {
-          email: testUser.email,
-        });
-        cy.reload();
-        cy.findByRole('button', { name: /send verification link/i }).should('not.exist');
+        cy.findAllByTestId('ProductItem').should('have.length', allProducts.length);
       });
 
-      it('signups, deletes account and not logins', () => {
+      it('opens and closes modals correctly', () => {
         cy.checkHash();
+        // login and reset password
+        cy.findByRole('button', { name: /login/i }).click();
+        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+        cy.findByTestId(`Modal-${modalTypes.LOGIN}`)
+          .findByRole('link', /forgot password/i)
+          .click();
 
+        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('not.exist');
+        cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`).should('exist');
+        cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`)
+          .findByRole('link', { name: /login/i })
+          .click();
+
+        cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`).should('not.exist');
+        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+        cy.closeModal();
+        cy.findByTestId('Modal').should('not.exist');
+        // signup
         cy.findByRole('button', { name: /signup/i }).click();
-        fillSignupForm();
-        cy.submitForm();
-
-        cy.findByTestId('LoggedInLinks-my-account-link').click();
-        deleteAccount();
-
-        cy.closeMessageBox();
-        cy.fillLoginForm(testUser.email, testUser.password, true, true);
-        cy.findByTestId('Form-error').should('exist');
-      });
-
-      it('fails due to incorrect credentials', () => {
-        cy.checkHash();
-
-        cy.findByRole('button', { name: /signup/i }).click();
-        fillSignupForm();
-        cy.findByTestId('Form-error').should('not.exist');
-
-        cy.findByTestId('Step3-previous-btn').click();
-        cy.findByTestId('Step2-previous-btn').click();
-        cy.findByTestId('Step1-email').clear().type(adminUser.email);
-        cy.findByTestId('Step1-next-btn').click();
-        cy.findByTestId('Step2-next-btn').click();
-        cy.submitForm();
-        cy.findByTestId('Form-error').should('exist');
         cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
+        cy.closeModal();
+        cy.findByTestId('Modal').should('not.exist');
+        // about website
+        cy.findByRole('button', { name: /about website/i }).click();
+        cy.findByTestId(`Modal-${modalTypes.ABOUT_WEBSITE}`).should('exist');
+        cy.closeModal();
+        cy.findByTestId('Modal').should('not.exist');
+      });
+
+      it('visits available pages', () => {
+        cy.checkHash();
+
+        cy.findByText(productOne.name).closest('[data-testid="ProductItem"]').click();
+        cy.checkHash('#/product/', 'contain');
+
+        cy.findByRole('link', { name: productOne.seller.username }).click();
+        cy.checkHash(`#/user/${productOne.seller.username}?p=1`);
+
+        cy.findByTestId('Navbar-header-link').click();
+        cy.checkHash();
+      });
+
+      it('does not visit unavailable pages', () => {
+        cy.checkHash();
+        cy.visit('/cart');
+        cy.checkHash();
+        cy.visit('/my-account/data');
+        cy.checkHash();
+        cy.visit('/my-account/products');
+        cy.checkHash();
+        cy.visit('/my-account/placed-orders');
+        cy.checkHash();
+        cy.visit('/my-account/sell-history');
+        cy.checkHash();
+        cy.visit('/transaction');
+        cy.checkHash();
+        cy.visit('/order/123');
+        cy.checkHash();
+      });
+
+      it('checks how product details page works', () => {
+        cy.findByText(productOne.name).closest('[data-testid="ProductItem"]').click();
+        cy.findByRole('heading', { name: productOne.name }).should('exist');
+
+        cy.findByRole('button', { name: /add to cart/i }).click();
+        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+        cy.closeModal();
+
+        cy.findByRole('button', { name: /buy now/i }).click();
+        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+        cy.closeModal();
+
+        cy.findByRole('link', { name: productOne.seller.username }).click();
+        cy.checkHash(`#/user/${productOne.seller.username}?p=1`);
+      });
+
+      it('checks how other user page works', () => {
+        cy.visit(`/user/${adminUser.username}`);
+        cy.findByRole('heading', { name: adminUser.username }).should('exist');
+        cy.findByText(adminUser.email).should('exist');
+        cy.findByText(adminUser.phone).should('exist');
+        cy.findByTestId('ProductItem').should('have.length', 1);
       });
     });
 
-    describe('reset password form', () => {
-      it('succeeds', () => {
-        cy.checkHash();
+    describe('forms', () => {
+      describe('login form', () => {
+        it('logins and logouts correctly', () => {
+          cy.checkHash();
 
-        cy.findByRole('button', { name: /login/i }).click();
-        cy.findByRole('link', { name: /forgot password/i }).click();
-        cy.findByTestId('ResetPassword-email').type(adminUser.email);
-        cy.submitForm();
-        cy.findByTestId('Modal').should('not.exist');
-        cy.closeMessageBox();
+          cy.fillLoginForm(adminUser.email, adminUser.password, true, true);
+          cy.findByTestId('Modal').should('not.exist');
+          cy.checkLoginState(true);
+          cy.reload();
+          cy.checkLoginState(true);
+        });
+
+        it('logins, deletes account and not logins', () => {
+          cy.checkHash();
+
+          cy.fillLoginForm(adminUser.email, adminUser.password, true, true);
+          cy.findByTestId('LoggedInLinks-user-box').click();
+          cy.findByTestId('Dropdown')
+            .findByRole('link', { name: /my account/i })
+            .click();
+          deleteAccount();
+
+          cy.closeMessageBox();
+          cy.fillLoginForm(adminUser.email, adminUser.password, true, true);
+          cy.findByTestId('Form-error').should('exist');
+        });
+
+        it('fails due to incorrect credentials', () => {
+          cy.checkHash();
+
+          cy.findByRole('button', { name: /login/i }).click();
+          cy.findByTestId('Form-error').should('not.exist');
+          cy.fillLoginForm('incorrect@email.com', 'incorrectPassword', false, true);
+          cy.findByTestId('Form-error').should('exist');
+        });
       });
 
-      it('fails due to unexisting email', () => {
-        cy.checkHash();
+      describe('signup form', () => {
+        it('signups, sign outs, logins, activates account correctly', () => {
+          cy.checkHash();
 
-        cy.findByRole('button', { name: /login/i }).click();
-        cy.findByRole('link', { name: /forgot password/i }).click();
-        cy.findByTestId('ResetPassword-email').type('unexisting@example.com');
-        cy.submitForm();
-        cy.findByTestId('Form-error').should('exist');
+          cy.findByRole('button', { name: /signup/i }).click();
+          fillSignupForm();
+          cy.submitForm();
+
+          cy.findByTestId('Modal').should('not.exist');
+          cy.checkLoginState(true);
+          cy.findByTestId('LoggedInLinks-my-account-link')
+            .findByText(testUser.username)
+            .should('exist');
+          cy.findByTestId('MessageBox').should('exist');
+          cy.findByTestId('MessageBox', { timeout: 6000 }).should('not.exist');
+
+          cy.reload();
+          cy.findByTestId('LoggedInLinks-my-account-link')
+            .findByText(testUser.username)
+            .should('exist');
+
+          cy.findByTestId('LoggedInLinks-my-account-link').click();
+          cy.checkHash('#/my-account/data');
+
+          cy.findByRole('button', { name: /logout/i }).click();
+          cy.checkHash();
+          cy.checkLoginState();
+
+          cy.fillLoginForm(testUser.email, testUser.password, true, true);
+          cy.findByTestId('LoggedInLinks-my-account-link')
+            .findByText(testUser.username)
+            .should('exist');
+          cy.findByTestId('LoggedInLinks-my-account-link').click();
+
+          cy.request('PATCH', `${Cypress.env('API_URL')}/testing/activate-account`, {
+            email: testUser.email,
+          });
+          cy.reload();
+          cy.findByRole('button', { name: /send verification link/i }).should('not.exist');
+        });
+
+        it('signups, deletes account and not logins', () => {
+          cy.checkHash();
+
+          cy.findByRole('button', { name: /signup/i }).click();
+          fillSignupForm();
+          cy.submitForm();
+
+          cy.findByTestId('LoggedInLinks-my-account-link').click();
+          deleteAccount();
+
+          cy.closeMessageBox();
+          cy.fillLoginForm(testUser.email, testUser.password, true, true);
+          cy.findByTestId('Form-error').should('exist');
+        });
+
+        it('fails due to incorrect credentials', () => {
+          cy.checkHash();
+
+          cy.findByRole('button', { name: /signup/i }).click();
+          fillSignupForm();
+          cy.findByTestId('Form-error').should('not.exist');
+
+          cy.findByTestId('Step3-previous-btn').click();
+          cy.findByTestId('Step2-previous-btn').click();
+          cy.findByTestId('Step1-email').clear().type(adminUser.email);
+          cy.findByTestId('Step1-next-btn').click();
+          cy.findByTestId('Step2-next-btn').click();
+          cy.submitForm();
+          cy.findByTestId('Form-error').should('exist');
+          cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
+        });
+      });
+
+      describe('reset password form', () => {
+        it('succeeds', () => {
+          cy.checkHash();
+
+          cy.findByRole('button', { name: /login/i }).click();
+          cy.findByRole('link', { name: /forgot password/i }).click();
+          cy.findByTestId('ResetPassword-email').type(adminUser.email);
+          cy.submitForm();
+          cy.findByTestId('Modal').should('not.exist');
+          cy.closeMessageBox();
+        });
+
+        it('fails due to unexisting email', () => {
+          cy.checkHash();
+
+          cy.findByRole('button', { name: /login/i }).click();
+          cy.findByRole('link', { name: /forgot password/i }).click();
+          cy.findByTestId('ResetPassword-email').type('unexisting@example.com');
+          cy.submitForm();
+          cy.findByTestId('Form-error').should('exist');
+        });
       });
     });
   });

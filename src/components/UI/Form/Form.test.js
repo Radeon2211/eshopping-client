@@ -121,7 +121,7 @@ describe('<Form />', () => {
     it('should call setModal() after cancel button click', () => {
       const { store } = setUp(defaultProps, defaultStore);
       expect(store.dispatch).not.toHaveBeenCalled();
-      fireEvent.click(screen.getByText('cancel'));
+      fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
   });

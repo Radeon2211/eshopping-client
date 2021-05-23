@@ -58,7 +58,7 @@ describe('<ProductsPerPageController />', () => {
 
   it('should render all options with default as 10', async () => {
     setUp(10);
-    await selectEvent.openMenu(screen.getByText('10'));
+    await selectEvent.openMenu(screen.getByText(/10/i));
 
     expect(screen.getByText(productsPerPageControllerOptions[0].label)).toBeInTheDocument();
     expect(screen.getByText(productsPerPageControllerOptions[1].label)).toBeInTheDocument();
@@ -73,23 +73,23 @@ describe('<ProductsPerPageController />', () => {
 
   it('should change quantity to 15 and call changeProductsPerPage()', async () => {
     const { store, history } = setUp(10);
-    await selectEvent.openMenu(screen.getByText('10'));
+    await selectEvent.openMenu(screen.getByText(/10/i));
 
-    fireEvent.click(screen.getByText('15'));
+    fireEvent.click(screen.getByText(/15/i));
     expect(store.dispatch).toHaveBeenCalledWith(actions.changeProductsPerPage(15, history));
 
-    await selectEvent.openMenu(screen.getByText('15'));
-    expect(screen.getAllByText('15')).toHaveLength(2);
+    await selectEvent.openMenu(screen.getByText(/15/i));
+    expect(screen.getAllByText(/15/i)).toHaveLength(2);
   });
 
   it('should change quantity if clicked option has the same value as current', async () => {
     const { store } = setUp(10);
-    await selectEvent.openMenu(screen.getByText('10'));
+    await selectEvent.openMenu(screen.getByText(/10/i));
 
-    fireEvent.click(screen.getAllByText('10')[1]);
+    fireEvent.click(screen.getAllByText(/10/i)[1]);
     expect(store.dispatch).not.toHaveBeenCalled();
 
-    await selectEvent.openMenu(screen.getByText('10'));
-    expect(screen.getAllByText('10')).toHaveLength(2);
+    await selectEvent.openMenu(screen.getByText(/10/i));
+    expect(screen.getAllByText(/10/i)).toHaveLength(2);
   });
 });

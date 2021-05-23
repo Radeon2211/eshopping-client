@@ -40,7 +40,7 @@ export default function Footer() {
   );
 
   return (
-    <SC.Wrapper>
+    <SC.Wrapper data-testid="Footer">
       <PlainText size="2">&copy; 2021 Radosław Mikrut. All rights reserved</PlainText>
       <FlexWrapper align="center" justify="center" mgBottom="2" mgTop="2" spacing="3">
         <a

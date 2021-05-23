@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoggedOutLinks /> checks how renders should render everything correctly 1`] = `
+exports[`<LoggedOutLinks /> should render everything correctly 1`] = `
 <DocumentFragment>
   .c1 {
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -14,12 +13,13 @@ exports[`<LoggedOutLinks /> checks how renders should render everything correctl
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
@@ -34,7 +34,6 @@ exports[`<LoggedOutLinks /> checks how renders should render everything correctl
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -42,12 +41,13 @@ exports[`<LoggedOutLinks /> checks how renders should render everything correctl
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: #1E8BC3;
   border: 2px solid #1E8BC3;
   color: #fff;

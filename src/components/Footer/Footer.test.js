@@ -42,16 +42,15 @@ describe('<Footer />', () => {
     it('should call setModal() after about website text click and render correct', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
-      fireEvent.click(screen.getByText('About website'));
+      fireEvent.click(screen.getByRole('button', { name: /about website/i }));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ABOUT_WEBSITE));
     });
 
     it('should mail link has correct href attribute', () => {
       setUp();
-      expect(screen.getByText('radoslawmikrut@wp.pl').closest('a')).toHaveAttribute(
-        'href',
-        'mailto:radoslawmikrut@wp.pl',
-      );
+      expect(
+        screen.getByRole('link', { name: /radoslawmikrut@wp.pl/i }).closest('a'),
+      ).toHaveAttribute('href', 'mailto:radoslawmikrut@wp.pl');
     });
   });
 });

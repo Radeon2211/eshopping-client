@@ -107,6 +107,7 @@ exports[`<ErrorPage /> should render "Something went wrong" and unexpected bug i
   >
     <h3
       class="c2"
+      font-size=""
     >
       Something went wrong
     </h3>

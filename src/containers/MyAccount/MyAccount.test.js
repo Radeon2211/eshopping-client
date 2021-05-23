@@ -63,18 +63,18 @@ describe('<MyAccount />', () => {
   it('should call push with correct paths after clicking on links', () => {
     const { history } = setUp(defaultUserProfile);
 
-    fireEvent.click(screen.getByText('Data'));
+    fireEvent.click(screen.getByTestId('MyAccount-data-link'));
     expect(history.push.mock.calls[0][0].pathname).toEqual('/my-account/data');
 
-    fireEvent.click(screen.getByText('Products'));
+    fireEvent.click(screen.getByTestId('MyAccount-products-link'));
     expect(history.push.mock.calls[1][0].pathname).toEqual('/my-account/products');
     expect(history.push.mock.calls[1][0].search).toEqual('?p=1');
 
-    fireEvent.click(screen.getByText('Sell history'));
+    fireEvent.click(screen.getByTestId('MyAccount-sell-history-link'));
     expect(history.push.mock.calls[2][0].pathname).toEqual('/my-account/sell-history');
     expect(history.push.mock.calls[2][0].search).toEqual('?p=1');
 
-    fireEvent.click(screen.getByText('Placed orders'));
+    fireEvent.click(screen.getByTestId('MyAccount-placed-orders-link'));
     expect(history.push.mock.calls[3][0].pathname).toEqual('/my-account/placed-orders');
     expect(history.push.mock.calls[3][0].search).toEqual('?p=1');
 

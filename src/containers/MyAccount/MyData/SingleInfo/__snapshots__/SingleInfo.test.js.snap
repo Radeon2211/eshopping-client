@@ -6,7 +6,6 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -14,12 +13,13 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
@@ -113,6 +113,7 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
   >
     <h4
       class="c1"
+      font-size=""
     >
       Address
     </h4>
@@ -254,6 +255,7 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   >
     <h4
       class="c1"
+      font-size=""
     >
       Contacts
     </h4>
@@ -297,7 +299,6 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -305,12 +306,13 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
@@ -404,6 +406,7 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   >
     <h4
       class="c1"
+      font-size=""
     >
       Contacts
     </h4>
@@ -455,7 +458,6 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -463,12 +465,13 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
@@ -540,6 +543,7 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
   >
     <h4
       class="c1"
+      font-size=""
     >
       Name
     </h4>

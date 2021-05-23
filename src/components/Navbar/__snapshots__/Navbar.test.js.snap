@@ -29,32 +29,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   margin-right: 3.6rem;
 }
 
-.c0 .logo {
-  width: 4.6rem;
-  height: 4.6rem;
-  margin-right: 0.8rem;
-}
-
-.c0 .header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  font-family: Lobster,cursive;
-  font-size: 3.3rem;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 3px rgba(0,0,0,0.3);
-  margin-top: 0;
-  text-align: left;
-}
-
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,7 +38,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   width: 45rem;
 }
 
-.c2 .name-input {
+.c3 .name-input {
   background-color: #FAFAFA;
   border: 1px solid #BFBFBF;
   font-size: 1.5rem;
@@ -72,11 +47,10 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c4 {
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -84,23 +58,24 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: #1E8BC3;
   border: 2px solid #1E8BC3;
   color: #fff;
 }
 
-.c3:hover {
+.c4:hover {
   background-color: #22A7F0;
   border-color: #22A7F0;
 }
 
-.c8 {
+.c9 {
   display: inline-block;
   font-style: normal;
   font-weight: normal;
@@ -119,7 +94,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   max-width: 15rem;
 }
 
-.c6 {
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -134,7 +109,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   justify-content: center;
 }
 
-.c6 > svg {
+.c7 > svg {
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
@@ -146,7 +121,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   height: 3.4rem;
 }
 
-.c9 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -161,7 +136,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   justify-content: center;
 }
 
-.c9 > svg {
+.c10 > svg {
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
@@ -176,11 +151,11 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   transform: rotate(90deg);
 }
 
-.c5 {
+.c6 {
   position: relative;
 }
 
-.c4 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -191,11 +166,11 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   display: flex;
 }
 
-.c4 > *:not(:last-child) {
+.c5 > *:not(:last-child) {
   margin-right: 3.6rem;
 }
 
-.c7 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -207,6 +182,31 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
   display: flex;
   padding: 0.8rem 0;
   position: relative;
+}
+
+.c2 {
+  font-family: Lobster,cursive;
+  font-size: 3.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 0;
+  text-align: left;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 .logo {
+  width: 4.6rem;
+  height: 4.6rem;
+  margin-right: 0.8rem;
 }
 
 @media only screen and (max-width:75em) {
@@ -244,7 +244,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
 }
 
 @media only screen and (max-width:37.5em) {
-  .c2 {
+  .c3 {
     -webkit-order: 2;
     -ms-flex-order: 2;
     order: 2;
@@ -252,19 +252,20 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
 }
 
 @media only screen and (max-width:56.25em) {
-  .c4 > *:not(:last-child) {
+  .c5 > *:not(:last-child) {
     margin-right: 2.4rem;
   }
 }
 
 <header
     class="c0"
+    data-testid="Navbar"
   >
     <a
       data-testid="Navbar-header-link"
     >
       <header
-        class="header"
+        class="c1"
       >
         <img
           alt="E-Shopping"
@@ -272,14 +273,15 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
           src="logo.png"
         />
         <h1
-          class="c1 heading"
+          class="c2 heading"
+          font-size="small"
         >
           shopping
         </h1>
       </header>
     </a>
     <form
-      class="c2"
+      class="c3"
     >
       <input
         autocomplete="off"
@@ -293,7 +295,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
       />
       <button
         aria-label="Search"
-        class="c3"
+        class="c4"
         color="blue"
         type="submit"
       >
@@ -301,15 +303,15 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
       </button>
     </form>
     <nav
-      class="c4"
+      class="c5"
       data-testid="LoggedInLinks"
     >
       <a
-        class="c5"
+        class="c6"
         data-testid="CartLink"
       >
         <div
-          class="c6"
+          class="c7"
           color=""
         >
           <svg>
@@ -318,12 +320,12 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
         </div>
       </a>
       <div
-        class="c7"
+        class="c8"
         data-testid="LoggedInLinks-user-box"
         id="user"
       >
         <span
-          class="c8"
+          class="c9"
           color=""
           display="inline-block"
           overflow="hidden"
@@ -334,7 +336,7 @@ exports[`<Navbar /> should render <LoggedInLinks /> if user is logged in 1`] = `
           username
         </span>
         <div
-          class="c9"
+          class="c10"
           color=""
         >
           <svg>
@@ -377,32 +379,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
   margin-right: 3.6rem;
 }
 
-.c0 .logo {
-  width: 4.6rem;
-  height: 4.6rem;
-  margin-right: 0.8rem;
-}
-
-.c0 .header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  font-family: Lobster,cursive;
-  font-size: 3.3rem;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 3px rgba(0,0,0,0.3);
-  margin-top: 0;
-  text-align: left;
-}
-
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -411,7 +388,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
   width: 45rem;
 }
 
-.c2 .name-input {
+.c3 .name-input {
   background-color: #FAFAFA;
   border: 1px solid #BFBFBF;
   font-size: 1.5rem;
@@ -420,11 +397,10 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
   width: 100%;
 }
 
-.c3 {
+.c4 {
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -432,27 +408,27 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: #1E8BC3;
   border: 2px solid #1E8BC3;
   color: #fff;
 }
 
-.c3:hover {
+.c4:hover {
   background-color: #22A7F0;
   border-color: #22A7F0;
 }
 
-.c5 {
+.c6 {
   box-shadow: 0 0 3px rgba(0,0,0,0.03);
   border-radius: 1px;
   cursor: pointer;
-  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   -webkit-letter-spacing: 2px;
@@ -460,23 +436,24 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
   -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
-  padding: 0.8rem 1.2rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
   background-color: transparent;
   border: 2px solid #1E8BC3;
   color: #1E8BC3;
 }
 
-.c5:hover {
+.c6:hover {
   border-color: #22A7F0;
   color: #22A7F0;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -494,8 +471,33 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
   width: auto;
 }
 
-.c4 > *:not(:last-child) {
+.c5 > *:not(:last-child) {
   margin-right: 2.4rem;
+}
+
+.c2 {
+  font-family: Lobster,cursive;
+  font-size: 3.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  margin-top: 0;
+  text-align: left;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 .logo {
+  width: 4.6rem;
+  height: 4.6rem;
+  margin-right: 0.8rem;
 }
 
 @media only screen and (max-width:75em) {
@@ -533,7 +535,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
 }
 
 @media only screen and (max-width:37.5em) {
-  .c2 {
+  .c3 {
     -webkit-order: 2;
     -ms-flex-order: 2;
     order: 2;
@@ -542,12 +544,13 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
 
 <header
     class="c0"
+    data-testid="Navbar"
   >
     <a
       data-testid="Navbar-header-link"
     >
       <header
-        class="header"
+        class="c1"
       >
         <img
           alt="E-Shopping"
@@ -555,14 +558,15 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
           src="logo.png"
         />
         <h1
-          class="c1 heading"
+          class="c2 heading"
+          font-size="small"
         >
           shopping
         </h1>
       </header>
     </a>
     <form
-      class="c2"
+      class="c3"
     >
       <input
         autocomplete="off"
@@ -576,7 +580,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
       />
       <button
         aria-label="Search"
-        class="c3"
+        class="c4"
         color="blue"
         type="submit"
       >
@@ -584,7 +588,7 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
       </button>
     </form>
     <div
-      class="c4"
+      class="c5"
       data-testid="LoggedOutLinks"
       direction="row"
       spacing="3"
@@ -592,14 +596,14 @@ exports[`<Navbar /> should render <LoggedOutLinks /> if user is logged out 1`] =
       wrap="nowrap"
     >
       <button
-        class="c5"
+        class="c6"
         color="blue"
         type="button"
       >
         login
       </button>
       <button
-        class="c3"
+        class="c4"
         color="blue"
         type="button"
       >

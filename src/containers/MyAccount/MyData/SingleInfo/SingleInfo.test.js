@@ -63,7 +63,7 @@ describe('<SingleInfo />', () => {
     const clickHandler = jest.fn();
     setUp(singleInfoNames.NAME, 'Ludwig von Mises', clickHandler);
 
-    fireEvent.click(screen.getByText('Change'));
+    fireEvent.click(screen.getByRole('button', { name: /change/i }));
     expect(clickHandler).toHaveBeenCalledTimes(1);
   });
 });

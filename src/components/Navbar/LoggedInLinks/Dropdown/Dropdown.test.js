@@ -73,19 +73,19 @@ describe('<Dropdown />', () => {
     it('should call push with correct paths after clicking at links', () => {
       const { history } = setUp(true, jest.fn());
 
-      fireEvent.click(screen.getByText('My account'));
+      fireEvent.click(screen.getByText(/my account/i));
       expect(history.push).toHaveBeenCalledWith('/my-account/data');
 
-      fireEvent.click(screen.getByText('My offers'));
+      fireEvent.click(screen.getByText(/my offers/i));
       expect(history.push).toHaveBeenLastCalledWith('/my-account/products?p=1');
 
-      fireEvent.click(screen.getByText('My sell history'));
+      fireEvent.click(screen.getByText(/my sell history/i));
       expect(history.push).toHaveBeenLastCalledWith('/my-account/sell-history?p=1');
 
-      fireEvent.click(screen.getByText('Placed orders'));
+      fireEvent.click(screen.getByText(/placed orders/i));
       expect(history.push).toHaveBeenLastCalledWith('/my-account/placed-orders?p=1');
 
-      fireEvent.click(screen.getByText('Log out'));
+      fireEvent.click(screen.getByText(/log out/i));
       expect(history.push).toHaveBeenLastCalledWith('/logout');
 
       expect(history.push).toHaveBeenCalledTimes(5);
@@ -93,7 +93,7 @@ describe('<Dropdown />', () => {
 
     it('should call setModal() after add product option click', () => {
       const { store, history } = setUp(true, jest.fn());
-      fireEvent.click(screen.getByText('Add product'));
+      fireEvent.click(screen.getByText(/add product/i));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ADD_PRODUCT));
       expect(history.push).not.toHaveBeenCalled();
     });

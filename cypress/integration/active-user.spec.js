@@ -1,7 +1,7 @@
 import '@testing-library/cypress/add-commands';
 import { adminUser } from '../fixtures/users';
 import { productOne, productTwo } from '../fixtures/products';
-import { productConditions } from '../../src/shared/constants';
+import { defaultAppPath, productConditions } from '../../src/shared/constants';
 import { formatPrice } from '../../src/shared/utility/utility';
 
 const usedUser = adminUser;
@@ -18,12 +18,15 @@ describe('authenticated active user', () => {
   beforeEach(() => {
     cy.seedDb();
     cy.loginRequest(usedUser);
-    cy.visit('/');
+    cy.visit(defaultAppPath);
   });
 
-  it('visits all pages', () => {
+  it('visits all pages except landing page', () => {
     cy.checkHash();
 
+    // landing page
+    cy.visit('/');
+    cy.checkHash();
     // logged in links
     // cart
     cy.findByTestId('CartLink').click();
