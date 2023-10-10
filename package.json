@@ -36,10 +36,10 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "BROWSER=none react-scripts start",
+    "start": "set \"BROWSER=none\" && react-scripts start",
     "start:local": "env-cmd -e dev npm run-script start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "build:prod": "CI=false env-cmd -e prod npm run-script build",
+    "build": "set \"GENERATE_SOURCEMAP=false\" &&  react-scripts build",
+    "build:prod": "env-cmd -e prod npm run-script build",
     "test": "react-scripts test",
     "test:unit": "env-cmd -e dev npm run-script test",
     "test:e2e": "npx cypress open",
