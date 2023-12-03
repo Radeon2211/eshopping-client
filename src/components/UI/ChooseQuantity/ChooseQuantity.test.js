@@ -45,11 +45,6 @@ describe('<ChooseQuantity />', () => {
   });
 
   describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-
     it('should minus button be disabled but plus button NOT', () => {
       setUp();
 

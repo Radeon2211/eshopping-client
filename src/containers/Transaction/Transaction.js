@@ -55,7 +55,7 @@ export default function Transaction() {
     content = (
       <>
         <Heading variant="h3">Transaction</Heading>
-        <SideBySide proportion="3/1" makeVerticalWhen={1200}>
+        <SideBySide proportion="3/1" makeVerticalWhen={1200} data-testid="Transaction-content">
           <FlexWrapper direction="column" align="stretch" spacing="3">
             <DeliveryAddressSection onSetModal={onSetModal} />
             <PlainPanel>

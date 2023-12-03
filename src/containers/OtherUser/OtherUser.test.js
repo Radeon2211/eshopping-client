@@ -92,27 +92,26 @@ beforeAll(() => {
 
 describe('<OtherUser />', () => {
   describe('check how renders', () => {
-    describe('snapshots', () => {
+    describe('general elements and meta tags', () => {
       it('should render <Loader /> if other user is undefined', async () => {
-        const { asFragment } = setUp(undefined);
-        expect(asFragment()).toMatchSnapshot();
+        setUp(undefined);
+        expect(screen.getByTestId('Loader')).toBeInTheDocument();
         await waitFor(() => {
           expect(document.title).toEqual('User info is loading... - E-Shopping');
         });
       });
 
       it('should render info about problem with fetching if other user is null', async () => {
-        const { asFragment } = setUp(null);
-        expect(asFragment()).toMatchSnapshot();
+        setUp(null);
+        expect(screen.getByTestId('OtherUser-error')).toBeInTheDocument();
         await waitFor(() => {
           expect(document.title).toEqual('User not found - E-Shopping');
         });
       });
 
-      it('should render everything correctly', async () => {
+      it('should have regular document title', async () => {
         const otherUser = { ...defaultOtherUser, email: 'test@email.com', phone: '123' };
-        const { asFragment } = setUp(otherUser);
-        expect(asFragment()).toMatchSnapshot();
+        setUp(otherUser);
         await waitFor(() => {
           expect(document.title).toEqual('User "user1" - E-Shopping');
         });

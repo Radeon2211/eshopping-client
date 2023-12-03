@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent, act } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import matchMediaPolyfill from 'mq-polyfill';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -49,16 +50,17 @@ describe('<SearchForm />', () => {
       act(() => {
         window.resizeTo(900, 500);
       });
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
+      setUp();
+      expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
+      expect(screen.queryByTestId('SearchForm-button-icon')).not.toBeInTheDocument();
     });
 
     it('should render with icon in button if width is lower than 900px', () => {
       act(() => {
         window.resizeTo(899, 500);
       });
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
+      setUp();
+      expect(screen.getByTestId('SearchForm-button-icon')).toBeInTheDocument();
     });
   });
 

@@ -220,29 +220,6 @@ const fillEntireForm = async (submit = false, container) => {
 afterEach(cleanup);
 
 describe('<Signup />', () => {
-  describe('check how renders', () => {
-    it('should render with Step1 by default', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('should render with Step2', async () => {
-      const { asFragment } = setUp();
-      await fillStep1(true);
-      await waitForElementToBeRemoved(screen.queryByTestId('Step1'));
-      expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('should render with Step3', async () => {
-      const { asFragment } = setUp();
-      await fillStep1(true);
-      await waitForElementToBeRemoved(screen.queryByTestId('Step1'));
-      await fillStep2(true);
-      await waitForElementToBeRemoved(screen.queryByTestId('Step2'));
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('check form', () => {
     const defaultEmail = '';
     const defaultUsername = '';

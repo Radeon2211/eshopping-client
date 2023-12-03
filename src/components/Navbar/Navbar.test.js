@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -43,13 +43,13 @@ afterEach(cleanup);
 
 describe('<Navbar />', () => {
   it('should render <LoggedInLinks /> if user is logged in', () => {
-    const { asFragment } = setUp(defaultUserProfile);
-    expect(asFragment()).toMatchSnapshot();
+    setUp(defaultUserProfile);
+    expect(screen.getByTestId('LoggedInLinks')).toBeInTheDocument();
   });
 
   it('should render <LoggedOutLinks /> if user is logged out', () => {
-    const { asFragment } = setUp(null);
-    expect(asFragment()).toMatchSnapshot();
+    setUp(null);
+    expect(screen.getByTestId('LoggedOutLinks')).toBeInTheDocument();
   });
 
   it('should call push after clicking at logo', () => {

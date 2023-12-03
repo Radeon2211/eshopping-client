@@ -58,7 +58,7 @@ export default function OtherUser({ match, location, history }) {
   if (otherUser === null) {
     pageTitle = 'User not found - E-Shopping';
     content = (
-      <Heading variant="h4" align="center" lineHeight="4">
+      <Heading variant="h4" align="center" lineHeight="4" data-testid="OtherUser-error">
         Such user does not exist or problem during fetching occurred
       </Heading>
     );

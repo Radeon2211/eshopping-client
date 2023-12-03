@@ -12,12 +12,7 @@ export default function ProgressBar({ stepsNumber, currentStep }) {
       <React.Fragment key={i}>
         <div className={`step-box${currentStep >= i ? ' active' : ''}`}>
           <PlainText size="3" lineHeight="1">
-            <SC.StepBoxContent
-              visible={currentStep > i}
-              data-testid={`ProgressBar-step-box-checkmark-${
-                currentStep > i ? 'visible' : 'hidden'
-              }`}
-            >
+            <SC.StepBoxContent visible={currentStep > i}>
               <MyIcon size="small" color="#000">
                 <CheckMarkIcon />
               </MyIcon>

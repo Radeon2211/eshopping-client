@@ -25,9 +25,9 @@ describe('<LoadingOverlay />', () => {
   });
 
   describe('check how renders', () => {
-    it('should render correctly without info', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
+    it('should render without info', () => {
+      setUp();
+      expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     });
 
     it('should render info after 8 seconds', () => {

@@ -80,7 +80,7 @@ export default function OrderDetails() {
         </Heading>
         {seller ? (
           <FlexWrapper direction="column" spacing="1" data-test="OrderDetails-seller-info">
-            <div>
+            <div data-testid="OrderDetails-seller-username">
               <PlainText weight="700">Username:&nbsp;</PlainText>
               <PlainText size="3">
                 <Link to={`/user/${seller.username}?p=1`} data-testid="OrderDetails-seller-link">
@@ -88,11 +88,11 @@ export default function OrderDetails() {
                 </Link>
               </PlainText>
             </div>
-            <div>
+            <div data-testid="OrderDetails-seller-email">
               <PlainText weight="700">Email:&nbsp;</PlainText>
               <PlainText size="3">{seller.email}</PlainText>
             </div>
-            <div>
+            <div data-testid="OrderDetails-seller-phone">
               <PlainText weight="700">Phone:&nbsp;</PlainText>
               <PlainText size="3">{seller.phone}</PlainText>
             </div>

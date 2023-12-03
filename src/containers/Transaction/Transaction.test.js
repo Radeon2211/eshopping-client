@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
+import { render, cleanup, waitFor, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -73,21 +74,23 @@ describe('<Transaction />', () => {
           photo: false,
         }),
       ];
-      const { asFragment } = setUp(transaction);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(transaction);
+      expect(screen.getByTestId('Transaction-content')).toBeInTheDocument();
+      expect(screen.getAllByTestId('CartAndTransactionItems-item')).toHaveLength(1);
+      expect(screen.getAllByTestId('TransactionAndOrderProdItem')).toHaveLength(2);
       await waitFor(() => {
         expect(document.title).toEqual('Transaction summary - E-Shopping');
       });
     });
 
     it('should render nothing if transaction is empty', () => {
-      const { asFragment } = setUp([]);
-      expect(asFragment()).toMatchSnapshot();
+      setUp([]);
+      expect(screen.queryByTestId('Transaction-content')).not.toBeInTheDocument();
     });
 
     it('should render nothing if transaction is falsy', () => {
-      const { asFragment } = setUp(undefined);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(undefined);
+      expect(screen.queryByTestId('Transaction-content')).not.toBeInTheDocument();
     });
   });
 

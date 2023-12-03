@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -59,13 +60,13 @@ describe('<Dropdown />', () => {
 
   describe('check how renders', () => {
     it('should render everything correctly', () => {
-      const { asFragment } = setUp(true);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(true);
+      expect(screen.getByTestId('Dropdown')).toBeInTheDocument();
     });
 
-    it('should NOT render anything', () => {
-      const { asFragment } = setUp(false);
-      expect(asFragment()).toMatchSnapshot();
+    it('should NOT render anything if isVisible is false', () => {
+      setUp(false);
+      expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
     });
   });
 

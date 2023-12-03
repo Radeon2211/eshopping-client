@@ -89,8 +89,13 @@ describe('<OrderList />', () => {
           createdAt: '2021-01-08T11:08:51.008Z',
         }),
       ];
-      const { asFragment } = setUp(orders, orderTypes.PLACED_ORDERS);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(orders, orderTypes.PLACED_ORDERS);
+      expect(screen.getByTestId('OrderList-user-type')).toHaveTextContent('seller');
+      expect(screen.getByTestId('OrderList-user-link')).toHaveTextContent('sellerUser');
+      expect(screen.getByTestId('OrderList-created-at-date')).toHaveTextContent(
+        '8 Jan 2021, 12:08',
+      );
+      expect(screen.getByTestId('OrderList-overall-price')).toHaveTextContent('$28.80');
     });
 
     it('should render everything correctly with one item and type SELL_HISTORY', () => {
@@ -114,8 +119,13 @@ describe('<OrderList />', () => {
           createdAt: '2021-02-17T01:53:45.008Z',
         }),
       ];
-      const { asFragment } = setUp(orders, orderTypes.SELL_HISTORY);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(orders, orderTypes.SELL_HISTORY);
+      expect(screen.getByTestId('OrderList-user-type')).toHaveTextContent('buyer');
+      expect(screen.getByTestId('OrderList-user-link')).toHaveTextContent('buyerUser');
+      expect(screen.getByTestId('OrderList-created-at-date')).toHaveTextContent(
+        '17 Feb 2021, 02:53',
+      );
+      expect(screen.getByTestId('OrderList-overall-price')).toHaveTextContent('$12.80');
     });
 
     it('should render account deleted - type PLACED_ORDERS', () => {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
 import ProductThumbnail from './ProductThumbnail';
 import { checkProps } from '../../../shared/testUtility/testUtility';
 
@@ -12,7 +13,7 @@ const setUp = (photo = false, orderId = '') => {
     height: '5',
     alt: 'testAlt',
   };
-  return shallow(<ProductThumbnail {...props} />);
+  return render(<ProductThumbnail {...props} />);
 };
 
 describe('<ProductThumbnail />', () => {
@@ -34,18 +35,24 @@ describe('<ProductThumbnail />', () => {
 
   describe('check how renders', () => {
     it('should src be a link to product photo in order collection', () => {
-      const wrapper = setUp(true, 'o1');
-      expect(wrapper).toMatchSnapshot();
+      setUp(true, 'o1');
+      expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute(
+        'src',
+        `${process.env.REACT_APP_API_URL}/orders/o1/p1/photo`,
+      );
     });
 
     it('should src be a link to product photo in product collection', () => {
-      const wrapper = setUp(true);
-      expect(wrapper).toMatchSnapshot();
+      setUp(true);
+      expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute(
+        'src',
+        `${process.env.REACT_APP_API_URL}/products/p1/photo`,
+      );
     });
 
     it('should src be a noPhoto', () => {
-      const wrapper = setUp(false);
-      expect(wrapper).toMatchSnapshot();
+      setUp(false);
+      expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute('src', 'no-photo.png');
     });
   });
 });

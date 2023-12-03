@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -78,7 +79,7 @@ describe('<CartAndTransactionItems />', () => {
 
   describe('check how renders', () => {
     it('should render everything with one seller and one cart item', () => {
-      const { asFragment } = setUp(
+      setUp(
         [
           createCartItem({
             sellerUsername: 'user1',
@@ -86,11 +87,13 @@ describe('<CartAndTransactionItems />', () => {
         ],
         itemTypes.CART,
       );
-      expect(asFragment()).toMatchSnapshot();
+      expect(screen.getAllByTestId('CartItem')).toHaveLength(1);
+      expect(screen.getAllByTestId('CartAndTransactionItems-item')).toHaveLength(1);
+      expect(screen.getByText('user1')).toBeInTheDocument();
     });
 
     it('should render everything with two sellers, each with one transaction item', () => {
-      const { asFragment } = setUp(
+      setUp(
         [
           createTransactionAndOrderProdItem({
             productId: 'p1',
@@ -103,7 +106,10 @@ describe('<CartAndTransactionItems />', () => {
         ],
         itemTypes.TRANSACTION,
       );
-      expect(asFragment()).toMatchSnapshot();
+      expect(screen.getAllByTestId('CartAndTransactionItems-item')).toHaveLength(2);
+      expect(screen.getAllByTestId('TransactionAndOrderProdItem')).toHaveLength(2);
+      expect(screen.getByText('user1')).toBeInTheDocument();
+      expect(screen.getByText('user2')).toBeInTheDocument();
     });
 
     it('should call push with correct path after click on user link', () => {

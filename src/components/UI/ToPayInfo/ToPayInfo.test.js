@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import ToPayInfo from './ToPayInfo';
@@ -28,7 +28,8 @@ describe('<ToPayInfo />', () => {
   });
 
   it('should render everything correctly', () => {
-    const { asFragment } = setUp(1195.2);
-    expect(asFragment()).toMatchSnapshot();
+    setUp(1195.2);
+    expect(screen.getByTestId('ToPayInfo')).toHaveTextContent('To pay');
+    expect(screen.getByTestId('ToPayInfo')).toHaveTextContent('$1,195.20');
   });
 });

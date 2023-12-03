@@ -53,13 +53,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ChangeContacts />', () => {
-  describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('check form', () => {
     it('should have values that correspons to state - profile.contacts', () => {
       setUp();

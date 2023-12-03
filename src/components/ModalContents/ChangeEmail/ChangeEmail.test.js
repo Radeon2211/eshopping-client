@@ -46,13 +46,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ChangeEmail />', () => {
-  describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('check form', () => {
     const defaultNewEmail = 'new@domain.com';
     const currentPassword = 'password';

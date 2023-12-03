@@ -44,7 +44,9 @@ const TransactionAndOrderProdItem = React.memo(({ data, orderId }) => {
           >
             {`${quantity} x ${formatPrice(price)}`}
           </PlainText>
-          <PlainText size="4">{formatPrice(roundedOverallPrice)}</PlainText>
+          <PlainText size="4" data-testid="TransactionAndOrderProdItem-product-overall-price">
+            {formatPrice(roundedOverallPrice)}
+          </PlainText>
         </SC.Price>
       </SC.NameAndPrice>
     </SC.Wrapper>

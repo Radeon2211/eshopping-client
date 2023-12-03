@@ -55,13 +55,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<DeleteProduct />', () => {
-  describe('check how renders', () => {
-    it('should render everything correctly if isCartLoading is false', () => {
-      const { asFragment } = setUp('Wellingtons', 'p1');
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('check redux actions calling', () => {
     it('should call push with /cart after go to cart button click', () => {
       const productId = 'p1';

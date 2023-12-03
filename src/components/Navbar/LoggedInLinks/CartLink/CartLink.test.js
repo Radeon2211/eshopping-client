@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
@@ -40,23 +41,23 @@ afterEach(cleanup);
 
 describe('<CartLink />', () => {
   it('should render everything correctly with quantity 1', () => {
-    const { asFragment } = setUp([{ _id: '1' }]);
-    expect(asFragment()).toMatchSnapshot();
+    setUp([{ _id: '1' }]);
+    expect(screen.getByTestId('CartLink-quantity')).toHaveTextContent('1');
   });
 
   it('should NOT render quantity if cart length is 0', () => {
-    const { asFragment } = setUp([]);
-    expect(asFragment()).toMatchSnapshot();
+    setUp([]);
+    expect(screen.queryByTestId('CartLink-quantity')).not.toBeInTheDocument();
   });
 
   it('should NOT render quantity if cart is null', () => {
-    const { asFragment } = setUp(null);
-    expect(asFragment()).toMatchSnapshot();
+    setUp(null);
+    expect(screen.queryByTestId('CartLink-quantity')).not.toBeInTheDocument();
   });
 
   it('should render quantity 3', () => {
     setUp([{ _id: '1' }, { _id: '2' }, { _id: '3' }]);
-    expect(screen.getByTestId('CartLink-quantity').textContent).toEqual('3');
+    expect(screen.getByTestId('CartLink-quantity')).toHaveTextContent('3');
   });
 
   it('should call push after clicking cart link', () => {

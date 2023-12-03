@@ -46,7 +46,7 @@ describe('<TransactionAndOrderProdItem />', () => {
   });
 
   describe('checks how renders and behaviour', () => {
-    it('should render everything correctly', () => {
+    it('should render everything correctly with photo of product directly', () => {
       const data = createTransactionAndOrderProdItem({
         productId: 'p1',
         sellerUsername: 'user1',
@@ -55,11 +55,23 @@ describe('<TransactionAndOrderProdItem />', () => {
         name: 'productName',
         photo: true,
       });
-      const { asFragment } = setUp(data);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(data);
+      expect(screen.getByTestId('TransactionAndOrderProdItem-product-link-name')).toHaveTextContent(
+        'productName',
+      );
+      expect(
+        screen.getByTestId('TransactionAndOrderProdItem-product-price-per-piece'),
+      ).toHaveTextContent('2 x $9.90');
+      expect(
+        screen.getByTestId('TransactionAndOrderProdItem-product-overall-price'),
+      ).toHaveTextContent('$19.80');
+      expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute(
+        'src',
+        `${process.env.REACT_APP_API_URL}/products/p1/photo`,
+      );
     });
 
-    it('should render image src from orders collection', () => {
+    it('should render with image from orders collection', () => {
       const data = createTransactionAndOrderProdItem({
         productId: 'p1',
         sellerUsername: 'user1',

@@ -24,7 +24,13 @@ export default function DeleteProduct() {
 
   return (
     <>
-      <Heading variant="h4" mgBottom="3" lineHeight="4" align="center">
+      <Heading
+        variant="h4"
+        mgBottom="3"
+        lineHeight="4"
+        align="center"
+        data-testid="DeleteProduct-heading"
+      >
         Are you sure to delete &quot;{productDetails?.name}&quot;?
       </Heading>
       <FlexWrapper justify="center" spacing="3">

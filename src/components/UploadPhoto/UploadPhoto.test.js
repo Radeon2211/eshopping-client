@@ -23,13 +23,18 @@ describe('<UploadPhoto />', () => {
 
   describe('check how renders', () => {
     it('should render default view when hasCurrentPhoto is false', () => {
-      const { asFragment } = setUp(false);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(false);
+      expect(screen.getByRole('button', { name: /upload photo/i }));
+      expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+      expect(screen.getByTestId('UploadPhoto-default-preview'));
     });
 
     it('should render with delete current button when hasCurrentPhoto is true', () => {
-      const { asFragment } = setUp(true);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(true);
+      expect(screen.getByRole('button', { name: /upload photo/i }));
+      expect(screen.getByRole('button', { name: /delete current/i }));
+      expect(screen.queryByRole('button', { name: /^delete$/i })).not.toBeInTheDocument();
+      expect(screen.getByTestId('UploadPhoto-default-preview'));
     });
 
     describe('successful upload', () => {
@@ -37,7 +42,7 @@ describe('<UploadPhoto />', () => {
         const photo = mockFile.create('boots.jpg', maxPossibleFileSize, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
-        const { asFragment } = setUp(false, setFieldValueFn);
+        setUp(false, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -46,7 +51,12 @@ describe('<UploadPhoto />', () => {
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.getByRole('button', { name: /delete/i }));
+        expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: boots.jpgSize: 6 MB',
+        );
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', photo);
       });
 
@@ -55,7 +65,7 @@ describe('<UploadPhoto />', () => {
         const photo2 = mockFile.create('photo2.jpg', maxPossibleFileSize, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
-        const { asFragment } = setUp(false, setFieldValueFn);
+        setUp(false, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -71,7 +81,12 @@ describe('<UploadPhoto />', () => {
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.getByRole('button', { name: /delete/i }));
+        expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: photo2.jpgSize: 6 MB',
+        );
         expect(setFieldValueFn).toHaveBeenNthCalledWith(2, 'photo', photo2);
       });
 
@@ -79,7 +94,7 @@ describe('<UploadPhoto />', () => {
         const photo = mockFile.create('boots.jpg', maxPossibleFileSize, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
-        const { asFragment } = setUp(false, setFieldValueFn);
+        setUp(false, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -102,7 +117,12 @@ describe('<UploadPhoto />', () => {
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.getByRole('button', { name: /delete/i }));
+        expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: boots.jpgSize: 6 MB',
+        );
         expect(setFieldValueFn).toHaveBeenNthCalledWith(3, 'photo', photo);
       });
     });
@@ -113,7 +133,7 @@ describe('<UploadPhoto />', () => {
         const validPhoto = mockFile.create('boots.png', maxPossibleFileSize, 'image/png');
         const setFieldValueFn = jest.fn();
 
-        const { asFragment } = setUp(false, setFieldValueFn);
+        setUp(false, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -123,23 +143,32 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {});
 
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', productPhotoFieldValues.ERROR);
-        expect(screen.getByText(/file extension is not valid/i)).toBeInTheDocument();
+        expect(screen.getByText(/file extension is not valid/i));
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: boots.svgSize: 6 MB',
+        );
 
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [validPhoto] } });
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.getByRole('button', { name: /delete/i }));
+        expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
+        expect(screen.queryByText(/file extension is not valid/i)).not.toBeInTheDocument();
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: boots.pngSize: 6 MB',
+        );
         expect(setFieldValueFn).toHaveBeenNthCalledWith(2, 'photo', validPhoto);
         expect(setFieldValueFn).toHaveBeenCalledTimes(2);
       });
 
-      it('should render with error, delete button and file info when size is too big', async () => {
+      it('should render with error, delete button, file info when size is too big and delete current button when initially has photo', async () => {
         const photo = mockFile.create('boots.png', tooBigFileSize, 'image/png');
         const setFieldValueFn = jest.fn();
 
-        const { asFragment } = setUp(true, setFieldValueFn);
+        setUp(true, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -148,7 +177,13 @@ describe('<UploadPhoto />', () => {
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.getByRole('button', { name: /^delete$/i }));
+        expect(screen.getByRole('button', { name: /delete current/i }));
+        expect(screen.getByText(/Maximum available size is 6 MB/i));
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: boots.pngSize: 6,1 MB',
+        );
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', productPhotoFieldValues.ERROR);
       });
 
@@ -156,7 +191,7 @@ describe('<UploadPhoto />', () => {
         const photo = mockFile.create('boots.svg', maxPossibleFileSize, 'image/svg+xml');
         const setFieldValueFn = jest.fn();
 
-        const { asFragment } = setUp(false, setFieldValueFn);
+        setUp(false, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -165,7 +200,13 @@ describe('<UploadPhoto />', () => {
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.getByRole('button', { name: /delete/i }));
+        expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
+        expect(screen.getByText(/File extension is not valid \(JPG and PNG only\)/i));
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: boots.svgSize: 6 MB',
+        );
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', productPhotoFieldValues.ERROR);
       });
     });
@@ -173,20 +214,22 @@ describe('<UploadPhoto />', () => {
     describe('default view', () => {
       it('should render default view after deleting current photo', async () => {
         const setFieldValueFn = jest.fn();
-        const { asFragment } = setUp(true, setFieldValueFn);
+        setUp(true, setFieldValueFn);
 
         await waitFor(() => {
           fireEvent.click(screen.getByRole('button', { name: /delete current/i }));
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        expect(screen.getByTestId('UploadPhoto-default-preview'));
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', productPhotoFieldValues.DELETED);
       });
 
       it('should render default view when files field has 0 length', async () => {
         const setFieldValueFn = jest.fn();
-        const { asFragment } = setUp(false, setFieldValueFn);
+        setUp(false, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -195,7 +238,9 @@ describe('<UploadPhoto />', () => {
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        expect(screen.getByTestId('UploadPhoto-default-preview'));
         expect(setFieldValueFn).not.toHaveBeenCalled();
       });
 
@@ -203,7 +248,7 @@ describe('<UploadPhoto />', () => {
         const photo = mockFile.create('boots.jpg', maxPossibleFileSize, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
-        const { asFragment } = setUp(false, setFieldValueFn);
+        setUp(false, setFieldValueFn);
 
         const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
 
@@ -213,13 +258,18 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {});
 
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
+        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+          'Name: boots.jpgSize: 6 MB',
+        );
 
         await waitFor(() => {
           fireEvent.click(screen.getByRole('button', { name: /delete/i }));
         });
         await waitFor(() => {});
 
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByRole('button', { name: /upload photo/i }));
+        expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        expect(screen.getByTestId('UploadPhoto-default-preview'));
         expect(setFieldValueFn).toHaveBeenNthCalledWith(2, 'photo', null);
       });
     });

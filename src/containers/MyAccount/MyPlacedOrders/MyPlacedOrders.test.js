@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
+import { render, cleanup, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
@@ -79,8 +79,8 @@ beforeAll(() => {
 describe('<MyPlacedOrders />', () => {
   describe('check how renders', () => {
     it('should render everything correctly with given default data', async () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
+      setUp();
+      expect(screen.getAllByTestId('OrderList-single-order')).toHaveLength(1);
       await waitFor(() => {
         expect(document.title).toEqual('Your placed orders - E-Shopping');
       });

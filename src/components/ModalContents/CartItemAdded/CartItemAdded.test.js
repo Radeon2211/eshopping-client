@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -61,20 +62,25 @@ describe('<CartItemAdded />', () => {
   describe('check how renders', () => {
     it('should render everything correctly if product is in cart and isCartLoading is false', () => {
       const store = createStore(defaultCart, defaultProduct);
-      const { asFragment } = setUp(store);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(store);
+      expect(screen.getByTestId('CartItemAdded-price-and-quantity')).toHaveTextContent(
+        '$1,501.80 (total in the cart 3 x $500.60)',
+      );
+      expect(screen.getByTestId('CartItemAdded-quantity-and-name')).toHaveTextContent(
+        '3 x product1',
+      );
     });
 
     it('should render only <Loader /> if isCartLoading is true', () => {
       const store = createStore(defaultCart, defaultProduct, true);
-      const { asFragment } = setUp(store);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(store);
+      expect(screen.getByTestId('Loader')).toBeInTheDocument();
     });
 
     it('should render only <Loader /> if given product is not in cart', () => {
       const store = createStore([], defaultProduct, false);
-      const { asFragment } = setUp(store);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(store);
+      expect(screen.getByTestId('Loader')).toBeInTheDocument();
     });
   });
 

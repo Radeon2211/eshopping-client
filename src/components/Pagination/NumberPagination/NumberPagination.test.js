@@ -36,31 +36,51 @@ describe('<NumberPagination />', () => {
   });
 
   describe('check how renders', () => {
-    it('should render all correctly (without hide-arrow class on arrows)', () => {
+    it('should render links from 1 to 3 and second with active class without hide-arrow class on arrows if p is 2, quantity is 5, per page is 2', () => {
       const history = createHistoryPageNumber(2);
-      const { asFragment } = setUp(defaultProps, history);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(defaultProps, history);
+      expect(screen.getByTestId('NumberPagination-number-of-pages')).toHaveTextContent('3');
+      expect(screen.getByTestId('NumberPagination-left-arrow')).not.toHaveClass('hide-arrow');
+      expect(screen.getByTestId('NumberPagination-right-arrow')).not.toHaveClass('hide-arrow');
+      expect(screen.getByTestId('NumberPagination-page2')).toHaveClass('active');
     });
 
-    it('should render six number links if p is 1 and page 1 has active class, quantity is 20, per page is 2', () => {
+    it('should render links from 1 to 6 and 10 pages and first with active class if p is 1, quantity is 20, per page is 2', () => {
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(1);
-      const { asFragment } = setUp(props, history);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, history);
+      expect(screen.getByTestId('NumberPagination-number-of-pages')).toHaveTextContent('10');
+      expect(screen.getByTestId('NumberPagination-page1')).toHaveClass('active');
+      expect(screen.getByTestId('NumberPagination-page6')).toBeInTheDocument();
     });
 
-    it('should render ellipsis and six number links and page 10 has active class if p is 10, quantity is 20, per page is 2', () => {
+    it('should render ellipsis and 6 links: 1 and from 6 to 10 and tenth with active class and 10 pages if p is 10, quantity is 20, per page is 2', () => {
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(10);
-      const { asFragment } = setUp(props, history);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, history);
+      expect(screen.getByTestId('NumberPagination-number-of-pages')).toHaveTextContent('10');
+      expect(screen.getByText('...')).toBeInTheDocument();
+      expect(screen.getByTestId('NumberPagination-page1')).toBeInTheDocument();
+      expect(screen.queryByTestId('NumberPagination-page2')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('NumberPagination-page5')).not.toBeInTheDocument();
+      expect(screen.getByTestId('NumberPagination-page6')).toBeInTheDocument();
+      expect(screen.getByTestId('NumberPagination-page10')).toHaveClass('active');
+      expect(screen.queryByTestId('NumberPagination-page11')).not.toBeInTheDocument();
     });
 
-    it('should render ellipsis and six number links and page 8 has active class if p is 8, quantity is 20, per page is 2', () => {
+    it('should render ellipsis and 6 links: 1 and from 6 to 10 and eighth with active class and 10 pages if p is 8, quantity is 20, per page is 2', () => {
       const props = createPaginationProps(20);
       const history = createHistoryPageNumber(8);
-      const { asFragment } = setUp(props, history);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, history);
+      expect(screen.getByTestId('NumberPagination-number-of-pages')).toHaveTextContent('10');
+      expect(screen.getByText('...')).toBeInTheDocument();
+      expect(screen.getByTestId('NumberPagination-page1')).toBeInTheDocument();
+      expect(screen.queryByTestId('NumberPagination-page2')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('NumberPagination-page5')).not.toBeInTheDocument();
+      expect(screen.getByTestId('NumberPagination-page6')).toBeInTheDocument();
+      expect(screen.getByTestId('NumberPagination-page8')).toHaveClass('active');
+      expect(screen.getByTestId('NumberPagination-page10')).toBeInTheDocument();
+      expect(screen.queryByTestId('NumberPagination-page11')).not.toBeInTheDocument();
     });
 
     it('should only left arrow has hide-arrow class', () => {

@@ -92,11 +92,11 @@ beforeAll(() => {
 
 describe('<ProductDetails />', () => {
   describe('check how renders', () => {
-    describe('snapshots', () => {
+    describe('general elements and meta tags', () => {
       it('should render only <Loader /> if productDetails is undefined', async () => {
         const store = { product: { productDetails: undefined } };
-        const { asFragment } = setUp(store);
-        expect(asFragment()).toMatchSnapshot();
+        setUp(store);
+        expect(screen.getByTestId('Loader')).toBeInTheDocument();
         await waitFor(() => {
           expect(document.title).toEqual('Offer is loading... - E-Shopping');
         });
@@ -104,8 +104,10 @@ describe('<ProductDetails />', () => {
 
       it('should render only info that there is a problem to fetch product details', async () => {
         const store = { product: { productDetails: null } };
-        const { asFragment } = setUp(store);
-        expect(asFragment()).toMatchSnapshot();
+        setUp(store);
+        expect(
+          screen.getByText(/such product does not exist or has already been sold/i),
+        ).toBeInTheDocument();
         await waitFor(() => {
           expect(document.title).toEqual('Offer does not exist - E-Shopping');
         });
@@ -123,8 +125,10 @@ describe('<ProductDetails />', () => {
             },
           },
         };
-        const { asFragment } = setUp(store);
-        expect(asFragment()).toMatchSnapshot();
+        setUp(store);
+        expect(screen.getByTestId('ProductDetails-quantity-sold')).toHaveTextContent(
+          '1 person bought 1 unit',
+        );
         await waitFor(() => {
           expect(document.title).toEqual('Test name - E-Shopping');
         });

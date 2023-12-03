@@ -71,7 +71,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   const defaultPreviewText = `Photo is optional. Max size is ${productPhotoMaxSizeString}. Available extensions are JPG and PNG`;
   let preview = (
-    <PlainText size="2" mgTop="2">
+    <PlainText size="2" mgTop="2" data-testid="UploadPhoto-default-preview">
       {defaultPreviewText}
     </PlainText>
   );
@@ -89,7 +89,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   if (photo || error) {
     preview = (
-      <FlexWrapper mgTop="2" spacing="3">
+      <FlexWrapper mgTop="2" spacing="3" data-testid="UploadPhoto-preview-photo-info">
         <PlainText
           size="1"
           maxWidth="75%"

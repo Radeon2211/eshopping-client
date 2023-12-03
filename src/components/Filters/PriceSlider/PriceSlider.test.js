@@ -55,8 +55,11 @@ describe('<PriceSlider />', () => {
 
   describe('check how renders', () => {
     it('should render everything correctly with default values', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
+      setUp();
+      expect(screen.getByTestId('NumberInput-minPrice')).toHaveValue(10);
+      expect(screen.getByTestId('PriceSlider-price-range-min')).toHaveValue('10');
+      expect(screen.getByTestId('NumberInput-maxPrice')).toHaveValue(100);
+      expect(screen.getByTestId('PriceSlider-price-range-max')).toHaveValue('100');
     });
 
     it('should inputs have 20 and 80 values', () => {

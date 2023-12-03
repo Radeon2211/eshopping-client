@@ -40,14 +40,14 @@ export default function CartItemAdded() {
         <FlexWrapper spacing="3">
           <ProductThumbnail photo={photo} alt={name} productId={productId} width="8" height="8" />
           <FlexWrapper direction="column" align="start" spacing="1">
-            <PlainText size="5">
+            <PlainText size="5" data-testid="CartItemAdded-price-and-quantity">
               {formatPrice(price * quantity)}
               <PlainText size="2">
                 &nbsp;
                 {`(total in the cart ${quantity} x ${formattedPrice})`}
               </PlainText>
             </PlainText>
-            <PlainText size="3">
+            <PlainText size="3" data-testid="CartItemAdded-quantity-and-name">
               <PlainText size="2">{`${quantity} x`}</PlainText>
               &nbsp;
               {name}

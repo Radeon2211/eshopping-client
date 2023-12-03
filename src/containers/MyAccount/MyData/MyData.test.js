@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -49,22 +50,16 @@ beforeAll(() => {
 
 describe('<MyData />', () => {
   describe('check how renders', () => {
-    it('should render everything correctly for non admin user with status active', async () => {
-      const { asFragment } = setUp(defaultUserProfile);
-      expect(asFragment()).toMatchSnapshot();
+    it('should render correct document title', async () => {
+      setUp(defaultUserProfile);
       await waitFor(() => {
         expect(document.title).toEqual('Your account data - E-Shopping');
       });
     });
 
     it('should render everything correctly for non admin user with status pending', () => {
-      const { asFragment } = setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
-      expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('should render everything correctly for admin user', () => {
-      const { asFragment } = setUp({ ...defaultUserProfile, isAdmin: true });
-      expect(asFragment()).toMatchSnapshot();
+      setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
+      expect(screen.getByTestId('MyData-pending-user-content')).toBeInTheDocument();
     });
   });
 

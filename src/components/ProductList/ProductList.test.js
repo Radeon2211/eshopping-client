@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../styled/theme';
@@ -63,56 +64,69 @@ describe('<ProductList />', () => {
   describe('check how renders', () => {
     it('should render only <LoadingOverlay />', () => {
       const props = createProps(true);
-      const { asFragment } = setUp(props);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props);
+      expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
+      expect(screen.queryByTestId('ProductItem')).not.toBeInTheDocument();
     });
 
     it('should render list with two items', () => {
       const props = createProps(false, defaultProducts);
-      const { asFragment } = setUp(props);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props);
+      expect(screen.getAllByTestId('ProductItem')).toHaveLength(2);
     });
 
     it('should render list with one item', () => {
       const props = createProps(false, [defaultProducts[0]]);
-      const { asFragment } = setUp(props);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props);
+      expect(screen.getAllByTestId('ProductItem')).toHaveLength(1);
     });
 
     it('should render correct info for ALL_PRODUCTS with filters', () => {
       const props = createProps(false, [], productPages.ALL_PRODUCTS);
-      const { asFragment } = setUp(props, '?p=1&minPrice=100');
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, '?p=1&minPrice=100');
+      expect(
+        screen.getByText(
+          "We didn't find any matching results. Try to search something else or change filters",
+        ),
+      ).toBeInTheDocument();
     });
 
     it('should render correct info for MY_PRODUCTS with filters', () => {
       const props = createProps(false, [], productPages.MY_PRODUCTS);
-      const { asFragment } = setUp(props, '?p=1&condition=new');
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, '?p=1&condition=new');
+      expect(
+        screen.getByText("We didn't find any matching results. Try to change filters"),
+      ).toBeInTheDocument();
     });
 
     it('should render correct info for USER_PRODUCTS with filters', () => {
       const props = createProps(false, [], productPages.USER_PRODUCTS);
-      const { asFragment } = setUp(props, '?p=1&maxPrice=100');
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, '?p=1&maxPrice=100');
+      expect(
+        screen.getByText("We didn't find any matching results. Try to change filters"),
+      ).toBeInTheDocument();
     });
 
     it('should render correct info for ALL_PRODUCTS without filters other than name', () => {
       const props = createProps(false, [], productPages.ALL_PRODUCTS);
-      const { asFragment } = setUp(props, '?p=1&name=testName');
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, '?p=1&name=testName');
+      expect(
+        screen.getByText("We didn't find any matching results. Try to search something else"),
+      ).toBeInTheDocument();
     });
 
     it('should render correct info for MY_PRODUCTS without filters other than name', () => {
       const props = createProps(false, [], productPages.MY_PRODUCTS);
-      const { asFragment } = setUp(props, '?p=1&name=testName');
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, '?p=1&name=testName');
+      expect(screen.getByText("You don't have any offers published yet")).toBeInTheDocument();
     });
 
     it('should render correct info for USER_PRODUCTS without filters other than name', () => {
       const props = createProps(false, [], productPages.USER_PRODUCTS);
-      const { asFragment } = setUp(props, '?p=1&name=testName');
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, '?p=1&name=testName');
+      expect(
+        screen.getByText("This user doesn't have any offers published yet"),
+      ).toBeInTheDocument();
     });
   });
 });

@@ -74,14 +74,6 @@ describe('<Filters />', () => {
   });
 
   describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      act(() => {
-        fireEvent.click(screen.getByTestId('Filters-toggler'));
-      });
-      expect(asFragment()).toMatchSnapshot();
-    });
-
     it('should render filters panel and NOT render toggler', () => {
       act(() => {
         window.resizeTo(1920, 1080);

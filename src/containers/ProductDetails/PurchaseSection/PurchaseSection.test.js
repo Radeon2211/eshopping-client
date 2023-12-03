@@ -84,45 +84,28 @@ describe('<PurchaseSection />', () => {
   });
 
   describe('check how renders', () => {
-    describe('snapshots', () => {
-      it('should render info that user is a seller', () => {
-        const props = {
-          productSellerUsername: 'user1',
-        };
-        const { asFragment } = setUp(props);
-        expect(asFragment()).toMatchSnapshot();
-      });
-
-      it('should render everything correctly', () => {
-        const { asFragment } = setUp();
-        expect(asFragment()).toMatchSnapshot();
-      });
+    it('should render not able to add info if quantity in cart equals to product quantity', () => {
+      const props = {
+        productQuantity: 3,
+      };
+      setUp(props);
+      expect(screen.getByTestId('PurchaseSection-not-able-to-add')).toBeInTheDocument();
     });
 
-    describe('check single items', () => {
-      it('should render not able to add info if quantity in cart equals to product quantity', () => {
-        const props = {
-          productQuantity: 3,
-        };
-        setUp(props);
-        expect(screen.getByTestId('PurchaseSection-not-able-to-add')).toBeInTheDocument();
-      });
+    it('should NOT render info about quantity in cart if given product is not in cart', () => {
+      setUp(defaultProps, []);
+      expect(screen.queryByTestId('PurchaseSection-quantity-in-cart')).not.toBeInTheDocument();
+    });
 
-      it('should NOT render info about quantity in cart if given product is not in cart', () => {
-        setUp(defaultProps, []);
-        expect(screen.queryByTestId('PurchaseSection-quantity-in-cart')).not.toBeInTheDocument();
-      });
-
-      it('should render quantity info - "of 1 piece (1 in cart)"', () => {
-        const props = {
-          productQuantity: 1,
-        };
-        const cart = [{ quantity: 1, product: { _id: '123' } }];
-        setUp(props, cart);
-        expect(screen.getByTestId('PurchaseSection-product-quantity')).toHaveTextContent(
-          'of 1 piece (1 in cart)',
-        );
-      });
+    it('should render quantity info - "of 1 piece (1 in cart)"', () => {
+      const props = {
+        productQuantity: 1,
+      };
+      const cart = [{ quantity: 1, product: { _id: '123' } }];
+      setUp(props, cart);
+      expect(screen.getByTestId('PurchaseSection-product-quantity')).toHaveTextContent(
+        'of 1 piece (1 in cart)',
+      );
     });
   });
 

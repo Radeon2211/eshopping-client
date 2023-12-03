@@ -81,8 +81,12 @@ describe('<CartItem />', () => {
 
   describe('checks how renders', () => {
     it('should render everything correctly', () => {
-      const { asFragment } = setUp(defaultData);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(defaultData);
+      expect(screen.getByTestId('CartItem-product-link-photo')).toBeInTheDocument();
+      expect(screen.getByTestId('CartItem-product-link-name')).toHaveTextContent('productName');
+      expect(screen.getByTestId('CartItem-available-quantity')).toHaveTextContent('of 6');
+      expect(screen.getByTestId('CartItem-total-price')).toHaveTextContent('$1,499.90');
+      expect(screen.getByTestId('CartItem-price-per-piece')).toHaveTextContent('per piece $299.98');
     });
 
     it('should NOT render price per piece and should render default photo if photo is empty and available quantity is 1', () => {

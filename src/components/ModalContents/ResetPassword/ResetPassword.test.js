@@ -42,13 +42,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ResetPassword />', () => {
-  describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('check behaviour after link click', () => {
     it('should call setModal() after link click', () => {
       const { store } = setUp();

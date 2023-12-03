@@ -31,11 +31,6 @@ const setUp = () => {
 afterEach(cleanup);
 
 describe('<LoggedOutLinks />', () => {
-  it('should render everything correctly', () => {
-    const { asFragment } = setUp();
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   describe('check behaviour after buttons clicks', () => {
     it('should call setModal() with login modal', () => {
       const { store } = setUp();

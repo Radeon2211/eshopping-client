@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../../styled/theme';
@@ -54,8 +55,11 @@ describe('<ProductItem />', () => {
         description: 'description',
         condition: productConditions.NEW,
       });
-      const { asFragment } = setUp(data);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(data);
+      expect(screen.getByText(/product1/i));
+      expect(screen.getByTestId('ProductItem-condition')).toHaveTextContent('Condition: New');
+      expect(screen.getByTestId('ProductItem-price')).toHaveTextContent('$10.60');
+      expect(screen.getByTestId('ProductItem-buyer-quantity')).toHaveTextContent('2 people bought');
     });
 
     it('should NOT render buyer quantity, condition and should render default photo and price without decimals', () => {
@@ -70,8 +74,11 @@ describe('<ProductItem />', () => {
         description: 'description',
         condition: productConditions.NOT_APPLICABLE,
       });
-      const { asFragment } = setUp(data);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(data);
+      expect(screen.getByText(/product1/i));
+      expect(screen.queryByTestId('ProductItem-condition')).not.toBeInTheDocument();
+      expect(screen.getByTestId('ProductItem-price')).toHaveTextContent('$10');
+      expect(screen.queryByTestId('ProductItem-buyer-quantity')).not.toBeInTheDocument();
     });
 
     it('should NOT render buyer quantity, condition and should render default photo and price without decimals', () => {
@@ -80,10 +87,8 @@ describe('<ProductItem />', () => {
         condition: productConditions.USED,
       });
       setUp(data);
-      expect(screen.getByTestId('ProductItem-condition').textContent).toEqual('Condition: Used');
-      expect(screen.getByTestId('ProductItem-buyer-quantity').textContent).toEqual(
-        '1 person bought',
-      );
+      expect(screen.getByTestId('ProductItem-condition')).toHaveTextContent('Condition: Used');
+      expect(screen.getByTestId('ProductItem-buyer-quantity')).toHaveTextContent('1 person bought');
     });
   });
 

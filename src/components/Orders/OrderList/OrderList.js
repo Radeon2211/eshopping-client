@@ -23,10 +23,10 @@ export default function OrderList({ orders, orderType }) {
     const userType = orderType === orderTypes.PLACED_ORDERS ? 'seller ' : 'buyer ';
 
     return (
-      <SC.SingleOrder key={order._id}>
+      <SC.SingleOrder key={order._id} data-testid="OrderList-single-order">
         <FlexWrapper justify="space-between" align="flex-end" spacing="3">
           <PlainText size="3">
-            <span>{userType}</span>
+            <span data-testid="OrderList-user-type">{userType}</span>
             {username ? (
               <Link to={`/user/${username}?p=1`} data-testid="OrderList-user-link">
                 <GreenText>{username}</GreenText>
@@ -37,7 +37,9 @@ export default function OrderList({ orders, orderType }) {
               </PlainText>
             )}
           </PlainText>
-          <PlainText size="2">{formatOrderDate(order.createdAt)}</PlainText>
+          <PlainText size="2" data-testid="OrderList-created-at-date">
+            {formatOrderDate(order.createdAt)}
+          </PlainText>
         </FlexWrapper>
         {order.products.map((product) => (
           <TransactionAndOrderProdItem key={product._id} data={product} orderId={order._id} />
@@ -50,7 +52,9 @@ export default function OrderList({ orders, orderType }) {
             <PlainText size="3" mgRight="1" spacing="1px" color={theme.colors.light4}>
               TOTAL
             </PlainText>
-            <PlainText size="5">{formatPrice(order.overallPrice)}</PlainText>
+            <PlainText size="5" data-testid="OrderList-overall-price">
+              {formatPrice(order.overallPrice)}
+            </PlainText>
           </div>
         </FlexWrapper>
       </SC.SingleOrder>

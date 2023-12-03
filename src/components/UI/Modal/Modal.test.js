@@ -1,6 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -24,25 +24,7 @@ const defaultHistory = {
 
 afterEach(cleanup);
 
-const setUpEnzyme = (modalContent = '', isFormLoading = false) => {
-  const store = mockStore({
-    ui: { modalContent, isFormLoading },
-    auth: { profile: defaultUserProfile, deliveryAddress: defaultDeliveryAddress, cart: [] },
-    product: { productDetails: {} },
-  });
-
-  return mount(
-    <Provider store={store}>
-      <Router history={defaultHistory}>
-        <ThemeProvider theme={theme}>
-          <Modal />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
-};
-
-const setUpRTL = (modalContent = '', isFormLoading = false) => {
+const setUp = (modalContent = '', isFormLoading = false) => {
   const store = mockStore({
     ui: { modalContent, isFormLoading },
     auth: { profile: defaultUserProfile, deliveryAddress: defaultDeliveryAddress, cart: [] },
@@ -66,154 +48,145 @@ const setUpRTL = (modalContent = '', isFormLoading = false) => {
 
 describe('<Modal />', () => {
   describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUpRTL(modalTypes.ABOUT_WEBSITE, false);
-      expect(asFragment()).toMatchSnapshot();
+    it('should render "about website" modal', () => {
+      setUp(modalTypes.ABOUT_WEBSITE, false);
+      expect(screen.getByTestId('Modal')).toBeInTheDocument();
+      expect(screen.getByText(/about website/i)).toBeInTheDocument();
     });
 
     it('should NOT render anything if modalContent is empty', () => {
-      const { asFragment } = setUpRTL('');
-      expect(asFragment()).toMatchSnapshot();
+      setUp('');
+      expect(screen.queryByTestId('Modal')).not.toBeInTheDocument();
     });
 
     it('should render <LoadingOverlay /> if isFormLoading true', () => {
-      const wrapper = setUpEnzyme(modalTypes.ABOUT_WEBSITE, true);
-      expect(wrapper.find('LoadingOverlay')).toHaveLength(1);
+      setUp(modalTypes.ABOUT_WEBSITE, true);
+      expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     });
 
     it('should render <AddProduct />', () => {
-      const wrapper = setUpEnzyme(modalTypes.ADD_PRODUCT);
-      expect(wrapper.find('AddProduct')).toHaveLength(1);
+      setUp(modalTypes.ADD_PRODUCT);
+      expect(screen.getByText(/add product for sale/i)).toBeInTheDocument();
     });
 
     it('should render <AddAdmin />', () => {
-      const wrapper = setUpEnzyme(modalTypes.ADD_ADMIN);
-      expect(wrapper.find('AddAdmin')).toHaveLength(1);
+      setUp(modalTypes.ADD_ADMIN);
+      expect(screen.getByText(/add admin/i)).toBeInTheDocument();
     });
 
     it('should render <AboutWebsite />', () => {
-      const wrapper = setUpEnzyme(modalTypes.ABOUT_WEBSITE);
-      expect(wrapper.find('AboutWebsite')).toHaveLength(1);
+      setUp(modalTypes.ABOUT_WEBSITE);
+      expect(screen.getByText(/about website/i)).toBeInTheDocument();
     });
 
     it('should render <BuyProducts />', () => {
-      const wrapper = setUpEnzyme(modalTypes.BUY_PRODUCTS);
-      expect(wrapper.find('BuyProducts')).toHaveLength(1);
+      setUp(modalTypes.BUY_PRODUCTS);
+      expect(screen.getByTestId('BuyProducts-heading')).toBeInTheDocument();
     });
 
-    it('should render <CartItemAdded />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CART_ITEM_ADDED);
-      expect(wrapper.find('CartItemAdded')).toHaveLength(1);
-    });
-
-    it('should render <BuyProducts />', () => {
-      const wrapper = setUpEnzyme(modalTypes.BUY_PRODUCTS);
-      expect(wrapper.find('BuyProducts')).toHaveLength(1);
-    });
-
-    it('should render <CartItemAdded />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CART_ITEM_ADDED);
-      expect(wrapper.find('CartItemAdded')).toHaveLength(1);
+    it('should render <CartItemAdded /> (loader by default)', () => {
+      setUp(modalTypes.CART_ITEM_ADDED);
+      expect(screen.getByTestId('Loader')).toBeInTheDocument();
     });
 
     it('should render <ChangeName />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CHANGE_NAME);
-      expect(wrapper.find('ChangeName')).toHaveLength(1);
+      setUp(modalTypes.CHANGE_NAME);
+      expect(screen.getByText(/change your name/i)).toBeInTheDocument();
     });
 
     it('should render <ChangeEmail />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CHANGE_EMAIL);
-      expect(wrapper.find('ChangeEmail')).toHaveLength(1);
+      setUp(modalTypes.CHANGE_EMAIL);
+      expect(screen.getByText(/change your email/i)).toBeInTheDocument();
     });
 
     it('should render <ChangePhoneNumber />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CHANGE_PHONE_NUMBER);
-      expect(wrapper.find('ChangePhoneNumber')).toHaveLength(1);
+      setUp(modalTypes.CHANGE_PHONE_NUMBER);
+      expect(screen.getByText(/change your phone number/i)).toBeInTheDocument();
     });
 
     it('should render <ChangeAddress />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CHANGE_ADDRESS);
-      expect(wrapper.find('ChangeAddress')).toHaveLength(1);
+      setUp(modalTypes.CHANGE_ADDRESS);
+      expect(screen.getByText(/change your address/i)).toBeInTheDocument();
     });
 
     it('should render <ChangeContacts />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CHANGE_CONTACTS);
-      expect(wrapper.find('ChangeContacts')).toHaveLength(1);
+      setUp(modalTypes.CHANGE_CONTACTS);
+      expect(screen.getByText(/change your contacts visibility/i)).toBeInTheDocument();
     });
 
     it('should render <ChangePassword />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CHANGE_PASSWORD);
-      expect(wrapper.find('ChangePassword')).toHaveLength(1);
+      setUp(modalTypes.CHANGE_PASSWORD);
+      expect(screen.getByText(/change your password/i)).toBeInTheDocument();
     });
 
     it('should render <ChangeDeliveryAddress />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CHANGE_DELIVERY_ADDRESS);
-      expect(wrapper.find('ChangeDeliveryAddress')).toHaveLength(1);
+      setUp(modalTypes.CHANGE_DELIVERY_ADDRESS);
+      expect(screen.getByText(/change your delivery address/i)).toBeInTheDocument();
     });
 
     it('should render <ClearCart />', () => {
-      const wrapper = setUpEnzyme(modalTypes.CLEAR_CART);
-      expect(wrapper.find('ClearCart')).toHaveLength(1);
+      setUp(modalTypes.CLEAR_CART);
+      expect(screen.getByText(/clear the shopping cart/i)).toBeInTheDocument();
     });
 
     it('should render <DeleteAccount />', () => {
-      const wrapper = setUpEnzyme(modalTypes.DELETE_ACCOUNT);
-      expect(wrapper.find('DeleteAccount')).toHaveLength(1);
+      setUp(modalTypes.DELETE_ACCOUNT);
+      expect(screen.getByText(/delete your account/i)).toBeInTheDocument();
     });
 
     it('should render <DeleteProduct />', () => {
-      const wrapper = setUpEnzyme(modalTypes.DELETE_PRODUCT);
-      expect(wrapper.find('DeleteProduct')).toHaveLength(1);
+      setUp(modalTypes.DELETE_PRODUCT);
+      expect(screen.getByTestId('DeleteProduct-heading')).toBeInTheDocument();
     });
 
     it('should render <EditProduct />', () => {
-      const wrapper = setUpEnzyme(modalTypes.EDIT_PRODUCT);
-      expect(wrapper.find('EditProduct')).toHaveLength(1);
+      setUp(modalTypes.EDIT_PRODUCT);
+      expect(screen.getByText(/edit a product/i)).toBeInTheDocument();
     });
 
     it('should render <Login />', () => {
-      const wrapper = setUpEnzyme(modalTypes.LOGIN);
-      expect(wrapper.find('Login')).toHaveLength(1);
+      setUp(modalTypes.LOGIN);
+      expect(screen.getByText(/login to your account/i)).toBeInTheDocument();
     });
 
     it('should render <RemoveAdmin />', () => {
-      const wrapper = setUpEnzyme(modalTypes.REMOVE_ADMIN);
-      expect(wrapper.find('RemoveAdmin')).toHaveLength(1);
+      setUp(modalTypes.REMOVE_ADMIN);
+      expect(screen.getByText(/remove admin/i)).toBeInTheDocument();
     });
 
     it('should render <ResetPassword />', () => {
-      const wrapper = setUpEnzyme(modalTypes.RESET_PASSWORD);
-      expect(wrapper.find('ResetPassword')).toHaveLength(1);
+      setUp(modalTypes.RESET_PASSWORD);
+      expect(screen.getByText(/reset your password/i)).toBeInTheDocument();
     });
 
     it('should render <PendingUserInfo />', () => {
-      const wrapper = setUpEnzyme(modalTypes.PENDING_USER_INFO);
-      expect(wrapper.find('PendingUserInfo')).toHaveLength(1);
+      setUp(modalTypes.PENDING_USER_INFO);
+      expect(screen.getByText(/you need to activate your account/i)).toBeInTheDocument();
     });
 
     it('should render <Signup />', () => {
-      const wrapper = setUpEnzyme(modalTypes.SIGNUP);
-      expect(wrapper.find('Signup')).toHaveLength(1);
+      setUp(modalTypes.SIGNUP);
+      expect(screen.getByText(/register new account/i)).toBeInTheDocument();
     });
 
     it('should render <SendVerificationLink />', () => {
-      const wrapper = setUpEnzyme(modalTypes.SEND_VERIFICATION_LINK);
+      setUp(modalTypes.SEND_VERIFICATION_LINK);
       expect(
-        wrapper.text().includes('Are you sure? Number of emails to be sent is very limited'),
-      ).toEqual(true);
+        screen.getByText(/are you sure\? number of emails to be sent is very limited/i),
+      ).toBeInTheDocument();
     });
   });
 
   describe('check redux actions calls', () => {
     it('should call setModal() after clicking at backdrop', () => {
-      const { store } = setUpRTL(modalTypes.ABOUT_WEBSITE);
+      const { store } = setUp(modalTypes.ABOUT_WEBSITE);
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByTestId('Modal-backdrop'));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
     });
 
     it('should call setModal() after clicking at close icon', () => {
-      const { store } = setUpRTL(modalTypes.ABOUT_WEBSITE);
+      const { store } = setUp(modalTypes.ABOUT_WEBSITE);
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByTestId('Modal-backdrop'));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));

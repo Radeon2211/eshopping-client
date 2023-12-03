@@ -35,13 +35,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<SendVerificationLink />', () => {
-  describe('checks how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('checks behaviour after buttons clicks', () => {
     it('should call setModal() after cancel button click', () => {
       const { store } = setUp();

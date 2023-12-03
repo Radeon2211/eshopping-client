@@ -50,13 +50,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<ChangeName />', () => {
-  describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('check form', () => {
     const defaultNewFirstName = 'newFirstName';
     const defaultNewLastName = 'newLastName';

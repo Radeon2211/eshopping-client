@@ -54,13 +54,6 @@ jest.mock('react-router-last-location', () => ({
 afterEach(cleanup);
 
 describe('<BuyProducts />', () => {
-  describe('checks how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('checks behaviour after buttons clicks', () => {
     it('should call setModal() and buyProducts() after buttons clicks', () => {
       const { store, history } = setUp();

@@ -109,8 +109,8 @@ describe('<Products />', () => {
   describe('check how renders', () => {
     it('should render everything correctly with default params and two products', async () => {
       window.resizeTo(1920, 1080);
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
+      setUp();
+      expect(screen.getAllByTestId('ProductItem')).toHaveLength(2);
       await waitFor(() => {
         expect(document.title).toEqual('E-Shopping - Buy and sell');
       });

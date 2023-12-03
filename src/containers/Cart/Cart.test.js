@@ -65,26 +65,27 @@ beforeAll(() => {
 describe('<Cart />', () => {
   describe('check how renders', () => {
     it('should render everything correctly with one cart item', async () => {
-      const { asFragment } = setUp([defaultCartItem]);
-      expect(asFragment()).toMatchSnapshot();
+      setUp([defaultCartItem]);
+      expect(screen.getAllByTestId('CartAndTransactionItems-item')).toHaveLength(1);
+      expect(screen.getAllByTestId('CartItem')).toHaveLength(1);
       await waitFor(() => {
         expect(document.title).toEqual('Your cart - E-Shopping');
       });
     });
 
     it('should render empty cart', () => {
-      const { asFragment } = setUp([]);
-      expect(asFragment()).toMatchSnapshot();
+      setUp([]);
+      expect(screen.getByTestId('Cart-empty-cart')).toBeInTheDocument();
     });
 
     it('should render only <Loader />', () => {
-      const { asFragment } = setUp(undefined, true);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(undefined, true);
+      expect(screen.getByTestId('Loader')).toBeInTheDocument();
     });
 
     it('should render that there is a problem to fetch cart', () => {
-      const { asFragment } = setUp(null);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(null);
+      expect(screen.getByTestId('Cart-error')).toBeInTheDocument();
     });
 
     it('should render <LoadingOverlay /> and go to summary button should be disabled', () => {

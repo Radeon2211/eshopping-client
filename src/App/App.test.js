@@ -66,8 +66,7 @@ describe('<App />', () => {
 
   describe('check how renders', () => {
     it('should render version for user with active status', () => {
-      const { asFragment } = setUp(defaultUserProfile);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(defaultUserProfile);
       expect(screen.getByTestId('App-user-active')).toBeInTheDocument();
     });
 
@@ -80,19 +79,22 @@ describe('<App />', () => {
     });
 
     it('should render server connection error if we do NOT wait for setting token in useEffect()', () => {
-      const { asFragment } = setUp(null);
+      setUp(null);
       expect(axiosMock.axiosInstance.defaults.headers.post['X-CSRF-Token']).toBeUndefined();
-      expect(asFragment()).toMatchSnapshot();
+      expect(
+        screen.getByText('Oops! Server connection error. Please try again later'),
+      ).toBeInTheDocument();
     });
 
     it('should render loading screen', () => {
-      const { asFragment } = setUp(undefined);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(undefined);
+      expect(screen.getByTestId('App-loader')).toBeInTheDocument();
     });
 
     it('should render error from ErrorBoundary if data from redux ui reducer are not available', () => {
-      const { asFragment } = setUp(defaultUserProfile, null);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(defaultUserProfile, null);
+      expect(screen.getByText('Something went wrong. Please refresh the page')).toBeInTheDocument();
+      // expect(screen.getByTestId('App-error-boundary')).toBeInTheDocument();
     });
   });
 

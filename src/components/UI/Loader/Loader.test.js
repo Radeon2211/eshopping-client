@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import Loader from './Loader';
@@ -16,12 +17,14 @@ afterEach(cleanup);
 
 describe('<Loader />', () => {
   it('should render with wrapper', () => {
-    const { asFragment } = setUp('center');
-    expect(asFragment()).toMatchSnapshot();
+    setUp('center');
+    expect(screen.getByTestId('LoaderWrapper')).toBeInTheDocument();
+    expect(screen.getByTestId('Loader')).toBeInTheDocument();
   });
 
   it('should render without wrapper', () => {
-    const { asFragment } = setUp();
-    expect(asFragment()).toMatchSnapshot();
+    setUp();
+    expect(screen.queryByTestId('LoaderWrapper')).not.toBeInTheDocument();
+    expect(screen.getByTestId('Loader')).toBeInTheDocument();
   });
 });

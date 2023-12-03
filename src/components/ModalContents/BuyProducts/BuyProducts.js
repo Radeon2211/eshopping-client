@@ -23,7 +23,7 @@ export default function BuyProducts() {
 
   return (
     <>
-      <Heading variant="h3" lineHeight="3" align="center">
+      <Heading variant="h3" lineHeight="3" align="center" data-testid="BuyProducts-heading">
         Are you sure?
       </Heading>
       <FlexWrapper justify="center" spacing="3">

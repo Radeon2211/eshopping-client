@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -73,11 +74,11 @@ describe('<Orders />', () => {
 
   describe('check how renders', () => {
     it('should render only <Loader />', () => {
-      const { asFragment } = setUp(undefined, undefined);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(undefined, undefined);
+      expect(screen.getByTestId('Loader')).toBeInTheDocument();
     });
 
-    it('should everything correctly with one order and type PLACED_ORDERS', () => {
+    it('should one order with one order givena and type PLACED_ORDERS', () => {
       const products = [
         createTransactionAndOrderProdItem({
           productId: 'p1',
@@ -98,11 +99,11 @@ describe('<Orders />', () => {
           createdAt: '2021-01-08T11:08:51.008Z',
         }),
       ];
-      const { asFragment } = setUp(orders, 1, orderTypes.PLACED_ORDERS);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(orders, 1, orderTypes.PLACED_ORDERS);
+      expect(screen.getAllByTestId('OrderList-single-order')).toHaveLength(1);
     });
 
-    it('should everything correctly with two orders and type SELL_HISTORY', () => {
+    it('should render two orders with two orders given and type SELL_HISTORY', () => {
       const products1 = [
         createTransactionAndOrderProdItem({
           productId: 'p1',
@@ -141,28 +142,36 @@ describe('<Orders />', () => {
           createdAt: '2021-02-18T21:12:35.008Z',
         }),
       ];
-      const { asFragment } = setUp(orders, 2, orderTypes.SELL_HISTORY);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(orders, 2, orderTypes.SELL_HISTORY);
+      expect(screen.getAllByTestId('OrderList-single-order')).toHaveLength(2);
     });
 
     it('should render correct info if orders are null and type PLACED_ORDERS', () => {
-      const { asFragment } = setUp(null, undefined, orderTypes.PLACED_ORDERS);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(null, undefined, orderTypes.PLACED_ORDERS);
+      expect(screen.getByTestId('Orders-error')).toHaveTextContent(
+        'There is a problem to fetch your placed orders',
+      );
     });
 
     it('should render correct info if orders are empty array and type PLACED_ORDERS', () => {
-      const { asFragment } = setUp([], undefined, orderTypes.PLACED_ORDERS);
-      expect(asFragment()).toMatchSnapshot();
+      setUp([], undefined, orderTypes.PLACED_ORDERS);
+      expect(screen.getByTestId('Orders-no-orders-info')).toHaveTextContent(
+        "You don't have any placed orders yet",
+      );
     });
 
     it('should render correct info if orders are null and type SELL_HISTORY', () => {
-      const { asFragment } = setUp(null, undefined, orderTypes.SELL_HISTORY);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(null, undefined, orderTypes.SELL_HISTORY);
+      expect(screen.getByTestId('Orders-error')).toHaveTextContent(
+        'There is a problem to fetch your sell history',
+      );
     });
 
     it('should render correct info if orders are empty array and type SELL_HISTORY', () => {
-      const { asFragment } = setUp([], undefined, orderTypes.SELL_HISTORY);
-      expect(asFragment()).toMatchSnapshot();
+      setUp([], undefined, orderTypes.SELL_HISTORY);
+      expect(screen.getByTestId('Orders-no-orders-info')).toHaveTextContent(
+        'Your sell history is empty',
+      );
     });
   });
 

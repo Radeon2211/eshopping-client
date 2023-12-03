@@ -32,8 +32,8 @@ describe('<Button />', () => {
       const props = {
         children: 'Test button',
       };
-      const { asFragment } = setUp(props);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props);
+      expect(screen.queryByTestId('LoadingOverlay')).not.toBeInTheDocument();
     });
 
     it('should render with <LoadingOverlay />', () => {
@@ -41,8 +41,8 @@ describe('<Button />', () => {
         children: 'Test button',
         isLoading: true,
       };
-      const { asFragment } = setUp(props);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props);
+      expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     });
 
     it('should button be disabled if disabled is true', () => {

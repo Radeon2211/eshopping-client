@@ -63,7 +63,7 @@ const App = () => {
   }, [onFetchProfile]);
 
   let content = (
-    <FlexWrapper justify="center" mgTop="3">
+    <FlexWrapper justify="center" mgTop="3" data-testid="App-loader">
       <Loader size="big" />
     </FlexWrapper>
   );

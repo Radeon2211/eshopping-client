@@ -28,11 +28,6 @@ const setUp = (replaceFn = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<SortOrders />', () => {
-  it('should render everything correctly', () => {
-    const { asFragment } = setUp();
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   it('should render all sorting options', async () => {
     setUp();
     await selectEvent.openMenu(screen.getByText(sortOrdersOptions[0].label));

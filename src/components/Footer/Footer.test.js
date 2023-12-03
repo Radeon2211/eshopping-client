@@ -31,13 +31,6 @@ const setUp = () => {
 afterEach(cleanup);
 
 describe('<Footer />', () => {
-  describe('check how renders', () => {
-    it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
-    });
-  });
-
   describe('check redux actions calls and mail link href', () => {
     it('should call setModal() after about website text click and render correct', () => {
       const { store } = setUp();

@@ -45,7 +45,7 @@ export default function SearchForm() {
   let buttonContent = 'search';
   if (windowSize.width < 900) {
     buttonContent = (
-      <MyIcon size="small" color="#fff">
+      <MyIcon size="small" color="#fff" data-testid="SearchForm-button-icon">
         <SearchIcon />
       </MyIcon>
     );

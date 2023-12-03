@@ -44,8 +44,11 @@ describe('<InputPagination />', () => {
   describe('check how renders', () => {
     it('should render all correctly (without hide-arrow class on arrows)', () => {
       const history = createHistoryPageNumber(2);
-      const { asFragment } = setUp(defaultProps, history);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(defaultProps, history);
+      expect(screen.getByTestId('NumberInput-page')).toHaveValue(2);
+      expect(screen.getByTestId('InputPagination-number-of-pages')).toHaveTextContent('3');
+      expect(screen.getByTestId('InputPagination-left-arrow')).not.toHaveClass('hide-arrow');
+      expect(screen.getByTestId('InputPagination-right-arrow')).not.toHaveClass('hide-arrow');
     });
 
     it('should only left arrow has hide-arrow class', () => {

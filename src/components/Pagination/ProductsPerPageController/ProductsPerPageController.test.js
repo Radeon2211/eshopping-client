@@ -51,8 +51,8 @@ afterEach(cleanup);
 describe('<ProductsPerPageController />', () => {
   describe('check how renders', () => {
     it('should render everything correctly', () => {
-      const { asFragment } = setUp();
-      expect(asFragment()).toMatchSnapshot();
+      setUp();
+      expect(screen.getByText(/10/i)).toBeInTheDocument();
     });
   });
 

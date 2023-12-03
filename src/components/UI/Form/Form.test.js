@@ -68,8 +68,10 @@ describe('<Form />', () => {
 
   describe('check how renders', () => {
     it('should render everything what is possible with blue submit button', () => {
-      const { asFragment } = setUp(defaultProps, defaultStore);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(defaultProps, defaultStore);
+      expect(screen.getByText('testHeadingText')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /cancel/i })).toHaveAttribute('color', 'blue');
+      expect(screen.getByRole('button', { name: /submit/i })).toHaveAttribute('color', 'blue');
     });
 
     it('should NOT render heading, error and buttons', () => {
@@ -80,8 +82,8 @@ describe('<Form />', () => {
         cancellable: false,
       };
       const store = createStore(false, '');
-      const { asFragment } = setUp(props, store);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, store);
+      expect(screen.queryByRole('button')).not.toBeInTheDocument();
     });
 
     it('should render red submit button without cancel button', () => {
@@ -92,8 +94,9 @@ describe('<Form />', () => {
         btnColor: 'red',
       };
       const store = createStore(false, '');
-      const { asFragment } = setUp(props, store);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(props, store);
+      expect(screen.getAllByRole('button')).toHaveLength(1);
+      expect(screen.getByRole('button', { name: /submit/i })).toHaveAttribute('color', 'red');
     });
 
     it('should submit button be disabled if isFormLoading is true', () => {

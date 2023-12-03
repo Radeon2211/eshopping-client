@@ -82,13 +82,13 @@ describe('<LoggedInLinks />', () => {
 
   describe('check how renders', () => {
     it('should render version for user with status active', () => {
-      const { asFragment } = setUp('username', userStatuses.ACTIVE);
-      expect(asFragment()).toMatchSnapshot();
+      setUp('username', userStatuses.ACTIVE);
+      expect(screen.getByTestId('LoggedInLinks-user-box')).toBeInTheDocument();
     });
 
     it('should render version for user with status pending', () => {
-      const { asFragment } = setUp('username', userStatuses.PENDING);
-      expect(asFragment()).toMatchSnapshot();
+      setUp('username', userStatuses.PENDING);
+      expect(screen.getByTestId('LoggedInLinks-my-account-link')).toBeInTheDocument();
     });
 
     it('should open <Dropdown /> after clicking at user box and close after clicking outside <Dropdown />', async () => {

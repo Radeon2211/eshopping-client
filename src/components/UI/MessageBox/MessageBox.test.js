@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -33,18 +34,21 @@ afterEach(cleanup);
 describe('<MessageBox />', () => {
   describe('check how renders', () => {
     it('should render everything correctly if message is NOT empty', () => {
-      const { asFragment } = setUp('test message');
-      expect(asFragment()).toMatchSnapshot();
+      const message = 'test message';
+      setUp(message);
+      expect(screen.getByText(message)).toBeInTheDocument();
+      expect(screen.getByTestId('MessageBox')).toBeInTheDocument();
+      expect(screen.getByTestId('MessageBox-close-icon')).toBeInTheDocument();
     });
 
     it('should NOT render anything if message is empty', () => {
-      const { asFragment } = setUp('');
-      expect(asFragment()).toMatchSnapshot();
+      setUp('');
+      expect(screen.queryByTestId('MessageBox')).not.toBeInTheDocument();
     });
   });
 
   describe('check redux actions calls', () => {
-    it('should call setMessage() after close icon click', () => {
+    it('should call setMessage() after close icon click', async () => {
       const { store } = setUp('test message');
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByTestId('MessageBox-close-icon'));

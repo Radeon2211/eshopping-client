@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import ErrorPage from './ErrorPage';
@@ -29,12 +30,13 @@ describe('<ErrorPage />', () => {
   });
 
   it('should render "Something went wrong" and unexpected bug image', () => {
-    const { asFragment } = setUp(<UnexpectedBugImage />, 'Something went wrong');
-    expect(asFragment()).toMatchSnapshot();
+    setUp(<UnexpectedBugImage />, 'Something went wrong');
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(screen.getByText('unexpected-bug.svg')).toBeInTheDocument();
   });
 
   it('should NOT render info and should render server error image image', () => {
-    const { asFragment } = setUp(<ServerErrorImage />);
-    expect(asFragment()).toMatchSnapshot();
+    setUp(<ServerErrorImage />);
+    expect(screen.getByText('server-connection-error.svg')).toBeInTheDocument();
   });
 });

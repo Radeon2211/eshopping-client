@@ -69,13 +69,13 @@ beforeAll(() => {
 describe('<OrderDetails />', () => {
   describe('check how renders', () => {
     it('should render only <Loader /> if orderDetails is undefined', () => {
-      const { asFragment } = setUp(undefined);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(undefined);
+      expect(screen.getByTestId('Loader')).toBeInTheDocument();
     });
 
     it('should render only info that there is a problem to fetch order details', () => {
-      const { asFragment } = setUp(null);
-      expect(asFragment()).toMatchSnapshot();
+      setUp(null);
+      expect(screen.getByTestId('OrderDetails-error')).toBeInTheDocument();
     });
 
     it('should render everything correctly with two <TransactionAndOrderProdItem />', async () => {
@@ -91,11 +91,13 @@ describe('<OrderDetails />', () => {
         sellerPhone: '123',
       });
 
-      const { asFragment } = setUp({
+      setUp({
         ...orderDetails,
         deliveryAddress: defaultDeliveryAddress,
       });
-      expect(asFragment()).toMatchSnapshot();
+      expect(screen.getByTestId('OrderDetails-seller-username')).toHaveTextContent(
+        'Username: sellerUser',
+      );
       await waitFor(() => {
         expect(document.title).toEqual('Order details - E-Shopping');
       });
