@@ -68,6 +68,10 @@ export default function Orders({ orders, type }) {
   return content;
 }
 
+Orders.defaultProps = {
+  orders: undefined,
+};
+
 Orders.propTypes = {
   orders: PropTypes.arrayOf(PropTypes.shape(propTypes.orderItem)),
   type: PropTypes.string.isRequired,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import matchMediaPolyfill from 'mq-polyfill';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
@@ -8,7 +8,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
-import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
+import { createProductItem } from '../../shared/testUtility/testUtility';
 import { productPages, defaultProductsPerPage } from '../../shared/constants';
 import theme from '../../styled/theme';
 
@@ -79,19 +79,6 @@ afterEach(cleanup);
 describe('<ProductsAndFilters />', () => {
   beforeEach(() => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
-  });
-
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const props = {
-        page: productPages.ALL_PRODUCTS,
-      };
-      expect(checkProps(ProductsAndFilters, props)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(ProductsAndFilters, {})).not.toBe(null);
-    });
   });
 
   describe('check how renders', () => {

@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import PurchaseSection from './PurchaseSection';
-import { checkProps, defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
 import theme from '../../../styled/theme';
 import { modalTypes, userStatuses } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
@@ -73,16 +73,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<PurchaseSection />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(PurchaseSection, defaultProps)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(PurchaseSection, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render not able to add info if quantity in cart equals to product quantity', () => {
       const props = {

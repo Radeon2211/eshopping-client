@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -17,11 +17,11 @@ const defaultStore = mockStore({
   auth: { cart: [] },
 });
 
-const setUp = (userProfile) => {
+const setUp = (userProfile, searchParam = '?p=1') => {
   const history = {
     listen: jest.fn(),
     createHref: jest.fn(),
-    location: { pathname: '/products', search: '?p=1' },
+    location: { pathname: '/products', search: searchParam },
     push: jest.fn(),
   };
 
@@ -52,8 +52,8 @@ describe('<Navbar />', () => {
     expect(screen.getByTestId('LoggedOutLinks')).toBeInTheDocument();
   });
 
-  it('should call push after clicking at logo', () => {
-    const { history } = setUp(null);
+  it('should call push after clicking at logo if current path is other than default', () => {
+    const { history } = setUp(null, '?p=2');
     fireEvent.click(screen.getByTestId('Navbar-header-link'));
     expect(history.push).toHaveBeenCalledWith(defaultAppPath);
   });

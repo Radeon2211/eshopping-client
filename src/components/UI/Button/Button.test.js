@@ -1,10 +1,9 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import Button from './Button';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const setUp = (props = {}) => {
   return render(
@@ -17,16 +16,6 @@ const setUp = (props = {}) => {
 afterEach(cleanup);
 
 describe('<Button />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(Button, { children: 'Test button' })).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(Button, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render without <LoadingOverlay />', () => {
       const props = {

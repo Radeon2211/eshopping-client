@@ -2,7 +2,6 @@ import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import SingleInfo from './SingleInfo';
-import { checkProps } from '../../../../shared/testUtility/testUtility';
 import { singleInfoNames } from '../../../../shared/constants';
 import theme from '../../../../styled/theme';
 
@@ -17,21 +16,6 @@ const setUp = (name, content, clickHandler) => {
 afterEach(cleanup);
 
 describe('<SingleInfo />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const props = {
-        name: singleInfoNames.NAME,
-        content: 'test name',
-        clickHandler: jest.fn(),
-      };
-      expect(checkProps(SingleInfo, props)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(SingleInfo, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render correctly for name and with button', () => {
       const { asFragment } = setUp(singleInfoNames.NAME, 'Ludwig von Mises', jest.fn());

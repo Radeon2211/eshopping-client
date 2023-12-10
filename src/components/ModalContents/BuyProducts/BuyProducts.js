@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLastLocation } from 'react-router-last-location';
 import { useHistory } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
+import useLastLocation from '../../../shared/useLastLocation';
 
 export default function BuyProducts() {
   const history = useHistory();

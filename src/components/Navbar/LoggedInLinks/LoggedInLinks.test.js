@@ -7,7 +7,7 @@ import {
   act,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -16,7 +16,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import theme from '../../../styled/theme';
 import LoggedInLinks from './LoggedInLinks';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 import { userStatuses } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
@@ -50,36 +49,6 @@ const setUp = (username, status) => {
 afterEach(cleanup);
 
 describe('<LoggedInLinks />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning if status is active', () => {
-      const props = {
-        username: 'username',
-        status: userStatuses.ACTIVE,
-      };
-      expect(checkProps(LoggedInLinks, props)).toBeUndefined();
-    });
-
-    it('should NOT throw a warning if status is pending', () => {
-      const props = {
-        username: 'username',
-        status: userStatuses.PENDING,
-      };
-      expect(checkProps(LoggedInLinks, props)).toBeUndefined();
-    });
-
-    it('should throw a warning if invalid status is passed', () => {
-      const props = {
-        username: 'username',
-        status: 'invalid',
-      };
-      expect(checkProps(LoggedInLinks, props)).not.toBe(null);
-    });
-
-    it('should throw a warning if no props are passed', () => {
-      expect(checkProps(LoggedInLinks, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render version for user with status active', () => {
       setUp('username', userStatuses.ACTIVE);
@@ -114,7 +83,7 @@ describe('<LoggedInLinks />', () => {
       const dropdown = screen.getByTestId('Dropdown');
       expect(dropdown).toBeInTheDocument();
 
-      userEvent.click(dropdown);
+      userEvent.click(dropdown, {}, { skipPointerEventsCheck: true });
       expect(dropdown).toBeInTheDocument();
     });
   });

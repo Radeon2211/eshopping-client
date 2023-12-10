@@ -1,9 +1,8 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import ChooseQuantity from './ChooseQuantity';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 import theme from '../../../styled/theme';
 
 const defaultProps = {
@@ -34,16 +33,6 @@ const setUp = (props = {}) => {
 afterEach(cleanup);
 
 describe('<ChooseQuantity />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(ChooseQuantity, defaultProps)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(ChooseQuantity, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should minus button be disabled but plus button NOT', () => {
       setUp();

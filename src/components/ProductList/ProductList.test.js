@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../styled/theme';
 import ProductList from './ProductList';
-import { checkProps, createProductItem } from '../../shared/testUtility/testUtility';
+import { createProductItem } from '../../shared/testUtility/testUtility';
 import { productPages } from '../../shared/constants';
 
 const defaultProducts = [
@@ -50,17 +50,6 @@ const setUp = (props, search = '?p=1') => {
 afterEach(cleanup);
 
 describe('<ProductList />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const expectedProps = createProps(false);
-      expect(checkProps(ProductList, expectedProps)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(ProductList, {})).not.toBeNull();
-    });
-  });
-
   describe('check how renders', () => {
     it('should render only <LoadingOverlay />', () => {
       const props = createProps(true);

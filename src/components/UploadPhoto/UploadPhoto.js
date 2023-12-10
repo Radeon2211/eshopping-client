@@ -8,8 +8,8 @@ import PlainText from '../UI/PlainText';
 import theme from '../../styled/theme';
 import { productPhotoFieldValues } from '../../shared/constants';
 
-const productPhotoMaxSize = 6291456;
-const productPhotoMaxSizeString = calculateFileSize(productPhotoMaxSize);
+const PRODUCT_PHOTO_MAX_SIZE = 6291456;
+const PRODUCT_PHOTO_MAX_SIZE_STRING = calculateFileSize(PRODUCT_PHOTO_MAX_SIZE);
 
 export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
   const input = useRef(null);
@@ -52,10 +52,10 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
       return;
     }
 
-    if (file.size > productPhotoMaxSize) {
+    if (file.size > PRODUCT_PHOTO_MAX_SIZE) {
       setPhoto(null);
       setFieldValue('photo', productPhotoFieldValues.ERROR);
-      setError(`Maximum available size is ${productPhotoMaxSizeString}`);
+      setError(`Maximum available size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}`);
       return;
     }
     setError('');
@@ -69,7 +69,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
     };
   };
 
-  const defaultPreviewText = `Photo is optional. Max size is ${productPhotoMaxSizeString}. Available extensions are JPG and PNG`;
+  const defaultPreviewText = `Photo is optional. Max size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG`;
   let preview = (
     <PlainText size="2" mgTop="2" data-testid="UploadPhoto-default-preview">
       {defaultPreviewText}

@@ -1,10 +1,9 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import ErrorPage from './ErrorPage';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 import { ReactComponent as UnexpectedBugImage } from '../../../images/unexpected-bug.svg';
 import { ReactComponent as ServerErrorImage } from '../../../images/server-connection-error.svg';
 
@@ -19,16 +18,6 @@ const setUp = (children, info) => {
 afterEach(cleanup);
 
 describe('<ErrorPage />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(ErrorPage, { children: <div /> })).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(ErrorPage, {})).not.toBe(null);
-    });
-  });
-
   it('should render "Something went wrong" and unexpected bug image', () => {
     setUp(<UnexpectedBugImage />, 'Something went wrong');
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();

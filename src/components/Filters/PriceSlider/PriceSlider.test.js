@@ -1,13 +1,12 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import PriceSlider from './PriceSlider';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 import theme from '../../../styled/theme';
 import { defaultAppPath, sliderPositionsActions, filtersActions } from '../../../shared/constants';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
@@ -43,16 +42,6 @@ const setUp = (search = '?p=1', replace = jest.fn(), dispatchFilters = jest.fn()
 afterEach(cleanup);
 
 describe('<PriceSlider />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(PriceSlider, { dispatchFilters: jest.fn() })).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(PriceSlider, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render everything correctly with default values', () => {
       setUp();

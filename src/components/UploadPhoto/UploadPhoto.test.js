@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import UploadPhoto from './UploadPhoto';
 import theme from '../../styled/theme';
@@ -18,8 +18,8 @@ const setUp = (hasCurrentPhoto, setFieldValue = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<UploadPhoto />', () => {
-  const maxPossibleFileSize = 6291456;
-  const tooBigFileSize = 6400000;
+  const MAX_POSSIBLE_FILE_SIZE = 6291456;
+  const TOO_BIG_FILE_SIZE = 6400000;
 
   describe('check how renders', () => {
     it('should render default view when hasCurrentPhoto is false', () => {
@@ -39,7 +39,7 @@ describe('<UploadPhoto />', () => {
 
     describe('successful upload', () => {
       it('should render delete button and info when photo is uploaded', async () => {
-        const photo = mockFile.create('boots.jpg', maxPossibleFileSize, 'image/jpeg');
+        const photo = mockFile.create('boots.jpg', MAX_POSSIBLE_FILE_SIZE, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
         setUp(false, setFieldValueFn);
@@ -61,8 +61,8 @@ describe('<UploadPhoto />', () => {
       });
 
       it('should render delete button and correct info when one photo is uploaded after another', async () => {
-        const photo1 = mockFile.create('photo1.jpg', maxPossibleFileSize, 'image/jpeg');
-        const photo2 = mockFile.create('photo2.jpg', maxPossibleFileSize, 'image/jpeg');
+        const photo1 = mockFile.create('photo1.jpg', MAX_POSSIBLE_FILE_SIZE, 'image/jpeg');
+        const photo2 = mockFile.create('photo2.jpg', MAX_POSSIBLE_FILE_SIZE, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
         setUp(false, setFieldValueFn);
@@ -91,7 +91,7 @@ describe('<UploadPhoto />', () => {
       });
 
       it('should render delete button and info when the same photo is uploaded twice', async () => {
-        const photo = mockFile.create('boots.jpg', maxPossibleFileSize, 'image/jpeg');
+        const photo = mockFile.create('boots.jpg', MAX_POSSIBLE_FILE_SIZE, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
         setUp(false, setFieldValueFn);
@@ -129,8 +129,8 @@ describe('<UploadPhoto />', () => {
 
     describe('show errors', () => {
       it('should render delete button and info when error appeared and then photo is uploaded correctly', async () => {
-        const invalidPhoto = mockFile.create('boots.svg', maxPossibleFileSize, 'image/svg+xml');
-        const validPhoto = mockFile.create('boots.png', maxPossibleFileSize, 'image/png');
+        const invalidPhoto = mockFile.create('boots.svg', MAX_POSSIBLE_FILE_SIZE, 'image/svg+xml');
+        const validPhoto = mockFile.create('boots.png', MAX_POSSIBLE_FILE_SIZE, 'image/png');
         const setFieldValueFn = jest.fn();
 
         setUp(false, setFieldValueFn);
@@ -165,7 +165,7 @@ describe('<UploadPhoto />', () => {
       });
 
       it('should render with error, delete button, file info when size is too big and delete current button when initially has photo', async () => {
-        const photo = mockFile.create('boots.png', tooBigFileSize, 'image/png');
+        const photo = mockFile.create('boots.png', TOO_BIG_FILE_SIZE, 'image/png');
         const setFieldValueFn = jest.fn();
 
         setUp(true, setFieldValueFn);
@@ -188,7 +188,7 @@ describe('<UploadPhoto />', () => {
       });
 
       it('should render with error, delete button and file info when image type is incorrect', async () => {
-        const photo = mockFile.create('boots.svg', maxPossibleFileSize, 'image/svg+xml');
+        const photo = mockFile.create('boots.svg', MAX_POSSIBLE_FILE_SIZE, 'image/svg+xml');
         const setFieldValueFn = jest.fn();
 
         setUp(false, setFieldValueFn);
@@ -245,7 +245,7 @@ describe('<UploadPhoto />', () => {
       });
 
       it('should render default view when file is uploaded and deleted', async () => {
-        const photo = mockFile.create('boots.jpg', maxPossibleFileSize, 'image/jpeg');
+        const photo = mockFile.create('boots.jpg', MAX_POSSIBLE_FILE_SIZE, 'image/jpeg');
         const setFieldValueFn = jest.fn();
 
         setUp(false, setFieldValueFn);

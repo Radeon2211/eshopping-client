@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import theme from '../../../styled/theme';
 import ProductItem from './ProductItem';
-import { checkProps, createProductItem } from '../../../shared/testUtility/testUtility';
+import { createProductItem } from '../../../shared/testUtility/testUtility';
 import { productConditions } from '../../../shared/constants';
 
 const setUp = (data) => {
@@ -31,16 +31,6 @@ const setUp = (data) => {
 afterEach(cleanup);
 
 describe('<ProductItem />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(ProductItem, { data: createProductItem() })).toBeUndefined();
-    });
-    it('should throw a warning', () => {
-      const expectedProps = {};
-      expect(checkProps(ProductItem, expectedProps)).not.toBeNull();
-    });
-  });
-
   describe('check how renders', () => {
     it('should render everything correctly', () => {
       const data = createProductItem({

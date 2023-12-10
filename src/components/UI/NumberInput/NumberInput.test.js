@@ -3,7 +3,6 @@ import { render, cleanup, fireEvent, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import NumberInput from './NumberInput';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const defaultProps = {
   name: 'testName',
@@ -21,15 +20,6 @@ const setUp = (props) => {
 afterEach(cleanup);
 
 describe('<NumberInput />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(NumberInput, defaultProps)).toBeUndefined();
-    });
-    it('should throw a warning', () => {
-      expect(checkProps(NumberInput, {})).not.toBe(null);
-    });
-  });
-
   describe('check behaviour', () => {
     it('should fire off functions from props', () => {
       const changedFn = jest.fn();

@@ -1,9 +1,8 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import ProgressBar from './ProgressBar';
-import { checkProps } from '../../../../shared/testUtility/testUtility';
 import theme from '../../../../styled/theme';
 
 const setUp = (currentStep, stepsNumber = 3) => {
@@ -17,20 +16,6 @@ const setUp = (currentStep, stepsNumber = 3) => {
 afterEach(cleanup);
 
 describe('<ProgressBar />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const props = {
-        currentStep: 1,
-        stepsNumber: 3,
-      };
-      expect(checkProps(ProgressBar, props)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(ProgressBar, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render everything correctly for currentStep 1 and stepsNumber 3', () => {
       setUp(1);

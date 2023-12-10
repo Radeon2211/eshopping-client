@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
-import { LastLocationProvider } from 'react-router-last-location';
 import { HashRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -25,12 +24,10 @@ const store = createStore(rootReducer, reduxDevToolsEnhancer(applyMiddleware(thu
 export const app = (
   <Provider store={store}>
     <Router>
-      <LastLocationProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <App />
-        </ThemeProvider>
-      </LastLocationProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <App />
+      </ThemeProvider>
     </Router>
   </Provider>
 );

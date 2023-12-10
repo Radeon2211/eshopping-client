@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import selectEvent from 'react-select-event';
 import matchMediaPolyfill from 'mq-polyfill';
 import configureMockStore from 'redux-mock-store';
@@ -10,7 +10,6 @@ import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import { act } from 'react-dom/test-utils';
 import Filters from './Filters';
-import { checkProps } from '../../shared/testUtility/testUtility';
 import theme from '../../styled/theme';
 import { sortProductsOptions, filtersActions, productConditions } from '../../shared/constants';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
@@ -63,16 +62,6 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe('<Filters />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(Filters, { isDataLoading: false })).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(Filters, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render filters panel and NOT render toggler', () => {
       act(() => {

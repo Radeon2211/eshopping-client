@@ -1,12 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLastLocation } from 'react-router-last-location';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
 import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution, scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
+import useLastLocation from '../../shared/useLastLocation';
 
 export default function Products({ location }) {
   const { search } = location;

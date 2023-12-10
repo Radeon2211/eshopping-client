@@ -1,8 +1,7 @@
 import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import ProductThumbnail from './ProductThumbnail';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 
 const setUp = (photo = false, orderId = '') => {
   const props = {
@@ -16,23 +15,9 @@ const setUp = (photo = false, orderId = '') => {
   return render(<ProductThumbnail {...props} />);
 };
 
-describe('<ProductThumbnail />', () => {
-  describe('check prop types', () => {
-    const props = {
-      photo: false,
-      productId: 'p1',
-      width: '5',
-      height: '5',
-      alt: 'alt',
-    };
-    it('should NOT throw a warning', () => {
-      expect(checkProps(ProductThumbnail, props)).toBeUndefined();
-    });
-    it('should throw a warning', () => {
-      expect(checkProps(ProductThumbnail, {})).not.toBe(null);
-    });
-  });
+afterEach(cleanup);
 
+describe('<ProductThumbnail />', () => {
   describe('check how renders', () => {
     it('should src be a link to product photo in order collection', () => {
       setUp(true, 'o1');

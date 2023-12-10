@@ -1,7 +1,6 @@
 import queryString from 'query-string';
 import moment from 'moment';
-import roundTo from 'round-to';
-import filesize from 'filesize';
+import { filesize } from 'filesize';
 import { listOfAreaCodes, defaultErrorMessage, defaultScrollToConfig } from '../constants';
 
 export const getPhonePrefixAndNumber = (phone) => {
@@ -49,7 +48,7 @@ const fileTypes = ['image/jpeg', 'image/png'];
 export const isValidFileType = (type) => fileTypes.includes(type);
 
 export const calculateFileSize = (size) => {
-  return filesize(size, { separator: ',', round: 2 });
+  return filesize(size, { separator: ',', round: 2, standard: 'jedec' });
 };
 
 export const getParamsWithoutPollution = (search) => {
@@ -89,8 +88,9 @@ export const formatPrice = (value) => {
   }).format(value);
 };
 
+// source: https://stackoverflow.com/a/18358056
 export const roundOverallPrice = (value) => {
-  return roundTo.up(value, 2);
+  return +`${Math.ceil(`${value}e+2`)}e-2`;
 };
 
 export const formatOrderDate = (date) => {

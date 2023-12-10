@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import selectEvent from 'react-select-event';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';

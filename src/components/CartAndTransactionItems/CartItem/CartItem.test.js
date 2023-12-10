@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -8,7 +8,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CartItem from './CartItem';
 import theme from '../../../styled/theme';
-import { checkProps, createCartItem } from '../../../shared/testUtility/testUtility';
+import { createCartItem } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 import noPhoto from '../../../images/no-photo.png';
 import { updateCartActions } from '../../../shared/constants';
@@ -63,20 +63,6 @@ describe('<CartItem />', () => {
     price: 299.98,
     photo: true,
     name: 'productName',
-  });
-
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const props = {
-        data: defaultData,
-        isCartLoading: false,
-      };
-      expect(checkProps(CartItem, props)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(CartItem, {})).not.toBe(null);
-    });
   });
 
   describe('checks how renders', () => {

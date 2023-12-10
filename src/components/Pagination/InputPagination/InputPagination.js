@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useLastLocation } from 'react-router-last-location';
 import { useHistory, Link } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
 import MyIcon from '../../UI/MyIcon';
@@ -12,6 +11,7 @@ import {
   calculateNumberOfPages,
   getParamsWithoutPollution,
 } from '../../../shared/utility/utility';
+import useLastLocation from '../../../shared/useLastLocation';
 
 export default function InputPagination({ itemQuantity, quantityPerPage }) {
   const history = useHistory();

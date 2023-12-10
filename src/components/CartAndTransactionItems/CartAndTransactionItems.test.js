@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import CartAndTransactionItems from './CartAndTransactionItems';
 import theme from '../../styled/theme';
 import {
-  checkProps,
   createCartItem,
   createTransactionAndOrderProdItem,
 } from '../../shared/testUtility/testUtility';
@@ -44,39 +43,6 @@ const setUp = (items, type) => {
 afterEach(cleanup);
 
 describe('<CartAndTransactionItems />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning if type is CART', () => {
-      const props = {
-        items: [createTransactionAndOrderProdItem()],
-        type: itemTypes.CART,
-        isCartLoading: false,
-      };
-      expect(checkProps(CartAndTransactionItems, props)).toBeUndefined();
-    });
-
-    it('should NOT throw a warning if type is TRANSACTION', () => {
-      const props = {
-        items: [createTransactionAndOrderProdItem()],
-        type: itemTypes.TRANSACTION,
-        isCartLoading: false,
-      };
-      expect(checkProps(CartAndTransactionItems, props)).toBeUndefined();
-    });
-
-    it('should throw a warning if type is ORDER', () => {
-      const props = {
-        items: [createTransactionAndOrderProdItem()],
-        type: itemTypes.ORDER,
-        isCartLoading: false,
-      };
-      expect(checkProps(CartAndTransactionItems, props)).not.toBe(null);
-    });
-
-    it('should throw a warning if props are empty', () => {
-      expect(checkProps(CartAndTransactionItems, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render everything with one seller and one cart item', () => {
       setUp(

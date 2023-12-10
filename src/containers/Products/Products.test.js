@@ -1,11 +1,10 @@
 import React from 'react';
 import { render, cleanup, screen, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import matchMediaPolyfill from 'mq-polyfill';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
-import { useLastLocation } from 'react-router-last-location';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Products from './Products';
@@ -17,6 +16,7 @@ import {
   defaultScrollToConfig,
 } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
+import useLastLocation from '../../shared/useLastLocation';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -99,8 +99,9 @@ beforeAll(() => {
   window.scrollTo = jest.fn();
 });
 
-jest.mock('react-router-last-location', () => ({
-  useLastLocation: jest.fn(),
+jest.mock('../../shared/useLastLocation', () => ({
+  __esModule: true,
+  default: jest.fn(),
 }));
 
 afterEach(cleanup);

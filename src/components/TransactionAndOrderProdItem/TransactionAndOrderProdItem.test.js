@@ -1,14 +1,11 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import TransactionAndOrderProdItem from './TransactionAndOrderProdItem';
 import theme from '../../styled/theme';
-import {
-  checkProps,
-  createTransactionAndOrderProdItem,
-} from '../../shared/testUtility/testUtility';
+import { createTransactionAndOrderProdItem } from '../../shared/testUtility/testUtility';
 
 const setUp = (data, orderId) => {
   const history = {
@@ -33,18 +30,6 @@ const setUp = (data, orderId) => {
 afterEach(cleanup);
 
 describe('<TransactionAndOrderProdItem />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(
-        checkProps(TransactionAndOrderProdItem, { data: createTransactionAndOrderProdItem() }),
-      ).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(TransactionAndOrderProdItem, {})).not.toBe(null);
-    });
-  });
-
   describe('checks how renders and behaviour', () => {
     it('should render everything correctly with photo of product directly', () => {
       const data = createTransactionAndOrderProdItem({

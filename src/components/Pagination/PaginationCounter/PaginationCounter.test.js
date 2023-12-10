@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import PaginationCounter from './PaginationCounter';
-import { checkProps, createHistoryPageNumber } from '../../../shared/testUtility/testUtility';
+import { createHistoryPageNumber } from '../../../shared/testUtility/testUtility';
 import { listItemTypes } from '../../../shared/constants';
 
 const createProps = (itemQuantity, itemsType, quantityPerPage) => ({
@@ -27,27 +27,6 @@ const setUp = (props, history) => {
 afterEach(cleanup);
 
 describe('<PaginationCounter />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning if itemsType is product', () => {
-      const expectedProps = createProps(5, listItemTypes.PRODUCT, 2);
-      expect(checkProps(PaginationCounter, expectedProps)).toBeUndefined();
-    });
-
-    it('should NOT throw a warning if itemsType is order', () => {
-      const expectedProps = createProps(5, listItemTypes.ORDER, 2);
-      expect(checkProps(PaginationCounter, expectedProps)).toBeUndefined();
-    });
-
-    it('should throw a warning if itemsType is other than product and order', () => {
-      const expectedProps = createProps(5, 'incorrectType', 2);
-      expect(checkProps(PaginationCounter, expectedProps)).not.toBe(null);
-    });
-
-    it('should throw a warning if no props are passed', () => {
-      expect(checkProps(PaginationCounter, {})).not.toBe(null);
-    });
-  });
-
   describe('check if correct text render', () => {
     it('should be 1 - 2 of 5 products', () => {
       const props = createProps(5, listItemTypes.PRODUCT, 2);

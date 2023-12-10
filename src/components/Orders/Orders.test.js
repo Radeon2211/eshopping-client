@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import theme from '../../styled/theme';
 import Orders from './Orders';
 import {
-  checkProps,
   createOrder,
   createTransactionAndOrderProdItem,
 } from '../../shared/testUtility/testUtility';
@@ -58,20 +57,6 @@ jest.mock('../../store/actions/indexActions.js', () => ({
 afterEach(cleanup);
 
 describe('<Orders />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const expectedProps = {
-        orders: [createOrder()],
-        type: orderTypes.PLACED_ORDERS,
-      };
-      expect(checkProps(Orders, expectedProps)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(Orders, {})).not.toBeNull();
-    });
-  });
-
   describe('check how renders', () => {
     it('should render only <Loader />', () => {
       setUp(undefined, undefined);

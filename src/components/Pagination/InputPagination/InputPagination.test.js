@@ -1,17 +1,16 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
-import { useLastLocation } from 'react-router-last-location';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import InputPagination from './InputPagination';
 import {
-  checkProps,
   createHistoryPageNumber,
   createPaginationProps,
 } from '../../../shared/testUtility/testUtility';
 import { defaultAppPath } from '../../../shared/constants';
+import useLastLocation from '../../../shared/useLastLocation';
 
 const defaultProps = createPaginationProps();
 
@@ -25,22 +24,14 @@ const setUp = (props = {}, history) => {
   );
 };
 
-jest.mock('react-router-last-location', () => ({
-  useLastLocation: jest.fn(),
+jest.mock('../../../shared/useLastLocation', () => ({
+  __esModule: true,
+  default: jest.fn(),
 }));
 
 afterEach(cleanup);
 
 describe('<InputPagination />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(InputPagination, defaultProps)).toBeUndefined();
-    });
-    it('should throw a warning', () => {
-      expect(checkProps(InputPagination, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render all correctly (without hide-arrow class on arrows)', () => {
       const history = createHistoryPageNumber(2);

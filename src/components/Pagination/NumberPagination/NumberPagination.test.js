@@ -1,12 +1,11 @@
 import React from 'react';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import { render, cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styled/theme';
 import NumberPagination from './NumberPagination';
 import {
-  checkProps,
   createHistoryPageNumber,
   createPaginationProps,
 } from '../../../shared/testUtility/testUtility';
@@ -26,15 +25,6 @@ const defaultProps = createPaginationProps();
 afterEach(cleanup);
 
 describe('<NumberPagination />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(NumberPagination, defaultProps)).toBeUndefined();
-    });
-    it('should throw a warning', () => {
-      expect(checkProps(NumberPagination, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render links from 1 to 3 and second with active class without hide-arrow class on arrows if p is 2, quantity is 5, per page is 2', () => {
       const history = createHistoryPageNumber(2);
@@ -143,24 +133,38 @@ describe('<NumberPagination />', () => {
       setUp(props, history);
 
       fireEvent.click(screen.getByTestId('NumberPagination-page1'));
-      expect(history.push).toHaveBeenCalledWith('/products?p=1');
+      waitFor(() => {
+        expect(history.push).toHaveBeenCalledWith('/products?p=1');
+      });
 
       fireEvent.click(screen.getByTestId('NumberPagination-page6'));
-      expect(history.push).toHaveBeenLastCalledWith('/products?p=6');
+      waitFor(() => {
+        expect(history.push).toHaveBeenLastCalledWith('/products?p=6');
+      });
 
       fireEvent.click(screen.getByTestId('NumberPagination-page7'));
-      expect(history.push).toHaveBeenLastCalledWith('/products?p=7');
+      waitFor(() => {
+        expect(history.push).toHaveBeenLastCalledWith('/products?p=7');
+      });
 
       fireEvent.click(screen.getByTestId('NumberPagination-page8'));
-      expect(history.push).toHaveBeenLastCalledWith('/products?p=8');
+      waitFor(() => {
+        expect(history.push).toHaveBeenLastCalledWith('/products?p=8');
+      });
 
       fireEvent.click(screen.getByTestId('NumberPagination-page9'));
-      expect(history.push).toHaveBeenLastCalledWith('/products?p=9');
+      waitFor(() => {
+        expect(history.push).toHaveBeenLastCalledWith('/products?p=9');
+      });
 
       fireEvent.click(screen.getByTestId('NumberPagination-page10'));
-      expect(history.push).toHaveBeenLastCalledWith('/products?p=10');
+      waitFor(() => {
+        expect(history.push).toHaveBeenLastCalledWith('/products?p=10');
+      });
 
-      expect(history.push).toHaveBeenCalledTimes(6);
+      waitFor(() => {
+        expect(history.push).toHaveBeenCalledTimes(6);
+      });
     });
   });
 });

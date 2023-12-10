@@ -1,28 +1,34 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import MetaDescriptor from './MetaDescriptor';
-import { checkProps } from '../../shared/testUtility/testUtility';
+
+afterEach(cleanup);
 
 describe('<MetaDescriptor />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      expect(checkProps(MetaDescriptor, { title: 'Test title' })).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(MetaDescriptor, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
-    it('should render with title and description', () => {
-      const wrapper = shallow(<MetaDescriptor title="Test title" description="Test description" />);
-      expect(wrapper).toMatchSnapshot();
+    it('should render with title and description', async () => {
+      const title = 'Test title';
+      const description = 'Test description';
+      render(<MetaDescriptor title={title} description={description} />);
+
+      await waitFor(() => {
+        expect(document.title).toEqual(title);
+        const metaDescription = document
+          .querySelector('meta[name="description"]')
+          .getAttribute('content');
+        expect(metaDescription).toEqual(description);
+      });
     });
 
-    it('should render with title only', () => {
-      const wrapper = shallow(<MetaDescriptor title="Test title" />);
-      expect(wrapper).toMatchSnapshot();
+    it('should render with title only', async () => {
+      const title = 'Test title';
+      render(<MetaDescriptor title={title} />);
+
+      await waitFor(() => {
+        expect(document.title).toEqual(title);
+        const metaDescription = document.querySelector('meta[name="description"]');
+        expect(metaDescription).toBeNull();
+      });
     });
   });
 });

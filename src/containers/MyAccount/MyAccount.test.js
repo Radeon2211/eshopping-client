@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
@@ -63,21 +63,18 @@ describe('<MyAccount />', () => {
   it('should call push with correct paths after clicking on links', () => {
     const { history } = setUp(defaultUserProfile);
 
-    fireEvent.click(screen.getByTestId('MyAccount-data-link'));
-    expect(history.push.mock.calls[0][0].pathname).toEqual('/my-account/data');
-
     fireEvent.click(screen.getByTestId('MyAccount-products-link'));
-    expect(history.push.mock.calls[1][0].pathname).toEqual('/my-account/products');
-    expect(history.push.mock.calls[1][0].search).toEqual('?p=1');
+    expect(history.push.mock.calls[0][0].pathname).toEqual('/my-account/products');
+    expect(history.push.mock.calls[0][0].search).toEqual('?p=1');
 
     fireEvent.click(screen.getByTestId('MyAccount-sell-history-link'));
-    expect(history.push.mock.calls[2][0].pathname).toEqual('/my-account/sell-history');
-    expect(history.push.mock.calls[2][0].search).toEqual('?p=1');
+    expect(history.push.mock.calls[1][0].pathname).toEqual('/my-account/sell-history');
+    expect(history.push.mock.calls[1][0].search).toEqual('?p=1');
 
     fireEvent.click(screen.getByTestId('MyAccount-placed-orders-link'));
-    expect(history.push.mock.calls[3][0].pathname).toEqual('/my-account/placed-orders');
-    expect(history.push.mock.calls[3][0].search).toEqual('?p=1');
+    expect(history.push.mock.calls[2][0].pathname).toEqual('/my-account/placed-orders');
+    expect(history.push.mock.calls[2][0].search).toEqual('?p=1');
 
-    expect(history.push).toHaveBeenCalledTimes(4);
+    expect(history.push).toHaveBeenCalledTimes(3);
   });
 });

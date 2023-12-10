@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -8,7 +8,6 @@ import configureMockStore from 'redux-mock-store';
 import { Formik } from 'formik';
 import theme from '../../../styled/theme';
 import Form from './Form';
-import { checkProps } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -52,20 +51,6 @@ const setUp = (props, store) => {
 afterEach(cleanup);
 
 describe('<Form />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const expectedProps = {
-        children: <div />,
-      };
-      expect(checkProps(Form, expectedProps)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      const expectedProps = {};
-      expect(checkProps(Form, expectedProps)).not.toBeNull();
-    });
-  });
-
   describe('check how renders', () => {
     it('should render everything what is possible with blue submit button', () => {
       setUp(defaultProps, defaultStore);

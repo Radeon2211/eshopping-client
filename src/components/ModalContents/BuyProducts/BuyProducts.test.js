@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import BuyProducts from './BuyProducts';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
+import useLastLocation from '../../../shared/useLastLocation';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -45,10 +46,9 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   }),
 }));
 
-jest.mock('react-router-last-location', () => ({
-  useLastLocation: () => ({
-    pathname: '/cart',
-  }),
+jest.mock('../../../shared/useLastLocation', () => ({
+  __esModule: true,
+  default: jest.fn(),
 }));
 
 afterEach(cleanup);
@@ -56,6 +56,10 @@ afterEach(cleanup);
 describe('<BuyProducts />', () => {
   describe('checks behaviour after buttons clicks', () => {
     it('should call setModal() and buyProducts() after buttons clicks', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/cart',
+      }));
+
       const { store, history } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
 

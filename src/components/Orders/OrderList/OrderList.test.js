@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import OrderList from './OrderList';
 import theme from '../../../styled/theme';
 import {
-  checkProps,
   createTransactionAndOrderProdItem,
   createOrder,
 } from '../../../shared/testUtility/testUtility';
@@ -46,20 +45,6 @@ const setUp = (orders, orderType, isDataLoading = false) => {
 afterEach(cleanup);
 
 describe('<OrderList />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const props = {
-        orders: [createOrder()],
-        orderType: orderTypes.PLACED_ORDERS,
-      };
-      expect(checkProps(OrderList, props)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(OrderList, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render everything correctly with two items and type PLACED_ORDERS', () => {
       const products = [

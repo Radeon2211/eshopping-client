@@ -6,7 +6,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import DeliveryAddressSection from './DeliveryAddressSection';
 import theme from '../../../styled/theme';
-import { defaultDeliveryAddress, checkProps } from '../../../shared/testUtility/testUtility';
+import { defaultDeliveryAddress } from '../../../shared/testUtility/testUtility';
 import { modalTypes } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
@@ -34,19 +34,6 @@ window.IntersectionObserver = jest.fn(() => ({
 afterEach(cleanup);
 
 describe('<DeliveryAddressSection />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const props = {
-        onSetModal: jest.fn(),
-      };
-      expect(checkProps(DeliveryAddressSection, props)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(DeliveryAddressSection, {})).not.toBe(null);
-    });
-  });
-
   it('should render everything correctly with default delivery address', () => {
     const { asFragment } = setUp();
     expect(asFragment()).toMatchSnapshot();

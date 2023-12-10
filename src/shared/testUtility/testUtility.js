@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import checkPropTypes from 'check-prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { applyMiddleware, createStore } from 'redux';
@@ -28,11 +27,6 @@ export const defaultUserProfile = {
     phone: true,
   },
   createdAt: '2021-02-10T19:10:38.872Z',
-};
-
-export const checkProps = (component, expectedProps) => {
-  // eslint-disable-next-line react/forbid-foreign-prop-types
-  return checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
 };
 
 export const createHistoryPageNumber = (pageNumber = 1, length = 1) => ({

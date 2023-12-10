@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -9,7 +9,6 @@ import { ThemeProvider } from 'styled-components';
 import userEvent from '@testing-library/user-event';
 import theme from '../../../../styled/theme';
 import Dropdown from './Dropdown';
-import { checkProps } from '../../../../shared/testUtility/testUtility';
 import { modalTypes } from '../../../../shared/constants';
 import * as actions from '../../../../store/actions/indexActions';
 
@@ -44,20 +43,6 @@ const setUp = (isVisible, closed = jest.fn()) => {
 afterEach(cleanup);
 
 describe('<Dropdown />', () => {
-  describe('check prop types', () => {
-    it('should NOT throw a warning', () => {
-      const props = {
-        isVisible: true,
-        closed: jest.fn(),
-      };
-      expect(checkProps(Dropdown, props)).toBeUndefined();
-    });
-
-    it('should throw a warning', () => {
-      expect(checkProps(Dropdown, {})).not.toBe(null);
-    });
-  });
-
   describe('check how renders', () => {
     it('should render everything correctly', () => {
       setUp(true);
@@ -121,7 +106,7 @@ describe('<Dropdown />', () => {
       const closedFn = jest.fn();
       setUp(true, closedFn);
 
-      userEvent.click(screen.getByTestId('Dropdown'));
+      userEvent.click(screen.getByTestId('Dropdown'), {}, { skipPointerEventsCheck: true });
       expect(closedFn).not.toHaveBeenCalled();
     });
   });
