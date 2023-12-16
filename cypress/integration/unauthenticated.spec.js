@@ -16,7 +16,7 @@ const fillSignupForm = () => {
 
   cy.findByTestId('Step2-firstName').type(testUser.firstName);
   cy.findByTestId('Step2-lastName').type(testUser.lastName);
-  cy.findByText(/choose your phone number prefix/i).click();
+  cy.findByText(/choose your phone number prefix/i).click({ force: true });
   cy.findByText(testUser.phonePrefixLabel).click();
   cy.findByTestId('Step2-phoneNumber').type(testUser.phoneNumber);
   cy.findByTestId('Step2-hidePhone').then(($checkbox) => {
@@ -29,7 +29,7 @@ const fillSignupForm = () => {
   cy.findByTestId('Step3-street').type(testUser.street);
   cy.findByTestId('Step3-zipCode').type(testUser.zipCode);
   cy.findByTestId('Step3-city').type(testUser.city);
-  cy.findByText(/choose your country/i).click();
+  cy.findByText(/choose your country/i).click({ force: true });
   cy.findByText(testUser.country).click();
 };
 
@@ -267,7 +267,7 @@ describe('unauthenticated user', () => {
           cy.findByTestId('Form-error').should('exist');
         });
 
-        it('fails due to incorrect credentials', () => {
+        it('fails due to using taken email address', () => {
           cy.checkHash();
 
           cy.findByRole('button', { name: /signup/i }).click();
@@ -276,7 +276,28 @@ describe('unauthenticated user', () => {
 
           cy.findByTestId('Step3-previous-btn').click();
           cy.findByTestId('Step2-previous-btn').click();
-          cy.findByTestId('Step1-email').clear().type(adminUser.email);
+
+          cy.findByTestId('Step1-email').clear();
+          cy.findByTestId('Step1-email').type(adminUser.email);
+          cy.findByTestId('Step1-next-btn').click();
+          cy.findByTestId('Step2-next-btn').click();
+          cy.submitForm();
+          cy.findByTestId('Form-error').should('exist');
+          cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
+        });
+
+        it('fails due to using taken username', () => {
+          cy.checkHash();
+
+          cy.findByRole('button', { name: /signup/i }).click();
+          fillSignupForm();
+          cy.findByTestId('Form-error').should('not.exist');
+
+          cy.findByTestId('Step3-previous-btn').click();
+          cy.findByTestId('Step2-previous-btn').click();
+
+          cy.findByTestId('Step1-username').clear();
+          cy.findByTestId('Step1-username').type(adminUser.username);
           cy.findByTestId('Step1-next-btn').click();
           cy.findByTestId('Step2-next-btn').click();
           cy.submitForm();

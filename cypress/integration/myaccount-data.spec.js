@@ -73,22 +73,29 @@ describe('my account data page', () => {
   it('edits all data, adds and removes admin', () => {
     // name
     cy.findByTestId(`SingleInfo-${singleInfoNames.NAME}-btn`).click();
-    cy.findByTestId('ChangeName-firstName').clear().type(newData.firstName);
-    cy.findByTestId('ChangeName-lastName').clear().type(newData.lastName);
+    cy.findByTestId('ChangeName-firstName').clear();
+    cy.findByTestId('ChangeName-firstName').type(newData.firstName);
+    cy.findByTestId('ChangeName-lastName').clear();
+    cy.findByTestId('ChangeName-lastName').type(newData.lastName);
     cy.submitForm();
     cy.closeMessageBox();
     // email
     cy.findByTestId(`SingleInfo-${singleInfoNames.EMAIL}-btn`).click();
-    cy.findByTestId('ChangeEmail-email').clear().type(newData.email);
-    cy.findByTestId('ChangeEmail-current-password').clear().type(usedUser.password);
+    cy.findByTestId('ChangeEmail-email').clear();
+    cy.findByTestId('ChangeEmail-email').type(newData.email);
+    cy.findByTestId('ChangeEmail-current-password').clear();
+    cy.findByTestId('ChangeEmail-current-password').type(usedUser.password);
     cy.submitForm();
     cy.closeMessageBox();
     // address
     cy.findByTestId(`SingleInfo-${singleInfoNames.ADDRESS}-btn`).click();
-    cy.findByTestId('ChangeAddress-street').clear().type(newData.street);
-    cy.findByTestId('ChangeAddress-zipCode').clear().type(newData.zipCode);
-    cy.findByTestId('ChangeAddress-city').clear().type(newData.city);
-    cy.findByTestId('Modal').findByText(usedUser.country).click();
+    cy.findByTestId('ChangeAddress-street').clear();
+    cy.findByTestId('ChangeAddress-street').type(newData.street);
+    cy.findByTestId('ChangeAddress-zipCode').clear();
+    cy.findByTestId('ChangeAddress-zipCode').type(newData.zipCode);
+    cy.findByTestId('ChangeAddress-city').clear();
+    cy.findByTestId('ChangeAddress-city').type(newData.city);
+    cy.findByTestId('Modal').findByText(usedUser.country).click({ force: true });
     cy.findByText(newData.country).click();
     cy.submitForm();
     cy.closeMessageBox();
@@ -100,9 +107,10 @@ describe('my account data page', () => {
     cy.closeMessageBox();
     // phone number
     cy.findByTestId(`SingleInfo-${singleInfoNames.PHONE_NUMBER}-btn`).click();
-    cy.findByTestId('Modal').findByText(usedUser.phonePrefixLabel).click();
+    cy.findByTestId('Modal').findByText(usedUser.phonePrefixLabel).click({ force: true });
     cy.findByText(newData.phonePrefixLabel).click();
-    cy.findByTestId('ChangePhoneNumber-phoneNumber').clear().type(newData.phoneNumber);
+    cy.findByTestId('ChangePhoneNumber-phoneNumber').clear();
+    cy.findByTestId('ChangePhoneNumber-phoneNumber').type(newData.phoneNumber);
     cy.submitForm();
     cy.closeMessageBox();
     // add admin
@@ -133,8 +141,10 @@ describe('my account data page', () => {
 
     // password
     cy.findByRole('button', { name: /change password/i }).click();
-    cy.findByTestId('ChangePassword-current-password').clear().type(usedUser.password);
-    cy.findByTestId('ChangePassword-password').clear().type(newData.password);
+    cy.findByTestId('ChangePassword-current-password').clear();
+    cy.findByTestId('ChangePassword-current-password').type(usedUser.password);
+    cy.findByTestId('ChangePassword-password').clear();
+    cy.findByTestId('ChangePassword-password').type(newData.password);
     cy.submitForm();
     cy.closeMessageBox();
 
@@ -154,21 +164,25 @@ describe('my account data page', () => {
       newFirstName += 'e';
     }
     cy.findByTestId(`SingleInfo-${singleInfoNames.NAME}-btn`).click();
-    cy.findByTestId('ChangeName-firstName').clear().type(newFirstName);
+    cy.findByTestId('ChangeName-firstName').clear();
+    cy.findByTestId('ChangeName-firstName').type(newFirstName);
     cy.submitForm({ force: true });
     cy.findByTestId(`Modal-${modalTypes.CHANGE_NAME}`).should('exist');
     cy.findByTestId('Form-error').should('not.exist');
     cy.closeModal();
     // email
     cy.findByTestId(`SingleInfo-${singleInfoNames.EMAIL}-btn`).click();
-    cy.findByTestId('ChangeEmail-email').clear().type(newData.email);
-    cy.findByTestId('ChangeEmail-current-password').clear().type('incorrectPassword');
+    cy.findByTestId('ChangeEmail-email').clear();
+    cy.findByTestId('ChangeEmail-email').type(newData.email);
+    cy.findByTestId('ChangeEmail-current-password').clear();
+    cy.findByTestId('ChangeEmail-current-password').type('incorrectPassword');
     cy.submitForm();
     cy.findByTestId('Form-error').should('exist');
     cy.closeModal();
     // address
     cy.findByTestId(`SingleInfo-${singleInfoNames.ADDRESS}-btn`).click();
-    cy.findByTestId('ChangeAddress-zipCode').clear().type('invalidCode');
+    cy.findByTestId('ChangeAddress-zipCode').clear();
+    cy.findByTestId('ChangeAddress-zipCode').type('invalidCode');
     cy.submitForm();
     cy.findByTestId('Form-error').should('exist');
     cy.closeModal();
@@ -180,15 +194,18 @@ describe('my account data page', () => {
     cy.closeModal();
     // phone number
     cy.findByTestId(`SingleInfo-${singleInfoNames.PHONE_NUMBER}-btn`).click();
-    cy.findByTestId('ChangePhoneNumber-phoneNumber').clear().type('invalidNumber');
+    cy.findByTestId('ChangePhoneNumber-phoneNumber').clear();
+    cy.findByTestId('ChangePhoneNumber-phoneNumber').type('invalidNumber');
     cy.findByTestId(`Modal-${modalTypes.CHANGE_PHONE_NUMBER}`).should('exist');
     cy.submitForm({ force: true });
     cy.findByTestId('Form-error').should('not.exist');
     cy.closeModal();
     // password
     cy.findByRole('button', { name: /change password/i }).click();
-    cy.findByTestId('ChangePassword-current-password').clear().type('incorrectPassword');
-    cy.findByTestId('ChangePassword-password').clear().type(newData.password);
+    cy.findByTestId('ChangePassword-current-password').clear();
+    cy.findByTestId('ChangePassword-current-password').type('incorrectPassword');
+    cy.findByTestId('ChangePassword-password').clear();
+    cy.findByTestId('ChangePassword-password').type(newData.password);
     cy.submitForm();
     cy.findByTestId('Form-error').should('exist');
     cy.closeModal();

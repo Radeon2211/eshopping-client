@@ -115,7 +115,8 @@ describe('authenticated active user', () => {
     // fill and submit form
     cy.findByTestId('AddProduct-name').type(newProduct.name);
     cy.findByTestId('AddProduct-price').type(newProduct.price);
-    cy.findByTestId('AddProduct-quantity').clear().type(newProduct.quantity);
+    cy.findByTestId('AddProduct-quantity').clear();
+    cy.findByTestId('AddProduct-quantity').type(newProduct.quantity);
     cy.findByTestId('AddProduct-condition-used').click({ force: true });
     cy.findByTestId('AddProduct-description').type(newProduct.description);
     cy.submitForm();
@@ -141,7 +142,8 @@ describe('authenticated active user', () => {
     // fill and submit form
     cy.findByTestId('AddProduct-name').type(newProduct.name);
     cy.findByTestId('AddProduct-price').type(newProduct.price);
-    cy.findByTestId('AddProduct-quantity').clear().type(newProduct.quantity);
+    cy.findByTestId('AddProduct-quantity').clear();
+    cy.findByTestId('AddProduct-quantity').type(newProduct.quantity);
     cy.findByTestId('AddProduct-condition-used').click({ force: true });
     cy.findByTestId('AddProduct-description').type(newProduct.description);
     cy.submitForm();
@@ -184,11 +186,15 @@ describe('authenticated active user', () => {
       .click();
     cy.findByRole('button', { name: /edit offer/i }).click();
     // fill and submit form
-    cy.findByTestId('EditProduct-name').clear().type(newProduct.name);
-    cy.findByTestId('EditProduct-price').clear().type(newProduct.price);
-    cy.findByTestId('EditProduct-quantity').clear().type(newProduct.quantity);
+    cy.findByTestId('EditProduct-name').clear();
+    cy.findByTestId('EditProduct-name').type(newProduct.name);
+    cy.findByTestId('EditProduct-price').clear();
+    cy.findByTestId('EditProduct-price').type(newProduct.price);
+    cy.findByTestId('EditProduct-quantity').clear();
+    cy.findByTestId('EditProduct-quantity').type(newProduct.quantity);
     cy.findByTestId('EditProduct-condition-used').click({ force: true });
-    cy.findByTestId('EditProduct-description').clear().type(newProduct.description);
+    cy.findByTestId('EditProduct-description').clear();
+    cy.findByTestId('EditProduct-description').type(newProduct.description);
     cy.submitForm();
     cy.findByTestId('MessageBox').should('exist');
     cy.findByTestId('Modal').should('not.exist');
