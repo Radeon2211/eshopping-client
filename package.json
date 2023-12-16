@@ -59,6 +59,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^12.1.5",
@@ -96,5 +97,8 @@
     "transformIgnorePatterns": [
       "node_modules/(?!axios)"
     ]
+  },
+  "engines": {
+    "node": "18.x"
   }
 }

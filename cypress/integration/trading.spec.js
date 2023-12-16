@@ -20,16 +20,22 @@ const newDeliveryAddress = {
 };
 
 const fillDeliveryAddressForm = (data) => {
-  cy.findByTestId('ChangeDeliveryAddress-firstName').clear().type(data.firstName);
-  cy.findByTestId('ChangeDeliveryAddress-lastName').clear().type(data.lastName);
-  cy.findByTestId('ChangeDeliveryAddress-street').clear().type(data.street);
-  cy.findByTestId('ChangeDeliveryAddress-zipCode').clear().type(data.zipCode);
-  cy.findByTestId('ChangeDeliveryAddress-city').clear().type(data.city);
+  cy.findByTestId('ChangeDeliveryAddress-firstName').clear();
+  cy.findByTestId('ChangeDeliveryAddress-firstName').type(data.firstName);
+  cy.findByTestId('ChangeDeliveryAddress-lastName').clear();
+  cy.findByTestId('ChangeDeliveryAddress-lastName').type(data.lastName);
+  cy.findByTestId('ChangeDeliveryAddress-street').clear();
+  cy.findByTestId('ChangeDeliveryAddress-street').type(data.street);
+  cy.findByTestId('ChangeDeliveryAddress-zipCode').clear();
+  cy.findByTestId('ChangeDeliveryAddress-zipCode').type(data.zipCode);
+  cy.findByTestId('ChangeDeliveryAddress-city').clear();
+  cy.findByTestId('ChangeDeliveryAddress-city').type(data.city);
   cy.get('#country').click();
   cy.findByText(data.country).click();
   cy.get('#phonePrefix').click();
   cy.findByText(data.phonePrefixLabel).click();
-  cy.findByTestId('ChangeDeliveryAddress-phoneNumber').clear().type(data.phoneNumber);
+  cy.findByTestId('ChangeDeliveryAddress-phoneNumber').clear();
+  cy.findByTestId('ChangeDeliveryAddress-phoneNumber').type(data.phoneNumber);
 };
 
 const checkTransactionOrOrderProdItems = (quantityBought) => {
@@ -136,7 +142,8 @@ describe('trading actions', () => {
       cy.findByText(`(${quantityChosen} in cart)`).should('exist');
       cy.findByTestId('CartLink-quantity').should('have.text', 1);
       // choose given quantity, add to cart and go to cart
-      cy.findByTestId('NumberInput-quantity').clear().type(quantityChosen);
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').type(quantityChosen);
       cy.findByRole('button', { name: /add to cart/ }).click();
       cy.findByTestId('PurchaseSection-not-able-to-add').should('exist');
       cy.findByText(
@@ -290,12 +297,15 @@ describe('trading actions', () => {
       cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
       cy.findByTestId('ChooseQuantity-plus-btn').click({ force: true });
       cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
-      cy.findByTestId('NumberInput-quantity').clear().type('1{enter}');
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').type('1{enter}');
       cy.findByTestId('ChooseQuantity-minus-btn').click({ force: true });
       cy.findByTestId('NumberInput-quantity').should('have.value', 1);
-      cy.findByTestId('NumberInput-quantity').clear().type('1000{enter}');
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').type('1000{enter}');
       cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
-      cy.findByTestId('NumberInput-quantity').clear().type('9999{enter}');
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').type('9999{enter}');
       cy.findByTestId('NumberInput-quantity').should('have.value', 9);
       cy.findByTestId('ChooseQuantity-plus-btn').click();
       cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
@@ -320,17 +330,20 @@ describe('trading actions', () => {
       );
       cy.findByTestId('ChooseQuantity-plus-btn').click({ force: true });
       cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
-      cy.findByTestId('NumberInput-quantity').clear().type('1{enter}');
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').type('1{enter}');
       cy.findByTestId('CartItem-total-price').should('have.text', formatPrice(usedProduct.price));
       cy.findByTestId('ChooseQuantity-minus-btn').click({ force: true });
       cy.findByTestId('NumberInput-quantity').should('have.value', 1);
-      cy.findByTestId('NumberInput-quantity').clear().type('1000{enter}');
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').type('1000{enter}');
       cy.findByTestId('NumberInput-quantity').should('have.value', usedProduct.quantity);
       cy.findByTestId('CartItem-total-price').should(
         'have.text',
         formatPrice(usedProduct.price * usedProduct.quantity),
       );
-      cy.findByTestId('NumberInput-quantity').clear().type('9999{enter}');
+      cy.findByTestId('NumberInput-quantity').clear();
+      cy.findByTestId('NumberInput-quantity').type('9999{enter}');
       cy.findByTestId('NumberInput-quantity').should('have.value', 9);
       cy.findByTestId('CartItem-total-price').should(
         'have.text',
@@ -383,7 +396,8 @@ describe('trading actions', () => {
         goToUsedProductDetails();
         cy.findByRole('button', { name: /add to cart/i }).should('exist');
         updateProductQuantity(newQuantity);
-        cy.findByTestId('NumberInput-quantity').clear().type(`${usedProduct.quantity}{enter}`);
+        cy.findByTestId('NumberInput-quantity').clear();
+        cy.findByTestId('NumberInput-quantity').type(`${usedProduct.quantity}{enter}`);
         cy.findByRole('button', { name: /add to cart/i }).click();
         cy.findByTestId('MessageBox').should('exist');
         cy.findByText(
@@ -410,7 +424,8 @@ describe('trading actions', () => {
         goToUsedProductDetails();
         cy.findByRole('button', { name: /buy now/i }).should('exist');
         updateProductQuantity(newQuantity);
-        cy.findByTestId('NumberInput-quantity').clear().type(`${usedProduct.quantity}{enter}`);
+        cy.findByTestId('NumberInput-quantity').clear();
+        cy.findByTestId('NumberInput-quantity').type(`${usedProduct.quantity}{enter}`);
         cy.findByRole('button', { name: /buy now/i }).click();
         cy.findByTestId('MessageBox').should('exist');
         cy.checkHash('#/transaction');
@@ -439,7 +454,8 @@ describe('trading actions', () => {
       it('updates product quantity, shows message and closes modal when quantity is lower than chosen', () => {
         const newQuantity = usedProduct.quantity - 1;
         goToUsedProductDetails();
-        cy.findByTestId('NumberInput-quantity').clear().type(`${usedProduct.quantity}{enter}`);
+        cy.findByTestId('NumberInput-quantity').clear();
+        cy.findByTestId('NumberInput-quantity').type(`${usedProduct.quantity}{enter}`);
         cy.findByRole('button', { name: /buy now/i }).click();
         cy.findAllByTestId('TransactionAndOrderProdItem').should('have.length', 1);
         cy.findByTestId('TransactionAndOrderProdItem-product-price-per-piece').should(

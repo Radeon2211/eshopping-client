@@ -230,8 +230,10 @@ describe('product list and filters', () => {
     it('does not render cheapest and most expensive product after price number inputs change', () => {
       const minPrice = Math.ceil(productsAscendingByPrice[0].price) + 1;
       const maxPrice = Math.floor(productsDescendingByPrice[0].price) - 1;
-      cy.findByTestId('NumberInput-minPrice').clear().type(minPrice);
-      cy.findByTestId('NumberInput-maxPrice').clear().type(maxPrice);
+      cy.findByTestId('NumberInput-minPrice').clear();
+      cy.findByTestId('NumberInput-minPrice').type(minPrice);
+      cy.findByTestId('NumberInput-maxPrice').clear();
+      cy.findByTestId('NumberInput-maxPrice').type(maxPrice);
       submitFiltersForm();
       cy.checkHash(`minPrice=${minPrice}`, 'contains');
       cy.checkHash(`maxPrice=${maxPrice}`, 'contains');
@@ -255,10 +257,10 @@ describe('product list and filters', () => {
 
     it('renders cheapest product only', () => {
       const price = Math.ceil(productsAscendingByPrice[0].price) + 10;
-      cy.findByTestId('NumberInput-maxPrice').clear().type(price);
-      cy.findByTestId('NumberInput-minPrice')
-        .clear()
-        .type(`${price + 1}{enter}`);
+      cy.findByTestId('NumberInput-maxPrice').clear();
+      cy.findByTestId('NumberInput-maxPrice').type(price);
+      cy.findByTestId('NumberInput-minPrice').clear();
+      cy.findByTestId('NumberInput-minPrice').type(`${price + 1}{enter}`);
       cy.findByTestId('NumberInput-minPrice').should('have.value', price);
       submitFiltersForm();
       cy.findByTestId('NumberInput-minPrice').should(
@@ -274,7 +276,8 @@ describe('product list and filters', () => {
   describe('filters combinations', () => {
     it('renders new product if condition is new and max price is lower than possible', () => {
       const maxPrice = Math.ceil(productsDescendingByPrice[0].price) - 10;
-      cy.findByTestId('NumberInput-maxPrice').clear().type(maxPrice);
+      cy.findByTestId('NumberInput-maxPrice').clear();
+      cy.findByTestId('NumberInput-maxPrice').type(maxPrice);
       cy.findByTestId('Filters-checkbox-new').click({ force: true });
       submitFiltersForm();
       cy.checkHash(`maxPrice=${maxPrice}`, 'contains');
@@ -285,7 +288,8 @@ describe('product list and filters', () => {
 
     it('does not render any product if condition is used and min price is almost like max price', () => {
       const minPrice = Math.ceil(productsDescendingByPrice[0].price) - 10;
-      cy.findByTestId('NumberInput-minPrice').clear().type(minPrice);
+      cy.findByTestId('NumberInput-minPrice').clear();
+      cy.findByTestId('NumberInput-minPrice').type(minPrice);
       cy.findByTestId('Filters-checkbox-used').click({ force: true });
       submitFiltersForm();
       cy.checkHash(`minPrice=${minPrice}`, 'contains');
@@ -297,7 +301,8 @@ describe('product list and filters', () => {
 
     it('does not render cheapest and in ascending order by name', () => {
       const minPrice = Math.ceil(productsAscendingByPrice[0].price) + 10;
-      cy.findByTestId('NumberInput-minPrice').clear().type(minPrice);
+      cy.findByTestId('NumberInput-minPrice').clear();
+      cy.findByTestId('NumberInput-minPrice').type(minPrice);
       openSortingField();
       cy.findByText(/name - a to z/i).click();
       submitFiltersForm();
@@ -375,9 +380,10 @@ describe('product list and filters', () => {
       cy.findByTestId('SearchForm-input').type(`${searchName}{enter}`);
       cy.findByTestId('SearchForm-input').should('have.value', searchName);
       cy.findByRole('heading', { name: `Results for "${searchName}"` });
-      cy.findByTestId('NumberInput-maxPrice')
-        .clear()
-        .type(Math.floor(productsDescendingByPrice[0].price) - 1);
+      cy.findByTestId('NumberInput-maxPrice').clear();
+      cy.findByTestId('NumberInput-maxPrice').type(
+        Math.floor(productsDescendingByPrice[0].price) - 1,
+      );
       submitFiltersForm();
       cy.findByTestId('ProductList').within(() => {
         cy.findAllByTestId('ProductItem').should('have.length', allProducts.length - 1);
@@ -458,11 +464,14 @@ describe('product list and filters', () => {
         checkPaginationCurrentPage(2);
         cy.findByTestId('InputPagination-left-arrow').click();
         checkPaginationCurrentPage(1);
-        cy.findByTestId('NumberInput-page').clear().type('9999{enter}');
+        cy.findByTestId('NumberInput-page').clear();
+        cy.findByTestId('NumberInput-page').type('9999{enter}');
         checkPaginationCurrentPage(allProducts.length);
-        cy.findByTestId('NumberInput-page').clear().type('0{enter}');
+        cy.findByTestId('NumberInput-page').clear();
+        cy.findByTestId('NumberInput-page').type('0{enter}');
         checkPaginationCurrentPage(1);
-        cy.findByTestId('NumberInput-page').clear().type('2{enter}');
+        cy.findByTestId('NumberInput-page').clear();
+        cy.findByTestId('NumberInput-page').type('2{enter}');
         checkPaginationCurrentPage(2);
       });
     });
