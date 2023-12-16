@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { defaultAppPath, modalTypes } from '../../src/shared/constants';
 
 describe('modal behaviour', () => {

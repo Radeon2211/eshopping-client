@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { pendingUser } from '../fixtures/users';
 import { productOne, allProducts } from '../fixtures/products';
 import { formatPrice } from '../../src/shared/utility/utility';

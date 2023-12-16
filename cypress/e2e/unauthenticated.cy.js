@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { defaultAppPath, modalTypes } from '../../src/shared/constants';
 import { testUser, adminUser } from '../fixtures/users';
 import { productOne, allProducts } from '../fixtures/products';

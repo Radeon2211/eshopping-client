@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { adminUser } from '../fixtures/users';
 import { productOne, productTwo } from '../fixtures/products';
 import { defaultAppPath, productConditions } from '../../src/shared/constants';

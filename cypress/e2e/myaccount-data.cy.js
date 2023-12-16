@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { modalTypes, singleInfoNames } from '../../src/shared/constants';
 import { adminUser, activeUser } from '../fixtures/users';
 

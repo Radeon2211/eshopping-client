@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { pendingUser } from '../fixtures/users';
 import { productOne } from '../fixtures/products';
 import { modalTypes } from '../../src/shared/constants';

@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import '@testing-library/cypress/add-commands';
+
 Cypress.Commands.add('seedDb', () => {
   cy.request('PATCH', `${Cypress.env('API_URL')}/testing/seed`);
 });
