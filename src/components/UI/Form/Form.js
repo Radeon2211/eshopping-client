@@ -23,20 +23,20 @@ export default function Form(props) {
   );
 
   const error = formError ? (
-    <PlainText size="3" mgTop="3" color={theme.colors.red} data-testid="Form-error">
+    <PlainText $size="3" $mgTop="3" $color={theme.colors.red} data-testid="Form-error">
       {formError}
     </PlainText>
   ) : null;
 
   let heading = null;
   if (headingText) {
-    heading = <Heading variant="h3">{headingText}</Heading>;
+    heading = <Heading $variant="h3">{headingText}</Heading>;
   }
 
   let cancelButton = null;
   if (cancellable) {
     cancelButton = (
-      <PlainText display="block" mgRight="3">
+      <PlainText $display="block" $mgRight="3">
         <Button clicked={() => onSetModal('')}>cancel</Button>
       </PlainText>
     );
@@ -45,12 +45,12 @@ export default function Form(props) {
   let buttonsBox = null;
   if (btnText) {
     buttonsBox = (
-      <FlexWrapper align="center" justify="flex-end" spacing="3">
+      <FlexWrapper $align="center" $justify="flex-end" $spacing="3">
         {cancelButton}
         <Button
-          filled
+          $filled
           type="submit"
-          color={btnColor}
+          $color={btnColor}
           disabled={!isValid || isFormLoading}
           data-testid="Form-submit-btn"
         >
@@ -68,7 +68,7 @@ export default function Form(props) {
   );
 
   return (
-    <SC.Wrapper height={height}>
+    <SC.Wrapper $height={height}>
       {heading}
       {form}
       {error}

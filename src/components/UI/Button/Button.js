@@ -4,12 +4,12 @@ import * as SC from './Button.sc';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 
 export default function Button(props) {
-  const { clicked, isLoading, disabled, children } = props;
+  const { clicked, isLoading, disabled, children, ...rest } = props;
 
   const loadingOverlay = isLoading ? <LoadingOverlay loaderSize="small" disableText /> : null;
 
   return (
-    <SC.Button {...props} onClick={clicked} disabled={disabled || isLoading}>
+    <SC.Button {...rest} onClick={clicked} disabled={disabled || isLoading}>
       {children}
       {loadingOverlay}
     </SC.Button>
@@ -17,22 +17,22 @@ export default function Button(props) {
 }
 
 Button.defaultProps = {
-  size: 'small',
+  $size: 'small',
   type: 'button',
-  color: 'blue',
-  filled: false,
-  stretch: false,
+  $color: 'blue',
+  $filled: false,
+  $stretch: false,
   isLoading: false,
   disabled: false,
   clicked: () => {},
 };
 
 Button.propTypes = {
-  size: PropTypes.string,
+  $size: PropTypes.string,
   type: PropTypes.string,
-  color: PropTypes.string,
-  filled: PropTypes.bool,
-  stretch: PropTypes.bool,
+  $color: PropTypes.string,
+  $filled: PropTypes.bool,
+  $stretch: PropTypes.bool,
   isLoading: PropTypes.bool,
   disabled: PropTypes.bool,
   clicked: PropTypes.func,

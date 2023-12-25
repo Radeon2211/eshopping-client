@@ -73,7 +73,7 @@ export default function NumberPagination({ itemQuantity, quantityPerPage }) {
           className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
           data-testid="NumberPagination-left-arrow"
         >
-          <MyIcon size="small" rotation={180}>
+          <MyIcon $size="small" $rotation={180}>
             <ArrowIcon />
           </MyIcon>
         </Link>
@@ -87,7 +87,7 @@ export default function NumberPagination({ itemQuantity, quantityPerPage }) {
           className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
           data-testid="NumberPagination-right-arrow"
         >
-          <MyIcon size="small">
+          <MyIcon $size="small">
             <ArrowIcon />
           </MyIcon>
         </Link>

@@ -49,7 +49,7 @@ export default function ProductDetails() {
   if (productDetails === null) {
     pageTitle = 'Offer does not exist - E-Shopping';
     details = (
-      <Heading variant="h4" align="center" lineHeight="4">
+      <Heading $variant="h4" $align="center" $lineHeight="4">
         Such product does not exist or has already been sold
       </Heading>
     );
@@ -73,9 +73,9 @@ export default function ProductDetails() {
     if (quantitySold >= 1) {
       quantitySoldNode = (
         <PlainText
-          size="2"
-          mgBottom="3"
-          color={theme.colors.light4}
+          $size="2"
+          $mgBottom="3"
+          $color={theme.colors.light4}
           data-testid="ProductDetails-quantity-sold"
         >
           {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought {quantitySold}{' '}
@@ -85,17 +85,17 @@ export default function ProductDetails() {
     }
 
     let descriptionSection = (
-      <Heading variant="h4" mgTop="3" data-testid="ProductDetails-no-description">
+      <Heading $variant="h4" $mgTop="3" data-testid="ProductDetails-no-description">
         This product has no description
       </Heading>
     );
     if (description) {
       descriptionSection = (
         <section data-testid="ProductDetails-full-description">
-          <Heading variant="h4" mgBottom="2" mgTop="3">
+          <Heading $variant="h4" $mgBottom="2" $mgTop="3">
             Description
           </Heading>
-          <PlainText size="3" lineHeight="5">
+          <PlainText $size="3" $lineHeight="5">
             {description}
           </PlainText>
         </section>
@@ -109,7 +109,7 @@ export default function ProductDetails() {
     if (userIsOwner) {
       editProductBtn = (
         <Button
-          color="blue"
+          $color="blue"
           clicked={() => onSetModal(modalTypes.EDIT_PRODUCT)}
           data-testid="ProductDetails-edit-button"
         >
@@ -120,7 +120,7 @@ export default function ProductDetails() {
     if (userIsOwner || userProfile?.isAdmin) {
       deleteProductBtn = (
         <Button
-          color="red"
+          $color="red"
           clicked={() => onSetModal(modalTypes.DELETE_PRODUCT)}
           data-testid="ProductDetails-delete-button"
         >
@@ -132,7 +132,7 @@ export default function ProductDetails() {
     let manageButtonsBox = null;
     if (deleteProductBtn || editProductBtn) {
       manageButtonsBox = (
-        <FlexWrapper mgTop="5" justify="center" spacing="3">
+        <FlexWrapper $mgTop="5" $justify="center" $spacing="3">
           {editProductBtn}
           {deleteProductBtn}
         </FlexWrapper>
@@ -145,7 +145,7 @@ export default function ProductDetails() {
     details = (
       <PlainPanel>
         <SC.Wrapper>
-          <SideBySide proportion={windowSize.width <= 900 ? '1/1' : '3/2'} makeVerticalWhen={600}>
+          <SideBySide $proportion={windowSize.width <= 900 ? '1/1' : '3/2'} $makeVerticalWhen={600}>
             <section className="photo-section">
               <img
                 src={photo ? `${process.env.REACT_APP_API_URL}/products/${_id}/photo` : noPhoto}
@@ -154,18 +154,18 @@ export default function ProductDetails() {
               />
             </section>
             <section className="data-section">
-              <Heading variant="h4">{name}</Heading>
-              <PlainText size="2" mgTop="2" mgBottom="2">
-                <PlainText color={theme.colors.light4}>from&nbsp;</PlainText>
+              <Heading $variant="h4">{name}</Heading>
+              <PlainText $size="2" $mgTop="2" $mgBottom="2">
+                <PlainText $color={theme.colors.light4}>from&nbsp;</PlainText>
                 <Link to={`/user/${seller.username}?p=1`} data-testid="ProductDetails-seller-link">
                   <GreenText>{seller.username}</GreenText>
                 </Link>
               </PlainText>
-              <PlainText size="2">
-                <PlainText color={theme.colors.light4}>Condition:</PlainText>
+              <PlainText $size="2">
+                <PlainText $color={theme.colors.light4}>Condition:</PlainText>
                 {` ${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
               </PlainText>
-              <PlainText size="6" spacing="1px" mgTop="3" mgBottom="3">
+              <PlainText $size="6" $spacing="1px" $mgTop="3" $mgBottom="3">
                 {formatPrice(price)}
               </PlainText>
               {quantitySoldNode}

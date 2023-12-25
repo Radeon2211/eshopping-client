@@ -57,9 +57,9 @@ export const StepBoxContent = styled.div`
   height: 100%;
   width: 100%;
 
-  ${({ visible }) => {
+  ${({ $visible }) => {
     return `
-      opacity: ${visible ? '1' : '0'};
+      opacity: ${$visible ? '1' : '0'};
     `;
   }}
 `;

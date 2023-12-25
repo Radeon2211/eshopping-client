@@ -12,25 +12,18 @@ SC.Wrapper = styled.div`
     transform: rotate(0deg);
     transition: transform ${({ theme }) => theme.durations.level2}s;
 
-    ${({ color, theme }) => {
-      if (color) {
-        return `
-          fill: ${color};
-        `;
-      }
-      return `
-        fill: ${theme.colors.light4};
-      `;
+    ${({ $color, theme }) => {
+      return $color ? `fill: ${$color};` : `fill: ${theme.colors.light4};`;
     }}
 
-    ${({ size }) => {
-      if (size === 'small') {
+    ${({ $size }) => {
+      if ($size === 'small') {
         return `
           width: 1.7rem;
           height: 1.7rem;
         `;
       }
-      if (size === 'medium') {
+      if ($size === 'medium') {
         return `
           width: 2.5rem;
           height: 2.5rem;
@@ -42,41 +35,31 @@ SC.Wrapper = styled.div`
       `;
     }}
 
-    ${({ disabled, theme }) => {
-      if (disabled) {
-        return `
-          fill: ${theme.colors.light3};
-        `;
-      }
-      return ``;
+    ${({ $disabled, theme }) => {
+      return $disabled ? `fill: ${theme.colors.light3};` : ``;
     }}
 
-    ${({ rotation }) => {
-      if (rotation) {
-        return `
-          transform: rotate(${rotation}deg);
-        `;
-      }
-      return ``;
+    ${({ $rotation }) => {
+      return $rotation ? `transform: rotate(${$rotation}deg);` : ``;
     }}
   }
 `;
 
 export default function MyIcon(props) {
-  const { children } = props;
-  return <SC.Wrapper {...props}>{children}</SC.Wrapper>;
+  const { children, ...rest } = props;
+  return <SC.Wrapper {...rest}>{children}</SC.Wrapper>;
 }
 
 MyIcon.defaultProps = {
-  disabled: false,
-  rotation: 0,
-  color: '',
+  $disabled: false,
+  $rotation: 0,
+  $color: '',
 };
 
 MyIcon.propTypes = {
-  size: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  disabled: PropTypes.bool,
-  rotation: PropTypes.number,
+  $size: PropTypes.string.isRequired,
+  $color: PropTypes.string,
+  $rotation: PropTypes.number,
+  $disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };

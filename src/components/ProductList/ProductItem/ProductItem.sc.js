@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import FlexWrapper from '../../UI/FlexWrapper';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Wrapper = styled(FlexWrapper)`
+export const Wrapper = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.light2};
   padding: ${({ theme }) => theme.spacings.level2};
   transition: background-color ${({ theme }) => theme.durations.level1}s;

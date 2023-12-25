@@ -52,11 +52,11 @@ afterEach(cleanup);
 
 describe('<Form />', () => {
   describe('check how renders', () => {
-    it('should render everything what is possible with blue submit button', () => {
+    it('should render heading with buttons', () => {
       setUp(defaultProps, defaultStore);
       expect(screen.getByText('testHeadingText')).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /cancel/i })).toHaveAttribute('color', 'blue');
-      expect(screen.getByRole('button', { name: /submit/i })).toHaveAttribute('color', 'blue');
+      expect(screen.getByRole('button', { name: /cancel/i }));
+      expect(screen.getByRole('button', { name: /submit/i }));
     });
 
     it('should NOT render heading, error and buttons', () => {
@@ -71,7 +71,7 @@ describe('<Form />', () => {
       expect(screen.queryByRole('button')).not.toBeInTheDocument();
     });
 
-    it('should render red submit button without cancel button', () => {
+    it('should render submit button without cancel button', () => {
       const props = {
         ...defaultProps,
         headingText: '',
@@ -81,7 +81,7 @@ describe('<Form />', () => {
       const store = createStore(false, '');
       setUp(props, store);
       expect(screen.getAllByRole('button')).toHaveLength(1);
-      expect(screen.getByRole('button', { name: /submit/i })).toHaveAttribute('color', 'red');
+      expect(screen.getByRole('button', { name: /submit/i }));
     });
 
     it('should submit button be disabled if isFormLoading is true', () => {

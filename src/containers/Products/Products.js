@@ -42,7 +42,7 @@ export default function Products({ location }) {
         title="E-Shopping - Buy and sell"
         description="E-Shopping - shop where you can buy and sell whatever you want"
       />
-      <Heading variant="h3" data-testid="Products-heading">
+      <Heading $variant="h3" data-testid="Products-heading">
         {headingText}
       </Heading>
       <ProductsAndFilters page={productPages.ALL_PRODUCTS} />

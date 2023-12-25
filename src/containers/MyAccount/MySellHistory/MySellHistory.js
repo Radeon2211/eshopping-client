@@ -25,7 +25,7 @@ export default function MySellHistory() {
         title="Your sell history - E-Shopping"
         description="Check out your sell history"
       />
-      <Heading variant="h3">My sell history</Heading>
+      <Heading $variant="h3">My sell history</Heading>
       <Orders orders={sellHistory} type={orderTypes.SELL_HISTORY} />
     </SC.OrdersWrapper>
   );

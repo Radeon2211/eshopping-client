@@ -78,18 +78,18 @@ export default function Step2(props) {
             isTouched={touched.lastName}
           />
           <PlainText
-            size="1"
-            mgTop="2"
-            extraMgTop="0.4rem"
-            minusMgTop
-            mgBottom="3"
-            textAlign="justify"
-            display="block"
+            $size="1"
+            $mgTop="2"
+            $extraMgTop="0.4rem"
+            $minusMgTop
+            $mgBottom="3"
+            $textAlign="justify"
+            $display="block"
           >
             Name is visible only to user you will place order with (and you can change it to
             specific order)
           </PlainText>
-          <SideBySide proportion="1/1">
+          <SideBySide $proportion="1/1">
             <Input
               kind={inputKinds.SELECT}
               config={{
@@ -121,13 +121,13 @@ export default function Step2(props) {
             />
           </SideBySide>
           <PlainText
-            size="1"
-            mgTop="2"
-            extraMgTop="0.4rem"
-            minusMgTop
-            mgBottom="3"
-            textAlign="justify"
-            display="block"
+            $size="1"
+            $mgTop="2"
+            $extraMgTop="0.4rem"
+            $minusMgTop
+            $mgBottom="3"
+            $textAlign="justify"
+            $display="block"
           >
             You can change phone number to specific order
           </PlainText>
@@ -143,24 +143,24 @@ export default function Step2(props) {
             label="Hide my phone number from others"
           />
           <PlainText
-            size="1"
-            mgTop="2"
-            extraMgTop="0.4rem"
-            minusMgTop
-            mgBottom="3"
-            textAlign="justify"
-            display="block"
+            $size="1"
+            $mgTop="2"
+            $extraMgTop="0.4rem"
+            $minusMgTop
+            $mgBottom="3"
+            $textAlign="justify"
+            $display="block"
           >
             Phone number is visible to everyone by default. You can hide it from others (it will
             still be visible to user who will place order with you and to user you will place order
             with)
           </PlainText>
-          <SC.Buttons buttonsNumber={2}>
+          <SC.Buttons $buttonsNumber={2}>
             <Button clicked={goToPrevStep} data-testid="Step2-previous-btn">
               Previous
             </Button>
             <Button
-              filled
+              $filled
               clicked={goToNextStep}
               disabled={btnDisabled}
               data-testid="Step2-next-btn"

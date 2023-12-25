@@ -42,23 +42,23 @@ export default function Footer() {
 
   return (
     <SC.Wrapper data-testid="Footer">
-      <PlainText size="2">&copy; 2021 Radosław Mikrut. All rights reserved</PlainText>
-      <FlexWrapper align="center" justify="center" mgBottom="2" mgTop="2" spacing="3">
+      <PlainText $size="2">&copy; 2023 Radosław Mikrut. All rights reserved</PlainText>
+      <FlexWrapper $align="center" $justify="center" $mgBottom="2" $mgTop="2" $spacing="3">
         <a
           href="https://www.linkedin.com/in/rados%C5%82aw-mikrut-a8600b198/"
           rel="noopener noreferrer"
           className="social-link"
           target="_blank"
         >
-          <MyIcon size="medium">
+          <MyIcon $size="medium">
             <LinkedinIcon />
           </MyIcon>
         </a>
         <a href="mailto:radoslawmikrut@wp.pl" rel="noopener noreferrer" className="social-link">
-          <MyIcon size="medium">
+          <MyIcon $size="medium">
             <EmailIcon />
           </MyIcon>
-          <PlainText size="1" mgLeft="1">
+          <PlainText $size="1" $mgLeft="1">
             radoslawmikrut@wp.pl
           </PlainText>
         </a>

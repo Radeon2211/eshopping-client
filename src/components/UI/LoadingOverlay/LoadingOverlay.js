@@ -12,7 +12,7 @@ SC.Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  justify-items: ${({ alignLoader }) => alignLoader};
+  justify-items: ${({ $alignLoader }) => $alignLoader};
   left: 0;
   position: absolute;
   top: 0;
@@ -33,14 +33,14 @@ export default function LoadingOverlay({ alignLoader, loaderSize, disableText })
   let info = false;
   if (isInfoVisible && !disableText) {
     info = (
-      <PlainText size="2" mgTop="2" data-testid="LoadingOverlay-info">
+      <PlainText $size="2" $mgTop="2" data-testid="LoadingOverlay-info">
         Just a second
       </PlainText>
     );
   }
 
   return (
-    <SC.Wrapper alignLoader={alignLoader} data-testid="LoadingOverlay">
+    <SC.Wrapper $alignLoader={alignLoader} data-testid="LoadingOverlay">
       <Loader size={loaderSize} />
       {info}
     </SC.Wrapper>

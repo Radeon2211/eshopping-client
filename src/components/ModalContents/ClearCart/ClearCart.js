@@ -20,17 +20,17 @@ export default function ClearCart() {
 
   return (
     <>
-      <Heading variant="h3" align="center">
+      <Heading $variant="h3" $align="center">
         Clear the shopping cart
       </Heading>
-      <Heading variant="h4" align="center">
+      <Heading $variant="h4" $align="center">
         Are you sure to do that?
       </Heading>
-      <FlexWrapper mgTop="3" justify="center" spacing="3">
-        <Button color="blue" clicked={() => onSetModal('')}>
+      <FlexWrapper $mgTop="3" $justify="center" $spacing="3">
+        <Button $color="blue" clicked={() => onSetModal('')}>
           cancel
         </Button>
-        <Button color="red" filled clicked={clearCartClickHandle}>
+        <Button $color="red" $filled clicked={clearCartClickHandle}>
           clear
         </Button>
       </FlexWrapper>

@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import FlexWrapper from '../FlexWrapper';
 import { validateURL } from '../../../shared/utility/utility';
 import noPhoto from '../../../images/no-photo.png';
 
 const SC = {};
-SC.Wrapper = styled(FlexWrapper)`
-  max-height: ${({ height }) => height}rem;
-  min-width: ${({ width }) => width}rem;
-  width: ${({ width }) => width}rem;
+SC.Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+  max-height: ${({ $height }) => $height}rem;
+  min-width: ${({ $width }) => $width}rem;
+  width: ${({ $width }) => $width}rem;
 
-  & img {
-    max-height: ${({ height }) => height}rem;
-    max-width: ${({ width }) => width}rem;
+  & > img {
+    max-height: ${({ $height }) => $height}rem;
+    max-width: ${({ $width }) => $width}rem;
     object-fit: cover;
   }
 `;
@@ -25,13 +27,7 @@ const ProductThumbnail = React.memo(({ photo, alt, productId, width, height, ord
   const validPhotoURL = validateURL(photoURL) ? photoURL : noPhoto;
 
   return (
-    <SC.Wrapper
-      align="center"
-      justify="center"
-      width={width}
-      height={height}
-      data-testid="ProductThumbnail"
-    >
+    <SC.Wrapper $width={width} $height={height} data-testid="ProductThumbnail">
       <img src={photo ? validPhotoURL : noPhoto} alt={alt} data-testid="ProductThumbnail-img" />
     </SC.Wrapper>
   );

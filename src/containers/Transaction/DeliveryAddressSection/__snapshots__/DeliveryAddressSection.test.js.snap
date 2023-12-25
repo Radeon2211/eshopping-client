@@ -16,20 +16,16 @@ exports[`<DeliveryAddressSection /> should render everything correctly with defa
 }
 
 .c5 {
-  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03);
   border-radius: 1px;
   cursor: pointer;
   font-weight: 700;
   line-height: 1.2;
-  -webkit-letter-spacing: 2px;
-  -moz-letter-spacing: 2px;
-  -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
   position: relative;
   text-align: center;
   text-transform: uppercase;
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
   font-size: 1.4rem;
   padding: 0.8rem 1.2rem;
@@ -47,9 +43,6 @@ exports[`<DeliveryAddressSection /> should render everything correctly with defa
   display: inline-block;
   font-style: normal;
   font-weight: normal;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   margin-bottom: 0;
   margin-left: 0;
@@ -62,41 +55,24 @@ exports[`<DeliveryAddressSection /> should render everything correctly with defa
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
   margin-left: 0;
   width: 100%;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
   align-items: start;
 }
 
-.c1 > *:not(:last-child) {
+.c1>*:not(:last-child) {
   margin-bottom: 2.4rem;
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
@@ -105,11 +81,11 @@ exports[`<DeliveryAddressSection /> should render everything correctly with defa
   width: 100%;
 }
 
-.c3 > *:not(:last-child) {
+.c3>*:not(:last-child) {
   margin-bottom: 0.8rem;
 }
 
-@media only screen and (max-width:56.25em) {
+@media only screen and (max-width: 56.25em) {
   .c0 {
     padding: 2.4rem 1.2rem;
   }
@@ -121,83 +97,43 @@ exports[`<DeliveryAddressSection /> should render everything correctly with defa
   >
     <div
       class="c1"
-      direction="column"
-      spacing="3"
-      width="100%"
-      wrap="nowrap"
     >
       <h4
         class="c2"
-        font-size=""
       >
         Delivery address
       </h4>
       <div
         class="c3"
-        direction="column"
-        spacing="1"
-        width="100%"
-        wrap="nowrap"
       >
         <span
           class="c4"
-          color=""
-          display="inline-block"
-          overflow="visible"
-          size="3"
-          spacing="0px"
-          transform=""
         >
           firstName lastName
         </span>
         <span
           class="c4"
-          color=""
-          display="inline-block"
-          overflow="visible"
-          size="3"
-          spacing="0px"
-          transform=""
         >
           street
         </span>
         <span
           class="c4"
-          color=""
-          display="inline-block"
-          overflow="visible"
-          size="3"
-          spacing="0px"
-          transform=""
         >
           zipCode city
         </span>
         <span
           class="c4"
-          color=""
-          display="inline-block"
-          overflow="visible"
-          size="3"
-          spacing="0px"
-          transform=""
         >
           country
         </span>
         <span
           class="c4"
-          color=""
-          display="inline-block"
-          overflow="visible"
-          size="3"
-          spacing="0px"
-          transform=""
         >
           phone
         </span>
       </div>
       <button
         class="c5"
-        color="blue"
         type="button"
       >
         Change address

@@ -105,24 +105,24 @@ export default function CartItem({ data, isCartLoading }) {
             blured={inputBlurHandle}
             focused={() => setIsInputFocused(true)}
           />
-          <PlainText size="2" mgLeft="1" data-testid="CartItem-available-quantity">
+          <PlainText $size="2" $mgLeft="1" data-testid="CartItem-available-quantity">
             {`of ${productQuantity}`}
           </PlainText>
         </div>
         <div className="price-box">
-          <PlainText size="5" data-testid="CartItem-total-price">
+          <PlainText $size="5" data-testid="CartItem-total-price">
             {formatPrice(price * quantity)}
           </PlainText>
           {quantity > 1 && (
-            <PlainText size="2" textAlign="right" data-testid="CartItem-price-per-piece">
+            <PlainText $size="2" $textAlign="right" data-testid="CartItem-price-per-piece">
               {`per piece ${formatPrice(price)}`}
             </PlainText>
           )}
         </div>
       </div>
       <MyIcon
-        size="medium"
-        color={theme.colors.red}
+        $size="medium"
+        $color={theme.colors.red}
         onClick={() => onRemoveCartItem(itemId)}
         className="remove-icon"
         data-testid="CartItem-trash-icon"

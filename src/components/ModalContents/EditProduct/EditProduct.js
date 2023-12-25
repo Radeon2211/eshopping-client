@@ -57,7 +57,7 @@ export default function EditProduct() {
             isValid={!errors.name}
             isTouched={touched.name}
           />
-          <SideBySide proportion="1/1">
+          <SideBySide $proportion="1/1">
             <Input
               kind={inputKinds.INPUT}
               config={{

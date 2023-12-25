@@ -14,8 +14,8 @@ export const Button = styled.button`
   text-transform: uppercase;
   transition: all ${({ theme }) => theme.durations.level1}s;
 
-  ${({ size, theme }) => {
-    if (size === 'big') {
+  ${({ $size, theme }) => {
+    if ($size === 'big') {
       return `
         font-size: ${theme.fontSizes.level4};
         padding: ${theme.spacings.level2} ${theme.spacings.level3};
@@ -27,18 +27,13 @@ export const Button = styled.button`
     `;
   }}
 
-  ${({ stretch }) => {
-    if (stretch) {
-      return `
-        width: 100%;
-      `;
-    }
-    return ``;
+  ${({ $stretch }) => {
+    return $stretch ? `width: 100%;` : ``;
   }}
 
-  ${({ color, filled, theme }) => {
-    if (color === 'blue') {
-      if (filled) {
+  ${({ $color, $filled, theme }) => {
+    if ($color === 'blue') {
+      if ($filled) {
         return `
           background-color: ${theme.colors.blue};
           border: 2px solid ${theme.colors.blue};
@@ -61,7 +56,7 @@ export const Button = styled.button`
         }
       `;
     }
-    if (filled) {
+    if ($filled) {
       return `
         background-color: ${theme.colors.red};
         border: 2px solid ${theme.colors.red};
@@ -85,10 +80,10 @@ export const Button = styled.button`
     `;
   }}
 
-  ${({ disabled, color, filled, theme }) => {
+  ${({ disabled, $color, $filled, theme }) => {
     if (disabled) {
-      if (color === 'blue') {
-        if (filled) {
+      if ($color === 'blue') {
+        if ($filled) {
           return `
             background-color: ${theme.colors.blueDark};
             border-color: ${theme.colors.blueDark};
@@ -113,7 +108,7 @@ export const Button = styled.button`
           }
         `;
       }
-      if (filled) {
+      if ($filled) {
         return `
           background-color: ${theme.colors.redDark};
           border-color: ${theme.colors.redDark};

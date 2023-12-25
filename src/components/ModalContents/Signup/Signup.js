@@ -36,7 +36,7 @@ export default function Signup() {
 
   return (
     <SC.Wrapper>
-      <Heading variant="h3">Register new account</Heading>
+      <Heading $variant="h3">Register new account</Heading>
       <div className="progress-bar-box">
         <ProgressBar stepsNumber={3} currentStep={currentStep} />
       </div>

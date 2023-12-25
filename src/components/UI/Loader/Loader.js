@@ -4,7 +4,7 @@ import * as SC from './Loader.sc';
 
 export default function Loader({ size, align }) {
   const loader = (
-    <SC.Loader size={size} data-testid="Loader">
+    <SC.Loader $size={size} data-testid="Loader">
       <div />
       <div />
       <div />
@@ -15,7 +15,7 @@ export default function Loader({ size, align }) {
   let wrapper = null;
   if (align) {
     wrapper = (
-      <SC.Wrapper align={align} data-testid="LoaderWrapper">
+      <SC.Wrapper $align={align} data-testid="LoaderWrapper">
         {loader}
       </SC.Wrapper>
     );

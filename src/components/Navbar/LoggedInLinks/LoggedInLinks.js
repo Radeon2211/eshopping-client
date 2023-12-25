@@ -39,13 +39,13 @@ export default function LoggedInLinks({ username, status }) {
   const showUsername = (name) => {
     return (
       <PlainText
-        size="3"
-        mgRight="1"
-        maxWidth="15rem"
-        overflow="hidden"
-        textOverflow="ellipsis"
-        whiteSpace="nowrap"
-        textAlign="right"
+        $size="3"
+        $mgRight="1"
+        $maxWidth="15rem"
+        $overflow="hidden"
+        $textOverflow="ellipsis"
+        $whiteSpace="nowrap"
+        $textAlign="right"
       >
         {name}
       </PlainText>
@@ -62,7 +62,7 @@ export default function LoggedInLinks({ username, status }) {
           data-testid="LoggedInLinks-user-box"
         >
           {showUsername(username)}
-          <MyIcon size="small" rotation={isDropdownVisible ? -90 : 90}>
+          <MyIcon $size="small" $rotation={isDropdownVisible ? -90 : 90}>
             <ArrowIcon />
           </MyIcon>
           <Dropdown isVisible={isDropdownVisible} closed={() => setIsDropdownVisible(false)} />
@@ -72,7 +72,7 @@ export default function LoggedInLinks({ username, status }) {
       <Link to="/my-account/data" data-testid="LoggedInLinks-my-account-link">
         <SC.User id="user">
           {showUsername(username)}
-          <MyIcon size="small">
+          <MyIcon $size="small">
             <SettingsIcon />
           </MyIcon>
         </SC.User>

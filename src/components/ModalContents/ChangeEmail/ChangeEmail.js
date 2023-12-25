@@ -37,7 +37,7 @@ export default function ChangeEmail() {
           isValid={dirty && isValid && userProfile.email !== values.email}
           cancellable
         >
-          <PlainText size="1" mgBottom="3" textAlign="justify">
+          <PlainText $size="1" $mgBottom="3" $textAlign="justify">
             We will send to given email address an email with verification link. Link will be active
             for 10 minutes. To resend an email you will need to fill this form again.
           </PlainText>

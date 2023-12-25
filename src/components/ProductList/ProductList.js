@@ -60,7 +60,7 @@ export default function ProductList({ products, isDataLoading, page }) {
         }
       }
       productList = (
-        <Heading variant="h4" align="center" data-testid="ProductList-empty-list-info">
+        <Heading $variant="h4" $align="center" data-testid="ProductList-empty-list-info">
           {headingText}
         </Heading>
       );
@@ -69,7 +69,7 @@ export default function ProductList({ products, isDataLoading, page }) {
     }
   } else if (products === null) {
     productList = (
-      <Heading variant="h4" align="center">
+      <Heading $variant="h4" $align="center">
         There is a problem to fetch products
       </Heading>
     );

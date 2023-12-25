@@ -61,7 +61,7 @@ export default function Dropdown({ isVisible, closed }) {
                   role="button"
                   tabIndex={0}
                 >
-                  <MyIcon size="small">
+                  <MyIcon $size="small">
                     <AddProductIcon />
                   </MyIcon>
                   <span>Add product</span>
@@ -69,7 +69,7 @@ export default function Dropdown({ isVisible, closed }) {
               </li>
               <li className="item">
                 <Link to="/my-account/data" className="link">
-                  <MyIcon size="small">
+                  <MyIcon $size="small">
                     <MyAccountIcon />
                   </MyIcon>
                   <span>My account</span>
@@ -77,7 +77,7 @@ export default function Dropdown({ isVisible, closed }) {
               </li>
               <li className="item">
                 <Link to="/my-account/products?p=1" className="link">
-                  <MyIcon size="small">
+                  <MyIcon $size="small">
                     <MyOffersIcon />
                   </MyIcon>
                   <span>My offers</span>
@@ -85,7 +85,7 @@ export default function Dropdown({ isVisible, closed }) {
               </li>
               <li className="item">
                 <Link to="/my-account/sell-history?p=1" className="link">
-                  <MyIcon size="small">
+                  <MyIcon $size="small">
                     <SellHistoryIcon />
                   </MyIcon>
                   <span>My sell history</span>
@@ -93,7 +93,7 @@ export default function Dropdown({ isVisible, closed }) {
               </li>
               <li className="item">
                 <Link to="/my-account/placed-orders?p=1" className="link">
-                  <MyIcon size="small">
+                  <MyIcon $size="small">
                     <PlacedOrdersIcon />
                   </MyIcon>
                   <span>Placed orders</span>
@@ -101,7 +101,7 @@ export default function Dropdown({ isVisible, closed }) {
               </li>
               <li className="item">
                 <Link to="/logout" className="link" data-testid="Dropdown-logout-link">
-                  <MyIcon size="small">
+                  <MyIcon $size="small">
                     <LogOutIcon />
                   </MyIcon>
                   <span>Log out</span>

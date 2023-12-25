@@ -84,11 +84,11 @@ export default function Filters({ isDataLoading }) {
         onClick={() => setIsVisible((prevState) => !prevState)}
         data-testid="Filters-toggler"
       >
-        <MyIcon size="small">
+        <MyIcon $size="small">
           <FiltersIcon />
         </MyIcon>
         <span className="label">Filters</span>
-        <MyIcon size="small" rotation={isVisible ? -90 : 90}>
+        <MyIcon $size="small" $rotation={isVisible ? -90 : 90}>
           <ArrowIcon />
         </MyIcon>
       </SC.Toggler>
@@ -110,7 +110,7 @@ export default function Filters({ isDataLoading }) {
       />
       <PriceSlider dispatchFilters={dispatchFilters} />
       <SC.Checkboxes>
-        <PlainText size="3">Condition</PlainText>
+        <PlainText $size="3">Condition</PlainText>
         <SC.CheckboxBox>
           <input
             type="checkbox"
@@ -146,7 +146,7 @@ export default function Filters({ isDataLoading }) {
         </SC.CheckboxBox>
       </SC.Checkboxes>
       <Button
-        filled
+        $filled
         clicked={btnClickHandle}
         isLoading={isDataLoading}
         data-testid="Filters-submit-btn"

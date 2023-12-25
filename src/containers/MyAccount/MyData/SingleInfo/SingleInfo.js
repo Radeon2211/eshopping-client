@@ -10,9 +10,9 @@ export default function SingleInfo({ name, content, clickHandler }) {
   let contentNode = '';
   if (name === singleInfoNames.ADDRESS) {
     contentNode = (
-      <FlexWrapper direction="column" spacing="1">
+      <FlexWrapper $direction="column" $spacing="1">
         {content.map((value, idx) => (
-          <PlainText key={idx} size="3" wordBreak="break-all">
+          <PlainText key={idx} $size="3" $wordBreak="break-all">
             {value}
           </PlainText>
         ))}
@@ -20,12 +20,12 @@ export default function SingleInfo({ name, content, clickHandler }) {
     );
   } else if (name === singleInfoNames.CONTACTS) {
     contentNode = (
-      <FlexWrapper direction="column" spacing="1">
-        <PlainText size="3" wordBreak="break-all">
+      <FlexWrapper $direction="column" $spacing="1">
+        <PlainText $size="3" $wordBreak="break-all">
           Email:&nbsp;
           {content.email ? 'visible' : 'hidden'}
         </PlainText>
-        <PlainText size="3" wordBreak="break-all">
+        <PlainText $size="3" $wordBreak="break-all">
           Phone number:&nbsp;
           {content.phone ? 'visible' : 'hidden'}
         </PlainText>
@@ -33,7 +33,7 @@ export default function SingleInfo({ name, content, clickHandler }) {
     );
   } else {
     contentNode = (
-      <PlainText size="3" wordBreak="break-all">
+      <PlainText $size="3" $wordBreak="break-all">
         {content}
       </PlainText>
     );
@@ -49,8 +49,8 @@ export default function SingleInfo({ name, content, clickHandler }) {
   }
 
   return (
-    <FlexWrapper direction="column" spacing="2" align="start" data-testid={`SingleInfo-${name}`}>
-      <Heading variant="h4">{name}</Heading>
+    <FlexWrapper $direction="column" $spacing="2" $align="start" data-testid={`SingleInfo-${name}`}>
+      <Heading $variant="h4">{name}</Heading>
       {contentNode}
       {button}
     </FlexWrapper>

@@ -76,8 +76,8 @@ export default function MessageBox() {
           >
             <span>{message}</span>
             <MyIcon
-              size="small"
-              color="#fff"
+              $size="small"
+              $color="#fff"
               onClick={() => onSetMessage('')}
               className="close-icon"
               data-testid="MessageBox-close-icon"

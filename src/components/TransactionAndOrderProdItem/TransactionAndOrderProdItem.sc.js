@@ -1,12 +1,7 @@
 import styled from 'styled-components';
-import FlexWrapper from '../UI/FlexWrapper';
 
-export const Wrapper = styled(FlexWrapper)`
+export const Wrapper = styled.div`
   padding-top: ${({ theme }) => theme.spacings.level3};
-
-  &:last-child {
-    padding-bottom: 0;
-  }
 `;
 
 export const NameAndPrice = styled.div`
@@ -44,11 +39,5 @@ export const NameAndPrice = styled.div`
     & .name {
       flex: initial;
     }
-  }
-`;
-
-export const Price = styled(FlexWrapper)`
-  @media only screen and (max-width: 56.25em) {
-    flex: initial;
   }
 `;

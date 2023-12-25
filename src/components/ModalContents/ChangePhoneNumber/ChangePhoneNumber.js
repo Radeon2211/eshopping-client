@@ -44,7 +44,7 @@ export default function ChangePhoneNumber() {
           isValid={dirty && isValid}
           cancellable
         >
-          <SideBySide proportion="1/1">
+          <SideBySide $proportion="1/1">
             <Input
               kind={inputKinds.SELECT}
               config={{

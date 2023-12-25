@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   margin-bottom: ${({ theme }) => theme.spacings.level3};
 
-  ${({ type, theme }) => {
-    if (type === 'checkbox') {
+  ${({ $type, theme }) => {
+    if ($type === 'checkbox') {
       return `
         align-items: center;
         flex-direction: row;
@@ -57,8 +57,8 @@ export const Wrapper = styled.div`
     return ``;
   }}
 
-  ${({ checked }) => {
-    if (checked) {
+  ${({ $checked }) => {
+    if ($checked) {
       return `
         & > label::after {
           opacity: 1;
@@ -195,14 +195,8 @@ export const RadioWrapper = styled.div`
       transform: translate(-50%, -50%);
       width: ${({ theme }) => theme.spacings.level2};
 
-      ${({ checked }) => {
-        if (checked) {
-          return `
-              opacity: 1;
-            }
-          `;
-        }
-        return ``;
+      ${({ $checked }) => {
+        return $checked ? `opacity: 1;` : ``;
       }}
     }
   }

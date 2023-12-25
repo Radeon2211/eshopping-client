@@ -6,9 +6,15 @@ import { formatPrice } from '../../../shared/utility/utility';
 
 export default function ToPayInfo({ value }) {
   return (
-    <FlexWrapper align="center" justify="center" wrap="wrap" spacing="1" data-testid="ToPayInfo">
-      <PlainText size="4">To pay</PlainText>
-      <PlainText size="6" spacing="1px">
+    <FlexWrapper
+      $align="center"
+      $justify="center"
+      $wrap="wrap"
+      $spacing="1"
+      data-testid="ToPayInfo"
+    >
+      <PlainText $size="4">To pay</PlainText>
+      <PlainText $size="6" $spacing="1px">
         {formatPrice(value)}
       </PlainText>
     </FlexWrapper>

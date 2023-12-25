@@ -49,13 +49,13 @@ export default function MyData({ history }) {
     if (isAdmin) {
       adminContent = (
         <FlexWrapper
-          spacing="3"
+          $spacing="3"
           className="actions"
-          justify="center"
+          $justify="center"
           data-testid="MyData-admin-content"
         >
           <Button clicked={() => onSetModal(modalTypes.ADD_ADMIN)}>Add admin</Button>
-          <Button color="red" clicked={() => onSetModal(modalTypes.REMOVE_ADMIN)}>
+          <Button $color="red" clicked={() => onSetModal(modalTypes.REMOVE_ADMIN)}>
             Remove admin
           </Button>
         </FlexWrapper>
@@ -66,8 +66,8 @@ export default function MyData({ history }) {
     if (!isAccountActive) {
       pendingUserActions = (
         <FlexWrapper
-          spacing="3"
-          justify="center"
+          $spacing="3"
+          $justify="center"
           className="actions"
           data-testid="MyData-pending-user-actions"
         >
@@ -108,11 +108,11 @@ export default function MyData({ history }) {
           clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_PHONE_NUMBER) : null}
         />
         {pendingUserActions}
-        <FlexWrapper spacing="3" className="actions" justify="center">
+        <FlexWrapper $spacing="3" className="actions" $justify="center">
           {isAccountActive && (
             <Button clicked={() => onSetModal(modalTypes.CHANGE_PASSWORD)}>Change password</Button>
           )}
-          <Button color="red" clicked={() => onSetModal(modalTypes.DELETE_ACCOUNT)}>
+          <Button $color="red" clicked={() => onSetModal(modalTypes.DELETE_ACCOUNT)}>
             Delete account
           </Button>
         </FlexWrapper>
@@ -123,7 +123,7 @@ export default function MyData({ history }) {
     if (!isAccountActive) {
       pendingUserContent = (
         <PlainPanel data-testid="MyData-pending-user-content">
-          <PlainText size="3" lineHeight="5">
+          <PlainText $size="3" $lineHeight="5">
             You need to activate your account to unlock all app functionalities. Verification link
             is active for 10 minutes. You can resend it below. If you do not activate your account
             within 1 hour, account will be deleted permanently.
@@ -139,8 +139,8 @@ export default function MyData({ history }) {
         title="Your account data - E-Shopping"
         description="Check out your account informations"
       />
-      <Heading variant="h3">My data</Heading>
-      <FlexWrapper direction="column" spacing="3">
+      <Heading $variant="h3">My data</Heading>
+      <FlexWrapper $direction="column" $spacing="3">
         {pendingUserContent}
         <PlainPanel>
           <SC.Wrapper>{dataAndActions}</SC.Wrapper>

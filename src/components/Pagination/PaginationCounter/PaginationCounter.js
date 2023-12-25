@@ -36,7 +36,7 @@ export default function PaginationCounter({ itemQuantity, itemsType, quantityPer
   let paginationCounter = null;
   if (itemQuantity) {
     paginationCounter = (
-      <PlainText size="1" color={theme.colors.light4} data-testid="PaginationCounter">
+      <PlainText $size="1" $color={theme.colors.light4} data-testid="PaginationCounter">
         {`${firstOfferNumber} - ${lastOfferNumber} of ${itemQuantity} ${itemsTypeText}`}
       </PlainText>
     );

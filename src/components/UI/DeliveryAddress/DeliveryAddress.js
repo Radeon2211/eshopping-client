@@ -10,9 +10,9 @@ export default function DeliveryAddress({ data }) {
   const rowValues = [`${firstName} ${lastName}`, street, `${zipCode} ${city}`, country, phone];
 
   return (
-    <FlexWrapper direction="column" spacing="1">
+    <FlexWrapper $direction="column" $spacing="1">
       {rowValues.map((value, idx) => (
-        <PlainText key={idx} size="3" wordBreak="break-all">
+        <PlainText key={idx} $size="3" $wordBreak="break-all">
           {value}
         </PlainText>
       ))}

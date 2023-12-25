@@ -56,7 +56,7 @@ export default function ProductsAndFilters({ page }) {
   }
 
   return (
-    <SideBySide proportion="1/3" makeVerticalWhen={1200} data-testid="ProductsAndFilters">
+    <SideBySide $proportion="1/3" $makeVerticalWhen={1200} data-testid="ProductsAndFilters">
       {filters}
       {productListSection}
     </SideBySide>

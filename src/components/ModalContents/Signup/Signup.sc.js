@@ -20,8 +20,8 @@ export const Step = styled(motion.div)`
 export const Buttons = styled.div`
   display: flex;
 
-  ${({ buttonsNumber }) => {
-    if (buttonsNumber === 1) {
+  ${({ $buttonsNumber }) => {
+    if ($buttonsNumber === 1) {
       return `
         justify-content: flex-end;
       `;

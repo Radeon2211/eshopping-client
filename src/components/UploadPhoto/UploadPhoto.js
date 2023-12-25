@@ -71,7 +71,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   const defaultPreviewText = `Photo is optional. Max size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG`;
   let preview = (
-    <PlainText size="2" mgTop="2" data-testid="UploadPhoto-default-preview">
+    <PlainText $size="2" $mgTop="2" data-testid="UploadPhoto-default-preview">
       {defaultPreviewText}
     </PlainText>
   );
@@ -81,7 +81,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   if (error) {
     errorNode = (
-      <PlainText size="1" mgTop="2" color={theme.colors.red}>
+      <PlainText $size="1" $mgTop="2" $color={theme.colors.red}>
         {error}
       </PlainText>
     );
@@ -89,21 +89,21 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   if (photo || error) {
     preview = (
-      <FlexWrapper mgTop="2" spacing="3" data-testid="UploadPhoto-preview-photo-info">
+      <FlexWrapper $mgTop="2" $spacing="3" data-testid="UploadPhoto-preview-photo-info">
         <PlainText
-          size="1"
-          maxWidth="75%"
-          textOverflow="ellipsis"
-          whiteSpace="nowrap"
-          overflow="hidden"
+          $size="1"
+          $maxWidth="75%"
+          $textOverflow="ellipsis"
+          $whiteSpace="nowrap"
+          $overflow="hidden"
         >
           Name: {photoName}
         </PlainText>
-        <PlainText size="1">Size: {photoSize}</PlainText>
+        <PlainText $size="1">Size: {photoSize}</PlainText>
       </FlexWrapper>
     );
     deleteThisBtn = (
-      <Button color="red" clicked={resetState}>
+      <Button $color="red" clicked={resetState}>
         Delete
       </Button>
     );
@@ -111,7 +111,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   if (!isCurrentPhotoDeleted) {
     deleteCurrentBtn = (
-      <Button color="red" clicked={deleteCurrentPhotoHandle}>
+      <Button $color="red" clicked={deleteCurrentPhotoHandle}>
         Delete current
       </Button>
     );
@@ -119,9 +119,9 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   return (
     <SC.Wrapper>
-      <FlexWrapper spacing="3">
+      <FlexWrapper $spacing="3">
         <label htmlFor="photo" className="label">
-          <Button filled>Upload photo</Button>
+          <Button $filled>Upload photo</Button>
         </label>
         {deleteThisBtn}
         {deleteCurrentBtn}

@@ -49,7 +49,7 @@ export default function Input({ kind, config, label, isValid, isTouched }) {
         <Field name={config.name}>
           {({ field }) =>
             config.options.map((option) => (
-              <SC.RadioWrapper key={option.value} checked={option.checked}>
+              <SC.RadioWrapper key={option.value} $checked={option.checked}>
                 <SC.Input {...field} {...option} type="radio" />
                 <label htmlFor={option.id}>{option.label}</label>
               </SC.RadioWrapper>
@@ -65,7 +65,7 @@ export default function Input({ kind, config, label, isValid, isTouched }) {
   }
 
   return (
-    <SC.Wrapper className={validityClassname} type={config.type} checked={config.checked}>
+    <SC.Wrapper className={validityClassname} $type={config.type} $checked={config.checked}>
       <SC.Label htmlFor={config.id}>{label}</SC.Label>
       {input}
     </SC.Wrapper>

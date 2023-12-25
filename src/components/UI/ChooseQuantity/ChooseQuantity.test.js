@@ -36,13 +36,6 @@ describe('<ChooseQuantity />', () => {
   describe('check how renders', () => {
     it('should minus button be disabled but plus button NOT', () => {
       setUp();
-
-      expect(screen.getByTestId('ChooseQuantity-minus-icon')).toHaveAttribute(
-        'color',
-        theme.colors.light2,
-      );
-      expect(screen.getByTestId('ChooseQuantity-plus-icon')).toHaveAttribute('color', '');
-
       expect(screen.getByTestId('ChooseQuantity-minus-btn')).toBeDisabled();
       expect(screen.getByTestId('ChooseQuantity-plus-btn')).not.toBeDisabled();
     });
@@ -53,12 +46,6 @@ describe('<ChooseQuantity />', () => {
       };
       setUp(props);
 
-      expect(screen.getByTestId('ChooseQuantity-minus-icon')).toHaveAttribute('color', '');
-      expect(screen.getByTestId('ChooseQuantity-plus-icon')).toHaveAttribute(
-        'color',
-        theme.colors.light2,
-      );
-
       expect(screen.getByTestId('ChooseQuantity-minus-btn')).not.toBeDisabled();
       expect(screen.getByTestId('ChooseQuantity-plus-btn')).toBeDisabled();
     });
@@ -68,9 +55,6 @@ describe('<ChooseQuantity />', () => {
         value: 2,
       };
       setUp(props);
-
-      expect(screen.getByTestId('ChooseQuantity-minus-icon')).toHaveAttribute('color', '');
-      expect(screen.getByTestId('ChooseQuantity-plus-icon')).toHaveAttribute('color', '');
 
       expect(screen.getByTestId('ChooseQuantity-minus-btn')).not.toBeDisabled();
       expect(screen.getByTestId('ChooseQuantity-plus-btn')).not.toBeDisabled();

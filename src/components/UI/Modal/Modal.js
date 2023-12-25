@@ -176,8 +176,8 @@ export default function Modal() {
             data-testid={`Modal-${modalContent}`}
           >
             <MyIcon
-              size="medium"
-              rotation={45}
+              $size="medium"
+              $rotation={45}
               onClick={() => onSetModal('')}
               className="close-icon"
               data-testid="Modal-close-icon"

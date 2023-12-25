@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
-  ${({ variant, fontSize, theme }) => {
-    switch (variant) {
+  ${({ $variant, $fontSize, theme }) => {
+    switch ($variant) {
       case 'h1':
         return `
           font-family: ${theme.fonts.logo};
-          font-size: ${fontSize === 'big' ? '4.4rem' : '3.3rem'};
+          font-size: ${$fontSize === 'big' ? '4.4rem' : '3.3rem'};
           letter-spacing: 1px;
           text-shadow: ${theme.shadows.level2};
         `;
@@ -35,12 +35,12 @@ const StyledHeading = styled.h1`
     }
   }}
 
-  margin-top: ${({ mgTop, theme }) => (mgTop ? theme.spacings[`level${mgTop}`] : '0')};
-  text-align: ${({ align }) => align};
+  margin-top: ${({ $mgTop, theme }) => ($mgTop ? theme.spacings[`level${$mgTop}`] : '0')};
+  text-align: ${({ $align }) => $align};
 
-  ${({ mgBottom, theme }) => {
-    if (mgBottom) {
-      const level = `level${mgBottom}`;
+  ${({ $mgBottom, theme }) => {
+    if ($mgBottom) {
+      const level = `level${$mgBottom}`;
       return `
         margin-bottom: ${theme.spacings[level]};
       `;
@@ -48,9 +48,9 @@ const StyledHeading = styled.h1`
     return ``;
   }}
 
-  ${({ lineHeight, theme }) => {
-    if (lineHeight) {
-      const level = `level${lineHeight}`;
+  ${({ $lineHeight, theme }) => {
+    if ($lineHeight) {
+      const level = `level${$lineHeight}`;
       return `
         line-height: ${theme.lineHeights[level]};
       `;
@@ -60,6 +60,6 @@ const StyledHeading = styled.h1`
 `;
 
 // eslint-disable-next-line import/prefer-default-export
-export const Heading = ({ variant, ...rest }) => (
-  <StyledHeading as={variant} variant={variant} {...rest} />
+export const Heading = ({ $variant, ...rest }) => (
+  <StyledHeading as={$variant} $variant={$variant} {...rest} />
 );

@@ -63,7 +63,7 @@ const App = () => {
   }, [onFetchProfile]);
 
   let content = (
-    <FlexWrapper justify="center" mgTop="3" data-testid="App-loader">
+    <FlexWrapper $justify="center" $mgTop="3" data-testid="App-loader">
       <Loader size="big" />
     </FlexWrapper>
   );
@@ -72,9 +72,10 @@ const App = () => {
   if (userProfile === null) {
     if (!axios.defaults.headers.post['X-CSRF-Token']) {
       content = (
-        <ErrorPage info="Oops! Server connection error. Please try again later">
-          <ServerErrorImage />
-        </ErrorPage>
+        <ErrorPage
+          info="Oops! Server connection error. Please try again later"
+          icon={<ServerErrorImage />}
+        />
       );
     } else {
       routes = (
@@ -137,9 +138,10 @@ const App = () => {
   return (
     <ErrorBoundary
       fallback={
-        <ErrorPage info="Something went wrong. Please refresh the page">
-          <UnexpectedBugImage />
-        </ErrorPage>
+        <ErrorPage
+          info="Something went wrong. Please refresh the page"
+          icon={<UnexpectedBugImage />}
+        />
       }
     >
       {content}

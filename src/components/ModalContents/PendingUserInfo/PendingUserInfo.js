@@ -15,10 +15,10 @@ export default function PendingUserInfo() {
 
   return (
     <>
-      <Heading variant="h4" mgBottom="3" lineHeight="4" align="center">
+      <Heading $variant="h4" $mgBottom="3" $lineHeight="4" $align="center">
         You need to activate your account
       </Heading>
-      <FlexWrapper justify="center">
+      <FlexWrapper $justify="center">
         <Button clicked={() => onSetModal('')}>Ok</Button>
       </FlexWrapper>
     </>

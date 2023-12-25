@@ -51,13 +51,13 @@ export default function Step1(props) {
             isTouched={touched.email}
           />
           <PlainText
-            size="1"
-            mgTop="2"
-            extraMgTop="0.4rem"
-            minusMgTop
-            mgBottom="3"
-            textAlign="justify"
-            display="block"
+            $size="1"
+            $mgTop="2"
+            $extraMgTop="0.4rem"
+            $minusMgTop
+            $mgBottom="3"
+            $textAlign="justify"
+            $display="block"
           >
             We will send verification link to this email, so make sure it is correct. If you provide
             someone else&apos;s email, that person will have access to that account.
@@ -74,13 +74,13 @@ export default function Step1(props) {
             label="Hide my email address from others"
           />
           <PlainText
-            size="1"
-            mgTop="2"
-            extraMgTop="0.4rem"
-            minusMgTop
-            mgBottom="3"
-            textAlign="justify"
-            display="block"
+            $size="1"
+            $mgTop="2"
+            $extraMgTop="0.4rem"
+            $minusMgTop
+            $mgBottom="3"
+            $textAlign="justify"
+            $display="block"
           >
             Email is visible to everyone by default. You can hide it from others (it will still be
             visible to people who will place order with you)
@@ -101,13 +101,13 @@ export default function Step1(props) {
             isTouched={touched.username}
           />
           <PlainText
-            size="1"
-            mgTop="2"
-            extraMgTop="0.4rem"
-            minusMgTop
-            mgBottom="3"
-            textAlign="justify"
-            display="block"
+            $size="1"
+            $mgTop="2"
+            $extraMgTop="0.4rem"
+            $minusMgTop
+            $mgBottom="3"
+            $textAlign="justify"
+            $display="block"
           >
             Username will be visible to everyone and cannot be changed
           </PlainText>
@@ -126,9 +126,9 @@ export default function Step1(props) {
             isValid={!errors.password}
             isTouched={touched.password}
           />
-          <SC.Buttons buttonsNumber={1}>
+          <SC.Buttons $buttonsNumber={1}>
             <Button
-              filled
+              $filled
               clicked={goToNextStep}
               disabled={btnDisabled}
               data-testid="Step1-next-btn"

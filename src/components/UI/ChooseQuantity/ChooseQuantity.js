@@ -48,8 +48,8 @@ export default function ChooseQuantity(props) {
         aria-label="Decrease product quantity"
       >
         <MyIcon
-          size="small"
-          color={value <= 1 ? themeStyles.colors.light2 : ''}
+          $size="small"
+          $color={value <= 1 ? themeStyles.colors.light2 : ''}
           data-testid="ChooseQuantity-minus-icon"
         >
           <MinusIcon />
@@ -72,8 +72,8 @@ export default function ChooseQuantity(props) {
         aria-label="Increase product quantity"
       >
         <MyIcon
-          size="small"
-          color={value >= maxQuantity ? themeStyles.colors.light2 : ''}
+          $size="small"
+          $color={value >= maxQuantity ? themeStyles.colors.light2 : ''}
           data-testid="ChooseQuantity-plus-icon"
         >
           <PlusIcon />

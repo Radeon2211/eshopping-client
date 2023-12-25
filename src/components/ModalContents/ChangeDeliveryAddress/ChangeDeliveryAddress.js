@@ -140,7 +140,7 @@ export default function ChangeDeliveryAddress() {
               isValid={!errors.street}
               isTouched={touched.street}
             />
-            <SideBySide proportion="1/3">
+            <SideBySide $proportion="1/3">
               <Input
                 kind={inputKinds.INPUT}
                 config={{
@@ -186,7 +186,7 @@ export default function ChangeDeliveryAddress() {
               isValid={Boolean(!errors.country)}
               isTouched={touched.country}
             />
-            <SideBySide proportion="1/1">
+            <SideBySide $proportion="1/1">
               <Input
                 kind={inputKinds.SELECT}
                 config={{

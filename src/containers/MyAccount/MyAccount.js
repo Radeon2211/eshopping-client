@@ -62,7 +62,7 @@ export default function MyAccount() {
   }
 
   let routes = (
-    <SC.Routes extraMargin={false} data-testid="MyAccount-pending-user-routes">
+    <SC.Routes $extraMargin={false} data-testid="MyAccount-pending-user-routes">
       <Switch>
         <Route path="/my-account/data" exact component={MyData} />
         <Redirect to="/my-account/data" />
@@ -71,7 +71,7 @@ export default function MyAccount() {
   );
   if (userProfile.status === userStatuses.ACTIVE) {
     routes = (
-      <SC.Routes extraMargin data-testid="MyAccount-active-user-routes">
+      <SC.Routes $extraMargin data-testid="MyAccount-active-user-routes">
         <Switch>
           <Route path="/my-account/data" exact component={MyData} />
           <Route

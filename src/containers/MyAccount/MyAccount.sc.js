@@ -67,8 +67,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Routes = styled.div`
-  ${({ extraMargin, theme }) => {
-    if (extraMargin) {
+  ${({ $extraMargin, theme }) => {
+    if ($extraMargin) {
       return `
         margin-top: ${theme.spacings.level5};
       `;

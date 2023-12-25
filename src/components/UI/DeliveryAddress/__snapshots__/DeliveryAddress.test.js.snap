@@ -3,15 +3,8 @@
 exports[`<DeliveryAddress /> should render five <PlainText /> with correct values 1`] = `
 <DocumentFragment>
   .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
@@ -20,7 +13,7 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
   width: 100%;
 }
 
-.c0 > *:not(:last-child) {
+.c0>*:not(:last-child) {
   margin-bottom: 0.8rem;
 }
 
@@ -28,9 +21,6 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
   display: inline-block;
   font-style: normal;
   font-weight: normal;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   margin-bottom: 0;
   margin-left: 0;
@@ -44,63 +34,29 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
 
 <div
     class="c0"
-    direction="column"
-    spacing="1"
-    width="100%"
-    wrap="nowrap"
   >
     <span
       class="c1"
-      color=""
-      display="inline-block"
-      overflow="visible"
-      size="3"
-      spacing="0px"
-      transform=""
     >
       firstName lastName
     </span>
     <span
       class="c1"
-      color=""
-      display="inline-block"
-      overflow="visible"
-      size="3"
-      spacing="0px"
-      transform=""
     >
       street
     </span>
     <span
       class="c1"
-      color=""
-      display="inline-block"
-      overflow="visible"
-      size="3"
-      spacing="0px"
-      transform=""
     >
       zipCode city
     </span>
     <span
       class="c1"
-      color=""
-      display="inline-block"
-      overflow="visible"
-      size="3"
-      spacing="0px"
-      transform=""
     >
       country
     </span>
     <span
       class="c1"
-      color=""
-      display="inline-block"
-      overflow="visible"
-      size="3"
-      spacing="0px"
-      transform=""
     >
       phone
     </span>

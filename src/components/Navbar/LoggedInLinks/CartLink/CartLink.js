@@ -36,7 +36,7 @@ const CartLink = React.memo(() => {
   return (
     <SC.Link to="/cart" data-testid="CartLink">
       {quantity}
-      <MyIcon size="big">
+      <MyIcon $size="big">
         <CartIcon />
       </MyIcon>
     </SC.Link>

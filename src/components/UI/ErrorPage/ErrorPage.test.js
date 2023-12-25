@@ -7,10 +7,10 @@ import ErrorPage from './ErrorPage';
 import { ReactComponent as UnexpectedBugImage } from '../../../images/unexpected-bug.svg';
 import { ReactComponent as ServerErrorImage } from '../../../images/server-connection-error.svg';
 
-const setUp = (children, info) => {
+const setUp = (icon, info) => {
   return render(
     <ThemeProvider theme={theme}>
-      <ErrorPage info={info}>{children}</ErrorPage>
+      <ErrorPage info={info} icon={icon} />
     </ThemeProvider>,
   );
 };

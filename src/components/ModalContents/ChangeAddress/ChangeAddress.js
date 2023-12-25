@@ -69,7 +69,7 @@ export default function ChangeAddress() {
             isValid={!errors.street}
             isTouched={touched.street}
           />
-          <SideBySide proportion="1/3">
+          <SideBySide $proportion="1/3">
             <Input
               kind={inputKinds.INPUT}
               config={{

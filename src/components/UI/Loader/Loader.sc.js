@@ -1,30 +1,30 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  text-align: ${({ align }) => align};
+  text-align: ${({ $align }) => $align};
 `;
 
 export const Loader = styled.div`
   display: inline-block;
   position: relative;
 
-  ${({ size }) => {
-    if (size === 'big') {
+  ${({ $size }) => {
+    if ($size === 'big') {
       return `
         width: 7rem;
         height: 7rem;
       `;
     }
-    if (size === 'small') {
+    if ($size === 'small') {
       return `
         width: 2.5rem;
         height: 2.5rem;
       `;
     }
     return `
-        width: 4rem;
-        height: 4rem;
-      `;
+      width: 4rem;
+      height: 4rem;
+    `;
   }}
 
   & > div {
@@ -34,15 +34,15 @@ export const Loader = styled.div`
     border-radius: 50%;
     animation: rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
-    ${({ size, theme }) => {
-      if (size === 'big') {
+    ${({ $size, theme }) => {
+      if ($size === 'big') {
         return `
           width: 7rem;
           height: 7rem;
           border: 0.8rem solid ${theme.colors.blue};
         `;
       }
-      if (size === 'small') {
+      if ($size === 'small') {
         return `
           width: 2.5rem;
           height: 2.5rem;
@@ -50,10 +50,10 @@ export const Loader = styled.div`
         `;
       }
       return `
-          width: 4rem;
-          height: 4rem;
-          border: 0.5rem solid ${theme.colors.blue};
-        `;
+        width: 4rem;
+        height: 4rem;
+        border: 0.5rem solid ${theme.colors.blue};
+      `;
     }}
     border-color: ${({ theme }) => theme.colors.blue} transparent transparent transparent;
   }

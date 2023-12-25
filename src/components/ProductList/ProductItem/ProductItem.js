@@ -16,8 +16,8 @@ const ProductItem = React.memo(({ data }) => {
   let conditionNode = null;
   if (condition !== productConditions.NOT_APPLICABLE) {
     conditionNode = (
-      <PlainText size="1" mgTop="1" data-testid="ProductItem-condition">
-        <PlainText color={theme.colors.light4}>Condition:</PlainText>
+      <PlainText $size="1" $mgTop="1" data-testid="ProductItem-condition">
+        <PlainText $color={theme.colors.light4}>Condition:</PlainText>
         {` ${condition.slice(0, 1).toUpperCase()}${condition.slice(1)}`}
       </PlainText>
     );
@@ -27,7 +27,7 @@ const ProductItem = React.memo(({ data }) => {
   if (buyerQuantity >= 1) {
     buyerQuantityNode = (
       <div className="buyer-quantity-box" data-testid="ProductItem-buyer-quantity">
-        <PlainText size="1" color={theme.colors.light4} alignSelf="flex-end">
+        <PlainText $size="1" $color={theme.colors.light4} $alignSelf="flex-end">
           {buyerQuantity === 1 ? '1 person' : `${buyerQuantity} people`} bought
         </PlainText>
       </div>
@@ -36,15 +36,17 @@ const ProductItem = React.memo(({ data }) => {
 
   return (
     <Link to={`/product/${_id}`} data-testid="ProductItem">
-      <SC.Wrapper spacing="3">
-        <ProductThumbnail photo={photo} alt={name} productId={_id} width="13" height="15" />
-        <FlexWrapper direction="column">
-          <PlainText size="3">{name}</PlainText>
-          {conditionNode}
-          <PlainText size="5" mgTop="2" data-testid="ProductItem-price">
-            {formatPrice(price)}
-          </PlainText>
-          {buyerQuantityNode}
+      <SC.Wrapper>
+        <FlexWrapper $spacing="3">
+          <ProductThumbnail photo={photo} alt={name} productId={_id} width="13" height="15" />
+          <FlexWrapper $direction="column">
+            <PlainText $size="3">{name}</PlainText>
+            {conditionNode}
+            <PlainText $size="5" $mgTop="2" data-testid="ProductItem-price">
+              {formatPrice(price)}
+            </PlainText>
+            {buyerQuantityNode}
+          </FlexWrapper>
         </FlexWrapper>
       </SC.Wrapper>
     </Link>

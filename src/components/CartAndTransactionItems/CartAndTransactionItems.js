@@ -43,7 +43,7 @@ export default function CartAndTransactionItems({ items, type, isCartLoading }) 
 
   const sellerList = sellersArray.map(({ sellerUsername, items: listItem }) => (
     <SC.SingleSeller key={sellerUsername} data-testid="CartAndTransactionItems-item">
-      <PlainText size="3" display="block">
+      <PlainText $size="3" $display="block">
         <span>seller </span>
         <Link
           to={`/user/${sellerUsername}?p=1`}

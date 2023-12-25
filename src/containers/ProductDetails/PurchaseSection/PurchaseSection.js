@@ -92,8 +92,8 @@ export default function PurchaseSection(props) {
 
   let purchaseSection = (
     <>
-      <PlainText size="2">{`Quantity: ${productQuantity}`}</PlainText>
-      <Heading variant="h4" mgTop="3">
+      <PlainText $size="2">{`Quantity: ${productQuantity}`}</PlainText>
+      <Heading $variant="h4" $mgTop="3">
         You are the seller of this product
       </Heading>
     </>
@@ -105,16 +105,16 @@ export default function PurchaseSection(props) {
       givenProductInCart = cart.find((item) => item.product._id === productId);
     }
     let addToCartBtn = (
-      <Button filled stretch clicked={addToCartClickHandle} isLoading={isCartLoading}>
+      <Button $filled $stretch clicked={addToCartClickHandle} isLoading={isCartLoading}>
         add to cart
       </Button>
     );
     if (givenProductInCart?.quantity >= productQuantity) {
       addToCartBtn = (
         <Heading
-          variant="h4"
-          align="center"
-          mgBottom="2"
+          $variant="h4"
+          $align="center"
+          $mgBottom="2"
           data-testid="PurchaseSection-not-able-to-add"
         >
           You have added all pieces to&nbsp;
@@ -128,8 +128,8 @@ export default function PurchaseSection(props) {
     purchaseSection = (
       <>
         <FlexWrapper
-          align="center"
-          mgBottom="3"
+          $align="center"
+          $mgBottom="3"
           data-testid="PurchaseSection-choose-quantity-wrapper"
         >
           <ChooseQuantity
@@ -141,10 +141,13 @@ export default function PurchaseSection(props) {
             changed={inputChangeHandle}
             blured={inputBlurHandle}
           />
-          <PlainText size="2" mgLeft="1" data-testid="PurchaseSection-product-quantity">
+          <PlainText $size="2" $mgLeft="1" data-testid="PurchaseSection-product-quantity">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
             {givenProductInCart && (
-              <PlainText color={theme.colors.light4} data-testid="PurchaseSection-quantity-in-cart">
+              <PlainText
+                $color={theme.colors.light4}
+                data-testid="PurchaseSection-quantity-in-cart"
+              >
                 &nbsp;
                 {`(${givenProductInCart.quantity} in cart)`}
               </PlainText>
@@ -152,7 +155,7 @@ export default function PurchaseSection(props) {
           </PlainText>
         </FlexWrapper>
         {addToCartBtn}
-        <Button filled stretch clicked={buyNowClickHandle} isLoading={isCartLoading}>
+        <Button $filled $stretch clicked={buyNowClickHandle} isLoading={isCartLoading}>
           buy now
         </Button>
       </>

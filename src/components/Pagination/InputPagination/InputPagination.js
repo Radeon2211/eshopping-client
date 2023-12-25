@@ -92,17 +92,17 @@ export default function InputPagination({ itemQuantity, quantityPerPage }) {
           className={`arrow${currentPage > 1 ? '' : ' hide-arrow'}`}
           data-testid="InputPagination-left-arrow"
         >
-          <MyIcon size="small" rotation={180}>
+          <MyIcon $size="small" $rotation={180}>
             <ArrowIcon />
           </MyIcon>
         </Link>
         <form onSubmit={formSubmitHandle} className="form-number">
           <NumberInput name="page" size="small" changed={inputChangeHandle} value={inputValue} />
         </form>
-        <PlainText size="3" mgLeft="1" mgRight="1">
+        <PlainText $size="3" $mgLeft="1" $mgRight="1">
           of
         </PlainText>
-        <PlainText size="3" mgLeft="1" mgRight="1" data-testid="InputPagination-number-of-pages">
+        <PlainText $size="3" $mgLeft="1" $mgRight="1" data-testid="InputPagination-number-of-pages">
           {numberOfPages}
         </PlainText>
         <Link
@@ -110,7 +110,7 @@ export default function InputPagination({ itemQuantity, quantityPerPage }) {
           className={`arrow${currentPage < numberOfPages ? '' : ' hide-arrow'}`}
           data-testid="InputPagination-right-arrow"
         >
-          <MyIcon size="small">
+          <MyIcon $size="small">
             <ArrowIcon />
           </MyIcon>
         </Link>

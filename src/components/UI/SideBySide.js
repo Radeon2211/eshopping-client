@@ -8,8 +8,8 @@ SC.Wrapper = styled.div`
   display: flex;
   width: 100%;
 
-  ${({ proportion, theme }) => {
-    const [first, second] = proportion.split('/');
+  ${({ $proportion, theme }) => {
+    const [first, second] = $proportion.split('/');
     return `
       & > *:first-child {
         flex: ${first};
@@ -21,10 +21,10 @@ SC.Wrapper = styled.div`
     `;
   }}
 
-  ${({ makeVerticalWhen, theme }) => {
-    if (makeVerticalWhen) {
+  ${({ $makeVerticalWhen, theme }) => {
+    if ($makeVerticalWhen) {
       return `
-        @media only screen and (max-width: ${makeVerticalWhen / 16}em) {
+        @media only screen and (max-width: ${$makeVerticalWhen / 16}em) {
           flex-direction: column;
 
           & > *:not(:last-child) {
@@ -44,11 +44,11 @@ export default function SideBySide(props) {
 }
 
 SideBySide.defaultProps = {
-  makeVerticalWhen: undefined,
+  $makeVerticalWhen: undefined,
 };
 
 SideBySide.propTypes = {
-  proportion: PropTypes.string.isRequired,
-  makeVerticalWhen: PropTypes.number,
+  $proportion: PropTypes.string.isRequired,
+  $makeVerticalWhen: PropTypes.number,
   children: PropTypes.node.isRequired,
 };

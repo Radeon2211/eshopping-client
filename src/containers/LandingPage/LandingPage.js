@@ -28,31 +28,33 @@ export default function LandingPage() {
           <Header size="big" />
         </motion.div>
         <motion.div variants={panelItemVariants}>
-          <SC.Slogan variant="h2" mgTop="4" lineHeight="4" mgBottom="5" align="center">
-            <span>Buy and sell</span>
-            <span>whatever you want</span>
+          <SC.Slogan>
+            <Heading $variant="h2" $mgTop="4" $lineHeight="4" $mgBottom="5" $align="center">
+              <span>Buy and sell</span>
+              <span>whatever you want</span>
+            </Heading>
           </SC.Slogan>
         </motion.div>
-        <FlexWrapper spacing="3" justify="center">
+        <FlexWrapper $spacing="3" $justify="center">
           <motion.div variants={panelItemVariants}>
-            <Button size="big" clicked={() => onSetModal(modalTypes.LOGIN)}>
+            <Button $size="big" clicked={() => onSetModal(modalTypes.LOGIN)}>
               Login
             </Button>
           </motion.div>
           <motion.div variants={panelItemVariants}>
-            <Button size="big" clicked={() => onSetModal(modalTypes.SIGNUP)}>
+            <Button $size="big" clicked={() => onSetModal(modalTypes.SIGNUP)}>
               Signup
             </Button>
           </motion.div>
         </FlexWrapper>
         <motion.div variants={panelItemVariants}>
-          <Heading variant="h3" mgTop="3" mgBottom="3">
+          <Heading $variant="h3" $mgTop="3" $mgBottom="3">
             OR
           </Heading>
         </motion.div>
         <motion.div variants={panelItemVariants}>
           <Link to={defaultAppPath}>
-            <Button size="big" filled>
+            <Button $size="big" $filled>
               View the products now
             </Button>
           </Link>

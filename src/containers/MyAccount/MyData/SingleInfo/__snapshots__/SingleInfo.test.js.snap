@@ -3,20 +3,16 @@
 exports[`<SingleInfo /> check how renders should render correctly for address and with button 1`] = `
 <DocumentFragment>
   .c4 {
-  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03);
   border-radius: 1px;
   cursor: pointer;
   font-weight: 700;
   line-height: 1.2;
-  -webkit-letter-spacing: 2px;
-  -moz-letter-spacing: 2px;
-  -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
   position: relative;
   text-align: center;
   text-transform: uppercase;
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
   font-size: 1.4rem;
   padding: 0.8rem 1.2rem;
@@ -34,9 +30,6 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
   display: inline-block;
   font-style: normal;
   font-weight: normal;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   margin-bottom: 0;
   margin-left: 0;
@@ -56,41 +49,24 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
   margin-left: 0;
   width: 100%;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
   align-items: start;
 }
 
-.c0 > *:not(:last-child) {
+.c0>*:not(:last-child) {
   margin-bottom: 1.2rem;
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
@@ -99,68 +75,40 @@ exports[`<SingleInfo /> check how renders should render correctly for address an
   width: 100%;
 }
 
-.c2 > *:not(:last-child) {
+.c2>*:not(:last-child) {
   margin-bottom: 0.8rem;
 }
 
 <div
     class="c0"
     data-testid="SingleInfo-Address"
-    direction="column"
-    spacing="2"
-    width="100%"
-    wrap="nowrap"
   >
     <h4
       class="c1"
-      font-size=""
     >
       Address
     </h4>
     <div
       class="c2"
-      direction="column"
-      spacing="1"
-      width="100%"
-      wrap="nowrap"
     >
       <span
         class="c3"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="3"
-        spacing="0px"
-        transform=""
       >
         Street 1
       </span>
       <span
         class="c3"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="3"
-        spacing="0px"
-        transform=""
       >
         00-000 City
       </span>
       <span
         class="c3"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="3"
-        spacing="0px"
-        transform=""
       >
         Poland
       </span>
     </div>
     <button
       class="c4"
-      color="blue"
       data-testid="SingleInfo-Address-btn"
       type="button"
     >
@@ -176,9 +124,6 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   display: inline-block;
   font-style: normal;
   font-weight: normal;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   margin-bottom: 0;
   margin-left: 0;
@@ -198,41 +143,24 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
   margin-left: 0;
   width: 100%;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
   align-items: start;
 }
 
-.c0 > *:not(:last-child) {
+.c0>*:not(:last-child) {
   margin-bottom: 1.2rem;
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
@@ -241,50 +169,29 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   width: 100%;
 }
 
-.c2 > *:not(:last-child) {
+.c2>*:not(:last-child) {
   margin-bottom: 0.8rem;
 }
 
 <div
     class="c0"
     data-testid="SingleInfo-Contacts"
-    direction="column"
-    spacing="2"
-    width="100%"
-    wrap="nowrap"
   >
     <h4
       class="c1"
-      font-size=""
     >
       Contacts
     </h4>
     <div
       class="c2"
-      direction="column"
-      spacing="1"
-      width="100%"
-      wrap="nowrap"
     >
       <span
         class="c3"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="3"
-        spacing="0px"
-        transform=""
       >
         Email: hidden
       </span>
       <span
         class="c3"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="3"
-        spacing="0px"
-        transform=""
       >
         Phone number: hidden
       </span>
@@ -296,20 +203,16 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
 exports[`<SingleInfo /> check how renders should render correctly for contacts (both visible) and with button 1`] = `
 <DocumentFragment>
   .c4 {
-  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03);
   border-radius: 1px;
   cursor: pointer;
   font-weight: 700;
   line-height: 1.2;
-  -webkit-letter-spacing: 2px;
-  -moz-letter-spacing: 2px;
-  -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
   position: relative;
   text-align: center;
   text-transform: uppercase;
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
   font-size: 1.4rem;
   padding: 0.8rem 1.2rem;
@@ -327,9 +230,6 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   display: inline-block;
   font-style: normal;
   font-weight: normal;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   margin-bottom: 0;
   margin-left: 0;
@@ -349,41 +249,24 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
   margin-left: 0;
   width: 100%;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
   align-items: start;
 }
 
-.c0 > *:not(:last-child) {
+.c0>*:not(:last-child) {
   margin-bottom: 1.2rem;
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
@@ -392,57 +275,35 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
   width: 100%;
 }
 
-.c2 > *:not(:last-child) {
+.c2>*:not(:last-child) {
   margin-bottom: 0.8rem;
 }
 
 <div
     class="c0"
     data-testid="SingleInfo-Contacts"
-    direction="column"
-    spacing="2"
-    width="100%"
-    wrap="nowrap"
   >
     <h4
       class="c1"
-      font-size=""
     >
       Contacts
     </h4>
     <div
       class="c2"
-      direction="column"
-      spacing="1"
-      width="100%"
-      wrap="nowrap"
     >
       <span
         class="c3"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="3"
-        spacing="0px"
-        transform=""
       >
         Email: visible
       </span>
       <span
         class="c3"
-        color=""
-        display="inline-block"
-        overflow="visible"
-        size="3"
-        spacing="0px"
-        transform=""
       >
         Phone number: visible
       </span>
     </div>
     <button
       class="c4"
-      color="blue"
       data-testid="SingleInfo-Contacts-btn"
       type="button"
     >
@@ -455,20 +316,16 @@ exports[`<SingleInfo /> check how renders should render correctly for contacts (
 exports[`<SingleInfo /> check how renders should render correctly for name and with button 1`] = `
 <DocumentFragment>
   .c3 {
-  box-shadow: 0 0 3px rgba(0,0,0,0.03);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03);
   border-radius: 1px;
   cursor: pointer;
   font-weight: 700;
   line-height: 1.2;
-  -webkit-letter-spacing: 2px;
-  -moz-letter-spacing: 2px;
-  -ms-letter-spacing: 2px;
   letter-spacing: 2px;
   outline: none;
   position: relative;
   text-align: center;
   text-transform: uppercase;
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
   font-size: 1.4rem;
   padding: 0.8rem 1.2rem;
@@ -486,9 +343,6 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
   display: inline-block;
   font-style: normal;
   font-weight: normal;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   margin-bottom: 0;
   margin-left: 0;
@@ -508,59 +362,37 @@ exports[`<SingleInfo /> check how renders should render correctly for name and w
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
   margin-left: 0;
   width: 100%;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
   align-items: start;
 }
 
-.c0 > *:not(:last-child) {
+.c0>*:not(:last-child) {
   margin-bottom: 1.2rem;
 }
 
 <div
     class="c0"
     data-testid="SingleInfo-Name"
-    direction="column"
-    spacing="2"
-    width="100%"
-    wrap="nowrap"
   >
     <h4
       class="c1"
-      font-size=""
     >
       Name
     </h4>
     <span
       class="c2"
-      color=""
-      display="inline-block"
-      overflow="visible"
-      size="3"
-      spacing="0px"
-      transform=""
     >
       Ludwig von Mises
     </span>
     <button
       class="c3"
-      color="blue"
       data-testid="SingleInfo-Name-btn"
       type="button"
     >

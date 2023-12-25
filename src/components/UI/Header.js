@@ -9,8 +9,8 @@ SC.Wrapper = styled.header`
   display: flex;
 
   & .logo {
-    ${({ size }) => {
-      if (size === 'big') {
+    ${({ $size }) => {
+      if ($size === 'big') {
         return `
           width: 5.5rem;
           height: 5.5rem;
@@ -27,9 +27,9 @@ SC.Wrapper = styled.header`
 
 export default function Header({ size }) {
   return (
-    <SC.Wrapper size={size}>
+    <SC.Wrapper $size={size}>
       <img src={logo} alt="E-Shopping" className="logo" />
-      <Heading variant="h1" className="heading" fontSize={size}>
+      <Heading $variant="h1" className="heading" $fontSize={size}>
         shopping
       </Heading>
     </SC.Wrapper>

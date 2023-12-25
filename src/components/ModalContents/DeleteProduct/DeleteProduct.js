@@ -25,17 +25,17 @@ export default function DeleteProduct() {
   return (
     <>
       <Heading
-        variant="h4"
-        mgBottom="3"
-        lineHeight="4"
-        align="center"
+        $variant="h4"
+        $mgBottom="3"
+        $lineHeight="4"
+        $align="center"
         data-testid="DeleteProduct-heading"
       >
         Are you sure to delete &quot;{productDetails?.name}&quot;?
       </Heading>
-      <FlexWrapper justify="center" spacing="3">
+      <FlexWrapper $justify="center" $spacing="3">
         <Button clicked={() => onSetModal('')}>Cancel</Button>
-        <Button filled color="red" clicked={() => onDeleteProduct(productDetails?._id, history)}>
+        <Button $filled $color="red" clicked={() => onDeleteProduct(productDetails?._id, history)}>
           Delete
         </Button>
       </FlexWrapper>

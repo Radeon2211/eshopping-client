@@ -54,19 +54,19 @@ export default function Transaction() {
 
     content = (
       <>
-        <Heading variant="h3">Transaction</Heading>
-        <SideBySide proportion="3/1" makeVerticalWhen={1200} data-testid="Transaction-content">
-          <FlexWrapper direction="column" align="stretch" spacing="3">
+        <Heading $variant="h3">Transaction</Heading>
+        <SideBySide $proportion="3/1" $makeVerticalWhen={1200} data-testid="Transaction-content">
+          <FlexWrapper $direction="column" $align="stretch" $spacing="3">
             <DeliveryAddressSection onSetModal={onSetModal} />
             <PlainPanel>
-              <Heading variant="h4">Products</Heading>
+              <Heading $variant="h4">Products</Heading>
               <CartAndTransactionItems items={transaction} type={itemTypes.TRANSACTION} />
             </PlainPanel>
           </FlexWrapper>
           <StickyPanel>
-            <FlexWrapper direction="column" spacing="2">
+            <FlexWrapper $direction="column" $spacing="2">
               <ToPayInfo value={roundedToPayValue} />
-              <Button filled clicked={() => onSetModal(modalTypes.BUY_PRODUCTS)}>
+              <Button $filled clicked={() => onSetModal(modalTypes.BUY_PRODUCTS)}>
                 I buy and pay
               </Button>
             </FlexWrapper>

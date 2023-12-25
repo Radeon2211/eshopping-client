@@ -31,7 +31,7 @@ export default function MyProducts({ userProfile, location }) {
   return (
     <>
       <MetaDescriptor title="Your offers - E-Shopping" description="Check out your offers" />
-      <Heading variant="h3">My products</Heading>
+      <Heading $variant="h3">My products</Heading>
       <ProductsAndFilters page={productPages.MY_PRODUCTS} />
     </>
   );

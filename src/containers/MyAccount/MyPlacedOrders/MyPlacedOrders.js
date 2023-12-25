@@ -25,7 +25,7 @@ export default function MyPlacedOrders() {
         title="Your placed orders - E-Shopping"
         description="Check out orders that you placed"
       />
-      <Heading variant="h3">My placed orders</Heading>
+      <Heading $variant="h3">My placed orders</Heading>
       <Orders orders={placedOrders} type={orderTypes.PLACED_ORDERS} />
     </SC.OrdersWrapper>
   );

@@ -36,7 +36,7 @@ export default function OrderDetails() {
   let content = <Loader align="center" />;
   if (orderDetails === null) {
     content = (
-      <Heading variant="h4" align="center" lineHeight="4" data-testid="OrderDetails-error">
+      <Heading $variant="h4" $align="center" $lineHeight="4" data-testid="OrderDetails-error">
         There is a problem to fetch order details or given order does not exist
       </Heading>
     );
@@ -45,21 +45,21 @@ export default function OrderDetails() {
 
     const generalInfoSection = (
       <div data-testid="OrderDetails-general-info-section">
-        <Heading variant="h4" mgBottom="2">
+        <Heading $variant="h4" $mgBottom="2">
           General info
         </Heading>
-        <FlexWrapper direction="column" spacing="1">
+        <FlexWrapper $direction="column" $spacing="1">
           <div>
-            <PlainText weight="700">Order number:&nbsp;</PlainText>
-            <PlainText size="3">{_id}</PlainText>
+            <PlainText $weight="700">Order number:&nbsp;</PlainText>
+            <PlainText $size="3">{_id}</PlainText>
           </div>
           <div>
-            <PlainText weight="700">Transaction date:&nbsp;</PlainText>
-            <PlainText size="3">{formatOrderDate(createdAt)}</PlainText>
+            <PlainText $weight="700">Transaction date:&nbsp;</PlainText>
+            <PlainText $size="3">{formatOrderDate(createdAt)}</PlainText>
           </div>
           <div>
-            <PlainText weight="700">Buyer:&nbsp;</PlainText>
-            <PlainText size="3">
+            <PlainText $weight="700">Buyer:&nbsp;</PlainText>
+            <PlainText $size="3">
               {buyer ? (
                 <Link to={`/user/${buyer.username}?p=1`} data-testid="OrderDetails-buyer-link">
                   <GreenText>{buyer.username}</GreenText>
@@ -75,26 +75,26 @@ export default function OrderDetails() {
 
     const infoAboutSellerSection = (
       <div data-testid="OrderDetails-info-about-seller">
-        <Heading variant="h4" mgBottom="2">
+        <Heading $variant="h4" $mgBottom="2">
           Info about seller
         </Heading>
         {seller ? (
-          <FlexWrapper direction="column" spacing="1" data-test="OrderDetails-seller-info">
+          <FlexWrapper $direction="column" $spacing="1" data-test="OrderDetails-seller-info">
             <div data-testid="OrderDetails-seller-username">
-              <PlainText weight="700">Username:&nbsp;</PlainText>
-              <PlainText size="3">
+              <PlainText $weight="700">Username:&nbsp;</PlainText>
+              <PlainText $size="3">
                 <Link to={`/user/${seller.username}?p=1`} data-testid="OrderDetails-seller-link">
                   <GreenText>{seller.username}</GreenText>
                 </Link>
               </PlainText>
             </div>
             <div data-testid="OrderDetails-seller-email">
-              <PlainText weight="700">Email:&nbsp;</PlainText>
-              <PlainText size="3">{seller.email}</PlainText>
+              <PlainText $weight="700">Email:&nbsp;</PlainText>
+              <PlainText $size="3">{seller.email}</PlainText>
             </div>
             <div data-testid="OrderDetails-seller-phone">
-              <PlainText weight="700">Phone:&nbsp;</PlainText>
-              <PlainText size="3">{seller.phone}</PlainText>
+              <PlainText $weight="700">Phone:&nbsp;</PlainText>
+              <PlainText $size="3">{seller.phone}</PlainText>
             </div>
           </FlexWrapper>
         ) : (
@@ -105,7 +105,7 @@ export default function OrderDetails() {
 
     const deliveryAddressSection = (
       <div data-testid="OrderDetails-delivery-address-section">
-        <Heading variant="h4" mgBottom="2">
+        <Heading $variant="h4" $mgBottom="2">
           Delivery address
         </Heading>
         <DeliveryAddress data={deliveryAddress} />
@@ -114,17 +114,17 @@ export default function OrderDetails() {
 
     const productsSection = (
       <>
-        <Heading variant="h4" mgTop="3">
+        <Heading $variant="h4" $mgTop="3">
           Products
         </Heading>
         {products.map((product) => (
           <TransactionAndOrderProdItem key={product._id} data={product} orderId={_id} />
         ))}
-        <PlainText display="block" mgTop="3" textAlign="right">
-          <PlainText color={theme.colors.light4} spacing="1px" mgRight="1">
+        <PlainText $display="block" $mgTop="3" $textAlign="right">
+          <PlainText $color={theme.colors.light4} $spacing="1px" $mgRight="1">
             TOTAL
           </PlainText>
-          <PlainText size="5">{formatPrice(overallPrice)}</PlainText>
+          <PlainText $size="5">{formatPrice(overallPrice)}</PlainText>
         </PlainText>
       </>
     );
@@ -132,7 +132,7 @@ export default function OrderDetails() {
     content = (
       <SC.Wrapper>
         <PlainPanel>
-          <FlexWrapper direction="column" spacing="3">
+          <FlexWrapper $direction="column" $spacing="3">
             {generalInfoSection}
             {infoAboutSellerSection}
             {deliveryAddressSection}

@@ -8,12 +8,12 @@ export const Wrapper = styled.div`
   text-align: left;
   width: 65rem;
 
-  ${({ height }) => {
-    if (height) {
+  ${({ $height }) => {
+    if ($height) {
       return `
         & .formik-form {
           position: relative;
-          height: ${height}rem;
+          height: ${$height}rem;
         }
       `;
     }

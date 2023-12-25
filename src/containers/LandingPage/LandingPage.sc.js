@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import Heading from '../../components/UI/Heading/Heading';
 import theme from '../../styled/theme';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -63,9 +62,11 @@ export const CentralPanel = styled(motion.div)`
   }
 `;
 
-export const Slogan = styled(Heading)`
-  display: flex;
-  flex-direction: column;
+export const Slogan = styled.div`
+  & > h2 {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const panelVariants = {

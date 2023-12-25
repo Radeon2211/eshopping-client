@@ -41,7 +41,7 @@ export default function Step3(props) {
           exit="hidden"
           data-testid="Step3"
         >
-          <PlainText size="1" mgBottom="3" textAlign="justify">
+          <PlainText $size="1" $mgBottom="3" $textAlign="justify">
             These data will be visible only to user you will place order with (and you can change it
             to specific order)
           </PlainText>
@@ -61,7 +61,7 @@ export default function Step3(props) {
             isValid={!errors.street}
             isTouched={touched.street}
           />
-          <SideBySide proportion="1/3">
+          <SideBySide $proportion="1/3">
             <Input
               kind={inputKinds.INPUT}
               config={{
@@ -107,16 +107,16 @@ export default function Step3(props) {
             isValid={Boolean(!errors.country || values.country)}
             isTouched={touched.country}
           />
-          <PlainText size="1" mgBottom="3" textAlign="justify">
+          <PlainText $size="1" $mgBottom="3" $textAlign="justify">
             We will send verification link to email provided by you. It will be active for 10
             minutes, but you will be able to resend the activation link later. If you do not
             activate your account within 1 hour, account will be deleted permanently
           </PlainText>
-          <SC.Buttons buttonsNumber={2}>
+          <SC.Buttons $buttonsNumber={2}>
             <Button clicked={goToPrevStep} data-testid="Step3-previous-btn">
               Previous
             </Button>
-            <Button type="submit" filled disabled={btnDisabled || isFormLoading}>
+            <Button type="submit" $filled disabled={btnDisabled || isFormLoading}>
               Finish
             </Button>
           </SC.Buttons>
