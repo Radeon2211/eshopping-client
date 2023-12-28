@@ -218,7 +218,7 @@ export default function PriceSlider({ dispatchFilters }) {
           />
         </div>
       </SC.LabelAndInputs>
-      <SC.Slider positions={positions}>
+      <SC.Slider $positions={positions}>
         <input
           type="range"
           name="minPrice"

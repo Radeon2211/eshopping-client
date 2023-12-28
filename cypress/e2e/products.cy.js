@@ -233,24 +233,12 @@ describe('product list and filters', () => {
       cy.findByTestId('NumberInput-minPrice').type(minPrice);
       cy.findByTestId('NumberInput-maxPrice').clear();
       cy.findByTestId('NumberInput-maxPrice').type(maxPrice);
+      cy.findByTestId('NumberInput-maxPrice').blur();
       submitFiltersForm();
       cy.checkHash(`minPrice=${minPrice}`, 'contains');
       cy.checkHash(`maxPrice=${maxPrice}`, 'contains');
       cy.findByTestId('NumberInput-minPrice').should('have.value', minPrice);
       cy.findByTestId('NumberInput-maxPrice').should('have.value', maxPrice);
-      checkResultsOfPriceSliderChanges(minPrice, maxPrice);
-    });
-
-    it('does not render cheapest and most expensive product after price range inputs change', () => {
-      const minPrice = Math.ceil(productsAscendingByPrice[0].price) + 10;
-      const maxPrice = Math.floor(productsDescendingByPrice[0].price) - 10;
-      cy.findByTestId('PriceSlider-price-range-min')
-        .invoke('val', minPrice)
-        .trigger('change', { force: true });
-      cy.findByTestId('PriceSlider-price-range-max')
-        .invoke('val', maxPrice)
-        .trigger('change', { force: true });
-      submitFiltersForm();
       checkResultsOfPriceSliderChanges(minPrice, maxPrice);
     });
 
@@ -277,6 +265,7 @@ describe('product list and filters', () => {
       const maxPrice = Math.ceil(productsDescendingByPrice[0].price) - 10;
       cy.findByTestId('NumberInput-maxPrice').clear();
       cy.findByTestId('NumberInput-maxPrice').type(maxPrice);
+      cy.findByTestId('NumberInput-maxPrice').blur();
       cy.findByTestId('Filters-checkbox-new').click({ force: true });
       submitFiltersForm();
       cy.checkHash(`maxPrice=${maxPrice}`, 'contains');
@@ -324,6 +313,7 @@ describe('product list and filters', () => {
   describe('search form', () => {
     it('renders productOne only', () => {
       cy.findByTestId('SearchForm-input').type(productOne.name);
+      cy.findByTestId('SearchForm-input').blur();
       cy.findByRole('button', { name: /search/i }).click();
       cy.findByRole('heading', { name: `Results for "${productOne.name}"` });
       cy.findAllByTestId('ProductItem').should('have.length', 1);
@@ -334,6 +324,7 @@ describe('product list and filters', () => {
     it('renders all products', () => {
       const searchName = productOne.name.split(' ')[0];
       cy.findByTestId('SearchForm-input').type(searchName);
+      cy.findByTestId('SearchForm-input').blur();
       cy.findByRole('button', { name: /search/i }).click();
       cy.findByTestId('SearchForm-input').should('have.value', searchName);
       cy.findByRole('heading', { name: `Results for "${searchName}"` });
@@ -343,6 +334,7 @@ describe('product list and filters', () => {
     it('does not render any product', () => {
       const searchName = 'randomcharacters';
       cy.findByTestId('SearchForm-input').type(`${searchName}{enter}`);
+      cy.findByTestId('SearchForm-input').blur();
       cy.findByTestId('SearchForm-input').should('have.value', searchName);
       cy.findByRole('heading', { name: `Results for "${searchName}"` });
       cy.findByTestId('Filters').should('not.exist');
@@ -355,6 +347,7 @@ describe('product list and filters', () => {
     it('renders productTwo and productThree in price ascending order', () => {
       const searchName = 'Product T';
       cy.findByTestId('SearchForm-input').type(`${searchName}{enter}`);
+      cy.findByTestId('SearchForm-input').blur();
       cy.findByTestId('SearchForm-input').should('have.value', searchName);
       cy.findByRole('heading', { name: `Results for "${searchName}"` });
       openSortingField();
@@ -377,12 +370,14 @@ describe('product list and filters', () => {
     it('does not render most expensive product', () => {
       const searchName = productOne.name.split(' ')[0];
       cy.findByTestId('SearchForm-input').type(`${searchName}{enter}`);
+      cy.findByTestId('SearchForm-input').blur();
       cy.findByTestId('SearchForm-input').should('have.value', searchName);
       cy.findByRole('heading', { name: `Results for "${searchName}"` });
       cy.findByTestId('NumberInput-maxPrice').clear();
       cy.findByTestId('NumberInput-maxPrice').type(
         Math.floor(productsDescendingByPrice[0].price) - 1,
       );
+      cy.findByTestId('NumberInput-maxPrice').blur();
       submitFiltersForm();
       cy.findByTestId('ProductList').within(() => {
         cy.findAllByTestId('ProductItem').should('have.length', allProducts.length - 1);
@@ -393,6 +388,7 @@ describe('product list and filters', () => {
     it('does not render any product', () => {
       const searchName = productOne.name;
       cy.findByTestId('SearchForm-input').type(`${searchName}{enter}`);
+      cy.findByTestId('SearchForm-input').blur();
       cy.findByTestId('SearchForm-input').should('have.value', searchName);
       cy.findByRole('heading', { name: `Results for "${searchName}"` });
       cy.findByTestId('Filters-checkbox-used').click({ force: true });

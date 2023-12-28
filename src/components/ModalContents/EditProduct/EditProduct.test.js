@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import userEvent from '@testing-library/user-event';
 import EditProduct from './EditProduct';
 import theme from '../../../styled/theme';
 import { clickAtSubmitButton, createProductItem } from '../../../shared/testUtility/testUtility';
@@ -337,7 +338,8 @@ describe('<EditProduct />', () => {
         });
 
         it('should call editProduct() with changed photo only (photo is changed)', async () => {
-          const { store, container } = setUp();
+          const { store } = setUp();
+          const user = userEvent.setup();
 
           const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
           const dataToPass = {
@@ -347,11 +349,15 @@ describe('<EditProduct />', () => {
           await waitFor(() => {
             fireEvent.change(uploadPhotoInput, { target: { files: [defaultNewPhoto] } });
           });
-          await waitFor(() => {});
 
-          await clickAtSubmitButton(container);
+          // used userEvent instead of clickAtSubmitButton(container), because it's working here only
+          await waitFor(() => {
+            user.click(screen.getByRole('button', { name: /edit/i }));
+          });
 
-          expect(store.dispatch).toHaveBeenCalledWith(actions.editProduct(dataToPass, defaultId));
+          await waitFor(() => {
+            expect(store.dispatch).toHaveBeenCalledWith(actions.editProduct(dataToPass, defaultId));
+          });
         });
       });
 

@@ -51,6 +51,13 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   }),
 }));
 
+const waitUntilSubmitButtonIsActive = async () => {
+  await waitFor(async () => {
+    const button = await screen.findByRole('button', { name: /add an offer/i });
+    expect(button).not.toBeDisabled();
+  });
+};
+
 afterEach(cleanup);
 
 describe('<AddProduct />', () => {
@@ -141,6 +148,7 @@ describe('<AddProduct />', () => {
         expect(conditionNotAppplicableInput).not.toBeChecked();
         expect(descriptionInput.value).toEqual(defaultNewDescription);
 
+        await waitUntilSubmitButtonIsActive();
         await clickAtSubmitButton(container);
         expect(store.dispatch).toHaveBeenNthCalledWith(
           1,
@@ -325,6 +333,7 @@ describe('<AddProduct />', () => {
           expect(nameInput.value).toEqual(newName);
           expect(priceInput.value).toEqual(defaultNewPrice.toString());
 
+          await waitUntilSubmitButtonIsActive();
           await clickAtSubmitButton(container);
 
           expect(store.dispatch).toHaveBeenCalledWith(
@@ -357,6 +366,7 @@ describe('<AddProduct />', () => {
           expect(nameInput.value).toEqual(defaultNewName);
           expect(priceInput.value).toEqual(newPrice.toString());
 
+          await waitUntilSubmitButtonIsActive();
           await clickAtSubmitButton(container);
 
           expect(store.dispatch).toHaveBeenCalledWith(
@@ -389,6 +399,7 @@ describe('<AddProduct />', () => {
           expect(nameInput.value).toEqual(defaultNewName);
           expect(priceInput.value).toEqual(newPrice.toString());
 
+          await waitUntilSubmitButtonIsActive();
           await clickAtSubmitButton(container);
 
           expect(store.dispatch).toHaveBeenCalledWith(

@@ -49,10 +49,12 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.getByRole('button', { name: /delete/i }));
+
+        await waitFor(() => {
+          expect(screen.getByRole('button', { name: /delete/i }));
+        });
         expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
           'Name: boots.jpgSize: 6 MB',
@@ -72,17 +74,19 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo1] } });
         });
-        await waitFor(() => {});
 
-        expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo1);
+        await waitFor(() => {
+          expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo1);
+        });
 
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo2] } });
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.getByRole('button', { name: /delete/i }));
+        await waitFor(() => {
+          expect(screen.getByRole('button', { name: /delete/i }));
+        });
         expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
           'Name: photo2.jpgSize: 6 MB',
@@ -101,24 +105,23 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
-        await waitFor(() => {});
 
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
 
         await waitFor(() => {
           fireEvent.click(screen.getByRole('button', { name: /delete/i }));
         });
-        await waitFor(() => {});
 
         expect(setFieldValueFn).toHaveBeenNthCalledWith(2, 'photo', null);
 
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.getByRole('button', { name: /delete/i }));
+        await waitFor(() => {
+          expect(screen.getByRole('button', { name: /delete/i }));
+        });
         expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
           'Name: boots.jpgSize: 6 MB',
@@ -140,7 +143,6 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [invalidPhoto] } });
         });
-        await waitFor(() => {});
 
         expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', productPhotoFieldValues.ERROR);
         expect(screen.getByText(/file extension is not valid/i));
@@ -151,10 +153,11 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [validPhoto] } });
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.getByRole('button', { name: /delete/i }));
+        await waitFor(() => {
+          expect(screen.getByRole('button', { name: /delete/i }));
+        });
         expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
         expect(screen.queryByText(/file extension is not valid/i)).not.toBeInTheDocument();
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
@@ -175,7 +178,6 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
         expect(screen.getByRole('button', { name: /^delete$/i }));
@@ -198,10 +200,11 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.getByRole('button', { name: /delete/i }));
+        await waitFor(() => {
+          expect(screen.getByRole('button', { name: /delete/i }));
+        });
         expect(screen.queryByRole('button', { name: /delete current/i })).not.toBeInTheDocument();
         expect(screen.getByText(/File extension is not valid \(JPG and PNG only\)/i));
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
@@ -219,10 +222,11 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.click(screen.getByRole('button', { name: /delete current/i }));
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        await waitFor(() => {
+          expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        });
         expect(screen.getByTestId('UploadPhoto-default-preview'));
         expect(setFieldValueFn).toHaveBeenCalledWith('photo', productPhotoFieldValues.DELETED);
       });
@@ -236,10 +240,11 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [] } });
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        await waitFor(() => {
+          expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        });
         expect(screen.getByTestId('UploadPhoto-default-preview'));
         expect(setFieldValueFn).not.toHaveBeenCalled();
       });
@@ -255,20 +260,25 @@ describe('<UploadPhoto />', () => {
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
-        await waitFor(() => {});
 
-        expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
-        expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
-          'Name: boots.jpgSize: 6 MB',
-        );
+        await waitFor(() => {
+          expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
+        });
+
+        await waitFor(() => {
+          expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
+            'Name: boots.jpgSize: 6 MB',
+          );
+        });
 
         await waitFor(() => {
           fireEvent.click(screen.getByRole('button', { name: /delete/i }));
         });
-        await waitFor(() => {});
 
         expect(screen.getByRole('button', { name: /upload photo/i }));
-        expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        await waitFor(() => {
+          expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
+        });
         expect(screen.getByTestId('UploadPhoto-default-preview'));
         expect(setFieldValueFn).toHaveBeenNthCalledWith(2, 'photo', null);
       });

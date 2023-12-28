@@ -8,7 +8,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
+import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -43,6 +43,7 @@ const setUp = (username, status) => {
       </Router>,
     ),
     history,
+    user: userEvent.setup({ pointerEventsCheck: PointerEventsCheckLevel.Never }),
   };
 };
 
@@ -61,21 +62,21 @@ describe('<LoggedInLinks />', () => {
     });
 
     it('should open <Dropdown /> after clicking at user box and close after clicking outside <Dropdown />', async () => {
-      setUp('username', userStatuses.ACTIVE);
+      const { user } = setUp('username', userStatuses.ACTIVE);
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
 
       fireEvent.click(screen.getByTestId('LoggedInLinks-user-box'));
       expect(screen.getByTestId('Dropdown')).toBeInTheDocument();
 
-      act(() => {
-        userEvent.click(document.body);
+      await act(async () => {
+        await user.click(document.body);
       });
       await waitForElementToBeRemoved(screen.queryByTestId('Dropdown'));
     });
 
     it('should not close <Dropdown /> after clicking at <Dropdown />', async () => {
-      setUp('username', userStatuses.ACTIVE);
+      const { user } = setUp('username', userStatuses.ACTIVE);
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
 
@@ -83,7 +84,7 @@ describe('<LoggedInLinks />', () => {
       const dropdown = screen.getByTestId('Dropdown');
       expect(dropdown).toBeInTheDocument();
 
-      userEvent.click(dropdown, {}, { skipPointerEventsCheck: true });
+      await user.click(dropdown);
       expect(dropdown).toBeInTheDocument();
     });
   });

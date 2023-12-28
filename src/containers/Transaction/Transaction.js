@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
@@ -17,6 +17,7 @@ import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 export default function Transaction() {
   const history = useHistory();
+  const blockGoingToCartRef = useRef(false);
 
   const transaction = useSelector((state) => state.auth.transaction);
 
@@ -32,12 +33,13 @@ export default function Transaction() {
 
   useEffect(() => {
     scrollToTop();
-    if (!transaction || transaction?.length <= 0) {
+    if ((!transaction || transaction?.length <= 0) && !blockGoingToCartRef.current) {
       history.replace('/cart');
     }
     const unlisten = history.listen((location) => {
       if (location.pathname !== '/transaction') {
         onSetTransaction(undefined);
+        blockGoingToCartRef.current = true;
       }
     });
     return () => {

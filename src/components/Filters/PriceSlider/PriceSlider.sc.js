@@ -16,7 +16,7 @@ export const LabelAndInputs = styled.div`
   }
 `;
 
-export const Slider = styled.div.attrs(({ positions: { left, right } }) => ({
+export const Slider = styled.div.attrs(({ $positions: { left, right } }) => ({
   left,
   right,
 }))`

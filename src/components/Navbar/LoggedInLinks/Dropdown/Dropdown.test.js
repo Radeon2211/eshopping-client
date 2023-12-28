@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import { ThemeProvider } from 'styled-components';
-import userEvent from '@testing-library/user-event';
+import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';
 import theme from '../../../../styled/theme';
 import Dropdown from './Dropdown';
 import { modalTypes } from '../../../../shared/constants';
@@ -37,10 +37,9 @@ const setUp = (isVisible, closed = jest.fn()) => {
     ),
     store,
     history,
+    user: userEvent.setup({ pointerEventsCheck: PointerEventsCheckLevel.Never }),
   };
 };
-
-afterEach(cleanup);
 
 describe('<Dropdown />', () => {
   describe('check how renders', () => {
@@ -86,27 +85,27 @@ describe('<Dropdown />', () => {
   });
 
   describe('check closing mechanism', () => {
-    it('should call closed after clicking outside if isVisible is true', () => {
+    it('should call closed after clicking outside if isVisible is true', async () => {
       const closedFn = jest.fn();
-      setUp(true, closedFn);
+      const { user } = setUp(true, closedFn);
 
-      userEvent.click(document.body);
+      await user.click(document.body);
       expect(closedFn).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT call closed after clicking outside if isVisible is false', () => {
+    it('should NOT call closed after clicking outside if isVisible is false', async () => {
       const closedFn = jest.fn();
-      setUp(false, closedFn);
+      const { user } = setUp(false, closedFn);
 
-      userEvent.click(document.body);
+      await user.click(document.body);
       expect(closedFn).not.toHaveBeenCalled();
     });
 
-    it('should NOT call closed after clicking at <Dropdown />', () => {
+    it('should NOT call closed after clicking at <Dropdown />', async () => {
       const closedFn = jest.fn();
-      setUp(true, closedFn);
+      const { user } = setUp(true, closedFn);
 
-      userEvent.click(screen.getByTestId('Dropdown'), {}, { skipPointerEventsCheck: true });
+      await user.click(screen.getByTestId('Dropdown'), {}, { skipPointerEventsCheck: true });
       expect(closedFn).not.toHaveBeenCalled();
     });
   });

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import thunk from 'redux-thunk';
 import { HashRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -21,7 +21,7 @@ const reduxDevToolsEnhancer =
 
 const store = createStore(rootReducer, reduxDevToolsEnhancer(applyMiddleware(thunk)));
 
-export const app = (
+const app = (
   <Provider store={store}>
     <Router>
       <ThemeProvider theme={theme}>
@@ -32,8 +32,8 @@ export const app = (
   </Provider>
 );
 
-export const rootElement = document.getElementById('root');
-
-ReactDOM.render(app, rootElement);
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+root.render(app);
 
 serviceWorker.register();

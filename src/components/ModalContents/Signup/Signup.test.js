@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   render,
-  cleanup,
   screen,
   fireEvent,
   waitFor,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 import selectEvent from 'react-select-event';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -78,42 +78,42 @@ const defaultDataToPass = {
 };
 
 const fillEmail = async (value = defaultNewEmail) => {
-  const emailInput = screen.getByTestId('Step1-email');
+  const emailInput = await screen.findByTestId('Step1-email');
   await waitFor(() => {
     fireEvent.input(emailInput, { target: { value } });
   });
 };
 
 const clickHideEmail = async () => {
-  const hideEmailCheckbox = screen.getByTestId('Step1-hideEmail');
+  const hideEmailCheckbox = await screen.findByTestId('Step1-hideEmail');
   await waitFor(() => {
     fireEvent.click(hideEmailCheckbox);
   });
 };
 
 const fillUsername = async (value = defaultNewUsername) => {
-  const usernameInput = screen.getByTestId('Step1-username');
+  const usernameInput = await screen.findByTestId('Step1-username');
   await waitFor(() => {
     fireEvent.input(usernameInput, { target: { value } });
   });
 };
 
 const fillPassword = async (value = defaultNewPassword) => {
-  const passwordInput = screen.getByTestId('Step1-password');
+  const passwordInput = await screen.findByTestId('Step1-password');
   await waitFor(() => {
     fireEvent.input(passwordInput, { target: { value } });
   });
 };
 
 const fillFirstName = async (value = defaultNewFirstName) => {
-  const firstNameInput = screen.getByTestId('Step2-firstName');
+  const firstNameInput = await screen.findByTestId('Step2-firstName');
   await waitFor(() => {
     fireEvent.input(firstNameInput, { target: { value } });
   });
 };
 
 const fillLastName = async (value = defaultNewLastName) => {
-  const lastNameInput = screen.getByTestId('Step2-lastName');
+  const lastNameInput = await screen.findByTestId('Step2-lastName');
   await waitFor(() => {
     fireEvent.input(lastNameInput, { target: { value } });
   });
@@ -127,35 +127,35 @@ const choosePhonePrefix = async (label = defaultNewPhonePrefixLabel) => {
 };
 
 const fillPhoneNumber = async (value = defaultNewPhoneNumber) => {
-  const phoneNumberInput = screen.getByTestId('Step2-phoneNumber');
+  const phoneNumberInput = await screen.findByTestId('Step2-phoneNumber');
   await waitFor(() => {
     fireEvent.input(phoneNumberInput, { target: { value } });
   });
 };
 
 const clickHidePhone = async () => {
-  const hidePhoneCheckbox = screen.getByTestId('Step2-hidePhone');
+  const hidePhoneCheckbox = await screen.findByTestId('Step2-hidePhone');
   await waitFor(() => {
     fireEvent.click(hidePhoneCheckbox);
   });
 };
 
 const fillStreet = async (value = defaultNewStreet) => {
-  const streetInput = screen.getByTestId('Step3-street');
+  const streetInput = await screen.findByTestId('Step3-street');
   await waitFor(() => {
     fireEvent.input(streetInput, { target: { value } });
   });
 };
 
 const fillZipCode = async (value = defaultNewZipCode) => {
-  const zipCodeInput = screen.getByTestId('Step3-zipCode');
+  const zipCodeInput = await screen.findByTestId('Step3-zipCode');
   await waitFor(() => {
     fireEvent.input(zipCodeInput, { target: { value } });
   });
 };
 
 const fillCity = async (value = defaultNewCity) => {
-  const cityInput = screen.getByTestId('Step3-city');
+  const cityInput = await screen.findByTestId('Step3-city');
   await waitFor(() => {
     fireEvent.input(cityInput, { target: { value } });
   });
@@ -170,13 +170,13 @@ const chooseCountry = async (label = defaultNewCountry) => {
 
 const goToStep2 = async () => {
   await waitFor(() => {
-    fireEvent.click(screen.getByTestId('Step1-next-btn'));
+    userEvent.click(screen.getByTestId('Step1-next-btn'));
   });
 };
 
 const goToStep3 = async () => {
   await waitFor(() => {
-    fireEvent.click(screen.getByTestId('Step2-next-btn'));
+    userEvent.click(screen.getByTestId('Step2-next-btn'));
   });
 };
 
@@ -217,8 +217,6 @@ const fillEntireForm = async (submit = false, container) => {
   await fillStep3(submit, container);
 };
 
-afterEach(cleanup);
-
 describe('<Signup />', () => {
   describe('check form', () => {
     const defaultEmail = '';
@@ -233,8 +231,10 @@ describe('<Signup />', () => {
 
     it('tests default values, focus and values after change', async () => {
       setUp();
+      const user = userEvent.setup();
+
       // Step1
-      const emailInput = screen.getByTestId('Step1-email');
+      const emailInput = await screen.findByTestId('Step1-email');
       const hideEmailCheckbox = screen.getByTestId('Step1-hideEmail');
       const usernameInput = screen.getByTestId('Step1-username');
       const passwordInput = screen.getByTestId('Step1-password');
@@ -253,11 +253,11 @@ describe('<Signup />', () => {
       expect(passwordInput.value).toEqual(defaultNewPassword);
 
       await waitFor(() => {
-        fireEvent.click(screen.getByTestId('Step1-next-btn'));
+        user.click(screen.getByTestId('Step1-next-btn'));
       });
 
       // Step2
-      const firstNameInput = screen.getByTestId('Step2-firstName');
+      const firstNameInput = await screen.findByTestId('Step2-firstName');
       const lastNameInput = screen.getByTestId('Step2-lastName');
       const phoneNumberInput = screen.getByTestId('Step2-phoneNumber');
       const hidePhoneCheckbox = screen.getByTestId('Step2-hidePhone');
@@ -277,10 +277,12 @@ describe('<Signup />', () => {
       expect(screen.getByText(defaultNewPhonePrefixLabel)).toBeInTheDocument();
       expect(hidePhoneCheckbox).toBeChecked();
 
-      fireEvent.click(screen.getByTestId('Step2-next-btn'));
+      await waitFor(() => {
+        user.click(screen.getByTestId('Step2-next-btn'));
+      });
 
       // Step3
-      const streetInput = screen.getByTestId('Step3-street');
+      const streetInput = await screen.findByTestId('Step3-street');
       const zipCodeInput = screen.getByTestId('Step3-zipCode');
       const cityInput = screen.getByTestId('Step3-city');
 
@@ -300,6 +302,7 @@ describe('<Signup />', () => {
 
     it('should go back to Step1 from Step3', async () => {
       setUp();
+      const user = userEvent.setup();
 
       await fillEntireForm();
       await waitForElementToBeRemoved(screen.queryByTestId('Step2'));
@@ -308,7 +311,7 @@ describe('<Signup />', () => {
       expect(screen.queryByTestId('Step3')).toBeInTheDocument();
 
       await waitFor(() => {
-        fireEvent.click(screen.getByTestId('Step3-previous-btn'));
+        user.click(screen.getByTestId('Step3-previous-btn'));
       });
       await waitForElementToBeRemoved(screen.queryByTestId('Step3'));
       expect(screen.queryByTestId('Step1')).not.toBeInTheDocument();
@@ -316,7 +319,7 @@ describe('<Signup />', () => {
       expect(screen.queryByTestId('Step3')).not.toBeInTheDocument();
 
       await waitFor(() => {
-        fireEvent.click(screen.getByTestId('Step2-previous-btn'));
+        user.click(screen.getByTestId('Step2-previous-btn'));
       });
       await waitForElementToBeRemoved(screen.queryByTestId('Step2'));
       expect(screen.queryByTestId('Step1')).toBeInTheDocument();
