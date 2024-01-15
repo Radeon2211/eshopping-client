@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as SC from './PurchaseSection.sc';
 import * as actions from '../../../store/actions/indexActions';
 import Button from '../../../components/UI/Button/Button';
@@ -17,7 +17,7 @@ import * as propTypes from '../../../shared/propTypes';
 export default function PurchaseSection(props) {
   const { productId, productQuantity, productSellerUsername, onSetModal, userProfile } = props;
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [chosenQuantity, setChosenQuantity] = useState(1);
 
@@ -27,7 +27,7 @@ export default function PurchaseSection(props) {
   const dispatch = useDispatch();
   const onAddCartItem = useCallback((item) => dispatch(actions.addCartItem(item)), [dispatch]);
   const onGoToTransaction = useCallback(
-    (currentHistory, item) => dispatch(actions.goToTransaction(currentHistory, item)),
+    (navigateFn, item) => dispatch(actions.goToTransaction(navigateFn, item)),
     [dispatch],
   );
 
@@ -83,7 +83,7 @@ export default function PurchaseSection(props) {
     } else if (userProfile?.status !== userStatuses.ACTIVE) {
       onSetModal(modalTypes.PENDING_USER_INFO);
     } else {
-      onGoToTransaction(history, {
+      onGoToTransaction(navigate, {
         product: productId,
         quantity: chosenQuantity,
       });

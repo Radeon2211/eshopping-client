@@ -1,16 +1,16 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductDetails from './ProductDetails';
-import { defaultUserProfile } from '../../shared/testUtility/testUtility';
+import {
+  defaultUserProfile,
+  renderAppPart,
+  testRouterPushCall,
+} from '../../shared/testUtility/testUtility';
 import { defaultScrollToConfig, modalTypes, productConditions } from '../../shared/constants';
 import noPhoto from '../../images/no-photo.png';
-import theme from '../../styled/theme';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -40,7 +40,7 @@ const defaultStore = {
   },
 };
 
-const setUp = (storePart) => {
+const setUp = (storePart, pushFn = jest.fn()) => {
   const store = storePart
     ? mockStore({
         ...defaultStore,
@@ -49,25 +49,13 @@ const setUp = (storePart) => {
     : mockStore(defaultStore);
   store.dispatch = jest.fn();
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: `/product/${defaultProductId}` },
-    push: jest.fn(),
-  };
-
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <ProductDetails />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<ProductDetails />, {
+      pathname: `/product/${defaultProductId}`,
+      store,
+      push: pushFn,
+    }),
     store,
-    history,
   };
 };
 
@@ -83,8 +71,6 @@ jest.mock('react-router-dom', () => ({
     id: defaultProductId,
   }),
 }));
-
-afterEach(cleanup);
 
 beforeAll(() => {
   window.scrollTo = jest.fn();
@@ -215,11 +201,10 @@ describe('<ProductDetails />', () => {
       });
 
       it('should call push with correct path after clicking on seller link', () => {
-        const { history } = setUp(defaultStore);
+        const pushFn = jest.fn();
+        setUp(defaultStore, pushFn);
         fireEvent.click(screen.getByTestId('ProductDetails-seller-link'));
-        expect(history.push).toHaveBeenCalledWith(
-          `/user/${defaultProductDetails.seller.username}?p=1`,
-        );
+        testRouterPushCall(pushFn, 0, `/user/${defaultProductDetails.seller.username}`, '?p=1');
       });
     });
   });

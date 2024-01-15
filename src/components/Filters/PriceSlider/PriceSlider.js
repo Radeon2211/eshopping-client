@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import * as SC from './PriceSlider.sc';
 import NumberInput from '../../UI/NumberInput/NumberInput';
@@ -11,10 +11,8 @@ import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
 
 export default function PriceSlider({ dispatchFilters }) {
-  const history = useHistory();
-  const {
-    location: { search },
-  } = history;
+  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
 
   const minPriceState = useSelector((state) => state.product.minPrice);
   const maxPriceState = useSelector((state) => state.product.maxPrice);
@@ -56,7 +54,7 @@ export default function PriceSlider({ dispatchFilters }) {
     }
     if (changeQueryParams) {
       const stringifiedQueryParams = queryString.stringify(correctQueryParams);
-      history.replace(`${history.location.pathname}?${stringifiedQueryParams}`);
+      navigate(`${pathname}?${stringifiedQueryParams}`, { replace: true });
       return;
     }
 
@@ -95,7 +93,7 @@ export default function PriceSlider({ dispatchFilters }) {
       type: filtersActions.SET_MAX_PRICE,
       maxPrice: queryMaxPrice || maxPriceState,
     });
-  }, [minPriceState, maxPriceState, setRangeValues, dispatchFilters, history, search]);
+  }, [minPriceState, maxPriceState, setRangeValues, dispatchFilters, pathname, search]);
 
   const inputChangeHandle = (e) => {
     e.persist();

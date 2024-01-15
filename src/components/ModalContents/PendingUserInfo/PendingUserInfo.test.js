@@ -1,33 +1,25 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import PendingUserInfo from './PendingUserInfo';
-import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
+const defaultStore = mockStore({});
+defaultStore.dispatch = jest.fn();
 
 const setUp = () => {
-  const store = mockStore({});
-  store.dispatch = jest.fn();
-
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <PendingUserInfo />
-        </ThemeProvider>
-      </Provider>,
-    ),
-    store,
+    ...renderAppPart(<PendingUserInfo />, {
+      store: defaultStore,
+      withoutRouter: true,
+    }),
+    store: defaultStore,
   };
 };
-
-afterEach(cleanup);
 
 describe('<PendingUserInfo />', () => {
   describe('checks behaviour after button click', () => {

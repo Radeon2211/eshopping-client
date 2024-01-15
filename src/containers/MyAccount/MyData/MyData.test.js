@@ -1,13 +1,10 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import MyData from './MyData';
-import theme from '../../../styled/theme';
-import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import { defaultUserProfile, renderAppPart } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 import {
   defaultScrollToConfig,
@@ -18,31 +15,24 @@ import {
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (profile, pushFn = jest.fn()) => {
+const setUp = (profile) => {
   const store = mockStore({
     auth: { profile },
   });
   store.dispatch = jest.fn();
 
-  const props = {
-    history: {
-      push: pushFn,
-    },
-  };
-
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MyData {...props} />
-        </ThemeProvider>
-      </Provider>,
-    ),
+    ...renderAppPart(<MyData />, { store }),
     store,
   };
 };
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 beforeAll(() => {
   window.scrollTo = jest.fn();
@@ -111,8 +101,7 @@ describe('<MyData />', () => {
     });
 
     it('should call correct functions after clicking in pending user content', () => {
-      const pushFn = jest.fn();
-      const { store } = setUp({ ...defaultUserProfile, status: userStatuses.PENDING }, pushFn);
+      const { store } = setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
 
       fireEvent.click(screen.getByRole('button', { name: /send verification link/i }));
       expect(store.dispatch).toHaveBeenCalledWith(
@@ -120,7 +109,7 @@ describe('<MyData />', () => {
       );
 
       fireEvent.click(screen.getByRole('button', { name: /logout/i }));
-      expect(pushFn).toHaveBeenCalledWith('/logout');
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith('/logout');
     });
   });
 

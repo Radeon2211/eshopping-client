@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
@@ -8,8 +9,8 @@ import { getParamsWithoutPollution, scrollToTop } from '../../shared/utility/uti
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 import useLastLocation from '../../shared/useLastLocation';
 
-export default function Products({ location }) {
-  const { search } = location;
+export default function Products() {
+  const { search } = useLocation();
 
   const lastLocation = useLastLocation();
 

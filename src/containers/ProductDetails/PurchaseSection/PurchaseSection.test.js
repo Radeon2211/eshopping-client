@@ -1,14 +1,10 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import PurchaseSection from './PurchaseSection';
-import { defaultUserProfile } from '../../../shared/testUtility/testUtility';
-import theme from '../../../styled/theme';
+import { defaultUserProfile, renderAppPart } from '../../../shared/testUtility/testUtility';
 import { modalTypes, userStatuses } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 
@@ -38,27 +34,15 @@ const setUp = (props = {}, cart = defaultCart, isLoading = false) => {
       }
     : defaultProps;
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/product/123' },
-  };
-
   const store = createStore(cart, isLoading);
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <PurchaseSection {...finalProps} />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<PurchaseSection {...finalProps} />, {
+      pathname: `/product/123`,
+      store,
+    }),
     store,
-    history,
   };
 };
 
@@ -70,7 +54,12 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   }),
 }));
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 describe('<PurchaseSection />', () => {
   describe('check how renders', () => {
@@ -194,7 +183,7 @@ describe('<PurchaseSection />', () => {
 
   describe('check redux actions calling', () => {
     it('should call addCartItem() and goToTransaction() with quantity 2 after buttons clicks', () => {
-      const { store, history } = setUp();
+      const { store } = setUp();
 
       expect(store.dispatch).not.toHaveBeenCalled();
 
@@ -212,7 +201,7 @@ describe('<PurchaseSection />', () => {
       fireEvent.click(screen.getByRole('button', { name: /buy now/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
-        actions.goToTransaction(history, {
+        actions.goToTransaction(mockedUseNavigateFn, {
           quantity: 2,
           product: defaultProps.productId,
         }),

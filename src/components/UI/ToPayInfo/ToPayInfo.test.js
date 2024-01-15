@@ -1,19 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
 import ToPayInfo from './ToPayInfo';
-import theme from '../../../styled/theme';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (value) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <ToPayInfo value={value} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<ToPayInfo value={value} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<ToPayInfo />', () => {
   it('should render everything correctly', () => {

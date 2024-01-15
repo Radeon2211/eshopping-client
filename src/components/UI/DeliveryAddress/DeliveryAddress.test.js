@@ -1,19 +1,12 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
 import DeliveryAddress from './DeliveryAddress';
-import { defaultDeliveryAddress } from '../../../shared/testUtility/testUtility';
+import { defaultDeliveryAddress, renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (data) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <DeliveryAddress data={data} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<DeliveryAddress data={data} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<DeliveryAddress />', () => {
   it('should render five <PlainText /> with correct values', () => {

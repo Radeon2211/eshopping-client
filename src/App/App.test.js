@@ -1,16 +1,12 @@
 import React from 'react';
-import { render, cleanup, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import MockAdapter from 'axios-mock-adapter';
 import axios from '../axios';
-import theme from '../styled/theme';
 import App from './App';
-import { defaultUserProfile } from '../shared/testUtility/testUtility';
+import { defaultUserProfile, renderAppPart } from '../shared/testUtility/testUtility';
 import * as actions from '../store/actions/indexActions';
 import { userStatuses } from '../shared/constants';
 
@@ -25,23 +21,11 @@ const setUp = (userProfile, ui = { message: '', isFormLoading: false }, pathname
   });
   store.dispatch = jest.fn();
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname },
-    goBack: jest.fn(),
-  };
-
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <App />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<App />, {
+      pathname,
+      store,
+    }),
     store,
   };
 };
@@ -51,7 +35,10 @@ jest.mock('../store/actions/indexActions.js', () => ({
   logoutUser: () => {},
 }));
 
-afterEach(cleanup);
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => jest.fn(),
+}));
 
 describe('<App />', () => {
   const axiosMock = new MockAdapter(axios);

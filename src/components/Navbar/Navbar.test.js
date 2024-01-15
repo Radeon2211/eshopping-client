@@ -1,45 +1,30 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import theme from '../../styled/theme';
 import Navbar from './Navbar';
-import { defaultUserProfile } from '../../shared/testUtility/testUtility';
-import { defaultAppPath } from '../../shared/constants';
+import {
+  defaultUserProfile,
+  renderAppPart,
+  testRouterPushCall,
+} from '../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
-
 const defaultStore = mockStore({
   auth: { cart: [] },
 });
 
-const setUp = (userProfile, searchParam = '?p=1') => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search: searchParam },
-    push: jest.fn(),
-  };
-
+const setUp = (userProfile, searchParam = '?p=1', pushFn = jest.fn()) => {
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={defaultStore}>
-          <ThemeProvider theme={theme}>
-            <Navbar userProfile={userProfile} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
-    history,
+    ...renderAppPart(<Navbar userProfile={userProfile} />, {
+      pathname: '/products',
+      search: searchParam,
+      push: pushFn,
+      store: defaultStore,
+    }),
   };
 };
-
-afterEach(cleanup);
 
 describe('<Navbar />', () => {
   it('should render <LoggedInLinks /> if user is logged in', () => {
@@ -53,8 +38,9 @@ describe('<Navbar />', () => {
   });
 
   it('should call push after clicking at logo if current path is other than default', () => {
-    const { history } = setUp(null, '?p=2');
+    const pushFn = jest.fn();
+    setUp(null, '?p=2', pushFn);
     fireEvent.click(screen.getByTestId('Navbar-header-link'));
-    expect(history.push).toHaveBeenCalledWith(defaultAppPath);
+    testRouterPushCall(pushFn, 0, '/products', '?p=1');
   });
 });

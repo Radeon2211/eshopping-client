@@ -1,31 +1,25 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
+import { screen } from '@testing-library/react';
 import ErrorPage from './ErrorPage';
 import { ReactComponent as UnexpectedBugImage } from '../../../images/unexpected-bug.svg';
 import { ReactComponent as ServerErrorImage } from '../../../images/server-connection-error.svg';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (icon, info) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <ErrorPage info={info} icon={icon} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<ErrorPage info={info} icon={icon} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<ErrorPage />', () => {
   it('should render "Something went wrong" and unexpected bug image', () => {
     setUp(<UnexpectedBugImage />, 'Something went wrong');
-    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
-    expect(screen.getByText('unexpected-bug.svg')).toBeInTheDocument();
+    expect(screen.getByText('Something went wrong'));
+    expect(screen.getByText('unexpected-bug.svg'));
   });
 
   it('should NOT render info and should render server error image image', () => {
     setUp(<ServerErrorImage />);
-    expect(screen.getByText('server-connection-error.svg')).toBeInTheDocument();
+    expect(screen.getByText('server-connection-error.svg'));
   });
 });

@@ -1,40 +1,38 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ChangeEmail from './ChangeEmail';
-import theme from '../../../styled/theme';
-import { clickAtSubmitButton, defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import {
+  clickAtSubmitButton,
+  defaultUserProfile,
+  renderAppPart,
+} from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
 
 const oldEmail = 'old@domain.com';
 
-const setUp = () => {
-  const store = mockStore({
-    auth: {
-      profile: { ...defaultUserProfile, email: oldEmail },
-    },
-    ui: {
-      isFormLoading: false,
-      formError: '',
-    },
-  });
-  store.dispatch = jest.fn();
+const defaultStore = mockStore({
+  auth: {
+    profile: { ...defaultUserProfile, email: oldEmail },
+  },
+  ui: {
+    isFormLoading: false,
+    formError: '',
+  },
+});
+defaultStore.dispatch = jest.fn();
 
+const setUp = () => {
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <ChangeEmail />
-        </ThemeProvider>
-      </Provider>,
-    ),
-    store,
+    ...renderAppPart(<ChangeEmail />, {
+      store: defaultStore,
+      withoutRouter: true,
+    }),
+    store: defaultStore,
   };
 };
 
@@ -42,8 +40,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   ...jest.requireActual('../../../store/actions/indexActions.js'),
   changeEmail: (credentials) => credentials,
 }));
-
-afterEach(cleanup);
 
 describe('<ChangeEmail />', () => {
   describe('check form', () => {

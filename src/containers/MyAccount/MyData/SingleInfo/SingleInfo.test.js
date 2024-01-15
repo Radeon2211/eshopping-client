@@ -1,19 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
+import { screen, fireEvent } from '@testing-library/react';
 import SingleInfo from './SingleInfo';
 import { singleInfoNames } from '../../../../shared/constants';
-import theme from '../../../../styled/theme';
+import { renderAppPart } from '../../../../shared/testUtility/testUtility';
 
 const setUp = (name, content, clickHandler) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <SingleInfo name={name} content={content} clickHandler={clickHandler} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<SingleInfo name={name} content={content} clickHandler={clickHandler} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<SingleInfo />', () => {
   describe('check how renders', () => {

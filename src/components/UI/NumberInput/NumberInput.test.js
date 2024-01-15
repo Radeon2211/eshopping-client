@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
+import { fireEvent, screen } from '@testing-library/react';
 import NumberInput from './NumberInput';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const defaultProps = {
   name: 'testName',
@@ -10,14 +9,10 @@ const defaultProps = {
 };
 
 const setUp = (props) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <NumberInput {...props} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<NumberInput {...props} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<NumberInput />', () => {
   describe('check behaviour', () => {

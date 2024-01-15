@@ -1,33 +1,19 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import TransactionAndOrderProdItem from './TransactionAndOrderProdItem';
-import theme from '../../styled/theme';
-import { createTransactionAndOrderProdItem } from '../../shared/testUtility/testUtility';
+import {
+  createTransactionAndOrderProdItem,
+  renderAppPart,
+  testRouterPushCall,
+} from '../../shared/testUtility/testUtility';
 
-const setUp = (data, orderId) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/transaction' },
-    push: jest.fn(),
-  };
-
-  return {
-    ...render(
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <TransactionAndOrderProdItem data={data} orderId={orderId} />
-        </ThemeProvider>
-      </Router>,
-    ),
-    history,
-  };
+const setUp = (data, orderId, pushFn = jest.fn()) => {
+  return renderAppPart(<TransactionAndOrderProdItem data={data} orderId={orderId} />, {
+    pathname: '/transaction',
+    push: pushFn,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<TransactionAndOrderProdItem />', () => {
   describe('checks how renders and behaviour', () => {
@@ -76,15 +62,16 @@ describe('<TransactionAndOrderProdItem />', () => {
       const data = createTransactionAndOrderProdItem({
         productId: 'p1',
       });
-      const { history } = setUp(data);
+      const pushFn = jest.fn();
+      setUp(data, 'o1', pushFn);
 
       fireEvent.click(screen.getByTestId('TransactionAndOrderProdItem-product-link-photo'));
-      expect(history.push).toHaveBeenCalledWith('/product/p1');
+      testRouterPushCall(pushFn, 0, '/product/p1');
 
       fireEvent.click(screen.getByTestId('TransactionAndOrderProdItem-product-link-name'));
-      expect(history.push).toHaveBeenLastCalledWith('/product/p1');
+      testRouterPushCall(pushFn, 0, '/product/p1');
 
-      expect(history.push).toHaveBeenCalledTimes(2);
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
   });
 });

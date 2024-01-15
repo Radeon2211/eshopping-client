@@ -1422,10 +1422,10 @@ describe('async functions', () => {
             productDetails: defaultProductDetails,
           },
         );
-        const goBackFn = jest.fn();
-        await store.dispatch(actions.deleteProduct(productId, { goBack: goBackFn }));
+        const navigateFn = jest.fn();
+        await store.dispatch(actions.deleteProduct(productId, navigateFn));
 
-        expect(goBackFn).toHaveBeenCalledTimes(1);
+        expect(navigateFn).toHaveBeenCalledWith(-1);
         expect(store.getState()).toEqual(
           createExpectedState(
             initialState,
@@ -1456,10 +1456,10 @@ describe('async functions', () => {
             productDetails: defaultProductDetails,
           },
         );
-        const goBackFn = jest.fn();
-        await store.dispatch(actions.deleteProduct(productId, { goBack: goBackFn }));
+        const navigateFn = jest.fn();
+        await store.dispatch(actions.deleteProduct(productId, navigateFn));
 
-        expect(goBackFn).not.toHaveBeenCalled();
+        expect(navigateFn).not.toHaveBeenCalled();
         expect(store.getState()).toEqual(
           createExpectedState(
             initialState,
@@ -1489,7 +1489,7 @@ describe('async functions', () => {
 
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.deleteProduct(productId, { goBack: jest.fn() })(innerDispatchFn);
+        await actions.deleteProduct(productId, jest.fn())(innerDispatchFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(

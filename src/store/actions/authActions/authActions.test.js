@@ -823,10 +823,6 @@ describe('async functions', () => {
       currentPassword: 'Pa$$w0rd',
     };
 
-    const createHistory = (replaceFn = jest.fn()) => ({
-      replace: replaceFn,
-    });
-
     describe('store', () => {
       it('is successful', async () => {
         moxios.stubRequest('/users/me', {
@@ -838,7 +834,8 @@ describe('async functions', () => {
           sellHistory: [],
           orderCount: 0,
         });
-        await store.dispatch(actions.deleteAccount(credentials, createHistory()));
+        const navigateFn = jest.fn();
+        await store.dispatch(actions.deleteAccount(credentials, navigateFn));
 
         expect(store.getState()).toEqual(
           createExpectedState(
@@ -862,6 +859,7 @@ describe('async functions', () => {
         expect(checkReqMethodAndURL(moxios, 'delete', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
         expect(moxios.requests.__items).toHaveLength(1);
+        expect(navigateFn).toHaveBeenCalledWith(defaultAppPath, { replace: true });
       });
 
       it('is failed', async () => {
@@ -870,7 +868,8 @@ describe('async functions', () => {
         });
 
         const { store, initialState } = setUpStoreWithDefaultProfile();
-        await store.dispatch(actions.deleteAccount(credentials, createHistory()));
+        const navigateFn = jest.fn();
+        await store.dispatch(actions.deleteAccount(credentials, navigateFn));
 
         expect(store.getState()).toEqual(
           createExpectedState(
@@ -885,6 +884,7 @@ describe('async functions', () => {
         expect(checkReqMethodAndURL(moxios, 'delete', '/users/me')).toEqual(true);
         expect(JSON.parse(moxios.requests.mostRecent().config.data)).toEqual(credentials);
         expect(moxios.requests.__items).toHaveLength(1);
+        expect(navigateFn).not.toHaveBeenCalled();
       });
     });
 
@@ -898,12 +898,9 @@ describe('async functions', () => {
 
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        const replaceFn = jest.fn();
+        const navigateFn = jest.fn();
         const { store } = setUpStoreWithDefaultProfile();
-        await actions.deleteAccount(credentials, createHistory(replaceFn))(
-          innerDispatchFn,
-          store.getState,
-        );
+        await actions.deleteAccount(credentials, navigateFn)(innerDispatchFn, store.getState);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.logout());
@@ -912,7 +909,7 @@ describe('async functions', () => {
         );
         expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.formSuccess());
         expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-        expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
+        expect(navigateFn).toHaveBeenCalledWith(defaultAppPath, { replace: true });
 
         uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
       });
@@ -923,11 +920,13 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.deleteAccount(credentials)(innerDispatchFn);
+        const navigateFn = jest.fn();
+        await actions.deleteAccount(credentials, navigateFn)(innerDispatchFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
         expect(innerDispatchFn).toHaveBeenCalledTimes(2);
+        expect(navigateFn).not.toHaveBeenCalled();
       });
     });
   });

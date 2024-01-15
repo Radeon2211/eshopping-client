@@ -1,48 +1,33 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import OrderList from './OrderList';
-import theme from '../../../styled/theme';
 import {
   createTransactionAndOrderProdItem,
   createOrder,
+  renderAppPart,
+  testRouterPushCall,
 } from '../../../shared/testUtility/testUtility';
 import { orderTypes } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (orders, orderType, isDataLoading = false) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/my-account/placed-orders', search: '?p=1' },
-    push: jest.fn(),
-  };
-
+const setUp = (orders, orderType, isDataLoading = false, pushFn = jest.fn()) => {
   const store = mockStore({
     ui: { isDataLoading },
   });
 
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <OrderList orders={orders} orderType={orderType} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
-    history,
+    ...renderAppPart(<OrderList orders={orders} orderType={orderType} />, {
+      pathname: '/my-account/placed-orders',
+      search: '?p=1',
+      push: pushFn,
+      store,
+    }),
   };
 };
-
-afterEach(cleanup);
 
 describe('<OrderList />', () => {
   describe('check how renders', () => {
@@ -205,15 +190,16 @@ describe('<OrderList />', () => {
           buyerUsername: 'buyerUser',
         }),
       ];
-      const { history } = setUp(orders, orderTypes.PLACED_ORDERS, false);
+      const pushFn = jest.fn();
+      setUp(orders, orderTypes.PLACED_ORDERS, false, pushFn);
 
       fireEvent.click(screen.getByTestId('OrderList-user-link'));
-      expect(history.push).toHaveBeenNthCalledWith(1, '/user/sellerUser?p=1');
+      testRouterPushCall(pushFn, 0, '/user/sellerUser', '?p=1');
 
       fireEvent.click(screen.getByTestId('OrderList-order-details-link'));
-      expect(history.push).toHaveBeenNthCalledWith(2, '/order/o1');
+      testRouterPushCall(pushFn, 1, '/order/o1');
 
-      expect(history.push).toHaveBeenCalledTimes(2);
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
 
     it('should call push with correct path after clicking links - type SELL_HISTORY', () => {
@@ -226,15 +212,16 @@ describe('<OrderList />', () => {
           buyerUsername: 'buyerUser',
         }),
       ];
-      const { history } = setUp(orders, orderTypes.SELL_HISTORY, false);
+      const pushFn = jest.fn();
+      setUp(orders, orderTypes.SELL_HISTORY, false, pushFn);
 
       fireEvent.click(screen.getByTestId('OrderList-user-link'));
-      expect(history.push).toHaveBeenNthCalledWith(1, '/user/buyerUser?p=1');
+      testRouterPushCall(pushFn, 0, '/user/buyerUser', '?p=1');
 
       fireEvent.click(screen.getByTestId('OrderList-order-details-link'));
-      expect(history.push).toHaveBeenNthCalledWith(2, '/order/o1');
+      testRouterPushCall(pushFn, 1, '/order/o1');
 
-      expect(history.push).toHaveBeenCalledTimes(2);
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
   });
 });

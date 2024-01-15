@@ -1,45 +1,28 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import LandingPage from './LandingPage';
-import theme from '../../styled/theme';
 import * as actions from '../../store/actions/indexActions';
-import { defaultAppPath, modalTypes } from '../../shared/constants';
+import { modalTypes } from '../../shared/constants';
+import { renderAppPart, testRouterPushCall } from '../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = () => {
+const setUp = (pushFn = jest.fn()) => {
   const store = mockStore({});
   store.dispatch = jest.fn();
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/' },
-    push: jest.fn(),
-  };
-
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <LandingPage />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<LandingPage />, {
+      pathname: '/',
+      push: pushFn,
+      store,
+    }),
     store,
-    history,
   };
 };
-
-afterEach(cleanup);
 
 describe('<LandingPage />', () => {
   describe('check behaviour after buttons clicks', () => {
@@ -58,9 +41,10 @@ describe('<LandingPage />', () => {
     });
 
     it('should call push with default app path', () => {
-      const { history } = setUp();
+      const pushFn = jest.fn();
+      setUp(pushFn);
       fireEvent.click(screen.getByRole('button', { name: /view the products now/i }));
-      expect(history.push).toHaveBeenCalledWith(defaultAppPath);
+      testRouterPushCall(pushFn, 0, '/products', '?p=1');
     });
   });
 });

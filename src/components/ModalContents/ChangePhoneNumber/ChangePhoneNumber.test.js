@@ -1,43 +1,40 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import selectEvent from 'react-select-event';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ChangePhoneNumber from './ChangePhoneNumber';
-import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
-import { clickAtSubmitButton, defaultUserProfile } from '../../../shared/testUtility/testUtility';
-
-const mockStore = configureMockStore([thunk]);
+import {
+  clickAtSubmitButton,
+  defaultUserProfile,
+  renderAppPart,
+} from '../../../shared/testUtility/testUtility';
 
 const oldPhonePrefixLabel = '+48 Poland';
 const oldPhonePrefix = '+48';
 const oldPhoneNumber = '123456789';
 
-const setUp = () => {
-  const store = mockStore({
-    auth: {
-      profile: { ...defaultUserProfile, phone: `${oldPhonePrefix} ${oldPhoneNumber}` },
-    },
-    ui: {
-      isFormLoading: false,
-      formError: '',
-    },
-  });
-  store.dispatch = jest.fn();
+const mockStore = configureMockStore([thunk]);
+const defaultStore = mockStore({
+  auth: {
+    profile: { ...defaultUserProfile, phone: `${oldPhonePrefix} ${oldPhoneNumber}` },
+  },
+  ui: {
+    isFormLoading: false,
+    formError: '',
+  },
+});
+defaultStore.dispatch = jest.fn();
 
+const setUp = () => {
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <ChangePhoneNumber />
-        </ThemeProvider>
-      </Provider>,
-    ),
-    store,
+    ...renderAppPart(<ChangePhoneNumber />, {
+      store: defaultStore,
+      withoutRouter: true,
+    }),
+    store: defaultStore,
   };
 };
 
@@ -48,8 +45,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
     message,
   }),
 }));
-
-afterEach(cleanup);
 
 describe('<ChangePhoneNumber />', () => {
   describe('check form', () => {

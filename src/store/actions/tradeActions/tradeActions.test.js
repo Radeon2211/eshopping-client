@@ -977,12 +977,6 @@ describe('async functions', () => {
   });
 
   describe('goToTransaction()', () => {
-    const createHistory = () => ({
-      push: jest.fn(),
-      goBack: jest.fn(),
-    });
-    const defaultHistory = createHistory();
-
     const expectedTransaction = [createTransactionAndOrderProdItem()];
     const expectedCart = [
       createCartItem({
@@ -1008,7 +1002,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory, singleItemToPass));
+          await store.dispatch(actions.goToTransaction(jest.fn(), singleItemToPass));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1040,7 +1034,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory, singleItemToPass));
+          await store.dispatch(actions.goToTransaction(jest.fn(), singleItemToPass));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1072,7 +1066,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory, singleItemToPass));
+          await store.dispatch(actions.goToTransaction(jest.fn(), singleItemToPass));
 
           expect(store.getState()).toEqual(
             createExpectedState(initialState, {
@@ -1097,7 +1091,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory, singleItemToPass));
+          await store.dispatch(actions.goToTransaction(jest.fn(), singleItemToPass));
 
           expect(store.getState()).toEqual(
             createExpectedState(initialState, {
@@ -1117,7 +1111,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory, singleItemToPass));
+          await store.dispatch(actions.goToTransaction(jest.fn(), singleItemToPass));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1149,7 +1143,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory));
+          await store.dispatch(actions.goToTransaction(jest.fn()));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1182,7 +1176,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory));
+          await store.dispatch(actions.goToTransaction(jest.fn()));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1215,7 +1209,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory));
+          await store.dispatch(actions.goToTransaction(jest.fn()));
 
           expect(store.getState()).toEqual(
             createExpectedState(initialState, {
@@ -1241,7 +1235,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory));
+          await store.dispatch(actions.goToTransaction(jest.fn()));
 
           expect(store.getState()).toEqual(
             createExpectedState(initialState, {
@@ -1262,7 +1256,7 @@ describe('async functions', () => {
           });
 
           const { store, initialState } = setUpStoreWithDefaultProfile();
-          await store.dispatch(actions.goToTransaction(defaultHistory));
+          await store.dispatch(actions.goToTransaction(jest.fn()));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1285,7 +1279,7 @@ describe('async functions', () => {
 
     describe('inner dispatch', () => {
       describe('single item is passed', () => {
-        it('is successful and transaction length is 1, isDifferent is true, cart is null', async () => {
+        it('is successful and transaction length is 1, isDifferent is true, cart is null, navigate to transaction page', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1299,8 +1293,8 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1312,13 +1306,12 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(history.push).toHaveBeenCalledWith('/transaction');
-          expect(history.goBack).not.toHaveBeenCalled();
+          expect(naviagteFn).toHaveBeenCalledWith('/transaction');
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
 
-        it('is successful and transaction length is 0, isDifferent is true, cart is null', async () => {
+        it('is successful and transaction length is 0, isDifferent is true, cart is null, navigate back', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1332,8 +1325,8 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
@@ -1342,13 +1335,12 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(history.push).not.toHaveBeenCalled();
-          expect(history.goBack).toHaveBeenCalledTimes(1);
+          expect(naviagteFn).toHaveBeenCalledWith(-1);
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
 
-        it('is successful and transaction length is 1, isDifferent is false, cart is null', async () => {
+        it('is successful and transaction length is 1, isDifferent is false, cart is null, navigate to transaction page', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1359,8 +1351,8 @@ describe('async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1369,11 +1361,10 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(history.push).toHaveBeenCalledWith('/transaction');
-          expect(history.goBack).not.toHaveBeenCalled();
+          expect(naviagteFn).toHaveBeenCalledWith('/transaction');
         });
 
-        it('is successful and transaction length is 0, isDifferent is false, cart is null', async () => {
+        it('is successful and transaction length is 0, isDifferent is false, cart is null, navigate back', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1384,15 +1375,14 @@ describe('async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(history.push).not.toHaveBeenCalled();
-          expect(history.goBack).toHaveBeenCalledTimes(1);
+          expect(naviagteFn).toHaveBeenCalledWith(-1);
         });
 
         it('is failed', async () => {
@@ -1404,22 +1394,21 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(history.push).not.toHaveBeenCalled();
-          expect(history.goBack).not.toHaveBeenCalled();
+          expect(naviagteFn).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
       });
 
       describe('single item is NOT passed', () => {
-        it('is successful and transaction length is 1, isDifferent is true, cart length is 1', async () => {
+        it('is successful and transaction length is 1, isDifferent is true, cart length is 1, navigate to transaction page', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1433,8 +1422,8 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1447,13 +1436,12 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.push).toHaveBeenCalledWith('/transaction');
-          expect(history.goBack).not.toHaveBeenCalled();
+          expect(naviagteFn).toHaveBeenCalledWith('/transaction');
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
 
-        it('is successful and transaction length is 0, isDifferent is true, cart is null', async () => {
+        it('is successful and transaction length is 0, isDifferent is true, cart is null, navigate back', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1467,8 +1455,8 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
@@ -1478,13 +1466,12 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.push).not.toHaveBeenCalled();
-          expect(history.goBack).toHaveBeenCalledTimes(1);
+          expect(naviagteFn).toHaveBeenCalledWith(-1);
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
 
-        it('is successful and transaction length is 1, isDifferent is false, cart is null', async () => {
+        it('is successful and transaction length is 1, isDifferent is false, cart is null, navigate to transaction page', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1495,8 +1482,8 @@ describe('async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1506,11 +1493,10 @@ describe('async functions', () => {
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, tradeActions.setCart(expectedCart));
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(history.push).toHaveBeenCalledWith('/transaction');
-          expect(history.goBack).not.toHaveBeenCalled();
+          expect(naviagteFn).toHaveBeenCalledWith('/transaction');
         });
 
-        it('is successful and transaction length is 0, isDifferent is false, cart is null', async () => {
+        it('is successful and transaction length is 0, isDifferent is false, cart is null, navigate back', async () => {
           moxios.stubRequest('/transaction', {
             status: 200,
             response: {
@@ -1521,16 +1507,15 @@ describe('async functions', () => {
           });
 
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, tradeActions.setCart(expectedCart));
           expect(innerDispatchFn).toHaveBeenNthCalledWith(4, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(4);
-          expect(history.push).not.toHaveBeenCalled();
-          expect(history.goBack).toHaveBeenCalledTimes(1);
+          expect(naviagteFn).toHaveBeenCalledWith(-1);
         });
 
         it('is failed', async () => {
@@ -1542,15 +1527,14 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          await actions.goToTransaction(history, singleItemToPass)(innerDispatchFn);
+          const naviagteFn = jest.fn();
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.tradeEnd());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(history.push).not.toHaveBeenCalled();
-          expect(history.goBack).not.toHaveBeenCalled();
+          expect(naviagteFn).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -1559,11 +1543,6 @@ describe('async functions', () => {
   });
 
   describe('buyProducts()', () => {
-    const createHistory = (replaceFn = jest.fn()) => ({
-      replace: replaceFn,
-    });
-    const defaultHistory = createHistory();
-
     const defaultTransaction = [
       createTransactionAndOrderProdItem({
         productId: 'p1',
@@ -1577,7 +1556,7 @@ describe('async functions', () => {
     ];
     const expectedCart = [createCartItem()];
 
-    const replaceFnArgument = '/my-account/placed-orders';
+    const replacePageUrl = '/my-account/placed-orders';
 
     describe('store', () => {
       describe('receive transaction only', () => {
@@ -1593,7 +1572,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/cart'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/cart'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1630,7 +1609,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/product/p1'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/product/p1'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1667,7 +1646,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/cart'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/cart'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1703,7 +1682,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/product/p1'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/product/p1'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1741,7 +1720,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/cart'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/cart'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1777,7 +1756,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/product/p1'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/product/p1'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1811,7 +1790,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/cart'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/cart'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1840,7 +1819,7 @@ describe('async functions', () => {
           const { store, initialState } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await store.dispatch(actions.buyProducts(defaultHistory, '/product/p1'));
+          await store.dispatch(actions.buyProducts(jest.fn(), '/product/p1'));
 
           expect(store.getState()).toEqual(
             createExpectedState(
@@ -1865,7 +1844,7 @@ describe('async functions', () => {
 
     describe('inner dispatch', () => {
       describe('receive transaction only', () => {
-        it('is successful and received transaction length is 1, lastPath is /cart', async () => {
+        it('is successful and received transaction length is 1, lastPath is /cart, not change page', async () => {
           moxios.stubRequest('/orders', {
             status: 200,
             response: {
@@ -1878,11 +1857,11 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
+          const navigateFn = jest.fn();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await actions.buyProducts(history, '/cart')(innerDispatchFn, store.getState);
+          await actions.buyProducts(navigateFn, '/cart')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1895,12 +1874,12 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.replace).not.toHaveBeenCalled();
+          expect(navigateFn).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
 
-        it('is successful and received transaction length is 1, lastPath is other than /cart', async () => {
+        it('is successful and received transaction length is 1, lastPath is other than /cart, not change page', async () => {
           moxios.stubRequest('/orders', {
             status: 200,
             response: {
@@ -1913,11 +1892,11 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
+          const navigateFn = jest.fn();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await actions.buyProducts(history, '/product/p1')(innerDispatchFn, store.getState);
+          await actions.buyProducts(navigateFn, '/product/p1')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1930,12 +1909,12 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.replace).not.toHaveBeenCalled();
+          expect(navigateFn).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
 
-        it('is successful and received transaction length is 0, lastPath is /cart', async () => {
+        it('is successful and received transaction length is 0, lastPath is /cart, change page to /cart', async () => {
           moxios.stubRequest('/orders', {
             status: 200,
             response: {
@@ -1948,11 +1927,11 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
+          const navigateFn = jest.fn();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await actions.buyProducts(history, '/cart')(innerDispatchFn, store.getState);
+          await actions.buyProducts(navigateFn, '/product/p1')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
@@ -1962,39 +1941,7 @@ describe('async functions', () => {
           );
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.replace).not.toHaveBeenCalled();
-
-          uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
-        });
-
-        it('is successful and received transaction length is 0, lastPath is /cart', async () => {
-          moxios.stubRequest('/orders', {
-            status: 200,
-            response: {
-              transaction: [],
-              cart: undefined,
-            },
-          });
-
-          const originalSetAndDeleteMessage = uiActions.setAndDeleteMessage;
-
-          uiActions.setAndDeleteMessage = jest.fn();
-          const innerDispatchFn = jest.fn();
-          const history = createHistory();
-          const { store } = setUpStoreWithDefaultProfile({
-            transaction: defaultTransaction,
-          });
-          await actions.buyProducts(history, '/product/p1')(innerDispatchFn, store.getState);
-
-          expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
-          expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
-          expect(innerDispatchFn).toHaveBeenNthCalledWith(3, tradeActions.setCart(undefined));
-          expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
-            'Sorry, these products are not available anymore',
-          );
-          expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
-          expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.replace).not.toHaveBeenCalled();
+          expect(navigateFn).toHaveBeenCalledWith('/cart', { replace: true });
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2014,11 +1961,11 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
+          const navigateFn = jest.fn();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await actions.buyProducts(history, '/cart')(innerDispatchFn, store.getState);
+          await actions.buyProducts(navigateFn, '/cart')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -2029,7 +1976,7 @@ describe('async functions', () => {
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith('Transaction was successful');
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.replace).toHaveBeenCalledWith(replaceFnArgument);
+          expect(navigateFn).toHaveBeenCalledWith(replacePageUrl, { replace: true });
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2047,11 +1994,11 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
+          const navigateFn = jest.fn();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await actions.buyProducts(history, '/product/p1')(innerDispatchFn, store.getState);
+          await actions.buyProducts(navigateFn, '/product/p1')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -2062,7 +2009,7 @@ describe('async functions', () => {
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith('Transaction was successful');
           expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(5);
-          expect(history.replace).toHaveBeenCalledWith(replaceFnArgument);
+          expect(navigateFn).toHaveBeenCalledWith(replacePageUrl, { replace: true });
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2078,17 +2025,17 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
+          const navigateFn = jest.fn();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await actions.buyProducts(history, '/cart')(innerDispatchFn, store.getState);
+          await actions.buyProducts(navigateFn, '/cart')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(history.replace).not.toHaveBeenCalled();
+          expect(navigateFn).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });
@@ -2102,17 +2049,17 @@ describe('async functions', () => {
 
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
-          const history = createHistory();
+          const navigateFn = jest.fn();
           const { store } = setUpStoreWithDefaultProfile({
             transaction: defaultTransaction,
           });
-          await actions.buyProducts(history, '/product/p1')(innerDispatchFn, store.getState);
+          await actions.buyProducts(navigateFn, '/product/p1')(innerDispatchFn, store.getState);
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
           expect(innerDispatchFn).toHaveBeenNthCalledWith(3, uiActions.formSuccess());
           expect(innerDispatchFn).toHaveBeenCalledTimes(3);
-          expect(history.replace).not.toHaveBeenCalled();
+          expect(navigateFn).not.toHaveBeenCalled();
 
           uiActions.setAndDeleteMessage = originalSetAndDeleteMessage;
         });

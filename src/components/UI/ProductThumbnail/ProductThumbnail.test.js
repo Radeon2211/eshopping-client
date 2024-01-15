@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProductThumbnail from './ProductThumbnail';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (photo = false, orderId = '') => {
   const props = {
@@ -12,10 +13,11 @@ const setUp = (photo = false, orderId = '') => {
     height: '5',
     alt: 'testAlt',
   };
-  return render(<ProductThumbnail {...props} />);
+  return renderAppPart(<ProductThumbnail {...props} />, {
+    withoutRouter: true,
+    withoutThemeProvider: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<ProductThumbnail />', () => {
   describe('check how renders', () => {

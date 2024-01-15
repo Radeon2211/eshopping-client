@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, Suspense, lazy } from 'react';
-import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import axios from '../axios';
@@ -18,6 +18,10 @@ import Main from '../components/UI/Main';
 import Footer from '../components/Footer/Footer';
 import Products from '../containers/Products/Products';
 import LandingPage from '../containers/LandingPage/LandingPage';
+import MyData from '../containers/MyAccount/MyData/MyData';
+import MyProducts from '../containers/MyAccount/MyProducts/MyProducts';
+import MySellHistory from '../containers/MyAccount/MySellHistory/MySellHistory';
+import MyPlacedOrders from '../containers/MyAccount/MyPlacedOrders/MyPlacedOrders';
 
 const OrderDetails = lazy(() => import('../containers/OrderDetails/OrderDetails'));
 const ProductDetails = lazy(() => import('../containers/ProductDetails/ProductDetails'));
@@ -80,13 +84,13 @@ const App = () => {
     } else {
       routes = (
         <Main data-testid="App-user-null">
-          <Switch>
-            <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
-            <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
-            <Route path="/products" exact component={Products} />
-            <Route path="/" exact component={LandingPage} />
-            <Redirect to={defaultAppPath} />
-          </Switch>
+          <Routes>
+            <Route path="/user/:username" Component={WaitingComponent(OtherUser)} />
+            <Route path="/product/:id" Component={WaitingComponent(ProductDetails)} />
+            <Route path="/products" Component={Products} />
+            <Route path="/" Component={LandingPage} />
+            <Route path="*" element={<Navigate to={defaultAppPath} replace />} />
+          </Routes>
         </Main>
       );
     }
@@ -94,30 +98,39 @@ const App = () => {
     if (userProfile.status === userStatuses.ACTIVE) {
       routes = (
         <Main data-testid="App-user-active">
-          <Switch>
-            <Route path="/logout" exact component={WaitingComponent(Logout)} />
-            <Route path="/order/:id" exact component={WaitingComponent(OrderDetails)} />
-            <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
-            <Route path="/products" exact component={Products} />
-            <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
-            <Route path="/cart" exact component={WaitingComponent(Cart)} />
-            <Route path="/transaction" exact component={WaitingComponent(Transaction)} />
-            <Route path="/my-account" component={WaitingComponent(MyAccount)} />
-            <Redirect to={defaultAppPath} />
-          </Switch>
+          <Routes>
+            <Route path="/logout" Component={WaitingComponent(Logout)} />
+            <Route path="/order/:id" Component={WaitingComponent(OrderDetails)} />
+            <Route path="/product/:id" Component={WaitingComponent(ProductDetails)} />
+            <Route path="/products" Component={Products} />
+            <Route path="/user/:username" Component={WaitingComponent(OtherUser)} />
+            <Route path="/cart" Component={WaitingComponent(Cart)} />
+            <Route path="/transaction" Component={WaitingComponent(Transaction)} />
+            <Route path="/my-account" Component={WaitingComponent(MyAccount)}>
+              <Route path="data" Component={MyData} />
+              <Route path="products" element={<MyProducts userProfile={userProfile} />} />
+              <Route path="sell-history" Component={MySellHistory} />
+              <Route path="placed-orders" Component={MyPlacedOrders} />
+              <Route path="*" element={<Navigate to="/my-account/data" replace />} />
+            </Route>
+            <Route path="*" element={<Navigate to={defaultAppPath} replace />} />
+          </Routes>
         </Main>
       );
     } else {
       routes = (
         <Main data-testid="App-user-pending">
-          <Switch>
-            <Route path="/logout" exact component={WaitingComponent(Logout)} />
-            <Route path="/product/:id" exact component={WaitingComponent(ProductDetails)} />
-            <Route path="/products" exact component={Products} />
-            <Route path="/user/:username" exact component={WaitingComponent(OtherUser)} />
-            <Route path="/my-account" component={WaitingComponent(MyAccount)} />
-            <Redirect to={defaultAppPath} />
-          </Switch>
+          <Routes>
+            <Route path="/logout" Component={WaitingComponent(Logout)} />
+            <Route path="/product/:id" Component={WaitingComponent(ProductDetails)} />
+            <Route path="/products" Component={Products} />
+            <Route path="/user/:username" Component={WaitingComponent(OtherUser)} />
+            <Route path="/my-account" Component={WaitingComponent(MyAccount)}>
+              <Route path="data" Component={MyData} />
+              <Route path="*" element={<Navigate to="/my-account/data" replace />} />
+            </Route>
+            <Route path="*" element={<Navigate to={defaultAppPath} replace />} />
+          </Routes>
         </Main>
       );
     }

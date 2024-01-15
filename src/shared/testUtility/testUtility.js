@@ -1,10 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, waitFor, render } from '@testing-library/react';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { ThemeProvider } from 'styled-components';
+import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import rootReducer from '../../store/reducers/rootReducer';
 import { productConditions, userStatuses } from '../constants';
+import theme from '../../styled/theme';
 
 export const defaultDeliveryAddress = {
   firstName: 'firstName',
@@ -28,16 +33,6 @@ export const defaultUserProfile = {
   },
   createdAt: '2021-02-10T19:10:38.872Z',
 };
-
-export const createHistoryPageNumber = (pageNumber = 1, length = 1) => ({
-  listen: jest.fn(),
-  length,
-  location: { pathname: '/products', search: `?p=${pageNumber}` },
-  createHref: jest.fn(),
-  push: jest.fn(),
-  replace: jest.fn(),
-  goBack: jest.fn(),
-});
 
 export const createPaginationProps = (itemQuantity = 5) => ({
   itemQuantity,
@@ -247,4 +242,48 @@ export const clickAtSubmitButton = async (container) => {
   await waitFor(() => {
     fireEvent.click(container.querySelector('button[type="submit"]'));
   });
+};
+
+export const testRouterPushCall = (pushFn, callIdx, expectedPathname, expectedSearch = '') => {
+  expect(pushFn.mock.calls[callIdx][0].pathname).toEqual(expectedPathname);
+  expect(pushFn.mock.calls[callIdx][0].search).toEqual(expectedSearch);
+};
+
+// element: JSX.Element;
+// options: {
+//   push: () => void;
+//   pathname: string;
+//   search: string;
+//   withoutThemeProvider: boolean;
+//   withoutRouter: boolean;
+//   store: MockStoreEnhanced<any, {}>;
+//   onlyReturnWrappedElement: boolean;
+// }
+export const renderAppPart = (element, options = {}) => {
+  const navigator = {
+    createHref: jest.fn(),
+    push: options.push || jest.fn(),
+  };
+
+  const location = {
+    pathname: options.pathname || '/',
+    search: options.search || '',
+  };
+
+  let content = element;
+  if (!options.withoutThemeProvider) {
+    content = <ThemeProvider theme={theme}>{element}</ThemeProvider>;
+  }
+  if (options.store) {
+    content = <Provider store={options.store}>{content}</Provider>;
+  }
+  if (!options.withoutRouter) {
+    content = (
+      <Router location={location} navigator={navigator}>
+        {content}
+      </Router>
+    );
+  }
+
+  return options.onlyReturnWrappedElement ? content : render(content);
 };

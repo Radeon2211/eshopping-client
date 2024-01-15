@@ -1,14 +1,12 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import { Formik } from 'formik';
-import theme from '../../../styled/theme';
 import Form from './Form';
 import * as actions from '../../../store/actions/indexActions';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -35,20 +33,17 @@ const defaultStore = createStore(false, 'testError');
 
 const setUp = (props, store) => {
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Formik>
-            <Form {...props} />
-          </Formik>
-        </ThemeProvider>
-      </Provider>,
+    ...renderAppPart(
+      <Formik>
+        <Form {...props} />
+      </Formik>,
+      {
+        store,
+      },
     ),
     store,
   };
 };
-
-afterEach(cleanup);
 
 describe('<Form />', () => {
   describe('check how renders', () => {

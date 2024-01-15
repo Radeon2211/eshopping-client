@@ -1,16 +1,13 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
 import Heading from './Heading';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (text, props = {}) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <Heading {...props}>{text}</Heading>
-    </ThemeProvider>,
-  );
+  return renderAppPart(<Heading {...props}>{text}</Heading>, {
+    withoutRouter: true,
+  });
 };
 
 describe('<Heading />', () => {

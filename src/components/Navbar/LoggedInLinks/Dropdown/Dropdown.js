@@ -43,7 +43,7 @@ export default function Dropdown({ isVisible, closed }) {
         }
       }}
     >
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         {isVisible && (
           <SC.Wrapper
             variants={dropdownVariants}

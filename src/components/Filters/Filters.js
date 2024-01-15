@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import Select from 'react-select';
 import * as SC from './Filters.sc';
@@ -17,8 +17,8 @@ import { getParamsWithoutPollution } from '../../shared/utility/utility';
 import useWindowSize from '../../shared/useWindowSize';
 
 export default function Filters({ isDataLoading }) {
-  const history = useHistory();
-  const { search, pathname } = history.location;
+  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
 
   const [filters, dispatchFilters] = useReducer(filtersReducer, filtersInitialState);
   const [isVisible, setIsVisible] = useState(false);
@@ -65,7 +65,7 @@ export default function Filters({ isDataLoading }) {
       p: 1,
     };
     const stringifiedNewQueryParams = queryString.stringify(newQueryParams);
-    history.push(`${pathname}?${stringifiedNewQueryParams}`);
+    navigate(`${pathname}?${stringifiedNewQueryParams}`);
   };
 
   const checkboxChangeHandle = (e) => {

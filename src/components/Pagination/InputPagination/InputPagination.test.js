@@ -1,27 +1,23 @@
 import React from 'react';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
 import InputPagination from './InputPagination';
 import {
-  createHistoryPageNumber,
   createPaginationProps,
+  renderAppPart,
+  testRouterPushCall,
 } from '../../../shared/testUtility/testUtility';
 import { defaultAppPath } from '../../../shared/constants';
 import useLastLocation from '../../../shared/useLastLocation';
 
 const defaultProps = createPaginationProps();
 
-const setUp = (props = {}, history) => {
-  return render(
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <InputPagination {...props} />
-      </ThemeProvider>
-    </Router>,
-  );
+const setUp = (props = {}, pageNumber = 1, pushFn = jest.fn()) => {
+  return renderAppPart(<InputPagination {...props} />, {
+    pathname: '/products',
+    search: `?p=${pageNumber}`,
+    push: pushFn,
+  });
 };
 
 jest.mock('../../../shared/useLastLocation', () => ({
@@ -29,13 +25,17 @@ jest.mock('../../../shared/useLastLocation', () => ({
   default: jest.fn(),
 }));
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 describe('<InputPagination />', () => {
   describe('check how renders', () => {
     it('should render all correctly (without hide-arrow class on arrows)', () => {
-      const history = createHistoryPageNumber(2);
-      setUp(defaultProps, history);
+      setUp(defaultProps, 2);
       expect(screen.getByTestId('NumberInput-page')).toHaveValue(2);
       expect(screen.getByTestId('InputPagination-number-of-pages')).toHaveTextContent('3');
       expect(screen.getByTestId('InputPagination-left-arrow')).not.toHaveClass('hide-arrow');
@@ -43,23 +43,20 @@ describe('<InputPagination />', () => {
     });
 
     it('should only left arrow has hide-arrow class', () => {
-      const history = createHistoryPageNumber(1);
-      setUp(defaultProps, history);
+      setUp(defaultProps);
       expect(screen.getByTestId('InputPagination-left-arrow')).toHaveClass('hide-arrow');
       expect(screen.getByTestId('InputPagination-right-arrow')).not.toHaveClass('hide-arrow');
     });
 
     it('should only right arrow has hide-arrow class', () => {
-      const history = createHistoryPageNumber(3);
-      setUp(defaultProps, history);
+      setUp(defaultProps, 3);
       expect(screen.getByTestId('InputPagination-left-arrow')).not.toHaveClass('hide-arrow');
       expect(screen.getByTestId('InputPagination-right-arrow')).toHaveClass('hide-arrow');
     });
 
     it('should both arrows have hide-arrow class', () => {
-      const history = createHistoryPageNumber(1);
       const props = createPaginationProps(2);
-      setUp(props, history);
+      setUp(props);
       expect(screen.getByTestId('InputPagination-left-arrow')).toHaveClass('hide-arrow');
       expect(screen.getByTestId('InputPagination-right-arrow')).toHaveClass('hide-arrow');
     });
@@ -67,67 +64,56 @@ describe('<InputPagination />', () => {
 
   describe('check behaviour of arrows', () => {
     it('should react to right arrow click (p is 1, quantity is 5, per page is 2)', () => {
-      const history = createHistoryPageNumber(1);
-
-      setUp(defaultProps, history);
-
+      const pushFn = jest.fn();
+      setUp(defaultProps, 1, pushFn);
       fireEvent.click(screen.getByTestId('InputPagination-right-arrow'));
-      expect(history.push).toHaveBeenCalledWith('/products?p=2');
+      testRouterPushCall(pushFn, 0, '/products', '?p=2');
     });
 
     it('should react to left arrow click (p is 3, quantity is 5, per page is 2)', () => {
-      const history = createHistoryPageNumber(3);
-
-      setUp(defaultProps, history);
-
+      const pushFn = jest.fn();
+      setUp(defaultProps, 3, pushFn);
       fireEvent.click(screen.getByTestId('InputPagination-left-arrow'));
-      expect(history.push).toHaveBeenCalledWith('/products?p=2');
+      testRouterPushCall(pushFn, 0, '/products', '?p=2');
     });
 
     it('should react to both arrows clicks (p is 2, quantity is 5, per page is 2)', () => {
-      const history = createHistoryPageNumber(2);
-
-      setUp(defaultProps, history);
+      const pushFn = jest.fn();
+      setUp(defaultProps, 2, pushFn);
 
       fireEvent.click(screen.getByTestId('InputPagination-left-arrow'));
-      expect(history.push).toHaveBeenCalledWith('/products?p=1');
+      testRouterPushCall(pushFn, 0, '/products', '?p=1');
 
       fireEvent.click(screen.getByTestId('InputPagination-right-arrow'));
-      expect(history.push).toHaveBeenLastCalledWith('/products?p=3');
+      testRouterPushCall(pushFn, 1, '/products', '?p=3');
     });
   });
 
   describe('check behaviour of input', () => {
-    it('should go to second page after input number 2 and submit form', () => {
-      const history = createHistoryPageNumber(1);
-
-      const { container } = setUp(defaultProps, history);
+    it('should go to second page after input number 2 and submit form', async () => {
+      const { container } = setUp(defaultProps);
       const input = screen.getByRole('spinbutton');
 
       fireEvent.input(input, { target: { value: 2 } });
       expect(input.value).toEqual('2');
 
       fireEvent.submit(container.querySelector('form'));
-      expect(history.push).toHaveBeenCalledWith('/products?p=2');
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith('/products?p=2');
     });
 
     it('should go to second page after input number 2 and click enter (submit input)', () => {
-      const history = createHistoryPageNumber(1);
-
-      setUp(defaultProps, history);
+      setUp(defaultProps);
       const input = screen.getByRole('spinbutton');
 
       fireEvent.input(input, { target: { value: 2 } });
       expect(input.value).toEqual('2');
 
       fireEvent.submit(input);
-      expect(history.push).toHaveBeenCalledWith('/products?p=2');
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith('/products?p=2');
     });
 
     it('should NOT change value to `e E - .`', () => {
-      const history = createHistoryPageNumber(1);
-
-      setUp(defaultProps, history);
+      setUp(defaultProps);
       const input = screen.getByRole('spinbutton');
 
       fireEvent.input(input, { target: { value: 'e' } });
@@ -149,66 +135,55 @@ describe('<InputPagination />', () => {
       }));
     });
 
-    it('should NOT call goBack nor replace if given page number is correct', () => {
-      const history = createHistoryPageNumber(2);
-      setUp(defaultProps, history);
-      expect(history.goBack).not.toHaveBeenCalled();
-      expect(history.replace).not.toHaveBeenCalled();
+    it('should NOT go back nor replace url if given page number is correct', () => {
+      setUp(defaultProps, 2);
+      expect(mockedUseNavigateFn).not.toHaveBeenCalled();
     });
 
-    it('should call replace if given page number is lower than 1', () => {
-      const history = createHistoryPageNumber(0);
-      setUp(defaultProps, history);
-      expect(history.goBack).not.toHaveBeenCalled();
-      expect(history.replace).toHaveBeenCalledWith(defaultAppPath);
+    it('should replace url if given page number is lower than 1', () => {
+      setUp(defaultProps, 0);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(defaultAppPath, { replace: true });
     });
 
-    it('should call replace if given page number is falsy after parsing to number', () => {
-      const history = createHistoryPageNumber('invalid');
-      setUp(defaultProps, history);
-      expect(history.goBack).not.toHaveBeenCalled();
-      expect(history.replace).toHaveBeenCalledWith(defaultAppPath);
+    it('should replace url if given page number is falsy after parsing to number', () => {
+      setUp(defaultProps, 'invalid');
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(defaultAppPath, { replace: true });
     });
 
-    it('should call replace if given page number is not given', () => {
-      const history = createHistoryPageNumber('');
-      setUp(defaultProps, history);
-      expect(history.goBack).not.toHaveBeenCalled();
-      expect(history.replace).toHaveBeenCalledWith(defaultAppPath);
+    it('should replace url if page number is not given', () => {
+      setUp(defaultProps, '');
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(defaultAppPath, { replace: true });
     });
 
-    it('should call replace if given page number is higher than number of pages', () => {
-      const history = createHistoryPageNumber(4);
-      setUp(defaultProps, history);
-      expect(history.goBack).not.toHaveBeenCalled();
-      expect(history.replace).toHaveBeenCalledWith('/products?p=3');
+    it('should navigate back if given page number is higher than number of pages and previous path is the same as next path', () => {
+      setUp(defaultProps, 4);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(-1);
     });
 
-    it('should call goBack if previous path is the same as current path and history length is greater than 2', () => {
+    it('should replace url with last page if given page number is higher than number of pages', () => {
+      useLastLocation.mockImplementation(() => ({
+        pathname: '/products',
+        search: '?p=2',
+      }));
+      setUp(defaultProps, 4);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith('/products?p=3', { replace: true });
+    });
+
+    it('should navigate back if previous path is the same as current path', () => {
       useLastLocation.mockImplementation(() => ({
         pathname: '/products',
         search: '?p=4',
       }));
 
-      const history = createHistoryPageNumber(4, 3);
-      setUp(defaultProps, history);
+      setUp(defaultProps, 4);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(-1);
+      expect(mockedUseNavigateFn).toHaveBeenCalledTimes(1);
     });
 
-    it('should call goBack if previous path is the same as next path and history length is greater than 2', () => {
-      const history = createHistoryPageNumber(4, 3);
-      setUp(defaultProps, history);
-    });
-
-    it('should NOT call goBack if previous path is the same as current path and history length is NOT greater than 2', () => {
-      const history = createHistoryPageNumber(3, 2);
-      setUp(defaultProps, history);
-      expect(history.goBack).not.toHaveBeenCalled();
-    });
-
-    it('should NOT call goBack if previous path is the same as next path and history length is NOT greater than 2', () => {
-      const history = createHistoryPageNumber(4, 2);
-      setUp(defaultProps, history);
-      expect(history.goBack).not.toHaveBeenCalled();
+    it('should navigate back if previous path is the same as next path', () => {
+      setUp(defaultProps, 4);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(-1);
+      expect(mockedUseNavigateFn).toHaveBeenCalledTimes(1);
     });
   });
 });

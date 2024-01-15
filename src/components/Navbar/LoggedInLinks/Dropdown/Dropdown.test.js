@@ -1,42 +1,28 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import { ThemeProvider } from 'styled-components';
 import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';
-import theme from '../../../../styled/theme';
 import Dropdown from './Dropdown';
 import { modalTypes } from '../../../../shared/constants';
 import * as actions from '../../../../store/actions/indexActions';
+import { renderAppPart, testRouterPushCall } from '../../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (isVisible, closed = jest.fn()) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search: '?p=1' },
-    push: jest.fn(),
-  };
-
+const setUp = (isVisible, closed = jest.fn(), pushFn = jest.fn()) => {
   const store = mockStore({});
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <Dropdown isVisible={isVisible} closed={closed} />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<Dropdown isVisible={isVisible} closed={closed} />, {
+      push: pushFn,
+      pathname: '/products',
+      search: '?p=1',
+      store,
+    }),
     store,
-    history,
     user: userEvent.setup({ pointerEventsCheck: PointerEventsCheckLevel.Never }),
   };
 };
@@ -56,31 +42,33 @@ describe('<Dropdown />', () => {
 
   describe('check behaviour after clicking at options', () => {
     it('should call push with correct paths after clicking at links', () => {
-      const { history } = setUp(true, jest.fn());
+      const pushFn = jest.fn();
+      setUp(true, jest.fn(), pushFn);
 
       fireEvent.click(screen.getByText(/my account/i));
-      expect(history.push).toHaveBeenCalledWith('/my-account/data');
+      testRouterPushCall(pushFn, 0, '/my-account/data');
 
       fireEvent.click(screen.getByText(/my offers/i));
-      expect(history.push).toHaveBeenLastCalledWith('/my-account/products?p=1');
+      testRouterPushCall(pushFn, 1, '/my-account/products', '?p=1');
 
       fireEvent.click(screen.getByText(/my sell history/i));
-      expect(history.push).toHaveBeenLastCalledWith('/my-account/sell-history?p=1');
+      testRouterPushCall(pushFn, 2, '/my-account/sell-history', '?p=1');
 
       fireEvent.click(screen.getByText(/placed orders/i));
-      expect(history.push).toHaveBeenLastCalledWith('/my-account/placed-orders?p=1');
+      testRouterPushCall(pushFn, 3, '/my-account/placed-orders', '?p=1');
 
       fireEvent.click(screen.getByText(/log out/i));
-      expect(history.push).toHaveBeenLastCalledWith('/logout');
+      testRouterPushCall(pushFn, 4, '/logout');
 
-      expect(history.push).toHaveBeenCalledTimes(5);
+      expect(pushFn).toHaveBeenCalledTimes(5);
     });
 
     it('should call setModal() after add product option click', () => {
-      const { store, history } = setUp(true, jest.fn());
+      const pushFn = jest.fn();
+      const { store } = setUp(true, jest.fn(), pushFn);
       fireEvent.click(screen.getByText(/add product/i));
       expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ADD_PRODUCT));
-      expect(history.push).not.toHaveBeenCalled();
+      expect(pushFn).not.toHaveBeenCalled();
     });
   });
 

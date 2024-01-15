@@ -1,16 +1,13 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import theme from '../../styled/theme';
 import Orders from './Orders';
 import {
   createOrder,
   createTransactionAndOrderProdItem,
+  renderAppPart,
 } from '../../shared/testUtility/testUtility';
 import { orderTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
@@ -26,24 +23,13 @@ const setUp = (orders, orderCount, type = orderTypes.PLACED_ORDERS) => {
   });
   store.dispatch = jest.fn();
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/my-account/placed-orders', search: defaultSearch },
-  };
-
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <Orders orders={orders} type={type} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
+    ...renderAppPart(<Orders orders={orders} type={type} />, {
+      pathname: '/my-account/placed-orders',
+      search: defaultSearch,
+      store,
+    }),
     store,
-    history,
   };
 };
 
@@ -53,8 +39,6 @@ jest.mock('../../store/actions/indexActions.js', () => ({
     orderType,
   }),
 }));
-
-afterEach(cleanup);
 
 describe('<Orders />', () => {
   describe('check how renders', () => {

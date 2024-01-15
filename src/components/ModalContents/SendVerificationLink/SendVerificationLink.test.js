@@ -1,29 +1,23 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import SendVerificationLink from './SendVerificationLink';
-import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
+const defaultStore = mockStore({});
+defaultStore.dispatch = jest.fn();
 
 const setUp = () => {
-  const store = mockStore({});
-  store.dispatch = jest.fn();
-
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <SendVerificationLink />
-        </ThemeProvider>
-      </Provider>,
-    ),
-    store,
+    ...renderAppPart(<SendVerificationLink />, {
+      store: defaultStore,
+      withoutRouter: true,
+    }),
+    store: defaultStore,
   };
 };
 
@@ -31,8 +25,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   ...jest.requireActual('../../../store/actions/indexActions.js'),
   sendAccountVerificationLink: () => {},
 }));
-
-afterEach(cleanup);
 
 describe('<SendVerificationLink />', () => {
   describe('checks behaviour after buttons clicks', () => {

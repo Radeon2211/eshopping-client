@@ -1,19 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
 import Button from './Button';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (props = {}) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <Button {...props} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<Button {...props} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<Button />', () => {
   describe('check how renders', () => {

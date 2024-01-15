@@ -1,18 +1,15 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import selectEvent from 'react-select-event';
 import matchMediaPolyfill from 'mq-polyfill';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import { act } from 'react-dom/test-utils';
 import Filters from './Filters';
-import theme from '../../styled/theme';
 import { sortProductsOptions, filtersActions, productConditions } from '../../shared/constants';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
+import { renderAppPart, testRouterPushCall } from '../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -23,25 +20,14 @@ const defaultStore = mockStore({
   },
 });
 
-const setUp = (isDataLoading = false, search = '?p=1') => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search },
-    push: jest.fn(),
-  };
-
+const setUp = (isDataLoading = false, search = '?p=1', pushFn = jest.fn()) => {
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={defaultStore}>
-          <ThemeProvider theme={theme}>
-            <Filters isDataLoading={isDataLoading} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
-    history,
+    ...renderAppPart(<Filters isDataLoading={isDataLoading} />, {
+      pathname: '/products',
+      search,
+      push: pushFn,
+      store: defaultStore,
+    }),
   };
 };
 
@@ -58,8 +44,6 @@ beforeAll(() => {
 beforeEach(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {});
 });
-
-afterEach(cleanup);
 
 describe('<Filters />', () => {
   describe('check how renders', () => {
@@ -132,7 +116,8 @@ describe('<Filters />', () => {
       act(() => {
         window.resizeTo(1920, 1080);
       });
-      const { history } = setUp(false, '?p=1');
+      const pushFn = jest.fn();
+      setUp(false, '?p=1', pushFn);
 
       fireEvent.click(screen.getByTestId('Filters-checkbox-new'));
       fireEvent.click(screen.getByTestId('Filters-checkbox-used'));
@@ -147,8 +132,11 @@ describe('<Filters />', () => {
 
       fireEvent.click(screen.getByTestId('Filters-submit-btn'));
 
-      expect(history.push).toHaveBeenCalledWith(
-        '/products?condition=new%2Cused&maxPrice=50&minPrice=20&p=1&sortBy=price%3Aasc',
+      testRouterPushCall(
+        pushFn,
+        0,
+        '/products',
+        '?condition=new%2Cused&maxPrice=50&minPrice=20&p=1&sortBy=price%3Aasc',
       );
     });
   });

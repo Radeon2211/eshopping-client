@@ -103,7 +103,7 @@ export const removeCartItem = (itemId) => {
   };
 };
 
-export const goToTransaction = (history, singleItem) => {
+export const goToTransaction = (navigateFn, singleItem) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
@@ -136,9 +136,9 @@ export const goToTransaction = (history, singleItem) => {
       }
 
       if (transaction.length > 0) {
-        history.push('/transaction');
+        navigateFn('/transaction');
       } else if (singleItem) {
-        history.goBack();
+        navigateFn(-1);
       }
 
       dispatch(uiActions.tradeEnd());
@@ -150,7 +150,7 @@ export const goToTransaction = (history, singleItem) => {
   };
 };
 
-export const buyProducts = (history, lastPath) => {
+export const buyProducts = (navigateFn, lastPath) => {
   return async (dispatch, getState) => {
     try {
       dispatch(uiActions.formStart());
@@ -177,10 +177,11 @@ export const buyProducts = (history, lastPath) => {
           dispatch(
             uiActions.setAndDeleteMessage('Sorry, these products are not available anymore'),
           );
+          navigateFn('/cart', { replace: true });
         }
       } else {
         dispatch(uiActions.setAndDeleteMessage('Transaction was successful'));
-        history.replace('/my-account/placed-orders');
+        navigateFn('/my-account/placed-orders', { replace: true });
       }
 
       dispatch(uiActions.formSuccess());

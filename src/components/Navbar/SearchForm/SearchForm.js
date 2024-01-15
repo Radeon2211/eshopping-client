@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as SC from './SearchForm.sc';
 import Button from '../../UI/Button/Button';
 import MyIcon from '../../UI/MyIcon';
@@ -10,7 +10,8 @@ import useWindowSize from '../../../shared/useWindowSize';
 
 export default function SearchForm() {
   const [productName, setProductName] = useState('');
-  const history = useHistory();
+  const { search } = useLocation();
+  const navigate = useNavigate();
 
   const windowSize = useWindowSize();
 
@@ -24,22 +25,19 @@ export default function SearchForm() {
   );
 
   useEffect(() => {
-    checkQueryParams(history.location.search);
-    history.listen(({ search }) => {
-      checkQueryParams(search);
-    });
-  }, [history, setProductName, checkQueryParams]);
+    checkQueryParams(search);
+  }, [search, setProductName, checkQueryParams]);
 
   const formSubmitHandle = (e) => {
     e.preventDefault();
-    const correctQueryParams = getParamsWithoutPollution(history.location.search);
+    const correctQueryParams = getParamsWithoutPollution(search);
     const { name = '' } = correctQueryParams;
     if (name === productName) return;
     let nameParam = '';
     if (productName.length > 0) {
       nameParam = `&name=${productName}`;
     }
-    history.push(`${defaultAppPath}${nameParam}`);
+    navigate(`${defaultAppPath}${nameParam}`);
   };
 
   let buttonContent = 'search';

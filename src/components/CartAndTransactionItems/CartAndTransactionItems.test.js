@@ -1,16 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CartAndTransactionItems from './CartAndTransactionItems';
-import theme from '../../styled/theme';
 import {
   createCartItem,
   createTransactionAndOrderProdItem,
+  renderAppPart,
+  testRouterPushCall,
 } from '../../shared/testUtility/testUtility';
 import { itemTypes } from '../../shared/constants';
 
@@ -18,29 +16,15 @@ const mockStore = configureMockStore([thunk]);
 
 const defaultStore = mockStore({});
 
-const setUp = (items, type) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/cart' },
-    push: jest.fn(),
-  };
-
+const setUp = (items, type, pushFn = jest.fn()) => {
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={defaultStore}>
-          <ThemeProvider theme={theme}>
-            <CartAndTransactionItems items={items} type={type} isCartLoading={false} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
-    history,
+    ...renderAppPart(<CartAndTransactionItems items={items} type={type} isCartLoading={false} />, {
+      pathname: '/cart',
+      push: pushFn,
+      store: defaultStore,
+    }),
   };
 };
-
-afterEach(cleanup);
 
 describe('<CartAndTransactionItems />', () => {
   describe('check how renders', () => {
@@ -79,17 +63,19 @@ describe('<CartAndTransactionItems />', () => {
     });
 
     it('should call push with correct path after click on user link', () => {
-      const { history } = setUp(
+      const pushFn = jest.fn();
+      setUp(
         [
           createCartItem({
             sellerUsername: 'user1',
           }),
         ],
         itemTypes.CART,
+        pushFn,
       );
 
       fireEvent.click(screen.getByTestId('CartAndTransactionItems-item-seller-link'));
-      expect(history.push).toHaveBeenCalledWith('/user/user1?p=1');
+      testRouterPushCall(pushFn, 0, '/user/user1', '?p=1');
     });
   });
 });

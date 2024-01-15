@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as SC from './Cart.sc';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
@@ -20,7 +20,7 @@ import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 export default function Cart() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const isCartLoading = useSelector((state) => state.ui.isCartLoading);
   const cart = useSelector((state) => state.auth.cart);
@@ -28,7 +28,7 @@ export default function Cart() {
   const dispatch = useDispatch();
   const onFetchCart = useCallback(() => dispatch(actions.fetchCart()), [dispatch]);
   const onGoToTransaction = useCallback(
-    (currentHistory) => dispatch(actions.goToTransaction(currentHistory)),
+    (navigateFn) => dispatch(actions.goToTransaction(navigateFn)),
     [dispatch],
   );
   const onSetModal = useCallback(
@@ -84,7 +84,7 @@ export default function Cart() {
                   $filled
                   $stretch
                   disabled={isCartLoading}
-                  clicked={() => onGoToTransaction(history)}
+                  clicked={() => onGoToTransaction(navigate)}
                 >
                   go to summary
                 </Button>

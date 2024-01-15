@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import * as SC from './InputPagination.sc';
 import MyIcon from '../../UI/MyIcon';
 import PlainText from '../../UI/PlainText';
@@ -14,8 +14,9 @@ import {
 import useLastLocation from '../../../shared/useLastLocation';
 
 export default function InputPagination({ itemQuantity, quantityPerPage }) {
-  const history = useHistory();
-  const { search, pathname } = history.location;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { search, pathname } = location;
 
   const lastLocation = useLastLocation();
 
@@ -30,13 +31,13 @@ export default function InputPagination({ itemQuantity, quantityPerPage }) {
       const currentPath = `${pathname}${search}`;
       const nextPath = `${pathname}?${updatedQueryParams}`;
 
-      if ((previousPath === currentPath || previousPath === nextPath) && history.length > 2) {
-        history.goBack();
+      if (previousPath === currentPath || previousPath === nextPath) {
+        navigate(-1);
       } else {
-        history.replace(nextPath);
+        navigate(nextPath, { replace: true });
       }
     },
-    [history, search, pathname, lastLocation],
+    [search, pathname, location],
   );
 
   useEffect(() => {
@@ -62,7 +63,7 @@ export default function InputPagination({ itemQuantity, quantityPerPage }) {
 
     setInputValue(correctPageNumber);
     setCurrentPage(correctPageNumber);
-  }, [itemQuantity, history, search, setInputValue, changePage, quantityPerPage]);
+  }, [itemQuantity, pathname, search, setInputValue, changePage, quantityPerPage]);
 
   const inputChangeHandle = (e) => {
     setInputValue(e.target.value);
@@ -76,7 +77,7 @@ export default function InputPagination({ itemQuantity, quantityPerPage }) {
       return;
     }
     const updatedQueryParams = stringifyParamsWithOtherPage(search, inputValue);
-    history.push(`${pathname}?${updatedQueryParams}`);
+    navigate(`${pathname}?${updatedQueryParams}`);
   };
 
   let pagination = null;

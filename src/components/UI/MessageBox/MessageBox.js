@@ -65,7 +65,7 @@ export default function MessageBox() {
   const onSetMessage = useCallback((msg) => dispatch(actions.setMessage(msg)), [dispatch]);
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       {message && (
         <SC.Wrapper data-testid="MessageBox">
           <SC.Message

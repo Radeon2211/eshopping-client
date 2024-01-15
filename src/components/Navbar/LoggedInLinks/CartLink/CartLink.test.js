@@ -1,43 +1,26 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import CartLink from './CartLink';
-import theme from '../../../../styled/theme';
+import { renderAppPart, testRouterPushCall } from '../../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (cart) => {
+const setUp = (cart, pushFn = jest.fn()) => {
   const store = mockStore({
     auth: { cart },
   });
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search: '?p=1' },
-    push: jest.fn(),
-  };
-
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <CartLink />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
-    history,
+    ...renderAppPart(<CartLink />, {
+      push: pushFn,
+      store,
+    }),
+    store,
   };
 };
-
-afterEach(cleanup);
 
 describe('<CartLink />', () => {
   it('should render everything correctly with quantity 1', () => {
@@ -61,8 +44,9 @@ describe('<CartLink />', () => {
   });
 
   it('should call push after clicking cart link', () => {
-    const { history } = setUp([]);
+    const pushFn = jest.fn();
+    setUp([], pushFn);
     fireEvent.click(screen.getByTestId('CartLink'));
-    expect(history.push).toHaveBeenCalledWith('/cart');
+    testRouterPushCall(pushFn, 0, '/cart');
   });
 });

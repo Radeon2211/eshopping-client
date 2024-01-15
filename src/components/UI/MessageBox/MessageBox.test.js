@@ -1,13 +1,11 @@
 import React from 'react';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
 import MessageBox from './MessageBox';
 import * as actions from '../../../store/actions/indexActions';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -18,18 +16,13 @@ const setUp = (message) => {
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MessageBox />
-        </ThemeProvider>
-      </Provider>,
-    ),
+    ...renderAppPart(<MessageBox />, {
+      withoutRouter: true,
+      store,
+    }),
     store,
   };
 };
-
-afterEach(cleanup);
 
 describe('<MessageBox />', () => {
   describe('check how renders', () => {

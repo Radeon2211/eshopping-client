@@ -1,14 +1,11 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import AddAdmin from './AddAdmin';
-import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
-import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
+import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -22,13 +19,10 @@ const setUp = () => {
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <AddAdmin />
-        </ThemeProvider>
-      </Provider>,
-    ),
+    ...renderAppPart(<AddAdmin />, {
+      store,
+      withoutRouter: true,
+    }),
     store,
   };
 };
@@ -37,8 +31,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   ...jest.requireActual('../../../store/actions/indexActions.js'),
   addAdmin: (email) => email,
 }));
-
-afterEach(cleanup);
 
 describe('<AddAdmin />', () => {
   describe('check form', () => {

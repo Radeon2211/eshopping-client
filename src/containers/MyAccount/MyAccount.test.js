@@ -1,45 +1,29 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import MyAccount from './MyAccount';
-import theme from '../../styled/theme';
-import { defaultUserProfile } from '../../shared/testUtility/testUtility';
+import {
+  defaultUserProfile,
+  renderAppPart,
+  testRouterPushCall,
+} from '../../shared/testUtility/testUtility';
 import { userStatuses } from '../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (userProfile) => {
+const setUp = (userProfile, pushFn = jest.fn()) => {
   const store = mockStore({
     auth: { profile: userProfile },
   });
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/my-account/data' },
-    push: jest.fn(),
-  };
-
-  return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <MyAccount />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
-    history,
-  };
+  return renderAppPart(<MyAccount />, {
+    pathname: '/',
+    push: pushFn,
+    store,
+  });
 };
-
-afterEach(cleanup);
 
 beforeAll(() => {
   window.scrollTo = jest.fn();
@@ -61,20 +45,18 @@ describe('<MyAccount />', () => {
   });
 
   it('should call push with correct paths after clicking on links', () => {
-    const { history } = setUp(defaultUserProfile);
+    const pushFn = jest.fn();
+    setUp(defaultUserProfile, pushFn);
 
     fireEvent.click(screen.getByTestId('MyAccount-products-link'));
-    expect(history.push.mock.calls[0][0].pathname).toEqual('/my-account/products');
-    expect(history.push.mock.calls[0][0].search).toEqual('?p=1');
+    testRouterPushCall(pushFn, 0, '/my-account/products', '?p=1');
 
     fireEvent.click(screen.getByTestId('MyAccount-sell-history-link'));
-    expect(history.push.mock.calls[1][0].pathname).toEqual('/my-account/sell-history');
-    expect(history.push.mock.calls[1][0].search).toEqual('?p=1');
+    testRouterPushCall(pushFn, 1, '/my-account/sell-history', '?p=1');
 
     fireEvent.click(screen.getByTestId('MyAccount-placed-orders-link'));
-    expect(history.push.mock.calls[2][0].pathname).toEqual('/my-account/placed-orders');
-    expect(history.push.mock.calls[2][0].search).toEqual('?p=1');
+    testRouterPushCall(pushFn, 2, '/my-account/placed-orders', '?p=1');
 
-    expect(history.push).toHaveBeenCalledTimes(3);
+    expect(pushFn).toHaveBeenCalledTimes(3);
   });
 });

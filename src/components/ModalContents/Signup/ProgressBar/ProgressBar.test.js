@@ -1,19 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
 import ProgressBar from './ProgressBar';
-import theme from '../../../../styled/theme';
+import { renderAppPart } from '../../../../shared/testUtility/testUtility';
 
 const setUp = (currentStep, stepsNumber = 3) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <ProgressBar currentStep={currentStep} stepsNumber={stepsNumber} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<ProgressBar currentStep={currentStep} stepsNumber={stepsNumber} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<ProgressBar />', () => {
   describe('check how renders', () => {

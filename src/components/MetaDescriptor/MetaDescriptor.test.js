@@ -1,8 +1,6 @@
 import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import MetaDescriptor from './MetaDescriptor';
-
-afterEach(cleanup);
 
 describe('<MetaDescriptor />', () => {
   describe('check how renders', () => {

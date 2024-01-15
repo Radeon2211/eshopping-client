@@ -1,33 +1,22 @@
 import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
+import { waitFor } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Logout from './Logout';
-import theme from '../../styled/theme';
 import * as actions from '../../store/actions/indexActions';
+import { renderAppPart } from '../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (goBack = jest.fn()) => {
-  const props = {
-    history: {
-      goBack,
-    },
-  };
-
+const setUp = () => {
   const store = mockStore({});
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Logout {...props} />
-        </ThemeProvider>
-      </Provider>,
-    ),
+    ...renderAppPart(<Logout />, {
+      pathname: '/',
+      store,
+    }),
     store,
   };
 };
@@ -36,13 +25,17 @@ jest.mock('../../store/actions/indexActions.js', () => ({
   logoutUser: () => {},
 }));
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 describe('<Logout />', () => {
-  it('should call goBack and logoutUser()', async () => {
-    const goBackFn = jest.fn();
-    const { store } = setUp(goBackFn);
-    expect(goBackFn).toHaveBeenCalledTimes(1);
+  it('should navigate back and logoutUser()', async () => {
+    const { store } = setUp();
+    expect(mockedUseNavigateFn).toHaveBeenCalledWith(-1);
     expect(store.dispatch).toHaveBeenCalledWith(actions.logoutUser());
     await waitFor(() => {
       expect(document.title).toEqual('Logging out...');

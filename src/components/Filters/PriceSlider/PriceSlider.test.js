@@ -1,15 +1,12 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import PriceSlider from './PriceSlider';
-import theme from '../../../styled/theme';
 import { defaultAppPath, sliderPositionsActions, filtersActions } from '../../../shared/constants';
 import { sliderPositionsReducer, sliderPositionsInitialState } from './sliderPositionsReducer';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -20,26 +17,20 @@ const defaultStore = mockStore({
   },
 });
 
-const setUp = (search = '?p=1', replace = jest.fn(), dispatchFilters = jest.fn()) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search },
-    replace,
-  };
-
-  return render(
-    <Router history={history}>
-      <Provider store={defaultStore}>
-        <ThemeProvider theme={theme}>
-          <PriceSlider dispatchFilters={dispatchFilters} />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  );
+const setUp = (search = '?p=1', dispatchFilters = jest.fn()) => {
+  return renderAppPart(<PriceSlider dispatchFilters={dispatchFilters} />, {
+    pathname: '/products',
+    search,
+    store: defaultStore,
+  });
 };
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 describe('<PriceSlider />', () => {
   describe('check how renders', () => {
@@ -62,20 +53,18 @@ describe('<PriceSlider />', () => {
 
   describe('check general behaviour', () => {
     it('should call replace if min value is lower than in store', () => {
-      const replaceFn = jest.fn();
-      setUp('?p=1&minPrice=5', replaceFn);
-      expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
+      setUp('?p=1&minPrice=5');
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(defaultAppPath, { replace: true });
     });
 
     it('should call replace if max value is greater than in store', () => {
-      const replaceFn = jest.fn();
-      setUp('?p=1&maxPrice=120', replaceFn);
-      expect(replaceFn).toHaveBeenCalledWith(defaultAppPath);
+      setUp('?p=1&maxPrice=120');
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(defaultAppPath, { replace: true });
     });
 
     it('should call dispatchFilters twice with correct values', () => {
       const dispatchFiltersFn = jest.fn();
-      setUp('?p=1&minPrice=20&maxPrice=80', jest.fn(), dispatchFiltersFn);
+      setUp('?p=1&minPrice=20&maxPrice=80', dispatchFiltersFn);
 
       expect(dispatchFiltersFn).toHaveBeenNthCalledWith(1, {
         minPrice: 20,
@@ -91,7 +80,7 @@ describe('<PriceSlider />', () => {
 
     it('should change range input values with correct values and call dispatchFilters (2 calls are by default in useEffect())', () => {
       const dispatchFiltersFn = jest.fn();
-      setUp('?p=1', jest.fn(), dispatchFiltersFn);
+      setUp('?p=1', dispatchFiltersFn);
 
       fireEvent.change(screen.getByTestId('PriceSlider-price-range-min'), {
         target: { value: 30 },

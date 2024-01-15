@@ -67,17 +67,17 @@ export const writeChangeCartInfo = (condition) => {
   };
 };
 
-export const changeProductsPerPage = (quantity, history) => {
+export const changeProductsPerPage = (quantity, pathname, search, navigateFn) => {
   return (dispatch) => {
     dispatch(setProductsPerPage(quantity));
-    const parsedQueryParams = getParamsWithoutPollution(history.location.search);
+    const parsedQueryParams = getParamsWithoutPollution(search);
     if (+parsedQueryParams.p !== 1) {
       const correctQueryParams = {
         ...parsedQueryParams,
         p: 1,
       };
       const stringifiedQueryParams = queryString.stringify(correctQueryParams);
-      history.push(`${history.location.pathname}?${stringifiedQueryParams}`);
+      navigateFn(`${pathname}?${stringifiedQueryParams}`);
     }
   };
 };

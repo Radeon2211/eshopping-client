@@ -1,19 +1,15 @@
 import React from 'react';
-import { render, cleanup, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import OtherUser from './OtherUser';
-import theme from '../../styled/theme';
 import {
   productPages,
   defaultProductsPerPage,
   defaultScrollToConfig,
 } from '../../shared/constants';
-import { createProductItem } from '../../shared/testUtility/testUtility';
+import { createProductItem, renderAppPart } from '../../shared/testUtility/testUtility';
 import * as actions from '../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -37,15 +33,7 @@ const defaultProducts = [
   }),
 ];
 
-const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) => {
-  const props = {
-    match: {
-      params: { username: otherUser?.username },
-    },
-    location: { pathname: `/user/${otherUser?.username}`, search: '?p=1' },
-    history: { replace: replaceFn },
-  };
-
+const setUp = (otherUser, currentUserUsername = 'user2') => {
   const store = mockStore({
     ui: { isDataLoading: false, productsPerPage: defaultProductsPerPage },
     auth: {
@@ -61,18 +49,24 @@ const setUp = (otherUser, currentUserUsername = 'user2', replaceFn = jest.fn()) 
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <Router>
-          <ThemeProvider theme={theme}>
-            <OtherUser {...props} />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<OtherUser />, {
+      pathname: `/user/${otherUser?.username}`,
+      search: '?p=1',
+      store,
+    }),
     store,
   };
 };
+
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+  useParams: () => ({
+    username: defaultOtherUser.username,
+  }),
+}));
 
 jest.mock('../../store/actions/indexActions.js', () => ({
   fetchOtherUser: (username) => username,
@@ -83,8 +77,6 @@ jest.mock('../../store/actions/indexActions.js', () => ({
   }),
   setOtherUser: (user) => user,
 }));
-
-afterEach(cleanup);
 
 beforeAll(() => {
   window.scrollTo = jest.fn();
@@ -140,21 +132,19 @@ describe('<OtherUser />', () => {
   });
 
   describe('check useEffect()', () => {
-    it('should call only replace if otherUser is the same as current user', () => {
-      const replaceFn = jest.fn();
-      const { store } = setUp(defaultOtherUser, 'user1', replaceFn);
+    it('should only replace path if otherUser is the same as current user', () => {
+      const { store } = setUp(defaultOtherUser, 'user1');
 
-      expect(replaceFn).toHaveBeenCalledTimes(1);
-      expect(replaceFn).toHaveBeenCalledWith('/my-account/data');
+      expect(mockedUseNavigateFn).toHaveBeenCalledTimes(1);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith('/my-account/data', { replace: true });
       expect(store.dispatch).not.toHaveBeenCalled();
       expect(window.scrollTo).not.toHaveBeenCalled();
     });
 
     it('should call fetchOtherUser(), fetchProducts(), and scrollTo() if otherUser is different from current user', () => {
-      const replaceFn = jest.fn();
-      const { store } = setUp(defaultOtherUser, 'differentUser', replaceFn);
+      const { store } = setUp(defaultOtherUser, 'differentUser');
 
-      expect(replaceFn).not.toHaveBeenCalled();
+      expect(mockedUseNavigateFn).not.toHaveBeenCalled();
 
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchOtherUser('user1'));
       expect(store.dispatch).toHaveBeenNthCalledWith(

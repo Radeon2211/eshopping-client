@@ -1,16 +1,13 @@
 import React from 'react';
-import { render, cleanup, waitFor, screen } from '@testing-library/react';
+import { waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Transaction from './Transaction';
-import theme from '../../styled/theme';
 import {
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
+  renderAppPart,
 } from '../../shared/testUtility/testUtility';
 import { defaultScrollToConfig } from '../../shared/constants';
 
@@ -25,29 +22,21 @@ const setUp = (transaction) => {
   });
   store.dispatch = jest.fn();
 
-  const history = {
-    listen: () => () => {},
-    createHref: jest.fn(),
-    location: { pathname: '/transaction' },
-    replace: jest.fn(),
-  };
-
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <Transaction />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
+    ...renderAppPart(<Transaction />, {
+      pathname: `/transaction`,
+      store,
+    }),
     store,
-    history,
   };
 };
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 beforeAll(() => {
   window.scrollTo = jest.fn();
@@ -95,21 +84,21 @@ describe('<Transaction />', () => {
   });
 
   describe('check useEffect()', () => {
-    it('should call replace if transaction is falsy and call scrollTo()', () => {
-      const { history } = setUp(undefined);
-      expect(history.replace).toHaveBeenCalledWith('/cart');
+    it('should replace url if transaction is falsy and call scrollTo()', () => {
+      setUp(undefined);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith('/cart', { replace: true });
       expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
 
-    it('should call replace if transaction length is 0 and call scrollTo()', () => {
-      const { history } = setUp([]);
-      expect(history.replace).toHaveBeenCalledWith('/cart');
+    it('should replace url if transaction length is 0 and call scrollTo()', () => {
+      setUp([]);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith('/cart', { replace: true });
       expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
 
-    it('should NOT call replace if transaction length is more than 1 and call scrollTo()', () => {
-      const { history } = setUp([createTransactionAndOrderProdItem()]);
-      expect(history.replace).not.toHaveBeenCalled();
+    it('should NOT replace url if transaction length is more than 1 and call scrollTo()', () => {
+      setUp([createTransactionAndOrderProdItem()]);
+      expect(mockedUseNavigateFn).not.toHaveBeenCalled();
       expect(window.scrollTo).toHaveBeenCalledWith(defaultScrollToConfig);
     });
   });

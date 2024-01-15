@@ -1,19 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen, act } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
 import LoadingOverlay from './LoadingOverlay';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (disableText = false) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <LoadingOverlay disableText={disableText} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<LoadingOverlay disableText={disableText} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<LoadingOverlay />', () => {
   beforeEach(() => {

@@ -17,8 +17,8 @@ export const LabelAndInputs = styled.div`
 `;
 
 export const Slider = styled.div.attrs(({ $positions: { left, right } }) => ({
-  left,
-  right,
+  $left: left,
+  $right: right,
 }))`
   height: 1rem;
   margin-top: ${({ theme }) => theme.spacings.level1};
@@ -61,10 +61,10 @@ export const Slider = styled.div.attrs(({ $positions: { left, right } }) => ({
     background-color: ${({ theme }) => theme.colors.blue};
     bottom: 0;
     border-radius: 5px;
-    left: ${({ left }) => left}%;
+    left: ${({ $left }) => $left}%;
     position: absolute;
     top: 0;
-    right: ${({ right }) => right}%;
+    right: ${({ $right }) => $right}%;
     z-index: ${({ theme }) => theme.zIndexes.level2};
   }
 
@@ -78,13 +78,13 @@ export const Slider = styled.div.attrs(({ $positions: { left, right } }) => ({
     z-index: ${({ theme }) => theme.zIndexes.level3};
 
     &.left {
-      left: ${({ left }) => left}%;
-      transform: translate(-${({ left }) => left}%, -0.8rem);
+      left: ${({ $left }) => $left}%;
+      transform: translate(-${({ $left }) => $left}%, -0.8rem);
     }
 
     &.right {
-      transform: translate(${({ right }) => right}%, -0.8rem);
-      right: ${({ right }) => right}%;
+      transform: translate(${({ $right }) => $right}%, -0.8rem);
+      right: ${({ $right }) => $right}%;
     }
   }
 `;

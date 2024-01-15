@@ -1,31 +1,24 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import selectEvent from 'react-select-event';
-import { ThemeProvider } from 'styled-components';
-import { Router } from 'react-router-dom';
 import SortOrders from './SortOrders';
-import theme from '../../../styled/theme';
 import { sortOrdersOptions } from '../../../shared/constants';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
-const setUp = (replaceFn = jest.fn()) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/my-account/placed-orders', search: '?p=1' },
-    replace: replaceFn,
-  };
-
-  return render(
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <SortOrders />
-      </ThemeProvider>
-    </Router>,
-  );
+const setUp = () => {
+  return renderAppPart(<SortOrders />, {
+    pathname: '/my-account/placed-orders',
+    search: '?p=1',
+  });
 };
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 describe('<SortOrders />', () => {
   it('should render all sorting options', async () => {
@@ -40,41 +33,46 @@ describe('<SortOrders />', () => {
   });
 
   it('should call replace with correct paths and params', async () => {
-    const replaceFn = jest.fn();
-    setUp(replaceFn);
+    setUp();
 
     const defaultOption = screen.getByText(sortOrdersOptions[0].label);
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getAllByText(sortOrdersOptions[0].label)[0]);
-    expect(replaceFn).not.toHaveBeenCalled();
+    expect(mockedUseNavigateFn).not.toHaveBeenCalled();
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getAllByText(sortOrdersOptions[0].label)[1]);
-    expect(replaceFn).not.toHaveBeenCalled();
+    expect(mockedUseNavigateFn).not.toHaveBeenCalled();
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[1].label));
-    expect(replaceFn).toHaveBeenCalledWith('/my-account/placed-orders?p=1&sortBy=createdAt%3Aasc');
+    expect(mockedUseNavigateFn).toHaveBeenCalledWith(
+      '/my-account/placed-orders?p=1&sortBy=createdAt%3Aasc',
+      { replace: true },
+    );
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[0].label));
-    expect(replaceFn).toHaveBeenLastCalledWith(
+    expect(mockedUseNavigateFn).toHaveBeenLastCalledWith(
       '/my-account/placed-orders?p=1&sortBy=createdAt%3Adesc',
+      { replace: true },
     );
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[2].label));
-    expect(replaceFn).toHaveBeenLastCalledWith(
+    expect(mockedUseNavigateFn).toHaveBeenLastCalledWith(
       '/my-account/placed-orders?p=1&sortBy=overallPrice%3Aasc',
+      { replace: true },
     );
 
     await selectEvent.openMenu(defaultOption);
     fireEvent.click(screen.getByText(sortOrdersOptions[3].label));
-    expect(replaceFn).toHaveBeenLastCalledWith(
+    expect(mockedUseNavigateFn).toHaveBeenLastCalledWith(
       '/my-account/placed-orders?p=1&sortBy=overallPrice%3Adesc',
+      { replace: true },
     );
 
-    expect(replaceFn).toHaveBeenCalledTimes(4);
+    expect(mockedUseNavigateFn).toHaveBeenCalledTimes(4);
   });
 });

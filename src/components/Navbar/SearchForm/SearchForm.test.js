@@ -1,31 +1,16 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, act } from '@testing-library/react';
+import { screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import matchMediaPolyfill from 'mq-polyfill';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import SearchForm from './SearchForm';
-import theme from '../../../styled/theme';
 import { defaultAppPath } from '../../../shared/constants';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (search = '?p=1') => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search },
-    push: jest.fn(),
-  };
-
-  return {
-    ...render(
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <SearchForm />
-        </ThemeProvider>
-      </Router>,
-    ),
-    history,
-  };
+  return renderAppPart(<SearchForm />, {
+    pathname: '/products',
+    search,
+  });
 };
 
 beforeAll(() => {
@@ -42,7 +27,12 @@ beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {});
 });
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 describe('<SearchForm />', () => {
   describe('check how renders', () => {
@@ -66,60 +56,50 @@ describe('<SearchForm />', () => {
 
   describe('check if correct url is pushing to history', () => {
     it('should push defaultAppPath&name=test-name if there is no name in url', () => {
-      const { history } = setUp();
+      setUp();
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.input(input, { target: { value: 'test-name' } });
       fireEvent.submit(input);
-      expect(history.push).toHaveBeenCalledWith(`${defaultAppPath}&name=test-name`);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(`${defaultAppPath}&name=test-name`);
     });
 
-    it('should push defaultAppPath if in url is name', () => {
-      const { history } = setUp('?p=1&name=test-name');
-
+    it('should navigate to defaultAppPath if in url is name', () => {
+      setUp('?p=1&name=test-name');
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.input(input, { target: { value: '' } });
       fireEvent.submit(input);
-      expect(history.push).toHaveBeenCalledWith(defaultAppPath);
+      expect(mockedUseNavigateFn).toHaveBeenCalledWith(defaultAppPath);
     });
 
-    it('should NOT call push if in url is no name and input is empty', () => {
-      const { history } = setUp();
-
+    it('should NOT call navigate if in url is no name and input is empty', () => {
+      setUp();
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.submit(input);
-      expect(history.push).not.toHaveBeenCalled();
+      expect(mockedUseNavigateFn).not.toHaveBeenCalled();
     });
 
-    it('should NOT call push if in url is name and input is not edited', () => {
-      const { history } = setUp('?p=1&name=test-name');
+    it('should NOT call navigate if in url is name and input is not edited', () => {
+      setUp('?p=1&name=test-name');
       const input = screen.getByTestId('SearchForm-input');
       fireEvent.submit(input);
-      expect(history.push).not.toHaveBeenCalled();
+      expect(mockedUseNavigateFn).not.toHaveBeenCalled();
     });
   });
 
   describe('check useEffect()', () => {
     it('should change input value after name param change', () => {
-      const { rerender, history } = setUp('?p=1');
+      const { rerender } = setUp('?p=1');
 
       const inputBefore = screen.getByTestId('SearchForm-input');
       expect(inputBefore.value).toEqual('');
 
-      const newHistory = {
-        ...history,
-        location: {
-          ...history.location,
-          search: '?p=1&name=test-name',
-        },
-      };
-
       act(() => {
         rerender(
-          <Router history={newHistory}>
-            <ThemeProvider theme={theme}>
-              <SearchForm />
-            </ThemeProvider>
-          </Router>,
+          renderAppPart(<SearchForm />, {
+            pathname: '/products',
+            search: '?p=1&name=test-name',
+            onlyReturnWrappedElement: true,
+          }),
         );
       });
 
@@ -128,26 +108,18 @@ describe('<SearchForm />', () => {
     });
 
     it('should change input value after name param change with pollution', () => {
-      const { rerender, history } = setUp('?p=1');
+      const { rerender } = setUp('?p=1');
 
       const inputBefore = screen.getByTestId('SearchForm-input');
       expect(inputBefore.value).toEqual('');
 
-      const newHistory = {
-        ...history,
-        location: {
-          ...history.location,
-          search: '?p=1&name=test-name&name=other-name',
-        },
-      };
-
       act(() => {
         rerender(
-          <Router history={newHistory}>
-            <ThemeProvider theme={theme}>
-              <SearchForm />
-            </ThemeProvider>
-          </Router>,
+          renderAppPart(<SearchForm />, {
+            pathname: '/products',
+            search: '?p=1&name=test-name&name=other-name',
+            onlyReturnWrappedElement: true,
+          }),
         );
       });
 

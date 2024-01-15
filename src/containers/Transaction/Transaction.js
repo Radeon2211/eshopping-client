@@ -1,6 +1,6 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
 import SideBySide from '../../components/UI/SideBySide';
 import FlexWrapper from '../../components/UI/FlexWrapper';
@@ -16,8 +16,8 @@ import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 export default function Transaction() {
-  const history = useHistory();
-  const blockGoingToCartRef = useRef(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const transaction = useSelector((state) => state.auth.transaction);
 
@@ -33,19 +33,16 @@ export default function Transaction() {
 
   useEffect(() => {
     scrollToTop();
-    if ((!transaction || transaction?.length <= 0) && !blockGoingToCartRef.current) {
-      history.replace('/cart');
+    if (pathname !== '/transaction') {
+      onSetTransaction(undefined);
     }
-    const unlisten = history.listen((location) => {
-      if (location.pathname !== '/transaction') {
-        onSetTransaction(undefined);
-        blockGoingToCartRef.current = true;
-      }
-    });
-    return () => {
-      unlisten();
-    };
-  }, [history, transaction, onSetTransaction]);
+  }, [pathname, transaction, onSetTransaction]);
+
+  useEffect(() => {
+    if (!transaction?.length) {
+      navigate('/cart', { replace: true });
+    }
+  }, []);
 
   let content = null;
   if (transaction?.length > 0) {

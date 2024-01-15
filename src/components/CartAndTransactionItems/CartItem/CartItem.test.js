@@ -1,43 +1,31 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CartItem from './CartItem';
-import theme from '../../../styled/theme';
-import { createCartItem } from '../../../shared/testUtility/testUtility';
+import {
+  createCartItem,
+  renderAppPart,
+  testRouterPushCall,
+} from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 import noPhoto from '../../../images/no-photo.png';
 import { updateCartActions } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
-const setUp = (data, isCartLoading = false) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/cart' },
-    push: jest.fn(),
-  };
-
+const setUp = (data, isCartLoading = false, pushFn = jest.fn()) => {
   const store = mockStore({});
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <CartItem data={data} isCartLoading={isCartLoading} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
+    ...renderAppPart(<CartItem data={data} isCartLoading={isCartLoading} />, {
+      pathname: '/cart',
+      push: pushFn,
+      store,
+    }),
     store,
-    history,
   };
 };
 
@@ -49,8 +37,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
     itemQuantity,
   }),
 }));
-
-afterEach(cleanup);
 
 describe('<CartItem />', () => {
   const itemId = 'i1';
@@ -85,15 +71,16 @@ describe('<CartItem />', () => {
 
   describe('check behaviour of history and calling redux actions', () => {
     it('should call push with correct paths after clicking links', () => {
-      const { history } = setUp(defaultData, false);
+      const pushFn = jest.fn();
+      setUp(defaultData, false, pushFn);
 
       fireEvent.click(screen.getByTestId('CartItem-product-link-photo'));
-      expect(history.push).toHaveBeenCalledWith(`/product/${defaultData.product._id}`);
+      testRouterPushCall(pushFn, 0, `/product/${defaultData.product._id}`);
 
       fireEvent.click(screen.getByTestId('CartItem-product-link-name'));
-      expect(history.push).toHaveBeenLastCalledWith(`/product/${defaultData.product._id}`);
+      testRouterPushCall(pushFn, 1, `/product/${defaultData.product._id}`);
 
-      expect(history.push).toHaveBeenCalledTimes(2);
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
 
     it('should call removeCartItem() after clicking at trash icon', () => {

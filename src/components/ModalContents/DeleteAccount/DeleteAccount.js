@@ -1,18 +1,18 @@
 import React, { useCallback } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import { inputKinds } from '../../../shared/constants';
 
 export default function DeleteAccount() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const onDeleteAccount = useCallback(
-    (creds, currentHistory) => dispatch(actions.deleteAccount(creds, currentHistory)),
+    (creds, navigateFn) => dispatch(actions.deleteAccount(creds, navigateFn)),
     [dispatch],
   );
 
@@ -22,7 +22,7 @@ export default function DeleteAccount() {
         currentPassword: '',
       }}
       onSubmit={(data) => {
-        onDeleteAccount(data, history);
+        onDeleteAccount(data, navigate);
       }}
     >
       {({ dirty }) => (

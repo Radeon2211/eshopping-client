@@ -29,7 +29,7 @@ const CartLink = React.memo(() => {
   const cartLength = useSelector((state) => state.auth.cart?.length);
 
   let quantity = null;
-  if (cartLength && cartLength > 0) {
+  if (!!cartLength && cartLength > 0) {
     quantity = <SC.Quantity data-testid="CartLink-quantity">{cartLength}</SC.Quantity>;
   }
 

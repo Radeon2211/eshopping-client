@@ -1,16 +1,12 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import matchMediaPolyfill from 'mq-polyfill';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
-import { createProductItem } from '../../shared/testUtility/testUtility';
+import { createProductItem, renderAppPart } from '../../shared/testUtility/testUtility';
 import { productPages, defaultProductsPerPage } from '../../shared/constants';
-import theme from '../../styled/theme';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -46,22 +42,11 @@ const defaultProducts = [
 ];
 
 const setUp = (store, search = '?p=1') => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search },
-    replace: jest.fn(),
-  };
-
-  return render(
-    <Provider store={store}>
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <ProductsAndFilters page={productPages.ALL_PRODUCTS} />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  return renderAppPart(<ProductsAndFilters page={productPages.ALL_PRODUCTS} />, {
+    pathname: '/products',
+    search,
+    store,
+  });
 };
 
 beforeAll(() => {
@@ -73,8 +58,6 @@ beforeAll(() => {
     }).dispatchEvent(new this.Event('resize'));
   };
 });
-
-afterEach(cleanup);
 
 describe('<ProductsAndFilters />', () => {
   beforeEach(() => {

@@ -1,34 +1,21 @@
 import React from 'react';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Router } from 'react-router-dom';
-import theme from '../../../styled/theme';
 import ProductItem from './ProductItem';
-import { createProductItem } from '../../../shared/testUtility/testUtility';
+import {
+  createProductItem,
+  renderAppPart,
+  testRouterPushCall,
+} from '../../../shared/testUtility/testUtility';
 import { productConditions } from '../../../shared/constants';
 
-const setUp = (data) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search: '?p=1' },
-    push: jest.fn(),
-  };
-
-  return {
-    ...render(
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
-          <ProductItem data={data} />
-        </ThemeProvider>
-      </Router>,
-    ),
-    history,
-  };
+const setUp = (data, pushFn = jest.fn()) => {
+  return renderAppPart(<ProductItem data={data} />, {
+    pathname: '/products',
+    search: '?p=1',
+    push: pushFn,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<ProductItem />', () => {
   describe('check how renders', () => {
@@ -83,11 +70,10 @@ describe('<ProductItem />', () => {
   });
 
   it('should push correct path after clicking at wrapper', () => {
-    const data = createProductItem({
-      id: 'p1',
-    });
-    const { history } = setUp(data);
+    const data = createProductItem({ id: 'p1' });
+    const pushFn = jest.fn();
+    setUp(data, pushFn);
     fireEvent.click(screen.getByTestId('ProductItem'));
-    expect(history.push).toHaveBeenCalledWith('/product/p1');
+    testRouterPushCall(pushFn, 0, '/product/p1');
   });
 });

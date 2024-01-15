@@ -25,7 +25,7 @@ export default function Step1(props) {
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       {isVisible && (
         <SC.Step
           variants={stepFormVariants}

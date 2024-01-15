@@ -214,18 +214,21 @@ describe('functions with dispatch', () => {
   });
 
   describe('changeProductsPerPage()', () => {
-    const createHistory = (search = '?p=1', pathname = '/products') => ({
-      push: jest.fn(),
-      location: { pathname, search },
+    const createLocation = (search = '?p=1', pathname = '/products') => ({
+      pathname,
+      search,
     });
 
     describe('store', () => {
       it('should only change productsPerPage if page number is 1', () => {
         const { store, initialState } = setUpStoreWithDefaultProfile();
-        const history = createHistory('?p=1');
-        store.dispatch(actions.changeProductsPerPage(15, history));
+        const location = createLocation('?p=1');
+        const navigateFn = jest.fn();
+        store.dispatch(
+          actions.changeProductsPerPage(15, location.pathname, location.search, navigateFn),
+        );
 
-        expect(history.push).not.toHaveBeenCalled();
+        expect(navigateFn).not.toHaveBeenCalled();
         expect(store.getState()).toEqual(
           createExpectedState(
             initialState,
@@ -240,10 +243,13 @@ describe('functions with dispatch', () => {
 
       it('should change productsPerPage and also call push if page number is other than 1', () => {
         const { store, initialState } = setUpStoreWithDefaultProfile();
-        const history = createHistory('?p=2&minPrice=100', '/products');
-        store.dispatch(actions.changeProductsPerPage(20, history));
+        const location = createLocation('?p=2&minPrice=100', '/products');
+        const navigateFn = jest.fn();
+        store.dispatch(
+          actions.changeProductsPerPage(20, location.pathname, location.search, navigateFn),
+        );
 
-        expect(history.push).toHaveBeenCalledWith('/products?minPrice=100&p=1');
+        expect(navigateFn).toHaveBeenCalledWith('/products?minPrice=100&p=1');
         expect(store.getState()).toEqual(
           createExpectedState(
             initialState,
@@ -260,8 +266,13 @@ describe('functions with dispatch', () => {
     describe('inner dispatch', () => {
       it('should call inner dispatch', () => {
         const innerDispatchFn = jest.fn();
-        const history = createHistory('?p=2');
-        actions.changeProductsPerPage(5, history)(innerDispatchFn);
+        const location = createLocation('?p=2');
+        actions.changeProductsPerPage(
+          5,
+          location.pathname,
+          location.search,
+          jest.fn(),
+        )(innerDispatchFn);
         expect(innerDispatchFn).toHaveBeenCalledWith(uiActions.setProductsPerPage(5));
       });
     });

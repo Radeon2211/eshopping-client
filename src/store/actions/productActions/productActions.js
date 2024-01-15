@@ -188,7 +188,7 @@ export const fetchProductDetails = (productId) => {
   };
 };
 
-export const deleteProduct = (productId, history) => {
+export const deleteProduct = (productId, navigateFn) => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
@@ -197,7 +197,7 @@ export const deleteProduct = (productId, history) => {
       dispatch(deleteProductFromList(productId));
       dispatch(uiActions.setAndDeleteMessage('Product has been deleted successfully'));
       dispatch(uiActions.formSuccess());
-      history.goBack();
+      navigateFn(-1);
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));

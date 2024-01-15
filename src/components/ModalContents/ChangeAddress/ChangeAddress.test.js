@@ -1,14 +1,15 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import selectEvent from 'react-select-event';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ChangeAddress from './ChangeAddress';
-import theme from '../../../styled/theme';
-import { clickAtSubmitButton, defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import {
+  clickAtSubmitButton,
+  defaultUserProfile,
+  renderAppPart,
+} from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -37,13 +38,10 @@ const setUp = () => {
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <ChangeAddress />
-        </ThemeProvider>
-      </Provider>,
-    ),
+    ...renderAppPart(<ChangeAddress />, {
+      store,
+      withoutRouter: true,
+    }),
     store,
   };
 };
@@ -55,8 +53,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
     message,
   }),
 }));
-
-afterEach(cleanup);
 
 describe('<ChangeAddress />', () => {
   describe('check form', () => {

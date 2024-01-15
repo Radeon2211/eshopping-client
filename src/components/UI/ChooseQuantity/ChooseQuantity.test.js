@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
 import ChooseQuantity from './ChooseQuantity';
-import theme from '../../../styled/theme';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const defaultProps = {
   name: 'quantity',
@@ -23,14 +22,10 @@ const setUp = (props = {}) => {
       }
     : defaultProps;
 
-  return render(
-    <ThemeProvider theme={theme}>
-      <ChooseQuantity {...finalProps} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<ChooseQuantity {...finalProps} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<ChooseQuantity />', () => {
   describe('check how renders', () => {

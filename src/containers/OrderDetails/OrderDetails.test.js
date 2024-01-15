@@ -1,18 +1,16 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
 import OrderDetails from './OrderDetails';
 import {
   createOrder,
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
+  renderAppPart,
+  testRouterPushCall,
 } from '../../shared/testUtility/testUtility';
-import theme from '../../styled/theme';
 import * as actions from '../../store/actions/indexActions';
 import { defaultScrollToConfig } from '../../shared/constants';
 
@@ -20,31 +18,19 @@ const mockStore = configureMockStore([thunk]);
 
 const defaultOrderId = 'o1';
 
-const setUp = (orderDetails) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: `/order/${defaultOrderId}` },
-    push: jest.fn(),
-  };
-
+const setUp = (orderDetails, pushFn = jest.fn()) => {
   const store = mockStore({
     auth: { orderDetails },
   });
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <OrderDetails />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<OrderDetails />, {
+      pathname: `/order/${defaultOrderId}`,
+      push: pushFn,
+      store,
+    }),
     store,
-    history,
   };
 };
 
@@ -59,8 +45,6 @@ jest.mock('../../store/actions/indexActions.js', () => ({
   fetchOrderDetails: (orderId) => orderId,
   setOrderDetails: (orderDetails) => orderDetails,
 }));
-
-afterEach(cleanup);
 
 beforeAll(() => {
   window.scrollTo = jest.fn();
@@ -138,18 +122,22 @@ describe('<OrderDetails />', () => {
         sellerPhone: '123',
       });
 
-      const { history } = setUp({
-        ...orderDetails,
-        deliveryAddress: defaultDeliveryAddress,
-      });
+      const pushFn = jest.fn();
+      setUp(
+        {
+          ...orderDetails,
+          deliveryAddress: defaultDeliveryAddress,
+        },
+        pushFn,
+      );
 
       fireEvent.click(screen.getByTestId('OrderDetails-buyer-link'));
-      expect(history.push).toHaveBeenCalledWith('/user/buyerUser?p=1');
+      testRouterPushCall(pushFn, 0, '/user/buyerUser', '?p=1');
 
       fireEvent.click(screen.getByTestId('OrderDetails-seller-link'));
-      expect(history.push).toHaveBeenLastCalledWith('/user/sellerUser?p=1');
+      testRouterPushCall(pushFn, 1, '/user/sellerUser', '?p=1');
 
-      expect(history.push).toHaveBeenCalledTimes(2);
+      expect(pushFn).toHaveBeenCalledTimes(2);
     });
   });
 

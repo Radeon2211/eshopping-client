@@ -30,15 +30,15 @@ export const Wrapper = styled.div`
     &:hover {
       color: ${({ theme }) => theme.colors.green};
     }
-  }
 
-  & .nav-link-active {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.blue};
-    color: ${({ theme }) => theme.colors.blue};
-    cursor: default;
-
-    &:hover {
+    &.active {
+      border-bottom: 2px solid ${({ theme }) => theme.colors.blue};
       color: ${({ theme }) => theme.colors.blue};
+      cursor: default;
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.blue};
+      }
     }
   }
 
@@ -68,12 +68,7 @@ export const Wrapper = styled.div`
 
 export const Routes = styled.div`
   ${({ $extraMargin, theme }) => {
-    if ($extraMargin) {
-      return `
-        margin-top: ${theme.spacings.level5};
-      `;
-    }
-    return ``;
+    return $extraMargin ? `margin-top: ${theme.spacings.level5};` : ``;
   }}
 `;
 

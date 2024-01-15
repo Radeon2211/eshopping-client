@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Select from 'react-select';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import { productsPerPageControllerOptions } from '../../../shared/constants';
@@ -49,18 +49,20 @@ export default function ProductsPerPageController({ quantityPerPage }) {
   );
   const [option, setOption] = useState(defaultOption);
 
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const onChangeProductsPerPage = useCallback(
-    (quantity, currentHistory) => dispatch(actions.changeProductsPerPage(quantity, currentHistory)),
-    [dispatch],
+    (quantity, pathname, search, navigateFn) =>
+      dispatch(actions.changeProductsPerPage(quantity, pathname, search, navigateFn)),
+    [dispatch, location],
   );
 
   const optionChangeHandle = (change) => {
     if (change.value === option.value) return;
     setOption(change);
-    onChangeProductsPerPage(change.value, history);
+    onChangeProductsPerPage(change.value, location.pathname, location.search, navigate);
   };
 
   return (

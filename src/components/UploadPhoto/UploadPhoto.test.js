@@ -1,21 +1,19 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
 import UploadPhoto from './UploadPhoto';
-import theme from '../../styled/theme';
 import { mockFile } from '../../shared/utility/utility';
 import { productPhotoFieldValues } from '../../shared/constants';
+import { renderAppPart } from '../../shared/testUtility/testUtility';
 
 const setUp = (hasCurrentPhoto, setFieldValue = jest.fn()) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <UploadPhoto setFieldValue={setFieldValue} hasCurrentPhoto={hasCurrentPhoto} />
-    </ThemeProvider>,
+  return renderAppPart(
+    <UploadPhoto setFieldValue={setFieldValue} hasCurrentPhoto={hasCurrentPhoto} />,
+    {
+      withoutRouter: true,
+    },
   );
 };
-
-afterEach(cleanup);
 
 describe('<UploadPhoto />', () => {
   const MAX_POSSIBLE_FILE_SIZE = 6291456;
@@ -106,13 +104,17 @@ describe('<UploadPhoto />', () => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });
         });
 
-        expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
+        await waitFor(() => {
+          expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', photo);
+        });
 
         await waitFor(() => {
           fireEvent.click(screen.getByRole('button', { name: /delete/i }));
         });
 
-        expect(setFieldValueFn).toHaveBeenNthCalledWith(2, 'photo', null);
+        await waitFor(() => {
+          expect(setFieldValueFn).toHaveBeenNthCalledWith(2, 'photo', null);
+        });
 
         await waitFor(() => {
           fireEvent.change(uploadPhotoInput, { target: { files: [photo] } });

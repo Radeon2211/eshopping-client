@@ -1,15 +1,15 @@
 import React from 'react';
-import { render, cleanup, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import matchMediaPolyfill from 'mq-polyfill';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Products from './Products';
-import theme from '../../styled/theme';
-import { defaultUserProfile, createProductItem } from '../../shared/testUtility/testUtility';
+import {
+  defaultUserProfile,
+  createProductItem,
+  renderAppPart,
+} from '../../shared/testUtility/testUtility';
 import {
   productPages,
   defaultProductsPerPage,
@@ -42,12 +42,6 @@ const setUp = (search = '?p=1') => {
     location: { pathname: '/products', search },
   };
 
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search },
-  };
-
   const store = mockStore({
     auth: {
       profile: defaultUserProfile,
@@ -66,15 +60,11 @@ const setUp = (search = '?p=1') => {
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <Products {...props} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
+    ...renderAppPart(<Products {...props} />, {
+      pathname: `/products`,
+      search,
+      store,
+    }),
     store,
   };
 };
@@ -103,8 +93,6 @@ jest.mock('../../shared/useLastLocation', () => ({
   __esModule: true,
   default: jest.fn(),
 }));
-
-afterEach(cleanup);
 
 describe('<Products />', () => {
   describe('check how renders', () => {

@@ -1,11 +1,8 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Router } from 'react-router-dom';
-import theme from '../../styled/theme';
 import ProductList from './ProductList';
-import { createProductItem } from '../../shared/testUtility/testUtility';
+import { createProductItem, renderAppPart } from '../../shared/testUtility/testUtility';
 import { productPages } from '../../shared/constants';
 
 const defaultProducts = [
@@ -32,22 +29,11 @@ const createProps = (isDataLoading, products, page = productPages.ALL_PRODUCTS) 
 });
 
 const setUp = (props, search = '?p=1') => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search },
-  };
-
-  return render(
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <ProductList {...props} />
-      </ThemeProvider>
-    </Router>,
-  );
+  return renderAppPart(<ProductList {...props} />, {
+    pathname: '/products',
+    search,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<ProductList />', () => {
   describe('check how renders', () => {

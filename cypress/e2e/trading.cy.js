@@ -478,6 +478,7 @@ describe('trading actions', () => {
       it('shows message and goes to cart when product does not exist', () => {
         goToUsedProductDetails();
         cy.findByRole('button', { name: /buy now/i }).click();
+        cy.findByRole('button', { name: /i buy and pay/i }).should('exist');
         updateProductQuantity(0);
         cy.findByRole('button', { name: /i buy and pay/i }).click();
         cy.findByRole('button', { name: /confirm/i }).click();

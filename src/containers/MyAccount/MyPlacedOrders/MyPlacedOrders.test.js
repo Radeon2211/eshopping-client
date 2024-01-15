@@ -1,16 +1,13 @@
 import React from 'react';
-import { render, cleanup, waitFor, screen } from '@testing-library/react';
+import { waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
-import theme from '../../../styled/theme';
 import MyPlacedOrders from './MyPlacedOrders';
 import {
   createOrder,
   createTransactionAndOrderProdItem,
+  renderAppPart,
 } from '../../../shared/testUtility/testUtility';
 import { defaultScrollToConfig } from '../../../shared/constants';
 import useLastLocation from '../../../shared/useLastLocation';
@@ -47,31 +44,18 @@ const defaultStore = mockStore({
   },
 });
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/my-account/placed-orders', search: '?p=1' },
-  replace: jest.fn(),
-};
-
 const setUp = () => {
-  return render(
-    <Provider store={defaultStore}>
-      <Router history={defaultHistory}>
-        <ThemeProvider theme={theme}>
-          <MyPlacedOrders />
-        </ThemeProvider>
-      </Router>
-    </Provider>,
-  );
+  return renderAppPart(<MyPlacedOrders />, {
+    pathname: '/my-account/placed-orders',
+    search: '?p=1',
+    store: defaultStore,
+  });
 };
 
 jest.mock('../../../shared/useLastLocation', () => ({
   __esModule: true,
   default: jest.fn(),
 }));
-
-afterEach(cleanup);
 
 beforeAll(() => {
   window.scrollTo = jest.fn();

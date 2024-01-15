@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader/Loader';
@@ -10,11 +11,10 @@ import FlexWrapper from '../../components/UI/FlexWrapper';
 import { scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
-export default function OtherUser({ match, location, history }) {
-  const {
-    params: { username: otherUserUsername },
-  } = match;
-  const { search } = location;
+export default function OtherUser() {
+  const { username: otherUserUsername } = useParams();
+  const { search } = useLocation();
+  const navigate = useNavigate();
 
   const userProfile = useSelector((state) => state.auth.profile);
   const currentUserUsername = userProfile?.username;
@@ -35,7 +35,7 @@ export default function OtherUser({ match, location, history }) {
 
   useEffect(() => {
     if (otherUserUsername === currentUserUsername) {
-      history.replace('/my-account/data');
+      navigate('/my-account/data', { replace: true });
     } else {
       onFetchOtherUser(otherUserUsername);
       onFetchProducts(search, productPages.USER_PRODUCTS, otherUserUsername);
@@ -50,7 +50,6 @@ export default function OtherUser({ match, location, history }) {
     productsPerPage,
     onSetOtherUser,
     search,
-    history,
   ]);
 
   let pageTitle = 'User info is loading... - E-Shopping';

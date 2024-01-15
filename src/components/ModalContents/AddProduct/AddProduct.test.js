@@ -1,24 +1,15 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import { Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import AddProduct from './AddProduct';
-import theme from '../../../styled/theme';
-import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
+import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
 import { defaultAppPath, productConditions } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 import { mockFile } from '../../../shared/utility/utility';
 
 const mockStore = configureMockStore([thunk]);
-
-const history = {
-  listen: jest.fn(),
-  location: { pathname: defaultAppPath },
-};
 
 const setUp = () => {
   const store = mockStore({
@@ -30,15 +21,10 @@ const setUp = () => {
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <AddProduct />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
+    ...renderAppPart(<AddProduct />, {
+      pathname: defaultAppPath,
+      store,
+    }),
     store,
   };
 };
@@ -57,8 +43,6 @@ const waitUntilSubmitButtonIsActive = async () => {
     expect(button).not.toBeDisabled();
   });
 };
-
-afterEach(cleanup);
 
 describe('<AddProduct />', () => {
   describe('check form', () => {

@@ -1,13 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ChangeName from './ChangeName';
-import theme from '../../../styled/theme';
-import { clickAtSubmitButton, defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import {
+  clickAtSubmitButton,
+  defaultUserProfile,
+  renderAppPart,
+} from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -15,27 +16,24 @@ const mockStore = configureMockStore([thunk]);
 const oldFirstName = 'oldFirstName';
 const oldLastName = 'oldLastName';
 
-const setUp = () => {
-  const store = mockStore({
-    auth: {
-      profile: { ...defaultUserProfile, firstName: oldFirstName, lastName: oldLastName },
-    },
-    ui: {
-      isFormLoading: false,
-      formError: '',
-    },
-  });
-  store.dispatch = jest.fn();
+const defaultStore = mockStore({
+  auth: {
+    profile: { ...defaultUserProfile, firstName: oldFirstName, lastName: oldLastName },
+  },
+  ui: {
+    isFormLoading: false,
+    formError: '',
+  },
+});
+defaultStore.dispatch = jest.fn();
 
+const setUp = () => {
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <ChangeName />
-        </ThemeProvider>
-      </Provider>,
-    ),
-    store,
+    ...renderAppPart(<ChangeName />, {
+      store: defaultStore,
+      withoutRouter: true,
+    }),
+    store: defaultStore,
   };
 };
 
@@ -46,8 +44,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
     message,
   }),
 }));
-
-afterEach(cleanup);
 
 describe('<ChangeName />', () => {
   describe('check form', () => {

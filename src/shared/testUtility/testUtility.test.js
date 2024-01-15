@@ -2,26 +2,6 @@ import validateUUID from 'uuid-validate';
 import * as testUtility from './testUtility';
 import { modalTypes, productConditions } from '../constants';
 
-describe('createHistoryPageNumber()', () => {
-  it('should create history with default values', () => {
-    const history = testUtility.createHistoryPageNumber();
-    expect(history.listen).toEqual(expect.any(Function));
-    expect(history.createHref).toEqual(expect.any(Function));
-    expect(history.location).toEqual({ pathname: '/products', search: `?p=1` });
-    expect(history.push).toEqual(expect.any(Function));
-  });
-
-  it('should create history with given page number and push function', () => {
-    const history = testUtility.createHistoryPageNumber(3);
-    expect(history.listen).toEqual(expect.any(Function));
-    expect(history.replace).toEqual(expect.any(Function));
-    expect(history.push).toEqual(expect.any(Function));
-    expect(history.goBack).toEqual(expect.any(Function));
-    expect(history.createHref).toEqual(expect.any(Function));
-    expect(history.location).toEqual({ pathname: '/products', search: `?p=3` });
-  });
-});
-
 describe('createPaginationProps()', () => {
   it('should create props with default value', () => {
     const props = testUtility.createPaginationProps();

@@ -1,19 +1,18 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import userEvent from '@testing-library/user-event';
 import EditProduct from './EditProduct';
-import theme from '../../../styled/theme';
-import { clickAtSubmitButton, createProductItem } from '../../../shared/testUtility/testUtility';
+import {
+  clickAtSubmitButton,
+  createProductItem,
+  renderAppPart,
+} from '../../../shared/testUtility/testUtility';
 import { productConditions, productPhotoFieldValues } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 import { mockFile } from '../../../shared/utility/utility';
-
-const mockStore = configureMockStore([thunk]);
 
 const defaultId = 'p1';
 const defaultName = 'Wellingtons';
@@ -23,35 +22,33 @@ const defaultCondition = productConditions.NEW;
 const defaultDescription = 'Cool wellingtons';
 const defaultPhoto = true;
 
-const setUp = () => {
-  const store = mockStore({
-    product: {
-      productDetails: createProductItem({
-        id: defaultId,
-        name: defaultName,
-        price: defaultPrice,
-        quantity: defaultQuantity,
-        condition: defaultCondition,
-        photo: defaultPhoto,
-        description: defaultDescription,
-      }),
-    },
-    ui: {
-      isFormLoading: false,
-      formError: '',
-    },
-  });
-  store.dispatch = jest.fn();
+const mockStore = configureMockStore([thunk]);
+const defaultStore = mockStore({
+  product: {
+    productDetails: createProductItem({
+      id: defaultId,
+      name: defaultName,
+      price: defaultPrice,
+      quantity: defaultQuantity,
+      condition: defaultCondition,
+      photo: defaultPhoto,
+      description: defaultDescription,
+    }),
+  },
+  ui: {
+    isFormLoading: false,
+    formError: '',
+  },
+});
+defaultStore.dispatch = jest.fn();
 
+const setUp = () => {
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <EditProduct />
-        </ThemeProvider>
-      </Provider>,
-    ),
-    store,
+    ...renderAppPart(<EditProduct />, {
+      store: defaultStore,
+      withoutRouter: true,
+    }),
+    store: defaultStore,
   };
 };
 
@@ -62,8 +59,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
     productId,
   }),
 }));
-
-afterEach(cleanup);
 
 describe('<EditProduct />', () => {
   describe('check form', () => {

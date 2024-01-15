@@ -1,14 +1,14 @@
 import React from 'react';
-import { render, cleanup, waitFor, screen } from '@testing-library/react';
+import { waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import thunk from 'redux-thunk';
-import theme from '../../../styled/theme';
 import MyProducts from './MyProducts';
-import { createProductItem, defaultUserProfile } from '../../../shared/testUtility/testUtility';
+import {
+  createProductItem,
+  defaultUserProfile,
+  renderAppPart,
+} from '../../../shared/testUtility/testUtility';
 import {
   productPages,
   productConditions,
@@ -22,18 +22,8 @@ const mockStore = configureMockStore([thunk]);
 
 const defaultSearch = '?p=1';
 
-const defaultHistory = {
-  listen: jest.fn(),
-  createHref: jest.fn(),
-  location: { pathname: '/my-account/products', search: defaultSearch },
-  replace: jest.fn(),
-};
-
 const defaultProps = {
   userProfile: defaultUserProfile,
-  location: {
-    search: defaultSearch,
-  },
 };
 
 const defaultProducts = [
@@ -66,15 +56,11 @@ const setUp = () => {
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={defaultHistory}>
-          <ThemeProvider theme={theme}>
-            <MyProducts {...defaultProps} />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<MyProducts {...defaultProps} />, {
+      pathname: '/my-account/products',
+      search: defaultSearch,
+      store,
+    }),
     store,
   };
 };
@@ -91,8 +77,6 @@ jest.mock('../../../shared/useLastLocation', () => ({
   __esModule: true,
   default: jest.fn(),
 }));
-
-afterEach(cleanup);
 
 beforeAll(() => {
   window.scrollTo = jest.fn();

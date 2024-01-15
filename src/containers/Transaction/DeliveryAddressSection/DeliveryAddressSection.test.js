@@ -1,16 +1,12 @@
 import React from 'react';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
+import { fireEvent, screen } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import DeliveryAddressSection from './DeliveryAddressSection';
-import theme from '../../../styled/theme';
-import { defaultDeliveryAddress } from '../../../shared/testUtility/testUtility';
+import { defaultDeliveryAddress, renderAppPart } from '../../../shared/testUtility/testUtility';
 import { modalTypes } from '../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
-
 const defaultStore = mockStore({
   auth: {
     deliveryAddress: defaultDeliveryAddress,
@@ -18,20 +14,16 @@ const defaultStore = mockStore({
 });
 
 const setUp = (onSetModal = jest.fn()) => {
-  return render(
-    <Provider store={defaultStore}>
-      <ThemeProvider theme={theme}>
-        <DeliveryAddressSection onSetModal={onSetModal} />
-      </ThemeProvider>
-    </Provider>,
-  );
+  return renderAppPart(<DeliveryAddressSection onSetModal={onSetModal} />, {
+    pathname: `/product/123`,
+    store: defaultStore,
+    withoutRouter: true,
+  });
 };
 
 window.IntersectionObserver = jest.fn(() => ({
   observe: jest.fn(),
 }));
-
-afterEach(cleanup);
 
 describe('<DeliveryAddressSection />', () => {
   it('should render everything correctly with default delivery address', () => {

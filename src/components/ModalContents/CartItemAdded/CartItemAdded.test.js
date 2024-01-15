@@ -1,14 +1,14 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import CartItemAdded from './CartItemAdded';
-import theme from '../../../styled/theme';
-import { createProductItem } from '../../../shared/testUtility/testUtility';
+import {
+  createProductItem,
+  renderAppPart,
+  testRouterPushCall,
+} from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
@@ -34,29 +34,15 @@ const defaultProduct = createProductItem({
 
 const defaultCart = [{ _id: 'item1', quantity: 3, product: defaultProduct }];
 
-const setUp = (store) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/product/p1' },
-    push: jest.fn(),
-  };
-
+const setUp = (store, pushFn = jest.fn()) => {
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <CartItemAdded />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
-    history,
+    ...renderAppPart(<CartItemAdded />, {
+      pathname: '/product/p1',
+      push: pushFn,
+      store,
+    }),
   };
 };
-
-afterEach(cleanup);
 
 describe('<CartItemAdded />', () => {
   describe('check how renders', () => {
@@ -87,9 +73,10 @@ describe('<CartItemAdded />', () => {
   describe('check reactions to buttons clicks', () => {
     it('should call push with /cart after go to cart button click', () => {
       const store = createStore(defaultCart, defaultProduct);
-      const { history } = setUp(store);
+      const pushFn = jest.fn();
+      setUp(store, pushFn);
       fireEvent.click(screen.getByRole('button', { name: /go to cart/i }).closest('a'));
-      expect(history.push).toHaveBeenCalledWith('/cart');
+      testRouterPushCall(pushFn, 0, '/cart');
     });
 
     it('should call setModal() after buttons clicks', () => {

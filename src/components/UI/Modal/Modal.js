@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes } from '../../../shared/constants';
@@ -57,7 +57,8 @@ export const modalVariants = {
 };
 
 export default function Modal() {
-  const history = useHistory();
+  const didMountRef = useRef(false);
+  const location = useLocation();
 
   const isFormLoading = useSelector((state) => state.ui.isFormLoading);
   const modalContent = useSelector((state) => state.ui.modalContent);
@@ -71,12 +72,11 @@ export default function Modal() {
   );
 
   useEffect(() => {
-    history.listen(() => {
-      if (modalContent) {
-        onSetModal('');
-      }
-    });
-  }, [history, modalContent, onSetModal]);
+    if (modalContent && didMountRef.current) {
+      onSetModal('');
+    }
+    didMountRef.current = true;
+  }, [location]);
 
   const loadingOverlay = isFormLoading ? <LoadingOverlay /> : null;
 
@@ -153,7 +153,7 @@ export default function Modal() {
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       {modalContent && (
         <SC.Wrapper data-testid="Modal">
           <SC.Backdrop

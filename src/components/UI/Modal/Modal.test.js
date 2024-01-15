@@ -1,28 +1,18 @@
 import React from 'react';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import { ThemeProvider } from 'styled-components';
-import { Router } from 'react-router-dom';
 import Modal from './Modal';
-import theme from '../../../styled/theme';
 import { modalTypes } from '../../../shared/constants';
 import {
   defaultUserProfile,
   defaultDeliveryAddress,
+  renderAppPart,
 } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 
 const mockStore = configureMockStore([thunk]);
-
-const defaultHistory = {
-  listen: jest.fn(),
-  location: { pathname: '' },
-};
-
-afterEach(cleanup);
 
 const setUp = (modalContent = '', isFormLoading = false) => {
   const store = mockStore({
@@ -33,15 +23,9 @@ const setUp = (modalContent = '', isFormLoading = false) => {
   store.dispatch = jest.fn();
 
   return {
-    ...render(
-      <Provider store={store}>
-        <Router history={defaultHistory}>
-          <ThemeProvider theme={theme}>
-            <Modal />
-          </ThemeProvider>
-        </Router>
-      </Provider>,
-    ),
+    ...renderAppPart(<Modal />, {
+      store,
+    }),
     store,
   };
 };

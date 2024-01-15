@@ -1,15 +1,11 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import DeleteAccount from './DeleteAccount';
-import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
-import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
+import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -22,23 +18,12 @@ const setUp = () => {
   });
   store.dispatch = jest.fn();
 
-  const history = {
-    listen: jest.fn(),
-    location: { pathname: '/my-account/data' },
-  };
-
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <DeleteAccount />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
+    ...renderAppPart(<DeleteAccount />, {
+      pathname: '/my-account/data',
+      store,
+    }),
     store,
-    history,
   };
 };
 
@@ -50,7 +35,12 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   }),
 }));
 
-afterEach(cleanup);
+const mockedUseNavigateFn = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigateFn,
+}));
 
 describe('<DeleteAccount />', () => {
   describe('check form', () => {
@@ -62,7 +52,7 @@ describe('<DeleteAccount />', () => {
     });
 
     it('should call deleteAccount() with given password after input submit and button click', async () => {
-      const { store, history, container } = setUp();
+      const { store, container } = setUp();
 
       const currentPasswordInput = screen.getByTestId('DeleteAccount-current-password');
       const currentPassword = 'password';
@@ -75,7 +65,7 @@ describe('<DeleteAccount />', () => {
       await clickAtSubmitButton(container);
       expect(store.dispatch).toHaveBeenNthCalledWith(
         1,
-        actions.deleteAccount({ currentPassword }, history),
+        actions.deleteAccount({ currentPassword }, mockedUseNavigateFn),
       );
 
       await waitFor(() => {
@@ -83,7 +73,7 @@ describe('<DeleteAccount />', () => {
       });
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
-        actions.deleteAccount({ currentPassword }, history),
+        actions.deleteAccount({ currentPassword }, mockedUseNavigateFn),
       );
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);

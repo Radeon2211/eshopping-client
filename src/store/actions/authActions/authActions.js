@@ -115,7 +115,7 @@ export const changeEmail = (creds) => {
   };
 };
 
-export const deleteAccount = (creds, history) => {
+export const deleteAccount = (creds, navigateFn) => {
   return async (dispatch, getState) => {
     try {
       dispatch(uiActions.formStart());
@@ -126,7 +126,7 @@ export const deleteAccount = (creds, history) => {
         uiActions.setAndDeleteMessage(`Your account has been deleted. Goodbye ${username}!`),
       );
       dispatch(uiActions.formSuccess());
-      history.replace(defaultAppPath);
+      navigateFn(defaultAppPath, { replace: true });
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       dispatch(uiActions.formFail(errorMessage));

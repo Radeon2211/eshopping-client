@@ -1,15 +1,12 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import selectEvent from 'react-select-event';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ChangeDeliveryAddress from './ChangeDeliveryAddress';
-import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
-import { clickAtSubmitButton } from '../../../shared/testUtility/testUtility';
+import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -24,35 +21,34 @@ const oldPhoneNumber = '123456789';
 const oldPhonePrefixValue = '48';
 const oldPhonePrefixLabel = '+48 Poland';
 
-const setUp = () => {
-  const store = mockStore({
-    auth: {
-      deliveryAddress: {
-        firstName: oldFirstName,
-        lastName: oldLastName,
-        street: oldStreet,
-        zipCode: oldZipCode,
-        city: oldCity,
-        country: oldCountry,
-        phone: oldPhone,
-      },
-    },
-    ui: {
-      isFormLoading: false,
-      formError: '',
-    },
-  });
-  store.dispatch = jest.fn();
+const defaultDeliveryAddress = {
+  firstName: oldFirstName,
+  lastName: oldLastName,
+  street: oldStreet,
+  zipCode: oldZipCode,
+  city: oldCity,
+  country: oldCountry,
+  phone: oldPhone,
+};
 
+const defaultStore = mockStore({
+  auth: {
+    deliveryAddress: defaultDeliveryAddress,
+  },
+  ui: {
+    isFormLoading: false,
+    formError: '',
+  },
+});
+defaultStore.dispatch = jest.fn();
+
+const setUp = () => {
   return {
-    ...render(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <ChangeDeliveryAddress />
-        </ThemeProvider>
-      </Provider>,
-    ),
-    store,
+    ...renderAppPart(<ChangeDeliveryAddress />, {
+      store: defaultStore,
+      withoutRouter: true,
+    }),
+    store: defaultStore,
   };
 };
 
@@ -60,8 +56,6 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   ...jest.requireActual('../../../store/actions/indexActions.js'),
   changeDeliveryAddress: (credentials) => credentials,
 }));
-
-afterEach(cleanup);
 
 describe('<ChangeDeliveryAddress />', () => {
   describe('check form', () => {

@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import { productPages } from '../../../shared/constants';
 import Heading from '../../../components/UI/Heading/Heading';
@@ -8,8 +9,8 @@ import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 import useLastLocation from '../../../shared/useLastLocation';
 
-export default function MyProducts({ userProfile, location }) {
-  const { search } = location;
+export default function MyProducts({ userProfile }) {
+  const { search } = useLocation();
 
   const lastLocation = useLastLocation();
 

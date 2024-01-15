@@ -1,30 +1,25 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styled/theme';
 import Loader from './Loader';
+import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const setUp = (align = '') => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <Loader align={align} />
-    </ThemeProvider>,
-  );
+  return renderAppPart(<Loader align={align} />, {
+    withoutRouter: true,
+  });
 };
-
-afterEach(cleanup);
 
 describe('<Loader />', () => {
   it('should render with wrapper', () => {
     setUp('center');
-    expect(screen.getByTestId('LoaderWrapper')).toBeInTheDocument();
-    expect(screen.getByTestId('Loader')).toBeInTheDocument();
+    expect(screen.getByTestId('LoaderWrapper'));
+    expect(screen.getByTestId('Loader'));
   });
 
   it('should render without wrapper', () => {
     setUp();
     expect(screen.queryByTestId('LoaderWrapper')).not.toBeInTheDocument();
-    expect(screen.getByTestId('Loader')).toBeInTheDocument();
+    expect(screen.getByTestId('Loader'));
   });
 });

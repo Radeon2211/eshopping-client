@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
 
 export default function DeleteProduct() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const productDetails = useSelector((state) => state.product.productDetails);
 
@@ -18,7 +18,7 @@ export default function DeleteProduct() {
     [dispatch],
   );
   const onDeleteProduct = useCallback(
-    (productId, currentHistory) => dispatch(actions.deleteProduct(productId, currentHistory)),
+    (productId, navigateFn) => dispatch(actions.deleteProduct(productId, navigateFn)),
     [dispatch],
   );
 
@@ -35,7 +35,7 @@ export default function DeleteProduct() {
       </Heading>
       <FlexWrapper $justify="center" $spacing="3">
         <Button clicked={() => onSetModal('')}>Cancel</Button>
-        <Button $filled $color="red" clicked={() => onDeleteProduct(productDetails?._id, history)}>
+        <Button $filled $color="red" clicked={() => onDeleteProduct(productDetails?._id, navigate)}>
           Delete
         </Button>
       </FlexWrapper>

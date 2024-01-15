@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
@@ -8,7 +8,7 @@ import FlexWrapper from '../../UI/FlexWrapper';
 import useLastLocation from '../../../shared/useLastLocation';
 
 export default function BuyProducts() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const lastLocation = useLastLocation();
 
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function BuyProducts() {
     [dispatch],
   );
   const onBuyProducts = useCallback(
-    (currentHistory, lastPath) => dispatch(actions.buyProducts(currentHistory, lastPath)),
+    (navigateFn, lastPath) => dispatch(actions.buyProducts(navigateFn, lastPath)),
     [dispatch],
   );
 
@@ -28,7 +28,7 @@ export default function BuyProducts() {
       </Heading>
       <FlexWrapper $justify="center" $spacing="3">
         <Button clicked={() => onSetModal('')}>Cancel</Button>
-        <Button $filled clicked={() => onBuyProducts(history, lastLocation?.pathname)}>
+        <Button $filled clicked={() => onBuyProducts(navigate, lastLocation?.pathname)}>
           Confirm
         </Button>
       </FlexWrapper>

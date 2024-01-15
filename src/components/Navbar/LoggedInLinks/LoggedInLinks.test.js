@@ -1,22 +1,12 @@
 import React from 'react';
-import {
-  render,
-  cleanup,
-  screen,
-  fireEvent,
-  act,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { screen, fireEvent, act, waitForElementToBeRemoved } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';
-import { Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import theme from '../../../styled/theme';
 import LoggedInLinks from './LoggedInLinks';
 import { userStatuses } from '../../../shared/constants';
+import { renderAppPart, testRouterPushCall } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -24,30 +14,15 @@ const defaultStore = mockStore({
   auth: { cart: [] },
 });
 
-const setUp = (username, status) => {
-  const history = {
-    listen: jest.fn(),
-    createHref: jest.fn(),
-    location: { pathname: '/products', search: '?p=1' },
-    push: jest.fn(),
-  };
-
+const setUp = (username, status, pushFn = jest.fn()) => {
   return {
-    ...render(
-      <Router history={history}>
-        <Provider store={defaultStore}>
-          <ThemeProvider theme={theme}>
-            <LoggedInLinks username={username} status={status} />
-          </ThemeProvider>
-        </Provider>
-      </Router>,
-    ),
-    history,
+    ...renderAppPart(<LoggedInLinks username={username} status={status} />, {
+      push: pushFn,
+      store: defaultStore,
+    }),
     user: userEvent.setup({ pointerEventsCheck: PointerEventsCheckLevel.Never }),
   };
 };
-
-afterEach(cleanup);
 
 describe('<LoggedInLinks />', () => {
   describe('check how renders', () => {
@@ -90,8 +65,9 @@ describe('<LoggedInLinks />', () => {
   });
 
   it('should call push after clicking at link to settings', async () => {
-    const { history } = setUp('username', userStatuses.PENDING);
+    const pushFn = jest.fn();
+    setUp('username', userStatuses.PENDING, pushFn);
     fireEvent.click(screen.getByTestId('LoggedInLinks-my-account-link'));
-    expect(history.push).toHaveBeenCalledWith('/my-account/data');
+    testRouterPushCall(pushFn, 0, '/my-account/data');
   });
 });

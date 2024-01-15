@@ -1,25 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function useLastLocation() {
   const [lastLocation, setLastLocation] = useState(null);
-  const currentLocationRef = useRef(null);
-  const setCurrentLocation = (value) => {
-    currentLocationRef.current = value;
-  };
-  const history = useHistory();
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
-    const unlisten = history.listen((location) => {
-      setLastLocation(currentLocationRef.current);
-      setCurrentLocation(location);
-    });
-    return () => {
-      if (unlisten) {
-        unlisten();
-      }
-    };
-  }, []);
+    setLastLocation(currentLocation);
+    setCurrentLocation(location);
+  }, [location]);
 
   return lastLocation;
 }

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as SC from './MyData.sc';
 import * as actions from '../../../store/actions/indexActions';
 import { modalTypes, singleInfoNames, userStatuses } from '../../../shared/constants';
@@ -12,8 +13,9 @@ import PlainText from '../../../components/UI/PlainText';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 
-export default function MyData({ history }) {
+export default function MyData() {
   const userProfile = useSelector((state) => state.auth.profile);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const onSetModal = useCallback(
@@ -74,7 +76,7 @@ export default function MyData({ history }) {
           <Button clicked={() => onSetModal(modalTypes.SEND_VERIFICATION_LINK)}>
             Send verification link
           </Button>
-          <Button clicked={() => history.push('/logout')}>Logout</Button>
+          <Button clicked={() => navigate('/logout')}>Logout</Button>
         </FlexWrapper>
       );
     }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import queryString from 'query-string';
 import { sortOrdersOptions } from '../../../shared/constants';
@@ -40,8 +40,8 @@ const customStyles = {
 export default function SortOrders() {
   const [option, setOption] = useState(sortOrdersOptions[0]);
 
-  const history = useHistory();
-  const { search, pathname } = history.location;
+  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
 
   const optionChangeHandle = (change) => {
     if (change.value === option.value) return;
@@ -49,8 +49,25 @@ export default function SortOrders() {
     const parsedQueryParams = getParamsWithoutPollution(search);
     parsedQueryParams.sortBy = change.value;
     const updatedQueryParams = queryString.stringify(parsedQueryParams);
-    history.replace(`${pathname}?${updatedQueryParams}`);
+    navigate(`${pathname}?${updatedQueryParams}`, { replace: true });
   };
+
+  useEffect(() => {
+    // Search for sort param in URL and set this a value of select input; if param invalid remove it from URL
+    const parsedQueryParams = getParamsWithoutPollution(search);
+    if (parsedQueryParams.sortBy) {
+      const foundSortOption = sortOrdersOptions.find(
+        (sortOption) => sortOption.value === parsedQueryParams.sortBy,
+      );
+      if (foundSortOption) {
+        setOption(foundSortOption);
+      } else {
+        delete parsedQueryParams.sortBy;
+        const updatedQueryParams = queryString.stringify(parsedQueryParams);
+        navigate(`${pathname}?${updatedQueryParams}`, { replace: true });
+      }
+    }
+  }, []);
 
   return (
     <SC.Wrapper>
