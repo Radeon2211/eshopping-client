@@ -55,7 +55,9 @@ export const productRules = {
     .oneOf([productConditions.NEW, productConditions.USED, productConditions.NOT_APPLICABLE])
     .required(),
   description: Yup.string().max(600).trim(),
-  photo: Yup.mixed().test('is-error', (value) => value !== productPhotoFieldValues.ERROR),
+  photo: Yup.mixed()
+    .test('is-error', (value) => value !== productPhotoFieldValues.ERROR)
+    .nullable(),
 };
 
 export const listOfAreaCodes = getCountries().map(({ name, dial }) => {

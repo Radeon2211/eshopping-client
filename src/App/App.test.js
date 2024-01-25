@@ -73,7 +73,7 @@ describe('<App />', () => {
       ).toBeInTheDocument();
     });
 
-    it('should render loading screen', () => {
+    it('should render loading screen if user is undefined', () => {
       setUp(undefined);
       expect(screen.getByTestId('App-loader')).toBeInTheDocument();
     });
@@ -81,7 +81,6 @@ describe('<App />', () => {
     it('should render error from ErrorBoundary if data from redux ui reducer are not available', () => {
       setUp(defaultUserProfile, null);
       expect(screen.getByText('Something went wrong. Please refresh the page')).toBeInTheDocument();
-      // expect(screen.getByTestId('App-error-boundary')).toBeInTheDocument();
     });
   });
 
