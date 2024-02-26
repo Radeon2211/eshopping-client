@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
@@ -188,6 +187,7 @@ const fillStep2 = async (goToNext = false) => {
   }
 };
 
+// eslint-disable-next-line default-param-last
 const fillStep3 = async (submit = false, container) => {
   await fillStreet();
   await fillZipCode();
@@ -198,6 +198,7 @@ const fillStep3 = async (submit = false, container) => {
   }
 };
 
+// eslint-disable-next-line default-param-last
 const fillEntireForm = async (submit = false, container) => {
   await fillStep1(true);
   await fillStep2(true);

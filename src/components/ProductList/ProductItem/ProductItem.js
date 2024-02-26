@@ -58,3 +58,5 @@ ProductItem.propTypes = {
 };
 
 export default ProductItem;
+
+ProductItem.displayName = 'ProductItem';

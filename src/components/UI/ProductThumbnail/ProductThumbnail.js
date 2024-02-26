@@ -47,3 +47,5 @@ ProductThumbnail.propTypes = {
 };
 
 export default ProductThumbnail;
+
+ProductThumbnail.displayName = 'ProductThumbnail';

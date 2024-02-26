@@ -23,3 +23,5 @@ Heading.propTypes = {
 };
 
 export default Heading;
+
+Heading.displayName = 'Heading';

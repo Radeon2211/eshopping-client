@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import * as SC from './InputPagination.sc';

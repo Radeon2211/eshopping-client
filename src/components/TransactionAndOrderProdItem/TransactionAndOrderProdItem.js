@@ -72,3 +72,5 @@ TransactionAndOrderProdItem.propTypes = {
 };
 
 export default TransactionAndOrderProdItem;
+
+TransactionAndOrderProdItem.displayName = 'TransactionAndOrderProdItem';

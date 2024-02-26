@@ -1,4 +1,3 @@
-import React from 'react';
 import { waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';

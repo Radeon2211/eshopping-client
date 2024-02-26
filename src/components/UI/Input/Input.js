@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-curly-newline */
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import Textarea from 'react-textarea-autosize';

@@ -6,6 +6,7 @@ export const sliderPositionsInitialState = {
   right: 0,
 };
 
+// eslint-disable-next-line default-param-last
 export const sliderPositionsReducer = (state = sliderPositionsInitialState, action) => {
   switch (action.type) {
     case sliderPositionsActions.SET_BOTH:

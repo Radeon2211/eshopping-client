@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import SingleInfo from './SingleInfo';
 import { singleInfoNames } from '../../../../shared/constants';

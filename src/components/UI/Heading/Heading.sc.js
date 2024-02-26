@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
@@ -60,6 +59,6 @@ const StyledHeading = styled.h1`
 `;
 
 // eslint-disable-next-line import/prefer-default-export
-export const Heading = ({ $variant, ...rest }) => (
-  <StyledHeading as={$variant} $variant={$variant} {...rest} />
-);
+export function Heading({ $variant, ...rest }) {
+  return <StyledHeading as={$variant} $variant={$variant} {...rest} />;
+}

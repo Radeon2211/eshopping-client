@@ -12,6 +12,7 @@ export const filtersInitialState = {
   },
 };
 
+// eslint-disable-next-line default-param-last
 export const filtersReducer = (state = filtersInitialState, action) => {
   switch (action.type) {
     case filtersActions.INIT_STATE:

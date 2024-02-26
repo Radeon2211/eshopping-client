@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, Suspense, lazy } from 'react';
+import { useCallback, useEffect, Suspense, lazy } from 'react';
 import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -31,21 +31,24 @@ const Cart = lazy(() => import('../containers/Cart/Cart'));
 const Transaction = lazy(() => import('../containers/Transaction/Transaction'));
 const Logout = lazy(() => import('../containers/Logout/Logout'));
 
-const WaitingComponent = (Component) => {
-  return (props) => (
-    <Suspense
-      fallback={
-        <div style={{ textAlign: 'center' }}>
-          <Loader size="big" />
-        </div>
-      }
-    >
-      <Component {...props} />
-    </Suspense>
-  );
-};
+function WaitingComponent(Component) {
+  // eslint-disable-next-line react/display-name, func-names
+  return function (props) {
+    return (
+      <Suspense
+        fallback={
+          <div style={{ textAlign: 'center' }}>
+            <Loader size="big" />
+          </div>
+        }
+      >
+        <Component {...props} />
+      </Suspense>
+    );
+  };
+}
 
-const App = () => {
+function App() {
   const { pathname } = useLocation();
 
   const userProfile = useSelector((state) => state.auth.profile);
@@ -160,6 +163,6 @@ const App = () => {
       {content}
     </ErrorBoundary>
   );
-};
+}
 
 export default App;

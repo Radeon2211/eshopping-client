@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
 import NumberInput from './NumberInput';
 import { renderAppPart } from '../../../shared/testUtility/testUtility';

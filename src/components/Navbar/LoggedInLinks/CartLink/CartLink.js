@@ -44,3 +44,5 @@ const CartLink = React.memo(() => {
 });
 
 export default CartLink;
+
+CartLink.displayName = 'CartLink';

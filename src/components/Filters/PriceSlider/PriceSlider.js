@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { useLocation, useNavigate } from 'react-router-dom';

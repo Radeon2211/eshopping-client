@@ -76,6 +76,7 @@ const setOtherUser = (state, action) => {
   return updateObject(state, { otherUser: action.otherUser });
 };
 
+// eslint-disable-next-line default-param-last
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGOUT_USER:

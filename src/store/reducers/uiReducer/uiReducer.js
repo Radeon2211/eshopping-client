@@ -65,6 +65,7 @@ const setProductsPerPage = (state, action) => {
   return updateObject(state, { productsPerPage: action.productsPerPage });
 };
 
+// eslint-disable-next-line default-param-last
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FORM_START:

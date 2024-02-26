@@ -28,6 +28,7 @@ const deleteProductFromList = (state, action) => {
   return updateObject(state, { products: updatedProducts });
 };
 
+// eslint-disable-next-line default-param-last
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_PRODUCTS:

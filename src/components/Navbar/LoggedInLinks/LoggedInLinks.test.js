@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, fireEvent, act, waitForElementToBeRemoved } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';

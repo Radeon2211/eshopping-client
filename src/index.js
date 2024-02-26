@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import thunk from 'redux-thunk';
 import { HashRouter as Router } from 'react-router-dom';

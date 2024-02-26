@@ -1,4 +1,3 @@
-import React from 'react';
 import DeliveryAddress from './DeliveryAddress';
 import { defaultDeliveryAddress, renderAppPart } from '../../../shared/testUtility/testUtility';
 
