@@ -7,7 +7,7 @@ import {
   testRouterPushCall,
 } from '../../../shared/testUtility/testUtility';
 import { defaultAppPath } from '../../../shared/constants';
-import useLastLocation from '../../../shared/useLastLocation';
+import useLastLocation from '../../../shared/hooks/useLastLocation';
 
 const defaultProps = createPaginationProps();
 
@@ -19,7 +19,7 @@ const setUp = (props = {}, pageNumber = 1, pushFn = jest.fn()) => {
   });
 };
 
-jest.mock('../../../shared/useLastLocation', () => ({
+jest.mock('../../../shared/hooks/useLastLocation', () => ({
   __esModule: true,
   default: jest.fn(),
 }));

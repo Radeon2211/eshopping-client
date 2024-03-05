@@ -49,12 +49,14 @@ describe('<Orders />', () => {
     it('should one order with one order givena and type PLACED_ORDERS', () => {
       const products = [
         createTransactionAndOrderProdItem({
-          productId: 'p1',
-          sellerUsername: 'sellerUser',
+          _id: 'p1',
           price: 4,
           quantity: 4,
           name: 'product1',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const orders = [
@@ -74,40 +76,50 @@ describe('<Orders />', () => {
     it('should render two orders with two orders given and type SELL_HISTORY', () => {
       const products1 = [
         createTransactionAndOrderProdItem({
-          productId: 'p1',
-          sellerUsername: 'sellerUser',
+          _id: 'p1',
           price: 4,
           quantity: 4,
           name: 'product1',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const products2 = [
         createTransactionAndOrderProdItem({
-          productId: 'p2',
-          sellerUsername: 'sellerUser',
+          _id: 'p2',
           price: 6.4,
           quantity: 2,
           name: 'product2',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const orders = [
         createOrder({
+          _id: 'o1',
           products: products1,
-          id: 'o1',
-          sellerUsername: 'sellerUser',
-          buyerUsername: 'buyerUser',
+          seller: {
+            username: 'sellerUser',
+          },
+          buyer: {
+            username: 'buyerUser',
+          },
           overallPrice: 16,
-          createdAt: '2021-01-08T11:08:51.008Z',
         }),
         createOrder({
           products: products2,
           id: 'o2',
-          sellerUsername: 'sellerUser',
-          buyerUsername: 'buyerUser',
+          seller: {
+            username: 'sellerUser',
+          },
+          buyer: {
+            username: 'buyerUser',
+          },
           overallPrice: 12.8,
-          createdAt: '2021-02-18T21:12:35.008Z',
         }),
       ];
       setUp(orders, 2, orderTypes.SELL_HISTORY);

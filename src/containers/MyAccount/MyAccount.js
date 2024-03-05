@@ -1,14 +1,15 @@
 import { useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import * as SC from './MyAccount.sc';
-import { defaultAppPath, userStatuses } from '../../shared/constants';
+import { defaultAppPath } from '../../shared/constants';
+import { ProfileStatus } from '../../shared/types/types';
 
 export default function MyAccount() {
   const userProfile = useSelector((state) => state.auth.profile);
 
   return (
     <SC.Wrapper>
-      {userProfile.status === userStatuses.ACTIVE && (
+      {userProfile.status === ProfileStatus.ACTIVE && (
         <nav className="nav" data-testid="MyAccount-navigation">
           <ul className="nav-list">
             <li>
@@ -47,9 +48,9 @@ export default function MyAccount() {
         </nav>
       )}
       <SC.Routes
-        $extraMargin={userProfile.status === userStatuses.ACTIVE}
+        $extraMargin={userProfile.status === ProfileStatus.ACTIVE}
         data-testid={
-          userProfile.status === userStatuses.ACTIVE
+          userProfile.status === ProfileStatus.ACTIVE
             ? 'MyAccount-active-user-routes'
             : 'MyAccount-pending-user-routes'
         }

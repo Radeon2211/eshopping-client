@@ -7,7 +7,7 @@ import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndF
 import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution, scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
-import useLastLocation from '../../shared/useLastLocation';
+import useLastLocation from '../../shared/hooks/useLastLocation';
 
 export default function Products() {
   const { search } = useLocation();

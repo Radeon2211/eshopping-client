@@ -16,7 +16,7 @@ import FlexWrapper from '../../components/UI/FlexWrapper';
 import theme from '../../styled/theme';
 import { formatPrice, scrollToTop } from '../../shared/utility/utility';
 import { modalTypes, productConditions } from '../../shared/constants';
-import useWindowSize from '../../shared/useWindowSize';
+import useWindowSize from '../../shared/hooks/useWindowSize';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 
 export default function ProductDetails() {

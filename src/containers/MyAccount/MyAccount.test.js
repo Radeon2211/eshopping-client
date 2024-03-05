@@ -8,7 +8,7 @@ import {
   renderAppPart,
   testRouterPushCall,
 } from '../../shared/testUtility/testUtility';
-import { userStatuses } from '../../shared/constants';
+import { ProfileStatus } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -37,7 +37,7 @@ describe('<MyAccount />', () => {
   });
 
   it('should NOT render navigation and render only one route if user has status pending', () => {
-    setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
+    setUp({ ...defaultUserProfile, status: ProfileStatus.PENDING });
     expect(screen.queryByTestId('MyAccount-navigation')).not.toBeInTheDocument();
     expect(screen.getByTestId('MyAccount-pending-user-routes')).toBeInTheDocument();
     expect(screen.queryByTestId('MyAccount-active-user-routes')).not.toBeInTheDocument();

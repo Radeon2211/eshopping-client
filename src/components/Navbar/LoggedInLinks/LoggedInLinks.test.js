@@ -4,8 +4,8 @@ import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event'
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import LoggedInLinks from './LoggedInLinks';
-import { userStatuses } from '../../../shared/constants';
 import { renderAppPart, testRouterPushCall } from '../../../shared/testUtility/testUtility';
+import { ProfileStatus } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -26,17 +26,17 @@ const setUp = (username, status, pushFn = jest.fn()) => {
 describe('<LoggedInLinks />', () => {
   describe('check how renders', () => {
     it('should render version for user with status active', () => {
-      setUp('username', userStatuses.ACTIVE);
+      setUp('username', ProfileStatus.ACTIVE);
       expect(screen.getByTestId('LoggedInLinks-user-box')).toBeInTheDocument();
     });
 
     it('should render version for user with status pending', () => {
-      setUp('username', userStatuses.PENDING);
+      setUp('username', ProfileStatus.PENDING);
       expect(screen.getByTestId('LoggedInLinks-my-account-link')).toBeInTheDocument();
     });
 
     it('should open <Dropdown /> after clicking at user box and close after clicking outside <Dropdown />', async () => {
-      const { user } = setUp('username', userStatuses.ACTIVE);
+      const { user } = setUp('username', ProfileStatus.ACTIVE);
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
 
@@ -50,7 +50,7 @@ describe('<LoggedInLinks />', () => {
     });
 
     it('should not close <Dropdown /> after clicking at <Dropdown />', async () => {
-      const { user } = setUp('username', userStatuses.ACTIVE);
+      const { user } = setUp('username', ProfileStatus.ACTIVE);
 
       expect(screen.queryByTestId('Dropdown')).not.toBeInTheDocument();
 
@@ -65,7 +65,7 @@ describe('<LoggedInLinks />', () => {
 
   it('should call push after clicking at link to settings', async () => {
     const pushFn = jest.fn();
-    setUp('username', userStatuses.PENDING, pushFn);
+    setUp('username', ProfileStatus.PENDING, pushFn);
     fireEvent.click(screen.getByTestId('LoggedInLinks-my-account-link'));
     testRouterPushCall(pushFn, 0, '/my-account/data');
   });

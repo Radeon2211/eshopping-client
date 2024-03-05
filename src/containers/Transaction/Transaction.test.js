@@ -46,20 +46,24 @@ describe('<Transaction />', () => {
     it('should render everything correctly with two items from one user', async () => {
       const transaction = [
         createTransactionAndOrderProdItem({
-          productId: 'p1',
-          sellerUsername: 'user1',
+          _id: 'p1',
           price: 10.6,
           quantity: 4,
           name: 'product1',
           photo: false,
+          seller: {
+            username: 'user1',
+          },
         }),
         createTransactionAndOrderProdItem({
-          productId: 'p2',
-          sellerUsername: 'user1',
+          _id: 'p2',
           price: 299.98,
           quantity: 6,
           name: 'product2',
           photo: false,
+          seller: {
+            username: 'user1',
+          },
         }),
       ];
       setUp(transaction);

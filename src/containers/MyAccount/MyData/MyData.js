@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as SC from './MyData.sc';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes, singleInfoNames, userStatuses } from '../../../shared/constants';
+import { modalTypes, singleInfoNames } from '../../../shared/constants';
 import PlainPanel from '../../../components/UI/Panels/PlainPanel';
 import FlexWrapper from '../../../components/UI/FlexWrapper';
 import Heading from '../../../components/UI/Heading/Heading';
@@ -12,6 +12,7 @@ import Button from '../../../components/UI/Button/Button';
 import PlainText from '../../../components/UI/PlainText';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
+import { ProfileStatus } from '../../../shared/types/types';
 
 export default function MyData() {
   const userProfile = useSelector((state) => state.auth.profile);
@@ -45,7 +46,7 @@ export default function MyData() {
       isAdmin,
     } = userProfile;
 
-    const isAccountActive = status === userStatuses.ACTIVE;
+    const isAccountActive = status === ProfileStatus.ACTIVE;
 
     let adminContent = null;
     if (isAdmin) {

@@ -15,7 +15,7 @@ import {
   defaultScrollToConfig,
 } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
-import useLastLocation from '../../shared/useLastLocation';
+import useLastLocation from '../../shared/hooks/useLastLocation';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -88,7 +88,7 @@ beforeAll(() => {
   window.scrollTo = jest.fn();
 });
 
-jest.mock('../../shared/useLastLocation', () => ({
+jest.mock('../../shared/hooks/useLastLocation', () => ({
   __esModule: true,
   default: jest.fn(),
 }));

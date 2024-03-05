@@ -5,7 +5,7 @@ import * as actions from '../../../store/actions/indexActions';
 import Button from '../../UI/Button/Button';
 import Heading from '../../UI/Heading/Heading';
 import FlexWrapper from '../../UI/FlexWrapper';
-import useLastLocation from '../../../shared/useLastLocation';
+import useLastLocation from '../../../shared/hooks/useLastLocation';
 
 export default function BuyProducts() {
   const navigate = useNavigate();

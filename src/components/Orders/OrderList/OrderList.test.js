@@ -33,27 +33,35 @@ describe('<OrderList />', () => {
     it('should render everything correctly with two items and type PLACED_ORDERS', () => {
       const products = [
         createTransactionAndOrderProdItem({
-          productId: 'p1',
-          sellerUsername: 'sellerUser',
+          _id: 'p1',
           price: 4,
           quantity: 4,
           name: 'product1',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
         createTransactionAndOrderProdItem({
           productId: 'p2',
-          sellerUsername: 'sellerUser',
           price: 6.4,
           quantity: 2,
           name: 'product2',
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const orders = [
         createOrder({
+          _id: 'o1',
           products,
-          id: 'o1',
-          sellerUsername: 'sellerUser',
-          buyerUsername: 'buyerUser',
+          seller: {
+            username: 'sellerUser',
+          },
+          buyer: {
+            username: 'buyerUser',
+          },
           overallPrice: 28.8,
           createdAt: '2021-01-08T11:08:51.008Z',
         }),
@@ -71,19 +79,25 @@ describe('<OrderList />', () => {
       const products = [
         createTransactionAndOrderProdItem({
           productId: 'p1',
-          sellerUsername: 'sellerUser',
           price: 6.4,
           quantity: 2,
           name: 'product1',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const orders = [
         createOrder({
+          _id: 'o1',
           products,
-          id: 'o1',
-          sellerUsername: 'sellerUser',
-          buyerUsername: 'buyerUser',
+          seller: {
+            username: 'sellerUser',
+          },
+          buyer: {
+            username: 'buyerUser',
+          },
           overallPrice: 12.8,
           createdAt: '2021-02-17T01:53:45.008Z',
         }),
@@ -106,14 +120,18 @@ describe('<OrderList />', () => {
           quantity: 4,
           name: 'product1',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const orders = [
         createOrder({
+          _id: 'o1',
           products,
-          id: 'o1',
-          sellerUsername: null,
-          buyerUsername: 'buyerUser',
+          buyer: {
+            username: 'buyerUser',
+          },
           overallPrice: 12.8,
           createdAt: '2021-02-28T21:13:05.008Z',
         }),
@@ -127,20 +145,23 @@ describe('<OrderList />', () => {
     it('should render account deleted - type SELL_HISTORY', () => {
       const products = [
         createTransactionAndOrderProdItem({
-          productId: 'p1',
-          sellerUsername: 'sellerUser',
+          _id: 'p1',
           price: 6.4,
           quantity: 2,
           name: 'product1',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const orders = [
         createOrder({
+          _id: 'o1',
           products,
-          id: 'o1',
-          sellerUsername: 'sellerUser',
-          buyerUsername: null,
+          seller: {
+            username: 'sellerUser',
+          },
           overallPrice: 12.8,
           createdAt: '2021-02-28T21:13:05.008Z',
         }),
@@ -154,22 +175,27 @@ describe('<OrderList />', () => {
     it('should render <LoadingOverlay />', () => {
       const products = [
         createTransactionAndOrderProdItem({
-          productId: 'p1',
-          sellerUsername: 'sellerUser',
+          _id: 'p1',
           price: 6.4,
           quantity: 4,
           name: 'product1',
           photo: true,
+          seller: {
+            username: 'sellerUser',
+          },
         }),
       ];
       const orders = [
         createOrder({
+          _id: 'o1',
           products,
-          id: 'o1',
-          sellerUsername: 'sellerUser',
-          buyerUsername: 'buyerUser',
+          seller: {
+            username: 'sellerUser',
+          },
+          buyer: {
+            username: 'buyerUser',
+          },
           overallPrice: 12.8,
-          createdAt: '2021-02-28T21:13:05.008Z',
         }),
       ];
       setUp(orders, orderTypes.PLACED_ORDERS, true);
@@ -183,10 +209,14 @@ describe('<OrderList />', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orders = [
         createOrder({
+          _id: 'o1',
           products,
-          id: 'o1',
-          sellerUsername: 'sellerUser',
-          buyerUsername: 'buyerUser',
+          seller: {
+            username: 'sellerUser',
+          },
+          buyer: {
+            username: 'buyerUser',
+          },
         }),
       ];
       const pushFn = jest.fn();
@@ -205,10 +235,14 @@ describe('<OrderList />', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orders = [
         createOrder({
+          _id: 'o1',
           products,
-          id: 'o1',
-          sellerUsername: 'sellerUser',
-          buyerUsername: 'buyerUser',
+          seller: {
+            username: 'sellerUser',
+          },
+          buyer: {
+            username: 'buyerUser',
+          },
         }),
       ];
       const pushFn = jest.fn();

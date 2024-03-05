@@ -6,7 +6,7 @@ import Orders from '../../../components/Orders/Orders';
 import Heading from '../../../components/UI/Heading/Heading';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
-import useLastLocation from '../../../shared/useLastLocation';
+import useLastLocation from '../../../shared/hooks/useLastLocation';
 
 export default function MySellHistory() {
   const lastLocation = useLastLocation();

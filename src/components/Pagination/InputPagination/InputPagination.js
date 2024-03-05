@@ -11,7 +11,7 @@ import {
   calculateNumberOfPages,
   getParamsWithoutPollution,
 } from '../../../shared/utility/utility';
-import useLastLocation from '../../../shared/useLastLocation';
+import useLastLocation from '../../../shared/hooks/useLastLocation';
 
 export default function InputPagination({ itemQuantity, quantityPerPage }) {
   const location = useLocation();

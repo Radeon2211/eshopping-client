@@ -1,24 +1,24 @@
 import queryString from 'query-string';
 import axios from '../../../axios';
-import * as actionTypes from '../actionTypes';
 import * as uiActions from '../uiActions/uiActions';
 import { orderTypes } from '../../../shared/constants';
 import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
+import { AuthAction } from '../authActions/authActionTypes';
 
 export const setPlacedOrders = (placedOrders, orderCount = undefined) => ({
-  type: actionTypes.SET_PLACED_ORDERS,
+  type: AuthAction.SET_PLACED_ORDERS,
   placedOrders,
   orderCount,
 });
 
 export const setSellHistory = (sellHistory, orderCount = undefined) => ({
-  type: actionTypes.SET_SELL_HISTORY,
+  type: AuthAction.SET_SELL_HISTORY,
   sellHistory,
   orderCount,
 });
 
 export const setOrderDetails = (orderDetails) => ({
-  type: actionTypes.SET_ORDER_DETAILS,
+  type: AuthAction.SET_ORDER_DETAILS,
   orderDetails,
 });
 

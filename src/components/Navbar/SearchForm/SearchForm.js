@@ -6,7 +6,7 @@ import MyIcon from '../../UI/MyIcon';
 import { ReactComponent as SearchIcon } from '../../../images/icons/search.svg';
 import { defaultAppPath } from '../../../shared/constants';
 import { getParamsWithoutPollution } from '../../../shared/utility/utility';
-import useWindowSize from '../../../shared/useWindowSize';
+import useWindowSize from '../../../shared/hooks/useWindowSize';
 
 export default function SearchForm() {
   const [productName, setProductName] = useState('');

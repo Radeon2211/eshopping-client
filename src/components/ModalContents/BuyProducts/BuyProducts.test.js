@@ -4,7 +4,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import BuyProducts from './BuyProducts';
 import * as actions from '../../../store/actions/indexActions';
-import useLastLocation from '../../../shared/useLastLocation';
+import useLastLocation from '../../../shared/hooks/useLastLocation';
 import { renderAppPart } from '../../../shared/testUtility/testUtility';
 
 const mockStore = configureMockStore([thunk]);
@@ -30,7 +30,7 @@ jest.mock('../../../store/actions/indexActions.js', () => ({
   }),
 }));
 
-jest.mock('../../../shared/useLastLocation', () => ({
+jest.mock('../../../shared/hooks/useLastLocation', () => ({
   __esModule: true,
   default: jest.fn(),
 }));

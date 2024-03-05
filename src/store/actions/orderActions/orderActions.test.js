@@ -1,3 +1,4 @@
+/* eslint-disable no-import-assign */
 import moxios from 'moxios';
 import axios from '../../../axios';
 import { defaultErrorMessage, orderTypes } from '../../../shared/constants';
@@ -10,14 +11,14 @@ import {
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
 import * as orderActions from './orderActions';
-import * as actionTypes from '../actionTypes';
+import { AuthAction } from '../authActions/authActionTypes';
 
 describe('action creators', () => {
   it('tests setPlacedOrders()', () => {
     const placedOrders = [createOrder()];
     const orderCount = 1;
     const expectedAction = {
-      type: actionTypes.SET_PLACED_ORDERS,
+      type: AuthAction.SET_PLACED_ORDERS,
       placedOrders,
       orderCount,
     };
@@ -28,7 +29,7 @@ describe('action creators', () => {
     const sellHistory = [createOrder()];
     const orderCount = 1;
     const expectedAction = {
-      type: actionTypes.SET_SELL_HISTORY,
+      type: AuthAction.SET_SELL_HISTORY,
       sellHistory,
       orderCount,
     };
@@ -38,7 +39,7 @@ describe('action creators', () => {
   it('tests setOrderDetails()', () => {
     const orderDetails = createOrder();
     const expectedAction = {
-      type: actionTypes.SET_ORDER_DETAILS,
+      type: AuthAction.SET_ORDER_DETAILS,
       orderDetails,
     };
     expect(orderActions.setOrderDetails(orderDetails)).toEqual(expectedAction);

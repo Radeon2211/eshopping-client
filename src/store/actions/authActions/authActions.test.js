@@ -1,6 +1,7 @@
+/* eslint-disable no-import-assign */
 import moxios from 'moxios';
 import axios from '../../../axios';
-import { defaultAppPath, defaultErrorMessage, userStatuses } from '../../../shared/constants';
+import { defaultAppPath, defaultErrorMessage } from '../../../shared/constants';
 import {
   defaultUserProfile,
   testStore,
@@ -12,7 +13,8 @@ import {
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
 import * as authActions from './authActions';
-import * as actionTypes from '../actionTypes';
+import { ProfileStatus } from '../../../shared/types/types';
+import { AuthAction } from './authActionTypes';
 
 describe('action creators', () => {
   it('tests setProfile()', () => {
@@ -21,7 +23,7 @@ describe('action creators', () => {
       cart: [],
     };
     const expectedAction = {
-      type: actionTypes.SET_PROFILE,
+      type: AuthAction.SET_PROFILE,
       profile,
     };
     expect(authActions.setProfile(profile)).toEqual(expectedAction);
@@ -29,7 +31,7 @@ describe('action creators', () => {
 
   it('tests logout()', () => {
     const expectedAction = {
-      type: actionTypes.LOGOUT_USER,
+      type: AuthAction.LOGOUT_USER,
     };
     expect(authActions.logout()).toEqual(expectedAction);
   });
@@ -37,7 +39,7 @@ describe('action creators', () => {
   it('tests setDeliveryAddress()', () => {
     const deliveryAddress = defaultDeliveryAddress;
     const expectedAction = {
-      type: actionTypes.SET_DELIVERY_ADDRESS,
+      type: AuthAction.SET_DELIVERY_ADDRESS,
       deliveryAddress,
     };
     expect(authActions.setDeliveryAddress(deliveryAddress)).toEqual(expectedAction);
@@ -50,7 +52,7 @@ describe('action creators', () => {
       phone: '+48 123987456',
     };
     const expectedAction = {
-      type: actionTypes.SET_OTHER_USER,
+      type: AuthAction.SET_OTHER_USER,
       otherUser,
     };
     expect(authActions.setOtherUser(otherUser)).toEqual(expectedAction);
@@ -103,7 +105,7 @@ describe('async functions', () => {
         email: true,
         phone: false,
       },
-      status: userStatuses.PENDING,
+      status: ProfileStatus.PENDING,
       createdAt: '2021-03-14T11:16:13.547Z',
       cart: [],
     };

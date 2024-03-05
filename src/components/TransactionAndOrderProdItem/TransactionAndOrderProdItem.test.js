@@ -18,12 +18,14 @@ describe('<TransactionAndOrderProdItem />', () => {
   describe('checks how renders and behaviour', () => {
     it('should render everything correctly with photo of product directly', () => {
       const data = createTransactionAndOrderProdItem({
-        productId: 'p1',
-        sellerUsername: 'user1',
+        _id: 'p1',
         price: 9.9,
         quantity: 2,
         name: 'productName',
         photo: true,
+        seller: {
+          username: 'user1',
+        },
       });
       setUp(data);
       expect(screen.getByTestId('TransactionAndOrderProdItem-product-link-name')).toHaveTextContent(
@@ -43,12 +45,14 @@ describe('<TransactionAndOrderProdItem />', () => {
 
     it('should render with image from orders collection', () => {
       const data = createTransactionAndOrderProdItem({
-        productId: 'p1',
-        sellerUsername: 'user1',
+        _id: 'p1',
         price: 2,
         quantity: 5,
         name: 'productName',
         photo: true,
+        seller: {
+          username: 'user1',
+        },
       });
       setUp(data, 'o1');
       expect(screen.getByTestId('ProductThumbnail-img')).toHaveAttribute(
@@ -59,7 +63,7 @@ describe('<TransactionAndOrderProdItem />', () => {
 
     it('should call push with correct paths after clicking product links', () => {
       const data = createTransactionAndOrderProdItem({
-        productId: 'p1',
+        _id: 'p1',
       });
       const pushFn = jest.fn();
       setUp(data, 'o1', pushFn);

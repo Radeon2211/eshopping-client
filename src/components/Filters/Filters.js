@@ -14,7 +14,7 @@ import { ReactComponent as FiltersIcon } from '../../images/icons/filters.svg';
 import { ReactComponent as ArrowIcon } from '../../images/icons/arrow.svg';
 import { filtersActions, sortProductsOptions, productConditions } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
-import useWindowSize from '../../shared/useWindowSize';
+import useWindowSize from '../../shared/hooks/useWindowSize';
 
 export default function Filters({ isDataLoading }) {
   const { search, pathname } = useLocation();

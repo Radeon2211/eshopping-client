@@ -7,7 +7,7 @@ import axios from '../axios';
 import App from './App';
 import { defaultUserProfile, renderAppPart } from '../shared/testUtility/testUtility';
 import * as actions from '../store/actions/indexActions';
-import { userStatuses } from '../shared/constants';
+import { ProfileStatus } from '../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -59,7 +59,7 @@ describe('<App />', () => {
     it('should render version for user with pending status', () => {
       setUp({
         ...defaultUserProfile,
-        status: userStatuses.PENDING,
+        status: ProfileStatus.PENDING,
       });
       expect(screen.getByTestId('App-user-pending')).toBeInTheDocument();
     });

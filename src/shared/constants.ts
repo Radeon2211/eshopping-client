@@ -189,13 +189,8 @@ export const productsPerPageControllerOptions = [
   { value: 25, label: '25' },
 ];
 
-export const defaultScrollToConfig = {
+export const defaultScrollToConfig: ScrollToOptions = {
   top: 0,
   left: 0,
   behavior: 'smooth',
-};
-
-export const userStatuses = {
-  ACTIVE: 'active',
-  PENDING: 'pending',
 };

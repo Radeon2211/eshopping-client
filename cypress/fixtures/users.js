@@ -1,4 +1,4 @@
-import { userStatuses } from '../../src/shared/constants';
+import { ProfileStatus } from '../../src/shared/types/types';
 
 export const adminUser = {
   firstName: 'User',
@@ -18,7 +18,7 @@ export const adminUser = {
     email: true,
     phone: true,
   },
-  status: userStatuses.ACTIVE,
+  status: ProfileStatus.ACTIVE,
 };
 
 export const activeUser = {
@@ -38,7 +38,7 @@ export const activeUser = {
     email: false,
     phone: false,
   },
-  status: userStatuses.ACTIVE,
+  status: ProfileStatus.ACTIVE,
   cart: [],
   tokens: [],
 };
@@ -60,7 +60,7 @@ export const pendingUser = {
     email: true,
     phone: false,
   },
-  status: userStatuses.PENDING,
+  status: ProfileStatus.PENDING,
   cart: [],
   tokens: [],
 };

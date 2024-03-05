@@ -11,8 +11,9 @@ import FlexWrapper from '../../../components/UI/FlexWrapper';
 import Heading from '../../../components/UI/Heading/Heading';
 import { GreenText } from '../../../styled/components';
 import theme from '../../../styled/theme';
-import { modalTypes, userStatuses } from '../../../shared/constants';
+import { modalTypes } from '../../../shared/constants';
 import * as propTypes from '../../../shared/propTypes';
+import { ProfileStatus } from '../../../shared/types/types';
 
 export default function PurchaseSection(props) {
   const { productId, productQuantity, productSellerUsername, onSetModal, userProfile } = props;
@@ -67,7 +68,7 @@ export default function PurchaseSection(props) {
   const addToCartClickHandle = () => {
     if (!userProfile) {
       onSetModal(modalTypes.LOGIN);
-    } else if (userProfile?.status !== userStatuses.ACTIVE) {
+    } else if (userProfile?.status !== ProfileStatus.ACTIVE) {
       onSetModal(modalTypes.PENDING_USER_INFO);
     } else {
       onAddCartItem({
@@ -80,7 +81,7 @@ export default function PurchaseSection(props) {
   const buyNowClickHandle = () => {
     if (!userProfile) {
       onSetModal(modalTypes.LOGIN);
-    } else if (userProfile?.status !== userStatuses.ACTIVE) {
+    } else if (userProfile?.status !== ProfileStatus.ACTIVE) {
       onSetModal(modalTypes.PENDING_USER_INFO);
     } else {
       onGoToTransaction(navigate, {

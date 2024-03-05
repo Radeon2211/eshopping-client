@@ -7,7 +7,7 @@ import Heading from '../../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../../components/ProductsAndFilters/ProductsAndFilters';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
-import useLastLocation from '../../../shared/useLastLocation';
+import useLastLocation from '../../../shared/hooks/useLastLocation';
 
 export default function MyProducts({ userProfile }) {
   const { search } = useLocation();

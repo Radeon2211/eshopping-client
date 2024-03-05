@@ -64,14 +64,16 @@ describe('<OrderDetails />', () => {
     it('should render everything correctly with two <TransactionAndOrderProdItem />', async () => {
       const products = [createTransactionAndOrderProdItem(), createTransactionAndOrderProdItem()];
       const orderDetails = createOrder({
+        _id: 'o1',
         products,
-        id: 'o1',
-        sellerUsername: 'sellerUser',
-        buyerUsername: 'buyerUser',
-        overallPrice: 111.1,
-        createdAt: '2021-01-11T12:32:51.008Z',
-        sellerEmail: 'sellerEmail',
-        sellerPhone: '123',
+        seller: {
+          username: 'sellerUser',
+          email: 'sellerEmail',
+          phone: '123',
+        },
+        buyer: {
+          username: 'buyerUser',
+        },
       });
 
       setUp({
@@ -89,12 +91,8 @@ describe('<OrderDetails />', () => {
     it('should render that buyer and seller are deleted', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orderDetails = createOrder({
+        _id: 'o1',
         products,
-        id: 'o1',
-        sellerUsername: null,
-        buyerUsername: null,
-        overallPrice: 111.1,
-        createdAt: '2021-01-11T12:32:51.008Z',
       });
 
       setUp({
@@ -111,14 +109,16 @@ describe('<OrderDetails />', () => {
     it('should call push with correct paths after clicking on links', () => {
       const products = [createTransactionAndOrderProdItem()];
       const orderDetails = createOrder({
+        _id: 'o1',
         products,
-        id: 'o1',
-        sellerUsername: 'sellerUser',
-        buyerUsername: 'buyerUser',
-        overallPrice: 111.1,
-        createdAt: '2021-01-11T12:32:51.008Z',
-        sellerEmail: 'sellerEmail',
-        sellerPhone: '123',
+        seller: {
+          username: 'sellerUser',
+          email: 'sellerEmail',
+          phone: '123',
+        },
+        buyer: {
+          username: 'buyerUser',
+        },
       });
 
       const pushFn = jest.fn();

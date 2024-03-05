@@ -9,18 +9,20 @@ import {
   renderAppPart,
 } from '../../../shared/testUtility/testUtility';
 import { defaultScrollToConfig } from '../../../shared/constants';
-import useLastLocation from '../../../shared/useLastLocation';
+import useLastLocation from '../../../shared/hooks/useLastLocation';
 
 const mockStore = configureMockStore([thunk]);
 
 const products = [
   createTransactionAndOrderProdItem({
-    productId: 'p1',
-    sellerUsername: 'sellerUser',
+    _id: 'p1',
     price: 80.2,
     quantity: 4,
     name: 'product1',
     photo: true,
+    seller: {
+      username: 'sellerUser',
+    },
   }),
 ];
 
@@ -28,12 +30,15 @@ const defaultStore = mockStore({
   auth: {
     sellHistory: [
       createOrder({
+        _id: 'o1',
         products,
-        id: 'o1',
-        sellerUsername: 'sellerUser',
-        buyerUsername: 'buyerUser',
+        seller: {
+          username: 'sellerUser',
+        },
+        buyer: {
+          username: 'buyerUser',
+        },
         overallPrice: 320.8,
-        createdAt: '2021-02-28T21:13:05.008Z',
       }),
     ],
     orderCount: 1,
@@ -51,7 +56,7 @@ const setUp = () => {
   });
 };
 
-jest.mock('../../../shared/useLastLocation', () => ({
+jest.mock('../../../shared/hooks/useLastLocation', () => ({
   __esModule: true,
   default: jest.fn(),
 }));

@@ -5,12 +5,8 @@ import thunk from 'redux-thunk';
 import MyData from './MyData';
 import { defaultUserProfile, renderAppPart } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
-import {
-  defaultScrollToConfig,
-  modalTypes,
-  singleInfoNames,
-  userStatuses,
-} from '../../../shared/constants';
+import { defaultScrollToConfig, modalTypes, singleInfoNames } from '../../../shared/constants';
+import { ProfileStatus } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -47,7 +43,7 @@ describe('<MyData />', () => {
     });
 
     it('should render everything correctly for non admin user with status pending', () => {
-      setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
+      setUp({ ...defaultUserProfile, status: ProfileStatus.PENDING });
       expect(screen.getByTestId('MyData-pending-user-content')).toBeInTheDocument();
     });
   });
@@ -100,7 +96,7 @@ describe('<MyData />', () => {
     });
 
     it('should call correct functions after clicking in pending user content', () => {
-      const { store } = setUp({ ...defaultUserProfile, status: userStatuses.PENDING });
+      const { store } = setUp({ ...defaultUserProfile, status: ProfileStatus.PENDING });
 
       fireEvent.click(screen.getByRole('button', { name: /send verification link/i }));
       expect(store.dispatch).toHaveBeenCalledWith(

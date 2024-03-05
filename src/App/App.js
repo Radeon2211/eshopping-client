@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import axios from '../axios';
 import * as actions from '../store/actions/indexActions';
-import { defaultAppPath, userStatuses } from '../shared/constants';
+import { defaultAppPath } from '../shared/constants';
 import ErrorPage from '../components/UI/ErrorPage/ErrorPage';
 import FlexWrapper from '../components/UI/FlexWrapper';
 import { ReactComponent as ServerErrorImage } from '../images/server-connection-error.svg';
@@ -22,6 +22,7 @@ import MyData from '../containers/MyAccount/MyData/MyData';
 import MyProducts from '../containers/MyAccount/MyProducts/MyProducts';
 import MySellHistory from '../containers/MyAccount/MySellHistory/MySellHistory';
 import MyPlacedOrders from '../containers/MyAccount/MyPlacedOrders/MyPlacedOrders';
+import { ProfileStatus } from '../shared/types/types';
 
 const OrderDetails = lazy(() => import('../containers/OrderDetails/OrderDetails'));
 const ProductDetails = lazy(() => import('../containers/ProductDetails/ProductDetails'));
@@ -98,7 +99,7 @@ function App() {
       );
     }
   } else if (userProfile) {
-    if (userProfile.status === userStatuses.ACTIVE) {
+    if (userProfile.status === ProfileStatus.ACTIVE) {
       routes = (
         <Main data-testid="App-user-active">
           <Routes>

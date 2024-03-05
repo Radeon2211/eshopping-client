@@ -6,7 +6,7 @@ import AddProduct from './AddProduct';
 import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
 import { defaultAppPath, productConditions } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
-import { mockFile } from '../../../shared/utility/utility';
+import { MockFile } from '../../../shared/utility/utility';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -57,7 +57,7 @@ describe('<AddProduct />', () => {
     const defaultNewQuantity = 20;
     const defaultNewCondition = productConditions.NEW;
     const defaultNewDescription = 'Cool wellingtons';
-    const defaultNewPhoto = mockFile.create('wellingtons.png', 1024, 'image/png');
+    const defaultNewPhoto = MockFile.create('wellingtons.png', 1024, 'image/png');
 
     it('should have empty inputs and focus on email input by default', () => {
       setUp();
@@ -660,7 +660,7 @@ describe('<AddProduct />', () => {
           const nameInput = screen.getByTestId('AddProduct-name');
           const priceInput = screen.getByTestId('AddProduct-price');
           const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
-          const newPhoto = mockFile.create('wellingtons.png', 6500000, 'image/png');
+          const newPhoto = MockFile.create('wellingtons.png', 6500000, 'image/png');
 
           await waitFor(() => {
             fireEvent.change(nameInput, { target: { value: defaultNewName } });
@@ -685,7 +685,7 @@ describe('<AddProduct />', () => {
           const nameInput = screen.getByTestId('AddProduct-name');
           const priceInput = screen.getByTestId('AddProduct-price');
           const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
-          const newPhoto = mockFile.create('wellingtons.png', 1024, 'image/svg+xml');
+          const newPhoto = MockFile.create('wellingtons.png', 1024, 'image/svg+xml');
 
           await waitFor(() => {
             fireEvent.change(nameInput, { target: { value: defaultNewName } });

@@ -4,8 +4,9 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import PurchaseSection from './PurchaseSection';
 import { defaultUserProfile, renderAppPart } from '../../../shared/testUtility/testUtility';
-import { modalTypes, userStatuses } from '../../../shared/constants';
+import { modalTypes } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
+import { ProfileStatus } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -119,7 +120,7 @@ describe('<PurchaseSection />', () => {
       const onSetModalFn = jest.fn();
       const props = {
         onSetModal: onSetModalFn,
-        userProfile: { ...defaultUserProfile, status: userStatuses.PENDING },
+        userProfile: { ...defaultUserProfile, status: ProfileStatus.PENDING },
       };
       setUp(props);
 

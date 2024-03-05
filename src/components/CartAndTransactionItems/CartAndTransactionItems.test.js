@@ -45,12 +45,16 @@ describe('<CartAndTransactionItems />', () => {
       setUp(
         [
           createTransactionAndOrderProdItem({
-            productId: 'p1',
-            sellerUsername: 'user1',
+            _id: 'p1',
+            seller: {
+              username: 'user1',
+            },
           }),
           createTransactionAndOrderProdItem({
-            productId: 'p2',
-            sellerUsername: 'user2',
+            _id: 'p2',
+            seller: {
+              username: 'user2',
+            },
           }),
         ],
         itemTypes.TRANSACTION,

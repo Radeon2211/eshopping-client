@@ -1,3 +1,4 @@
+/* eslint-disable no-import-assign */
 import moxios from 'moxios';
 import axios from '../../../axios';
 import { defaultErrorMessage, modalTypes, updateCartActions } from '../../../shared/constants';
@@ -12,13 +13,13 @@ import {
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
 import * as tradeActions from './tradeActions';
-import * as actionTypes from '../actionTypes';
+import { AuthAction } from '../authActions/authActionTypes';
 
 describe('action creators', () => {
   it('tests setCart()', () => {
     const cart = [createCartItem()];
     const expectedAction = {
-      type: actionTypes.SET_CART,
+      type: AuthAction.SET_CART,
       cart,
     };
     expect(tradeActions.setCart(cart)).toEqual(expectedAction);
@@ -27,7 +28,7 @@ describe('action creators', () => {
   it('tests setTransaction()', () => {
     const transaction = [createTransactionAndOrderProdItem()];
     const expectedAction = {
-      type: actionTypes.SET_TRANSACTION,
+      type: AuthAction.SET_TRANSACTION,
       transaction,
     };
     expect(tradeActions.setTransaction(transaction)).toEqual(expectedAction);
@@ -1545,13 +1546,13 @@ describe('async functions', () => {
   describe('buyProducts()', () => {
     const defaultTransaction = [
       createTransactionAndOrderProdItem({
-        productId: 'p1',
+        _id: 'p1',
       }),
     ];
 
     const expectedTransaction = [
       createTransactionAndOrderProdItem({
-        productId: 'p2',
+        _id: 'p2',
       }),
     ];
     const expectedCart = [createCartItem()];

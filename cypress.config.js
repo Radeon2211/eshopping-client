@@ -1,21 +1,21 @@
-/* eslint-disable import/extensions */
-/* eslint-disable global-require */
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/no-extraneous-dependencies */
 const { defineConfig } = require('cypress');
+const index = require('./cypress/plugins/index.js');
 
 module.exports = defineConfig({
   experimentalStudio: true,
   viewportWidth: 1280,
   viewportHeight: 720,
   env: {
-    API_URL: 'http://192.168.1.28:4000',
+    API_URL: 'http://10.130.2.120:4000',
     DEFAULT_APP_HASH: '#/products?p=1',
   },
   e2e: {
     setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.js')(on, config);
+      return index(on, config);
     },
-    baseUrl: 'http://192.168.1.28:3000/eshopping-client/#/',
+    baseUrl: 'http://10.130.2.120:3000/eshopping-client/#/',
     experimentalRunAllSpecs: true,
   },
   retries: {

@@ -11,7 +11,7 @@ import {
 } from '../../../shared/testUtility/testUtility';
 import { productConditions, productPhotoFieldValues } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
-import { mockFile } from '../../../shared/utility/utility';
+import { MockFile } from '../../../shared/utility/utility';
 
 const defaultId = 'p1';
 const defaultName = 'Wellingtons';
@@ -65,7 +65,7 @@ describe('<EditProduct />', () => {
     const defaultNewPrice = 25.25;
     const defaultNewQuantity = 25;
     const defaultNewDescription = 'Cool boots';
-    const defaultNewPhoto = mockFile.create('boots.png', 1024, 'image/png');
+    const defaultNewPhoto = MockFile.create('boots.png', 1024, 'image/png');
 
     it('should have empty inputs and focus on email input by default', () => {
       setUp();
@@ -582,7 +582,7 @@ describe('<EditProduct />', () => {
           const nameInput = screen.getByTestId('EditProduct-name');
           const priceInput = screen.getByTestId('EditProduct-price');
           const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
-          const newPhoto = mockFile.create('wellingtons.png', 6500000, 'image/png');
+          const newPhoto = MockFile.create('wellingtons.png', 6500000, 'image/png');
 
           await waitFor(() => {
             fireEvent.change(nameInput, { target: { value: defaultNewName } });
@@ -607,7 +607,7 @@ describe('<EditProduct />', () => {
           const nameInput = screen.getByTestId('EditProduct-name');
           const priceInput = screen.getByTestId('EditProduct-price');
           const uploadPhotoInput = screen.getByTestId('UploadPhoto-input');
-          const newPhoto = mockFile.create('wellingtons.png', 1024, 'image/svg+xml');
+          const newPhoto = MockFile.create('wellingtons.png', 1024, 'image/svg+xml');
 
           await waitFor(() => {
             fireEvent.change(nameInput, { target: { value: defaultNewName } });

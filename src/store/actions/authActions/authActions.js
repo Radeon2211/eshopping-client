@@ -1,25 +1,25 @@
 import axios from '../../../axios';
-import * as actionTypes from '../actionTypes';
 import * as uiActions from '../uiActions/uiActions';
 import { getErrorMessage } from '../../../shared/utility/utility';
 import { defaultAppPath } from '../../../shared/constants';
+import { AuthAction } from './authActionTypes';
 
 export const setProfile = (profile) => ({
-  type: actionTypes.SET_PROFILE,
+  type: AuthAction.SET_PROFILE,
   profile,
 });
 
 export const logout = () => ({
-  type: actionTypes.LOGOUT_USER,
+  type: AuthAction.LOGOUT_USER,
 });
 
 export const setDeliveryAddress = (deliveryAddress) => ({
-  type: actionTypes.SET_DELIVERY_ADDRESS,
+  type: AuthAction.SET_DELIVERY_ADDRESS,
   deliveryAddress,
 });
 
 export const setOtherUser = (user) => ({
-  type: actionTypes.SET_OTHER_USER,
+  type: AuthAction.SET_OTHER_USER,
   otherUser: user,
 });
 

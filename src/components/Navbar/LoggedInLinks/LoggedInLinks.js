@@ -8,7 +8,7 @@ import MyIcon from '../../UI/MyIcon';
 import Dropdown from './Dropdown/Dropdown';
 import CartLink from './CartLink/CartLink';
 import PlainText from '../../UI/PlainText';
-import { userStatuses } from '../../../shared/constants';
+import { ProfileStatus } from '../../../shared/types/types';
 
 export const SC = {};
 SC.Wrapper = styled.nav`
@@ -53,7 +53,7 @@ export default function LoggedInLinks({ username, status }) {
   };
 
   const content =
-    status === userStatuses.ACTIVE ? (
+    status === ProfileStatus.ACTIVE ? (
       <>
         <CartLink />
         <SC.User
@@ -84,5 +84,5 @@ export default function LoggedInLinks({ username, status }) {
 
 LoggedInLinks.propTypes = {
   username: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(Object.values(userStatuses)).isRequired,
+  status: PropTypes.oneOf(Object.values(ProfileStatus)).isRequired,
 };
