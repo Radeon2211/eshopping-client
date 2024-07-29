@@ -17,18 +17,22 @@ const defaultOtherUser = { _id: 'u1', username: 'user1' };
 
 const defaultProducts = [
   createProductItem({
-    id: 'p1',
-    sellerUsername: 'user1',
+    _id: 'p1',
     price: 10.6,
     quantity: 4,
     name: 'product1',
+    seller: {
+      username: 'user1',
+    },
   }),
   createProductItem({
-    id: 'p2',
-    sellerUsername: 'user1',
+    _id: 'p2',
     price: 299.98,
     quantity: 4,
     name: 'product2',
+    seller: {
+      username: 'user1',
+    },
   }),
 ];
 

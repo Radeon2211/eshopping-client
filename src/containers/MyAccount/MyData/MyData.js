@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as SC from './MyData.sc';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes, singleInfoNames } from '../../../shared/constants';
+import { singleInfoNames } from '../../../shared/constants';
 import PlainPanel from '../../../components/UI/Panels/PlainPanel';
 import FlexWrapper from '../../../components/UI/FlexWrapper';
 import Heading from '../../../components/UI/Heading/Heading';
@@ -12,7 +12,7 @@ import Button from '../../../components/UI/Button/Button';
 import PlainText from '../../../components/UI/PlainText';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
-import { ProfileStatus } from '../../../shared/types/types';
+import { ModalType, ProfileStatus } from '../../../shared/types/types';
 
 export default function MyData() {
   const userProfile = useSelector((state) => state.auth.profile);
@@ -57,8 +57,8 @@ export default function MyData() {
           $justify="center"
           data-testid="MyData-admin-content"
         >
-          <Button clicked={() => onSetModal(modalTypes.ADD_ADMIN)}>Add admin</Button>
-          <Button $color="red" clicked={() => onSetModal(modalTypes.REMOVE_ADMIN)}>
+          <Button clicked={() => onSetModal(ModalType.ADD_ADMIN)}>Add admin</Button>
+          <Button $color="red" clicked={() => onSetModal(ModalType.REMOVE_ADMIN)}>
             Remove admin
           </Button>
         </FlexWrapper>
@@ -74,7 +74,7 @@ export default function MyData() {
           className="actions"
           data-testid="MyData-pending-user-actions"
         >
-          <Button clicked={() => onSetModal(modalTypes.SEND_VERIFICATION_LINK)}>
+          <Button clicked={() => onSetModal(ModalType.SEND_VERIFICATION_LINK)}>
             Send verification link
           </Button>
           <Button clicked={() => navigate('/logout')}>Logout</Button>
@@ -88,34 +88,34 @@ export default function MyData() {
         <SingleInfo
           name={singleInfoNames.NAME}
           content={`${firstName} ${lastName}`}
-          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_NAME) : null}
+          clickHandler={isAccountActive ? () => onSetModal(ModalType.CHANGE_NAME) : null}
         />
         <SingleInfo
           name={singleInfoNames.EMAIL}
           content={email}
-          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_EMAIL) : null}
+          clickHandler={isAccountActive ? () => onSetModal(ModalType.CHANGE_EMAIL) : null}
         />
         <SingleInfo
           name={singleInfoNames.ADDRESS}
           content={[street, `${zipCode} ${city}`, country]}
-          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_ADDRESS) : null}
+          clickHandler={isAccountActive ? () => onSetModal(ModalType.CHANGE_ADDRESS) : null}
         />
         <SingleInfo
           name={singleInfoNames.CONTACTS}
           content={contacts}
-          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_CONTACTS) : null}
+          clickHandler={isAccountActive ? () => onSetModal(ModalType.CHANGE_CONTACTS) : null}
         />
         <SingleInfo
           name={singleInfoNames.PHONE_NUMBER}
           content={phone}
-          clickHandler={isAccountActive ? () => onSetModal(modalTypes.CHANGE_PHONE_NUMBER) : null}
+          clickHandler={isAccountActive ? () => onSetModal(ModalType.CHANGE_PHONE_NUMBER) : null}
         />
         {pendingUserActions}
         <FlexWrapper $spacing="3" className="actions" $justify="center">
           {isAccountActive && (
-            <Button clicked={() => onSetModal(modalTypes.CHANGE_PASSWORD)}>Change password</Button>
+            <Button clicked={() => onSetModal(ModalType.CHANGE_PASSWORD)}>Change password</Button>
           )}
-          <Button $color="red" clicked={() => onSetModal(modalTypes.DELETE_ACCOUNT)}>
+          <Button $color="red" clicked={() => onSetModal(ModalType.DELETE_ACCOUNT)}>
             Delete account
           </Button>
         </FlexWrapper>

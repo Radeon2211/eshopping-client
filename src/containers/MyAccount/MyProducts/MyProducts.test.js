@@ -10,12 +10,12 @@ import {
 } from '../../../shared/testUtility/testUtility';
 import {
   productPages,
-  productConditions,
   defaultProductsPerPage,
   defaultScrollToConfig,
 } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 import useLastLocation from '../../../shared/hooks/useLastLocation';
+import { ProductCondition } from '../../../shared/types/enums';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -27,15 +27,17 @@ const defaultProps = {
 
 const defaultProducts = [
   createProductItem({
-    id: 'p1',
+    _id: 'p1',
     name: 'Wellingtons',
     price: 10,
     quantity: 5,
     buyerQuantity: 2,
     quantitySold: 3,
-    condition: productConditions.NEW,
+    condition: ProductCondition.NEW,
     photo: true,
-    sellerUsername: 'sellerUser',
+    seller: {
+      username: 'sellerUser',
+    },
   }),
 ];
 

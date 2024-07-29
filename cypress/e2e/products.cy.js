@@ -1,12 +1,12 @@
 import { pendingUser } from '../fixtures/users';
 import { productOne, allProducts } from '../fixtures/products';
 import { formatPrice } from '../../src/shared/utility/utility';
-import { productConditions } from '../../src/shared/constants';
+import { ProductCondition } from '../../src/shared/types/enums';
 
-const newProduct = allProducts.find(({ condition }) => condition === productConditions.NEW);
-const usedProduct = allProducts.find(({ condition }) => condition === productConditions.USED);
+const newProduct = allProducts.find(({ condition }) => condition === ProductCondition.NEW);
+const usedProduct = allProducts.find(({ condition }) => condition === ProductCondition.USED);
 const notApplicableProduct = allProducts.find(
-  ({ condition }) => condition === productConditions.NOT_APPLICABLE,
+  ({ condition }) => condition === ProductCondition.NOT_APPLICABLE,
 );
 const productsAscendingByPrice = [...allProducts].sort((a, b) => a.price - b.price);
 const productsDescendingByPrice = [...allProducts].sort((a, b) => b.price - a.price);
@@ -115,7 +115,7 @@ describe('product list and filters', () => {
       cy.wrap($item).within(() => {
         cy.findByText(product.name).should('exist');
         cy.findByText(formatPrice(product.price)).should('exist');
-        if (product.condition !== productConditions.NOT_APPLICABLE) {
+        if (product.condition !== ProductCondition.NOT_APPLICABLE) {
           cy.findByTestId('ProductItem-condition').should(
             'have.text',
             `Condition: ${product.condition.slice(0, 1).toUpperCase()}${product.condition.slice(
@@ -142,7 +142,7 @@ describe('product list and filters', () => {
     it('renders new product', () => {
       cy.findByTestId('Filters-checkbox-new').click({ force: true });
       submitFiltersForm();
-      cy.checkHash(`condition=${productConditions.NEW}`, 'contains');
+      cy.checkHash(`condition=${ProductCondition.NEW}`, 'contains');
       cy.checkHash(`minPrice=${productsAscendingByPrice[0].price}`, 'contains');
       cy.checkHash(`maxPrice=${productsDescendingByPrice[0].price}`, 'contains');
       cy.findAllByTestId('ProductItem').should('have.length', 1);
@@ -152,7 +152,7 @@ describe('product list and filters', () => {
     it('renders used product', () => {
       cy.findByTestId('Filters-checkbox-used').click({ force: true });
       submitFiltersForm();
-      cy.checkHash(`condition=${productConditions.USED}`, 'contains');
+      cy.checkHash(`condition=${ProductCondition.USED}`, 'contains');
       cy.findAllByTestId('ProductItem').should('have.length', 1);
       cy.findByTestId('ProductItem').findByText(usedProduct.name).should('exist');
     });
@@ -160,7 +160,7 @@ describe('product list and filters', () => {
     it('renders product with not applicable condition', () => {
       cy.findByTestId('Filters-checkbox-not-applicable').click({ force: true });
       submitFiltersForm();
-      cy.checkHash(`condition=${productConditions.NOT_APPLICABLE}`, 'contains');
+      cy.checkHash(`condition=${ProductCondition.NOT_APPLICABLE}`, 'contains');
       cy.findAllByTestId('ProductItem').should('have.length', 1);
       cy.findByTestId('ProductItem').findByText(notApplicableProduct.name).should('exist');
     });
@@ -269,7 +269,7 @@ describe('product list and filters', () => {
       cy.findByTestId('Filters-checkbox-new').click({ force: true });
       submitFiltersForm();
       cy.checkHash(`maxPrice=${maxPrice}`, 'contains');
-      cy.checkHash(`condition=${productConditions.NEW}`, 'contains');
+      cy.checkHash(`condition=${ProductCondition.NEW}`, 'contains');
       cy.findAllByTestId('ProductItem').should('have.length', 1);
       cy.findByTestId('ProductItem').findByText(newProduct.name).should('exist');
     });
@@ -281,7 +281,7 @@ describe('product list and filters', () => {
       cy.findByTestId('Filters-checkbox-used').click({ force: true });
       submitFiltersForm();
       cy.checkHash(`minPrice=${minPrice}`, 'contains');
-      cy.checkHash(`condition=${productConditions.USED}`, 'contains');
+      cy.checkHash(`condition=${ProductCondition.USED}`, 'contains');
       cy.findAllByTestId('ProductItem').should('have.length', 0);
       cy.findByTestId('Filters').should('exist');
       cy.findByTestId('ProductList-empty-list-info').should('exist');

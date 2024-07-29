@@ -5,8 +5,9 @@ import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import PlainText from '../../UI/PlainText';
-import { inputKinds, modalTypes } from '../../../shared/constants';
+import { inputKinds } from '../../../shared/constants';
 import { GreenText } from '../../../styled/components';
+import { ModalType } from '../../../shared/types/types';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ export default function Login() {
           />
           <PlainText $size="1" $mgBottom="3" role="link">
             <GreenText
-              onClick={() => onSetModal(modalTypes.RESET_PASSWORD)}
+              onClick={() => onSetModal(ModalType.RESET_PASSWORD)}
               data-testid="Login-forgot-password-link"
             >
               Forgot password

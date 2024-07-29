@@ -12,9 +12,10 @@ import PriceSlider from './PriceSlider/PriceSlider';
 import MyIcon from '../UI/MyIcon';
 import { ReactComponent as FiltersIcon } from '../../images/icons/filters.svg';
 import { ReactComponent as ArrowIcon } from '../../images/icons/arrow.svg';
-import { filtersActions, sortProductsOptions, productConditions } from '../../shared/constants';
+import { filtersActions, sortProductsOptions } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 import useWindowSize from '../../shared/hooks/useWindowSize';
+import { ProductCondition } from '../../shared/types/enums';
 
 export default function Filters({ isDataLoading }) {
   const { search, pathname } = useLocation();
@@ -40,9 +41,9 @@ export default function Filters({ isDataLoading }) {
         minPrice: correctQueryParams.minPrice,
         maxPrice: correctQueryParams.maxPrice,
         condition: {
-          new: conditionParam.includes(productConditions.NEW),
-          used: conditionParam.includes(productConditions.USED),
-          not_applicable: conditionParam.includes(productConditions.NOT_APPLICABLE),
+          new: conditionParam.includes(ProductCondition.NEW),
+          used: conditionParam.includes(ProductCondition.USED),
+          not_applicable: conditionParam.includes(ProductCondition.NOT_APPLICABLE),
         },
       },
     });
@@ -114,35 +115,35 @@ export default function Filters({ isDataLoading }) {
         <SC.CheckboxBox>
           <input
             type="checkbox"
-            name={productConditions.NEW}
-            id={productConditions.NEW}
+            name={ProductCondition.NEW}
+            id={ProductCondition.NEW}
             checked={filters.condition.new}
             onChange={checkboxChangeHandle}
             data-testid="Filters-checkbox-new"
           />
-          <label htmlFor={productConditions.NEW}>new</label>
+          <label htmlFor={ProductCondition.NEW}>new</label>
         </SC.CheckboxBox>
         <SC.CheckboxBox>
           <input
             type="checkbox"
-            name={productConditions.USED}
-            id={productConditions.USED}
+            name={ProductCondition.USED}
+            id={ProductCondition.USED}
             checked={filters.condition.used}
             onChange={checkboxChangeHandle}
             data-testid="Filters-checkbox-used"
           />
-          <label htmlFor={productConditions.USED}>used</label>
+          <label htmlFor={ProductCondition.USED}>used</label>
         </SC.CheckboxBox>
         <SC.CheckboxBox>
           <input
             type="checkbox"
-            name={productConditions.NOT_APPLICABLE}
-            id={productConditions.NOT_APPLICABLE}
+            name={ProductCondition.NOT_APPLICABLE}
+            id={ProductCondition.NOT_APPLICABLE}
             checked={filters.condition.not_applicable}
             onChange={checkboxChangeHandle}
             data-testid="Filters-checkbox-not-applicable"
           />
-          <label htmlFor={productConditions.NOT_APPLICABLE}>not applicable</label>
+          <label htmlFor={ProductCondition.NOT_APPLICABLE}>not applicable</label>
         </SC.CheckboxBox>
       </SC.Checkboxes>
       <Button

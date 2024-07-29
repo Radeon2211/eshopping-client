@@ -1,4 +1,4 @@
-import { productConditions } from '../../src/shared/constants';
+import { ProductCondition } from '../../src/shared/types/enums';
 import { adminUser, activeUser } from './users';
 
 export const productOne = {
@@ -9,7 +9,7 @@ export const productOne = {
   seller: {
     username: adminUser.username,
   },
-  condition: productConditions.NEW,
+  condition: ProductCondition.NEW,
   buyerQuantity: 0,
   quantitySold: 0,
 };
@@ -22,7 +22,7 @@ export const productTwo = {
   seller: {
     username: activeUser.username,
   },
-  condition: productConditions.USED,
+  condition: ProductCondition.USED,
   buyerQuantity: 0,
   quantitySold: 0,
 };
@@ -35,7 +35,7 @@ export const productThree = {
   seller: {
     username: activeUser.username,
   },
-  condition: productConditions.NOT_APPLICABLE,
+  condition: ProductCondition.NOT_APPLICABLE,
   buyerQuantity: 0,
   quantitySold: 0,
 };

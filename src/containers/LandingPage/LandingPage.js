@@ -8,9 +8,10 @@ import landingPageBg from '../../images/landing-page-bg.jpg';
 import Header from '../../components/UI/Header';
 import Button from '../../components/UI/Button/Button';
 import FlexWrapper from '../../components/UI/FlexWrapper';
-import { defaultAppPath, modalTypes } from '../../shared/constants';
+import { defaultAppPath } from '../../shared/constants';
 import Heading from '../../components/UI/Heading/Heading';
 import * as actions from '../../store/actions/indexActions';
+import { ModalType } from '../../shared/types/types';
 
 export default function LandingPage() {
   const dispatch = useDispatch();
@@ -37,12 +38,12 @@ export default function LandingPage() {
         </motion.div>
         <FlexWrapper $spacing="3" $justify="center">
           <motion.div variants={panelItemVariants}>
-            <Button $size="big" clicked={() => onSetModal(modalTypes.LOGIN)}>
+            <Button $size="big" clicked={() => onSetModal(ModalType.LOGIN)}>
               Login
             </Button>
           </motion.div>
           <motion.div variants={panelItemVariants}>
-            <Button $size="big" clicked={() => onSetModal(modalTypes.SIGNUP)}>
+            <Button $size="big" clicked={() => onSetModal(ModalType.SIGNUP)}>
               Signup
             </Button>
           </motion.div>

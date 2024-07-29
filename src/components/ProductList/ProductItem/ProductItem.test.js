@@ -6,7 +6,7 @@ import {
   renderAppPart,
   testRouterPushCall,
 } from '../../../shared/testUtility/testUtility';
-import { productConditions } from '../../../shared/constants';
+import { ProductCondition } from '../../../shared/types/enums';
 
 const setUp = (data, pushFn = jest.fn()) => {
   return renderAppPart(<ProductItem data={data} />, {
@@ -20,8 +20,7 @@ describe('<ProductItem />', () => {
   describe('check how renders', () => {
     it('should render everything correctly', () => {
       const data = createProductItem({
-        id: 'p1',
-        sellerUsername: 'user1',
+        _id: 'p1',
         price: 10.6,
         quantity: 4,
         name: 'product1',
@@ -29,7 +28,10 @@ describe('<ProductItem />', () => {
         buyerQuantity: 2,
         quantitySold: 5,
         description: 'description',
-        condition: productConditions.NEW,
+        condition: ProductCondition.NEW,
+        seller: {
+          username: 'user1',
+        },
       });
       setUp(data);
       expect(screen.getByText(/product1/i));
@@ -40,15 +42,17 @@ describe('<ProductItem />', () => {
 
     it('should NOT render buyer quantity, condition and should render default photo and price without decimals', () => {
       const data = createProductItem({
-        id: 'p1',
-        sellerUsername: 'user1',
+        _id: 'p1',
         price: 10,
         quantity: 4,
         name: 'product1',
         buyerQuantity: 0,
         quantitySold: 0,
         description: 'description',
-        condition: productConditions.NOT_APPLICABLE,
+        condition: ProductCondition.NOT_APPLICABLE,
+        seller: {
+          username: 'user1',
+        },
       });
       setUp(data);
       expect(screen.getByText(/product1/i));
@@ -60,7 +64,7 @@ describe('<ProductItem />', () => {
     it('should NOT render buyer quantity, condition and should render default photo and price without decimals', () => {
       const data = createProductItem({
         buyerQuantity: 1,
-        condition: productConditions.USED,
+        condition: ProductCondition.USED,
       });
       setUp(data);
       expect(screen.getByTestId('ProductItem-condition')).toHaveTextContent('Condition: Used');
@@ -69,7 +73,7 @@ describe('<ProductItem />', () => {
   });
 
   it('should push correct path after clicking at wrapper', () => {
-    const data = createProductItem({ id: 'p1' });
+    const data = createProductItem({ _id: 'p1' });
     const pushFn = jest.fn();
     setUp(data, pushFn);
     fireEvent.click(screen.getByTestId('ProductItem'));

@@ -4,9 +4,9 @@ import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';
 import Dropdown from './Dropdown';
-import { modalTypes } from '../../../../shared/constants';
 import * as actions from '../../../../store/actions/indexActions';
 import { renderAppPart, testRouterPushCall } from '../../../../shared/testUtility/testUtility';
+import { ModalType } from '../../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -66,7 +66,7 @@ describe('<Dropdown />', () => {
       const pushFn = jest.fn();
       const { store } = setUp(true, jest.fn(), pushFn);
       fireEvent.click(screen.getByText(/add product/i));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ADD_PRODUCT));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(ModalType.ADD_PRODUCT));
       expect(pushFn).not.toHaveBeenCalled();
     });
   });

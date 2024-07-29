@@ -25,18 +25,22 @@ const createStore = (products, productCount, minPrice, maxPrice) =>
 
 const defaultProducts = [
   createProductItem({
-    id: 'p1',
-    sellerUsername: 'user1',
+    _id: 'p1',
     price: 10.6,
     quantity: 4,
     name: 'product1',
+    seller: {
+      username: 'user1',
+    },
   }),
   createProductItem({
-    id: 'p2',
-    sellerUsername: 'user1',
+    _id: 'p2',
     price: 299.98,
     quantity: 6,
     name: 'product2',
+    seller: {
+      username: 'user1',
+    },
   }),
 ];
 

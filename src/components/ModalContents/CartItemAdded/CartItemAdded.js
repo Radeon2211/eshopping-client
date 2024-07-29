@@ -55,11 +55,11 @@ export default function CartItemAdded() {
           </FlexWrapper>
         </FlexWrapper>
         <FlexWrapper $mgTop="3" $justify="center" $spacing="3">
-          <Button $color="blue" clicked={() => onSetModal('')}>
+          <Button $color="blue" clicked={() => onSetModal(null)}>
             Continue shopping
           </Button>
           <Link to="/cart">
-            <Button $color="blue" $filled clicked={() => onSetModal('')}>
+            <Button $color="blue" $filled clicked={() => onSetModal(null)}>
               Go to cart
             </Button>
           </Link>

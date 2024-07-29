@@ -1,9 +1,8 @@
 import queryString from 'query-string';
 import moment from 'moment';
 import { filesize } from 'filesize';
-import { AxiosError } from 'axios';
 import { listOfAreaCodes, defaultErrorMessage, defaultScrollToConfig } from '../constants';
-import { ApiErrorData, ApiErrorDataErrorObj } from '../types/types';
+import { ApiErrorDataErrorObj, AxiosErrorType } from '../types/types';
 
 export const getPhonePrefixAndNumber = (phone: string) => {
   const currentPhonePrefix = phone.split(' ')[0].split('+')[1];
@@ -45,7 +44,7 @@ export const updateObject = (oldObject: object, updatedProps: object) => ({
   ...updatedProps,
 });
 
-export const getErrorMessage = (error: AxiosError<ApiErrorData>) => {
+export const getErrorMessage = (error: AxiosErrorType) => {
   let errorMessage = defaultErrorMessage;
 
   const data = error.response?.data;

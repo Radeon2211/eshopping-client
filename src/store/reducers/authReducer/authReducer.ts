@@ -10,7 +10,7 @@ import {
 } from '../../../shared/types/types';
 import { AuthAction } from '../../actions/authActions/authActionTypes';
 
-interface AuthReucerState {
+export interface AuthReducerState {
   profile?: Profile;
   deliveryAddress?: DeliveryAddress;
   cart?: Cart;
@@ -22,7 +22,7 @@ interface AuthReucerState {
   otherUser?: OtherUser;
 }
 
-export const initialState: AuthReucerState = {
+export const initialAuthReducerState: AuthReducerState = {
   profile: undefined,
   deliveryAddress: undefined,
   cart: undefined,
@@ -37,7 +37,7 @@ export const initialState: AuthReucerState = {
 type LogoutUserAction = {
   type: AuthAction.LOGOUT_USER;
 };
-const logoutUser = (state: AuthReucerState) => {
+const logoutUser = (state: AuthReducerState) => {
   return updateObject(state, {
     profile: null,
     deliveryAddress: undefined,
@@ -54,7 +54,7 @@ type SetProfileAction = {
   type: AuthAction.SET_PROFILE;
   profile: ProfileWithCart;
 };
-const setProfile = (state: AuthReucerState, action: SetProfileAction) => {
+const setProfile = (state: AuthReducerState, action: SetProfileAction) => {
   if (!action.profile) return updateObject(state, { profile: action.profile });
   const profile = {
     ...action.profile,
@@ -76,7 +76,7 @@ type SetDeliveryAddressAction = {
   type: AuthAction.SET_DELIVERY_ADDRESS;
   deliveryAddress: Partial<DeliveryAddress>;
 };
-const setDeliveryAddress = (state: AuthReucerState, action: SetDeliveryAddressAction) => {
+const setDeliveryAddress = (state: AuthReducerState, action: SetDeliveryAddressAction) => {
   const updatedDeliveryAddress = {
     ...state.deliveryAddress,
     ...action.deliveryAddress,
@@ -88,7 +88,7 @@ type SetCartAction = {
   type: AuthAction.SET_CART;
   cart: Cart;
 };
-const setCart = (state: AuthReucerState, action: SetCartAction) => {
+const setCart = (state: AuthReducerState, action: SetCartAction) => {
   return updateObject(state, { cart: action.cart });
 };
 
@@ -96,7 +96,7 @@ type SetTransactionAction = {
   type: AuthAction.SET_TRANSACTION;
   transaction: Transaction;
 };
-const setTransaction = (state: AuthReucerState, action: SetTransactionAction) => {
+const setTransaction = (state: AuthReducerState, action: SetTransactionAction) => {
   return updateObject(state, { transaction: action.transaction });
 };
 
@@ -105,7 +105,7 @@ type SetPlacedOrdersAction = {
   placedOrders: Order[];
   orderCount: number;
 };
-const setPlacedOrders = (state: AuthReucerState, action: SetPlacedOrdersAction) => {
+const setPlacedOrders = (state: AuthReducerState, action: SetPlacedOrdersAction) => {
   return updateObject(state, { placedOrders: action.placedOrders, orderCount: action.orderCount });
 };
 
@@ -114,7 +114,7 @@ type SetSellHistoryAction = {
   sellHistory: Order[];
   orderCount: number;
 };
-const setSellHistory = (state: AuthReucerState, action: SetSellHistoryAction) => {
+const setSellHistory = (state: AuthReducerState, action: SetSellHistoryAction) => {
   return updateObject(state, { sellHistory: action.sellHistory, orderCount: action.orderCount });
 };
 
@@ -122,7 +122,7 @@ type SetOrderDetailsAction = {
   type: AuthAction.SET_ORDER_DETAILS;
   orderDetails: Order;
 };
-const setOrderDetails = (state: AuthReucerState, action: SetOrderDetailsAction) => {
+const setOrderDetails = (state: AuthReducerState, action: SetOrderDetailsAction) => {
   return updateObject(state, { orderDetails: action.orderDetails });
 };
 
@@ -130,11 +130,11 @@ type SetOtherUserAction = {
   type: AuthAction.SET_OTHER_USER;
   otherUser: OtherUser;
 };
-const setOtherUser = (state: AuthReucerState, action: SetOtherUserAction) => {
+const setOtherUser = (state: AuthReducerState, action: SetOtherUserAction) => {
   return updateObject(state, { otherUser: action.otherUser });
 };
 
-type AuthReducerAction =
+export type AuthReducerAction =
   | LogoutUserAction
   | SetProfileAction
   | SetDeliveryAddressAction
@@ -145,7 +145,7 @@ type AuthReducerAction =
   | SetOrderDetailsAction
   | SetOtherUserAction;
 // eslint-disable-next-line default-param-last
-const authReducer = (state = initialState, action: AuthReducerAction) => {
+const authReducer = (state = initialAuthReducerState, action: AuthReducerAction) => {
   switch (action.type) {
     case AuthAction.LOGOUT_USER:
       return logoutUser(state);

@@ -1,3 +1,8 @@
+import { AxiosError } from 'axios';
+import { AuthReducerState } from '../../store/reducers/authReducer/authReducer';
+import { ProductReducerState } from '../../store/reducers/productReducer/productReducer';
+import { UiReducerState } from '../../store/reducers/uiReducer/uiReducer';
+
 export type ApiErrorDataErrorObj = {
   properties: {
     message: string;
@@ -15,6 +20,9 @@ export type ApiErrorData =
     }
   | {
       modifiedPaths: string[];
+    }
+  | {
+      kind: string;
     };
 
 type ProfileContacts = {
@@ -25,6 +33,32 @@ type ProfileContacts = {
 export enum ProfileStatus {
   ACTIVE = 'active',
   PENDING = 'pending',
+}
+
+export enum ModalType {
+  ABOUT_WEBSITE = 'ABOUT_WEBSITE',
+  ADD_ADMIN = 'ADD_ADMIN',
+  ADD_PRODUCT = 'ADD_PRODUCT',
+  BUY_PRODUCTS = 'BUY_PRODUCTS',
+  CART_ITEM_ADDED = 'CART_ITEM_ADDED',
+  CHANGE_NAME = 'CHANGE_NAME',
+  CHANGE_EMAIL = 'CHANGE_EMAIL',
+  CHANGE_USERNAME = 'CHANGE_USERNAME',
+  CHANGE_PHONE_NUMBER = 'CHANGE_PHONE_NUMBER',
+  CHANGE_ADDRESS = 'CHANGE_ADDRESS',
+  CHANGE_PASSWORD = 'CHANGE_PASSWORD',
+  CHANGE_CONTACTS = 'CHANGE_CONTACTS',
+  CHANGE_DELIVERY_ADDRESS = 'CHANGE_DELIVERY_ADDRESS',
+  CLEAR_CART = 'CLEAR_CART',
+  DELETE_ACCOUNT = 'DELETE_ACCOUNT',
+  DELETE_PRODUCT = 'DELETE_PRODUCT',
+  EDIT_PRODUCT = 'EDIT_PRODUCT',
+  LOGIN = 'LOGIN',
+  REMOVE_ADMIN = 'REMOVE_ADMIN',
+  RESET_PASSWORD = 'RESET_PASSWORD',
+  PENDING_USER_INFO = 'PENDING_USER_INFO',
+  SEND_VERIFICATION_LINK = 'SEND_VERIFICATION_LINK',
+  SIGNUP = 'SIGNUP',
 }
 
 export type Profile = {
@@ -120,4 +154,12 @@ export type Order = {
   createdAt: string;
   updatedAt: string;
   __v: 0;
+};
+
+export type AxiosErrorType = AxiosError<ApiErrorData>;
+
+export type RootState = {
+  auth: AuthReducerState;
+  product: ProductReducerState;
+  ui: UiReducerState;
 };

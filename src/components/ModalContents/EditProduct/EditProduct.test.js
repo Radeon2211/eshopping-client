@@ -9,15 +9,15 @@ import {
   createProductItem,
   renderAppPart,
 } from '../../../shared/testUtility/testUtility';
-import { productConditions, productPhotoFieldValues } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 import { MockFile } from '../../../shared/utility/utility';
+import { ProductCondition, ProductPhotoFieldValue } from '../../../shared/types/enums';
 
 const defaultId = 'p1';
 const defaultName = 'Wellingtons';
 const defaultPrice = 5.2;
 const defaultQuantity = 10;
-const defaultCondition = productConditions.NEW;
+const defaultCondition = ProductCondition.NEW;
 const defaultDescription = 'Cool wellingtons';
 const defaultPhoto = true;
 
@@ -25,7 +25,7 @@ const mockStore = configureMockStore([thunk]);
 const defaultStore = mockStore({
   product: {
     productDetails: createProductItem({
-      id: defaultId,
+      _id: defaultId,
       name: defaultName,
       price: defaultPrice,
       quantity: defaultQuantity,
@@ -108,7 +108,7 @@ describe('<EditProduct />', () => {
           name: defaultNewName,
           price: defaultNewPrice,
           quantity: defaultNewQuantity,
-          condition: productConditions.USED,
+          condition: ProductCondition.USED,
           description: defaultNewDescription,
           photo: defaultNewPhoto,
         };
@@ -269,7 +269,7 @@ describe('<EditProduct />', () => {
           );
 
           const dataToPass = {
-            condition: productConditions.NOT_APPLICABLE,
+            condition: ProductCondition.NOT_APPLICABLE,
           };
 
           await waitFor(() => {
@@ -319,7 +319,7 @@ describe('<EditProduct />', () => {
         it('should call editProduct() with changed photo only (photo is deleted)', async () => {
           const { store, container } = setUp();
           const dataToPass = {
-            photo: productPhotoFieldValues.DELETED,
+            photo: ProductPhotoFieldValue.DELETED,
           };
 
           await waitFor(() => {

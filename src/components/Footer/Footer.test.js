@@ -4,8 +4,8 @@ import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import Footer from './Footer';
 import * as actions from '../../store/actions/indexActions';
-import { modalTypes } from '../../shared/constants';
 import { renderAppPart } from '../../shared/testUtility/testUtility';
+import { ModalType } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -28,7 +28,7 @@ describe('<Footer />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByRole('button', { name: /about website/i }));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.ABOUT_WEBSITE));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(ModalType.ABOUT_WEBSITE));
     });
 
     it('should mail link has correct href attribute', () => {

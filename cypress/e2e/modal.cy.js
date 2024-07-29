@@ -1,4 +1,5 @@
-import { defaultAppPath, modalTypes } from '../../src/shared/constants';
+import { defaultAppPath } from '../../src/shared/constants';
+import { ModalType } from '../../src/shared/types/types';
 
 describe('modal behaviour', () => {
   beforeEach(() => {
@@ -9,7 +10,7 @@ describe('modal behaviour', () => {
     it('closes after cancel button click', () => {
       cy.checkHash();
       cy.findByRole('button', { name: /login/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
       cy.findByRole('button', { name: /cancel/i }).click();
       cy.findByTestId('Modal').should('not.exist');
     });
@@ -17,7 +18,7 @@ describe('modal behaviour', () => {
     it('closes after close icon click', () => {
       cy.checkHash();
       cy.findByRole('button', { name: /login/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
       cy.closeModal();
       cy.findByTestId('Modal').should('not.exist');
     });
@@ -25,7 +26,7 @@ describe('modal behaviour', () => {
     it('closes after backdrop click', () => {
       cy.checkHash();
       cy.findByRole('button', { name: /login/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
       cy.findByTestId('Modal-backdrop').click({ force: true });
       cy.findByTestId('Modal').should('not.exist');
     });
@@ -52,16 +53,16 @@ describe('modal behaviour', () => {
       cy.submitForm();
       cy.findByTestId('Form-error').should('exist');
 
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`)
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`)
         .findByRole('link', { name: /forgot password/i })
         .click();
-      cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.RESET_PASSWORD}`).should('exist');
       cy.findByTestId('Form-error').should('not.exist');
 
-      cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`)
+      cy.findByTestId(`Modal-${ModalType.RESET_PASSWORD}`)
         .findByRole('link', { name: /login/i })
         .click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
       cy.findByTestId('Form-error').should('not.exist');
     });
   });
@@ -72,7 +73,7 @@ describe('modal behaviour', () => {
       cy.findByRole('button', { name: /login/i }).click();
       cy.submitForm({ force: true });
       cy.findByTestId('Form-error').should('not.exist');
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
     });
   });
 
@@ -81,7 +82,7 @@ describe('modal behaviour', () => {
       cy.checkHash();
       cy.findAllByTestId('ProductItem').first().click();
       cy.findByRole('button', { name: /buy now/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
       cy.visit('/products?p=1');
       cy.findByTestId('Modal').should('not.exist');
     });

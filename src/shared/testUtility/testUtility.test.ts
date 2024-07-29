@@ -1,6 +1,7 @@
 import validateUUID from 'uuid-validate';
 import * as testUtility from './testUtility';
-import { modalTypes, productConditions } from '../constants';
+import { ModalType } from '../types/types';
+import { ProductCondition } from '../types/enums';
 
 describe('createPaginationProps()', () => {
   it('should create props with default value', () => {
@@ -34,7 +35,7 @@ describe('createProductItem()', () => {
       quantitySold: 0,
       buyerQuantity: 0,
       description: '',
-      condition: productConditions.NEW,
+      condition: ProductCondition.NEW,
       seller: {
         username: 'username',
       },
@@ -47,8 +48,7 @@ describe('createProductItem()', () => {
 
   it('should create product item with given values', () => {
     const productItem = testUtility.createProductItem({
-      id: 'p1',
-      sellerUsername: 'johnsmith',
+      _id: 'p1',
       quantity: 15,
       price: 100.1,
       name: 'Wellingtons',
@@ -56,7 +56,10 @@ describe('createProductItem()', () => {
       quantitySold: 10,
       buyerQuantity: 5,
       description: 'Cool wellingtons',
-      condition: productConditions.NOT_APPLICABLE,
+      condition: ProductCondition.NOT_APPLICABLE,
+      seller: {
+        username: 'johnsmith',
+      },
     });
     expect(productItem).toEqual({
       _id: 'p1',
@@ -67,7 +70,7 @@ describe('createProductItem()', () => {
       quantitySold: 10,
       buyerQuantity: 5,
       description: 'Cool wellingtons',
-      condition: productConditions.NOT_APPLICABLE,
+      condition: ProductCondition.NOT_APPLICABLE,
       seller: {
         username: 'johnsmith',
       },
@@ -93,7 +96,7 @@ describe('createCartItem()', () => {
         quantitySold: 0,
         buyerQuantity: 0,
         description: '',
-        condition: productConditions.NEW,
+        condition: ProductCondition.NEW,
         seller: {
           username: 'username',
         },
@@ -128,7 +131,7 @@ describe('createCartItem()', () => {
         quantitySold: 0,
         buyerQuantity: 0,
         description: '',
-        condition: productConditions.NEW,
+        condition: ProductCondition.NEW,
         seller: {
           username: 'johnsmith',
         },
@@ -273,7 +276,7 @@ describe('testStore()', () => {
         isDataLoading: false,
         isCartLoading: false,
         message: '',
-        modalContent: '',
+        modalContent: null,
         productsPerPage: 10,
       },
     });
@@ -296,7 +299,7 @@ describe('testStore()', () => {
       {
         message: 'test message',
         isFormLoading: true,
-        modalContent: modalTypes.CHANGE_EMAIL,
+        modalContent: ModalType.CHANGE_EMAIL,
       },
     );
     expect(store.dispatch).toEqual(expect.any(Function));
@@ -322,7 +325,7 @@ describe('testStore()', () => {
       ui: {
         message: 'test message',
         isFormLoading: true,
-        modalContent: modalTypes.CHANGE_EMAIL,
+        modalContent: ModalType.CHANGE_EMAIL,
         formError: '',
         isDataLoading: false,
         isCartLoading: false,
@@ -529,7 +532,7 @@ describe('createExpectedState()', () => {
       {
         message: 'test message',
         isFormLoading: true,
-        modalContent: modalTypes.CHANGE_EMAIL,
+        modalContent: ModalType.CHANGE_EMAIL,
       },
     );
     expect(newState).toEqual({
@@ -554,7 +557,7 @@ describe('createExpectedState()', () => {
       ui: {
         message: 'test message',
         isFormLoading: true,
-        modalContent: modalTypes.CHANGE_EMAIL,
+        modalContent: ModalType.CHANGE_EMAIL,
         formError: '',
         isDataLoading: false,
         isCartLoading: false,
@@ -592,7 +595,7 @@ describe('setUpStoreWithDefaultProfile()', () => {
         isDataLoading: false,
         isCartLoading: false,
         message: '',
-        modalContent: '',
+        modalContent: null,
         productsPerPage: 10,
       },
     });
@@ -642,7 +645,7 @@ describe('setUpStoreWithDefaultProfile()', () => {
         isDataLoading: false,
         isCartLoading: false,
         message: 'test message',
-        modalContent: '',
+        modalContent: null,
         productsPerPage: 10,
       },
     });

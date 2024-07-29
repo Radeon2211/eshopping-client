@@ -4,8 +4,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ResetPassword from './ResetPassword';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes } from '../../../shared/constants';
 import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
+import { ModalType } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 const defaultStore = mockStore({
@@ -37,7 +37,7 @@ describe('<ResetPassword />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByText(/login/i));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.LOGIN));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(ModalType.LOGIN));
     });
   });
 

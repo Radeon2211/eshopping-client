@@ -15,7 +15,7 @@ export default function ClearCart() {
 
   const clearCartClickHandle = () => {
     onClearCart();
-    onSetModal('');
+    onSetModal(null);
   };
 
   return (
@@ -27,7 +27,7 @@ export default function ClearCart() {
         Are you sure to do that?
       </Heading>
       <FlexWrapper $mgTop="3" $justify="center" $spacing="3">
-        <Button $color="blue" clicked={() => onSetModal('')}>
+        <Button $color="blue" clicked={() => onSetModal(null)}>
           cancel
         </Button>
         <Button $color="red" $filled clicked={clearCartClickHandle}>

@@ -4,9 +4,10 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import AddProduct from './AddProduct';
 import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
-import { defaultAppPath, productConditions } from '../../../shared/constants';
+import { defaultAppPath } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 import { MockFile } from '../../../shared/utility/utility';
+import { ProductCondition } from '../../../shared/types/enums';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -48,14 +49,14 @@ describe('<AddProduct />', () => {
     const defaultName = '';
     const defaultPrice = '';
     const defaultQuantity = 1;
-    const defaultCondition = productConditions.NOT_APPLICABLE;
+    const defaultCondition = ProductCondition.NOT_APPLICABLE;
     const defaultDescription = '';
     const defaultPhoto = null;
 
     const defaultNewName = 'Wellingtons';
     const defaultNewPrice = 10.3;
     const defaultNewQuantity = 20;
-    const defaultNewCondition = productConditions.NEW;
+    const defaultNewCondition = ProductCondition.NEW;
     const defaultNewDescription = 'Cool wellingtons';
     const defaultNewPhoto = MockFile.create('wellingtons.png', 1024, 'image/png');
 
@@ -247,7 +248,7 @@ describe('<AddProduct />', () => {
           name: defaultNewName,
           price: defaultNewPrice,
           quantity: defaultQuantity,
-          condition: productConditions.NEW,
+          condition: ProductCondition.NEW,
           description: defaultDescription,
           photo: defaultPhoto,
         };

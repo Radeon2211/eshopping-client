@@ -23,7 +23,7 @@ export default function SendVerificationLink() {
         Are you sure? Number of emails to be sent is very limited
       </Heading>
       <FlexWrapper $justify="center" $spacing="3">
-        <Button clicked={() => onSetModal('')}>Cancel</Button>
+        <Button clicked={() => onSetModal(null)}>Cancel</Button>
         <Button $filled clicked={() => onSendAccountVerificationLink()}>
           Send
         </Button>

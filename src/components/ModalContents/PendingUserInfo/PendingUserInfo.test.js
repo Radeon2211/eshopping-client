@@ -26,7 +26,7 @@ describe('<PendingUserInfo />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByRole('button', { name: /ok/i }));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(null));
     });
   });
 });

@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes } from '../../../shared/constants';
 import Button from '../../UI/Button/Button';
 import FlexWrapper from '../../UI/FlexWrapper';
+import { ModalType } from '../../../shared/types/types';
 
 export default function LoggedOutLinks() {
   const dispatch = useDispatch();
@@ -14,8 +14,8 @@ export default function LoggedOutLinks() {
 
   return (
     <FlexWrapper $width="auto" $spacing="3" data-testid="LoggedOutLinks">
-      <Button clicked={() => onSetModal(modalTypes.LOGIN)}>login</Button>
-      <Button $filled clicked={() => onSetModal(modalTypes.SIGNUP)}>
+      <Button clicked={() => onSetModal(ModalType.LOGIN)}>login</Button>
+      <Button $filled clicked={() => onSetModal(ModalType.SIGNUP)}>
         signup
       </Button>
     </FlexWrapper>

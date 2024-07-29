@@ -1,11 +1,10 @@
+/* eslint-disable no-import-assign */
 import moxios from 'moxios';
 import axios from '../../../axios';
 import {
   defaultErrorMessage,
   productPages,
-  productConditions,
   defaultProductsPerPage,
-  productPhotoFieldValues,
 } from '../../../shared/constants';
 import {
   checkReqMethodAndURL,
@@ -16,14 +15,15 @@ import {
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
 import * as productActions from './productActions';
-import * as actionTypes from '../actionTypes';
 import logoImage from '../../../images/logo.png';
+import { ProductAction } from './productActionTypes';
+import { ProductCondition, ProductPhotoFieldValue } from '../../../shared/types/enums';
 
 describe('action creators', () => {
   describe('setProducts()', () => {
     it('should return with default values', () => {
       const expectedAction = {
-        type: actionTypes.SET_PRODUCTS,
+        type: ProductAction.SET_PRODUCTS,
         products: undefined,
         productCount: undefined,
         minPrice: 0,
@@ -38,7 +38,7 @@ describe('action creators', () => {
       const minPrice = 10;
       const maxPrice = 100;
       const expectedAction = {
-        type: actionTypes.SET_PRODUCTS,
+        type: ProductAction.SET_PRODUCTS,
         products,
         productCount,
         minPrice,
@@ -54,7 +54,7 @@ describe('action creators', () => {
     it('tests setProductDetails() directly from productActions.js', () => {
       const productDetails = createProductItem();
       const expectedAction = {
-        type: actionTypes.SET_PRODUCT_DETAILS,
+        type: ProductAction.SET_PRODUCT_DETAILS,
         productDetails,
       };
       expect(productActions.setProductDetails(productDetails)).toEqual(expectedAction);
@@ -63,7 +63,7 @@ describe('action creators', () => {
     it('tests setProductDetails() directly from indexActions.js', () => {
       const productDetails = createProductItem();
       const expectedAction = {
-        type: actionTypes.SET_PRODUCT_DETAILS,
+        type: ProductAction.SET_PRODUCT_DETAILS,
         productDetails,
       };
       expect(actions.setProductDetails(productDetails)).toEqual(expectedAction);
@@ -73,7 +73,7 @@ describe('action creators', () => {
   it('tests deleteProductFromList()', () => {
     const productId = 'p1';
     const expectedAction = {
-      type: actionTypes.DELETE_PRODUCT_FROM_LIST,
+      type: ProductAction.DELETE_PRODUCT_FROM_LIST,
       productId,
     };
     expect(productActions.deleteProductFromList(productId)).toEqual(expectedAction);
@@ -94,7 +94,7 @@ describe('async functions', () => {
       name: 'Wellingtons',
       price: 50,
       quantity: 5,
-      condition: productConditions.NEW,
+      condition: ProductCondition.NEW,
       description: 'Cool wellingtons',
       photo: null,
     };
@@ -431,7 +431,7 @@ describe('async functions', () => {
       price: 40,
       name: 'Boots',
       description: 'Cool boots',
-      condition: productConditions.USED,
+      condition: ProductCondition.USED,
     };
 
     const productData = {
@@ -450,15 +450,17 @@ describe('async functions', () => {
     const productId = 'p1';
 
     const defaultProduct = createProductItem({
-      id: productId,
-      sellerUsername: 'john',
+      _id: productId,
       quantity: 5,
       price: 50,
       name: 'Wellingtons',
       quantitySold: 3,
       buyerQuantity: 2,
       description: 'Cool wellingtons',
-      condition: productConditions.NEW,
+      condition: ProductCondition.NEW,
+      seller: {
+        username: 'john',
+      },
     });
 
     const expectedProduct = {
@@ -525,7 +527,7 @@ describe('async functions', () => {
               actions.editProduct(
                 {
                   ...productData,
-                  photo: productPhotoFieldValues.DELETED,
+                  photo: ProductPhotoFieldValue.DELETED,
                 },
                 productId,
               ),
@@ -581,7 +583,7 @@ describe('async functions', () => {
               actions.editProduct(
                 {
                   ...productData,
-                  photo: productPhotoFieldValues.DELETED,
+                  photo: ProductPhotoFieldValue.DELETED,
                 },
                 productId,
               ),
@@ -776,7 +778,7 @@ describe('async functions', () => {
             actions.editProduct(
               {
                 ...productData,
-                photo: productPhotoFieldValues.DELETED,
+                photo: ProductPhotoFieldValue.DELETED,
               },
               productId,
             ),
@@ -919,7 +921,7 @@ describe('async functions', () => {
         await actions.editProduct(
           {
             ...productData,
-            photo: productPhotoFieldValues.DELETED,
+            photo: ProductPhotoFieldValue.DELETED,
           },
           productId,
         )(innerDispatchFn);
@@ -963,7 +965,7 @@ describe('async functions', () => {
         await actions.editProduct(
           {
             ...productData,
-            photo: productPhotoFieldValues.DELETED,
+            photo: ProductPhotoFieldValue.DELETED,
           },
           productId,
         )(innerDispatchFn);
@@ -1246,7 +1248,7 @@ describe('async functions', () => {
   describe('fetchProductDetails()', () => {
     const productId = 'p1';
     const expectedProduct = createProductItem({
-      id: productId,
+      _id: productId,
     });
 
     describe('store', () => {
@@ -1400,12 +1402,12 @@ describe('async functions', () => {
   describe('deleteProduct()', () => {
     const productId = 'p1';
     const defaultProductDetails = createProductItem({
-      id: productId,
+      _id: productId,
     });
     const defaultProducts = [
       defaultProductDetails,
       createProductItem({
-        id: 'p2',
+        _id: 'p2',
       }),
     ];
 

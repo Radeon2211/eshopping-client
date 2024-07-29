@@ -3,7 +3,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import DeliveryAddressSection from './DeliveryAddressSection';
 import { defaultDeliveryAddress, renderAppPart } from '../../../shared/testUtility/testUtility';
-import { modalTypes } from '../../../shared/constants';
+import { ModalType } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 const defaultStore = mockStore({
@@ -36,6 +36,6 @@ describe('<DeliveryAddressSection />', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /change address/i }));
     expect(onSetModalFn).toHaveBeenCalledTimes(1);
-    expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.CHANGE_DELIVERY_ADDRESS);
+    expect(onSetModalFn).toHaveBeenCalledWith(ModalType.CHANGE_DELIVERY_ADDRESS);
   });
 });

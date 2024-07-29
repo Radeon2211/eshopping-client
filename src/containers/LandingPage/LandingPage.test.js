@@ -4,8 +4,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import LandingPage from './LandingPage';
 import * as actions from '../../store/actions/indexActions';
-import { modalTypes } from '../../shared/constants';
 import { renderAppPart, testRouterPushCall } from '../../shared/testUtility/testUtility';
+import { ModalType } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -29,14 +29,14 @@ describe('<LandingPage />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByRole('button', { name: /login/i }));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.LOGIN));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(ModalType.LOGIN));
     });
 
     it('should call setModal() with signup modal', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByRole('button', { name: /signup/i }));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.SIGNUP));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(ModalType.SIGNUP));
     });
 
     it('should call push with default app path', () => {

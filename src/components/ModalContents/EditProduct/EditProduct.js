@@ -7,8 +7,9 @@ import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import UploadPhoto from '../../UploadPhoto/UploadPhoto';
 import SideBySide from '../../UI/SideBySide';
-import { inputKinds, productRules, productConditions } from '../../../shared/constants';
+import { inputKinds, productRules } from '../../../shared/constants';
 import { getChangedValues } from '../../../shared/utility/utility';
+import { ProductCondition } from '../../../shared/types/enums';
 
 const validationSchema = Yup.object(productRules);
 
@@ -97,26 +98,26 @@ export default function EditProduct() {
             kind={inputKinds.RADIO}
             config={{
               name: 'condition',
-              value: productConditions.NOT_APPLICABLE,
+              value: ProductCondition.NOT_APPLICABLE,
               options: [
                 {
-                  value: productConditions.NEW,
-                  id: productConditions.NEW,
-                  checked: values.condition === productConditions.NEW,
-                  label: productConditions.NEW,
+                  value: ProductCondition.NEW,
+                  id: ProductCondition.NEW,
+                  checked: values.condition === ProductCondition.NEW,
+                  label: ProductCondition.NEW,
                   'data-testid': 'EditProduct-condition-new',
                 },
                 {
-                  value: productConditions.USED,
-                  id: productConditions.USED,
-                  checked: values.condition === productConditions.USED,
-                  label: productConditions.USED,
+                  value: ProductCondition.USED,
+                  id: ProductCondition.USED,
+                  checked: values.condition === ProductCondition.USED,
+                  label: ProductCondition.USED,
                   'data-testid': 'EditProduct-condition-used',
                 },
                 {
-                  value: productConditions.NOT_APPLICABLE,
-                  id: productConditions.NOT_APPLICABLE,
-                  checked: values.condition === productConditions.NOT_APPLICABLE,
+                  value: ProductCondition.NOT_APPLICABLE,
+                  id: ProductCondition.NOT_APPLICABLE,
+                  checked: values.condition === ProductCondition.NOT_APPLICABLE,
                   label: 'not applicable',
                   'data-testid': 'EditProduct-condition-not-applicable',
                 },

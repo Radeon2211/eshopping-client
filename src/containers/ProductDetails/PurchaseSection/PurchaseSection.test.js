@@ -4,9 +4,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import PurchaseSection from './PurchaseSection';
 import { defaultUserProfile, renderAppPart } from '../../../shared/testUtility/testUtility';
-import { modalTypes } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
-import { ProfileStatus } from '../../../shared/types/types';
+import { ModalType, ProfileStatus } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -101,7 +100,7 @@ describe('<PurchaseSection />', () => {
       expect(onSetModalFn).not.toHaveBeenCalled();
     });
 
-    it('should call with modalTypes.LOGIN after click on "buy now" and "add to cart" if user is unauthenticated', () => {
+    it('should call with ModalType.LOGIN after click on "buy now" and "add to cart" if user is unauthenticated', () => {
       const onSetModalFn = jest.fn();
       const props = {
         onSetModal: onSetModalFn,
@@ -110,13 +109,13 @@ describe('<PurchaseSection />', () => {
       setUp(props);
 
       fireEvent.click(screen.getByRole('button', { name: /buy now/i }));
-      expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.LOGIN);
+      expect(onSetModalFn).toHaveBeenCalledWith(ModalType.LOGIN);
       fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
-      expect(onSetModalFn).toHaveBeenLastCalledWith(modalTypes.LOGIN);
+      expect(onSetModalFn).toHaveBeenLastCalledWith(ModalType.LOGIN);
       expect(onSetModalFn).toHaveBeenCalledTimes(2);
     });
 
-    it('should call with modalTypes.PENDING_USER_INFO after click on "buy now" and "add to cart" if user has status pending', () => {
+    it('should call with ModalType.PENDING_USER_INFO after click on "buy now" and "add to cart" if user has status pending', () => {
       const onSetModalFn = jest.fn();
       const props = {
         onSetModal: onSetModalFn,
@@ -125,9 +124,9 @@ describe('<PurchaseSection />', () => {
       setUp(props);
 
       fireEvent.click(screen.getByRole('button', { name: /buy now/i }));
-      expect(onSetModalFn).toHaveBeenCalledWith(modalTypes.PENDING_USER_INFO);
+      expect(onSetModalFn).toHaveBeenCalledWith(ModalType.PENDING_USER_INFO);
       fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
-      expect(onSetModalFn).toHaveBeenLastCalledWith(modalTypes.PENDING_USER_INFO);
+      expect(onSetModalFn).toHaveBeenLastCalledWith(ModalType.PENDING_USER_INFO);
       expect(onSetModalFn).toHaveBeenCalledTimes(2);
     });
   });

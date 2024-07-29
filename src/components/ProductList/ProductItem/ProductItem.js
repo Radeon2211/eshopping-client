@@ -7,14 +7,14 @@ import PlainText from '../../UI/PlainText';
 import FlexWrapper from '../../UI/FlexWrapper';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 import { formatPrice } from '../../../shared/utility/utility';
-import { productConditions } from '../../../shared/constants';
 import * as propTypes from '../../../shared/propTypes';
+import { ProductCondition } from '../../../shared/types/enums';
 
 const ProductItem = React.memo(({ data }) => {
   const { _id, name, price, condition, buyerQuantity, photo } = data;
 
   let conditionNode = null;
-  if (condition !== productConditions.NOT_APPLICABLE) {
+  if (condition !== ProductCondition.NOT_APPLICABLE) {
     conditionNode = (
       <PlainText $size="1" $mgTop="1" data-testid="ProductItem-condition">
         <PlainText $color={theme.colors.light4}>Condition:</PlainText>

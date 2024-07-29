@@ -2,8 +2,8 @@ import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import UploadPhoto from './UploadPhoto';
 import { MockFile } from '../../shared/utility/utility';
-import { productPhotoFieldValues } from '../../shared/constants';
 import { renderAppPart } from '../../shared/testUtility/testUtility';
+import { ProductPhotoFieldValue } from '../../shared/types/enums';
 
 const setUp = (hasCurrentPhoto, setFieldValue = jest.fn()) => {
   return renderAppPart(
@@ -145,7 +145,7 @@ describe('<UploadPhoto />', () => {
           fireEvent.change(uploadPhotoInput, { target: { files: [invalidPhoto] } });
         });
 
-        expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', productPhotoFieldValues.ERROR);
+        expect(setFieldValueFn).toHaveBeenNthCalledWith(1, 'photo', ProductPhotoFieldValue.ERROR);
         expect(screen.getByText(/file extension is not valid/i));
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
           'Name: boots.svgSize: 6 MB',
@@ -187,7 +187,7 @@ describe('<UploadPhoto />', () => {
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
           'Name: boots.pngSize: 6,1 MB',
         );
-        expect(setFieldValueFn).toHaveBeenCalledWith('photo', productPhotoFieldValues.ERROR);
+        expect(setFieldValueFn).toHaveBeenCalledWith('photo', ProductPhotoFieldValue.ERROR);
       });
 
       it('should render with error, delete button and file info when image type is incorrect', async () => {
@@ -211,7 +211,7 @@ describe('<UploadPhoto />', () => {
         expect(screen.getByTestId('UploadPhoto-preview-photo-info')).toHaveTextContent(
           'Name: boots.svgSize: 6 MB',
         );
-        expect(setFieldValueFn).toHaveBeenCalledWith('photo', productPhotoFieldValues.ERROR);
+        expect(setFieldValueFn).toHaveBeenCalledWith('photo', ProductPhotoFieldValue.ERROR);
       });
     });
 
@@ -229,7 +229,7 @@ describe('<UploadPhoto />', () => {
           expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument();
         });
         expect(screen.getByTestId('UploadPhoto-default-preview'));
-        expect(setFieldValueFn).toHaveBeenCalledWith('photo', productPhotoFieldValues.DELETED);
+        expect(setFieldValueFn).toHaveBeenCalledWith('photo', ProductPhotoFieldValue.DELETED);
       });
 
       it('should render default view when files field has 0 length', async () => {

@@ -37,7 +37,7 @@ export default function Form(props) {
   if (cancellable) {
     cancelButton = (
       <PlainText $display="block" $mgRight="3">
-        <Button clicked={() => onSetModal('')}>cancel</Button>
+        <Button clicked={() => onSetModal(null)}>cancel</Button>
       </PlainText>
     );
   }

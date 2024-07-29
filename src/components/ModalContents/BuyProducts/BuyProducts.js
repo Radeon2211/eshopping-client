@@ -27,7 +27,7 @@ export default function BuyProducts() {
         Are you sure?
       </Heading>
       <FlexWrapper $justify="center" $spacing="3">
-        <Button clicked={() => onSetModal('')}>Cancel</Button>
+        <Button clicked={() => onSetModal(null)}>Cancel</Button>
         <Button $filled clicked={() => onBuyProducts(navigate, lastLocation?.pathname)}>
           Confirm
         </Button>

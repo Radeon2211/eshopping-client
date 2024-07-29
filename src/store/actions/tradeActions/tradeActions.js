@@ -1,8 +1,8 @@
 import axios from '../../../axios';
 import * as uiActions from '../uiActions/uiActions';
 import { getErrorMessage } from '../../../shared/utility/utility';
-import { modalTypes } from '../../../shared/constants';
 import { AuthAction } from '../authActions/authActionTypes';
+import { ModalType } from '../../../shared/types/types';
 
 let updateCartItemRequestCounter = 0;
 
@@ -39,7 +39,7 @@ export const addCartItem = (item) => {
       dispatch(uiActions.tradeStart());
       const { data } = await axios.patch('/cart/add', item);
       dispatch(setCart(data.cart));
-      dispatch(uiActions.setModal(modalTypes.CART_ITEM_ADDED));
+      dispatch(uiActions.setModal(ModalType.CART_ITEM_ADDED));
       dispatch(uiActions.writeChangeCartInfo(data.isDifferent));
       dispatch(uiActions.tradeEnd());
     } catch (error) {

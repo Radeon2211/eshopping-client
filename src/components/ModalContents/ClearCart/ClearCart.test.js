@@ -31,7 +31,7 @@ describe('<ClearCart />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(null));
     });
 
     it('should call setModal() and clearCart() after clear button click', () => {
@@ -41,7 +41,7 @@ describe('<ClearCart />', () => {
 
       fireEvent.click(screen.getByRole('button', { name: /clear/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.clearCart());
-      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(''));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(null));
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });

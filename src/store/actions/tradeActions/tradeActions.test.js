@@ -1,7 +1,7 @@
 /* eslint-disable no-import-assign */
 import moxios from 'moxios';
 import axios from '../../../axios';
-import { defaultErrorMessage, modalTypes, updateCartActions } from '../../../shared/constants';
+import { defaultErrorMessage, updateCartActions } from '../../../shared/constants';
 import {
   checkReqMethodAndURL,
   createExpectedState,
@@ -14,6 +14,7 @@ import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
 import * as tradeActions from './tradeActions';
 import { AuthAction } from '../authActions/authActionTypes';
+import { ModalType } from '../../../shared/types/types';
 
 describe('action creators', () => {
   it('tests setCart()', () => {
@@ -233,7 +234,7 @@ describe('async functions', () => {
             },
             {},
             {
-              modalContent: modalTypes.CART_ITEM_ADDED,
+              modalContent: ModalType.CART_ITEM_ADDED,
               message:
                 'Some product in cart does not exist any more or its quantity has been changed',
             },
@@ -264,7 +265,7 @@ describe('async functions', () => {
             },
             {},
             {
-              modalContent: modalTypes.CART_ITEM_ADDED,
+              modalContent: ModalType.CART_ITEM_ADDED,
             },
           ),
         );
@@ -317,7 +318,7 @@ describe('async functions', () => {
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
           3,
-          uiActions.setModal(modalTypes.CART_ITEM_ADDED),
+          uiActions.setModal(ModalType.CART_ITEM_ADDED),
         );
         expect(uiActions.writeChangeCartInfo).toHaveBeenCalledWith(true);
         expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());
@@ -345,7 +346,7 @@ describe('async functions', () => {
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
           3,
-          uiActions.setModal(modalTypes.CART_ITEM_ADDED),
+          uiActions.setModal(ModalType.CART_ITEM_ADDED),
         );
         expect(uiActions.writeChangeCartInfo).toHaveBeenCalledWith(false);
         expect(innerDispatchFn).toHaveBeenNthCalledWith(5, uiActions.tradeEnd());

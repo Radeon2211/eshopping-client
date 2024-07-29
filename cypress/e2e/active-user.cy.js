@@ -1,7 +1,8 @@
 import { adminUser } from '../fixtures/users';
 import { productOne, productTwo } from '../fixtures/products';
-import { defaultAppPath, productConditions } from '../../src/shared/constants';
+import { defaultAppPath } from '../../src/shared/constants';
 import { formatPrice } from '../../src/shared/utility/utility';
+import { ProductCondition } from '../../src/shared/types/enums';
 
 const usedUser = adminUser;
 
@@ -9,7 +10,7 @@ const newProduct = {
   name: 'NewProduct',
   price: 1801.25,
   quantity: 49,
-  condition: productConditions.USED,
+  condition: ProductCondition.USED,
   description: 'Description of cool new product',
 };
 

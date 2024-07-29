@@ -23,12 +23,15 @@ const createStore = (cart, productDetails, isCartLoading = false) => {
 };
 
 const defaultProduct = createProductItem({
-  id: 'p1',
+  _id: 'p1',
   sellerUsername: 'user1',
   price: 500.6,
   quantity: 4,
   name: 'product1',
   photo: true,
+  seller: {
+    username: 'user1',
+  },
 });
 
 const defaultCart = [{ _id: 'item1', quantity: 3, product: defaultProduct }];
@@ -85,10 +88,10 @@ describe('<CartItemAdded />', () => {
       expect(store.dispatch).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByRole('button', { name: /continue shopping/i }));
-      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(''));
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(null));
 
       fireEvent.click(screen.getByRole('button', { name: /go to cart/i }));
-      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(''));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(null));
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);
     });

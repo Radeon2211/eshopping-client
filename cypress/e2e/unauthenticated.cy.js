@@ -1,6 +1,7 @@
-import { defaultAppPath, modalTypes } from '../../src/shared/constants';
+import { defaultAppPath } from '../../src/shared/constants';
 import { testUser, adminUser } from '../fixtures/users';
 import { productOne, allProducts } from '../fixtures/products';
+import { ModalType } from '../../src/shared/types/types';
 
 const fillSignupForm = () => {
   cy.findByTestId('Step1-email').type(testUser.email);
@@ -56,10 +57,10 @@ describe('unauthenticated user', () => {
 
     it('opens login and signup modals and goes to products page', () => {
       cy.findByRole('button', { name: /login/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
       cy.closeModal();
       cy.findByRole('button', { name: /signup/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.SIGNUP}`).should('exist');
       cy.closeModal();
       cy.findByRole('button', { name: /view the products now/i }).click();
       cy.checkHash();
@@ -90,29 +91,29 @@ describe('unauthenticated user', () => {
         cy.checkHash();
         // login and reset password
         cy.findByRole('button', { name: /login/i }).click();
-        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
-        cy.findByTestId(`Modal-${modalTypes.LOGIN}`)
+        cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
+        cy.findByTestId(`Modal-${ModalType.LOGIN}`)
           .findByRole('link', /forgot password/i)
           .click();
 
-        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('not.exist');
-        cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`).should('exist');
-        cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`)
+        cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('not.exist');
+        cy.findByTestId(`Modal-${ModalType.RESET_PASSWORD}`).should('exist');
+        cy.findByTestId(`Modal-${ModalType.RESET_PASSWORD}`)
           .findByRole('link', { name: /login/i })
           .click();
 
-        cy.findByTestId(`Modal-${modalTypes.RESET_PASSWORD}`).should('not.exist');
-        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+        cy.findByTestId(`Modal-${ModalType.RESET_PASSWORD}`).should('not.exist');
+        cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
         cy.closeModal();
         cy.findByTestId('Modal').should('not.exist');
         // signup
         cy.findByRole('button', { name: /signup/i }).click();
-        cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
+        cy.findByTestId(`Modal-${ModalType.SIGNUP}`).should('exist');
         cy.closeModal();
         cy.findByTestId('Modal').should('not.exist');
         // about website
         cy.findByRole('button', { name: /about website/i }).click();
-        cy.findByTestId(`Modal-${modalTypes.ABOUT_WEBSITE}`).should('exist');
+        cy.findByTestId(`Modal-${ModalType.ABOUT_WEBSITE}`).should('exist');
         cy.closeModal();
         cy.findByTestId('Modal').should('not.exist');
       });
@@ -153,11 +154,11 @@ describe('unauthenticated user', () => {
         cy.findByRole('heading', { name: productOne.name }).should('exist');
 
         cy.findByRole('button', { name: /add to cart/i }).click();
-        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+        cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
         cy.closeModal();
 
         cy.findByRole('button', { name: /buy now/i }).click();
-        cy.findByTestId(`Modal-${modalTypes.LOGIN}`).should('exist');
+        cy.findByTestId(`Modal-${ModalType.LOGIN}`).should('exist');
         cy.closeModal();
 
         cy.findByRole('link', { name: productOne.seller.username }).click();
@@ -282,7 +283,7 @@ describe('unauthenticated user', () => {
           cy.findByTestId('Step2-next-btn').click();
           cy.submitForm();
           cy.findByTestId('Form-error').should('exist');
-          cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
+          cy.findByTestId(`Modal-${ModalType.SIGNUP}`).should('exist');
         });
 
         it('fails due to using taken username', () => {
@@ -301,7 +302,7 @@ describe('unauthenticated user', () => {
           cy.findByTestId('Step2-next-btn').click();
           cy.submitForm();
           cy.findByTestId('Form-error').should('exist');
-          cy.findByTestId(`Modal-${modalTypes.SIGNUP}`).should('exist');
+          cy.findByTestId(`Modal-${ModalType.SIGNUP}`).should('exist');
         });
       });
 

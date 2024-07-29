@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import theme from '../../../styled/theme';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes } from '../../../shared/constants';
 import * as SC from './Modal.sc';
 import MyIcon from '../MyIcon';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
@@ -31,6 +30,7 @@ import ResetPassword from '../../ModalContents/ResetPassword/ResetPassword';
 import PendingUserInfo from '../../ModalContents/PendingUserInfo/PendingUserInfo';
 import Signup from '../../ModalContents/Signup/Signup';
 import SendVerificationLink from '../../ModalContents/SendVerificationLink/SendVerificationLink';
+import { ModalType } from '../../../shared/types/types';
 
 export const backdropVariants = {
   hidden: {
@@ -73,7 +73,7 @@ export default function Modal() {
 
   useEffect(() => {
     if (modalContent && didMountRef.current) {
-      onSetModal('');
+      onSetModal(null);
     }
     didMountRef.current = true;
   }, [location]);
@@ -82,70 +82,70 @@ export default function Modal() {
 
   let modalContentNode = null;
   switch (modalContent) {
-    case modalTypes.ADD_PRODUCT:
+    case ModalType.ADD_PRODUCT:
       modalContentNode = <AddProduct />;
       break;
-    case modalTypes.ADD_ADMIN:
+    case ModalType.ADD_ADMIN:
       modalContentNode = <AddAdmin />;
       break;
-    case modalTypes.ABOUT_WEBSITE:
+    case ModalType.ABOUT_WEBSITE:
       modalContentNode = <AboutWebsite />;
       break;
-    case modalTypes.BUY_PRODUCTS:
+    case ModalType.BUY_PRODUCTS:
       modalContentNode = <BuyProducts />;
       break;
-    case modalTypes.CART_ITEM_ADDED:
+    case ModalType.CART_ITEM_ADDED:
       modalContentNode = <CartItemAdded />;
       break;
-    case modalTypes.CHANGE_NAME:
+    case ModalType.CHANGE_NAME:
       modalContentNode = <ChangeName />;
       break;
-    case modalTypes.CHANGE_EMAIL:
+    case ModalType.CHANGE_EMAIL:
       modalContentNode = <ChangeEmail />;
       break;
-    case modalTypes.CHANGE_PHONE_NUMBER:
+    case ModalType.CHANGE_PHONE_NUMBER:
       modalContentNode = <ChangePhoneNumber />;
       break;
-    case modalTypes.CHANGE_ADDRESS:
+    case ModalType.CHANGE_ADDRESS:
       modalContentNode = <ChangeAddress />;
       break;
-    case modalTypes.CHANGE_CONTACTS:
+    case ModalType.CHANGE_CONTACTS:
       modalContentNode = <ChangeContacts />;
       break;
-    case modalTypes.CHANGE_PASSWORD:
+    case ModalType.CHANGE_PASSWORD:
       modalContentNode = <ChangePassword />;
       break;
-    case modalTypes.CHANGE_DELIVERY_ADDRESS:
+    case ModalType.CHANGE_DELIVERY_ADDRESS:
       modalContentNode = <ChangeDeliveryAddress />;
       break;
-    case modalTypes.CLEAR_CART:
+    case ModalType.CLEAR_CART:
       modalContentNode = <ClearCart />;
       break;
-    case modalTypes.DELETE_ACCOUNT:
+    case ModalType.DELETE_ACCOUNT:
       modalContentNode = <DeleteAccount />;
       break;
-    case modalTypes.DELETE_PRODUCT:
+    case ModalType.DELETE_PRODUCT:
       modalContentNode = <DeleteProduct />;
       break;
-    case modalTypes.EDIT_PRODUCT:
+    case ModalType.EDIT_PRODUCT:
       modalContentNode = <EditProduct />;
       break;
-    case modalTypes.LOGIN:
+    case ModalType.LOGIN:
       modalContentNode = <Login />;
       break;
-    case modalTypes.REMOVE_ADMIN:
+    case ModalType.REMOVE_ADMIN:
       modalContentNode = <RemoveAdmin />;
       break;
-    case modalTypes.RESET_PASSWORD:
+    case ModalType.RESET_PASSWORD:
       modalContentNode = <ResetPassword />;
       break;
-    case modalTypes.PENDING_USER_INFO:
+    case ModalType.PENDING_USER_INFO:
       modalContentNode = <PendingUserInfo />;
       break;
-    case modalTypes.SIGNUP:
+    case ModalType.SIGNUP:
       modalContentNode = <Signup />;
       break;
-    case modalTypes.SEND_VERIFICATION_LINK:
+    case ModalType.SEND_VERIFICATION_LINK:
       modalContentNode = <SendVerificationLink />;
       break;
     default:
@@ -161,8 +161,8 @@ export default function Modal() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            onClick={() => onSetModal('')}
-            onKeyDown={() => onSetModal('')}
+            onClick={() => onSetModal(null)}
+            onKeyDown={() => onSetModal(null)}
             tabIndex="0"
             role="button"
             aria-label="Close modal"
@@ -178,7 +178,7 @@ export default function Modal() {
             <MyIcon
               $size="medium"
               $rotation={45}
-              onClick={() => onSetModal('')}
+              onClick={() => onSetModal(null)}
               className="close-icon"
               data-testid="Modal-close-icon"
             >

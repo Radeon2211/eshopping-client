@@ -3,12 +3,12 @@ import { useCallback } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
-import { modalTypes } from '../../shared/constants';
 import MyIcon from '../UI/MyIcon';
 import PlainText from '../UI/PlainText';
 import FlexWrapper from '../UI/FlexWrapper';
 import { ReactComponent as LinkedinIcon } from '../../images/icons/linkedin.svg';
 import { ReactComponent as EmailIcon } from '../../images/icons/email.svg';
+import { ModalType } from '../../shared/types/types';
 
 const SC = {};
 SC.Wrapper = styled.footer`
@@ -65,10 +65,10 @@ export default function Footer() {
       </FlexWrapper>
       <span
         className="about-website"
-        onClick={() => onSetModal(modalTypes.ABOUT_WEBSITE)}
+        onClick={() => onSetModal(ModalType.ABOUT_WEBSITE)}
         role="button"
         tabIndex={0}
-        onKeyDown={() => onSetModal(modalTypes.ABOUT_WEBSITE)}
+        onKeyDown={() => onSetModal(ModalType.ABOUT_WEBSITE)}
       >
         About website
       </span>

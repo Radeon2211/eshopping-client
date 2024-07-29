@@ -1,4 +1,5 @@
-import { modalTypes, singleInfoNames } from '../../src/shared/constants';
+import { singleInfoNames } from '../../src/shared/constants';
+import { ModalType } from '../../src/shared/types/types';
 import { adminUser, activeUser } from '../fixtures/users';
 
 const usedUser = adminUser;
@@ -114,16 +115,16 @@ describe('my account data page', () => {
     cy.closeMessageBox();
     // add admin
     cy.findByRole('button', { name: /add admin/i }).click();
-    cy.findByTestId(`Modal-${modalTypes.ADD_ADMIN}`).should('exist');
+    cy.findByTestId(`Modal-${ModalType.ADD_ADMIN}`).should('exist');
     cy.findByTestId('AddAdmin-email').type(activeUser.email);
     cy.submitForm();
     cy.closeMessageBox();
     // remove admin
     cy.findByRole('button', { name: /remove admin/i }).click();
-    cy.findByTestId(`Modal-${modalTypes.REMOVE_ADMIN}`).should('exist');
+    cy.findByTestId(`Modal-${ModalType.REMOVE_ADMIN}`).should('exist');
     cy.findByTestId('RemoveAdmin-email').type(activeUser.email);
     cy.submitForm();
-    cy.findByTestId(`Modal-${modalTypes.REMOVE_ADMIN}`).should('not.exist');
+    cy.findByTestId(`Modal-${ModalType.REMOVE_ADMIN}`).should('not.exist');
     cy.closeMessageBox();
 
     // assert
@@ -166,7 +167,7 @@ describe('my account data page', () => {
     cy.findByTestId('ChangeName-firstName').clear();
     cy.findByTestId('ChangeName-firstName').type(newFirstName);
     cy.submitForm({ force: true });
-    cy.findByTestId(`Modal-${modalTypes.CHANGE_NAME}`).should('exist');
+    cy.findByTestId(`Modal-${ModalType.CHANGE_NAME}`).should('exist');
     cy.findByTestId('Form-error').should('not.exist');
     cy.closeModal();
     // email
@@ -188,14 +189,14 @@ describe('my account data page', () => {
     // contacts
     cy.findByTestId(`SingleInfo-${singleInfoNames.CONTACTS}-btn`).click();
     cy.submitForm({ force: true });
-    cy.findByTestId(`Modal-${modalTypes.CHANGE_CONTACTS}`).should('exist');
+    cy.findByTestId(`Modal-${ModalType.CHANGE_CONTACTS}`).should('exist');
     cy.findByTestId('Form-error').should('not.exist');
     cy.closeModal();
     // phone number
     cy.findByTestId(`SingleInfo-${singleInfoNames.PHONE_NUMBER}-btn`).click();
     cy.findByTestId('ChangePhoneNumber-phoneNumber').clear();
     cy.findByTestId('ChangePhoneNumber-phoneNumber').type('invalidNumber');
-    cy.findByTestId(`Modal-${modalTypes.CHANGE_PHONE_NUMBER}`).should('exist');
+    cy.findByTestId(`Modal-${ModalType.CHANGE_PHONE_NUMBER}`).should('exist');
     cy.submitForm({ force: true });
     cy.findByTestId('Form-error').should('not.exist');
     cy.closeModal();

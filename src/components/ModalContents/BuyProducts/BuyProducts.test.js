@@ -53,7 +53,7 @@ describe('<BuyProducts />', () => {
       expect(store.dispatch).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
-      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(''));
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(null));
 
       fireEvent.click(screen.getByRole('button', { name: /confirm/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(

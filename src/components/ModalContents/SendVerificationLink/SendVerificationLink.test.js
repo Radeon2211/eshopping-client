@@ -31,7 +31,7 @@ describe('<SendVerificationLink />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(null));
     });
 
     it('should call and sendAccountVerificationLink() after send button click', () => {

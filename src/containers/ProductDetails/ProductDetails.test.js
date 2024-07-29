@@ -8,9 +8,11 @@ import {
   renderAppPart,
   testRouterPushCall,
 } from '../../shared/testUtility/testUtility';
-import { defaultScrollToConfig, modalTypes, productConditions } from '../../shared/constants';
+import { defaultScrollToConfig } from '../../shared/constants';
 import noPhoto from '../../images/no-photo.png';
 import * as actions from '../../store/actions/indexActions';
+import { ModalType } from '../../shared/types/types';
+import { ProductCondition } from '../../shared/types/enums';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -19,7 +21,7 @@ const defaultProductId = '123';
 const defaultProductDetails = {
   _id: defaultProductId,
   seller: { username: 'user1' },
-  condition: productConditions.NOT_APPLICABLE,
+  condition: ProductCondition.NOT_APPLICABLE,
   photo: true,
   price: 2.5,
   description: '',
@@ -231,13 +233,10 @@ describe('<ProductDetails />', () => {
       const { store } = setUp();
 
       fireEvent.click(screen.getByTestId('ProductDetails-edit-button'));
-      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(modalTypes.EDIT_PRODUCT));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(ModalType.EDIT_PRODUCT));
 
       fireEvent.click(screen.getByTestId('ProductDetails-delete-button'));
-      expect(store.dispatch).toHaveBeenNthCalledWith(
-        3,
-        actions.setModal(modalTypes.DELETE_PRODUCT),
-      );
+      expect(store.dispatch).toHaveBeenNthCalledWith(3, actions.setModal(ModalType.DELETE_PRODUCT));
 
       expect(store.dispatch).toHaveBeenCalledTimes(3);
     });

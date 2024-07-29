@@ -11,9 +11,10 @@ import Heading from '../../components/UI/Heading/Heading';
 import ToPayInfo from '../../components/UI/ToPayInfo/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import Button from '../../components/UI/Button/Button';
-import { itemTypes, modalTypes } from '../../shared/constants';
+import { itemTypes } from '../../shared/constants';
 import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
+import { ModalType } from '../../shared/types/types';
 
 export default function Transaction() {
   const { pathname } = useLocation();
@@ -65,7 +66,7 @@ export default function Transaction() {
           <StickyPanel>
             <FlexWrapper $direction="column" $spacing="2">
               <ToPayInfo value={roundedToPayValue} />
-              <Button $filled clicked={() => onSetModal(modalTypes.BUY_PRODUCTS)}>
+              <Button $filled clicked={() => onSetModal(ModalType.BUY_PRODUCTS)}>
                 I buy and pay
               </Button>
             </FlexWrapper>

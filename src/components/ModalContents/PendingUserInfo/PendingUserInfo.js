@@ -19,7 +19,7 @@ export default function PendingUserInfo() {
         You need to activate your account
       </Heading>
       <FlexWrapper $justify="center">
-        <Button clicked={() => onSetModal('')}>Ok</Button>
+        <Button clicked={() => onSetModal(null)}>Ok</Button>
       </FlexWrapper>
     </>
   );

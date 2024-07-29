@@ -13,11 +13,12 @@ import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
 import ToPayInfo from '../../components/UI/ToPayInfo/ToPayInfo';
 import CartAndTransactionItems from '../../components/CartAndTransactionItems/CartAndTransactionItems';
 import FlexWrapper from '../../components/UI/FlexWrapper';
-import { itemTypes, defaultAppPath, modalTypes } from '../../shared/constants';
+import { itemTypes, defaultAppPath } from '../../shared/constants';
 import { roundOverallPrice, scrollToTop } from '../../shared/utility/utility';
 import { GreenText } from '../../styled/components';
 import { ReactComponent as EmptyCart } from '../../images/empty-cart.svg';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
+import { ModalType } from '../../shared/types/types';
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ export default function Cart() {
           <SideBySide $proportion="3/1" $makeVerticalWhen={1200}>
             <PlainPanel>
               <FlexWrapper $justify="center">
-                <Button $color="red" clicked={() => onSetModal(modalTypes.CLEAR_CART)}>
+                <Button $color="red" clicked={() => onSetModal(ModalType.CLEAR_CART)}>
                   clear the cart
                 </Button>
               </FlexWrapper>

@@ -6,7 +6,7 @@ import Button from '../UI/Button/Button';
 import FlexWrapper from '../UI/FlexWrapper';
 import PlainText from '../UI/PlainText';
 import theme from '../../styled/theme';
-import { productPhotoFieldValues } from '../../shared/constants';
+import { ProductPhotoFieldValue } from '../../shared/types/enums';
 
 const PRODUCT_PHOTO_MAX_SIZE = 6291456;
 const PRODUCT_PHOTO_MAX_SIZE_STRING = calculateFileSize(PRODUCT_PHOTO_MAX_SIZE);
@@ -32,7 +32,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
   const deleteCurrentPhotoHandle = () => {
     setIsCurrentPhotoDeleted(true);
     resetState();
-    setFieldValue('photo', productPhotoFieldValues.DELETED);
+    setFieldValue('photo', ProductPhotoFieldValue.DELETED);
   };
 
   const inputChangeHandle = (e) => {
@@ -47,14 +47,14 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
     if (!isValidFileType(file.type)) {
       setPhoto(null);
-      setFieldValue('photo', productPhotoFieldValues.ERROR);
+      setFieldValue('photo', ProductPhotoFieldValue.ERROR);
       setError('File extension is not valid (JPG and PNG only)');
       return;
     }
 
     if (file.size > PRODUCT_PHOTO_MAX_SIZE) {
       setPhoto(null);
-      setFieldValue('photo', productPhotoFieldValues.ERROR);
+      setFieldValue('photo', ProductPhotoFieldValue.ERROR);
       setError(`Maximum available size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}`);
       return;
     }

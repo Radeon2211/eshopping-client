@@ -15,9 +15,10 @@ import { GreenText } from '../../styled/components';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import theme from '../../styled/theme';
 import { formatPrice, scrollToTop } from '../../shared/utility/utility';
-import { modalTypes, productConditions } from '../../shared/constants';
 import useWindowSize from '../../shared/hooks/useWindowSize';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
+import { ModalType } from '../../shared/types/types';
+import { ProductCondition } from '../../shared/types/enums';
 
 export default function ProductDetails() {
   const { id: productId } = useParams();
@@ -110,7 +111,7 @@ export default function ProductDetails() {
       editProductBtn = (
         <Button
           $color="blue"
-          clicked={() => onSetModal(modalTypes.EDIT_PRODUCT)}
+          clicked={() => onSetModal(ModalType.EDIT_PRODUCT)}
           data-testid="ProductDetails-edit-button"
         >
           Edit offer
@@ -121,7 +122,7 @@ export default function ProductDetails() {
       deleteProductBtn = (
         <Button
           $color="red"
-          clicked={() => onSetModal(modalTypes.DELETE_PRODUCT)}
+          clicked={() => onSetModal(ModalType.DELETE_PRODUCT)}
           data-testid="ProductDetails-delete-button"
         >
           Delete offer
@@ -140,7 +141,7 @@ export default function ProductDetails() {
     }
 
     const conditionText =
-      condition !== productConditions.NOT_APPLICABLE ? condition : 'not applicable';
+      condition !== ProductCondition.NOT_APPLICABLE ? condition : 'not applicable';
 
     details = (
       <PlainPanel>

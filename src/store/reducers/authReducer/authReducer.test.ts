@@ -1,4 +1,4 @@
-import authReducer, { initialState } from './authReducer';
+import authReducer, { initialAuthReducerState } from './authReducer';
 import {
   createCartItem,
   createOrder,
@@ -19,7 +19,7 @@ describe('auth reducer', () => {
         },
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       profile: defaultUserProfile,
       deliveryAddress: defaultDeliveryAddress,
       cart: [],
@@ -28,7 +28,7 @@ describe('auth reducer', () => {
 
   it('should update almost entire state after LOGOUT_USER', () => {
     const state = {
-      ...initialState,
+      ...initialAuthReducerState,
       profile: defaultUserProfile,
       deliveryAddress: defaultDeliveryAddress,
       cart: [],
@@ -46,7 +46,7 @@ describe('auth reducer', () => {
         type: AuthAction.LOGOUT_USER,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       profile: null,
       otherUser: {
         username: 'otherUser',
@@ -61,14 +61,14 @@ describe('auth reducer', () => {
         deliveryAddress: defaultDeliveryAddress,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       deliveryAddress: defaultDeliveryAddress,
     });
   });
 
   it('should update partially deliveryAddress after SET_DELIVERY_ADDRESS', () => {
     const state = {
-      ...initialState,
+      ...initialAuthReducerState,
       deliveryAddress: defaultDeliveryAddress,
     };
     const updatedDeliveryAddress = {
@@ -81,7 +81,7 @@ describe('auth reducer', () => {
         deliveryAddress: updatedDeliveryAddress,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       deliveryAddress: {
         ...defaultDeliveryAddress,
         ...updatedDeliveryAddress,
@@ -97,7 +97,7 @@ describe('auth reducer', () => {
         cart,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       cart,
     });
   });
@@ -110,7 +110,7 @@ describe('auth reducer', () => {
         transaction,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       transaction,
     });
   });
@@ -124,7 +124,7 @@ describe('auth reducer', () => {
         orderCount: placedOrders.length,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       placedOrders,
       orderCount: 1,
     });
@@ -139,7 +139,7 @@ describe('auth reducer', () => {
         orderCount: sellHistory.length,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       sellHistory,
       orderCount: 1,
     });
@@ -153,7 +153,7 @@ describe('auth reducer', () => {
         orderDetails,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       orderDetails,
     });
   });
@@ -168,7 +168,7 @@ describe('auth reducer', () => {
         otherUser,
       }),
     ).toEqual({
-      ...initialState,
+      ...initialAuthReducerState,
       otherUser,
     });
   });

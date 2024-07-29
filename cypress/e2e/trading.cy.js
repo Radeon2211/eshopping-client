@@ -1,7 +1,8 @@
 import { activeUser } from '../fixtures/users';
 import { productOne } from '../fixtures/products';
 import { formatPrice } from '../../src/shared/utility/utility';
-import { modalTypes, singleInfoNames } from '../../src/shared/constants';
+import { singleInfoNames } from '../../src/shared/constants';
+import { ModalType } from '../../src/shared/types/types';
 
 const usedUser = activeUser;
 const usedProduct = productOne;
@@ -200,7 +201,7 @@ describe('trading actions', () => {
       cy.findByTestId('Modal').should('not.exist');
       // buy
       cy.findByRole('button', { name: /i buy and pay/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.BUY_PRODUCTS}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.BUY_PRODUCTS}`).should('exist');
       cy.findByRole('button', { name: /confirm/i }).click();
       // check placed orders and cart link
       cy.findByTestId('CartLink-quantity').should('not.exist');
@@ -254,7 +255,7 @@ describe('trading actions', () => {
       cy.findByTestId('Modal').should('not.exist');
       // buy
       cy.findByRole('button', { name: /i buy and pay/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.BUY_PRODUCTS}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.BUY_PRODUCTS}`).should('exist');
       cy.findByRole('button', { name: /confirm/i }).click();
       // placed orders
       cy.checkHash('#/my-account/placed-orders?p=1');
@@ -379,7 +380,7 @@ describe('trading actions', () => {
       addUsedProductToCart();
       cy.findAllByTestId('CartItem').should('have.length', 1);
       cy.findByRole('button', { name: /clear the cart/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.CLEAR_CART}`)
+      cy.findByTestId(`Modal-${ModalType.CLEAR_CART}`)
         .findByRole('button', { name: /clear/i })
         .click();
       cy.findByTestId('Modal').should('not.exist');

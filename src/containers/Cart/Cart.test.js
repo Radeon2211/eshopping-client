@@ -8,8 +8,9 @@ import {
   renderAppPart,
   testRouterPushCall,
 } from '../../shared/testUtility/testUtility';
-import { modalTypes, defaultScrollToConfig } from '../../shared/constants';
+import { defaultScrollToConfig } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
+import { ModalType } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -116,7 +117,7 @@ describe('<Cart />', () => {
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchCart());
 
       fireEvent.click(screen.getByRole('button', { name: /clear the cart/i }));
-      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(modalTypes.CLEAR_CART));
+      expect(store.dispatch).toHaveBeenNthCalledWith(2, actions.setModal(ModalType.CLEAR_CART));
 
       fireEvent.click(screen.getByRole('button', { name: /go to summary/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(

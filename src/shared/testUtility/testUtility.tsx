@@ -10,7 +10,6 @@ import { fireEvent, waitFor, render } from '@testing-library/react';
 import { v4 as uuidv4 } from 'uuid';
 import moxios from 'moxios';
 import rootReducer from '../../store/reducers/rootReducer';
-import { productConditions } from '../constants';
 import theme from '../../styled/theme';
 import {
   CartItem,
@@ -21,6 +20,7 @@ import {
   Profile,
   ProfileStatus,
 } from '../types/types';
+import { ProductCondition } from '../types/enums';
 
 export const defaultDeliveryAddress: DeliveryAddress = {
   firstName: 'firstName',
@@ -51,10 +51,9 @@ export const createPaginationProps = (itemQuantity = 5) => ({
   quantityPerPage: 2,
 });
 
-export const createProductItem = (props = {}): Product => {
-  const finalProps = {
-    id: uuidv4(),
-    sellerUsername: 'username',
+export const createProductItem = (props: Partial<Product> = {}): Product => {
+  return {
+    _id: uuidv4(),
     quantity: 1,
     price: 2,
     name: 'product name',
@@ -62,26 +61,14 @@ export const createProductItem = (props = {}): Product => {
     quantitySold: 0,
     buyerQuantity: 0,
     description: '',
-    condition: productConditions.NEW,
-    ...props,
-  };
-
-  return {
-    _id: finalProps.id,
-    name: finalProps.name,
-    price: finalProps.price,
-    quantity: finalProps.quantity,
-    quantitySold: finalProps.quantitySold,
-    buyerQuantity: finalProps.buyerQuantity,
-    description: finalProps.description,
-    condition: finalProps.condition,
-    photo: finalProps.photo,
+    condition: ProductCondition.NEW,
     seller: {
-      username: finalProps.sellerUsername,
+      username: 'username',
     },
-    __v: 0,
     createdAt: '2021-02-10T19:10:38.872Z',
     updatedAt: '2021-02-10T19:10:38.872Z',
+    __v: 0,
+    ...props,
   };
 };
 
@@ -98,12 +85,14 @@ export const createCartItem = (props = {}): CartItem => {
     ...props,
   };
   const product = createProductItem({
-    id: finalProps.productId,
-    sellerUsername: finalProps.sellerUsername,
+    _id: finalProps.productId,
     quantity: finalProps.productQuantity,
     price: finalProps.price,
     name: finalProps.name,
     photo: finalProps.photo,
+    seller: {
+      username: finalProps.sellerUsername,
+    },
   });
 
   return {
@@ -154,14 +143,15 @@ export const testStore = (initialAuth = {}, initialProduct = {}, initialUI = {})
       ...initialAuth,
     },
     product: {
-      ...defaultState.product,
+      ...(defaultState.product as object),
       ...initialProduct,
     },
     ui: {
-      ...defaultState.ui,
+      ...(defaultState.ui as object),
       ...initialUI,
     },
   };
+  // @ts-expect-error TBF after redux upgrade
   const finalStore = createStoreWithMiddleware(rootReducer, finalState);
 
   return {

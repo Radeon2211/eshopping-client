@@ -5,7 +5,6 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import * as actions from '../../../../store/actions/indexActions';
-import { modalTypes } from '../../../../shared/constants';
 import * as SC from './Dropdown.sc';
 import MyIcon from '../../../UI/MyIcon';
 import { ReactComponent as AddProductIcon } from '../../../../images/icons/add-product.svg';
@@ -14,6 +13,7 @@ import { ReactComponent as MyOffersIcon } from '../../../../images/icons/my-offe
 import { ReactComponent as PlacedOrdersIcon } from '../../../../images/icons/placed-orders.svg';
 import { ReactComponent as SellHistoryIcon } from '../../../../images/icons/sell-history.svg';
 import { ReactComponent as LogOutIcon } from '../../../../images/icons/log-out.svg';
+import { ModalType } from '../../../../shared/types/types';
 
 export const dropdownVariants = {
   hidden: {
@@ -56,8 +56,8 @@ export default function Dropdown({ isVisible, closed }) {
               <li className="item">
                 <div
                   className="link"
-                  onClick={() => onSetModal(modalTypes.ADD_PRODUCT)}
-                  onKeyDown={() => onSetModal(modalTypes.ADD_PRODUCT)}
+                  onClick={() => onSetModal(ModalType.ADD_PRODUCT)}
+                  onKeyDown={() => onSetModal(ModalType.ADD_PRODUCT)}
                   role="button"
                   tabIndex={0}
                 >

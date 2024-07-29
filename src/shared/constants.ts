@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import countryCodes from 'country-codes-list';
+import { ProductCondition, ProductPhotoFieldValue } from './types/enums';
 
 export const anyStringRule = Yup.string().min(1).required();
 
@@ -36,27 +37,16 @@ export const userRules = {
     .required(),
 };
 
-export const productConditions = {
-  NEW: 'new',
-  USED: 'used',
-  NOT_APPLICABLE: 'not_applicable',
-};
-
-export const productPhotoFieldValues = {
-  DELETED: 'DELETED',
-  ERROR: 'ERROR',
-};
-
 export const productRules = {
   name: Yup.string().max(150).trim().required(),
   price: Yup.number().min(0.01).max(1000000).required(),
   quantity: Yup.number().min(1).max(100000).required(),
   condition: Yup.string()
-    .oneOf([productConditions.NEW, productConditions.USED, productConditions.NOT_APPLICABLE])
+    .oneOf([ProductCondition.NEW, ProductCondition.USED, ProductCondition.NOT_APPLICABLE])
     .required(),
   description: Yup.string().max(600).trim(),
   photo: Yup.mixed()
-    .test('is-error', (value) => value !== productPhotoFieldValues.ERROR)
+    .test('is-error', (value) => value !== ProductPhotoFieldValue.ERROR)
     .nullable(),
 };
 
@@ -117,32 +107,6 @@ export const sliderPositionsActions = {
   SET_BOTH: 'SET_BOTH',
   SET_LEFT: 'SET_LEFT',
   SET_RIGHT: 'SET_RIGHT',
-};
-
-export const modalTypes = {
-  ABOUT_WEBSITE: 'ABOUT_WEBSITE',
-  ADD_ADMIN: 'ADD_ADMIN',
-  ADD_PRODUCT: 'ADD_PRODUCT',
-  BUY_PRODUCTS: 'BUY_PRODUCTS',
-  CART_ITEM_ADDED: 'CART_ITEM_ADDED',
-  CHANGE_NAME: 'CHANGE_NAME',
-  CHANGE_EMAIL: 'CHANGE_EMAIL',
-  CHANGE_USERNAME: 'CHANGE_USERNAME',
-  CHANGE_PHONE_NUMBER: 'CHANGE_PHONE_NUMBER',
-  CHANGE_ADDRESS: 'CHANGE_ADDRESS',
-  CHANGE_PASSWORD: 'CHANGE_PASSWORD',
-  CHANGE_CONTACTS: 'CHANGE_CONTACTS',
-  CHANGE_DELIVERY_ADDRESS: 'CHANGE_DELIVERY_ADDRESS',
-  CLEAR_CART: 'CLEAR_CART',
-  DELETE_ACCOUNT: 'DELETE_ACCOUNT',
-  DELETE_PRODUCT: 'DELETE_PRODUCT',
-  EDIT_PRODUCT: 'EDIT_PRODUCT',
-  LOGIN: 'LOGIN',
-  REMOVE_ADMIN: 'REMOVE_ADMIN',
-  RESET_PASSWORD: 'RESET_PASSWORD',
-  PENDING_USER_INFO: 'PENDING_USER_INFO',
-  SEND_VERIFICATION_LINK: 'SEND_VERIFICATION_LINK',
-  SIGNUP: 'SIGNUP',
 };
 
 export const sortProductsOptions = [

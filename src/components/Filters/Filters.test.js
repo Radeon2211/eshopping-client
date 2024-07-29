@@ -6,9 +6,10 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { act } from 'react-dom/test-utils';
 import Filters from './Filters';
-import { sortProductsOptions, filtersActions, productConditions } from '../../shared/constants';
+import { sortProductsOptions, filtersActions } from '../../shared/constants';
 import { filtersReducer, filtersInitialState } from './filtersReducer';
 import { renderAppPart, testRouterPushCall } from '../../shared/testUtility/testUtility';
+import { ProductCondition } from '../../shared/types/enums';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -77,7 +78,7 @@ describe('<Filters />', () => {
     it('should condition checkboxes be checked', () => {
       setUp(
         false,
-        `?p=1&condition=${productConditions.NEW},${productConditions.USED},${productConditions.NOT_APPLICABLE}`,
+        `?p=1&condition=${ProductCondition.NEW},${ProductCondition.USED},${ProductCondition.NOT_APPLICABLE}`,
       );
       expect(screen.getByTestId('Filters-checkbox-new')).toBeChecked();
       expect(screen.getByTestId('Filters-checkbox-used')).toBeChecked();

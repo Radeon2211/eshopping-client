@@ -11,8 +11,8 @@ const setUp = (productName, productId) => {
   const store = mockStore({
     product: {
       productDetails: createProductItem({
+        _id: productId,
         name: productName,
-        id: productId,
       }),
     },
   });
@@ -50,7 +50,7 @@ describe('<DeleteProduct />', () => {
       expect(store.dispatch).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
-      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(''));
+      expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.setModal(null));
 
       fireEvent.click(screen.getByRole('button', { name: /delete/i }));
       expect(store.dispatch).toHaveBeenNthCalledWith(

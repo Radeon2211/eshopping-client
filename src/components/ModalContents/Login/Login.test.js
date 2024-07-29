@@ -4,8 +4,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Login from './Login';
 import * as actions from '../../../store/actions/indexActions';
-import { modalTypes } from '../../../shared/constants';
 import { clickAtSubmitButton, renderAppPart } from '../../../shared/testUtility/testUtility';
+import { ModalType } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 const defaultStore = mockStore({
@@ -37,7 +37,7 @@ describe('<Login />', () => {
       const { store } = setUp();
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByTestId('Login-forgot-password-link'));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(modalTypes.RESET_PASSWORD));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(ModalType.RESET_PASSWORD));
     });
   });
 

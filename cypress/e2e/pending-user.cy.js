@@ -1,6 +1,6 @@
 import { pendingUser } from '../fixtures/users';
 import { productOne } from '../fixtures/products';
-import { modalTypes } from '../../src/shared/constants';
+import { ModalType } from '../../src/shared/types/types';
 
 const usedUser = pendingUser;
 
@@ -57,11 +57,11 @@ describe('pending user', () => {
       cy.findByText(productOne.name).closest('[data-testid="ProductItem"]').click();
 
       cy.findByRole('button', { name: /add to cart/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.PENDING_USER_INFO}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.PENDING_USER_INFO}`).should('exist');
       cy.findByRole('button', { name: /ok/i }).click();
 
       cy.findByRole('button', { name: /buy now/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.PENDING_USER_INFO}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.PENDING_USER_INFO}`).should('exist');
       cy.findByRole('button', { name: /ok/i }).click();
       cy.findByTestId('Modal').should('not.exist');
     });
@@ -71,7 +71,7 @@ describe('pending user', () => {
     it('sends verification link and activates account', () => {
       cy.findByTestId('LoggedInLinks-my-account-link').click();
       cy.findByRole('button', { name: /send verification link/i }).click();
-      cy.findByTestId(`Modal-${modalTypes.SEND_VERIFICATION_LINK}`).should('exist');
+      cy.findByTestId(`Modal-${ModalType.SEND_VERIFICATION_LINK}`).should('exist');
       cy.findByTestId('Modal').findByRole('button', { name: /send/i }).click();
       cy.findByTestId('Modal').should('not.exist');
       cy.findByTestId('MessageBox').should('exist');

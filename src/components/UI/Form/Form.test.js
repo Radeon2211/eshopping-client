@@ -104,7 +104,7 @@ describe('<Form />', () => {
       const { store } = setUp(defaultProps, defaultStore);
       expect(store.dispatch).not.toHaveBeenCalled();
       fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
-      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(''));
+      expect(store.dispatch).toHaveBeenCalledWith(actions.setModal(null));
     });
   });
 });
