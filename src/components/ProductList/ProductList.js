@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import ProductItem from './ProductItem/ProductItem';
 import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay';
 import Heading from '../UI/Heading/Heading';
-import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
 import * as propTypes from '../../shared/propTypes';
+import { ProductPageType } from '../../shared/types/types';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -33,11 +33,11 @@ export default function ProductList({ products, isDataLoading, page }) {
         (!queryStringKeys.includes('name') && queryStringKeys.length === 1)
       ) {
         switch (page) {
-          case productPages.ALL_PRODUCTS:
+          case ProductPageType.ALL_PRODUCTS:
             headingText = `We didn't find any matching results. Try to search something else or change filters`;
             break;
-          case productPages.MY_PRODUCTS:
-          case productPages.USER_PRODUCTS:
+          case ProductPageType.MY_PRODUCTS:
+          case ProductPageType.USER_PRODUCTS:
             headingText = `We didn't find any matching results. Try to change filters`;
             break;
           default:
@@ -45,13 +45,13 @@ export default function ProductList({ products, isDataLoading, page }) {
         }
       } else {
         switch (page) {
-          case productPages.ALL_PRODUCTS:
+          case ProductPageType.ALL_PRODUCTS:
             headingText = `We didn't find any matching results. Try to search something else`;
             break;
-          case productPages.MY_PRODUCTS:
+          case ProductPageType.MY_PRODUCTS:
             headingText = `You don't have any offers published yet`;
             break;
-          case productPages.USER_PRODUCTS:
+          case ProductPageType.USER_PRODUCTS:
             headingText = `This user doesn't have any offers published yet`;
             break;
           default:
@@ -86,5 +86,5 @@ ProductList.propTypes = {
   // eslint-disable-next-line react/require-default-props
   products: PropTypes.arrayOf(PropTypes.shape(propTypes.fullProductItem)),
   isDataLoading: PropTypes.bool.isRequired,
-  page: PropTypes.oneOf(Object.values(productPages)).isRequired,
+  page: PropTypes.oneOf(Object.values(ProductPageType)).isRequired,
 };

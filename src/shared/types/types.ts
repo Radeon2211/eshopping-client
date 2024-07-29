@@ -61,6 +61,12 @@ export enum ModalType {
   SIGNUP = 'SIGNUP',
 }
 
+export enum ProductPageType {
+  ALL_PRODUCTS = 'ALL_PRODUCTS',
+  MY_PRODUCTS = 'MY_PRODUCTS',
+  USER_PRODUCTS = 'USER_PRODUCTS',
+}
+
 export type Profile = {
   _id: string;
   email: string;

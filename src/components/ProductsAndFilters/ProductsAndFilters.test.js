@@ -5,7 +5,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import ProductsAndFilters from './ProductsAndFilters';
 import { createProductItem, renderAppPart } from '../../shared/testUtility/testUtility';
-import { productPages, defaultProductsPerPage } from '../../shared/constants';
+import { defaultProductsPerPage } from '../../shared/constants';
+import { ProductPageType } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -45,7 +46,7 @@ const defaultProducts = [
 ];
 
 const setUp = (store, search = '?p=1') => {
-  return renderAppPart(<ProductsAndFilters page={productPages.ALL_PRODUCTS} />, {
+  return renderAppPart(<ProductsAndFilters page={ProductPageType.ALL_PRODUCTS} />, {
     pathname: '/products',
     search,
     store,

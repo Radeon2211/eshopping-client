@@ -6,7 +6,7 @@ import axios from '../../../axios';
 import * as uiActions from '../uiActions/uiActions';
 import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
 import { ProductAction } from './productActionTypes';
-import { AxiosErrorType, Product, RootState } from '../../../shared/types/types';
+import { AxiosErrorType, Product, ProductPageType, RootState } from '../../../shared/types/types';
 import { ProductReducerState } from '../../reducers/productReducer/productReducer';
 import { ProductPhotoFieldValue } from '../../../shared/types/enums';
 import { AddProductForm } from '../../../shared/types/forms';
@@ -16,7 +16,7 @@ type DispatchExts = ThunkDispatch<ProductReducerState & UiReducerState, void, An
 
 export const setProducts = (
   products: Product[] | null | undefined = undefined,
-  productCount = undefined,
+  productCount: number | undefined = undefined,
   minPrice = 0,
   maxPrice = 0,
 ) => ({
@@ -129,7 +129,7 @@ export const editProduct = (productData: AddProductForm, productId: string) => {
   };
 };
 
-export const fetchProducts = (search: string, page: number, sellerUsername: string) => {
+export const fetchProducts = (search: string, page: ProductPageType, sellerUsername?: string) => {
   return async (dispatch: DispatchExts, getState: () => RootState) => {
     try {
       dispatch(uiActions.dataStart());

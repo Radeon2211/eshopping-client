@@ -3,13 +3,10 @@ import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import OtherUser from './OtherUser';
-import {
-  productPages,
-  defaultProductsPerPage,
-  defaultScrollToConfig,
-} from '../../shared/constants';
+import { defaultProductsPerPage, defaultScrollToConfig } from '../../shared/constants';
 import { createProductItem, renderAppPart } from '../../shared/testUtility/testUtility';
 import * as actions from '../../store/actions/indexActions';
+import { ProductPageType } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -152,7 +149,7 @@ describe('<OtherUser />', () => {
       expect(store.dispatch).toHaveBeenNthCalledWith(1, actions.fetchOtherUser('user1'));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
-        actions.fetchProducts('?p=1', productPages.USER_PRODUCTS, 'user1'),
+        actions.fetchProducts('?p=1', ProductPageType.USER_PRODUCTS, 'user1'),
       );
       expect(store.dispatch).toHaveBeenCalledTimes(2);
 

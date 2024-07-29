@@ -6,10 +6,10 @@ import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader/Loader';
 import PlainText from '../../components/UI/PlainText';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
-import { productPages } from '../../shared/constants';
 import FlexWrapper from '../../components/UI/FlexWrapper';
 import { scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
+import { ProductPageType } from '../../shared/types/types';
 
 export default function OtherUser() {
   const { username: otherUserUsername } = useParams();
@@ -38,7 +38,7 @@ export default function OtherUser() {
       navigate('/my-account/data', { replace: true });
     } else {
       onFetchOtherUser(otherUserUsername);
-      onFetchProducts(search, productPages.USER_PRODUCTS, otherUserUsername);
+      onFetchProducts(search, ProductPageType.USER_PRODUCTS, otherUserUsername);
       scrollToTop();
     }
     return () => onSetOtherUser(undefined);
@@ -94,7 +94,7 @@ export default function OtherUser() {
       <>
         <Heading $variant="h3">{username}</Heading>
         {contactData}
-        <ProductsAndFilters page={productPages.USER_PRODUCTS} />
+        <ProductsAndFilters page={ProductPageType.USER_PRODUCTS} />
       </>
     );
   }

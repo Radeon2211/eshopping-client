@@ -2,12 +2,12 @@ import { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
-import { productPages } from '../../../shared/constants';
 import Heading from '../../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../../components/ProductsAndFilters/ProductsAndFilters';
 import { scrollToTop } from '../../../shared/utility/utility';
 import MetaDescriptor from '../../../components/MetaDescriptor/MetaDescriptor';
 import useLastLocation from '../../../shared/hooks/useLastLocation';
+import { ProductPageType } from '../../../shared/types/types';
 
 export default function MyProducts({ userProfile }) {
   const { search } = useLocation();
@@ -23,7 +23,7 @@ export default function MyProducts({ userProfile }) {
   );
 
   useEffect(() => {
-    onFetchProducts(search, productPages.MY_PRODUCTS);
+    onFetchProducts(search, ProductPageType.MY_PRODUCTS);
     if (!lastLocation?.pathname.startsWith('/product/')) {
       scrollToTop();
     }
@@ -33,7 +33,7 @@ export default function MyProducts({ userProfile }) {
     <>
       <MetaDescriptor title="Your offers - E-Shopping" description="Check out your offers" />
       <Heading $variant="h3">My products</Heading>
-      <ProductsAndFilters page={productPages.MY_PRODUCTS} />
+      <ProductsAndFilters page={ProductPageType.MY_PRODUCTS} />
     </>
   );
 }

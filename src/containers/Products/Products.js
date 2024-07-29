@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 import * as actions from '../../store/actions/indexActions';
 import Heading from '../../components/UI/Heading/Heading';
 import ProductsAndFilters from '../../components/ProductsAndFilters/ProductsAndFilters';
-import { productPages } from '../../shared/constants';
 import { getParamsWithoutPollution, scrollToTop } from '../../shared/utility/utility';
 import MetaDescriptor from '../../components/MetaDescriptor/MetaDescriptor';
 import useLastLocation from '../../shared/hooks/useLastLocation';
+import { ProductPageType } from '../../shared/types/types';
 
 export default function Products() {
   const { search } = useLocation();
@@ -24,7 +24,7 @@ export default function Products() {
   );
 
   useEffect(() => {
-    onFetchProducts(search, productPages.ALL_PRODUCTS);
+    onFetchProducts(search, ProductPageType.ALL_PRODUCTS);
     if (!lastLocation?.pathname.startsWith('/product/')) {
       scrollToTop();
     }
@@ -46,7 +46,7 @@ export default function Products() {
       <Heading $variant="h3" data-testid="Products-heading">
         {headingText}
       </Heading>
-      <ProductsAndFilters page={productPages.ALL_PRODUCTS} />
+      <ProductsAndFilters page={ProductPageType.ALL_PRODUCTS} />
     </>
   );
 }

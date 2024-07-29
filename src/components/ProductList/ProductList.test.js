@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProductList from './ProductList';
 import { createProductItem, renderAppPart } from '../../shared/testUtility/testUtility';
-import { productPages } from '../../shared/constants';
+import { ProductPageType } from '../../shared/types/types';
 
 const defaultProducts = [
   createProductItem({
@@ -25,7 +25,7 @@ const defaultProducts = [
   }),
 ];
 
-const createProps = (isDataLoading, products, page = productPages.ALL_PRODUCTS) => ({
+const createProps = (isDataLoading, products, page = ProductPageType.ALL_PRODUCTS) => ({
   isDataLoading,
   products,
   page,
@@ -60,7 +60,7 @@ describe('<ProductList />', () => {
     });
 
     it('should render correct info for ALL_PRODUCTS with filters', () => {
-      const props = createProps(false, [], productPages.ALL_PRODUCTS);
+      const props = createProps(false, [], ProductPageType.ALL_PRODUCTS);
       setUp(props, '?p=1&minPrice=100');
       expect(
         screen.getByText(
@@ -70,7 +70,7 @@ describe('<ProductList />', () => {
     });
 
     it('should render correct info for MY_PRODUCTS with filters', () => {
-      const props = createProps(false, [], productPages.MY_PRODUCTS);
+      const props = createProps(false, [], ProductPageType.MY_PRODUCTS);
       setUp(props, '?p=1&condition=new');
       expect(
         screen.getByText("We didn't find any matching results. Try to change filters"),
@@ -78,7 +78,7 @@ describe('<ProductList />', () => {
     });
 
     it('should render correct info for USER_PRODUCTS with filters', () => {
-      const props = createProps(false, [], productPages.USER_PRODUCTS);
+      const props = createProps(false, [], ProductPageType.USER_PRODUCTS);
       setUp(props, '?p=1&maxPrice=100');
       expect(
         screen.getByText("We didn't find any matching results. Try to change filters"),
@@ -86,7 +86,7 @@ describe('<ProductList />', () => {
     });
 
     it('should render correct info for ALL_PRODUCTS without filters other than name', () => {
-      const props = createProps(false, [], productPages.ALL_PRODUCTS);
+      const props = createProps(false, [], ProductPageType.ALL_PRODUCTS);
       setUp(props, '?p=1&name=testName');
       expect(
         screen.getByText("We didn't find any matching results. Try to search something else"),
@@ -94,13 +94,13 @@ describe('<ProductList />', () => {
     });
 
     it('should render correct info for MY_PRODUCTS without filters other than name', () => {
-      const props = createProps(false, [], productPages.MY_PRODUCTS);
+      const props = createProps(false, [], ProductPageType.MY_PRODUCTS);
       setUp(props, '?p=1&name=testName');
       expect(screen.getByText("You don't have any offers published yet")).toBeInTheDocument();
     });
 
     it('should render correct info for USER_PRODUCTS without filters other than name', () => {
-      const props = createProps(false, [], productPages.USER_PRODUCTS);
+      const props = createProps(false, [], ProductPageType.USER_PRODUCTS);
       setUp(props, '?p=1&name=testName');
       expect(
         screen.getByText("This user doesn't have any offers published yet"),

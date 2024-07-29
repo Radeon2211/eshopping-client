@@ -60,12 +60,6 @@ export const listOfCountries = countryCodes.customArray({
   label: '{countryNameEn}',
 });
 
-export const productPages = {
-  ALL_PRODUCTS: 'ALL_PRODUCTS',
-  MY_PRODUCTS: 'MY_PRODUCTS',
-  USER_PRODUCTS: 'USER_PRODUCTS',
-};
-
 export const itemTypes = {
   CART: 'CART',
   ORDER: 'ORDER',

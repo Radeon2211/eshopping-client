@@ -8,14 +8,11 @@ import {
   defaultUserProfile,
   renderAppPart,
 } from '../../../shared/testUtility/testUtility';
-import {
-  productPages,
-  defaultProductsPerPage,
-  defaultScrollToConfig,
-} from '../../../shared/constants';
+import { defaultProductsPerPage, defaultScrollToConfig } from '../../../shared/constants';
 import * as actions from '../../../store/actions/indexActions';
 import useLastLocation from '../../../shared/hooks/useLastLocation';
 import { ProductCondition } from '../../../shared/types/enums';
+import { ProductPageType } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -98,7 +95,7 @@ describe('<MyProducts />', () => {
     it('should call fetchProducts()', () => {
       const { store } = setUp();
       expect(store.dispatch).toHaveBeenCalledWith(
-        actions.fetchProducts(defaultSearch, productPages.MY_PRODUCTS),
+        actions.fetchProducts(defaultSearch, ProductPageType.MY_PRODUCTS),
       );
     });
 

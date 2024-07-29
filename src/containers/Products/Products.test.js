@@ -9,13 +9,10 @@ import {
   createProductItem,
   renderAppPart,
 } from '../../shared/testUtility/testUtility';
-import {
-  productPages,
-  defaultProductsPerPage,
-  defaultScrollToConfig,
-} from '../../shared/constants';
+import { defaultProductsPerPage, defaultScrollToConfig } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
 import useLastLocation from '../../shared/hooks/useLastLocation';
+import { ProductPageType } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -124,7 +121,7 @@ describe('<Products />', () => {
       const search = '?p=1&name=wellingtons';
       const { store } = setUp(search);
       expect(store.dispatch).toHaveBeenCalledWith(
-        actions.fetchProducts(search, productPages.ALL_PRODUCTS),
+        actions.fetchProducts(search, ProductPageType.ALL_PRODUCTS),
       );
     });
 

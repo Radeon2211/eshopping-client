@@ -9,8 +9,9 @@ import BottomPagination from '../Pagination/BottomPagination/BottomPagination';
 import InputPagination from '../Pagination/InputPagination/InputPagination';
 import ProductsPerPageController from '../Pagination/ProductsPerPageController/ProductsPerPageController';
 import { TopPagination } from '../../styled/components';
-import { listItemTypes, productPages } from '../../shared/constants';
+import { listItemTypes } from '../../shared/constants';
 import { getParamsWithoutPollution } from '../../shared/utility/utility';
+import { ProductPageType } from '../../shared/types/types';
 
 export default function ProductsAndFilters({ page }) {
   const { search } = useLocation();
@@ -63,5 +64,5 @@ export default function ProductsAndFilters({ page }) {
 }
 
 ProductsAndFilters.propTypes = {
-  page: PropTypes.oneOf(Object.values(productPages)).isRequired,
+  page: PropTypes.oneOf(Object.values(ProductPageType)).isRequired,
 };
