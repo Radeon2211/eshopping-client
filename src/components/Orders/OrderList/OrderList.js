@@ -5,21 +5,21 @@ import * as SC from './OrderList.sc';
 import theme from '../../../styled/theme';
 import { GreenText } from '../../../styled/components';
 import TransactionAndOrderProdItem from '../../TransactionAndOrderProdItem/TransactionAndOrderProdItem';
-import { orderTypes } from '../../../shared/constants';
 import PlainText from '../../UI/PlainText';
 import FlexWrapper from '../../UI/FlexWrapper';
 import Button from '../../UI/Button/Button';
 import LoadingOverlay from '../../UI/LoadingOverlay/LoadingOverlay';
 import { formatPrice, formatOrderDate } from '../../../shared/utility/utility';
 import * as propTypes from '../../../shared/propTypes';
+import { OrderType } from '../../../shared/types/types';
 
 export default function OrderList({ orders, orderType }) {
   const isDataLoading = useSelector((state) => state.ui.isDataLoading);
 
   const orderList = orders.map((order) => {
     const username =
-      orderType === orderTypes.PLACED_ORDERS ? order.seller?.username : order.buyer?.username;
-    const userType = orderType === orderTypes.PLACED_ORDERS ? 'seller ' : 'buyer ';
+      orderType === OrderType.PLACED_ORDERS ? order.seller?.username : order.buyer?.username;
+    const userType = orderType === OrderType.PLACED_ORDERS ? 'seller ' : 'buyer ';
 
     return (
       <SC.SingleOrder key={order._id} data-testid="OrderList-single-order">
@@ -72,5 +72,5 @@ export default function OrderList({ orders, orderType }) {
 
 OrderList.propTypes = {
   orders: PropTypes.arrayOf(PropTypes.shape(propTypes.orderItem)).isRequired,
-  orderType: PropTypes.oneOf(Object.values(orderTypes)).isRequired,
+  orderType: PropTypes.oneOf(Object.values(OrderType)).isRequired,
 };

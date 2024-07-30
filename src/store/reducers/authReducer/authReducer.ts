@@ -15,9 +15,9 @@ export interface AuthReducerState {
   deliveryAddress?: DeliveryAddress;
   cart?: Cart;
   transaction?: Transaction;
-  placedOrders?: Order[];
-  sellHistory?: Order[];
-  orderDetails?: Order;
+  placedOrders?: Order[] | null;
+  sellHistory?: Order[] | null;
+  orderDetails?: Order | null;
   orderCount?: number;
   otherUser?: OtherUser;
 }

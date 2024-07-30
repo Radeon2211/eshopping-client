@@ -10,7 +10,7 @@ import {
 } from '../../../shared/testUtility/testUtility';
 import * as actions from '../../../store/actions/indexActions';
 import noPhoto from '../../../images/no-photo.png';
-import { updateCartActions } from '../../../shared/constants';
+import { UpdateCartAction } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -96,13 +96,13 @@ describe('<CartItem />', () => {
       fireEvent.click(screen.getByTestId('ChooseQuantity-plus-btn'));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         1,
-        actions.updateCartItem(itemId, updateCartActions.INCREMENT),
+        actions.updateCartItem(itemId, UpdateCartAction.INCREMENT),
       );
 
       fireEvent.click(screen.getByTestId('ChooseQuantity-minus-btn'));
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
-        actions.updateCartItem(itemId, updateCartActions.DECREMENT),
+        actions.updateCartItem(itemId, UpdateCartAction.DECREMENT),
       );
 
       expect(store.dispatch).toHaveBeenCalledTimes(2);
@@ -119,7 +119,7 @@ describe('<CartItem />', () => {
       fireEvent.blur(input);
       expect(store.dispatch).toHaveBeenNthCalledWith(
         1,
-        actions.updateCartItem(itemId, updateCartActions.NUMBER, 3),
+        actions.updateCartItem(itemId, UpdateCartAction.NUMBER, 3),
       );
 
       fireEvent.focus(input);
@@ -127,7 +127,7 @@ describe('<CartItem />', () => {
       fireEvent.blur(input);
       expect(store.dispatch).toHaveBeenNthCalledWith(
         2,
-        actions.updateCartItem(itemId, updateCartActions.NUMBER, 1),
+        actions.updateCartItem(itemId, UpdateCartAction.NUMBER, 1),
       );
     });
   });

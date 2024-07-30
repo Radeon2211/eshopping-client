@@ -10,9 +10,10 @@ import OrderList from './OrderList/OrderList';
 import SortOrders from './SortOrders/SortOrders';
 import Heading from '../UI/Heading/Heading';
 import Loader from '../UI/Loader/Loader';
-import { listItemTypes, orderTypes, defaultOrdersPerPage } from '../../shared/constants';
+import { listItemTypes, defaultOrdersPerPage } from '../../shared/constants';
 import * as propTypes from '../../shared/propTypes';
 import { TopPagination } from '../../styled/components';
+import { OrderType } from '../../shared/types/types';
 
 export default function Orders({ orders, type }) {
   const { search } = useLocation();
@@ -33,7 +34,7 @@ export default function Orders({ orders, type }) {
   if (orders === null) {
     content = (
       <Heading $variant="h4" $align="center" data-testid="Orders-error">
-        {type === orderTypes.PLACED_ORDERS
+        {type === OrderType.PLACED_ORDERS
           ? 'There is a problem to fetch your placed orders'
           : 'There is a problem to fetch your sell history'}
       </Heading>
@@ -42,7 +43,7 @@ export default function Orders({ orders, type }) {
     if (orders.length <= 0) {
       content = (
         <Heading $variant="h4" $align="center" data-testid="Orders-no-orders-info">
-          {type === orderTypes.PLACED_ORDERS
+          {type === OrderType.PLACED_ORDERS
             ? `You don't have any placed orders yet`
             : 'Your sell history is empty'}
         </Heading>

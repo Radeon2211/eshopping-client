@@ -67,6 +67,17 @@ export enum ProductPageType {
   USER_PRODUCTS = 'USER_PRODUCTS',
 }
 
+export enum OrderType {
+  PLACED_ORDERS = 'PLACED_ORDERS',
+  SELL_HISTORY = 'SELL_HISTORY',
+}
+
+export enum UpdateCartAction {
+  INCREMENT = 'INCREMENT',
+  DECREMENT = 'DECREMENT',
+  NUMBER = 'NUMBER',
+}
+
 export type Profile = {
   _id: string;
   email: string;

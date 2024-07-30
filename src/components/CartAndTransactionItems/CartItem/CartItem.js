@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import * as SC from './CartItem.sc';
 import ChooseQuantity from '../../UI/ChooseQuantity/ChooseQuantity';
-import { updateCartActions } from '../../../shared/constants';
 import { formatPrice } from '../../../shared/utility/utility';
 import MyIcon from '../../UI/MyIcon';
 import PlainText from '../../UI/PlainText';
@@ -13,6 +12,7 @@ import { ReactComponent as TrashIcon } from '../../../images/icons/trash.svg';
 import theme from '../../../styled/theme';
 import ProductThumbnail from '../../UI/ProductThumbnail/ProductThumbnail';
 import * as propTypes from '../../../shared/propTypes';
+import { UpdateCartAction } from '../../../shared/types/types';
 
 export default function CartItem({ data, isCartLoading }) {
   const {
@@ -55,12 +55,12 @@ export default function CartItem({ data, isCartLoading }) {
     const value = +e.target.value;
     if (!value || value < 1) {
       setInputValue(1);
-      onUpdateCartItem(itemId, updateCartActions.NUMBER, 1);
+      onUpdateCartItem(itemId, UpdateCartAction.NUMBER, 1);
     } else if (value > productQuantity) {
       setInputValue(productQuantity);
-      onUpdateCartItem(itemId, updateCartActions.NUMBER, productQuantity);
+      onUpdateCartItem(itemId, UpdateCartAction.NUMBER, productQuantity);
     } else if (value !== quantity) {
-      onUpdateCartItem(itemId, updateCartActions.NUMBER, value);
+      onUpdateCartItem(itemId, UpdateCartAction.NUMBER, value);
     }
     setIsInputFocused(false);
   };
@@ -70,7 +70,7 @@ export default function CartItem({ data, isCartLoading }) {
       if (prevState < productQuantity) return prevState + 1;
       return prevState;
     });
-    onUpdateCartItem(itemId, updateCartActions.INCREMENT);
+    onUpdateCartItem(itemId, UpdateCartAction.INCREMENT);
   };
 
   const inputDecrementHandle = () => {
@@ -78,7 +78,7 @@ export default function CartItem({ data, isCartLoading }) {
       if (prevState > 0) return prevState - 1;
       return prevState;
     });
-    onUpdateCartItem(itemId, updateCartActions.DECREMENT);
+    onUpdateCartItem(itemId, UpdateCartAction.DECREMENT);
   };
 
   return (

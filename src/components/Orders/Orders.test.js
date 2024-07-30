@@ -8,14 +8,14 @@ import {
   createTransactionAndOrderProdItem,
   renderAppPart,
 } from '../../shared/testUtility/testUtility';
-import { orderTypes } from '../../shared/constants';
 import * as actions from '../../store/actions/indexActions';
+import { OrderType } from '../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
 const defaultSearch = '?p=1';
 
-const setUp = (orders, orderCount, type = orderTypes.PLACED_ORDERS) => {
+const setUp = (orders, orderCount, type = OrderType.PLACED_ORDERS) => {
   const store = mockStore({
     auth: { orderCount },
     ui: { isDataLoading: false },
@@ -69,7 +69,7 @@ describe('<Orders />', () => {
           createdAt: '2021-01-08T11:08:51.008Z',
         }),
       ];
-      setUp(orders, 1, orderTypes.PLACED_ORDERS);
+      setUp(orders, 1, OrderType.PLACED_ORDERS);
       expect(screen.getAllByTestId('OrderList-single-order')).toHaveLength(1);
     });
 
@@ -122,33 +122,33 @@ describe('<Orders />', () => {
           overallPrice: 12.8,
         }),
       ];
-      setUp(orders, 2, orderTypes.SELL_HISTORY);
+      setUp(orders, 2, OrderType.SELL_HISTORY);
       expect(screen.getAllByTestId('OrderList-single-order')).toHaveLength(2);
     });
 
     it('should render correct info if orders are null and type PLACED_ORDERS', () => {
-      setUp(null, undefined, orderTypes.PLACED_ORDERS);
+      setUp(null, undefined, OrderType.PLACED_ORDERS);
       expect(screen.getByTestId('Orders-error')).toHaveTextContent(
         'There is a problem to fetch your placed orders',
       );
     });
 
     it('should render correct info if orders are empty array and type PLACED_ORDERS', () => {
-      setUp([], undefined, orderTypes.PLACED_ORDERS);
+      setUp([], undefined, OrderType.PLACED_ORDERS);
       expect(screen.getByTestId('Orders-no-orders-info')).toHaveTextContent(
         "You don't have any placed orders yet",
       );
     });
 
     it('should render correct info if orders are null and type SELL_HISTORY', () => {
-      setUp(null, undefined, orderTypes.SELL_HISTORY);
+      setUp(null, undefined, OrderType.SELL_HISTORY);
       expect(screen.getByTestId('Orders-error')).toHaveTextContent(
         'There is a problem to fetch your sell history',
       );
     });
 
     it('should render correct info if orders are empty array and type SELL_HISTORY', () => {
-      setUp([], undefined, orderTypes.SELL_HISTORY);
+      setUp([], undefined, OrderType.SELL_HISTORY);
       expect(screen.getByTestId('Orders-no-orders-info')).toHaveTextContent(
         'Your sell history is empty',
       );
@@ -157,16 +157,16 @@ describe('<Orders />', () => {
 
   describe('check useEffect()', () => {
     it('should call fetchOrders() with default search and type PLACED_ORDERS', () => {
-      const { store } = setUp([createOrder()], undefined, orderTypes.PLACED_ORDERS);
+      const { store } = setUp([createOrder()], undefined, OrderType.PLACED_ORDERS);
       expect(store.dispatch).toHaveBeenCalledWith(
-        actions.fetchOrders(defaultSearch, orderTypes.PLACED_ORDERS),
+        actions.fetchOrders(defaultSearch, OrderType.PLACED_ORDERS),
       );
     });
 
     it('should call fetchOrders() with default search and type SELL_HISTORY', () => {
-      const { store } = setUp([createOrder()], undefined, orderTypes.SELL_HISTORY);
+      const { store } = setUp([createOrder()], undefined, OrderType.SELL_HISTORY);
       expect(store.dispatch).toHaveBeenCalledWith(
-        actions.fetchOrders(defaultSearch, orderTypes.SELL_HISTORY),
+        actions.fetchOrders(defaultSearch, OrderType.SELL_HISTORY),
       );
     });
   });

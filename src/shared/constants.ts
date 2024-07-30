@@ -71,11 +71,6 @@ export const listItemTypes = {
   ORDER: 'ORDER',
 };
 
-export const orderTypes = {
-  PLACED_ORDERS: 'PLACED_ORDERS',
-  SELL_HISTORY: 'SELL_HISTORY',
-};
-
 export const inputKinds = {
   INPUT: 'INPUT',
   TEXTAREA: 'TEXTAREA',
@@ -125,12 +120,6 @@ export const singleInfoNames = {
   PHONE_NUMBER: 'Phone number',
   ADDRESS: 'Address',
   CONTACTS: 'Contacts',
-};
-
-export const updateCartActions = {
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
-  NUMBER: 'NUMBER',
 };
 
 export const defaultErrorMessage = 'Something went wrong';

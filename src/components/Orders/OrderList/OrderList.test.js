@@ -9,7 +9,7 @@ import {
   renderAppPart,
   testRouterPushCall,
 } from '../../../shared/testUtility/testUtility';
-import { orderTypes } from '../../../shared/constants';
+import { OrderType } from '../../../shared/types/types';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -66,7 +66,7 @@ describe('<OrderList />', () => {
           createdAt: '2021-01-08T11:08:51.008Z',
         }),
       ];
-      setUp(orders, orderTypes.PLACED_ORDERS);
+      setUp(orders, OrderType.PLACED_ORDERS);
       expect(screen.getByTestId('OrderList-user-type')).toHaveTextContent('seller');
       expect(screen.getByTestId('OrderList-user-link')).toHaveTextContent('sellerUser');
       expect(screen.getByTestId('OrderList-created-at-date')).toHaveTextContent(
@@ -102,7 +102,7 @@ describe('<OrderList />', () => {
           createdAt: '2021-02-17T01:53:45.008Z',
         }),
       ];
-      setUp(orders, orderTypes.SELL_HISTORY);
+      setUp(orders, OrderType.SELL_HISTORY);
       expect(screen.getByTestId('OrderList-user-type')).toHaveTextContent('buyer');
       expect(screen.getByTestId('OrderList-user-link')).toHaveTextContent('buyerUser');
       expect(screen.getByTestId('OrderList-created-at-date')).toHaveTextContent(
@@ -136,7 +136,7 @@ describe('<OrderList />', () => {
           createdAt: '2021-02-28T21:13:05.008Z',
         }),
       ];
-      setUp(orders, orderTypes.PLACED_ORDERS);
+      setUp(orders, OrderType.PLACED_ORDERS);
 
       expect(screen.getByTestId('OrderList-account-deleted')).toBeInTheDocument();
       expect(screen.queryByTestId('OrderList-user-link')).not.toBeInTheDocument();
@@ -166,7 +166,7 @@ describe('<OrderList />', () => {
           createdAt: '2021-02-28T21:13:05.008Z',
         }),
       ];
-      setUp(orders, orderTypes.SELL_HISTORY);
+      setUp(orders, OrderType.SELL_HISTORY);
 
       expect(screen.getByTestId('OrderList-account-deleted')).toBeInTheDocument();
       expect(screen.queryByTestId('OrderList-user-link')).not.toBeInTheDocument();
@@ -198,7 +198,7 @@ describe('<OrderList />', () => {
           overallPrice: 12.8,
         }),
       ];
-      setUp(orders, orderTypes.PLACED_ORDERS, true);
+      setUp(orders, OrderType.PLACED_ORDERS, true);
 
       expect(screen.getByTestId('LoadingOverlay')).toBeInTheDocument();
     });
@@ -220,7 +220,7 @@ describe('<OrderList />', () => {
         }),
       ];
       const pushFn = jest.fn();
-      setUp(orders, orderTypes.PLACED_ORDERS, false, pushFn);
+      setUp(orders, OrderType.PLACED_ORDERS, false, pushFn);
 
       fireEvent.click(screen.getByTestId('OrderList-user-link'));
       testRouterPushCall(pushFn, 0, '/user/sellerUser', '?p=1');
@@ -246,7 +246,7 @@ describe('<OrderList />', () => {
         }),
       ];
       const pushFn = jest.fn();
-      setUp(orders, orderTypes.SELL_HISTORY, false, pushFn);
+      setUp(orders, OrderType.SELL_HISTORY, false, pushFn);
 
       fireEvent.click(screen.getByTestId('OrderList-user-link'));
       testRouterPushCall(pushFn, 0, '/user/buyerUser', '?p=1');
