@@ -32,7 +32,7 @@ const setUp = (orders, orderCount, type = OrderType.PLACED_ORDERS) => {
   };
 };
 
-jest.mock('../../store/actions/indexActions.js', () => ({
+jest.mock('../../store/actions/indexActions.ts', () => ({
   fetchOrders: (queryParams, orderType) => ({
     queryParams,
     orderType,

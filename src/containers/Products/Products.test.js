@@ -69,7 +69,7 @@ const setUp = (search = '?p=1') => {
   };
 };
 
-jest.mock('../../store/actions/indexActions.js', () => ({
+jest.mock('../../store/actions/indexActions.ts', () => ({
   fetchProducts: (queryParams, pageType, username) => ({
     queryParams,
     pageType,

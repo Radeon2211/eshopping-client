@@ -45,7 +45,7 @@ const setUp = (props = {}, cart = defaultCart, isLoading = false) => {
   };
 };
 
-jest.mock('../../../store/actions/indexActions.js', () => ({
+jest.mock('../../../store/actions/indexActions.ts', () => ({
   addCartItem: (item) => item,
   goToTransaction: (currentHistory, item) => ({
     currentHistory,

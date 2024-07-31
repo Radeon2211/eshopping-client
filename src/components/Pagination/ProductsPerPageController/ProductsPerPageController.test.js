@@ -25,7 +25,7 @@ const setUp = (quantityPerPage = 10) => {
   });
 };
 
-jest.mock('../../../store/actions/indexActions.js', () => ({
+jest.mock('../../../store/actions/indexActions.ts', () => ({
   changeProductsPerPage: (quantity, pathname, search, navigateFn) => ({
     quantity,
     pathname,

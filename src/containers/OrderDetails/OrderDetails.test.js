@@ -40,7 +40,7 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
-jest.mock('../../store/actions/indexActions.js', () => ({
+jest.mock('../../store/actions/indexActions.ts', () => ({
   fetchOrderDetails: (orderId) => orderId,
   setOrderDetails: (orderDetails) => orderDetails,
 }));

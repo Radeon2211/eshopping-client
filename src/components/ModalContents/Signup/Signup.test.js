@@ -27,8 +27,8 @@ const setUp = () => {
   };
 };
 
-jest.mock('../../../store/actions/indexActions.js', () => ({
-  ...jest.requireActual('../../../store/actions/indexActions.js'),
+jest.mock('../../../store/actions/indexActions.ts', () => ({
+  ...jest.requireActual('../../../store/actions/indexActions.ts'),
   registerUser: (data) => data,
 }));
 

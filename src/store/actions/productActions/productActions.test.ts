@@ -58,7 +58,7 @@ describe('action creators', () => {
       expect(productActions.setProductDetails(productDetails)).toEqual(expectedAction);
     });
 
-    it('tests setProductDetails() directly from indexActions.js', () => {
+    it('tests setProductDetails() directly from indexActions.ts', () => {
       const productDetails = createProductItem();
       const expectedAction = {
         type: ProductAction.SET_PRODUCT_DETAILS,

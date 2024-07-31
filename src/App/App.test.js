@@ -29,7 +29,7 @@ const setUp = (userProfile, ui = { message: '', isFormLoading: false }, pathname
   };
 };
 
-jest.mock('../store/actions/indexActions.js', () => ({
+jest.mock('../store/actions/indexActions.ts', () => ({
   fetchProfile: () => {},
   logoutUser: () => {},
 }));

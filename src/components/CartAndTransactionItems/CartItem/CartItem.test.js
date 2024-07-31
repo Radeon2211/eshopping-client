@@ -28,7 +28,7 @@ const setUp = (data, isCartLoading = false, pushFn = jest.fn()) => {
   };
 };
 
-jest.mock('../../../store/actions/indexActions.js', () => ({
+jest.mock('../../../store/actions/indexActions.ts', () => ({
   removeCartItem: (itemId) => itemId,
   updateCartItem: (itemId, action, itemQuantity) => ({
     itemId,

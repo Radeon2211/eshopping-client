@@ -42,8 +42,8 @@ const setUp = (cart, isCartLoading = false, pushFn = jest.fn()) => {
   };
 };
 
-jest.mock('../../store/actions/indexActions.js', () => ({
-  ...jest.requireActual('../../store/actions/indexActions.js'),
+jest.mock('../../store/actions/indexActions.ts', () => ({
+  ...jest.requireActual('../../store/actions/indexActions.ts'),
   fetchCart: () => {},
   goToTransaction: (history) => history,
 }));
