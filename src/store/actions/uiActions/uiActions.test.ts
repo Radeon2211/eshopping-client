@@ -1,11 +1,14 @@
 import {
   createExpectedState,
   setUpStoreWithDefaultProfile,
+  testStore,
 } from '../../../shared/testUtility/testUtility';
 import * as actions from '../indexActions';
 import * as uiActions from './uiActions';
 import { ModalType } from '../../../shared/types/types';
 import { UiAction } from './uiActionTypes';
+
+const defaultGetStateFn = testStore().store.getState;
 
 describe('action creators', () => {
   it('tests formStart()', () => {
@@ -204,13 +207,13 @@ describe('functions with dispatch', () => {
     describe('inner dispatch', () => {
       it('should call 1 time inner dispatch if condition is true', async () => {
         const innerDispatchFn = jest.fn();
-        await uiActions.writeChangeCartInfo(true)(innerDispatchFn);
+        await uiActions.writeChangeCartInfo(true)(innerDispatchFn, defaultGetStateFn);
         expect(innerDispatchFn).toHaveBeenCalledTimes(1);
       });
 
       it('should NOT call inner dispatch if condition is false', () => {
         const innerDispatchFn = jest.fn();
-        uiActions.writeChangeCartInfo(false)(innerDispatchFn);
+        uiActions.writeChangeCartInfo(false)(innerDispatchFn, defaultGetStateFn);
         expect(innerDispatchFn).not.toHaveBeenCalled();
       });
     });
@@ -277,7 +280,7 @@ describe('functions with dispatch', () => {
           location.pathname,
           location.search,
           jest.fn(),
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
         expect(innerDispatchFn).toHaveBeenCalledWith(uiActions.setProductsPerPage(5));
       });
     });

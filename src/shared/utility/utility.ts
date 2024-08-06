@@ -39,10 +39,12 @@ export const getChangedValues = (
     }, {});
 };
 
-export const updateObject = (oldObject: object, updatedProps: object) => ({
-  ...oldObject,
-  ...updatedProps,
-});
+export function updateObject<T>(oldObject: T, updatedProps: Partial<T>): T {
+  return {
+    ...oldObject,
+    ...updatedProps,
+  };
+}
 
 export const getErrorMessage = (error: AxiosErrorType) => {
   let errorMessage = defaultErrorMessage;

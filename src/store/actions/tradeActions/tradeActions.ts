@@ -1,5 +1,3 @@
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
 import { NavigateFunction } from 'react-router-dom';
 import axios from '../../../axios';
 import * as uiActions from '../uiActions/uiActions';
@@ -9,17 +7,13 @@ import {
   AxiosErrorType,
   Cart,
   ModalType,
-  RootState,
   Transaction,
   UpdateCartAction,
 } from '../../../shared/types/types';
-import { UiReducerState } from '../../reducers/uiReducer/uiReducer';
-import { AuthReducerState } from '../../reducers/authReducer/authReducer';
 import { AddCartItemData } from './tradeActionTypes';
+import { TypedThunkAction } from '../../reducers/rootReducer';
 
 let updateCartItemRequestCounter = 0;
-
-type DispatchExts = ThunkDispatch<AuthReducerState & UiReducerState, void, AnyAction>;
 
 export const setCart = (cart: Cart | null | undefined) => ({
   type: AuthAction.SET_CART,
@@ -31,8 +25,8 @@ export const setTransaction = (transaction: Transaction | undefined) => ({
   transaction,
 });
 
-export const fetchCart = () => {
-  return async (dispatch: DispatchExts) => {
+export const fetchCart = (): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
       const { data } = await axios.get('/cart');
@@ -48,8 +42,8 @@ export const fetchCart = () => {
   };
 };
 
-export const addCartItem = (item: AddCartItemData) => {
-  return async (dispatch: DispatchExts) => {
+export const addCartItem = (item: AddCartItemData): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
       const { data } = await axios.patch('/cart/add', item);
@@ -65,8 +59,12 @@ export const addCartItem = (item: AddCartItemData) => {
   };
 };
 
-export const updateCartItem = (itemId: string, action: UpdateCartAction, quantity?: number) => {
-  return async (dispatch: DispatchExts) => {
+export const updateCartItem = (
+  itemId: string,
+  action: UpdateCartAction,
+  quantity?: number,
+): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
       const quantityParam = quantity ? `&quantity=${quantity}` : '';
@@ -87,8 +85,8 @@ export const updateCartItem = (itemId: string, action: UpdateCartAction, quantit
   };
 };
 
-export const clearCart = () => {
-  return async (dispatch: DispatchExts) => {
+export const clearCart = (): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
       await axios.patch('/cart/clear');
@@ -102,8 +100,8 @@ export const clearCart = () => {
   };
 };
 
-export const removeCartItem = (itemId: string) => {
-  return async (dispatch: DispatchExts) => {
+export const removeCartItem = (itemId: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
       const { data } = await axios.patch(`/cart/${itemId}/remove`);
@@ -118,8 +116,11 @@ export const removeCartItem = (itemId: string) => {
   };
 };
 
-export const goToTransaction = (navigateFn: NavigateFunction, singleItem?: AddCartItemData) => {
-  return async (dispatch: DispatchExts) => {
+export const goToTransaction = (
+  navigateFn: NavigateFunction,
+  singleItem?: AddCartItemData,
+): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.tradeStart());
 
@@ -165,8 +166,8 @@ export const goToTransaction = (navigateFn: NavigateFunction, singleItem?: AddCa
   };
 };
 
-export const buyProducts = (navigateFn: NavigateFunction, lastPath: string) => {
-  return async (dispatch: DispatchExts, getState: () => RootState) => {
+export const buyProducts = (navigateFn: NavigateFunction, lastPath: string): TypedThunkAction => {
+  return async (dispatch, getState) => {
     try {
       dispatch(uiActions.formStart());
       const { transaction, deliveryAddress } = getState().auth;

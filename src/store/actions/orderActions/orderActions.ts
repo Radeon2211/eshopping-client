@@ -1,15 +1,10 @@
 import queryString from 'query-string';
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
 import axios from '../../../axios';
 import * as uiActions from '../uiActions/uiActions';
 import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
 import { AuthAction } from '../authActions/authActionTypes';
 import { AxiosErrorType, Order, OrderType } from '../../../shared/types/types';
-import { ProductReducerState } from '../../reducers/productReducer/productReducer';
-import { UiReducerState } from '../../reducers/uiReducer/uiReducer';
-
-type DispatchExts = ThunkDispatch<ProductReducerState & UiReducerState, void, AnyAction>;
+import { TypedThunkAction } from '../../reducers/rootReducer';
 
 export const setPlacedOrders = (placedOrders: Order[] | null, orderCount?: number) => ({
   type: AuthAction.SET_PLACED_ORDERS,
@@ -28,8 +23,8 @@ export const setOrderDetails = (orderDetails: Order | null) => ({
   orderDetails,
 });
 
-export const fetchOrders = (search: string, orderType: OrderType) => {
-  return async (dispatch: DispatchExts) => {
+export const fetchOrders = (search: string, orderType: OrderType): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.dataStart());
 
@@ -62,8 +57,8 @@ export const fetchOrders = (search: string, orderType: OrderType) => {
   };
 };
 
-export const fetchOrderDetails = (orderId: string) => {
-  return async (dispatch: DispatchExts) => {
+export const fetchOrderDetails = (orderId: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.dataStart());
       const { data } = await axios.get(`/orders/${orderId}`);

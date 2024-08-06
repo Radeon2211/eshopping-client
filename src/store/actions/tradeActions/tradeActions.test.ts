@@ -1,5 +1,3 @@
-/* eslint-disable no-import-assign */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import moxios from 'moxios';
 import axios from '../../../axios';
 import { defaultErrorMessage } from '../../../shared/constants';
@@ -10,12 +8,15 @@ import {
   createCartItem,
   createTransactionAndOrderProdItem,
   defaultDeliveryAddress,
+  testStore,
 } from '../../../shared/testUtility/testUtility';
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
 import * as tradeActions from './tradeActions';
 import { AuthAction } from '../authActions/authActionTypes';
 import { ModalType, UpdateCartAction } from '../../../shared/types/types';
+
+const defaultGetStateFn = testStore().store.getState;
 
 describe('action creators', () => {
   it('tests setCart()', () => {
@@ -149,7 +150,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchCart()(innerDispatchFn);
+        await actions.fetchCart()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -175,7 +176,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchCart()(innerDispatchFn);
+        await actions.fetchCart()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -197,7 +198,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchCart()(innerDispatchFn);
+        await actions.fetchCart()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -332,7 +333,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.addCartItem(itemToPass)(innerDispatchFn);
+        await actions.addCartItem(itemToPass)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -362,7 +363,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.addCartItem(itemToPass)(innerDispatchFn);
+        await actions.addCartItem(itemToPass)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -388,7 +389,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.addCartItem(itemToPass)(innerDispatchFn);
+        await actions.addCartItem(itemToPass)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -729,7 +730,10 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.updateCartItem(itemId, UpdateCartAction.INCREMENT)(innerDispatchFn);
+        await actions.updateCartItem(itemId, UpdateCartAction.INCREMENT)(
+          innerDispatchFn,
+          defaultGetStateFn,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -755,7 +759,10 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.updateCartItem(itemId, UpdateCartAction.INCREMENT)(innerDispatchFn);
+        await actions.updateCartItem(itemId, UpdateCartAction.INCREMENT)(
+          innerDispatchFn,
+          defaultGetStateFn,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -777,7 +784,10 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.updateCartItem(itemId, UpdateCartAction.INCREMENT)(innerDispatchFn);
+        await actions.updateCartItem(itemId, UpdateCartAction.INCREMENT)(
+          innerDispatchFn,
+          defaultGetStateFn,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -851,7 +861,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.clearCart()(innerDispatchFn);
+        await actions.clearCart()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart([]));
@@ -869,7 +879,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.clearCart()(innerDispatchFn);
+        await actions.clearCart()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -984,7 +994,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.removeCartItem(itemId)(innerDispatchFn);
+        await actions.removeCartItem(itemId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -1010,7 +1020,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.removeCartItem(itemId)(innerDispatchFn);
+        await actions.removeCartItem(itemId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setCart(expectedCart));
@@ -1032,7 +1042,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.removeCartItem(itemId)(innerDispatchFn);
+        await actions.removeCartItem(itemId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -1384,7 +1394,10 @@ describe('async functions', () => {
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1418,7 +1431,10 @@ describe('async functions', () => {
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
@@ -1445,7 +1461,10 @@ describe('async functions', () => {
 
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1469,7 +1488,10 @@ describe('async functions', () => {
 
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
@@ -1489,7 +1511,10 @@ describe('async functions', () => {
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -1519,7 +1544,10 @@ describe('async functions', () => {
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1554,7 +1582,10 @@ describe('async functions', () => {
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
@@ -1582,7 +1613,10 @@ describe('async functions', () => {
 
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1607,7 +1641,10 @@ describe('async functions', () => {
 
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(innerDispatchFn).toHaveBeenNthCalledWith(2, tradeActions.setTransaction([]));
@@ -1628,7 +1665,10 @@ describe('async functions', () => {
           uiActions.setAndDeleteMessage = jest.fn();
           const innerDispatchFn = jest.fn();
           const naviagteFn = jest.fn();
-          await actions.goToTransaction(naviagteFn, singleItemToPass)(innerDispatchFn);
+          await actions.goToTransaction(naviagteFn, singleItemToPass)(
+            innerDispatchFn,
+            defaultGetStateFn,
+          );
 
           expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.tradeStart());
           expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);

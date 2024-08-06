@@ -1,13 +1,10 @@
 import queryString from 'query-string';
 import { NavigateFunction } from 'react-router-dom';
-import { AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction, Dispatch } from 'redux';
 import { getParamsWithoutPollution } from '../../../shared/utility/utility';
 import { UiAction } from './uiActionTypes';
 import { ModalType } from '../../../shared/types/types';
-import { UiReducerState } from '../../reducers/uiReducer/uiReducer';
-
-type DispatchExts = ThunkDispatch<UiReducerState, void, AnyAction>;
+import { TypedThunkAction } from '../../reducers/rootReducer';
 
 export const formStart = () => ({
   type: UiAction.FORM_START,
@@ -53,8 +50,8 @@ export const setProductsPerPage = (quantity: number) => ({
   productsPerPage: quantity,
 });
 
-export const setAndDeleteMessage = (message: string) => {
-  return (dispatch: DispatchExts) => {
+export const setAndDeleteMessage = (message: string): ((dispatch: Dispatch<AnyAction>) => void) => {
+  return (dispatch) => {
     dispatch(setMessage(message));
     setTimeout(() => {
       dispatch(setMessage(''));
@@ -62,8 +59,8 @@ export const setAndDeleteMessage = (message: string) => {
   };
 };
 
-export const writeChangeCartInfo = (condition: boolean) => {
-  return (dispatch: DispatchExts) => {
+export const writeChangeCartInfo = (condition: boolean): TypedThunkAction => {
+  return (dispatch) => {
     if (condition) {
       dispatch(
         setAndDeleteMessage(
@@ -79,8 +76,8 @@ export const changeProductsPerPage = (
   pathname: string,
   search: string,
   navigateFn: NavigateFunction,
-) => {
-  return (dispatch: DispatchExts) => {
+): TypedThunkAction => {
+  return (dispatch) => {
     dispatch(setProductsPerPage(quantity));
     const parsedQueryParams = getParamsWithoutPollution(search);
     if (+parsedQueryParams.p !== 1) {

@@ -1,6 +1,4 @@
 import { NavigateFunction } from 'react-router-dom';
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
 import axios from '../../../axios';
 import * as uiActions from '../uiActions/uiActions';
 import { getErrorMessage } from '../../../shared/utility/utility';
@@ -14,17 +12,8 @@ import {
   LoginUserData,
   RegisterUserData,
 } from './authActionTypes';
-import {
-  AxiosErrorType,
-  DeliveryAddress,
-  OtherUser,
-  Profile,
-  RootState,
-} from '../../../shared/types/types';
-import { AuthReducerState } from '../../reducers/authReducer/authReducer';
-import { UiReducerState } from '../../reducers/uiReducer/uiReducer';
-
-type DispatchExts = ThunkDispatch<AuthReducerState & UiReducerState, void, AnyAction>;
+import { AxiosErrorType, DeliveryAddress, OtherUser, Profile } from '../../../shared/types/types';
+import { TypedThunkAction } from '../../reducers/rootReducer';
 
 export const setProfile = (profile: Profile | null) => ({
   type: AuthAction.SET_PROFILE,
@@ -45,8 +34,8 @@ export const setOtherUser = (user: OtherUser) => ({
   otherUser: user,
 });
 
-export const registerUser = (creds: RegisterUserData) => {
-  return async (dispatch: DispatchExts) => {
+export const registerUser = (creds: RegisterUserData): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
 
@@ -66,8 +55,8 @@ export const registerUser = (creds: RegisterUserData) => {
   };
 };
 
-export const loginUser = (creds: LoginUserData) => {
-  return async (dispatch: DispatchExts) => {
+export const loginUser = (creds: LoginUserData): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       const { data } = await axios.post('/users/login', creds);
@@ -81,8 +70,8 @@ export const loginUser = (creds: LoginUserData) => {
   };
 };
 
-export const fetchProfile = () => {
-  return async (dispatch: DispatchExts) => {
+export const fetchProfile = (): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       const { data } = await axios.get('/users/me');
       dispatch(setProfile(data.user));
@@ -93,8 +82,8 @@ export const fetchProfile = () => {
   };
 };
 
-export const logoutUser = () => {
-  return async (dispatch: DispatchExts) => {
+export const logoutUser = (): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       await axios.post('/users/logout');
       dispatch(logout());
@@ -104,8 +93,8 @@ export const logoutUser = () => {
   };
 };
 
-export const updateUser = (creds: UpdateUserData, message: string) => {
-  return async (dispatch: DispatchExts) => {
+export const updateUser = (creds: UpdateUserData, message: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       const { data } = await axios.patch('/users/me', creds);
@@ -119,8 +108,8 @@ export const updateUser = (creds: UpdateUserData, message: string) => {
   };
 };
 
-export const changeEmail = (creds: ChangeEmailData) => {
-  return async (dispatch: DispatchExts) => {
+export const changeEmail = (creds: ChangeEmailData): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       await axios.patch('/users/me/email', creds);
@@ -137,8 +126,11 @@ export const changeEmail = (creds: ChangeEmailData) => {
   };
 };
 
-export const deleteAccount = (creds: DeleteAccountData, navigateFn: NavigateFunction) => {
-  return async (dispatch: DispatchExts, getState: () => RootState) => {
+export const deleteAccount = (
+  creds: DeleteAccountData,
+  navigateFn: NavigateFunction,
+): TypedThunkAction => {
+  return async (dispatch, getState) => {
     try {
       dispatch(uiActions.formStart());
       const { username } = getState().auth.profile!;
@@ -156,8 +148,8 @@ export const deleteAccount = (creds: DeleteAccountData, navigateFn: NavigateFunc
   };
 };
 
-export const changeDeliveryAddress = (creds: ChangeDeliveryAddressData) => {
-  return async (dispatch: DispatchExts) => {
+export const changeDeliveryAddress = (creds: ChangeDeliveryAddressData): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       const { onlyCurrentOrders } = creds;
@@ -179,8 +171,8 @@ export const changeDeliveryAddress = (creds: ChangeDeliveryAddressData) => {
   };
 };
 
-export const fetchOtherUser = (username: string) => {
-  return async (dispatch: DispatchExts) => {
+export const fetchOtherUser = (username: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.dataStart());
       const { data } = await axios.get(`/users/${username}`);
@@ -195,8 +187,8 @@ export const fetchOtherUser = (username: string) => {
   };
 };
 
-export const addAdmin = (email: string) => {
-  return async (dispatch: DispatchExts) => {
+export const addAdmin = (email: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       await axios.patch('/users/add-admin', { email });
@@ -209,8 +201,8 @@ export const addAdmin = (email: string) => {
   };
 };
 
-export const removeAdmin = (email: string) => {
-  return async (dispatch: DispatchExts) => {
+export const removeAdmin = (email: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       await axios.patch('/users/remove-admin', { email });
@@ -227,8 +219,8 @@ export const removeAdmin = (email: string) => {
   };
 };
 
-export const sendAccountVerificationLink = () => {
-  return async (dispatch: DispatchExts) => {
+export const sendAccountVerificationLink = (): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       await axios.post('/users/send-account-verification-email');
@@ -244,8 +236,8 @@ export const sendAccountVerificationLink = () => {
   };
 };
 
-export const resetPassword = (email: string) => {
-  return async (dispatch: DispatchExts) => {
+export const resetPassword = (email: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       await axios.post('/users/request-for-reset-password', { email });

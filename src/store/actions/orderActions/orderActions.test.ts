@@ -1,5 +1,3 @@
-/* eslint-disable no-import-assign */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import moxios from 'moxios';
 import axios from '../../../axios';
 import { defaultErrorMessage } from '../../../shared/constants';
@@ -8,12 +6,15 @@ import {
   createExpectedState,
   createOrder,
   setUpStoreWithDefaultProfile,
+  testStore,
 } from '../../../shared/testUtility/testUtility';
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
 import * as orderActions from './orderActions';
 import { AuthAction } from '../authActions/authActionTypes';
 import { OrderType } from '../../../shared/types/types';
+
+const defaultGetStateFn = testStore().store.getState;
 
 describe('action creators', () => {
   it('tests setPlacedOrders()', () => {
@@ -188,7 +189,10 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.fetchOrders(defaultSearch, OrderType.PLACED_ORDERS)(innerDispatchFn);
+        await actions.fetchOrders(defaultSearch, OrderType.PLACED_ORDERS)(
+          innerDispatchFn,
+          defaultGetStateFn,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -209,7 +213,10 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.fetchOrders(defaultSearch, OrderType.SELL_HISTORY)(innerDispatchFn);
+        await actions.fetchOrders(defaultSearch, OrderType.SELL_HISTORY)(
+          innerDispatchFn,
+          defaultGetStateFn,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -230,7 +237,10 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchOrders(defaultSearch, OrderType.PLACED_ORDERS)(innerDispatchFn);
+        await actions.fetchOrders(defaultSearch, OrderType.PLACED_ORDERS)(
+          innerDispatchFn,
+          defaultGetStateFn,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -255,7 +265,10 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchOrders(defaultSearch, OrderType.SELL_HISTORY)(innerDispatchFn);
+        await actions.fetchOrders(defaultSearch, OrderType.SELL_HISTORY)(
+          innerDispatchFn,
+          defaultGetStateFn,
+        );
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -338,7 +351,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.fetchOrderDetails(orderId)(innerDispatchFn);
+        await actions.fetchOrderDetails(orderId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -359,7 +372,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchOrderDetails(orderId)(innerDispatchFn);
+        await actions.fetchOrderDetails(orderId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);

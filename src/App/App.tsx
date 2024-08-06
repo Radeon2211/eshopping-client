@@ -1,6 +1,5 @@
 import { useCallback, useEffect, Suspense, lazy } from 'react';
 import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import axios from '../axios';
 import * as actions from '../store/actions/indexActions';
@@ -23,6 +22,7 @@ import MyProducts from '../containers/MyAccount/MyProducts/MyProducts';
 import MySellHistory from '../containers/MyAccount/MySellHistory/MySellHistory';
 import MyPlacedOrders from '../containers/MyAccount/MyPlacedOrders/MyPlacedOrders';
 import { ProfileStatus } from '../shared/types/types';
+import { useTypedDispatch, useTypedSelector } from '../store/reducers/rootReducer';
 
 const OrderDetails = lazy(() => import('../containers/OrderDetails/OrderDetails'));
 const ProductDetails = lazy(() => import('../containers/ProductDetails/ProductDetails'));
@@ -32,9 +32,9 @@ const Cart = lazy(() => import('../containers/Cart/Cart'));
 const Transaction = lazy(() => import('../containers/Transaction/Transaction'));
 const Logout = lazy(() => import('../containers/Logout/Logout'));
 
-function WaitingComponent(Component) {
+function WaitingComponent(Component: React.LazyExoticComponent<() => JSX.Element>) {
   // eslint-disable-next-line react/display-name, func-names
-  return function (props) {
+  return function (props: object) {
     return (
       <Suspense
         fallback={
@@ -52,9 +52,9 @@ function WaitingComponent(Component) {
 function App() {
   const { pathname } = useLocation();
 
-  const userProfile = useSelector((state) => state.auth.profile);
+  const userProfile = useTypedSelector((state) => state.auth.profile);
 
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
   const onFetchProfile = useCallback(() => dispatch(actions.fetchProfile()), [dispatch]);
 
   useEffect(() => {

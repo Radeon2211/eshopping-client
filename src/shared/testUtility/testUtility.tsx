@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { ReactElement } from 'react';
 import { Router } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
@@ -254,7 +253,7 @@ type RenderAppPartOptions = {
   search?: string;
   withoutThemeProvider?: boolean;
   withoutRouter?: boolean;
-  store?: MockStoreEnhanced<object, object>;
+  store?: MockStoreEnhanced<unknown, object>;
   onlyReturnWrappedElement?: boolean;
 };
 

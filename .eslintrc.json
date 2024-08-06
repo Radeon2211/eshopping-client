@@ -27,6 +27,17 @@
     }
   },
   "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js",
+          "**/*.test.tsx",
+          "**/testUtility.tsx"
+        ],
+        "optionalDependencies": false
+      }
+    ],
     "react/jsx-filename-extension": [
       1,
       {

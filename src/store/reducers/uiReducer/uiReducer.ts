@@ -1,3 +1,4 @@
+import { Reducer } from 'redux';
 import { updateObject } from '../../../shared/utility/utility';
 import { defaultProductsPerPage } from '../../../shared/constants';
 import { ModalType } from '../../../shared/types/types';
@@ -121,8 +122,11 @@ export type UiReducerAction =
   | SetMessageAction
   | SetModalAction
   | SetProductsPerPageAction;
-// eslint-disable-next-line default-param-last
-const uiReducer = (state = initialUiReducerState, action: UiReducerAction) => {
+const uiReducer: Reducer<UiReducerState, UiReducerAction> = (
+  // eslint-disable-next-line default-param-last
+  state = initialUiReducerState,
+  action,
+): UiReducerState => {
   switch (action.type) {
     case UiAction.FORM_START:
       return formStart(state);

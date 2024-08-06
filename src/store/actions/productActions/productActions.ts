@@ -1,18 +1,13 @@
 import queryString from 'query-string';
-import { AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
 import { NavigateFunction } from 'react-router-dom';
 import axios from '../../../axios';
 import * as uiActions from '../uiActions/uiActions';
 import { getErrorMessage, getParamsWithoutPollution } from '../../../shared/utility/utility';
 import { ProductAction } from './productActionTypes';
-import { AxiosErrorType, Product, ProductPageType, RootState } from '../../../shared/types/types';
-import { ProductReducerState } from '../../reducers/productReducer/productReducer';
+import { AxiosErrorType, Product, ProductPageType } from '../../../shared/types/types';
 import { ProductPhotoFieldValue } from '../../../shared/types/enums';
 import { AddProductForm } from '../../../shared/types/forms';
-import { UiReducerState } from '../../reducers/uiReducer/uiReducer';
-
-type DispatchExts = ThunkDispatch<ProductReducerState & UiReducerState, void, AnyAction>;
+import { TypedThunkAction } from '../../reducers/rootReducer';
 
 export const setProducts = (
   products: Product[] | null | undefined = undefined,
@@ -37,8 +32,8 @@ export const deleteProductFromList = (productId: string) => ({
   productId,
 });
 
-export const addProduct = (productData: AddProductForm, currentPath: string) => {
-  return async (dispatch: DispatchExts) => {
+export const addProduct = (productData: AddProductForm, currentPath: string): TypedThunkAction => {
+  return async (dispatch) => {
     let newProductId;
     try {
       dispatch(uiActions.formStart());
@@ -87,8 +82,8 @@ export const addProduct = (productData: AddProductForm, currentPath: string) => 
   };
 };
 
-export const editProduct = (productData: AddProductForm, productId: string) => {
-  return async (dispatch: DispatchExts) => {
+export const editProduct = (productData: AddProductForm, productId: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
 
@@ -129,8 +124,12 @@ export const editProduct = (productData: AddProductForm, productId: string) => {
   };
 };
 
-export const fetchProducts = (search: string, page: ProductPageType, sellerUsername?: string) => {
-  return async (dispatch: DispatchExts, getState: () => RootState) => {
+export const fetchProducts = (
+  search: string,
+  page: ProductPageType,
+  sellerUsername?: string,
+): TypedThunkAction => {
+  return async (dispatch, getState) => {
     try {
       dispatch(uiActions.dataStart());
 
@@ -181,8 +180,8 @@ export const fetchProducts = (search: string, page: ProductPageType, sellerUsern
   };
 };
 
-export const fetchProductDetails = (productId: string) => {
-  return async (dispatch: DispatchExts) => {
+export const fetchProductDetails = (productId: string): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.dataStart());
       const { data } = await axios.get(`/products/${productId}`);
@@ -202,8 +201,11 @@ export const fetchProductDetails = (productId: string) => {
   };
 };
 
-export const deleteProduct = (productId: string, navigateFn: NavigateFunction) => {
-  return async (dispatch: DispatchExts) => {
+export const deleteProduct = (
+  productId: string,
+  navigateFn: NavigateFunction,
+): TypedThunkAction => {
+  return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());
       await axios.delete(`/products/${productId}`);

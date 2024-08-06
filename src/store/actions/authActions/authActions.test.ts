@@ -1,5 +1,3 @@
-/* eslint-disable no-import-assign */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import moxios from 'moxios';
 import axios from '../../../axios';
 import { defaultAppPath, defaultErrorMessage } from '../../../shared/constants';
@@ -16,6 +14,8 @@ import * as uiActions from '../uiActions/uiActions';
 import * as authActions from './authActions';
 import { ProfileStatus } from '../../../shared/types/types';
 import { AuthAction } from './authActionTypes';
+
+const defaultGetStateFn = testStore().store.getState;
 
 describe('action creators', () => {
   it('tests setProfile()', () => {
@@ -202,7 +202,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.registerUser(credentials)(innerDispatchFn);
+        await actions.registerUser(credentials)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.setProfile(expectedUser));
@@ -222,7 +222,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.registerUser(credentials)(innerDispatchFn);
+        await actions.registerUser(credentials)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -350,7 +350,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.loginUser(credentials)(innerDispatchFn);
+        await actions.loginUser(credentials)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.setProfile(expectedUser));
@@ -376,7 +376,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.loginUser(credentials)(innerDispatchFn);
+        await actions.loginUser(credentials)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.setProfile(expectedUser));
@@ -394,7 +394,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.loginUser(credentials)(innerDispatchFn);
+        await actions.loginUser(credentials)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -508,7 +508,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchProfile()(innerDispatchFn);
+        await actions.fetchProfile()(innerDispatchFn, defaultGetStateFn);
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, authActions.setProfile(expectedUser));
         expect(uiActions.writeChangeCartInfo).toHaveBeenCalledWith(false);
         expect(innerDispatchFn).toHaveBeenCalledTimes(2);
@@ -528,7 +528,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.writeChangeCartInfo = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchProfile()(innerDispatchFn);
+        await actions.fetchProfile()(innerDispatchFn, defaultGetStateFn);
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, authActions.setProfile(expectedUser));
         expect(uiActions.writeChangeCartInfo).toHaveBeenCalledWith(true);
         expect(innerDispatchFn).toHaveBeenCalledTimes(2);
@@ -539,7 +539,7 @@ describe('async functions', () => {
           status: 500,
         });
         const innerDispatchFn = jest.fn();
-        await actions.fetchProfile()(innerDispatchFn);
+        await actions.fetchProfile()(innerDispatchFn, defaultGetStateFn);
         expect(innerDispatchFn).toHaveBeenCalledWith(authActions.setProfile(null));
         expect(innerDispatchFn).toHaveBeenCalledTimes(1);
       });
@@ -612,7 +612,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.logoutUser()(innerDispatchFn);
+        await actions.logoutUser()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenCalledWith(authActions.logout());
         expect(innerDispatchFn).toHaveBeenCalledTimes(1);
@@ -628,7 +628,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.logoutUser()(innerDispatchFn);
+        await actions.logoutUser()(innerDispatchFn, defaultGetStateFn);
 
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
           'Unable to logout. Something went wrong',
@@ -739,7 +739,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.updateUser(credentials, message)(innerDispatchFn);
+        await actions.updateUser(credentials, message)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.setProfile(expectedUser));
@@ -757,7 +757,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.updateUser(credentials, message)(innerDispatchFn);
+        await actions.updateUser(credentials, message)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -836,7 +836,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.changeEmail(credentials)(innerDispatchFn);
+        await actions.changeEmail(credentials)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -855,7 +855,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.changeEmail(credentials)(innerDispatchFn);
+        await actions.changeEmail(credentials)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -1114,7 +1114,7 @@ describe('async functions', () => {
         await actions.changeDeliveryAddress({
           ...credentials,
           onlyCurrentOrders: false,
-        })(innerDispatchFn);
+        })(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, authActions.setProfile(expectedUser));
@@ -1140,7 +1140,7 @@ describe('async functions', () => {
         await actions.changeDeliveryAddress({
           ...credentials,
           onlyCurrentOrders: true,
-        })(innerDispatchFn);
+        })(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1160,7 +1160,7 @@ describe('async functions', () => {
         await actions.changeDeliveryAddress({
           ...credentials,
           onlyCurrentOrders: false,
-        })(innerDispatchFn);
+        })(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -1239,7 +1239,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.fetchOtherUser(otherUserUsername)(innerDispatchFn);
+        await actions.fetchOtherUser(otherUserUsername)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1260,7 +1260,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchOtherUser(otherUserUsername)(innerDispatchFn);
+        await actions.fetchOtherUser(otherUserUsername)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -1340,7 +1340,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.addAdmin(userEmail)(innerDispatchFn);
+        await actions.addAdmin(userEmail)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -1359,7 +1359,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.addAdmin(userEmail)(innerDispatchFn);
+        await actions.addAdmin(userEmail)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -1434,7 +1434,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.removeAdmin(userEmail)(innerDispatchFn);
+        await actions.removeAdmin(userEmail)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -1453,7 +1453,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.removeAdmin(userEmail)(innerDispatchFn);
+        await actions.removeAdmin(userEmail)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -1530,7 +1530,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.sendAccountVerificationLink()(innerDispatchFn);
+        await actions.sendAccountVerificationLink()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -1553,7 +1553,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.sendAccountVerificationLink()(innerDispatchFn);
+        await actions.sendAccountVerificationLink()(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -1636,7 +1636,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.resetPassword(userEmail)(innerDispatchFn);
+        await actions.resetPassword(userEmail)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -1655,7 +1655,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.resetPassword(userEmail)(innerDispatchFn);
+        await actions.resetPassword(userEmail)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));

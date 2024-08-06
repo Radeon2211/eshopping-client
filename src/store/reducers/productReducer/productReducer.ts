@@ -1,3 +1,4 @@
+import { Reducer } from 'redux';
 import { updateObject } from '../../../shared/utility/utility';
 import { Product } from '../../../shared/types/types';
 import { ProductAction } from '../../actions/productActions/productActionTypes';
@@ -56,8 +57,11 @@ export type ProductReducerAction =
   | SetProductsAction
   | SetProductDetailsAction
   | DeleteProductFromListAction;
-// eslint-disable-next-line default-param-last
-const productReducer = (state = initialProductReducerState, action: ProductReducerAction) => {
+const productReducer: Reducer<ProductReducerState, ProductReducerAction> = (
+  // eslint-disable-next-line default-param-last
+  state = initialProductReducerState,
+  action,
+): ProductReducerState => {
   switch (action.type) {
     case ProductAction.SET_PRODUCTS:
       return setProducts(state, action);

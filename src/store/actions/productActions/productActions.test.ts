@@ -1,5 +1,3 @@
-/* eslint-disable no-import-assign */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import moxios from 'moxios';
 import axios from '../../../axios';
 import { defaultErrorMessage, defaultProductsPerPage } from '../../../shared/constants';
@@ -8,6 +6,7 @@ import {
   createExpectedState,
   setUpStoreWithDefaultProfile,
   createProductItem,
+  testStore,
 } from '../../../shared/testUtility/testUtility';
 import * as actions from '../indexActions';
 import * as uiActions from '../uiActions/uiActions';
@@ -16,6 +15,8 @@ import logoImage from '../../../images/logo.png';
 import { ProductAction } from './productActionTypes';
 import { ProductCondition, ProductPhotoFieldValue } from '../../../shared/types/enums';
 import { ProductPageType } from '../../../shared/types/types';
+
+const defaultGetStateFn = testStore().store.getState;
 
 describe('action creators', () => {
   describe('setProducts()', () => {
@@ -333,7 +334,7 @@ describe('async functions', () => {
             photo: logoImage,
           },
           '/my-account/products',
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -368,7 +369,7 @@ describe('async functions', () => {
             photo: logoImage,
           },
           '/products',
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -402,7 +403,7 @@ describe('async functions', () => {
             photo: logoImage,
           },
           '/products',
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -430,7 +431,7 @@ describe('async functions', () => {
             photo: logoImage,
           },
           '/products',
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -913,7 +914,7 @@ describe('async functions', () => {
             photo: logoImage,
           },
           productId,
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -962,7 +963,7 @@ describe('async functions', () => {
             photo: ProductPhotoFieldValue.DELETED,
           },
           productId,
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1007,7 +1008,7 @@ describe('async functions', () => {
             photo: ProductPhotoFieldValue.DELETED,
           },
           productId,
-        )(innerDispatchFn);
+        )(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(2, uiActions.formFail(defaultErrorMessage));
@@ -1396,7 +1397,7 @@ describe('async functions', () => {
         });
 
         const innerDispatchFn = jest.fn();
-        await actions.fetchProductDetails(productId)(innerDispatchFn);
+        await actions.fetchProductDetails(productId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(
@@ -1420,7 +1421,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchProductDetails(productId)(innerDispatchFn);
+        await actions.fetchProductDetails(productId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(
@@ -1444,7 +1445,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.fetchProductDetails(productId)(innerDispatchFn);
+        await actions.fetchProductDetails(productId)(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.dataStart());
         expect(uiActions.setAndDeleteMessage).toHaveBeenCalledWith(defaultErrorMessage);
@@ -1555,7 +1556,7 @@ describe('async functions', () => {
         // @ts-expect-error TBF after redux upgrade
         uiActions.setAndDeleteMessage = jest.fn();
         const innerDispatchFn = jest.fn();
-        await actions.deleteProduct(productId, jest.fn())(innerDispatchFn);
+        await actions.deleteProduct(productId, jest.fn())(innerDispatchFn, defaultGetStateFn);
 
         expect(innerDispatchFn).toHaveBeenNthCalledWith(1, uiActions.formStart());
         expect(innerDispatchFn).toHaveBeenNthCalledWith(

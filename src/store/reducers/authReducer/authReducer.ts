@@ -1,3 +1,4 @@
+import { Reducer } from 'redux';
 import { updateObject } from '../../../shared/utility/utility';
 import {
   Cart,
@@ -11,7 +12,7 @@ import {
 import { AuthAction } from '../../actions/authActions/authActionTypes';
 
 export interface AuthReducerState {
-  profile?: Profile;
+  profile?: Profile | null;
   deliveryAddress?: DeliveryAddress;
   cart?: Cart;
   transaction?: Transaction;
@@ -78,7 +79,7 @@ type SetDeliveryAddressAction = {
 };
 const setDeliveryAddress = (state: AuthReducerState, action: SetDeliveryAddressAction) => {
   const updatedDeliveryAddress = {
-    ...state.deliveryAddress,
+    ...state.deliveryAddress!,
     ...action.deliveryAddress,
   };
   return updateObject(state, { deliveryAddress: updatedDeliveryAddress });
@@ -144,8 +145,11 @@ export type AuthReducerAction =
   | SetSellHistoryAction
   | SetOrderDetailsAction
   | SetOtherUserAction;
-// eslint-disable-next-line default-param-last
-const authReducer = (state = initialAuthReducerState, action: AuthReducerAction) => {
+const authReducer: Reducer<AuthReducerState, AuthReducerAction> = (
+  // eslint-disable-next-line default-param-last
+  state = initialAuthReducerState,
+  action,
+): AuthReducerState => {
   switch (action.type) {
     case AuthAction.LOGOUT_USER:
       return logoutUser(state);
