@@ -180,3 +180,5 @@ export type RootState = {
   product: ProductReducerState;
   ui: UiReducerState;
 };
+
+export type PropsWithChildren<P = unknown> = P & { children: React.ReactNode };
