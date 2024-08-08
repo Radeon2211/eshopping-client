@@ -54,7 +54,7 @@ export default function Login() {
             }}
             label="Password"
           />
-          <PlainText $size="1" $mgBottom="3" role="link">
+          <PlainText $size="level1" $mgBottom="level3" role="link">
             <GreenText
               onClick={() => onSetModal(ModalType.RESET_PASSWORD)}
               data-testid="Login-forgot-password-link"

@@ -111,7 +111,7 @@ export default function Filters({ isDataLoading }) {
       />
       <PriceSlider dispatchFilters={dispatchFilters} />
       <SC.Checkboxes>
-        <PlainText $size="3">Condition</PlainText>
+        <PlainText $size="level3">Condition</PlainText>
         <SC.CheckboxBox>
           <input
             type="checkbox"

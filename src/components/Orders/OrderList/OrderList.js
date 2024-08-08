@@ -23,8 +23,8 @@ export default function OrderList({ orders, orderType }) {
 
     return (
       <SC.SingleOrder key={order._id} data-testid="OrderList-single-order">
-        <FlexWrapper $justify="space-between" $align="flex-end" $spacing="3">
-          <PlainText $size="3">
+        <FlexWrapper $justify="space-between" $align="flex-end" $spacing="level3">
+          <PlainText $size="level3">
             <span data-testid="OrderList-user-type">{userType}</span>
             {username ? (
               <Link to={`/user/${username}?p=1`} data-testid="OrderList-user-link">
@@ -36,22 +36,22 @@ export default function OrderList({ orders, orderType }) {
               </PlainText>
             )}
           </PlainText>
-          <PlainText $size="2" data-testid="OrderList-created-at-date">
+          <PlainText $size="level2" data-testid="OrderList-created-at-date">
             {formatOrderDate(order.createdAt)}
           </PlainText>
         </FlexWrapper>
         {order.products.map((product) => (
           <TransactionAndOrderProdItem key={product._id} data={product} orderId={order._id} />
         ))}
-        <FlexWrapper $mgTop="3" $justify="space-between" $align="center" $spacing="3">
+        <FlexWrapper $mgTop="level3" $justify="space-between" $align="center" $spacing="level3">
           <Link to={`/order/${order._id}`} data-testid="OrderList-order-details-link">
             <Button>details</Button>
           </Link>
           <div>
-            <PlainText $size="3" $mgRight="1" $spacing="1px" $color={theme.colors.light4}>
+            <PlainText $size="level3" $mgRight="level1" $spacing="1px" $color={theme.colors.light4}>
               TOTAL
             </PlainText>
-            <PlainText $size="5" data-testid="OrderList-overall-price">
+            <PlainText $size="level5" data-testid="OrderList-overall-price">
               {formatPrice(order.overallPrice)}
             </PlainText>
           </div>

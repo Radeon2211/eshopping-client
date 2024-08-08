@@ -92,8 +92,8 @@ export default function PurchaseSection(props) {
 
   let purchaseSection = (
     <>
-      <PlainText $size="2">{`Quantity: ${productQuantity}`}</PlainText>
-      <Heading $variant="h4" $mgTop="3">
+      <PlainText $size="level2">{`Quantity: ${productQuantity}`}</PlainText>
+      <Heading $variant="h4" $mgTop="level3">
         You are the seller of this product
       </Heading>
     </>
@@ -129,7 +129,7 @@ export default function PurchaseSection(props) {
       <>
         <FlexWrapper
           $align="center"
-          $mgBottom="3"
+          $mgBottom="level3"
           data-testid="PurchaseSection-choose-quantity-wrapper"
         >
           <ChooseQuantity
@@ -141,7 +141,7 @@ export default function PurchaseSection(props) {
             changed={inputChangeHandle}
             blured={inputBlurHandle}
           />
-          <PlainText $size="2" $mgLeft="1" data-testid="PurchaseSection-product-quantity">
+          <PlainText $size="level2" $mgLeft="level1" data-testid="PurchaseSection-product-quantity">
             {`of ${productQuantity} piece${productQuantity > 1 ? 's' : ''}`}
             {givenProductInCart && (
               <PlainText

@@ -100,10 +100,15 @@ export default function InputPagination({ itemQuantity, quantityPerPage }) {
         <form onSubmit={formSubmitHandle} className="form-number">
           <NumberInput name="page" size="small" changed={inputChangeHandle} value={inputValue} />
         </form>
-        <PlainText $size="3" $mgLeft="1" $mgRight="1">
+        <PlainText $size="level3" $mgLeft="level1" $mgRight="level1">
           of
         </PlainText>
-        <PlainText $size="3" $mgLeft="1" $mgRight="1" data-testid="InputPagination-number-of-pages">
+        <PlainText
+          $size="level3"
+          $mgLeft="level1"
+          $mgRight="level1"
+          data-testid="InputPagination-number-of-pages"
+        >
           {numberOfPages}
         </PlainText>
         <Link

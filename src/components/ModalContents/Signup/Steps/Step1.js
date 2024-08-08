@@ -50,11 +50,11 @@ export default function Step1(props) {
             isTouched={touched.email}
           />
           <PlainText
-            $size="1"
-            $mgTop="2"
+            $size="level1"
+            $mgTop="level2"
             $extraMgTop="0.4rem"
             $minusMgTop
-            $mgBottom="3"
+            $mgBottom="level3"
             $textAlign="justify"
             $display="block"
           >

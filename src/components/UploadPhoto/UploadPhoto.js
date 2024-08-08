@@ -71,7 +71,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   const defaultPreviewText = `Photo is optional. Max size is ${PRODUCT_PHOTO_MAX_SIZE_STRING}. Available extensions are JPG and PNG`;
   let preview = (
-    <PlainText $size="2" $mgTop="2" data-testid="UploadPhoto-default-preview">
+    <PlainText $size="level2" $mgTop="level2" data-testid="UploadPhoto-default-preview">
       {defaultPreviewText}
     </PlainText>
   );
@@ -81,7 +81,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   if (error) {
     errorNode = (
-      <PlainText $size="1" $mgTop="2" $color={theme.colors.red}>
+      <PlainText $size="level1" $mgTop="level2" $color={theme.colors.red}>
         {error}
       </PlainText>
     );
@@ -89,9 +89,9 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   if (photo || error) {
     preview = (
-      <FlexWrapper $mgTop="2" $spacing="3" data-testid="UploadPhoto-preview-photo-info">
+      <FlexWrapper $mgTop="level2" $spacing="level3" data-testid="UploadPhoto-preview-photo-info">
         <PlainText
-          $size="1"
+          $size="level1"
           $maxWidth="75%"
           $textOverflow="ellipsis"
           $whiteSpace="nowrap"
@@ -99,7 +99,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
         >
           Name: {photoName}
         </PlainText>
-        <PlainText $size="1">Size: {photoSize}</PlainText>
+        <PlainText $size="level1">Size: {photoSize}</PlainText>
       </FlexWrapper>
     );
     deleteThisBtn = (
@@ -119,7 +119,7 @@ export default function UploadPhoto({ setFieldValue, hasCurrentPhoto }) {
 
   return (
     <SC.Wrapper>
-      <FlexWrapper $spacing="3">
+      <FlexWrapper $spacing="level3">
         <label htmlFor="photo" className="label">
           <Button $filled>Upload photo</Button>
         </label>

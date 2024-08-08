@@ -77,11 +77,11 @@ export default function Step2(props) {
             isTouched={touched.lastName}
           />
           <PlainText
-            $size="1"
-            $mgTop="2"
+            $size="level1"
+            $mgTop="level2"
             $extraMgTop="0.4rem"
             $minusMgTop
-            $mgBottom="3"
+            $mgBottom="level3"
             $textAlign="justify"
             $display="block"
           >

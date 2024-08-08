@@ -34,27 +34,27 @@ export default function CartItemAdded() {
 
     content = (
       <>
-        <Heading $variant="h3" $align="center" $mgBottom="3">
+        <Heading $variant="h3" $align="center" $mgBottom="level3">
           Product added to cart
         </Heading>
-        <FlexWrapper $spacing="3">
-          <ProductThumbnail photo={photo} alt={name} productId={productId} width="8" height="8" />
-          <FlexWrapper $direction="column" $align="start" $spacing="1">
-            <PlainText $size="5" data-testid="CartItemAdded-price-and-quantity">
+        <FlexWrapper $spacing="level3">
+          <ProductThumbnail isPhoto={photo} alt={name} productId={productId} width="8" height="8" />
+          <FlexWrapper $direction="column" $align="start" $spacing="level1">
+            <PlainText $size="level5" data-testid="CartItemAdded-price-and-quantity">
               {formatPrice(price * quantity)}
-              <PlainText $size="2">
+              <PlainText $size="level2">
                 &nbsp;
                 {`(total in the cart ${quantity} x ${formattedPrice})`}
               </PlainText>
             </PlainText>
-            <PlainText $size="3" data-testid="CartItemAdded-quantity-and-name">
-              <PlainText $size="2">{`${quantity} x`}</PlainText>
+            <PlainText $size="level3" data-testid="CartItemAdded-quantity-and-name">
+              <PlainText $size="level2">{`${quantity} x`}</PlainText>
               &nbsp;
               {name}
             </PlainText>
           </FlexWrapper>
         </FlexWrapper>
-        <FlexWrapper $mgTop="3" $justify="center" $spacing="3">
+        <FlexWrapper $mgTop="level3" $justify="center" $spacing="level3">
           <Button $color="blue" clicked={() => onSetModal(null)}>
             Continue shopping
           </Button>

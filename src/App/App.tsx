@@ -71,7 +71,7 @@ function App() {
   }, [onFetchProfile]);
 
   let content = (
-    <FlexWrapper $justify="center" $mgTop="3" data-testid="App-loader">
+    <FlexWrapper $justify="center" $mgTop="level3" data-testid="App-loader">
       <Loader size="big" />
     </FlexWrapper>
   );

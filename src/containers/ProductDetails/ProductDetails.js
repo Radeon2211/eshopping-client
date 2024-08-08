@@ -50,7 +50,7 @@ export default function ProductDetails() {
   if (productDetails === null) {
     pageTitle = 'Offer does not exist - E-Shopping';
     details = (
-      <Heading $variant="h4" $align="center" $lineHeight="4">
+      <Heading $variant="h4" $align="center" $lineHeight="level4">
         Such product does not exist or has already been sold
       </Heading>
     );
@@ -86,17 +86,17 @@ export default function ProductDetails() {
     }
 
     let descriptionSection = (
-      <Heading $variant="h4" $mgTop="3" data-testid="ProductDetails-no-description">
+      <Heading $variant="h4" $mgTop="level3" data-testid="ProductDetails-no-description">
         This product has no description
       </Heading>
     );
     if (description) {
       descriptionSection = (
         <section data-testid="ProductDetails-full-description">
-          <Heading $variant="h4" $mgBottom="2" $mgTop="3">
+          <Heading $variant="h4" $mgBottom="level2" $mgTop="level3">
             Description
           </Heading>
-          <PlainText $size="3" $lineHeight="5">
+          <PlainText $size="3" $lineHeight="level5">
             {description}
           </PlainText>
         </section>
@@ -133,7 +133,7 @@ export default function ProductDetails() {
     let manageButtonsBox = null;
     if (deleteProductBtn || editProductBtn) {
       manageButtonsBox = (
-        <FlexWrapper $mgTop="5" $justify="center" $spacing="3">
+        <FlexWrapper $mgTop="level5" $justify="center" $spacing="level3">
           {editProductBtn}
           {deleteProductBtn}
         </FlexWrapper>
@@ -156,17 +156,17 @@ export default function ProductDetails() {
             </section>
             <section className="data-section">
               <Heading $variant="h4">{name}</Heading>
-              <PlainText $size="2" $mgTop="2" $mgBottom="2">
+              <PlainText $size="level2" $mgTop="level2" $mgBottom="level2">
                 <PlainText $color={theme.colors.light4}>from&nbsp;</PlainText>
                 <Link to={`/user/${seller.username}?p=1`} data-testid="ProductDetails-seller-link">
                   <GreenText>{seller.username}</GreenText>
                 </Link>
               </PlainText>
-              <PlainText $size="2">
+              <PlainText $size="level2">
                 <PlainText $color={theme.colors.light4}>Condition:</PlainText>
                 {` ${conditionText.slice(0, 1).toUpperCase()}${conditionText.slice(1)}`}
               </PlainText>
-              <PlainText $size="6" $spacing="1px" $mgTop="3" $mgBottom="3">
+              <PlainText $size="level6" $spacing="1px" $mgTop="level3" $mgBottom="level3">
                 {formatPrice(price)}
               </PlainText>
               {quantitySoldNode}

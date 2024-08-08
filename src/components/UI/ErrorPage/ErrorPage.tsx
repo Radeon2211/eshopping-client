@@ -21,9 +21,9 @@ export interface ErrorPageProps {
 export default function ErrorPage({ info, icon }: ErrorPageProps) {
   return (
     <Wrapper>
-      <FlexWrapper $align="center" $direction="column" $spacing="3" $mgTop="3">
+      <FlexWrapper $align="center" $direction="column" $spacing="level3" $mgTop="level3">
         {info && (
-          <Heading $variant="h3" $align="center" $lineHeight="4">
+          <Heading $variant="h3" $align="center" $lineHeight="level4">
             {info}
           </Heading>
         )}

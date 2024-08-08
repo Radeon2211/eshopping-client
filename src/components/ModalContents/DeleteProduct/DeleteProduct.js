@@ -32,7 +32,7 @@ export default function DeleteProduct() {
       >
         Are you sure to delete &quot;{productDetails?.name}&quot;?
       </Heading>
-      <FlexWrapper $justify="center" $spacing="3">
+      <FlexWrapper $justify="center" $spacing="level3">
         <Button clicked={() => onSetModal(null)}>Cancel</Button>
         <Button $filled $color="red" clicked={() => onDeleteProduct(productDetails?._id, navigate)}>
           Delete

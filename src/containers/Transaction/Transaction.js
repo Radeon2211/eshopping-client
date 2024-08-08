@@ -56,7 +56,7 @@ export default function Transaction() {
       <>
         <Heading $variant="h3">Transaction</Heading>
         <SideBySide $proportion="3/1" $makeVerticalWhen={1200} data-testid="Transaction-content">
-          <FlexWrapper $direction="column" $align="stretch" $spacing="3">
+          <FlexWrapper $direction="column" $align="stretch" $spacing="level3">
             <DeliveryAddressSection onSetModal={onSetModal} />
             <PlainPanel>
               <Heading $variant="h4">Products</Heading>
@@ -64,7 +64,7 @@ export default function Transaction() {
             </PlainPanel>
           </FlexWrapper>
           <StickyPanel>
-            <FlexWrapper $direction="column" $spacing="2">
+            <FlexWrapper $direction="column" $spacing="level2">
               <ToPayInfo value={roundedToPayValue} />
               <Button $filled clicked={() => onSetModal(ModalType.BUY_PRODUCTS)}>
                 I buy and pay

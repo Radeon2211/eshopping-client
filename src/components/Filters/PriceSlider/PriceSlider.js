@@ -195,7 +195,7 @@ export default function PriceSlider({ dispatchFilters }) {
   return (
     <SC.Wrapper>
       <SC.LabelAndInputs>
-        <PlainText $size="3">Price ($)</PlainText>
+        <PlainText $size="level3">Price ($)</PlainText>
         <div className="inputs">
           <NumberInput
             name="minPrice"

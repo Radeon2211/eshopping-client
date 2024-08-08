@@ -13,7 +13,7 @@ export default function LoggedOutLinks() {
   );
 
   return (
-    <FlexWrapper $width="auto" $spacing="3" data-testid="LoggedOutLinks">
+    <FlexWrapper $width="auto" $spacing="level3" data-testid="LoggedOutLinks">
       <Button clicked={() => onSetModal(ModalType.LOGIN)}>login</Button>
       <Button $filled clicked={() => onSetModal(ModalType.SIGNUP)}>
         signup

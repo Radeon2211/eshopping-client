@@ -15,13 +15,13 @@ const TransactionAndOrderProdItem = React.memo(({ data, orderId }) => {
 
   return (
     <SC.Wrapper data-testid="TransactionAndOrderProdItem">
-      <FlexWrapper $spacing="2">
+      <FlexWrapper $spacing="level2">
         <Link
           to={`/product/${productId}`}
           data-testid="TransactionAndOrderProdItem-product-link-photo"
         >
           <ProductThumbnail
-            photo={photo}
+            isPhoto={photo}
             alt={name}
             productId={productId}
             width="5"
@@ -40,13 +40,16 @@ const TransactionAndOrderProdItem = React.memo(({ data, orderId }) => {
           </span>
           <FlexWrapper $justify="space-between" $align="center" $flex="1">
             <PlainText
-              $size="2"
+              $size="level2"
               $color={theme.colors.light4}
               data-testid="TransactionAndOrderProdItem-product-price-per-piece"
             >
               {`${quantity} x ${formatPrice(price)}`}
             </PlainText>
-            <PlainText $size="4" data-testid="TransactionAndOrderProdItem-product-overall-price">
+            <PlainText
+              $size="level4"
+              data-testid="TransactionAndOrderProdItem-product-overall-price"
+            >
               {formatPrice(roundedOverallPrice)}
             </PlainText>
           </FlexWrapper>

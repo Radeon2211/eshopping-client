@@ -19,10 +19,10 @@ export default function SendVerificationLink() {
 
   return (
     <>
-      <Heading $variant="h4" $mgBottom="3" $lineHeight="4" $align="center">
+      <Heading $variant="h4" $mgBottom="level3" $lineHeight="level4" $align="center">
         Are you sure? Number of emails to be sent is very limited
       </Heading>
-      <FlexWrapper $justify="center" $spacing="3">
+      <FlexWrapper $justify="center" $spacing="level3">
         <Button clicked={() => onSetModal(null)}>Cancel</Button>
         <Button $filled clicked={() => onSendAccountVerificationLink()}>
           Send

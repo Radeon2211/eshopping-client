@@ -26,7 +26,7 @@ export default function ClearCart() {
       <Heading $variant="h4" $align="center">
         Are you sure to do that?
       </Heading>
-      <FlexWrapper $mgTop="3" $justify="center" $spacing="3">
+      <FlexWrapper $mgTop="level3" $justify="center" $spacing="level3">
         <Button $color="blue" clicked={() => onSetModal(null)}>
           cancel
         </Button>

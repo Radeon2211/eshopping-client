@@ -26,17 +26,23 @@ export default function LandingPage() {
       <SC.Gradient />
       <SC.CentralPanel variants={panelVariants} initial="hidden" animate="visible">
         <motion.div variants={panelItemVariants}>
-          <Header size="big" />
+          <Header $size="big" />
         </motion.div>
         <motion.div variants={panelItemVariants}>
           <SC.Slogan>
-            <Heading $variant="h2" $mgTop="4" $lineHeight="4" $mgBottom="5" $align="center">
+            <Heading
+              $variant="h2"
+              $mgTop="level4"
+              $lineHeight="level4"
+              $mgBottom="level5"
+              $align="center"
+            >
               <span>Buy and sell</span>
               <span>whatever you want</span>
             </Heading>
           </SC.Slogan>
         </motion.div>
-        <FlexWrapper $spacing="3" $justify="center">
+        <FlexWrapper $spacing="level3" $justify="center">
           <motion.div variants={panelItemVariants}>
             <Button $size="big" clicked={() => onSetModal(ModalType.LOGIN)}>
               Login
@@ -49,7 +55,7 @@ export default function LandingPage() {
           </motion.div>
         </FlexWrapper>
         <motion.div variants={panelItemVariants}>
-          <Heading $variant="h3" $mgTop="3" $mgBottom="3">
+          <Heading $variant="h3" $mgTop="level3" $mgBottom="level3">
             OR
           </Heading>
         </motion.div>

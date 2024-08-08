@@ -23,7 +23,7 @@ export default function Form(props) {
   );
 
   const error = formError ? (
-    <PlainText $size="3" $mgTop="3" $color={theme.colors.red} data-testid="Form-error">
+    <PlainText $size="level3" $mgTop="level3" $color={theme.colors.red} data-testid="Form-error">
       {formError}
     </PlainText>
   ) : null;
@@ -36,7 +36,7 @@ export default function Form(props) {
   let cancelButton = null;
   if (cancellable) {
     cancelButton = (
-      <PlainText $display="block" $mgRight="3">
+      <PlainText $display="block" $mgRight="level3">
         <Button clicked={() => onSetModal(null)}>cancel</Button>
       </PlainText>
     );
@@ -45,7 +45,7 @@ export default function Form(props) {
   let buttonsBox = null;
   if (btnText) {
     buttonsBox = (
-      <FlexWrapper $align="center" $justify="flex-end" $spacing="3">
+      <FlexWrapper $align="center" $justify="flex-end" $spacing="level3">
         {cancelButton}
         <Button
           $filled

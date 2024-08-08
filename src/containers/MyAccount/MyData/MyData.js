@@ -52,7 +52,7 @@ export default function MyData() {
     if (isAdmin) {
       adminContent = (
         <FlexWrapper
-          $spacing="3"
+          $spacing="level3"
           className="actions"
           $justify="center"
           data-testid="MyData-admin-content"
@@ -69,7 +69,7 @@ export default function MyData() {
     if (!isAccountActive) {
       pendingUserActions = (
         <FlexWrapper
-          $spacing="3"
+          $spacing="level3"
           $justify="center"
           className="actions"
           data-testid="MyData-pending-user-actions"
@@ -111,7 +111,7 @@ export default function MyData() {
           clickHandler={isAccountActive ? () => onSetModal(ModalType.CHANGE_PHONE_NUMBER) : null}
         />
         {pendingUserActions}
-        <FlexWrapper $spacing="3" className="actions" $justify="center">
+        <FlexWrapper $spacing="level3" className="actions" $justify="center">
           {isAccountActive && (
             <Button clicked={() => onSetModal(ModalType.CHANGE_PASSWORD)}>Change password</Button>
           )}
@@ -126,7 +126,7 @@ export default function MyData() {
     if (!isAccountActive) {
       pendingUserContent = (
         <PlainPanel data-testid="MyData-pending-user-content">
-          <PlainText $size="3" $lineHeight="5">
+          <PlainText $size="level3" $lineHeight="level5">
             You need to activate your account to unlock all app functionalities. Verification link
             is active for 10 minutes. You can resend it below. If you do not activate your account
             within 1 hour, account will be deleted permanently.
@@ -143,7 +143,7 @@ export default function MyData() {
         description="Check out your account informations"
       />
       <Heading $variant="h3">My data</Heading>
-      <FlexWrapper $direction="column" $spacing="3">
+      <FlexWrapper $direction="column" $spacing="level3">
         {pendingUserContent}
         <PlainPanel>
           <SC.Wrapper>{dataAndActions}</SC.Wrapper>

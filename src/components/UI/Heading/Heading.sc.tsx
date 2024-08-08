@@ -36,14 +36,13 @@ const StyledHeading = styled.h1<HeadingProps>`
     }
   }}
 
-  margin-top: ${({ $mgTop, theme }) => ($mgTop ? theme.spacings[`level${$mgTop}`] : '0')};
+  margin-top: ${({ $mgTop, theme }) => ($mgTop ? theme.spacings[$mgTop] : '0')};
   text-align: ${({ $align }) => $align};
 
   ${({ $mgBottom, theme }) => {
     if ($mgBottom) {
-      const level = `level${$mgBottom}`;
       return `
-        margin-bottom: ${theme.spacings[level]};
+        margin-bottom: ${theme.spacings[$mgBottom]};
       `;
     }
     return ``;
@@ -51,9 +50,8 @@ const StyledHeading = styled.h1<HeadingProps>`
 
   ${({ $lineHeight, theme }) => {
     if ($lineHeight) {
-      const level = `level${$lineHeight}`;
       return `
-        line-height: ${theme.lineHeights[level]};
+        line-height: ${theme.lineHeights[$lineHeight]};
       `;
     }
     return ``;

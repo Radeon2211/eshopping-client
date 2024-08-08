@@ -12,7 +12,7 @@ export default function DeliveryAddressSection({ onSetModal }) {
 
   return (
     <PlainPanel data-testid="DeliveryAddressSection">
-      <FlexWrapper $direction="column" $align="start" $spacing="3">
+      <FlexWrapper $direction="column" $align="start" $spacing="level3">
         <Heading $variant="h4">Delivery address</Heading>
         <DeliveryAddress data={deliveryAddress} />
         <Button clicked={() => onSetModal(ModalType.CHANGE_DELIVERY_ADDRESS)}>

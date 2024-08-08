@@ -31,7 +31,7 @@ export default function ResetPassword() {
     >
       {({ dirty }) => (
         <Form btnText="send" headingText="Reset your password" isValid={dirty} cancellable>
-          <PlainText $size="1" $mgBottom="3">
+          <PlainText $size="level1" $mgBottom="level3">
             We will send you an email with verification link. After clicking it, you receive another
             email with new password.
           </PlainText>
@@ -48,7 +48,7 @@ export default function ResetPassword() {
             }}
             label="Email"
           />
-          <PlainText $size="1" $mgBottom="3" role="link">
+          <PlainText $size="level1" $mgBottom="level3" role="link">
             <GreenText onClick={() => onSetModal(ModalType.LOGIN)}>Login</GreenText>
           </PlainText>
         </Form>

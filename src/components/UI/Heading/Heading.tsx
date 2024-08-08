@@ -1,14 +1,16 @@
 import React from 'react';
 import * as SC from './Heading.sc';
 import { PropsWithChildren } from '../../../shared/types/types';
+import { ThemeLineHeight, ThemeSpacing } from '../../../styled/theme';
 
 export interface HeadingProps {
   $variant: string;
   $align?: string;
-  $mgBottom?: string;
-  $mgTop?: string;
-  $lineHeight?: string;
+  $mgBottom?: ThemeSpacing;
+  $mgTop?: ThemeSpacing;
+  $lineHeight?: ThemeLineHeight;
   $fontSize?: string;
+  className?: string;
 }
 
 const Heading = React.memo((props: PropsWithChildren<HeadingProps>) => {

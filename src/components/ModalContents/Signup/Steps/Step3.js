@@ -40,7 +40,7 @@ export default function Step3(props) {
           exit="hidden"
           data-testid="Step3"
         >
-          <PlainText $size="1" $mgBottom="3" $textAlign="justify">
+          <PlainText $size="level1" $mgBottom="level3" $textAlign="justify">
             These data will be visible only to user you will place order with (and you can change it
             to specific order)
           </PlainText>

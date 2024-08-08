@@ -57,7 +57,7 @@ export default function OtherUser() {
   if (otherUser === null) {
     pageTitle = 'User not found - E-Shopping';
     content = (
-      <Heading $variant="h4" $align="center" $lineHeight="4" data-testid="OtherUser-error">
+      <Heading $variant="h4" $align="center" $lineHeight="level4" data-testid="OtherUser-error">
         Such user does not exist or problem during fetching occurred
       </Heading>
     );
@@ -67,21 +67,21 @@ export default function OtherUser() {
     pageTitle = `User "${otherUserUsername}" - E-Shopping`;
 
     let contactData = (
-      <Heading $variant="h4" $mgBottom="3" data-testid="OtherUser-data-private">
+      <Heading $variant="h4" $mgBottom="level3" data-testid="OtherUser-data-private">
         This user has his contact data set to private
       </Heading>
     );
     if (email || phone) {
       contactData = (
-        <FlexWrapper $wrap="wrap" $mgBottom="3" $spacing="3">
+        <FlexWrapper $wrap="wrap" $mgBottom="level3" $spacing="level3">
           {email && (
-            <PlainText $size="4" data-testid="OtherUser-email-wrapper">
+            <PlainText $size="level4" data-testid="OtherUser-email-wrapper">
               <PlainText $weight="700">Email:&nbsp;</PlainText>
               {email}
             </PlainText>
           )}
           {phone && (
-            <PlainText $size="4" data-testid="OtherUser-phone-wrapper">
+            <PlainText $size="level4" data-testid="OtherUser-phone-wrapper">
               <PlainText $weight="700">Phone number:&nbsp;</PlainText>
               {phone}
             </PlainText>

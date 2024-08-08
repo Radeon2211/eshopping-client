@@ -33,7 +33,7 @@ export default function LoadingOverlay({ alignLoader, loaderSize, disableText })
   let info = false;
   if (isInfoVisible && !disableText) {
     info = (
-      <PlainText $size="2" $mgTop="2" data-testid="LoadingOverlay-info">
+      <PlainText $size="level2" $mgTop="level2" data-testid="LoadingOverlay-info">
         Just a second
       </PlainText>
     );

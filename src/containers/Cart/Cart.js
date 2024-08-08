@@ -79,7 +79,7 @@ export default function Cart() {
               />
             </PlainPanel>
             <StickyPanel>
-              <FlexWrapper $direction="column" $spacing="2">
+              <FlexWrapper $direction="column" $spacing="level2">
                 <ToPayInfo value={roundedCartValue} />
                 <Button
                   $filled
@@ -98,13 +98,13 @@ export default function Cart() {
     } else {
       content = (
         <SC.EmptyCart data-testid="Cart-empty-cart">
-          <Heading $variant="h3" $mgBottom="3" $align="center" $lineHeight="4">
+          <Heading $variant="h3" $mgBottom="level3" $align="center" $lineHeight="level4">
             Your shopping cart is empty. Check out the&nbsp;
             <Link to={defaultAppPath} data-testid="Cart-default-path-link">
               <GreenText>latest offers</GreenText>
             </Link>
           </Heading>
-          <Heading $variant="h4" $align="center" $lineHeight="4" $mgBottom="3">
+          <Heading $variant="h4" $align="center" $lineHeight="level4" $mgBottom="level3">
             You can have up to 50 products in the cart
           </Heading>
           <EmptyCart className="empty-cart-image" />

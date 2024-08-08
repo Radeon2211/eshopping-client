@@ -85,7 +85,7 @@ export default function CartItem({ data, isCartLoading }) {
     <SC.Wrapper data-testid="CartItem">
       <div className="photo-and-name">
         <Link to={`/product/${productId}`} data-testid="CartItem-product-link-photo">
-          <ProductThumbnail photo={photo} alt={name} productId={productId} width="7" height="7" />
+          <ProductThumbnail isPhoto={photo} alt={name} productId={productId} width="7" height="7" />
         </Link>
         <span className="name">
           <Link to={`/product/${productId}`} data-testid="CartItem-product-link-name">
@@ -105,16 +105,16 @@ export default function CartItem({ data, isCartLoading }) {
             blured={inputBlurHandle}
             focused={() => setIsInputFocused(true)}
           />
-          <PlainText $size="2" $mgLeft="1" data-testid="CartItem-available-quantity">
+          <PlainText $size="level2" $mgLeft="level1" data-testid="CartItem-available-quantity">
             {`of ${productQuantity}`}
           </PlainText>
         </div>
         <div className="price-box">
-          <PlainText $size="5" data-testid="CartItem-total-price">
+          <PlainText $size="level5" data-testid="CartItem-total-price">
             {formatPrice(price * quantity)}
           </PlainText>
           {quantity > 1 && (
-            <PlainText $size="2" $textAlign="right" data-testid="CartItem-price-per-piece">
+            <PlainText $size="level2" $textAlign="right" data-testid="CartItem-price-per-piece">
               {`per piece ${formatPrice(price)}`}
             </PlainText>
           )}

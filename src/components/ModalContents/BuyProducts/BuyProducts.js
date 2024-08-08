@@ -23,10 +23,10 @@ export default function BuyProducts() {
 
   return (
     <>
-      <Heading $variant="h3" $lineHeight="3" $align="center" data-testid="BuyProducts-heading">
+      <Heading $variant="h3" $lineHeight="level3" $align="center" data-testid="BuyProducts-heading">
         Are you sure?
       </Heading>
-      <FlexWrapper $justify="center" $spacing="3">
+      <FlexWrapper $justify="center" $spacing="level3">
         <Button clicked={() => onSetModal(null)}>Cancel</Button>
         <Button $filled clicked={() => onBuyProducts(navigate, lastLocation?.pathname)}>
           Confirm

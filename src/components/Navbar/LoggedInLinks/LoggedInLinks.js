@@ -39,8 +39,8 @@ export default function LoggedInLinks({ username, status }) {
   const showUsername = (name) => {
     return (
       <PlainText
-        $size="3"
-        $mgRight="1"
+        $size="level3"
+        $mgRight="level1"
         $maxWidth="15rem"
         $overflow="hidden"
         $textOverflow="ellipsis"
