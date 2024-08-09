@@ -120,11 +120,11 @@ export default function Step2(props) {
             />
           </SideBySide>
           <PlainText
-            $size="1"
-            $mgTop="2"
+            $size="level1"
+            $mgTop="level2"
             $extraMgTop="0.4rem"
             $minusMgTop
-            $mgBottom="3"
+            $mgBottom="level3"
             $textAlign="justify"
             $display="block"
           >
@@ -142,11 +142,11 @@ export default function Step2(props) {
             label="Hide my phone number from others"
           />
           <PlainText
-            $size="1"
-            $mgTop="2"
+            $size="level1"
+            $mgTop="level2"
             $extraMgTop="0.4rem"
             $minusMgTop
-            $mgBottom="3"
+            $mgBottom="level3"
             $textAlign="justify"
             $display="block"
           >

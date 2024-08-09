@@ -106,7 +106,7 @@ export default function Step3(props) {
             isValid={Boolean(!errors.country || values.country)}
             isTouched={touched.country}
           />
-          <PlainText $size="1" $mgBottom="3" $textAlign="justify">
+          <PlainText $size="level1" $mgBottom="level3" $textAlign="justify">
             We will send verification link to email provided by you. It will be active for 10
             minutes, but you will be able to resend the activation link later. If you do not
             activate your account within 1 hour, account will be deleted permanently

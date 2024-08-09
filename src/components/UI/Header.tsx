@@ -3,10 +3,10 @@ import logo from '../../images/logo.png';
 import Heading from './Heading/Heading';
 
 interface HeaderProps {
-  $size: 'small' | 'big';
+  size: 'small' | 'big';
 }
 
-const Wrapper = styled.header<HeaderProps>`
+const Wrapper = styled.header<{ $size: HeaderProps['size'] }>`
   display: flex;
 
   & .logo {
@@ -26,11 +26,11 @@ const Wrapper = styled.header<HeaderProps>`
   }
 `;
 
-export default function Header({ $size }: HeaderProps) {
+export default function Header({ size }: HeaderProps) {
   return (
-    <Wrapper $size={$size}>
+    <Wrapper $size={size}>
       <img src={logo} alt="E-Shopping" className="logo" />
-      <Heading $variant="h1" className="heading" $fontSize={$size}>
+      <Heading $variant="h1" className="heading" $fontSize={size}>
         shopping
       </Heading>
     </Wrapper>

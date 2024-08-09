@@ -21,7 +21,7 @@ export default function Navbar({ userProfile }: NavbarProps) {
   return (
     <SC.Wrapper data-testid="Navbar">
       <Link to={defaultAppPath} data-testid="Navbar-header-link">
-        <Header $size="small" />
+        <Header size="small" />
       </Link>
       <SearchForm />
       {authNav}

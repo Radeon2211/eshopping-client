@@ -22,6 +22,7 @@ exports[`<DeliveryAddress /> should render five <PlainText /> with correct value
   font-style: normal;
   font-weight: normal;
   letter-spacing: 0px;
+  line-height: 1.2;
   margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;

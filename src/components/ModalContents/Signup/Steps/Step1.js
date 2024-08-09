@@ -73,11 +73,11 @@ export default function Step1(props) {
             label="Hide my email address from others"
           />
           <PlainText
-            $size="1"
-            $mgTop="2"
+            $size="level1"
+            $mgTop="level2"
             $extraMgTop="0.4rem"
             $minusMgTop
-            $mgBottom="3"
+            $mgBottom="level3"
             $textAlign="justify"
             $display="block"
           >
@@ -100,11 +100,11 @@ export default function Step1(props) {
             isTouched={touched.username}
           />
           <PlainText
-            $size="1"
-            $mgTop="2"
+            $size="level1"
+            $mgTop="level2"
             $extraMgTop="0.4rem"
             $minusMgTop
-            $mgBottom="3"
+            $mgBottom="level3"
             $textAlign="justify"
             $display="block"
           >

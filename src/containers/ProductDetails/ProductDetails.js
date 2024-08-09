@@ -74,8 +74,8 @@ export default function ProductDetails() {
     if (quantitySold >= 1) {
       quantitySoldNode = (
         <PlainText
-          $size="2"
-          $mgBottom="3"
+          $size="level2"
+          $mgBottom="level3"
           $color={theme.colors.light4}
           data-testid="ProductDetails-quantity-sold"
         >
@@ -96,7 +96,7 @@ export default function ProductDetails() {
           <Heading $variant="h4" $mgBottom="level2" $mgTop="level3">
             Description
           </Heading>
-          <PlainText $size="3" $lineHeight="level5">
+          <PlainText $size="level3" $lineHeight="level5">
             {description}
           </PlainText>
         </section>

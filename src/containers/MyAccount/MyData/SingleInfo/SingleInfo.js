@@ -11,7 +11,7 @@ export default function SingleInfo({ name, content, clickHandler }) {
     contentNode = (
       <FlexWrapper $direction="column" $spacing="level1">
         {content.map((value, idx) => (
-          <PlainText key={idx} $size="3" $wordBreak="break-all">
+          <PlainText key={idx} $size="level3" $wordBreak="break-all">
             {value}
           </PlainText>
         ))}

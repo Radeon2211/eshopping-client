@@ -26,7 +26,7 @@ export default function LandingPage() {
       <SC.Gradient />
       <SC.CentralPanel variants={panelVariants} initial="hidden" animate="visible">
         <motion.div variants={panelItemVariants}>
-          <Header $size="big" />
+          <Header size="big" />
         </motion.div>
         <motion.div variants={panelItemVariants}>
           <SC.Slogan>
