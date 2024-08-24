@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
-import { inputKinds } from '../../../shared/constants';
+import { InputKind } from '../../../shared/types/types';
 
 export default function DeleteAccount() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function DeleteAccount() {
           cancellable
         >
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'password',
               name: 'currentPassword',

@@ -5,8 +5,8 @@ import Input from '../../../UI/Input/Input';
 import Button from '../../../UI/Button/Button';
 import PlainText from '../../../UI/PlainText';
 import { stepFormVariants } from '../Signup.sc';
-import { inputKinds } from '../../../../shared/constants';
 import * as propTypes from '../../../../shared/propTypes';
+import { InputKind } from '../../../../shared/types/types';
 
 export default function Step1(props) {
   const { isVisible, goToNextStep, errors, values, touched, setFieldTouched } = props;
@@ -34,7 +34,7 @@ export default function Step1(props) {
           data-testid="Step1"
         >
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'email',
               name: 'email',
@@ -62,7 +62,7 @@ export default function Step1(props) {
             someone else&apos;s email, that person will have access to that account.
           </PlainText>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'checkbox',
               name: 'hideEmail',
@@ -85,7 +85,7 @@ export default function Step1(props) {
             visible to people who will place order with you)
           </PlainText>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'text',
               name: 'username',
@@ -111,7 +111,7 @@ export default function Step1(props) {
             Username will be visible to everyone and cannot be changed
           </PlainText>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'password',
               name: 'password',

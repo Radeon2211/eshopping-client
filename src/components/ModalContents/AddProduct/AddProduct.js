@@ -8,8 +8,9 @@ import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import UploadPhoto from '../../UploadPhoto/UploadPhoto';
 import SideBySide from '../../UI/SideBySide';
-import { inputKinds, productRules } from '../../../shared/constants';
+import { productRules } from '../../../shared/constants';
 import { ProductCondition } from '../../../shared/types/enums';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object(productRules);
 
@@ -45,7 +46,7 @@ export default function AddProduct() {
           cancellable
         >
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'text',
               name: 'name',
@@ -62,7 +63,7 @@ export default function AddProduct() {
           />
           <SideBySide $proportion="1/1">
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'number',
                 name: 'price',
@@ -80,7 +81,7 @@ export default function AddProduct() {
               isTouched={touched.price}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'number',
                 name: 'quantity',
@@ -97,7 +98,7 @@ export default function AddProduct() {
             />
           </SideBySide>
           <Input
-            kind={inputKinds.RADIO}
+            kind={InputKind.RADIO}
             config={{
               name: 'condition',
               value: ProductCondition.NOT_APPLICABLE,
@@ -128,7 +129,7 @@ export default function AddProduct() {
             label="Condition"
           />
           <Input
-            kind={inputKinds.TEXTAREA}
+            kind={InputKind.TEXTAREA}
             config={{
               name: 'description',
               id: 'description',

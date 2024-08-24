@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
-import { anyStringRule, inputKinds, userRules } from '../../../shared/constants';
+import { anyStringRule, userRules } from '../../../shared/constants';
 import PlainText from '../../UI/PlainText';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object({
   email: userRules.email,
@@ -42,7 +43,7 @@ export default function ChangeEmail() {
             for 10 minutes. To resend an email you will need to fill this form again.
           </PlainText>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'email',
               name: 'email',
@@ -58,7 +59,7 @@ export default function ChangeEmail() {
             label="New email"
           />
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'password',
               name: 'currentPassword',

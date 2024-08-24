@@ -30,6 +30,13 @@ type ProfileContacts = {
   phone: boolean;
 };
 
+export enum InputKind {
+  INPUT = 'INPUT',
+  TEXTAREA = 'TEXTAREA',
+  SELECT = 'SELECT',
+  RADIO = 'RADIO',
+}
+
 export enum ProfileStatus {
   ACTIVE = 'active',
   PENDING = 'pending',

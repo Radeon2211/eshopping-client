@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
-import { inputKinds, userRules } from '../../../shared/constants';
+import { userRules } from '../../../shared/constants';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object({
   hideEmail: userRules.hideEmail,
@@ -45,7 +46,7 @@ export default function ChangeContacts() {
           cancellable
         >
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'checkbox',
               name: 'hideEmail',
@@ -56,7 +57,7 @@ export default function ChangeContacts() {
             label="Hide my email address from others"
           />
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'checkbox',
               name: 'hidePhone',

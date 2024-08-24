@@ -7,8 +7,9 @@ import Button from '../../../UI/Button/Button';
 import SideBySide from '../../../UI/SideBySide';
 import PlainText from '../../../UI/PlainText';
 import { stepFormVariants } from '../Signup.sc';
-import { inputKinds, listOfCountries } from '../../../../shared/constants';
+import { listOfCountries } from '../../../../shared/constants';
 import * as propTypes from '../../../../shared/propTypes';
+import { InputKind } from '../../../../shared/types/types';
 
 export default function Step3(props) {
   const { isVisible, goToPrevStep, errors, touched, setFieldTouched, setFieldValue, values } =
@@ -45,7 +46,7 @@ export default function Step3(props) {
             to specific order)
           </PlainText>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'text',
               name: 'street',
@@ -62,7 +63,7 @@ export default function Step3(props) {
           />
           <SideBySide $proportion="1/3">
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'zipCode',
@@ -77,7 +78,7 @@ export default function Step3(props) {
               isTouched={touched.zipCode}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'city',
@@ -93,7 +94,7 @@ export default function Step3(props) {
             />
           </SideBySide>
           <Input
-            kind={inputKinds.SELECT}
+            kind={InputKind.SELECT}
             config={{
               name: 'country',
               id: 'country',

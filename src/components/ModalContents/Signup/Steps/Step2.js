@@ -6,8 +6,9 @@ import Button from '../../../UI/Button/Button';
 import SideBySide from '../../../UI/SideBySide';
 import PlainText from '../../../UI/PlainText';
 import { stepFormVariants } from '../Signup.sc';
-import { inputKinds, listOfAreaCodes } from '../../../../shared/constants';
+import { listOfAreaCodes } from '../../../../shared/constants';
 import * as propTypes from '../../../../shared/propTypes';
+import { InputKind } from '../../../../shared/types/types';
 
 export default function Step2(props) {
   const {
@@ -46,7 +47,7 @@ export default function Step2(props) {
           data-testid="Step2"
         >
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'text',
               name: 'firstName',
@@ -62,7 +63,7 @@ export default function Step2(props) {
             isTouched={touched.firstName}
           />
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'text',
               name: 'lastName',
@@ -90,7 +91,7 @@ export default function Step2(props) {
           </PlainText>
           <SideBySide $proportion="1/1">
             <Input
-              kind={inputKinds.SELECT}
+              kind={InputKind.SELECT}
               config={{
                 name: 'phonePrefix',
                 id: 'phonePrefix',
@@ -104,7 +105,7 @@ export default function Step2(props) {
               isTouched={touched.phonePrefix}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'phoneNumber',
@@ -131,7 +132,7 @@ export default function Step2(props) {
             You can change phone number to specific order
           </PlainText>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'checkbox',
               name: 'hidePhone',

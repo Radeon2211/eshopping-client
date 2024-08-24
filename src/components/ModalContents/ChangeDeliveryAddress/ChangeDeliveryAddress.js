@@ -6,8 +6,9 @@ import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import SideBySide from '../../UI/SideBySide';
-import { inputKinds, userRules, listOfCountries, listOfAreaCodes } from '../../../shared/constants';
+import { userRules, listOfCountries, listOfAreaCodes } from '../../../shared/constants';
 import { getPhonePrefixAndNumber, getChangedValues } from '../../../shared/utility/utility';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object({
   firstName: userRules.firstName,
@@ -95,7 +96,7 @@ export default function ChangeDeliveryAddress() {
             cancellable
           >
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'firstName',
@@ -111,7 +112,7 @@ export default function ChangeDeliveryAddress() {
               isTouched={touched.firstName}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'lastName',
@@ -126,7 +127,7 @@ export default function ChangeDeliveryAddress() {
               isTouched={touched.lastName}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'street',
@@ -142,7 +143,7 @@ export default function ChangeDeliveryAddress() {
             />
             <SideBySide $proportion="1/3">
               <Input
-                kind={inputKinds.INPUT}
+                kind={InputKind.INPUT}
                 config={{
                   type: 'text',
                   name: 'zipCode',
@@ -157,7 +158,7 @@ export default function ChangeDeliveryAddress() {
                 isTouched={touched.zipCode}
               />
               <Input
-                kind={inputKinds.INPUT}
+                kind={InputKind.INPUT}
                 config={{
                   type: 'text',
                   name: 'city',
@@ -173,7 +174,7 @@ export default function ChangeDeliveryAddress() {
               />
             </SideBySide>
             <Input
-              kind={inputKinds.SELECT}
+              kind={InputKind.SELECT}
               config={{
                 name: 'country',
                 id: 'country',
@@ -188,7 +189,7 @@ export default function ChangeDeliveryAddress() {
             />
             <SideBySide $proportion="1/1">
               <Input
-                kind={inputKinds.SELECT}
+                kind={InputKind.SELECT}
                 config={{
                   name: 'phonePrefix',
                   id: 'phonePrefix',
@@ -202,7 +203,7 @@ export default function ChangeDeliveryAddress() {
                 isTouched={touched.phonePrefix}
               />
               <Input
-                kind={inputKinds.INPUT}
+                kind={InputKind.INPUT}
                 config={{
                   type: 'text',
                   name: 'phoneNumber',
@@ -218,7 +219,7 @@ export default function ChangeDeliveryAddress() {
               />
             </SideBySide>
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'checkbox',
                 name: 'onlyCurrentOrders',

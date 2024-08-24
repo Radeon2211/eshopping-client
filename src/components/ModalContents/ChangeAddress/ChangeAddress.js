@@ -6,8 +6,9 @@ import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import SideBySide from '../../UI/SideBySide';
-import { inputKinds, userRules, listOfCountries } from '../../../shared/constants';
+import { userRules, listOfCountries } from '../../../shared/constants';
 import { getChangedValues } from '../../../shared/utility/utility';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object({
   street: userRules.street,
@@ -54,7 +55,7 @@ export default function ChangeAddress() {
           cancellable
         >
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'text',
               name: 'street',
@@ -71,7 +72,7 @@ export default function ChangeAddress() {
           />
           <SideBySide $proportion="1/3">
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'zipCode',
@@ -86,7 +87,7 @@ export default function ChangeAddress() {
               isTouched={touched.zipCode}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'city',
@@ -102,7 +103,7 @@ export default function ChangeAddress() {
             />
           </SideBySide>
           <Input
-            kind={inputKinds.SELECT}
+            kind={InputKind.SELECT}
             config={{
               name: 'country',
               id: 'country',

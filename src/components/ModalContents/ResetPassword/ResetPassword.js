@@ -5,9 +5,8 @@ import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import PlainText from '../../UI/PlainText';
-import { inputKinds } from '../../../shared/constants';
 import { GreenText } from '../../../styled/components';
-import { ModalType } from '../../../shared/types/types';
+import { InputKind, ModalType } from '../../../shared/types/types';
 
 export default function ResetPassword() {
   const dispatch = useDispatch();
@@ -36,7 +35,7 @@ export default function ResetPassword() {
             email with new password.
           </PlainText>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'email',
               name: 'email',

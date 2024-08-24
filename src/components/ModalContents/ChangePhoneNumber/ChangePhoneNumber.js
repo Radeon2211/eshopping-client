@@ -6,8 +6,9 @@ import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import SideBySide from '../../UI/SideBySide';
-import { inputKinds, userRules, listOfAreaCodes } from '../../../shared/constants';
+import { userRules, listOfAreaCodes } from '../../../shared/constants';
 import { getPhonePrefixAndNumber } from '../../../shared/utility/utility';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object({
   phonePrefix: userRules.phonePrefix,
@@ -46,7 +47,7 @@ export default function ChangePhoneNumber() {
         >
           <SideBySide $proportion="1/1">
             <Input
-              kind={inputKinds.SELECT}
+              kind={InputKind.SELECT}
               config={{
                 name: 'phonePrefix',
                 id: 'phonePrefix',
@@ -60,7 +61,7 @@ export default function ChangePhoneNumber() {
               isTouched={touched.phonePrefix}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'text',
                 name: 'phoneNumber',

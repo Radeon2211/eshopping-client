@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
-import { anyStringRule, inputKinds, userRules } from '../../../shared/constants';
+import { anyStringRule, userRules } from '../../../shared/constants';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object({
   currentPassword: anyStringRule,
@@ -38,7 +39,7 @@ export default function ChangePassword() {
           cancellable
         >
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'password',
               name: 'currentPassword',
@@ -53,7 +54,7 @@ export default function ChangePassword() {
             label="Current password"
           />
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'password',
               name: 'password',

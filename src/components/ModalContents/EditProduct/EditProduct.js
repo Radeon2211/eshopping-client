@@ -7,9 +7,10 @@ import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import UploadPhoto from '../../UploadPhoto/UploadPhoto';
 import SideBySide from '../../UI/SideBySide';
-import { inputKinds, productRules } from '../../../shared/constants';
+import { productRules } from '../../../shared/constants';
 import { getChangedValues } from '../../../shared/utility/utility';
 import { ProductCondition } from '../../../shared/types/enums';
+import { InputKind } from '../../../shared/types/types';
 
 const validationSchema = Yup.object(productRules);
 
@@ -43,7 +44,7 @@ export default function EditProduct() {
       {({ errors, touched, dirty, isValid, setFieldTouched, setFieldValue, values }) => (
         <Form btnText="Edit" headingText="Edit a product" isValid={dirty && isValid} cancellable>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'text',
               name: 'name',
@@ -60,7 +61,7 @@ export default function EditProduct() {
           />
           <SideBySide $proportion="1/1">
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'number',
                 name: 'price',
@@ -78,7 +79,7 @@ export default function EditProduct() {
               isTouched={touched.price}
             />
             <Input
-              kind={inputKinds.INPUT}
+              kind={InputKind.INPUT}
               config={{
                 type: 'number',
                 name: 'quantity',
@@ -95,7 +96,7 @@ export default function EditProduct() {
             />
           </SideBySide>
           <Input
-            kind={inputKinds.RADIO}
+            kind={InputKind.RADIO}
             config={{
               name: 'condition',
               value: ProductCondition.NOT_APPLICABLE,
@@ -126,7 +127,7 @@ export default function EditProduct() {
             label="Condition"
           />
           <Input
-            kind={inputKinds.TEXTAREA}
+            kind={InputKind.TEXTAREA}
             config={{
               name: 'description',
               id: 'description',

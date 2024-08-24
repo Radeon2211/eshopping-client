@@ -5,9 +5,8 @@ import * as actions from '../../../store/actions/indexActions';
 import Form from '../../UI/Form/Form';
 import Input from '../../UI/Input/Input';
 import PlainText from '../../UI/PlainText';
-import { inputKinds } from '../../../shared/constants';
 import { GreenText } from '../../../styled/components';
-import { ModalType } from '../../../shared/types/types';
+import { InputKind, ModalType } from '../../../shared/types/types';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ export default function Login() {
       {({ dirty }) => (
         <Form btnText="login" headingText="Login to your account" isValid={dirty} cancellable>
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'email',
               name: 'email',
@@ -43,7 +42,7 @@ export default function Login() {
             label="Email"
           />
           <Input
-            kind={inputKinds.INPUT}
+            kind={InputKind.INPUT}
             config={{
               type: 'password',
               name: 'password',
