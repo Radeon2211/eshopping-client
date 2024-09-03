@@ -12,7 +12,11 @@ export const getPhonePrefixAndNumber = (phone: string) => {
 };
 
 type getChangedValuesParam = {
-  [key: string]: string | { label: string; value: string }; // { label, value } object as value for "country" and "phonePrefix" form fields
+  [key: string]: unknown | { label: string; value: string }; // { label, value } object as value for "country" and "phonePrefix" form fields
+};
+
+const hasValueInObject = (obj: unknown): obj is { value: unknown } => {
+  return !!obj && typeof obj === 'object' && 'value' in obj;
 };
 
 export const getChangedValues = (
@@ -23,6 +27,7 @@ export const getChangedValues = (
     .filter(([key, value]) => {
       const initialValue = initialValues[key];
       if (
+        hasValueInObject(value) &&
         typeof value === 'object' &&
         value !== null &&
         initialValue &&
@@ -134,7 +139,7 @@ export class MockFile {
     name: string = 'mock.png',
     size: number = 1024,
     mimeType: string = 'image/png',
-  ): Blob {
+  ): File {
     const range = (count: number): string => {
       let output = '';
       for (let i = 0; i < count; i += 1) {
@@ -150,7 +155,11 @@ export class MockFile {
       writable: false,
     });
 
-    return blob;
+    const file = new File([blob], name, {
+      type: mimeType,
+    });
+
+    return file;
   }
 }
 

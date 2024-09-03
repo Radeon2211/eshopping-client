@@ -82,7 +82,10 @@ export const addProduct = (productData: AddProductForm, currentPath: string): Ty
   };
 };
 
-export const editProduct = (productData: AddProductForm, productId: string): TypedThunkAction => {
+export const editProduct = (
+  productData: Partial<AddProductForm>,
+  productId: string,
+): TypedThunkAction => {
   return async (dispatch) => {
     try {
       dispatch(uiActions.formStart());

@@ -22,10 +22,13 @@ export interface InputProps {
       value: string;
       label: string;
       checked: boolean;
+      'data-testid'?: string;
     }[];
     onInput?: () => void;
     setFieldValue?: (field: string, value: unknown, shouldValidate?: boolean) => void;
     setFieldTouched?: (field: string, isTouched?: boolean, shouldValidate?: boolean) => void;
+    maxRows?: number;
+    'data-testid'?: string;
   };
   label: string;
   isValid?: boolean;

@@ -2,6 +2,7 @@ import { AxiosError } from 'axios';
 import { AuthReducerState } from '../../store/reducers/authReducer/authReducer';
 import { ProductReducerState } from '../../store/reducers/productReducer/productReducer';
 import { UiReducerState } from '../../store/reducers/uiReducer/uiReducer';
+import { ProductCondition } from './enums';
 
 export type ApiErrorDataErrorObj = {
   properties: {
@@ -128,7 +129,7 @@ export type Product = {
   name: string;
   price: number;
   quantity: number;
-  condition: string;
+  condition: ProductCondition;
   description: string;
   seller: SellerBuyerUser;
   createdAt: string;

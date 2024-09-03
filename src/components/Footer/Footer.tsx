@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import * as actions from '../../store/actions/indexActions';
 import MyIcon from '../UI/MyIcon';
 import PlainText from '../UI/PlainText';
@@ -9,9 +8,10 @@ import { ReactComponent as LinkedinIcon } from '../../images/icons/linkedin.svg'
 import { ReactComponent as EmailIcon } from '../../images/icons/email.svg';
 import { ModalType } from '../../shared/types/types';
 import * as SC from './Footer.sc';
+import { useTypedDispatch } from '../../store/reducers/rootReducer';
 
 export default function Footer() {
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
   const onSetModal = useCallback(
     (modalContent: ModalType) => dispatch(actions.setModal(modalContent)),
     [dispatch],

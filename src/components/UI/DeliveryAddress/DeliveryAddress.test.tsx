@@ -6,12 +6,12 @@ import { DeliveryAddress as IDeliveryAddress } from '../../../shared/types/types
 const setUp = (data: IDeliveryAddress) => {
   return renderAppPart(<DeliveryAddress data={data} />, {
     withoutRouter: true,
-  });
+  }) as ReturnType<typeof render>;
 };
 
 describe('<DeliveryAddress />', () => {
   it('should render five <PlainText /> with correct values', () => {
-    const { asFragment } = setUp(defaultDeliveryAddress) as ReturnType<typeof render>;
+    const { asFragment } = setUp(defaultDeliveryAddress);
     expect(asFragment()).toMatchSnapshot();
   });
 });
