@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkeshopping_app_client=self.webpackChunkeshopping_app_client||[]).push([[959],{6959:(e,s,t)=>{t.r(s),t.d(s,{default:()=>l});var n=t(2791),p=t(9434),u=t(7689),c=t(2727),a=t(8761),i=t(184);function l(){const e=(0,p.I0)(),s=(0,u.s0)(),t=(0,n.useCallback)((()=>e(a.TX())),[e]);return(0,n.useEffect)((()=>{t(),s(-1)}),[]),(0,i.jsx)(c.Z,{title:"Logging out..."})}}}]);
+//# sourceMappingURL=959.938aa63e.chunk.js.map
